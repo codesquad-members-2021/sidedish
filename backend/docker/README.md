@@ -12,8 +12,7 @@ sh ./docker-clear.sh
 cd ./sidedish/backend/docker
 
 # start
-docker-compose up --build
-docker-compose up -d
+sh docker-start.sh
 
 # view logs
 docker-compose logs
