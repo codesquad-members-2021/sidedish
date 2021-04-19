@@ -16,6 +16,8 @@
 		B3D25411262D6ACA00F57C61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D2540F262D6ACA00F57C61 /* LaunchScreen.storyboard */; };
 		B3D2541C262D6ACA00F57C61 /* SideDishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D2541B262D6ACA00F57C61 /* SideDishTests.swift */; };
 		B3D25427262D6ACA00F57C61 /* SideDishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25426262D6ACA00F57C61 /* SideDishUITests.swift */; };
+		B3D25439262D6ECA00F57C61 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25437262D6ECA00F57C61 /* CardCell.swift */; };
+		B3D2543A262D6ECA00F57C61 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D25438262D6ECA00F57C61 /* CardCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		B3D25422262D6ACA00F57C61 /* SideDishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideDishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D25426262D6ACA00F57C61 /* SideDishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishUITests.swift; sourceTree = "<group>"; };
 		B3D25428262D6ACA00F57C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3D25437262D6ECA00F57C61 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		B3D25438262D6ECA00F57C61 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +105,13 @@
 		B3D25400262D6AC900F57C61 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
+				B3D25443262D6F2A00F57C61 /* Storyboard */,
+				B3D25442262D6F0900F57C61 /* Network */,
+				B3D25441262D6F0300F57C61 /* Controller */,
+				B3D25440262D6EFE00F57C61 /* Model */,
+				B3D2543F262D6EF500F57C61 /* View */,
 				B3D25401262D6AC900F57C61 /* AppDelegate.swift */,
 				B3D25403262D6AC900F57C61 /* SceneDelegate.swift */,
-				B3D25405262D6AC900F57C61 /* ViewController.swift */,
-				B3D25407262D6AC900F57C61 /* Main.storyboard */,
 				B3D2540D262D6ACA00F57C61 /* Assets.xcassets */,
 				B3D2540F262D6ACA00F57C61 /* LaunchScreen.storyboard */,
 				B3D25412262D6ACA00F57C61 /* Info.plist */,
@@ -129,6 +136,45 @@
 				B3D25428262D6ACA00F57C61 /* Info.plist */,
 			);
 			path = SideDishUITests;
+			sourceTree = "<group>";
+		};
+		B3D2543F262D6EF500F57C61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3D25437262D6ECA00F57C61 /* CardCell.swift */,
+				B3D25438262D6ECA00F57C61 /* CardCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3D25440262D6EFE00F57C61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B3D25441262D6F0300F57C61 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B3D25405262D6AC900F57C61 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B3D25442262D6F0900F57C61 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B3D25443262D6F2A00F57C61 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B3D25407262D6AC900F57C61 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +283,7 @@
 				B3D25411262D6ACA00F57C61 /* LaunchScreen.storyboard in Resources */,
 				B3D2540E262D6ACA00F57C61 /* Assets.xcassets in Resources */,
 				B3D25409262D6AC900F57C61 /* Main.storyboard in Resources */,
+				B3D2543A262D6ECA00F57C61 /* CardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D25439262D6ECA00F57C61 /* CardCell.swift in Sources */,
 				B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */,
 				B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */,
 				B3D2540C262D6AC900F57C61 /* SideDish.xcdatamodeld in Sources */,
