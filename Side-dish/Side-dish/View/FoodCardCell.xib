@@ -113,7 +113,7 @@
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="342" height="130"/>
-            <point key="canvasLocation" x="193" y="169"/>
+            <point key="canvasLocation" x="192.75362318840581" y="168.75"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -10,20 +10,24 @@
 		8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7BE262D6C3000FA49E9 /* FoodCardCell.swift */; };
 		8844B7C4262D6ED500FA49E9 /* FoodCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8844B7C3262D6ED500FA49E9 /* FoodCardCell.xib */; };
 		8844B7D0262DB6A500FA49E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7CF262DB6A500FA49E9 /* Item.swift */; };
-		8844B7D4262DBA3F00FA49E9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7D3262DBA3F00FA49E9 /* Category.swift */; };
+		8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
 		BFCE4957262D4891006C0882 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* ViewController.swift */; };
 		BFCE495C262D4895006C0882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCE495B262D4895006C0882 /* Assets.xcassets */; };
 		BFCE495F262D4895006C0882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */; };
 		BFCE496F262D883F006C0882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCE496E262D883F006C0882 /* Main.storyboard */; };
+		BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4975262DBFE2006C0882 /* EndPoint.swift */; };
+		BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4979262DC205006C0882 /* HTTPMethod.swift */; };
+		BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE497C262DC22A006C0882 /* NetworkError.swift */; };
+		BFCE4980262DC3F2006C0882 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE497F262DC3F2006C0882 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8844B7BE262D6C3000FA49E9 /* FoodCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardCell.swift; sourceTree = "<group>"; };
 		8844B7C3262D6ED500FA49E9 /* FoodCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCardCell.xib; sourceTree = "<group>"; };
 		8844B7CF262DB6A500FA49E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		8844B7D3262DBA3F00FA49E9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishes.swift; sourceTree = "<group>"; };
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +36,10 @@
 		BFCE495E262D4895006C0882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFCE4960262D4895006C0882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFCE496E262D883F006C0882 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BFCE4975262DBFE2006C0882 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		BFCE4979262DC205006C0882 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		BFCE497C262DC22A006C0882 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BFCE497F262DC3F2006C0882 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,7 @@
 		8844B7CD262DB62C00FA49E9 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BFCE4974262DBFCC006C0882 /* Network */,
 				8844B7CE262DB63B00FA49E9 /* Model */,
 			);
 			path = DataLayer;
@@ -66,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				8844B7CF262DB6A500FA49E9 /* Item.swift */,
-				8844B7D3262DBA3F00FA49E9 /* Category.swift */,
+				8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +110,17 @@
 				BFCE4960262D4895006C0882 /* Info.plist */,
 			);
 			path = "Side-dish";
+			sourceTree = "<group>";
+		};
+		BFCE4974262DBFCC006C0882 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BFCE4975262DBFE2006C0882 /* EndPoint.swift */,
+				BFCE4979262DC205006C0882 /* HTTPMethod.swift */,
+				BFCE497C262DC22A006C0882 /* NetworkError.swift */,
+				BFCE497F262DC3F2006C0882 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,10 +196,14 @@
 			files = (
 				8844B7D0262DB6A500FA49E9 /* Item.swift in Sources */,
 				BFCE4957262D4891006C0882 /* ViewController.swift in Sources */,
+				BFCE4980262DC3F2006C0882 /* NetworkManager.swift in Sources */,
 				BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */,
 				BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */,
+				BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */,
 				8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */,
-				8844B7D4262DBA3F00FA49E9 /* Category.swift in Sources */,
+				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
+				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
+				8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
