@@ -68,13 +68,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.dishName.text = item.title
         cell.dishDescription.text = item.description
         cell.sellingPrice.text = item.sPrice
-        cell.originalPrice.text = item.nPrice ?? ""
+        
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: item.nPrice ?? "")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        cell.originalPrice.attributedText = attributeString
         
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return self.headerViewModel.titles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -82,7 +86,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
         header.title.text = headerViewModel.titles[indexPath.section]
-        header.countLabel.text = "\(itemViewModel.items.count)\(headerViewModel.countDescriptionTemplate)"
+        header.countLabel.text = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
         return header
     }
 }
