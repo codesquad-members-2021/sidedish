@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         self.itemViewModel.$items
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                self?.collectionView.reloadData()
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &fetchItemSubscription)
         
         self.itemViewModel.fetchItems()

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AB262D74890077EF4D /* DetailViewController.swift */; };
 		2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AF262D7E500077EF4D /* ItemViewModel.swift */; };
+		2240D5BB262D8E420077EF4D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5BA262D8E420077EF4D /* Network.swift */; };
+		2240D5BF262D8E9C0077EF4D /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5BE262D8E9C0077EF4D /* SessionManager.swift */; };
+		2240D5C2262D8F490077EF4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5C1262D8F490077EF4D /* DataManager.swift */; };
 		22418742262D4D8300AC14C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418741262D4D8300AC14C7 /* AppDelegate.swift */; };
 		22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418743262D4D8300AC14C7 /* SceneDelegate.swift */; };
 		22418746262D4D8300AC14C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418745262D4D8300AC14C7 /* ViewController.swift */; };
@@ -18,12 +21,17 @@
 		22418761262D5C8400AC14C7 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */; };
 		22418771262D6A5A00AC14C7 /* SidedishItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418770262D6A5A00AC14C7 /* SidedishItem.swift */; };
 		22418774262D6B3400AC14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418773262D6B3400AC14C7 /* Category.swift */; };
+		2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */; };
+		2260DDDA262D960E002DF3E7 /* SidedishProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */; };
 		D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2240D5AB262D74890077EF4D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2240D5AF262D7E500077EF4D /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		2240D5BA262D8E420077EF4D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		2240D5BE262D8E9C0077EF4D /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		2240D5C1262D8F490077EF4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2241873E262D4D8300AC14C7 /* Sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22418741262D4D8300AC14C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22418743262D4D8300AC14C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +43,8 @@
 		22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		22418770262D6A5A00AC14C7 /* SidedishItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishItem.swift; sourceTree = "<group>"; };
 		22418773262D6B3400AC14C7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishNetworkCenter.swift; sourceTree = "<group>"; };
+		2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishProcessing.swift; sourceTree = "<group>"; };
 		D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +59,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2240D5B9262D8DF90077EF4D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2240D5BA262D8E420077EF4D /* Network.swift */,
+				2240D5BE262D8E9C0077EF4D /* SessionManager.swift */,
+				2240D5C1262D8F490077EF4D /* DataManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		22418735262D4D8300AC14C7 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +96,9 @@
 				2240D5AF262D7E500077EF4D /* ItemViewModel.swift */,
 				22418747262D4D8300AC14C7 /* Main.storyboard */,
 				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
+				2245D88C262D927200E0B637 /* UseCase */,
+				2245D890262D92D700E0B637 /* Repository */,
+				2240D5B9262D8DF90077EF4D /* Service */,
 				22418776262D6C1700AC14C7 /* Entity */,
 				2241874A262D4D8600AC14C7 /* Assets.xcassets */,
 				2241874C262D4D8600AC14C7 /* LaunchScreen.storyboard */,
@@ -91,6 +114,22 @@
 				22418773262D6B3400AC14C7 /* Category.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		2245D88C262D927200E0B637 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		2245D890262D92D700E0B637 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,15 +202,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2240D5BB262D8E420077EF4D /* Network.swift in Sources */,
+				2240D5C2262D8F490077EF4D /* DataManager.swift in Sources */,
 				22418746262D4D8300AC14C7 /* ViewController.swift in Sources */,
 				D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */,
 				22418742262D4D8300AC14C7 /* AppDelegate.swift in Sources */,
 				22418771262D6A5A00AC14C7 /* SidedishItem.swift in Sources */,
 				22418761262D5C8400AC14C7 /* HeaderCollectionReusableView.swift in Sources */,
 				2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */,
+				2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */,
 				22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */,
 				22418774262D6B3400AC14C7 /* Category.swift in Sources */,
 				2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */,
+				2240D5BF262D8E9C0077EF4D /* SessionManager.swift in Sources */,
+				2260DDDA262D960E002DF3E7 /* SidedishProcessing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
