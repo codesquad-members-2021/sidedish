@@ -1,4 +1,10 @@
-import { EVENT } from 'const';
+import {
+  COLOR_GREEN,
+  COLOR_LIGHTBLUE,
+  EVENT,
+  TAG_EVENT,
+  TAG_LAUNCHING,
+} from 'const';
 import styled from 'styled-components';
 
 const Tag = ({ type }) => {
@@ -12,7 +18,7 @@ const Tag = ({ type }) => {
 const EventTag = ({ type }) => {
   return (
     <TagDiv type={type}>
-      <span>이벤트특가</span>
+      <span>{TAG_EVENT}</span>
     </TagDiv>
   );
 };
@@ -20,7 +26,7 @@ const EventTag = ({ type }) => {
 const LaunchingTag = ({ type }) => {
   return (
     <TagDiv type={type}>
-      <span>런칭특가</span>
+      <span>{TAG_LAUNCHING}</span>
     </TagDiv>
   );
 };
@@ -28,7 +34,7 @@ const LaunchingTag = ({ type }) => {
 export default Tag;
 
 const TagDiv = styled.div`
-  background: ${({ type }) => (type === EVENT ? `#82D32D` : `#86C6FF`)};
+  background: ${({ type }) => (type === EVENT ? COLOR_GREEN : COLOR_LIGHTBLUE)};
   border-radius: 5px;
   padding: 4px 16px;
   width: 97px;
