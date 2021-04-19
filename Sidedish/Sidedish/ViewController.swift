@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var itemViewModel: ItemViewModel!
+    var headerViewModel: HeaderViewModel!
     var fetchItemSubscription = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         
         self.itemViewModel = ItemViewModel()
+        self.headerViewModel = HeaderViewModel()
         self.itemViewModel.$items
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -27,6 +29,8 @@ class ViewController: UIViewController {
             }.store(in: &fetchItemSubscription)
         
         self.itemViewModel.fetchItems()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,11 +73,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
-        
+        header.title.text = headerViewModel.titles[indexPath.section]
+        header.countLabel.text = "\(itemViewModel.items.count)\(headerViewModel.countDescriptionTemplate)"
         return header
     }
 }

@@ -16,14 +16,14 @@ class Network {
         self.dataManager = DataManager()
     }
     
-    func requestItems(url: URL, completionHandler: @escaping ([SidedishItem]) -> Void) {
+    func requestItems<T: Codable>(url: URL, completionHandler: @escaping ([T]) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         self.sessionManager.requestItem(urlRequest: request) { (requestResult) in
             switch requestResult {
             case .success(let data):
-                self.dataManager.decoding(decodable: [SidedishItem].self, data: data) { (decodingResult) in
+                self.dataManager.decoding(decodable: [T].self, data: data) { (decodingResult) in
                     switch decodingResult {
                     case .success(let sidedishItems):
                         completionHandler(sidedishItems)
