@@ -18,8 +18,7 @@
 ---
 
 ## 브랜치 규칙
-
-upstream - dev - FE, BE - 각 브랜치
+![스크린샷 2021-04-19 오후 5 05 56](https://user-images.githubusercontent.com/62237639/115202663-94fcd880-a131-11eb-8708-23c7a09cc200.png)
 
 ---
 
