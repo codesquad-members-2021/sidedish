@@ -1,2 +1,10 @@
 # sidedish
-그룹프로젝트 #2
+
+그룹 9
+
+## 팀원
+
+- Lollo (eeeesong)
+- ZG (jhpark-ZG)
+- Pyro (ghojeong)
+- Bat (kjk402)
