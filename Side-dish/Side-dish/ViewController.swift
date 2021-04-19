@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         configureCollectionView()
         
-        self.collectionView.register(FoodCardCell.self, forCellWithReuseIdentifier: FoodCardCell.identifier)
+        self.collectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
@@ -52,7 +52,6 @@ extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCardCell.identifier, for: indexPath) as! FoodCardCell
-        cell.backgroundColor = .green
         return cell
     }
 }
