@@ -1,5 +1,14 @@
+import { EVENT, LAUNCHING } from 'const';
+import Tag from './Tag';
+
 const TabUI = () => {
-  return <div>TabUI</div>;
+  return (
+    <>
+      <Tag type={EVENT} />
+      <Tag type={LAUNCHING} />
+      <Tag />
+    </>
+  );
 };
 
 export default TabUI;
