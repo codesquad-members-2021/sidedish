@@ -1,6 +1,18 @@
 # sidedish
 그룹프로젝트 #2
 
+Team 10
+
+## 팀원
+
+### iOS
+- dumba
+- Min
+
+### Backend
+- Bongf
+- K
+
 ## 브랜치 전략
 
 폴더를 iOS와 BE 두개로 나누어서 관리합니다.
