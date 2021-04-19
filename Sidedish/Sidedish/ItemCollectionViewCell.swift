@@ -11,4 +11,12 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ItemCollectionViewCell"
     
+    @IBOutlet weak var dishImage: UIImageView!
+    @IBOutlet weak var dishName: UILabel!
+    @IBOutlet weak var dishDescription: UILabel!
+    @IBOutlet weak var sellingPrice: UILabel!
+    @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet var badges: [UILabel]!
+    
+    
 }

@@ -10,5 +10,7 @@ import UIKit
 class HeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "collectionViewHeader"
     
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
     
 }
