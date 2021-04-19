@@ -24,7 +24,7 @@
 
 ## 프로젝트 관리
 
-![2021-04-19_18-19-57](https://user-images.githubusercontent.com/59721293/115190268-e27e4300-a13b-11eb-962a-ecadd06bae82.jpg)
+![스크린샷 2021-04-19 오후 5 16 56](https://user-images.githubusercontent.com/62237639/115204101-16a13600-a133-11eb-994c-f4c8ba1d22db.png)
 
 ---
 
