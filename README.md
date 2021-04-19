@@ -1,2 +1,7 @@
 # sidedish
-그룹프로젝트 #2
+## Team19 (a.k.a DJ)
+### 조원
+Json
+
+Dico 
+
