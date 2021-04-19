@@ -25,10 +25,13 @@ docker-compose down
 
 ```sh
 mysql -h 127.0.0.1 -u root -p
-# 비밀번호: rootpw
+# 비밀번호: root1234
 
 mysql -h 127.0.0.1 -u pyro -p
-# 비밀번호: pyropw
+# 비밀번호: pyro1234
+
+mysql -h 127.0.0.1 -u bat -p
+# 비밀번호: bat1234
 ```
 
 혹은 `http://localhost:3030` 에 브라우저로 접속

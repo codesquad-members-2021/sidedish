@@ -4,10 +4,10 @@ services:
     image: mysql:5.7
     container_name: mysql-5.7
     environment:
-      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_ROOT_PASSWORD: root1234
       MYSQL_DATABASE: sidedish
       MYSQL_USER: pyro
-      MYSQL_PASSWORD: pyropw
+      MYSQL_PASSWORD: pyro1234
     ports:
       - "3306:3306"
     volumes:
