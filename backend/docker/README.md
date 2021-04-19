@@ -3,6 +3,9 @@
 ## Docker Clear
 
 ```sh
+cd ./sidedish/backend/docker
+rm -rf ./db/data
+
 sh ./docker-clear.sh
 ```
 
