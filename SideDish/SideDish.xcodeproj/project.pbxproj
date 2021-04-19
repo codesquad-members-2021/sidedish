@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1050395B262DAAA000C8C0FB /* Toaster in Frameworks */ = {isa = PBXBuildFile; productRef = 1050395A262DAAA000C8C0FB /* Toaster */; };
+		10503968262DAB9300C8C0FB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10503967262DAB9300C8C0FB /* HeaderView.swift */; };
 		B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25401262D6AC900F57C61 /* AppDelegate.swift */; };
 		B3D25404262D6AC900F57C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25403262D6AC900F57C61 /* SceneDelegate.swift */; };
 		B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25405262D6AC900F57C61 /* ViewController.swift */; };
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10503967262DAB9300C8C0FB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		B3D253FE262D6AC900F57C61 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D25401262D6AC900F57C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3D25403262D6AC900F57C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1050395B262DAAA000C8C0FB /* Toaster in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,9 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				B3D25443262D6F2A00F57C61 /* Storyboard */,
-				B3D25442262D6F0900F57C61 /* Network */,
 				B3D25441262D6F0300F57C61 /* Controller */,
-				B3D25440262D6EFE00F57C61 /* Model */,
 				B3D2543F262D6EF500F57C61 /* View */,
 				B3D25401262D6AC900F57C61 /* AppDelegate.swift */,
 				B3D25403262D6AC900F57C61 /* SceneDelegate.swift */,
@@ -143,15 +145,9 @@
 			children = (
 				B3D25437262D6ECA00F57C61 /* CardCell.swift */,
 				B3D25438262D6ECA00F57C61 /* CardCell.xib */,
+				10503967262DAB9300C8C0FB /* HeaderView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		B3D25440262D6EFE00F57C61 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		B3D25441262D6F0300F57C61 /* Controller */ = {
@@ -160,13 +156,6 @@
 				B3D25405262D6AC900F57C61 /* ViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B3D25442262D6F0900F57C61 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		B3D25443262D6F2A00F57C61 /* Storyboard */ = {
@@ -193,6 +182,9 @@
 			dependencies = (
 			);
 			name = SideDish;
+			packageProductDependencies = (
+				1050395A262DAAA000C8C0FB /* Toaster */,
+			);
 			productName = SideDish;
 			productReference = B3D253FE262D6AC900F57C61 /* SideDish.app */;
 			productType = "com.apple.product-type.application";
@@ -264,6 +256,9 @@
 				Base,
 			);
 			mainGroup = B3D253F5262D6AC900F57C61;
+			packageReferences = (
+				10503959262DAAA000C8C0FB /* XCRemoteSwiftPackageReference "Toaster" */,
+			);
 			productRefGroup = B3D253FF262D6AC900F57C61 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -309,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3D25439262D6ECA00F57C61 /* CardCell.swift in Sources */,
+				10503968262DAB9300C8C0FB /* HeaderView.swift in Sources */,
 				B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */,
 				B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */,
 				B3D2540C262D6AC900F57C61 /* SideDish.xcdatamodeld in Sources */,
@@ -645,6 +641,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10503959262DAAA000C8C0FB /* XCRemoteSwiftPackageReference "Toaster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Toaster.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1050395A262DAAA000C8C0FB /* Toaster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10503959262DAAA000C8C0FB /* XCRemoteSwiftPackageReference "Toaster" */;
+			productName = Toaster;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B3D2540A262D6AC900F57C61 /* SideDish.xcdatamodeld */ = {
