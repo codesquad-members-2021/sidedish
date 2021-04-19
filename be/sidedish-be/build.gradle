@@ -31,3 +31,24 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
+
+sourceSets {
+    main {
+        java {
+        }
+        resources {
+            srcDirs += ["src/main/resources-${profile}"]
+        }
+    }
+}
+
+task buildProd(type: Exec) {
+    if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+        commandLine "gradlew.bat"
+    } else {
+        commandLine "./gradlew"
+    }
+    args "build", "-Pprofile=prod"
+}
