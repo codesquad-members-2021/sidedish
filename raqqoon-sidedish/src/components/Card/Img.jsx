@@ -3,29 +3,29 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Img = () => {
-  const [display, setDisplay] = useState(NONE);
-  const onToggleDisplay = (display) => {
-    if (display === NONE) return setDisplay(FLEX);
-    return setDisplay(NONE);
+  const [opacitiy, setOpacity] = useState(0);
+  const onToggleOpacity = (opacitiy) => {
+    if (opacitiy === 0) return setOpacity(100);
+    return setOpacity(0);
   };
 
   return (
     <ImgDiv
-      onMouseEnter={() => onToggleDisplay(display)}
-      onMouseLeave={() => onToggleDisplay(display)}
+      onMouseEnter={() => onToggleOpacity(opacitiy)}
+      onMouseLeave={() => onToggleOpacity(opacitiy)}
     >
       <img
         src="http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg"
         alt="img"
       />
-      <HoverText display={display} />
+      <HoverText opacitiy={opacitiy} />
     </ImgDiv>
   );
 };
 
-const HoverText = ({ display }) => {
+const HoverText = ({ opacitiy }) => {
   return (
-    <HoverTextBoxDiv display={display}>
+    <HoverTextBoxDiv opacitiy={opacitiy}>
       <Text message={MSG_TOP} />
       <Line />
       <Text message={MSG_BOTTOM} />
@@ -62,7 +62,8 @@ const ImgDiv = styled.div`
 const HoverTextBoxDiv = styled.div`
   position: absolute;
   padding: 0px;
-  display: ${(props) => props.display};
+  display: flex;
+  opacity: ${(props) => props.opacitiy};
   width: 384px;
   height: 384px;
   background: rgba(0, 0, 0, 0.6);
