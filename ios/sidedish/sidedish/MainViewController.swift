@@ -11,20 +11,24 @@ class MainViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView!
     
     private let tableViewDataSource : MainTableViewDataSource?
+    private let tableViewDelegate : MainTableViewDelegate?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.tableViewDataSource = nil
+        self.tableViewDelegate = nil
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         self.tableViewDataSource = MainTableViewDataSource()
+        self.tableViewDelegate = MainTableViewDelegate()
         super.init(coder: coder)
     }
 
     override func loadView() {
         super.loadView()
         self.menuTableView.dataSource = tableViewDataSource
+        self.menuTableView.delegate = tableViewDelegate
     }
     
     override func viewDidLoad() {
