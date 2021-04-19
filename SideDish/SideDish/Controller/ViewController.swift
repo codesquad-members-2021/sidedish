@@ -9,11 +9,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var cardCollectionView: UICollectionView!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.cardCollectionView.dataSource = self
+        registerNIB()
     }
-
+    
+    func registerNIB() {
+        let nibName = UINib(nibName: "CardCell", bundle: nil)
+        cardCollectionView.register(nibName, forCellWithReuseIdentifier: "cardCell")
+    }
 
 }
 
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCell
+        return cell
+    }
+    
+    
+}
