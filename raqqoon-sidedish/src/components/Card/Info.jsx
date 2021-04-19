@@ -13,10 +13,10 @@ const Body = ({ body }) => {
 
 const Info = ({ name, body }) => {
   return (
-    <>
+    <InfoBoxDiv>
       <Name name={name} />
       <Body body={body} />
-    </>
+    </InfoBoxDiv>
   );
 };
 
@@ -36,4 +36,8 @@ const BodyDiv = styled.div`
   font-size: 14px;
   line-height: 20px;
   margin: 8px 0px;
+`;
+
+const InfoBoxDiv = styled.div`
+  margin: 16px 0;
 `;

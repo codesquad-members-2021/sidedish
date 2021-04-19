@@ -34,7 +34,6 @@ const NormalDiv = styled.div`
   font-size: 20px;
   line-height: 29px;
   color: #010101;
-  margin: 0px 8px;
 `;
 
 const DiscountDiv = styled.div`

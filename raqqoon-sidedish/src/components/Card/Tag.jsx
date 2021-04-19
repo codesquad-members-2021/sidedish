@@ -40,13 +40,17 @@ const TagDiv = styled.div`
   width: 97px;
   height: 28px;
   box-sizing: border-box;
-  margin: 0 10px;
+
   text-align: center;
+
+  & + div {
+    margin: 0 10px;
+  }
 
   span {
     font-family: Noto Sans KR;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 14px;
     line-height: 20px;
     color: #fff;

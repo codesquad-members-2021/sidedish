@@ -7,3 +7,11 @@ export const TAG_LAUNCHING = '런칭특가';
 // Color
 export const COLOR_GREEN = '#82D32D';
 export const COLOR_LIGHTBLUE = '#86C6FF';
+
+// Msg
+export const MSG_TOP = '새벽배송';
+export const MSG_BOTTOM = '전국택배';
+
+// Display
+export const NONE = 'none';
+export const FLEX = 'flex';
