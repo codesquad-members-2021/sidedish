@@ -52,3 +52,7 @@ task buildProd(type: Exec) {
     }
     args "build", "-Pprofile=prod"
 }
+
+task bootRun_prod(type: Exec) {
+    tasks.bootRun.args("-Pprofile=prod").exec()
+}
