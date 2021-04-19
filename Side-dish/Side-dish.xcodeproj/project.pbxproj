@@ -14,6 +14,7 @@
 		BFCE4957262D4891006C0882 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* ViewController.swift */; };
 		BFCE495C262D4895006C0882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCE495B262D4895006C0882 /* Assets.xcassets */; };
 		BFCE495F262D4895006C0882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */; };
+		BFCE496F262D883F006C0882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCE496E262D883F006C0882 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BFCE495B262D4895006C0882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFCE495E262D4895006C0882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFCE4960262D4895006C0882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFCE496E262D883F006C0882 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
 				8844B7C1262D6CEC00FA49E9 /* View */,
 				BFCE4956262D4891006C0882 /* ViewController.swift */,
+				BFCE496E262D883F006C0882 /* Main.storyboard */,
 				BFCE495B262D4895006C0882 /* Assets.xcassets */,
 				BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */,
 				BFCE4960262D4895006C0882 /* Info.plist */,
@@ -138,6 +141,7 @@
 				8844B7C4262D6ED500FA49E9 /* FoodCardCell.xib in Resources */,
 				BFCE495F262D4895006C0882 /* LaunchScreen.storyboard in Resources */,
 				BFCE495C262D4895006C0882 /* Assets.xcassets in Resources */,
+				BFCE496F262D883F006C0882 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,41 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private var collectionView: UICollectionView!
+    
+    @IBOutlet weak var SideDishCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
-        configureCollectionView()
-        
-        self.collectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
+        SideDishCollectionView.dataSource = self
+        SideDishCollectionView.delegate = self
     }
-    
-    func makeCollectionView(){
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 0
-//        layout.itemSize = CGSize(width: view.frame.width / 2, height: view.frame.width / 2)
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .systemBackground
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    func configureCollectionView() {
-        makeCollectionView()
-        self.view.addSubview(collectionView)
-        let safeArea = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16)
-        ])
-    }
+
 }
 
 extension ViewController: UICollectionViewDataSource {
