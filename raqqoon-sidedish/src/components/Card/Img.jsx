@@ -1,9 +1,10 @@
-import { FLEX, MSG_BOTTOM, MSG_TOP, NONE } from 'const';
+import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from 'const';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Img = () => {
+const Img = ({ cardSize }) => {
   const [opacitiy, setOpacity] = useState(0);
+
   const onToggleOpacity = (opacitiy) => {
     if (opacitiy === 0) return setOpacity(100);
     return setOpacity(0);
@@ -11,6 +12,7 @@ const Img = () => {
 
   return (
     <ImgDiv
+      cardSize={cardSize}
       onMouseEnter={() => onToggleOpacity(opacitiy)}
       onMouseLeave={() => onToggleOpacity(opacitiy)}
     >
@@ -18,14 +20,14 @@ const Img = () => {
         src="http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg"
         alt="img"
       />
-      <HoverText opacitiy={opacitiy} />
+      <HoverText cardSize={cardSize} opacitiy={opacitiy} />
     </ImgDiv>
   );
 };
 
-const HoverText = ({ opacitiy }) => {
+const HoverText = ({ cardSize, opacitiy }) => {
   return (
-    <HoverTextBoxDiv opacitiy={opacitiy}>
+    <HoverTextBoxDiv cardSize={cardSize} opacitiy={opacitiy}>
       <Text message={MSG_TOP} />
       <Line />
       <Text message={MSG_BOTTOM} />
@@ -48,13 +50,11 @@ export default Img;
 
 const ImgDiv = styled.div`
   position: relative;
-  width: 384px;
-  height: 384px;
+  width: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
+  height: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
   display: flex;
 
   img {
-    width: 100%;
-    height: 100%;
     border-radius: 5px;
   }
 `;
@@ -64,8 +64,8 @@ const HoverTextBoxDiv = styled.div`
   padding: 0px;
   display: flex;
   opacity: ${(props) => props.opacitiy};
-  width: 384px;
-  height: 384px;
+  width: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
+  height: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
   background: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   flex-direction: column;

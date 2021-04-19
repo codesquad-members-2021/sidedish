@@ -23,14 +23,12 @@ const Info = ({ name, body }) => {
 export default Info;
 
 const NameDiv = styled.div`
-  width: 384px;
   height: 23px;
   color: #333;
   margin: 8px 0px;
 `;
 
 const BodyDiv = styled.div`
-  width: 384px;
   height: 20px;
   color: #828282;
   font-size: 14px;

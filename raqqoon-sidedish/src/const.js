@@ -12,6 +12,6 @@ export const COLOR_LIGHTBLUE = '#86C6FF';
 export const MSG_TOP = '새벽배송';
 export const MSG_BOTTOM = '전국택배';
 
-// Display
-export const NONE = 'none';
-export const FLEX = 'flex';
+// Size
+export const SIZE_LARGE = 'large';
+export const SIZE_MEDIUM = 'medium';
