@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Carousel from './Carousel/Carousel';
 import TabUI from './TabUI/TabUI';
 
