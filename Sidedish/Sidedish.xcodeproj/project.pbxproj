@@ -13,6 +13,7 @@
 		22418749262D4D8300AC14C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22418747262D4D8300AC14C7 /* Main.storyboard */; };
 		2241874B262D4D8600AC14C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2241874A262D4D8600AC14C7 /* Assets.xcassets */; };
 		2241874E262D4D8600AC14C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2241874C262D4D8600AC14C7 /* LaunchScreen.storyboard */; };
+		D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2241874A262D4D8600AC14C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2241874D262D4D8600AC14C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2241874F262D4D8600AC14C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				22418741262D4D8300AC14C7 /* AppDelegate.swift */,
 				22418743262D4D8300AC14C7 /* SceneDelegate.swift */,
 				22418745262D4D8300AC14C7 /* ViewController.swift */,
+				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				22418747262D4D8300AC14C7 /* Main.storyboard */,
 				2241874A262D4D8600AC14C7 /* Assets.xcassets */,
 				2241874C262D4D8600AC14C7 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22418746262D4D8300AC14C7 /* ViewController.swift in Sources */,
+				D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */,
 				22418742262D4D8300AC14C7 /* AppDelegate.swift in Sources */,
 				22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */,
 			);
