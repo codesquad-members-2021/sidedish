@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AB262D74890077EF4D /* DetailViewController.swift */; };
+		2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AF262D7E500077EF4D /* ItemViewModel.swift */; };
 		22418742262D4D8300AC14C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418741262D4D8300AC14C7 /* AppDelegate.swift */; };
 		22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418743262D4D8300AC14C7 /* SceneDelegate.swift */; };
 		22418746262D4D8300AC14C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418745262D4D8300AC14C7 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2240D5AB262D74890077EF4D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2240D5AF262D7E500077EF4D /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		2241873E262D4D8300AC14C7 /* Sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22418741262D4D8300AC14C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22418743262D4D8300AC14C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				22418743262D4D8300AC14C7 /* SceneDelegate.swift */,
 				22418745262D4D8300AC14C7 /* ViewController.swift */,
 				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
+				2240D5AB262D74890077EF4D /* DetailViewController.swift */,
+				2240D5AF262D7E500077EF4D /* ItemViewModel.swift */,
 				22418747262D4D8300AC14C7 /* Main.storyboard */,
 				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
 				22418776262D6C1700AC14C7 /* Entity */,
@@ -162,8 +168,10 @@
 				22418742262D4D8300AC14C7 /* AppDelegate.swift in Sources */,
 				22418771262D6A5A00AC14C7 /* SidedishItem.swift in Sources */,
 				22418761262D5C8400AC14C7 /* HeaderCollectionReusableView.swift in Sources */,
+				2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */,
 				22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */,
 				22418774262D6B3400AC14C7 /* Category.swift in Sources */,
+				2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

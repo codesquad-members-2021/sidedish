@@ -16,6 +16,11 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
 
 }
@@ -39,14 +44,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return header
     }
-    
-    
-    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 414, height: 130)
+        return CGSize(width: self.view.frame.width, height: 130)
     }
     
     

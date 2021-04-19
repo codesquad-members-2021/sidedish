@@ -11,7 +11,7 @@ struct SidedishItem: Codable {
     var detailHash: String
     var image: String
     var alt: String
-    var deliveryType: String
+    var deliveryType: [String]
     var title: String
     var description: String
     var nPrice: String?
