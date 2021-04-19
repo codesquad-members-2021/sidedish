@@ -1,36 +1,35 @@
 package develop.baminchan.entity;
 
+import org.springframework.data.annotation.Id;
+
+import java.util.HashMap;
+
 public class Banchan {
-    private Long id;
-    private String detailHash;
+    @Id
+    private String detail_hash;
     private String image;
     private String alt;
-    private String[] deliveryType;
+    private DeliveryType delivery_type;
     private String title;
     private String description;
-    private String nPrice;
-    private String sPrice;
-    private String[] badge;
+    private String n_price;
+    private String s_price;
+    private Badge badge;
 
-    public Banchan(Long id, String detailHash, String image, String alt, String[] deliveryType, String title, String description, String nPrice, String sPrice, String[] badge) {
-        this.id = id;
-        this.detailHash = detailHash;
+    public Banchan(String detail_hash, String image, String alt, DeliveryType delivery_type, String title, String description, String n_price, String s_price, Badge badge) {
+        this.detail_hash = detail_hash;
         this.image = image;
         this.alt = alt;
-        this.deliveryType = deliveryType;
+        this.delivery_type = delivery_type;
         this.title = title;
         this.description = description;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
+        this.n_price = n_price;
+        this.s_price = s_price;
         this.badge = badge;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getDetailHash() {
-        return detailHash;
+    public String getDetail_hash() {
+        return detail_hash;
     }
 
     public String getImage() {
@@ -41,8 +40,8 @@ public class Banchan {
         return alt;
     }
 
-    public String[] getDeliveryType() {
-        return deliveryType;
+    public DeliveryType getDelivery_type() {
+        return delivery_type;
     }
 
     public String getTitle() {
@@ -53,15 +52,26 @@ public class Banchan {
         return description;
     }
 
-    public String getnPrice() {
-        return nPrice;
+    public String getN_price() {
+        return n_price;
     }
 
-    public String getsPrice() {
-        return sPrice;
+    public String getS_price() {
+        return s_price;
     }
 
-    public String[] getBadge() {
+    public Badge getBadge() {
         return badge;
+    }
+
+    public enum DeliveryType {
+        새벽배송,
+        전국택배
+    }
+
+    public enum Badge {
+        이벤트특가,
+        론칭특가,
+        베스트
     }
 }
