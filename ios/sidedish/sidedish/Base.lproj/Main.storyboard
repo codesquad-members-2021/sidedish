@@ -134,7 +134,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Cyp-V7-tSn"/>
                     <connections>
-                        <outlet property="menuTableView" destination="xCR-Zq-P0F" id="0Jf-hX-JgH"/>
+                        <outlet property="menuTableView" destination="xCR-Zq-P0F" id="hd5-Me-D53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbY-9O-M9K" sceneMemberID="firstResponder"/>
