@@ -13,4 +13,6 @@ const TabUI = () => {
 
 export default TabUI;
 
-const TabUIBoxDiv = styled.div``;
+const TabUIBoxDiv = styled.div`
+  width: fit-content;
+`;
