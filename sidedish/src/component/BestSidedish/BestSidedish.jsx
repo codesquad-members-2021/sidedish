@@ -21,9 +21,19 @@ const BestSidedish = () => {
     setFocusedCategory(parsedData[0].id);
   };
 
+  const handleFocusedCategory = (categoryId) => {
+    setFocusedCategory(categoryId);
+  };
+
   return (
     <div>
-      {bestList && <BestTabList bestList={bestList} />}
+      {bestList && (
+        <BestTabList
+          bestList={bestList}
+          focusedCategory={focusedCategory}
+          handleFocusedCategory={handleFocusedCategory}
+        />
+      )}
       {focusedCategory && <BestSidedishList focusedCategory={focusedCategory} />}
     </div>
   );
