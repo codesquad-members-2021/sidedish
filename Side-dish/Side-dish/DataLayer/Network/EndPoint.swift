@@ -21,8 +21,8 @@ enum Endpoint {
     }
 }
 
-enum Path: String {
-    case main = "1main1"
-    case soup = "soup"
-    case side = "side"
+enum Path: String, CaseIterable {
+    case main
+    case soup
+    case side
 }

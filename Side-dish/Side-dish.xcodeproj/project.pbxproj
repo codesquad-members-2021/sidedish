@@ -13,7 +13,7 @@
 		8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
-		BFCE4957262D4891006C0882 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* ViewController.swift */; };
+		BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* SideDishViewController.swift */; };
 		BFCE495C262D4895006C0882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCE495B262D4895006C0882 /* Assets.xcassets */; };
 		BFCE495F262D4895006C0882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */; };
 		BFCE496F262D883F006C0882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCE496E262D883F006C0882 /* Main.storyboard */; };
@@ -21,6 +21,9 @@
 		BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4979262DC205006C0882 /* HTTPMethod.swift */; };
 		BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE497C262DC22A006C0882 /* NetworkError.swift */; };
 		BFCE4980262DC3F2006C0882 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE497F262DC3F2006C0882 /* NetworkManager.swift */; };
+		BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */; };
+		BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */; };
+		BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49C1262E8918006C0882 /* DIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +34,7 @@
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BFCE4956262D4891006C0882 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFCE4956262D4891006C0882 /* SideDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishViewController.swift; sourceTree = "<group>"; };
 		BFCE495B262D4895006C0882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFCE495E262D4895006C0882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFCE4960262D4895006C0882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +43,9 @@
 		BFCE4979262DC205006C0882 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BFCE497C262DC22A006C0882 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BFCE497F262DC3F2006C0882 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishUseCase.swift; sourceTree = "<group>"; };
+		BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishViewModel.swift; sourceTree = "<group>"; };
+		BFCE49C1262E8918006C0882 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +105,13 @@
 		BFCE4951262D4891006C0882 /* Side-dish */ = {
 			isa = PBXGroup;
 			children = (
-				8844B7CD262DB62C00FA49E9 /* DataLayer */,
 				BFCE4952262D4891006C0882 /* AppDelegate.swift */,
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
+				BFCE49C1262E8918006C0882 /* DIContainer.swift */,
+				8844B7CD262DB62C00FA49E9 /* DataLayer */,
+				BFCE49B4262E74FF006C0882 /* DomainLayer */,
+				BFCE49BB262E7742006C0882 /* PresentationLayer */,
 				8844B7C1262D6CEC00FA49E9 /* View */,
-				BFCE4956262D4891006C0882 /* ViewController.swift */,
 				BFCE496E262D883F006C0882 /* Main.storyboard */,
 				BFCE495B262D4895006C0882 /* Assets.xcassets */,
 				BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */,
@@ -121,6 +129,31 @@
 				BFCE497F262DC3F2006C0882 /* NetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BFCE49B4262E74FF006C0882 /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BFCE49B5262E7513006C0882 /* UseCase */,
+			);
+			path = DomainLayer;
+			sourceTree = "<group>";
+		};
+		BFCE49B5262E7513006C0882 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		BFCE49BB262E7742006C0882 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */,
+				BFCE4956262D4891006C0882 /* SideDishViewController.swift */,
+			);
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,14 +228,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8844B7D0262DB6A500FA49E9 /* Item.swift in Sources */,
-				BFCE4957262D4891006C0882 /* ViewController.swift in Sources */,
+				BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */,
 				BFCE4980262DC3F2006C0882 /* NetworkManager.swift in Sources */,
 				BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */,
 				BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */,
+				BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */,
+				BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */,
 				BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */,
 				8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */,
 				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
 				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
+				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
 				8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
