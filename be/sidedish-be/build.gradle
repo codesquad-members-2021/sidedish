@@ -44,15 +44,11 @@ sourceSets {
     }
 }
 
-task buildProd(type: Exec) {
-    if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
-        commandLine "gradlew.bat"
-    } else {
-        commandLine "./gradlew"
-    }
-    args "build", "-Pprofile=prod"
-}
-
-task bootRun_prod(type: Exec) {
-    tasks.bootRun.args("-Pprofile=prod").exec()
+task build_prod(type: GradleBuild) {
+    startParameter.setTaskNames(["build"])
+    startParameter.setProjectProperties(new HashMap() {
+        {
+            put("profile", "prod")
+        }
+    })
 }
