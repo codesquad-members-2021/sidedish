@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Menu from 'components/Nav/Menu';
+import MenuList from 'components/nav/MenuList';
 
 const Header = () => {
   return (
@@ -7,7 +7,7 @@ const Header = () => {
       <Nav>
         <NavLeft>
           <Logo>BANCHAN</Logo>
-          <Menu />
+          <MenuList />
         </NavLeft>
         <NavRight>
           <input type="text" placeholder="🔍" />
