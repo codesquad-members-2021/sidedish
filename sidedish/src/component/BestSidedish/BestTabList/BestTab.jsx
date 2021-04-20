@@ -6,7 +6,7 @@ const BestTab = ({ id, title, focusedCategory, handleFocusedCategory }) => {
 
   useEffect(() => {
     focusedCategory === id ? setFocused(true) : setFocused(false);
-  });
+  }, [focusedCategory]);
 
   const handleClick = () => {
     handleFocusedCategory(id);
