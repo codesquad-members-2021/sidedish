@@ -138,10 +138,11 @@ const CardHover = styled.ul`
 
 const Card = ({ image, title, description, n_price, s_price, badge, size, delivery_type }) => {
 	const [isHover, setHover] = useState(false);
+	const [src, setSrc] = useState(image)
 	return (
 		<CardWrapper>
 			<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-				<CardImage src={image} size={size} isHover={isHover}></CardImage>
+				<CardImage src={src} size={size} isHover={isHover} onError={()=>setSrc("https://codesquad.kr/img/company/codesquad2.png")}></CardImage>
 				<CardHover size={size}>{isHover ? delivery_type.map((e) => <li key={e}>{e}</li>) : ""}</CardHover>
 			</div>
 			<CardInfo>
