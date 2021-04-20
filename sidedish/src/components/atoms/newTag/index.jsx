@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-const newTagDiv = styled.div`
+const NewTagDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -19,7 +19,7 @@ const newTagDiv = styled.div`
   border-radius: 5px;
 `;
 
-const newTagSpan = styled.span`
+const NewTagSpan = styled.span`
   position: static;
   width: 52px;
   height: 20px;
@@ -44,14 +44,14 @@ const newTagSpan = styled.span`
   margin: 0px 10px;
 `;
 
-const eventBtn = () => {
+const NewTag = () => {
   return (
     <>
-      <newTagDiv>
-        <newTagSpan>런칭특가</newTagSpan>
-      </newTagDiv>
+      <NewTagDiv>
+        <NewTagSpan>런칭특가</NewTagSpan>
+      </NewTagDiv>
     </>
   );
 };
 
-export default eventBtn;
+export default NewTag;

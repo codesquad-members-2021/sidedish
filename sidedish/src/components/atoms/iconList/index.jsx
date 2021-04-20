@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as searchSVG } from '../../../images/search.svg';
 
-const searchIcon = styled(searchSVG)`
+const SearchIcon = styled(searchSVG)`
   width: 24px;
   height: 24px;
 
@@ -12,7 +12,7 @@ const searchIcon = styled(searchSVG)`
 `;
 
 const AddCardButton = ({ id, handleAddButtonClick }) => {
-  return <searchIcon />;
+  return <SearchIcon />;
 };
 
 export default AddCardButton;

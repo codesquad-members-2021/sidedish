@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-const eventTagDiv = styled.div`
+const EventTagDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -19,7 +19,7 @@ const eventTagDiv = styled.div`
   border-radius: 5px;
 `;
 
-const eventTagSpan = styled.span`
+const EventTagSpan = styled.span`
   position: static;
   width: 65px;
   height: 20px;
@@ -37,14 +37,14 @@ const eventTagSpan = styled.span`
   color: #ffffff;
 `;
 
-const eventBtn = () => {
+const EventBtn = () => {
   return (
     <>
-      <eventTagDiv>
-        <eventTagSpan>이벤트특가</eventTagSpan>
-      </eventTagDiv>
+      <EventTagDiv>
+        <EventTagSpan>이벤트특가</EventTagSpan>
+      </EventTagDiv>
     </>
   );
 };
 
-export default eventBtn;
+export default EventBtn;
