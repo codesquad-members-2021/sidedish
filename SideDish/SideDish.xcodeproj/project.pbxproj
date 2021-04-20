@@ -10,6 +10,10 @@
 		10418377262E9B9B00280647 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418376262E9B9B00280647 /* Card.swift */; };
 		1041837D262E9F3B00280647 /* ImageView+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041837C262E9F3B00280647 /* ImageView+load.swift */; };
 		10418385262EA17300280647 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418384262EA17300280647 /* Section.swift */; };
+		10418397262EB1B700280647 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418396262EB1B700280647 /* Response.swift */; };
+		1041839F262EB30800280647 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041839E262EB30800280647 /* API.swift */; };
+		104183A5262EB35A00280647 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 104183A4262EB35A00280647 /* Alamofire */; };
+		104183AB262EB99B00280647 /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104183AA262EB99B00280647 /* APITest.swift */; };
 		1050395B262DAAA000C8C0FB /* Toaster in Frameworks */ = {isa = PBXBuildFile; productRef = 1050395A262DAAA000C8C0FB /* Toaster */; };
 		10503968262DAB9300C8C0FB /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */; };
 		B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25401262D6AC900F57C61 /* AppDelegate.swift */; };
@@ -46,6 +50,9 @@
 		10418376262E9B9B00280647 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		1041837C262E9F3B00280647 /* ImageView+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+load.swift"; sourceTree = "<group>"; };
 		10418384262EA17300280647 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		10418396262EB1B700280647 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		1041839E262EB30800280647 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		104183AA262EB99B00280647 /* APITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
 		10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		B3D253FE262D6AC900F57C61 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D25401262D6AC900F57C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1050395B262DAAA000C8C0FB /* Toaster in Frameworks */,
+				104183A5262EB35A00280647 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,15 @@
 				1041837C262E9F3B00280647 /* ImageView+load.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		10418395262EB0CF00280647 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				10418396262EB1B700280647 /* Response.swift */,
+				1041839E262EB30800280647 /* API.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		108A8942262E761400C828AC /* Model */ = {
@@ -140,10 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				1041837B262E9F2500280647 /* Extension */,
-				108A8943262E761A00C828AC /* ViewModel */,
-				108A8942262E761400C828AC /* Model */,
 				B3D25443262D6F2A00F57C61 /* Storyboard */,
+				10418395262EB0CF00280647 /* Network */,
+				108A8942262E761400C828AC /* Model */,
 				B3D25441262D6F0300F57C61 /* Controller */,
+				108A8943262E761A00C828AC /* ViewModel */,
 				B3D2543F262D6EF500F57C61 /* View */,
 				B3D25401262D6AC900F57C61 /* AppDelegate.swift */,
 				B3D25403262D6AC900F57C61 /* SceneDelegate.swift */,
@@ -160,6 +178,7 @@
 			children = (
 				B3D2541B262D6ACA00F57C61 /* SideDishTests.swift */,
 				B3D2541D262D6ACA00F57C61 /* Info.plist */,
+				104183AA262EB99B00280647 /* APITest.swift */,
 			);
 			path = SideDishTests;
 			sourceTree = "<group>";
@@ -217,6 +236,7 @@
 			name = SideDish;
 			packageProductDependencies = (
 				1050395A262DAAA000C8C0FB /* Toaster */,
+				104183A4262EB35A00280647 /* Alamofire */,
 			);
 			productName = SideDish;
 			productReference = B3D253FE262D6AC900F57C61 /* SideDish.app */;
@@ -291,6 +311,7 @@
 			mainGroup = B3D253F5262D6AC900F57C61;
 			packageReferences = (
 				10503959262DAAA000C8C0FB /* XCRemoteSwiftPackageReference "Toaster" */,
+				104183A3262EB35A00280647 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = B3D253FF262D6AC900F57C61 /* Products */;
 			projectDirPath = "";
@@ -336,10 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1041839F262EB30800280647 /* API.swift in Sources */,
 				10418385262EA17300280647 /* Section.swift in Sources */,
 				1041837D262E9F3B00280647 /* ImageView+load.swift in Sources */,
 				B3D25439262D6ECA00F57C61 /* CardCell.swift in Sources */,
 				10503968262DAB9300C8C0FB /* SectionHeaderReusableView.swift in Sources */,
+				10418397262EB1B700280647 /* Response.swift in Sources */,
 				10418377262E9B9B00280647 /* Card.swift in Sources */,
 				B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */,
 				B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */,
@@ -352,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				104183AB262EB99B00280647 /* APITest.swift in Sources */,
 				B3D2541C262D6ACA00F57C61 /* SideDishTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,6 +703,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		104183A3262EB35A00280647 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		10503959262DAAA000C8C0FB /* XCRemoteSwiftPackageReference "Toaster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Toaster.git";
@@ -690,6 +722,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		104183A4262EB35A00280647 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 104183A3262EB35A00280647 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		1050395A262DAAA000C8C0FB /* Toaster */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 10503959262DAAA000C8C0FB /* XCRemoteSwiftPackageReference "Toaster" */;
