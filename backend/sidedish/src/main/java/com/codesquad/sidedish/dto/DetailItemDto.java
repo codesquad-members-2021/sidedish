@@ -55,4 +55,6 @@ public class DetailItemDto {
     public String getDetailSection() {
         return detailSection;
     }
+
+
 }
