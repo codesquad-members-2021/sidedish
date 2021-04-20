@@ -1,10 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
-const HeaderStyle = styled.div`
+const HeaderStyle = styled.header`
   display: flex;
   margin-top: 1rem;
+  margin-bottom: 5rem;
   justify-content: space-between;
   align-items: center;
 `;

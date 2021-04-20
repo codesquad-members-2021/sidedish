@@ -1,3 +1,4 @@
+import BestTab from "./component/bestTab/BestTab.jsx";
 import Header from "./component/Header.jsx";
 import GlobalStyle from "./style.js";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
+      <BestTab />
     </>
   );
 }
