@@ -241,11 +241,8 @@
 				8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */,
 				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
 				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
-<<<<<<< HEAD
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
-=======
 				8844B7D9262E723300FA49E9 /* BadgeLabel.swift in Sources */,
->>>>>>> feat-3-1-FoodCardCell_Adjustment
 				8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
