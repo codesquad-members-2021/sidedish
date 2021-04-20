@@ -23,9 +23,9 @@ class DishCell: UICollectionViewCell {
     
     @IBOutlet weak var badgeLabel: UILabel!
     
+    static let identifier = "DishCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
 }

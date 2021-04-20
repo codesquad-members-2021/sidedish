@@ -19,8 +19,13 @@ class MainViewController: UIViewController {
         mainDataSource = CollectionViewDataSource()
         dishCollectionView.delegate = mainDelegate
         dishCollectionView.dataSource = mainDataSource
+        
+        registerXib()
     }
-
-
+    
+    private func registerXib() {
+        let nibName = UINib(nibName: DishCell.identifier, bundle: nil)
+        dishCollectionView.register(nibName, forCellWithReuseIdentifier: DishCell.identifier)
+    }
 }
 
