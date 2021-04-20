@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import BestTabList from 'component/BestTabList/BestTabList';
+import BestTabList from 'component/BestSidedish/BestTabList/BestTabList';
+import BestSidedishList from 'component/BestSidedish/BestSidedishList/BestSidedishList';
 
 const BestSidedish = () => {
   const [bestList, setBestList] = useState(data);
+  const [focusedCategory, setFocusedCategory] = useState(bestList[0].id);
   return (
     <div>
       <BestTabList bestList={bestList} />
+      <BestSidedishList focusedCategory={focusedCategory} />
     </div>
   );
 };
