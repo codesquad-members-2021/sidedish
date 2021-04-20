@@ -1,7 +1,12 @@
 import './App.css';
+import StateProvider from './components/StateProvider';
 
 function App() {
-  return <div className="App">Hello</div>;
+  return (
+    <>
+      <StateProvider />
+    </>
+  );
 }
 
 export default App;
