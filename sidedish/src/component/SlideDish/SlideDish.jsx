@@ -24,8 +24,8 @@ export default SlideDish;
 
 const StyledSlideList = styled.div`
   position: relative;
-  width: 100%;
   display: flex;
+  min-width: 1320px;
   justify-content: space-between;
 `;
 

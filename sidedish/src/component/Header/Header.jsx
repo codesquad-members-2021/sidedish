@@ -10,7 +10,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 70px;
   display: grid;
-  grid-template-columns: 0.4fr 2fr 1fr;
+  grid-template-columns: 0.5fr 1.5fr 1fr;
   align-items: center;
   .userMenuBar {
     display: flex;
