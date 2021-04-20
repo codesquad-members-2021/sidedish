@@ -1,11 +1,9 @@
-import Card from 'components/Card/Card';
-import { SIZE_LARGE, SIZE_MEDIUM } from 'const';
+import TapMenu from './TabMenu';
 
 const TabUI = () => {
   return (
     <>
-      <Card cardSize={SIZE_LARGE}></Card>
-      <Card cardSize={SIZE_MEDIUM}></Card>
+      <TapMenu />
     </>
   );
 };
