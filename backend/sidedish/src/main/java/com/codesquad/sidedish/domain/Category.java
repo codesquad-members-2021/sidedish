@@ -30,4 +30,11 @@ public class Category {
     public Set<Item> getItems() {
         return items;
     }
+
+    public Item getItem(String hash) {
+        return items.stream()
+                .filter(item -> item.getDetailHash().equals(hash))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }

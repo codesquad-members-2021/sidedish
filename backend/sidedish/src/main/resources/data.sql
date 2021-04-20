@@ -7,7 +7,7 @@ insert into item(category, detail_hash, image, alt, delivery_type, title, descri
                  values ( 17011200, "H98811",  "https://cdn.bmf.kr/_data/product/H9881/f2a7b4df359c850b1a9eb57e17ddf6fc.jpg",
                      "[소중한식사] 경상도 한상차림", "새벽배송 전국택배", "[소중한식사] 경상도 한상차림", "경상도 명물 요리 세 가지를 한 상에!",
                        39000, 31200,   "이벤트특가","https://cdn.bmf.kr/_data/product/HDF4C/954b78f9111bbef54ede9fdcdf1298d8.jpg",
-                          "https://cdn.bmf.kr/_data/product/H9881/910a01a81c49cb75414edb759237501f.jpg", "경상도 명물 요리 세 가지를 한 상에!",
+                        " [\"https://cdn.bmf.kr/_data/product/H9881/910a01a81c49cb75414edb759237501f.jpg\", \"https://cdn.bmf.kr/_data/product/H9881/910a01a81c49cb75414edb759237501f.jpg\"] ", "경상도 명물 요리 세 가지를 한 상에!",
                          312, "서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.", "2,500원 (40,000원 이상 구매 시 무료)",
                          39000, "https://cdn.bmf.kr/_data/product/H9881/7fb1ddf1adeadc5410cecd79441f7b65.jpg" );
 

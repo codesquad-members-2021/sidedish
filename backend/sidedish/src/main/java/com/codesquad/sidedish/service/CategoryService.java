@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.service;
 
 import com.codesquad.sidedish.domain.Category;
+import com.codesquad.sidedish.domain.Item;
 import com.codesquad.sidedish.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,10 @@ public class CategoryService {
 
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+
+    public Item findItemByHash(Long categoryId, String hash) {
+        return categoryRepository.findById(categoryId).orElseThrow(IllegalAccessError::new).getItem(hash);
     }
 
 }

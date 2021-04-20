@@ -29,7 +29,6 @@ public class Item {
     private List<String> detailSection;
 
     private Item() {
-
     }
 
     public Item(String image, String alt, String deliveryType, String title, String description, Integer normalPrice, Integer salePrice, String badge, String topImage, String thumbImages, String productDescription, Integer point, String deliveryInfo, String deliveryFee, Integer prices, String detailSection) {
