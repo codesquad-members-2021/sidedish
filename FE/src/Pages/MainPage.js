@@ -11,14 +11,7 @@ const MainPage = () => {
     <MainPageLayout>
       <Header />
       메인페이지입니다.
-      <Carousel.Container type={"default"}>
-        <Carousel.Item>
-          <Card />
-        </Carousel.Item>
-        <Carousel.Item>
-          <Card />
-        </Carousel.Item>
-      </Carousel.Container>
+      
     </MainPageLayout>
   )
 }
