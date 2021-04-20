@@ -8,7 +8,7 @@ import java.util.Set;
 public class Category {
 
     @Id
-    private Long id;
+    private Long categoryId;
 
     private String name;
     private Set<Item> items = new HashSet<>();

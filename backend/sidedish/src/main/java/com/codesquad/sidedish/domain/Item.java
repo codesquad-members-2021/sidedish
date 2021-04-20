@@ -2,6 +2,8 @@ package com.codesquad.sidedish.domain;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 public class Item {
 
     @Id
@@ -9,19 +11,19 @@ public class Item {
 
     private String image;
     private String alt;
-    private String deliveryType;
+    private List<String> deliveryType;
     private String title;
     private String description;
     private Integer normalPrice;
     private Integer salePrice;
-    private String badge;
+    private List<String> badge;
 
-    private String topImage;
-    private String thumbImages;
+    private String topImage;//x
+    private List<String> thumbImages;
     private String productDescription;
     private Integer point;
     private String deliveryInfo;
     private Integer deliveryFee;
-    private Integer prices;
-    private String detailSection;
+    private List<Integer> prices;//x
+    private List<String> detailSection;
 }
