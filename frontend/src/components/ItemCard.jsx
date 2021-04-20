@@ -15,7 +15,9 @@ const ItemTitle = styled.p``;
 const ItemDesc = styled.p``;
 const ItemPrice = styled.p``;
 const ItemPriceNormal = styled.p``;
-const Badge = styled.p``;
+const Badge = styled.p`
+  color: red;
+`;
 
 function ItemCard() {
   return (
@@ -26,9 +28,8 @@ function ItemCard() {
           <ItemTitle>{data.alt}</ItemTitle>
           <ItemDesc>{data.description}</ItemDesc>
           <ItemPrice>{data.s_price ? data.s_price : data.p_price}</ItemPrice>
-
           <ItemPriceNormal>{data.s_price && data.n_price}원</ItemPriceNormal>
-          <Badge></Badge>
+          {data.badge && <Badge>할인특가</Badge>}
         </Card>
       ))}
     </>
