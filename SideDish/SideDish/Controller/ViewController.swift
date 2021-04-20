@@ -12,7 +12,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cardCollectionView: UICollectionView!
     
-    var sectionHeaderTitle : [String] = ["모두가 좋아하는 든든한 메인요리", "정성이 담긴 뜨끈뜨끈 국물요리", "식탁을 풍성하게 하는 정갈한 밑반찬"]
+    // MARK: - Value Types
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Card>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Card>
+    
+    // MARK: - Properties
+    var sections = Section.allSections
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,6 @@ class ViewController: UIViewController {
         let nibName = UINib(nibName: "CardCell", bundle: nil)
         cardCollectionView.register(nibName, forCellWithReuseIdentifier: "cardCell")
     }
-    
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -32,12 +36,11 @@ extension ViewController: UICollectionViewDataSource {
         return 2
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sectionHeaderTitle.count
+        return sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCell
-        cell.badgeView.isHidden = true
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -45,13 +48,13 @@ extension ViewController: UICollectionViewDataSource {
         // header의 title을 지정
         guard let headerView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: "\(HeaderView.self)",
-                for: indexPath) as? HeaderView
+                withReuseIdentifier: "\(SectionHeaderReusableView.self)",
+                for: indexPath) as? SectionHeaderReusableView
         else {
-            return HeaderView()
+            return SectionHeaderReusableView()
         }
-        let searchTerm = sectionHeaderTitle[indexPath.section]
-        headerView.label.text = searchTerm
+        let searchTerm = sections[indexPath.section]
+        headerView.label.text = searchTerm.title
         headerView.label.font = .boldSystemFont(ofSize: 22)
         
         // header의 touch event

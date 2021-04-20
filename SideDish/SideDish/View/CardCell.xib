@@ -53,14 +53,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="267-PC-Uya">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="267-PC-Uya">
                                 <rect key="frame" x="0.0" y="82" width="205" height="23"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bjJ-5f-dbW">
-                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="23"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="23"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uXX-qT-KNu">
-                                        <rect key="frame" x="102.5" y="0.0" width="102.5" height="23"/>
+                                        <rect key="frame" x="104.5" y="0.0" width="100.5" height="23"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -77,12 +77,12 @@
             </constraints>
             <connections>
                 <outlet property="badgeView" destination="267-PC-Uya" id="OMG-o7-wYM"/>
-                <outlet property="detail" destination="k4y-rv-dzw" id="FAc-T4-erQ"/>
+                <outlet property="detail" destination="k4y-rv-dzw" id="MyQ-iy-Tjn"/>
                 <outlet property="discountPrice" destination="JMH-9Q-cu7" id="iIB-Bp-pa0"/>
                 <outlet property="eventBadge" destination="bjJ-5f-dbW" id="cIg-CF-i56"/>
-                <outlet property="food" destination="Pwf-6h-HfP" id="D05-qW-AzZ"/>
                 <outlet property="launchingBadge" destination="uXX-qT-KNu" id="H69-sP-9s6"/>
                 <outlet property="originalPrice" destination="kUb-W7-KtP" id="HWn-nP-KZ9"/>
+                <outlet property="thumbnail" destination="Pwf-6h-HfP" id="D05-qW-AzZ"/>
                 <outlet property="title" destination="bfv-3J-OyB" id="pnb-yo-BxY"/>
             </connections>
             <point key="canvasLocation" x="161.59420289855075" y="127.90178571428571"/>

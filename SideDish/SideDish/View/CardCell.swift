@@ -9,7 +9,7 @@ import UIKit
 
 class CardCell: UICollectionViewCell {
     
-    @IBOutlet weak var food: UIImageView!
+    @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var detail: UILabel!
     @IBOutlet weak var discountPrice: UILabel!
@@ -19,6 +19,15 @@ class CardCell: UICollectionViewCell {
     
     @IBOutlet weak var badgeView: UIStackView!
     
+    var card : Card? {
+        didSet {
+            thumbnail.load(url: card?.imageURL)
+            title.text = card?.title
+            detail.text = card?.detail
+            discountPrice.text = card?.discountPrice.description
+            originalPrice.text = card?.originalPrice.description
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         configureBedge()

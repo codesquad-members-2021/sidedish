@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10418377262E9B9B00280647 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418376262E9B9B00280647 /* Card.swift */; };
+		1041837D262E9F3B00280647 /* ImageView+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041837C262E9F3B00280647 /* ImageView+load.swift */; };
+		10418385262EA17300280647 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418384262EA17300280647 /* Section.swift */; };
 		1050395B262DAAA000C8C0FB /* Toaster in Frameworks */ = {isa = PBXBuildFile; productRef = 1050395A262DAAA000C8C0FB /* Toaster */; };
-		10503968262DAB9300C8C0FB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10503967262DAB9300C8C0FB /* HeaderView.swift */; };
+		10503968262DAB9300C8C0FB /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */; };
 		B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25401262D6AC900F57C61 /* AppDelegate.swift */; };
 		B3D25404262D6AC900F57C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25403262D6AC900F57C61 /* SceneDelegate.swift */; };
 		B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25405262D6AC900F57C61 /* ViewController.swift */; };
@@ -40,7 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10503967262DAB9300C8C0FB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		10418376262E9B9B00280647 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		1041837C262E9F3B00280647 /* ImageView+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+load.swift"; sourceTree = "<group>"; };
+		10418384262EA17300280647 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		B3D253FE262D6AC900F57C61 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D25401262D6AC900F57C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3D25403262D6AC900F57C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1041837B262E9F2500280647 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1041837C262E9F3B00280647 /* ImageView+load.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		108A8942262E761400C828AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10418376262E9B9B00280647 /* Card.swift */,
+				10418384262EA17300280647 /* Section.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		108A8943262E761A00C828AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B3D253F5262D6AC900F57C61 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +139,9 @@
 		B3D25400262D6AC900F57C61 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
+				1041837B262E9F2500280647 /* Extension */,
+				108A8943262E761A00C828AC /* ViewModel */,
+				108A8942262E761400C828AC /* Model */,
 				B3D25443262D6F2A00F57C61 /* Storyboard */,
 				B3D25441262D6F0300F57C61 /* Controller */,
 				B3D2543F262D6EF500F57C61 /* View */,
@@ -145,7 +178,7 @@
 			children = (
 				B3D25437262D6ECA00F57C61 /* CardCell.swift */,
 				B3D25438262D6ECA00F57C61 /* CardCell.xib */,
-				10503967262DAB9300C8C0FB /* HeaderView.swift */,
+				10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -303,8 +336,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10418385262EA17300280647 /* Section.swift in Sources */,
+				1041837D262E9F3B00280647 /* ImageView+load.swift in Sources */,
 				B3D25439262D6ECA00F57C61 /* CardCell.swift in Sources */,
-				10503968262DAB9300C8C0FB /* HeaderView.swift in Sources */,
+				10503968262DAB9300C8C0FB /* SectionHeaderReusableView.swift in Sources */,
+				10418377262E9B9B00280647 /* Card.swift in Sources */,
 				B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */,
 				B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */,
 				B3D2540C262D6AC900F57C61 /* SideDish.xcdatamodeld in Sources */,
