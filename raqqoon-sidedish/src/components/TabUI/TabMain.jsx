@@ -1,4 +1,4 @@
-import Card from 'components/Card/Card';
+import Card from 'components/card/Card';
 import { SIZE_LARGE } from 'const';
 import styled from 'styled-components';
 
