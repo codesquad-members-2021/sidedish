@@ -10,21 +10,21 @@ import Alamofire
 
 
 class Networking {
-    func requestMainCagegiry(url: String, completion: @escaping (Result<Any, AFError>) -> ()) {
-        AF.request(url, method: .get,
-                   encoding: JSONEncoding.default,
-                   headers:  ["Content-Type":"application/json;charset=utf-8"] )
-            .validate()
-            .responseJSON(completionHandler: { (response) in
-                completion(response.result)
-            })        
-    }
+//    func requestMainCagegiry(url: String, completion: @escaping (Result<Any, AFError>) -> ()) {
+//        AF.request(url, method: .get,
+//                   encoding: JSONEncoding.default,
+//                   headers:  ["Content-Type":"application/json;charset=utf-8"] )
+//            .validate()
+//            .responseJSON(completionHandler: { (response) in
+//                completion(response.result)
+//            })
+//    }
     
-    func requestCategory(url: String, completion: @escaping (Result<SidedishOfCategory, AFError>) -> ()) {
-        AF.request(url).validate().responseDecodable(of: SidedishOfCategory.self) { (response) in
+    func requestCategory<T: Decodable>(url: String, completion: @escaping (Result<T, AFError>) -> ()) {
+        AF.request(url).validate().responseDecodable(of: T.self) { (response) in
             switch response.result {
-            case .success(let value):
-                completion(.success(value))
+            case .success(_):
+                completion(response.result)
             case .failure(let error):
                 completion(.failure(error))
             }

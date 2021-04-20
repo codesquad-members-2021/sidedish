@@ -24,6 +24,7 @@ class ItemViewModel {
             case .success(let sidedishItems):
                 self.items = sidedishItems
             case .failure(let error):
+                print(error)
                 self.errorHandler?(error.localizedDescription)
             }
         }

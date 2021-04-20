@@ -28,11 +28,14 @@ class ViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
+//                self?.collectionView.reloadData()
             }.store(in: &fetchItemSubscription)
         
         self.itemViewModel.errorHandler = { error in
             Toast(text: error).show()
         }
+        
+        self.itemViewModel.fetchItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,10 +103,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     @objc func makingHeaderToast(_ sender: TapToastGestureRecognize) {
-        Toast(text: "\(sender.title)\n\(sender.countText)").show()
+        let font = UIFont.systemFont(ofSize: 16)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        let attributedQuote = NSAttributedString(string: "\(sender.title)\n\(sender.countText)", attributes: attributes)
+        Toast(attributedText: attributedQuote).show()
     }
-    
-    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
