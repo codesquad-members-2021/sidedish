@@ -1,19 +1,31 @@
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 import Card from "./js/components/common/Card";
 
-function App() {
-	const test = {
-		detail_hash: "HBDEF",
-		image: "http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg",
-		alt: "[미노리키친] 규동 250g",
-		delivery_type: ["새벽배송", "전국택배"],
-		title: "[미노리키친] 규동 250g",
-		description: "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥",
-		n_price: "6,500",
-		s_price: "7,000원",
-		badge: ["이벤트특가"],
-	};
+const TestWrapper = styled.ul`
+	display: flex;
+	flex-direction: row;
+	list-style:none;
+`;
 
-	return <Card {...test} />;
+function App() {
+	const [cardList, setCardList] = useState([]);
+
+	useEffect(() => {
+		fetch("https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main")
+			.then((response) => response.json())
+			.then(({ body }) => {
+				setCardList(() =>
+					body.map((e) => (
+						<li key={e.detail_hash}>
+							<Card {...e} size={"LARGE"} />
+						</li>
+					))
+				);
+			});
+	}, []);
+
+	return <TestWrapper>{cardList};</TestWrapper>;
 }
 
 export default App;
