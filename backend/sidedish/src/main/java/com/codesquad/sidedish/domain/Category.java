@@ -13,6 +13,21 @@ public class Category {
     private String name;
     private Set<Item> items = new HashSet<>();
 
+    public Category(Long categoryId, String name, Set<Item> items) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.items = items;
+    }
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
 }
