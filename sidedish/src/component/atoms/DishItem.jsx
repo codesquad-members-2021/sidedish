@@ -6,7 +6,7 @@ const DishItem = ({
   item,
   size,
 }) => {
-  const handleError = ({ target }) => {
+  const handleErrorImg = ({ target }) => {
     target.src =
       'https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
   };
@@ -17,7 +17,7 @@ const DishItem = ({
         alt={alt}
         width={size === 'L' ? '384px' : '308px'}
         height={size === 'L' ? '384px' : '308px'}
-        onError={handleError}
+        onError={handleErrorImg}
       />
       <div className="title">{title}</div>
       <div className="description">{description}</div>
@@ -47,10 +47,16 @@ const StyledDishItem = styled.div`
   .title {
     width: 308px;
     margin-bottom: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .description {
     width: 308px;
     margin-bottom: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .price {
     margin-bottom: 16px;
