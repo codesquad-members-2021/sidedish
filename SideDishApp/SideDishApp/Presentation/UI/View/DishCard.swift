@@ -12,5 +12,6 @@ class DishCard : UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var charge: UILabel!
-    @IBOutlet weak var eventCollection: UICollectionView!
+    @IBOutlet weak var eventStackView: UIStackView!
+    
 }
