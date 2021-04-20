@@ -16,6 +16,7 @@
 		719B37CA262E781D00107FE6 /* sideDishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37C9262E781D00107FE6 /* sideDishTests.swift */; };
 		719B37D5262E781D00107FE6 /* sideDishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37D4262E781D00107FE6 /* sideDishUITests.swift */; };
 		719B37EF262E7A9F00107FE6 /* FoodInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37EE262E7A9F00107FE6 /* FoodInfoStackView.swift */; };
+		719B37F7262E7AF900107FE6 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37F6262E7AF900107FE6 /* FoodCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		719B37D4262E781D00107FE6 /* sideDishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideDishUITests.swift; sourceTree = "<group>"; };
 		719B37D6262E781D00107FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719B37EE262E7A9F00107FE6 /* FoodInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoStackView.swift; sourceTree = "<group>"; };
+		719B37F6262E7AF900107FE6 /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				719B37EE262E7A9F00107FE6 /* FoodInfoStackView.swift */,
+				719B37F6262E7AF900107FE6 /* FoodCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				719B37B7262E781C00107FE6 /* MainViewController.swift in Sources */,
 				719B37B3262E781C00107FE6 /* AppDelegate.swift in Sources */,
+				719B37F7262E7AF900107FE6 /* FoodCell.swift in Sources */,
 				719B37B5262E781C00107FE6 /* SceneDelegate.swift in Sources */,
 				719B37EF262E7A9F00107FE6 /* FoodInfoStackView.swift in Sources */,
 			);
