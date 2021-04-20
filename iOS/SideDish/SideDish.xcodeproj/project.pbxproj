@@ -103,14 +103,11 @@
 		D4BFBAD1262E989000D68297 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
-				D4BFBAD2262E989000D68297 /* AppDelegate.swift */,
-				D4BFBAD4262E989000D68297 /* SceneDelegate.swift */,
-				D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */,
-				D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */,
-				D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */,
+				D4BFBB1B262EA76300D68297 /* Data */,
+				D4BFBB1A262EA75D00D68297 /* Domain */,
+				D4BFBB19262EA74E00D68297 /* Presentaion */,
+				D4BFBB28262EA83E00D68297 /* SupportingFiles */,
 				D4BFBAD8262E989000D68297 /* Main.storyboard */,
-				D4BFBADB262E989300D68297 /* Assets.xcassets */,
-				D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */,
 				D4BFBAE0262E989300D68297 /* Info.plist */,
 			);
 			path = SideDish;
@@ -132,6 +129,121 @@
 				D4BFBAF6262E989300D68297 /* Info.plist */,
 			);
 			path = SideDishUITests;
+			sourceTree = "<group>";
+		};
+		D4BFBB19262EA74E00D68297 /* Presentaion */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB1F262EA7AC00D68297 /* DetailBanchan */,
+				D4BFBB1E262EA7A100D68297 /* BanchanList */,
+			);
+			path = Presentaion;
+			sourceTree = "<group>";
+		};
+		D4BFBB1A262EA75D00D68297 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB25262EA7E800D68297 /* UseCases */,
+				D4BFBB24262EA7D800D68297 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D4BFBB1B262EA76300D68297 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB27262EA80B00D68297 /* PersistentStorages */,
+				D4BFBB26262EA7F500D68297 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D4BFBB1E262EA7A100D68297 /* BanchanList */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB21262EA7BC00D68297 /* ViewModel */,
+				D4BFBB20262EA7B600D68297 /* View */,
+			);
+			path = BanchanList;
+			sourceTree = "<group>";
+		};
+		D4BFBB1F262EA7AC00D68297 /* DetailBanchan */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB23262EA7C700D68297 /* ViewModel */,
+				D4BFBB22262EA7C200D68297 /* VIew */,
+			);
+			path = DetailBanchan;
+			sourceTree = "<group>";
+		};
+		D4BFBB20262EA7B600D68297 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D4BFBB21262EA7BC00D68297 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D4BFBB22262EA7C200D68297 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */,
+				D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		D4BFBB23262EA7C700D68297 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D4BFBB24262EA7D800D68297 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D4BFBB25262EA7E800D68297 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		D4BFBB26262EA7F500D68297 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D4BFBB27262EA80B00D68297 /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		D4BFBB28262EA83E00D68297 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBAD2262E989000D68297 /* AppDelegate.swift */,
+				D4BFBAD4262E989000D68297 /* SceneDelegate.swift */,
+				D4BFBADB262E989300D68297 /* Assets.xcassets */,
+				D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
