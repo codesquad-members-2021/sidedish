@@ -69,7 +69,6 @@ class FoodCardCell: UICollectionViewCell {
         getImageData(imageURLString: itemURLString)
             .receive(on: DispatchQueue.main)
             .sink { (complete) in
-            // error
         } receiveValue: { (data) in
             self.itemImageView.image = UIImage(data: data)
         }.store(in: &cancellable)

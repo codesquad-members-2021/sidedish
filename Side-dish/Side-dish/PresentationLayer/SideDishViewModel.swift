@@ -22,16 +22,13 @@ class SideDishViewModel {
     }
     
     private func request() {
-        Path.allCases.forEach { (path) in
-            sideDishUseCase.execute(path: path).sink { (complete) in
-                if case .failure(let error) = complete {
-                    self.errorMessage = error.message
-                }
-            } receiveValue: { (SideDishes) in
-                self.item = SideDishes.body
-            }.store(in: &cancellable)
-        }
-       
+        sideDishUseCase.execute(path: .main).sink { (complete) in
+            if case .failure(let error) = complete {
+                self.errorMessage = error.message
+            }
+        } receiveValue: { (SideDishes) in
+            self.item = SideDishes.body
+        }.store(in: &cancellable)
     }
     
     func test(completion: @escaping ([Item]) -> ()){

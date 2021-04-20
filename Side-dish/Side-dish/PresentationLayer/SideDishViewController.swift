@@ -14,39 +14,54 @@ class SideDishViewController: UIViewController {
     private var cancellable = Set<AnyCancellable>()
     private var sideDishViewModel: SideDishViewModel!
     
+    private var dataSource : UICollectionViewDiffableDataSource<Section , Item>!
+    
+    enum Section: String, CaseIterable {
+        case main = "한그릇 뚝딱 메인요리"
+        case soup = "김이 모락모락 국,찌개"
+        case side = "언제 먹어도 든든한 밑반찬"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
         
-        SideDishCollectionView.dataSource = self
         SideDishCollectionView.delegate = self
-        
-        sideDishViewModel.test { (t) in
-            t.forEach { (item) in
-                print(item.title)
-            }
+        var snap = NSDiffableDataSourceSnapshot<Section,Item>()
+        snap.appendSections(Section.allCases)
+        sideDishViewModel.test { (sideDish) in
+            snap.appendItems(sideDish, toSection: .main)
+            self.dataSource.apply(snap)
         }
         sideDishViewModel.occur { (t) in
             print("test : \(t)")
         }
+        
+        configureDataSource()
     }
     
     func depend(sideDishViewModel: SideDishViewModel) {
         self.sideDishViewModel = sideDishViewModel
     }
-}
+    
+    func configureDataSource() {
+//        let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item> { (cell, indexPath, item) in
+//
+////            let index = sidedishes[indexPath.row]
+//
+//            cell.configure(item: item)
+//        }
+        self.dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: SideDishCollectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCardCell.identifier, for: indexPath) as? FoodCardCell else { return UICollectionViewCell() }
 
-extension SideDishViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCardCell.identifier, for: indexPath) as! FoodCardCell
-        let tempItem = Item(detailHash: "HEDFB", image: "http://public.codesquad.kr/jk/storeapp/data/bc3b777115e8377a48c7bd762fe5fdc9.jpg", alt: "[빅마마의밥친구] 비빔오징어 150g", deliveryType: [.dawnDelivery, .nationDelivery], title: "[빅마마의밥친구] 비빔오징어 150g", description: "달콤한 신야초발효액이 포인트!", nPrice: "6,900", sPrice: "6,210원", badge: [.launchingPrice, .eventPrice])
-        cell.configure(item: tempItem)
-        return cell
+            cell.configure(item: item)
+            return cell
+            
+        
+//            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item) as FoodCardCell
+        })
     }
 }
 
