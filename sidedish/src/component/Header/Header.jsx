@@ -1,3 +1,4 @@
+import React from 'react';
 import CartButton from './CartButton';
 import LoginButton from './LoginButton';
 import Logo from './Logo';
