@@ -6,6 +6,8 @@ target 'Sidedish' do
   use_frameworks!
 
   pod 'Toaster'
+  pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 6.0'
 
   # Pods for Sidedish
 

@@ -11,14 +11,14 @@ struct SidedishItem: Codable {
     var detailHash: String
     var image: String
     var alt: String
-    var deliveryType: [String]
+    var deliveryType: [String]?
     var title: String
     var description: String
     var nPrice: String?
-    var sPrice: String
+    var sPrice: String?
     var badge: [String]?
     
-    enum SidedishItem: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case detailHash = "detail_hash"
         case image
         case alt

@@ -13,7 +13,14 @@ class SidedishProcessing {
         self.sideDishNetworkCenter = SidedishNetworkCenter()
     }
     
-    func getItems() {
-        
+    func getItems(completion: @escaping ([SidedishItem]) -> ()) {
+        self.sideDishNetworkCenter.fetchItems { (result) in
+            switch result {
+            case .success(let sidedishOfCategory):
+                completion(sidedishOfCategory.body)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

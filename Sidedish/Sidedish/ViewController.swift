@@ -39,9 +39,10 @@ class ViewController: UIViewController {
     
     func downloadImage(from url: URL, to cell: ItemCollectionViewCell) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, error == nil else { print(error!.localizedDescription); return }
-            print(response)
-            print(error)
+            guard let data = data, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
             DispatchQueue.main.async {
                 cell.dishImage.image = UIImage(data: data)
             }

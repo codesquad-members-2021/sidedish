@@ -8,15 +8,24 @@
 import Foundation
 
 class SidedishNetworkCenter {
-    let network: Network
+    let networking: Networking
+    let dataManager: DataManager
     
     init() {
-        self.network = Network()
+        self.networking = Networking()
+        self.dataManager = DataManager()
     }
     
-    func fetchItems() {
-        //Persistence에 해당 값과 다르면 요청 그런데 값이 다른건 어떻게 알게되는지 알아야 합니다.
-//        self.network.requestItems(url: <#T##URL#>, completionHandler: <#T##([SidedishItem]) -> Void#>)
-        
+    func fetchItems(completion: @escaping (Result<SidedishOfCategory, Error>) -> ()) {
+        let url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
+        self.networking.requestMainCagegiry(url: url) { (result) in
+            switch result {
+            case .success(let value):
+                let data = self.dataManager.parseData(of: value)
+                self.dataManager.decoding(decodable: SidedishOfCategory.self, data: data, completion: completion)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

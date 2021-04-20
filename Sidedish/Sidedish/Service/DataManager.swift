@@ -27,4 +27,14 @@ class DataManager {
             completion(.failure(error))
         }
     }
+    
+    func parseData(of value: Any) -> Data {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+            return data
+        } catch {
+            print(error.localizedDescription)
+            return Data()
+        }
+    }
 }
