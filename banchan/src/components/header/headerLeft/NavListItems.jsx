@@ -53,7 +53,7 @@ const NavListItems = ({ list }) => {
     <ThemeProvider theme={theme}>
       <NavLI onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <NavLITitle>{list.title}</NavLITitle>
-        {isMouseOver ? <NavLIBox>{listSubElements}</NavLIBox> : ""}
+        {isMouseOver && <NavLIBox>{listSubElements}</NavLIBox>}
       </NavLI>
     </ThemeProvider>
   );
