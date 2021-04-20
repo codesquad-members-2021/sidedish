@@ -12,13 +12,20 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var SideDishCollectionView: UICollectionView!
     private var cancellable = Set<AnyCancellable>()
+    private var sideDishViewModel: SideDishViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
         SideDishCollectionView.dataSource = self
         SideDishCollectionView.delegate = self
     }
+    
+    func depend(sideDishViewModel: SideDishViewModel) {
+        self.sideDishViewModel = sideDishViewModel
+    }
+
 }
 
 extension ViewController: UICollectionViewDataSource {

@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-class NetworkManager {
+protocol NetworkManageable {
+    func requestResource(path: Path, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError>
+}
+
+class NetworkManager: NetworkManageable {
     
     func requestResource(path: Path, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError> {
         guard let urlRequest = makeURLRequest(path: path, method: method) else {
