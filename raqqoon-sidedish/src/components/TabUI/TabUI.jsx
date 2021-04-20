@@ -1,4 +1,4 @@
-import Card from 'components/Card/Card';
+import Card from 'components/card/Card';
 import { SIZE_LARGE, SIZE_MEDIUM } from 'const';
 
 const TabUI = () => {
