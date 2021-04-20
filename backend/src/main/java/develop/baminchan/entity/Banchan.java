@@ -1,7 +1,5 @@
 package develop.baminchan.entity;
 
-import develop.baminchan.entity.banchan.Badge;
-import develop.baminchan.entity.banchan.DeliveryType;
 import org.springframework.data.annotation.Id;
 
 import java.util.Set;
@@ -13,14 +11,14 @@ public class Banchan {
     private String detail_hash;
     private String image;
     private String alt;
-    private Set<DeliveryType> delivery_type;
+    private String delivery_type;
     private String title;
     private String description;
     private String n_price;
     private String s_price;
-    private Set<Badge> badge;
+    private String badge;
 
-    public Banchan(Long id, String detail_hash, String image, String alt, Set<DeliveryType> delivery_type, String title, String description, String n_price, String s_price, Set<Badge> badge) {
+    public Banchan(Long id, String detail_hash, String image, String alt, String delivery_type, String title, String description, String n_price, String s_price, String badge) {
         this.id = id;
         this.detail_hash = detail_hash;
         this.image = image;
@@ -49,7 +47,7 @@ public class Banchan {
         return alt;
     }
 
-    public Set<DeliveryType> getDelivery_type() {
+    public String getDelivery_type() {
         return delivery_type;
     }
 
@@ -69,7 +67,7 @@ public class Banchan {
         return s_price;
     }
 
-    public Set<Badge> getBadge() {
+    public String getBadge() {
         return badge;
     }
 }
