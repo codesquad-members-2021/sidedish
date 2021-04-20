@@ -20,13 +20,13 @@ const Card = ({ product, cardSize }) => {
 // ============================= ● Styled components ● =============================
 
 const StyledLi = styled.li`
-  width: ${(props) => (props.cardSize === 'medium' ? '308px' : '384px')};
+  width: ${(props) => props.cardSize};
 `;
 
 const StyledImg = styled.img`
   border-radius: ${theme.borders.radius};
   margin-bottom: 16px;
-  width: ${(props) => (props.cardSize === 'medium' ? '308px' : '384px')};
+  width: ${(props) => props.cardSize};
 `;
 
 const StyledTitle = styled.div`

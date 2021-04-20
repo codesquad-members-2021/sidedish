@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from '../utils/Card';
+import theme from '../utils/constant';
 
 const CarouselSection = (props) => {
   const [products, setProducts] = useState([]);
@@ -16,7 +17,11 @@ const CarouselSection = (props) => {
   return (
     <ul>
       {products.map((product) => (
-        <Card key={product.detail_hash} product={product} cardSize={'medium'} />
+        <Card
+          key={product.detail_hash}
+          product={product}
+          cardSize={theme.cardSizes.M}
+        />
       ))}
     </ul>
   );

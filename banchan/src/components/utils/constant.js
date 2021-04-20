@@ -16,6 +16,10 @@ const theme = {
     L: '20px',
     XL: '24px',
   },
+  cardSizes: {
+    M: '308px',
+    L: '384px',
+  },
   borders: {
     radius: '5px',
   },
