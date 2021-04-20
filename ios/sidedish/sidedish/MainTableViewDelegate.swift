@@ -16,6 +16,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
         label.frame = CGRect.init(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
         label.text = "모두가 좋아하는 든든한 메인요리"
         label.font = .boldSystemFont(ofSize: 22)
+        label.backgroundColor = .white
         
         headerView.addSubview(label)
         

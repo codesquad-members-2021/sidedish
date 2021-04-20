@@ -10,12 +10,12 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView!
     
-    private let tableViewDataSource : MainTableViewDataSource?
-    private let tableViewDelegate : MainTableViewDelegate?
+    private let tableViewDataSource : MainTableViewDataSource
+    private let tableViewDelegate : MainTableViewDelegate
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.tableViewDataSource = nil
-        self.tableViewDelegate = nil
+        self.tableViewDataSource = MainTableViewDataSource()
+        self.tableViewDelegate = MainTableViewDelegate()
         super.init(nibName: nil, bundle: nil)
     }
 
