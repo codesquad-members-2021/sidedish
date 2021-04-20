@@ -1,5 +1,6 @@
 package develop.baminchan.controller;
 
+import develop.baminchan.dto.BanchanDto;
 import develop.baminchan.entity.Banchan;
 import develop.baminchan.repository.BanchanRepository;
 import develop.baminchan.service.BanchanService;
@@ -17,9 +18,9 @@ public class BanchanController {
     }
 
     @GetMapping("/main/{detail_hash}")
-    public Banchan readOneMain(@PathVariable String detail_hash) {
-       Banchan banchan = banchanService.findBanchanByDetailHash(detail_hash);
-        return banchan;
+    public BanchanDto findOneMain(@PathVariable String detail_hash) {
+       BanchanDto banchanDto = banchanService.findBanchanByDetailHash(detail_hash);
+        return banchanDto;
     }
 
 //    @GetMapping("/soup/{detail_hash}")
