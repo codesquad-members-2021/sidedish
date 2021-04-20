@@ -25,15 +25,36 @@ const MenuItems = styled.div`
 `;
 
 const Header = () => {
-  const [tempInfo] = useState(["든든한 메인요리","뜨끈한 국물요리","정갈한 밑반찬"]);
-  const [tempInfo2] = useState(["로그인","장바구니"]);
+  const [tempData] = useState([
+    {
+      name: "든든한 메인요리",
+      category: ["육류 요리", "해산물 요리"],
+    },
+    {
+      name: "뜨끈한 국물요리",
+      category: ["국/탕/찌개"],
+    },
+    {
+      name: "정갈한 밑반찬",
+      category: ["나물/무침", "조림/볶음", "절임/장아찌"],
+    },
+  ]);
 
-  const menuItems = tempInfo.map((v, i) => (
-    <MenuItem key={i} flexOrder={i}>{v}</MenuItem>
+  const [authData] = useState(['로그인', '장바구니']);
+
+
+  const menuItems = tempData.map((data, i) => (
+    <MenuItem
+      key={i}
+      flexOrder={i}
+      dropdownData={data.category}
+    >
+      {data.name}
+    </MenuItem>
   ));
 
-  const authItems = tempInfo2.map((v, i) => (
-    <MenuItem key={i} flexOrder={i}>{v}</MenuItem>
+  const authItems = authData.map((data, i) => (
+    <MenuItem key={i} flexOrder={i}>{data}</MenuItem>
   ));
 
   return (

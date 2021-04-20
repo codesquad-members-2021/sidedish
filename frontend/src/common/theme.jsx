@@ -3,6 +3,7 @@
 
 const fontFamily = "Noto Sans KR";
 const fontWeight = {
+  normal: 400,
   bold: 900,
 };
 const fontSize = {
