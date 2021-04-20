@@ -3,6 +3,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     private var mainCollectionView: UICollectionView!
+    private var headerOfCollectionView: CollectionViewHeader!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,8 @@ extension MainViewController {
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         mainCollectionView.register(FoodCell.self, forCellWithReuseIdentifier: CellIdentifier.foodCell)
+        mainCollectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellIdentifier.foodHeader)
+        setupHeaderView()
     }
     
     private func configureMainCollectionView() {
@@ -32,7 +35,12 @@ extension MainViewController {
         mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        
+    }
+    
+    private func setupHeaderView() {
+        headerOfCollectionView = CollectionViewHeader(frame: .zero)
+        headerOfCollectionView.backgroundColor = UIColor.green
+        mainCollectionView.addSubview(headerOfCollectionView)
     }
 }
 
@@ -69,5 +77,34 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     //Number of Sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
+    }
+    
+    //Header Info
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var header:CollectionViewHeader?
+        
+        if kind == UICollectionView.elementKindSectionHeader
+        {
+            header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellIdentifier.foodHeader, for: indexPath) as? CollectionViewHeader
+            
+            if indexPath.section == 0
+            {
+                header?.headerLabel.text = HeaderInfo.main
+            }
+            else if indexPath.section == 1
+            {
+                header?.headerLabel.text = HeaderInfo.soup
+            }
+            else
+            {
+                header?.headerLabel.text = HeaderInfo.side
+            }
+        }
+        return header!
+    }
+    
+    //Header Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 343, height: 50)
     }
 }
