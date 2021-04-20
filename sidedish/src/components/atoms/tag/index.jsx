@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-const eventTagDiv = styled.div`
+const NewTagDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 4px 16px;
 
   position: absolute;
-  width: 97px;
+  width: 84px;
   height: 28px;
-  left: 20px;
+  left: 137px;
   top: 20px;
 
-  /* Green */
+  /* Light Blue */
 
-  background: #82d32d;
+  background: #86c6ff;
   border-radius: 5px;
 `;
 
-const eventTagSpan = styled.span`
+const NewTagSpan = styled.span`
   position: static;
-  width: 65px;
+  width: 52px;
   height: 20px;
   left: 16px;
   top: 4px;
@@ -35,16 +35,23 @@ const eventTagSpan = styled.span`
   /* White */
 
   color: #ffffff;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
 `;
 
-const eventBtn = () => {
+const NewTag = () => {
   return (
     <>
-      <eventTagDiv>
-        <eventTagSpan>이벤트특가</eventTagSpan>
-      </eventTagDiv>
+      <NewTagDiv>
+        <NewTagSpan>런칭특가</NewTagSpan>
+      </NewTagDiv>
     </>
   );
 };
 
-export default eventBtn;
+export default NewTag;
