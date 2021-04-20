@@ -1,9 +1,12 @@
-import './App.css';
+import Header from "./component/Header.jsx";
+import GlobalStyle from "./style.js";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+      <GlobalStyle />
+      <Header />
+    </>
   );
 }
 
