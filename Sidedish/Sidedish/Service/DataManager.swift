@@ -8,23 +8,25 @@
 import Foundation
 
 class DataManager {
-    func decoding<T: Decodable>(decodable: T.Type, data: Data, completion: @escaping (Result<T, Error>) -> Void) {
+    func decoding<T: Decodable>(decodable: T.Type, data: Data, completion: @escaping (Result<T, RepositoryError>) -> Void) {
         let decoder = JSONDecoder()
         do {
             let decodeData = try decoder.decode(decodable, from: data)
             completion(.success(decodeData))
         } catch {
-            completion(.failure(error))
+            NSLog(error.localizedDescription)
+            completion(.failure(.decodeError))
         }
     }
     
-    func encoding<T: Encodable>(encodable: T, completion: @escaping (Result<Data, Error>) -> Void) {
+    func encoding<T: Encodable>(encodable: T, completion: @escaping (Result<Data, RepositoryError>) -> Void) {
         let encoder = JSONEncoder()
         do {
             let encodeData = try encoder.encode(encodable)
             completion(.success(encodeData))
         } catch {
-            completion(.failure(error))
+            NSLog(error.localizedDescription)
+            completion(.failure(.encodeError))
         }
     }
     
@@ -33,7 +35,7 @@ class DataManager {
             let data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
             return data
         } catch {
-            print(error.localizedDescription)
+            NSLog(error.localizedDescription)
             return Data()
         }
     }

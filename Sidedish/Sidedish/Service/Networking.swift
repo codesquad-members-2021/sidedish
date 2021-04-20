@@ -19,4 +19,15 @@ class Networking {
                 completion(response.result)
             })        
     }
+    
+    func requestCategory(url: String, completion: @escaping (Result<SidedishOfCategory, AFError>) -> ()) {
+        AF.request(url).validate().responseDecodable(of: SidedishOfCategory.self) { (response) in
+            switch response.result {
+            case .success(let value):
+                completion(.success(value))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

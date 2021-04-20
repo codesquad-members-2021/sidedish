@@ -77,6 +77,26 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		2204E945262EC584008102BD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2240D5AF262D7E500077EF4D /* ItemViewModel.swift */,
+				22BBE652262DA9BB001D06D5 /* HeaderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2204E946262EC5A2008102BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22418747262D4D8300AC14C7 /* Main.storyboard */,
+				22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */,
+				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
+				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2240D5B9262D8DF90077EF4D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,13 +130,9 @@
 				22418741262D4D8300AC14C7 /* AppDelegate.swift */,
 				22418743262D4D8300AC14C7 /* SceneDelegate.swift */,
 				22418745262D4D8300AC14C7 /* ViewController.swift */,
-				22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */,
-				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				2240D5AB262D74890077EF4D /* DetailViewController.swift */,
-				2240D5AF262D7E500077EF4D /* ItemViewModel.swift */,
-				22BBE652262DA9BB001D06D5 /* HeaderViewModel.swift */,
-				22418747262D4D8300AC14C7 /* Main.storyboard */,
-				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
+				2204E945262EC584008102BD /* ViewModel */,
+				2204E946262EC5A2008102BD /* View */,
 				2245D88C262D927200E0B637 /* UseCase */,
 				2245D890262D92D700E0B637 /* Repository */,
 				2240D5B9262D8DF90077EF4D /* Service */,

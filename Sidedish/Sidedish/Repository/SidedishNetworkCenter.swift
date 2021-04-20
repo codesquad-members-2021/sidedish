@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class SidedishNetworkCenter {
     let networking: Networking
@@ -16,15 +17,14 @@ class SidedishNetworkCenter {
         self.dataManager = DataManager()
     }
     
-    func fetchItems(completion: @escaping (Result<SidedishOfCategory, Error>) -> ()) {
-        let url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
-        self.networking.requestMainCagegiry(url: url) { (result) in
+    func fetchItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ()) {
+        //MARK: - cache가 없으면
+        self.networking.requestCategory(url: url) { (result) in
             switch result {
-            case .success(let value):
-                let data = self.dataManager.parseData(of: value)
-                self.dataManager.decoding(decodable: SidedishOfCategory.self, data: data, completion: completion)
+            case .success(let sidedishOfCategory):
+                completion(.success(sidedishOfCategory.body))
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

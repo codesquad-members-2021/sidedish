@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class SidedishProcessing {
     let sideDishNetworkCenter: SidedishNetworkCenter
@@ -13,13 +14,13 @@ class SidedishProcessing {
         self.sideDishNetworkCenter = SidedishNetworkCenter()
     }
     
-    func getItems(completion: @escaping ([SidedishItem]) -> ()) {
-        self.sideDishNetworkCenter.fetchItems { (result) in
+    func getItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ()) {
+        self.sideDishNetworkCenter.fetchItems(url: url) { (result) in
             switch result {
-            case .success(let sidedishOfCategory):
-                completion(sidedishOfCategory.body)
+            case .success(let sidedishItems):
+                completion(.success(sidedishItems))
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

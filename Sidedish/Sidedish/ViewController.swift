@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import Toaster
+import Alamofire
 
 class ViewController: UIViewController {
 
@@ -29,7 +30,9 @@ class ViewController: UIViewController {
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &fetchItemSubscription)
         
-        self.itemViewModel.fetchItems()
+        self.itemViewModel.errorHandler = { error in
+            Toast(text: error).show()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +51,8 @@ class ViewController: UIViewController {
             }
         }.resume()
     }
-
+    
+    
 
 }
 
