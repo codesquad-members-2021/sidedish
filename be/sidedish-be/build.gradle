@@ -31,3 +31,24 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
+
+sourceSets {
+    main {
+        java {
+        }
+        resources {
+            srcDirs += ["src/main/resources-${profile}"]
+        }
+    }
+}
+
+task build_prod(type: GradleBuild) {
+    startParameter.setTaskNames(["build"])
+    startParameter.setProjectProperties(new HashMap() {
+        {
+            put("profile", "prod")
+        }
+    })
+}
