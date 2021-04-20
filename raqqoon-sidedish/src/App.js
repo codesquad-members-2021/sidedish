@@ -15,7 +15,6 @@ const App = () => {
 export default App;
 
 const AppContainer = styled.div`
-  margin: 2rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
