@@ -18,6 +18,7 @@
 		82FDB9D3262DCFD8009E3EB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82FDB9D1262DCFD8009E3EB7 /* LaunchScreen.storyboard */; };
 		E41EC951262E6E9A0043CC44 /* SideDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EC950262E6E9A0043CC44 /* SideDish.swift */; };
 		E41EC954262EBA2E0043CC44 /* SideDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EC953262EBA2E0043CC44 /* SideDishes.swift */; };
+		E41EC957262ECE950043CC44 /* SideDishesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EC956262ECE950043CC44 /* SideDishesCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		82FDB9D4262DCFD8009E3EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E41EC950262E6E9A0043CC44 /* SideDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDish.swift; sourceTree = "<group>"; };
 		E41EC953262EBA2E0043CC44 /* SideDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishes.swift; sourceTree = "<group>"; };
+		E41EC956262ECE950043CC44 /* SideDishesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishesCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 		E41EC94F262E6DF40043CC44 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				E41EC956262ECE950043CC44 /* SideDishesCollection.swift */,
 				E41EC953262EBA2E0043CC44 /* SideDishes.swift */,
 				E41EC950262E6E9A0043CC44 /* SideDish.swift */,
 			);
@@ -253,6 +256,7 @@
 				82FDB9CB262DCFD8009E3EB7 /* MainViewController.swift in Sources */,
 				82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */,
 				8214B70B262DE07A004467C2 /* MenuCell.swift in Sources */,
+				E41EC957262ECE950043CC44 /* SideDishesCollection.swift in Sources */,
 				8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */,
 				82FDB9C9262DCFD8009E3EB7 /* SceneDelegate.swift in Sources */,
 				8214B711262DE4B4004467C2 /* MainTableViewDelegate.swift in Sources */,
