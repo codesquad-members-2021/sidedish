@@ -1,10 +1,10 @@
 import React from 'react'
 
-const CarouselItem = () => {
+const CarouselItem = ({children, ...props}) => {
   return (
-    <div>
-      아이템
-    </div>
+    <>
+      {children}
+    </>
   )
 }
 
