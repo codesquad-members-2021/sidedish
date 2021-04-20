@@ -10,7 +10,7 @@ import Combine
 
 class NetworkManager {
     
-    func getResource(path: Path, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError> {
+    func requestResource(path: Path, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError> {
         guard let urlRequest = makeURLRequest(path: path, method: method) else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
@@ -18,23 +18,19 @@ class NetworkManager {
             .mapError { _ in
                 NetworkError.invalidRequest
             }
-            .tryMap{ data , response -> Data in
+            .flatMap { data, response -> AnyPublisher<SideDishes, NetworkError> in
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    throw NetworkError.invalidResponse
+                    return Fail(error: NetworkError.invalidResponse).eraseToAnyPublisher()
                 }
                 guard 200..<300 ~= httpResponse.statusCode else {
-                    throw NetworkError.invalidStatusCode(httpResponse.statusCode)
+                    return Fail(error:NetworkError.invalidStatusCode(httpResponse.statusCode)).eraseToAnyPublisher()
                 }
-                guard !data.isEmpty else {
-                    throw NetworkError.emptyData
-                }
-                return data
-            }
-            .decode(type: SideDishes.self, decoder: JSONDecoder())
-            .mapError { _ in
-                NetworkError.failParsing
-            }
-            .eraseToAnyPublisher()
+                return Just(data)
+                    .decode(type: SideDishes.self, decoder: JSONDecoder())
+                    .mapError { _ in
+                        NetworkError.failParsing
+                    }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private func makeURLRequest(path: Path, method: HTTPMethod) -> URLRequest? {

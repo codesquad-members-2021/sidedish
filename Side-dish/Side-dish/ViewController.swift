@@ -18,17 +18,7 @@ class ViewController: UIViewController {
         SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
         SideDishCollectionView.dataSource = self
         SideDishCollectionView.delegate = self
-    
-        NetworkManager().getResource(path: .main, method: .get).sink { (complete) in
-            if case .failure(let error) = complete {
-                print(error)
-            }
-        } receiveValue: { (category) in
-            print(category)
-        }.store(in: &cancellable)
-
     }
-
 }
 
 extension ViewController: UICollectionViewDataSource {

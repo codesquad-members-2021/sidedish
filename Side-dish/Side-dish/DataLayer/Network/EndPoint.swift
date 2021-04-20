@@ -22,7 +22,7 @@ enum Endpoint {
 }
 
 enum Path: String {
-    case main = "1main1"
-    case soup = "soup"
-    case side = "side"
+    case main
+    case soup
+    case side
 }
