@@ -1,5 +1,5 @@
-import Carousel from './Carousel/Carousel';
-import TabUI from './TabUI/TabUI';
+import Carousel from './carousel/Carousel';
+import TabUI from './tabUI/TabUI';
 
 const Main = () => {
   return (

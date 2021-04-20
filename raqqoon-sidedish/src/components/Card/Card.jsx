@@ -1,6 +1,6 @@
-import Info from 'components/Card/Info';
-import Price from 'components/Card/Price';
-import Tag from 'components/Card/Tag';
+import Info from 'components/card/Info';
+import Price from 'components/card/Price';
+import Tag from 'components/card/Tag';
 import { EVENT, LAUNCHING } from 'const';
 import styled from 'styled-components';
 import Img from './Img';
