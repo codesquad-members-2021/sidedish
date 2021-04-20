@@ -3,9 +3,9 @@ import BestSidedishItem from 'component/BestSidedish/BestSidedishList/BestSidedi
 import useFetch from 'hooks/useFetch';
 
 const BestSidedishList = ({ focusedCategory }) => {
-  console.log('id: ', focusedCategory);
   const { data, loading } = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/${focusedCategory}`
+    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/${focusedCategory}`,
+    focusedCategory
   );
 
   const bestSidedishList = data
