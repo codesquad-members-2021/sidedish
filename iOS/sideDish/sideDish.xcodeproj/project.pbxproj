@@ -36,6 +36,41 @@
 			remoteGlobalIDString = 719B37AE262E781C00107FE6;
 			remoteInfo = sideDish;
 		};
+		719B380C262E821300107FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719B3805262E821300107FE6 /* Toaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A75E2B1BCF2066002E46C4;
+			remoteInfo = Toaster;
+		};
+		719B380E262E821300107FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719B3805262E821300107FE6 /* Toaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A75E4F1BCF20D4002E46C4;
+			remoteInfo = ToasterDemo;
+		};
+		719B3810262E821300107FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719B3805262E821300107FE6 /* Toaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3719A728225598E4009EAFCD;
+			remoteInfo = ToasterDemoObjC;
+		};
+		719B3812262E821300107FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719B3805262E821300107FE6 /* Toaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C06FC9D11F95A8CC00782082;
+			remoteInfo = ToasterTests;
+		};
+		719B3819262E821A00107FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719B3805262E821300107FE6 /* Toaster.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 03A75E2A1BCF2066002E46C4;
+			remoteInfo = Toaster;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +92,7 @@
 		719B37F6262E7AF900107FE6 /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		719B37FB262E7BFA00107FE6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
+		719B3805262E821300107FE6 /* Toaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Toaster.xcodeproj; path = "../../../Toaster-master/Toaster-master/Toaster.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +123,7 @@
 		719B37A6262E781C00107FE6 = {
 			isa = PBXGroup;
 			children = (
+				719B3805262E821300107FE6 /* Toaster.xcodeproj */,
 				719B37FB262E7BFA00107FE6 /* Constant.swift */,
 				719B37B1262E781C00107FE6 /* sideDish */,
 				719B37C8262E781D00107FE6 /* sideDishTests */,
@@ -164,6 +201,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		719B3806262E821300107FE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				719B380D262E821300107FE6 /* Toaster.framework */,
+				719B380F262E821300107FE6 /* ToasterDemo.app */,
+				719B3811262E821300107FE6 /* ToasterDemoObjC.app */,
+				719B3813262E821300107FE6 /* ToasterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,6 +226,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				719B381A262E821A00107FE6 /* PBXTargetDependency */,
 			);
 			name = sideDish;
 			productName = sideDish;
@@ -253,6 +302,12 @@
 			mainGroup = 719B37A6262E781C00107FE6;
 			productRefGroup = 719B37B0262E781C00107FE6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 719B3806262E821300107FE6 /* Products */;
+					ProjectRef = 719B3805262E821300107FE6 /* Toaster.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				719B37AE262E781C00107FE6 /* sideDish */,
@@ -261,6 +316,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		719B380D262E821300107FE6 /* Toaster.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Toaster.framework;
+			remoteRef = 719B380C262E821300107FE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		719B380F262E821300107FE6 /* ToasterDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ToasterDemo.app;
+			remoteRef = 719B380E262E821300107FE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		719B3811262E821300107FE6 /* ToasterDemoObjC.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ToasterDemoObjC.app;
+			remoteRef = 719B3810262E821300107FE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		719B3813262E821300107FE6 /* ToasterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ToasterTests.xctest;
+			remoteRef = 719B3812262E821300107FE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		719B37AD262E781C00107FE6 /* Resources */ = {
@@ -332,6 +418,11 @@
 			isa = PBXTargetDependency;
 			target = 719B37AE262E781C00107FE6 /* sideDish */;
 			targetProxy = 719B37D1262E781D00107FE6 /* PBXContainerItemProxy */;
+		};
+		719B381A262E821A00107FE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Toaster;
+			targetProxy = 719B3819262E821A00107FE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
