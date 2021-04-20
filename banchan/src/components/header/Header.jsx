@@ -1,12 +1,19 @@
-import HeaderLeft from './HeaderLeft';
-import HeaderRight from './HeaderRight';
+import HeaderLeft from "./headerLeft/HeaderLeft";
+import HeaderRight from "./headerRight/HeaderRight";
+import styled from "styled-components";
 
-const Header = (props) => {
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 80px 20px 80px;
+`;
+
+const Header = () => {
   return (
-    <header>
+    <HeaderContainer>
       <HeaderLeft />
       <HeaderRight />
-    </header>
+    </HeaderContainer>
   );
 };
 
