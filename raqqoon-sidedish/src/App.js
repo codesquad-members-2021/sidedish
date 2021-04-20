@@ -1,4 +1,4 @@
-import Header from 'components/Header';
+import Header from 'components/Nav/Header';
 import Main from 'components/Main';
 import 'reset.css';
 import styled from 'styled-components';
