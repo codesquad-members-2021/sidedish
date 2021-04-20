@@ -37,5 +37,4 @@ enum DeliveryType: String, Codable {
 enum Badge: String, Codable {
     case eventPrice = "이벤트특가"
     case launchingPrice = "론칭특가"
-    case bestPrice = "베스트"
 }

@@ -18,7 +18,7 @@ class NetworkManager {
             .mapError { _ in
                 NetworkError.invalidRequest
             }
-            .tryMap{ data , response -> Data in
+            .tryMap { data , response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw NetworkError.invalidResponse
                 }

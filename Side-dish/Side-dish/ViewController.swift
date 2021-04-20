@@ -16,19 +16,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
+        
         SideDishCollectionView.dataSource = self
         SideDishCollectionView.delegate = self
-    
-        NetworkManager().getResource(path: .main, method: .get).sink { (complete) in
-            if case .failure(let error) = complete {
-                print(error)
-            }
-        } receiveValue: { (category) in
-            print(category)
-        }.store(in: &cancellable)
-
     }
-
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -38,6 +29,8 @@ extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCardCell.identifier, for: indexPath) as! FoodCardCell
+        let tempItem = Item(detailHash: "HEDFB", image: "http://public.codesquad.kr/jk/storeapp/data/bc3b777115e8377a48c7bd762fe5fdc9.jpg", alt: "[빅마마의밥친구] 비빔오징어 150g", deliveryType: [.dawnDelivery, .nationDelivery], title: "[빅마마의밥친구] 비빔오징어 150g", description: "달콤한 신야초발효액이 포인트!", nPrice: "6,900", sPrice: "6,210원", badge: [.launchingPrice, .eventPrice])
+        cell.configure(item: tempItem)
         return cell
     }
 }
