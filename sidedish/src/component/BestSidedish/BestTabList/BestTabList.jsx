@@ -32,6 +32,6 @@ const Header = styled.div`
 
 const TabList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-  margin-top: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 2.5fr;
+  margin-top: 2rem;
 `;
