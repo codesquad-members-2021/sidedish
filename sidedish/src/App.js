@@ -1,9 +1,10 @@
-import ButtonTypes from './components/atoms/button/index.types';
+import './styles/style.scss';
+import Button from './components/atoms/button/index';
 
 function App() {
   return (
     <div className="App">
-      <ButtonTypes default></ButtonTypes>
+      <Button deactive></Button>
     </div>
   );
 }
