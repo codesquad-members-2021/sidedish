@@ -1,4 +1,4 @@
-import Card from "./js/components/common/Card";
+import BestList from "./js/components/bestList/BestList";
 import TestCarousel from "./js/util/TestCarousel";
 function App() {
   const test = {
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <Card {...test} />
+      <BestList />
       <TestCarousel />
     </>
   );
