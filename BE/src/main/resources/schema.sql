@@ -41,21 +41,21 @@ CREATE TABLE IF NOT EXISTS thumb_image
 
 CREATE TABLE IF NOT EXISTS badge (
     item BIGINT,
-    `name` CHAR(10)
+    badge_type CHAR(10)
 );
 
 
 CREATE TABLE IF NOT EXISTS delivery_type
 (
     item BIGINT,
-    `name` CHAR(10)
+    delivery_type_name CHAR(10)
 );
 
 
 CREATE TABLE IF NOT EXISTS delivery_day
 (
     item BIGINT,
-    `name` CHAR(3)
+    `the_day_of_week` CHAR(3)
 );
 
 
