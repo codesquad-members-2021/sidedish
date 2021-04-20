@@ -1,5 +1,6 @@
 package develop.baminchan.service;
 
+import develop.baminchan.dto.BanchanDto;
 import develop.baminchan.entity.Banchan;
 import develop.baminchan.repository.BanchanRepository;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,10 @@ public class BanchanService {
         this.banchanRepository = banchanRepository;
     }
 
-    public Banchan findBanchanByDetailHash(String detail_hash) {
+    public BanchanDto findBanchanByDetailHash(String detail_hash) {
         Banchan banchan = banchanRepository.findBanchanByDetail_hash(detail_hash);
-        return banchan;
+        BanchanDto banchanDto = BanchanDto.of(banchan);
+        return banchanDto;
     }
 
     @Transactional
