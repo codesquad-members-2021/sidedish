@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet weak var dishCollectionView: UICollectionView!
     var mainDelegate: CollectionViewDelegate?
     var mainDataSource: CollectionViewDataSource?
@@ -17,8 +17,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         mainDelegate = CollectionViewDelegate()
         mainDataSource = CollectionViewDataSource()
+        
         dishCollectionView.delegate = mainDelegate
-        dishCollectionView.dataSource = mainDataSource
+        dishCollectionView.dataSource = mainDataSource        
         
         registerXib()
     }

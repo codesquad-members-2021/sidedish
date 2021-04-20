@@ -8,5 +8,6 @@
 import Foundation
 
 struct CollectionViewConstant {
-    static let numberOfSection: Int = 3
+    static let numberOfSections: Int = 3
+    static let numberOfItems: Int = 4
 }

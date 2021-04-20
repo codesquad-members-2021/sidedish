@@ -8,12 +8,18 @@
 import UIKit
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return CollectionViewConstant.numberOfSections
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CollectionViewConstant.numberOfSection
+        return CollectionViewConstant.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCell.identifier, for: indexPath)
+        
         return cell
     }
 }
