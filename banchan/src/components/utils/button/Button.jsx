@@ -17,6 +17,7 @@ const BUTTON_TYPE = {
   DOWN: <FontAwesomeIcon icon={faAngleDown} />,
   CLOSE: <FontAwesomeIcon icon={faTimes} />,
   ORDER: "주문하기",
+  SOLDOUT: "일시품절",
 };
 
 const Button = styled.button`
