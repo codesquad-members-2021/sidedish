@@ -12,8 +12,8 @@ const Header = () => {
         </Menu>
         <div>
           <input type="text" placeholder="🔍" />
-          <span>로그인</span>
-          <span>장바구니</span>
+          <span className="profile">로그인</span>
+          <span className="profile">장바구니</span>
         </div>
       </Nav>
     </HeaderWrap>
@@ -29,14 +29,29 @@ const HeaderWrap = styled.header`
 `;
 
 const Nav = styled.nav`
-  padding: 0 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 7.625rem;
 
-  input::placeholder {
-    text-align: right;
+  input {
+    width: 248px;
+    height: 40px;
+    font-size: 1.5rem;
+
+    ::placeholder {
+      text-align: right;
+      font-size: 1.5rem;
+    }
+  }
+
+  .profile {
+    padding-left: 24px;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
   }
 `;
 
@@ -53,12 +68,12 @@ const Logo = styled.div`
 
 const Menu = styled.div`
   padding-left: 1rem;
-  width: 50rem;
+  width: 45rem;
   display: flex;
   align-items: center;
 
   span {
-    padding-right: 24px;
+    margin-right: 24px;
     width: 107px;
     height: 23px;
     font-family: Noto Sans KR;
