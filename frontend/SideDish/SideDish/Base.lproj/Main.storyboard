@@ -47,6 +47,9 @@
                             <constraint firstItem="daL-1b-OeD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jNf-sb-EpO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sideDishCollectionView" destination="daL-1b-OeD" id="L7t-id-fFo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

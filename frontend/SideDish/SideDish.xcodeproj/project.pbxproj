@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD090658262E9B450094421D /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090656262E9B450094421D /* MenuCell.swift */; };
+		BD090659262E9B450094421D /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD090657262E9B450094421D /* MenuCell.xib */; };
 		BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B57262D6F5800906633 /* AppDelegate.swift */; };
 		BD930B5A262D6F5800906633 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B59262D6F5800906633 /* SceneDelegate.swift */; };
 		BD930B5C262D6F5800906633 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B5B262D6F5800906633 /* ViewController.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD090656262E9B450094421D /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		BD090657262E9B450094421D /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		BD930B54262D6F5800906633 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD930B57262D6F5800906633 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD930B59262D6F5800906633 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				BD930B59262D6F5800906633 /* SceneDelegate.swift */,
 				BD930B5B262D6F5800906633 /* ViewController.swift */,
 				BD930B5D262D6F5800906633 /* Main.storyboard */,
+				BD090656262E9B450094421D /* MenuCell.swift */,
+				BD090657262E9B450094421D /* MenuCell.xib */,
 				BD930B60262D6F5900906633 /* Assets.xcassets */,
 				BD930B62262D6F5900906633 /* LaunchScreen.storyboard */,
 				BD930B65262D6F5900906633 /* Info.plist */,
@@ -233,6 +239,7 @@
 			files = (
 				BD930B64262D6F5900906633 /* LaunchScreen.storyboard in Resources */,
 				BD930B61262D6F5900906633 /* Assets.xcassets in Resources */,
+				BD090659262E9B450094421D /* MenuCell.xib in Resources */,
 				BD930B5F262D6F5800906633 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +267,7 @@
 			files = (
 				BD930B5C262D6F5800906633 /* ViewController.swift in Sources */,
 				BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */,
+				BD090658262E9B450094421D /* MenuCell.swift in Sources */,
 				BD930B5A262D6F5800906633 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
