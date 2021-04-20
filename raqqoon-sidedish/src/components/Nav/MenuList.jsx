@@ -19,8 +19,8 @@ const MenuList = () => {
   ];
   return (
     <MenuContainer>
-      {navMenus.map((navMenu) => (
-        <Menu key={uuidv4()} navMenu={navMenu} />
+      {navMenus.map(({ title, subMenu }) => (
+        <Menu key={uuidv4()} title={title} subMenu={subMenu} />
       ))}
     </MenuContainer>
   );
@@ -32,15 +32,5 @@ const MenuContainer = styled.ul`
   padding-left: 1.5rem;
   display: flex;
   align-items: center;
-
-  li {
-    margin-right: 2rem;
-    width: 107px;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333333;
-    cursor: pointer;
-  }
+  position: relative;
 `;
