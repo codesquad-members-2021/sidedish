@@ -12,6 +12,7 @@ const BanchanTitle = styled.div`
   color: ${(props) => props.theme.colors.darkGray};
   font-size: ${(props) => props.theme.fontSizes.XL};
   font-weight: 900;
+  margin-right: 12px;
 `;
 
 const HeaderLeft = () => {
