@@ -18,13 +18,13 @@ enum PriceType {
 }
 
 struct Banchan {
-    private var detail_hash: String
+    private var hash: String
     private var image: URL
     private var alt: String
-    private var delivery_type: [Delivery]
     private var title: String
     private var description: String
-    private var n_price: String
-    private var s_price: String
+    private var netPrice: Int
+    private var salePrice: Int?
     private var badge: [PriceType]
+    private var delivery_type: [Delivery]
 }
