@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Menu from 'components/Nav/Menu';
 
 const Header = () => {
   return (
@@ -6,11 +7,7 @@ const Header = () => {
       <Nav>
         <NavLeft>
           <Logo>BANCHAN</Logo>
-          <Menu>
-            <span>든든한 메인요리</span>
-            <span>뜨끈한 국물요리</span>
-            <span>정갈한 밑반찬</span>
-          </Menu>
+          <Menu />
         </NavLeft>
         <NavRight>
           <input type="text" placeholder="🔍" />
@@ -49,22 +46,6 @@ const Logo = styled.div`
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: #333333;
-`;
-
-const Menu = styled.div`
-  padding-left: 1.5rem;
-  display: flex;
-  align-items: center;
-
-  span {
-    margin-right: 2rem;
-    width: 107px;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333333;
-  }
 `;
 
 const NavRight = styled.div`
