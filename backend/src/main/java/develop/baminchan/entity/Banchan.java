@@ -1,22 +1,27 @@
 package develop.baminchan.entity;
 
+import develop.baminchan.entity.banchan.Badge;
+import develop.baminchan.entity.banchan.DeliveryType;
 import org.springframework.data.annotation.Id;
 
-import java.util.HashMap;
+import java.util.Set;
 
 public class Banchan {
     @Id
+    private Long id;
+
     private String detail_hash;
     private String image;
     private String alt;
-    private DeliveryType delivery_type;
+    private Set<DeliveryType> delivery_type;
     private String title;
     private String description;
     private String n_price;
     private String s_price;
-    private Badge badge;
+    private Set<Badge> badge;
 
-    public Banchan(String detail_hash, String image, String alt, DeliveryType delivery_type, String title, String description, String n_price, String s_price, Badge badge) {
+    public Banchan(Long id, String detail_hash, String image, String alt, Set<DeliveryType> delivery_type, String title, String description, String n_price, String s_price, Set<Badge> badge) {
+        this.id = id;
         this.detail_hash = detail_hash;
         this.image = image;
         this.alt = alt;
@@ -26,6 +31,10 @@ public class Banchan {
         this.n_price = n_price;
         this.s_price = s_price;
         this.badge = badge;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getDetail_hash() {
@@ -40,7 +49,7 @@ public class Banchan {
         return alt;
     }
 
-    public DeliveryType getDelivery_type() {
+    public Set<DeliveryType> getDelivery_type() {
         return delivery_type;
     }
 
@@ -60,18 +69,7 @@ public class Banchan {
         return s_price;
     }
 
-    public Badge getBadge() {
+    public Set<Badge> getBadge() {
         return badge;
-    }
-
-    public enum DeliveryType {
-        새벽배송,
-        전국택배
-    }
-
-    public enum Badge {
-        이벤트특가,
-        론칭특가,
-        베스트
     }
 }
