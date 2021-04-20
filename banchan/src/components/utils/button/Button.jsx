@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -23,6 +24,7 @@ const BUTTON_TYPE = {
 const Button = styled.button`
   all: unset;
   cursor: pointer;
+  border-radius: ${theme.borders.radius};
 `;
 
 export { BUTTON_TYPE, Button };
