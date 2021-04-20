@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Badge from "./Badge"
 
 const CardWrapper = styled.div`
 	position: relative;
@@ -98,41 +99,6 @@ const CardPrice2 = styled.div`
 	text-decoration-line: line-through;
 	color: #bdbdbd;
 `;
-const CardTag = styled.ul`
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	padding: 0px;
-
-	position: static;
-`;
-
-//따로 import해와서 붙이자
-const Tag = styled.li`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-
-	position: static;
-	width: 97px;
-	height: 28px;
-	background: #82d32d;
-	border-radius: 5px;
-`;
-const TagText = styled.div`
-	position: static;
-
-	font-family: Noto Sans KR;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 14px;
-	line-height: 20px;
-
-	color: #ffffff;
-
-	margin: 0px 10px;
-`;
 const CardHover = styled.ul`
 	position: absolute;
 	padding-inline-start: 0px;
@@ -186,13 +152,7 @@ const Card = ({ image, title, description, n_price, s_price, badge, size, delive
 				<CardPrice1>{n_price ? n_price + "원" : s_price}</CardPrice1>
 				<CardPrice2>{n_price ? s_price : ""}</CardPrice2>
 			</CardPrice>
-			<CardTag>
-				{badge?.map((e) => (
-					<Tag key={e}>
-						<TagText>{e}</TagText>
-					</Tag>
-				))}
-			</CardTag>
+			{badge ? <Badge badge={badge} /> : ''}
 		</CardWrapper>
 	);
 };
