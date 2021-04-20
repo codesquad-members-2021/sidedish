@@ -23,7 +23,6 @@ const BUTTON_TYPE = {
 
 const Button = styled.button`
   all: unset;
-  cursor: pointer;
   border-radius: ${theme.borders.radius};
 `;
 

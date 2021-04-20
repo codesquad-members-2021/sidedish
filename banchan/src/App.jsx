@@ -1,10 +1,12 @@
 import "./App.css";
 import StateProvider from "./components/StateProvider";
+import Test from "./components/Test";
 
 function App() {
   return (
     <>
-      <StateProvider />
+      {/* <StateProvider /> */}
+      <Test />
     </>
   );
 }

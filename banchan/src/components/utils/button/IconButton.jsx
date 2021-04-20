@@ -11,6 +11,7 @@ const IconButton = ({ type, fn }) => {
 };
 
 const StyledIconButton = styled(Button)`
+  cursor: pointer;
   color: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.colors.darkGray : theme.colors.lightGray)};
   font-size: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.fontSizes.M : theme.fontSizes.XL)};
 `;
