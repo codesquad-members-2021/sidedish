@@ -1,7 +1,9 @@
+import MainItems from "./MainItems/MainItems.jsx";
+
 const App = () => {
   return (
     <div className="App">
-      Hello world !
+      <MainItems />
     </div>
   );
 }
