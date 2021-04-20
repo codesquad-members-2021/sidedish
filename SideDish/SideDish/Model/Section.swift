@@ -22,7 +22,6 @@ class Section : Hashable {
     static func == (lhs: Section, rhs : Section) -> Bool {
         lhs.title == rhs.title
     }
-    
 }
 extension Section {
     static var allSections: [Section] = [
