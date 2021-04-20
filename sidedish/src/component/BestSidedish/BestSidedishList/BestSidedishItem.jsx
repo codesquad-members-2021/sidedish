@@ -12,7 +12,12 @@ const BestSidedishItem = ({
         <span className="normalPrice">{n_price}</span>
         <span className="salePrice">{s_price}</span>
       </div>
-      {badge.length && badge.map((item) => <div className="badge">{item}</div>)}
+      {badge.length &&
+        badge.map((item, i) => (
+          <div key={i} className="badge">
+            {item}
+          </div>
+        ))}
     </>
   );
 };
