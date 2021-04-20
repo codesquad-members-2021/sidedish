@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import Header from './header/Header';
-import MainPage from './main/MainPage';
+import { useState } from "react";
+import Header from "./header/Header";
+import MainPage from "./main/MainPage";
+import styled, { injectGlobal } from "styled-components";
 
 const StateProvider = (props) => {
   const [loginState, setLoginState] = useState(false);
