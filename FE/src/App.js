@@ -1,4 +1,3 @@
-
 import MainPage from './Pages/MainPage';
 
 function App() {
