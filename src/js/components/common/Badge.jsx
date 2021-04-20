@@ -28,6 +28,8 @@ const Tag = styled.li`
 	line-height: 20px;
 
 	color: #ffffff;
+    
+    margin-right:8px;
 `;
 
 const Badge = ({ badge }) => <BadgeWrapper>{badge.map(e => <Tag key={e} type={e}>{e}</Tag>)}</BadgeWrapper>;

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Badge from "./Badge"
+import Badge from "./Badge";
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.li`
 	position: relative;
 `;
 
@@ -35,6 +35,24 @@ const CardImage = styled.img`
 	margin-bottom: 16px;
 `;
 const CardInfo = styled.div`
+	${(props) => {
+		switch (props.size) {
+			case "LARGE":
+				return `
+                width: 384px;
+            `;
+			case "MEDIUM":
+				return `
+                width: 308px;
+            `;
+			case "SMALL":
+				return `
+                width: 160px;
+            `;
+			default:
+				return;
+		}
+	}}
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -101,7 +119,6 @@ const CardPrice2 = styled.div`
 `;
 const CardHover = styled.ul`
 	position: absolute;
-	padding-inline-start: 0px;
 	${(props) => {
 		switch (props.size) {
 			case "LARGE":
@@ -138,13 +155,14 @@ const CardHover = styled.ul`
 
 const Card = ({ image, title, description, n_price, s_price, badge, size, delivery_type }) => {
 	const [isHover, setHover] = useState(false);
+	const [src, setSrc] = useState(image);
 	return (
 		<CardWrapper>
 			<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-				<CardImage src={image} size={size} isHover={isHover}></CardImage>
+				<CardImage src={src} size={size} isHover={isHover} onError={() => setSrc("https://codesquad.kr/img/company/codesquad2.png")}></CardImage>
 				<CardHover size={size}>{isHover ? delivery_type.map((e) => <li key={e}>{e}</li>) : ""}</CardHover>
 			</div>
-			<CardInfo>
+			<CardInfo size={size}>
 				<CardName>{title}</CardName>
 				<CardBody>{description}</CardBody>
 			</CardInfo>
@@ -152,7 +170,7 @@ const Card = ({ image, title, description, n_price, s_price, badge, size, delive
 				<CardPrice1>{n_price ? n_price + "원" : s_price}</CardPrice1>
 				<CardPrice2>{n_price ? s_price : ""}</CardPrice2>
 			</CardPrice>
-			{badge ? <Badge badge={badge} /> : ''}
+			{badge ? <Badge badge={badge} /> : ""}
 		</CardWrapper>
 	);
 };
