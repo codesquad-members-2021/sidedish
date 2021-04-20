@@ -1,13 +1,18 @@
-import Card from 'components/card/Card';
-import { SIZE_LARGE, SIZE_MEDIUM } from 'const';
+
+import styled from 'styled-components';
+import TabBody from './TabBody';
+import TabHeader from './TabHeader';
+
 
 const TabUI = () => {
   return (
-    <>
-      <Card cardSize={SIZE_LARGE}></Card>
-      <Card cardSize={SIZE_MEDIUM}></Card>
-    </>
+    <TabUIBoxDiv>
+      <TabHeader />
+      <TabBody />
+    </TabUIBoxDiv>
   );
 };
 
 export default TabUI;
+
+const TabUIBoxDiv = styled.div``;

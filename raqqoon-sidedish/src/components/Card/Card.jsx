@@ -24,7 +24,6 @@ export default Card;
 
 const CardBoxDiv = styled.div`
   width: fit-content;
-  outline: 1px solid blue;
   margin: 10px;
 `;
 

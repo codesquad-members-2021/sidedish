@@ -15,3 +15,7 @@ export const MSG_BOTTOM = '전국택배';
 // Size
 export const SIZE_LARGE = 'large';
 export const SIZE_MEDIUM = 'medium';
+
+// State
+export const ACTIVE = 'active';
+export const DEACTIVE = 'deactive';
