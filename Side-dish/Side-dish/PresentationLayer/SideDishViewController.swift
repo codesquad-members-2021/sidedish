@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ViewController: UIViewController {
+class SideDishViewController: UIViewController {
     
     @IBOutlet weak var SideDishCollectionView: UICollectionView!
     private var cancellable = Set<AnyCancellable>()
@@ -20,15 +20,23 @@ class ViewController: UIViewController {
         SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
         SideDishCollectionView.dataSource = self
         SideDishCollectionView.delegate = self
+        
+        sideDishViewModel.test { (t) in
+            t.forEach { (item) in
+                print(item.title)
+            }
+        }
+        sideDishViewModel.occur { (t) in
+            print("test : \(t)")
+        }
     }
     
     func depend(sideDishViewModel: SideDishViewModel) {
         self.sideDishViewModel = sideDishViewModel
     }
-
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension SideDishViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -39,7 +47,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension SideDishViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 130)
     }

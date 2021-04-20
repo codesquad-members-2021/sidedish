@@ -18,22 +18,35 @@ class SideDishViewModel {
     
     init(sideDishUseCase: SideDishProtocol) {
         self.sideDishUseCase = sideDishUseCase
+        request()
     }
     
-    func bind(handler: @escaping (Result<[Item], NetworkError>) -> ()) {
-        sideDishUseCase.execute(path: .main).sink { (complete) in
-            if case .failure(let error) = complete {
-                handler(.failure(error))
-            }
-        } receiveValue: { (SideDishes) in
-            self.item = SideDishes.body
-            handler(.success(SideDishes.body))
-        }.store(in: &cancellable)
+    private func request() {
+        Path.allCases.forEach { (path) in
+            sideDishUseCase.execute(path: path).sink { (complete) in
+                if case .failure(let error) = complete {
+                    self.errorMessage = error.message
+                }
+            } receiveValue: { (SideDishes) in
+                self.item = SideDishes.body
+            }.store(in: &cancellable)
+        }
+       
     }
     
     func test(completion: @escaping ([Item]) -> ()){
-        $item.sink { (item) in
+        $item
+            .dropFirst()
+            .sink { (item) in
             completion(item)
+        }.store(in: &cancellable)
+    }
+    
+    func occur(completion: @escaping ((String) ->())) {
+        $errorMessage
+            .dropFirst()
+            .sink { (message) in
+            completion(message)
         }.store(in: &cancellable)
     }
 }
