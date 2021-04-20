@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C6FD9F8FE4DF3D612C7FC78 /* Pods_Sidedish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69AD776A2215C9567BE9325D /* Pods_Sidedish.framework */; };
 		2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AB262D74890077EF4D /* DetailViewController.swift */; };
 		2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AF262D7E500077EF4D /* ItemViewModel.swift */; };
 		2240D5BB262D8E420077EF4D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5BA262D8E420077EF4D /* Network.swift */; };
@@ -22,6 +23,7 @@
 		22418771262D6A5A00AC14C7 /* SidedishItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418770262D6A5A00AC14C7 /* SidedishItem.swift */; };
 		22418774262D6B3400AC14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418773262D6B3400AC14C7 /* Category.swift */; };
 		2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */; };
+		22548347262E7A3800AC8582 /* TapToastGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */; };
 		2260DDDA262D960E002DF3E7 /* SidedishProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */; };
 		22BBE64E262D9FCC001D06D5 /* SidedishOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE64D262D9FCC001D06D5 /* SidedishOfCategory.swift */; };
 		22BBE653262DA9BC001D06D5 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE652262DA9BB001D06D5 /* HeaderViewModel.swift */; };
@@ -46,10 +48,14 @@
 		22418770262D6A5A00AC14C7 /* SidedishItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishItem.swift; sourceTree = "<group>"; };
 		22418773262D6B3400AC14C7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishNetworkCenter.swift; sourceTree = "<group>"; };
+		22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToastGestureRecognizer.swift; sourceTree = "<group>"; };
 		2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishProcessing.swift; sourceTree = "<group>"; };
 		22BBE64D262D9FCC001D06D5 /* SidedishOfCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishOfCategory.swift; sourceTree = "<group>"; };
 		22BBE652262DA9BB001D06D5 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		499E51924357C5AFEF94978D /* Pods-Sidedish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.release.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.release.xcconfig"; sourceTree = "<group>"; };
+		69AD776A2215C9567BE9325D /* Pods_Sidedish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sidedish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6FF97B8F04F0E1EF7926092 /* Pods-Sidedish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.debug.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +63,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6FD9F8FE4DF3D612C7FC78 /* Pods_Sidedish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D84EDAD3656EE6C148133E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF97B8F04F0E1EF7926092 /* Pods-Sidedish.debug.xcconfig */,
+				499E51924357C5AFEF94978D /* Pods-Sidedish.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2240D5B9262D8DF90077EF4D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +94,8 @@
 			children = (
 				22418740262D4D8300AC14C7 /* Sidedish */,
 				2241873F262D4D8300AC14C7 /* Products */,
+				1D84EDAD3656EE6C148133E1 /* Pods */,
+				C86369EE41D09B45D38A333E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +113,7 @@
 				22418741262D4D8300AC14C7 /* AppDelegate.swift */,
 				22418743262D4D8300AC14C7 /* SceneDelegate.swift */,
 				22418745262D4D8300AC14C7 /* ViewController.swift */,
+				22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */,
 				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				2240D5AB262D74890077EF4D /* DetailViewController.swift */,
 				2240D5AF262D7E500077EF4D /* ItemViewModel.swift */,
@@ -138,6 +157,14 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		C86369EE41D09B45D38A333E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69AD776A2215C9567BE9325D /* Pods_Sidedish.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22418752262D4D8600AC14C7 /* Build configuration list for PBXNativeTarget "Sidedish" */;
 			buildPhases = (
+				99EF1A974FC5FDCCD4C181F2 /* [CP] Check Pods Manifest.lock */,
 				2241873A262D4D8300AC14C7 /* Sources */,
 				2241873B262D4D8300AC14C7 /* Frameworks */,
 				2241873C262D4D8300AC14C7 /* Resources */,
+				51DCBCA7A1C26592512CB930 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,6 +232,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		51DCBCA7A1C26592512CB930 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sidedish/Pods-Sidedish-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sidedish/Pods-Sidedish-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sidedish/Pods-Sidedish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99EF1A974FC5FDCCD4C181F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sidedish-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2241873A262D4D8300AC14C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -220,6 +291,7 @@
 				2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */,
 				22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */,
 				22418774262D6B3400AC14C7 /* Category.swift in Sources */,
+				22548347262E7A3800AC8582 /* TapToastGestureRecognizer.swift in Sources */,
 				2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */,
 				2240D5BF262D8E9C0077EF4D /* SessionManager.swift in Sources */,
 				22BBE64E262D9FCC001D06D5 /* SidedishOfCategory.swift in Sources */,
@@ -367,6 +439,7 @@
 		};
 		22418753262D4D8600AC14C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6FF97B8F04F0E1EF7926092 /* Pods-Sidedish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -385,6 +458,7 @@
 		};
 		22418754262D4D8600AC14C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 499E51924357C5AFEF94978D /* Pods-Sidedish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Toaster
 
 class ViewController: UIViewController {
 
@@ -29,8 +30,6 @@ class ViewController: UIViewController {
             }.store(in: &fetchItemSubscription)
         
         self.itemViewModel.fetchItems()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,10 +84,21 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
+        let tapRecognizer = TapToastGestureRecognize(target: self, action: #selector(makingHeaderToast(_:)))
+        tapRecognizer.title = headerViewModel.titles[indexPath.section]
+        tapRecognizer.countText = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
+        header.addGestureRecognizer(tapRecognizer)
+        
         header.title.text = headerViewModel.titles[indexPath.section]
         header.countLabel.text = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
         return header
     }
+    
+    @objc func makingHeaderToast(_ sender: TapToastGestureRecognize) {
+        Toast(text: "\(sender.title)\n\(sender.countText)").show()
+    }
+    
+    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
