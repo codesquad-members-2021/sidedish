@@ -11,28 +11,15 @@ const TagStyle = styled.div`
     font-weight: bold;
 `
 
-
-const EventTag = ({type}) => {
-    return (
-        <TagStyle type={type}>
-            <span>이벤트특가</span>
-        </TagStyle>
-    )
-}
-
-const LaunchingTag = ({type}) => {
-    return (
-        <TagStyle type={type}>
-            <span>런칭특가</span>
-        </TagStyle>
-    )
-}
-
 const Tag = ({ type }) => {
-    return {
-        event: <EventTag type={ type } />,
-        launching: <LaunchingTag type={ type } />
-    }[type];
+    return (
+        <TagStyle type={type}>
+            {type === 'event' 
+                ? <span>이벤트특가</span> 
+                : <span>런칭특가</span> 
+            }
+        </TagStyle>
+    );
 }
 
 export default Tag;

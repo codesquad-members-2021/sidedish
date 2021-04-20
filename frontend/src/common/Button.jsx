@@ -17,27 +17,15 @@ const BtnStyle = styled.button`
     }
 `
 
-const OrderBtn = ({type}) => {
-    return (
-        <BtnStyle type={type}>
-            <span>주문하기</span> 
-        </BtnStyle>
-    )
-}
-
-const SoldoutBtn = ({type}) => {
-    return (
-        <BtnStyle type={type}>
-            <span>일시품절</span> 
-        </BtnStyle>
-    )
-}
-
 const Button = ({ type }) => {
-    return {
-        order: <OrderBtn type={ type } />,
-        soldout: <SoldoutBtn type={ type } />
-    }[type];
+    return (
+        <BtnStyle type={type}>
+            {type === 'order' 
+                ? <span>주문하기</span> 
+                : <span>일시품절</span> 
+            }
+        </BtnStyle>
+    );
 }
 
 export default Button;
