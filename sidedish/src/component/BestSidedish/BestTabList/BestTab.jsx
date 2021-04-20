@@ -22,5 +22,13 @@ const BestTab = ({ id, title, focusedCategory, handleFocusedCategory }) => {
 export default BestTab;
 
 const Tab = styled.div`
-  background-color: ${({ focused }) => focused && 'skyblue'};
+  background-color: ${({ focused }) => focused && '#EEF4FA'};
+  color: ${({ focused }) => focused && '#333333'};
+  font-weight: ${({ focused }) => focused && `bold`};
+  width: 10rem;
+  height: 3rem;
+  color: #828282, 100%;
+  font-size: 16px;
+  text-align: center;
+  line-height: 3rem;
 `;
