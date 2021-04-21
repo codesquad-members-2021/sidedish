@@ -41,13 +41,15 @@ const LogoStyle = styled.div`
     text-transform: uppercase;
 `;
 
-const NavStyle = styled.div`
+const NavStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 1.5%;
 
     &:hover {
         font-weight: bold;
+        display:block;
+        background-color: transparent;
     }
 `
 const SearchBarStyle = styled.input`
@@ -96,17 +98,7 @@ const BasketStyle = styled.div`
     margin: auto 0;
 `
 
-const DropdownStyle = styled.div`
-    /* White */
 
-    background: #FFFFFF;
-    position: relative;
-    display: inline-block;
-    // display:none;
-`
-const DropdownComponentStyle = styled.div`
-    background: blue;
-`
 
 export {
     HeaderStyle,
@@ -119,6 +111,4 @@ export {
     SearchButtonStyle,
     LoginStyle,
     BasketStyle,
-    DropdownStyle,
-    DropdownComponentStyle,
   }
