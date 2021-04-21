@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../utils/constant";
+import styled from "styled-components";
 
 const NavListItems = ({ list }) => {
   const NavLITitle = styled.span`
@@ -50,12 +49,10 @@ const NavListItems = ({ list }) => {
   ));
 
   return (
-    <ThemeProvider theme={theme}>
-      <NavLI onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <NavLITitle>{list.title}</NavLITitle>
-        {isMouseOver && <NavLIBox>{listSubElements}</NavLIBox>}
-      </NavLI>
-    </ThemeProvider>
+    <NavLI onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <NavLITitle>{list.title}</NavLITitle>
+      {isMouseOver && <NavLIBox>{listSubElements}</NavLIBox>}
+    </NavLI>
   );
 };
 

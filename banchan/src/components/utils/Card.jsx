@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import theme from './constant';
-import Price from './Price';
+import styled from "styled-components";
+import theme from "./theme";
+import Price from "./Price";
 
 const Card = ({ product, cardSize }) => {
   return (

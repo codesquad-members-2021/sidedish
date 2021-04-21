@@ -1,5 +1,4 @@
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../utils/constant";
+import styled from "styled-components";
 
 const HeaderRight = (props) => {
   const HeaderRightDiv = styled.div`
@@ -19,11 +18,9 @@ const HeaderRight = (props) => {
 
   return (
     <HeaderRightDiv>
-      <ThemeProvider theme={theme}>
-        <input />
-        <StyledSpan>로그인</StyledSpan>
-        <StyledSpan>장바구니</StyledSpan>
-      </ThemeProvider>
+      <input />
+      <StyledSpan>로그인</StyledSpan>
+      <StyledSpan>장바구니</StyledSpan>
     </HeaderRightDiv>
   );
 };

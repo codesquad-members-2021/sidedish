@@ -1,5 +1,4 @@
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../utils/constant.js";
+import styled from "styled-components";
 import HeaderNavbar from "./HeaderNavbar.jsx";
 
 const HeaderLeftDiv = styled.div`
@@ -17,12 +16,10 @@ const BanchanTitle = styled.div`
 
 const HeaderLeft = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <HeaderLeftDiv>
-        <BanchanTitle>BANCHAN</BanchanTitle>
-        <HeaderNavbar />
-      </HeaderLeftDiv>
-    </ThemeProvider>
+    <HeaderLeftDiv>
+      <BanchanTitle>BANCHAN</BanchanTitle>
+      <HeaderNavbar />
+    </HeaderLeftDiv>
   );
 };
 

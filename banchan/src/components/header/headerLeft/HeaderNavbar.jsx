@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../utils/constant";
+import styled from "styled-components";
 import NavListItems from "./NavListItems";
 
 const HeaderNavbar = (props) => {
@@ -29,11 +28,7 @@ const HeaderNavbar = (props) => {
     <NavListItems key={i} list={list} />
   ));
 
-  return (
-    <NavUL>
-      <ThemeProvider theme={theme}>{navbarList}</ThemeProvider>
-    </NavUL>
-  );
+  return <NavUL>{navbarList}</NavUL>;
 };
 
 export default HeaderNavbar;

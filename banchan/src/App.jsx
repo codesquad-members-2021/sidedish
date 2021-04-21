@@ -1,6 +1,8 @@
 import "./App.css";
 import StateProvider from "./components/StateProvider";
 import { createGlobalStyle } from "styled-components";
+import { ThemeProvider } from "styled-components";
+import theme from "./components/utils/theme.js";
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -17,10 +19,10 @@ export const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <StateProvider />
-    </>
+    </ThemeProvider>
   );
 }
 
