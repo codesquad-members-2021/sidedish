@@ -271,6 +271,8 @@
 			children = (
 				9386C1A4262E54D5008645D9 /* SidedishUseCase.swift */,
 				9386C1B0262E553C008645D9 /* SidedishUseCasePort.swift */,
+				764CE0B2263008C500DED09C /* DetailUseCase.swift */,
+				764CE0B7263008E200DED09C /* DetailUseCasePort.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -406,17 +408,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				9386C1C5262F311C008645D9 /* BadgeLabel.swift in Sources */,
+				764CE0C72630167E00DED09C /* DetailItem.swift in Sources */,
+				764CE0AE2630079C00DED09C /* DetailNetworkManager.swift in Sources */,
+				764CE0C22630110500DED09C /* DetailViewController.swift in Sources */,
 				9386C104262D7400008645D9 /* SidedishViewController.swift in Sources */,
 				9386C1B6262EA2E8008645D9 /* RemoteImageView.swift in Sources */,
 				9386C162262D8BA9008645D9 /* SidedishViewModel.swift in Sources */,
 				9386C1A5262E54D5008645D9 /* SidedishUseCase.swift in Sources */,
 				9386C184262DC53B008645D9 /* Side.swift in Sources */,
+				764CE0BD26300A3000DED09C /* DetailViewModel.swift in Sources */,
+				764CE0B8263008E200DED09C /* DetailUseCasePort.swift in Sources */,
+				764CE0A9263003A200DED09C /* Detail.swift in Sources */,
 				9386C19B262E52C6008645D9 /* NetworkManager.swift in Sources */,
 				9386C17F262DC52C008645D9 /* Soup.swift in Sources */,
 				9386C1D2262FC561008645D9 /* SidedishViewModelType.swift in Sources */,
 				9386C133262D7B0B008645D9 /* Item.swift in Sources */,
 				9386C100262D7400008645D9 /* AppDelegate.swift in Sources */,
 				9386C1A0262E5334008645D9 /* SidedishNetworkManager.swift in Sources */,
+				764CE0B3263008C500DED09C /* DetailUseCase.swift in Sources */,
 				9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */,
 				9386C16E262D8C02008645D9 /* Main.swift in Sources */,
 				9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */,

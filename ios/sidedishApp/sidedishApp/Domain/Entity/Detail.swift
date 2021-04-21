@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+struct Detail: Codable {
+    private let item: DetailItem
+    
+    init(){
+        let id = 0
+        let detailImages = [""]
+        let descriptionImages = [""]
+        let name = ""
+        let description = ""
+        let normalPrice = 0
+        let salePrice = 0
+        //        let eventBadgeList = ["]
+        let pointRate = 1
+        let isPurchasable = false
+        let deliveryInfo = ""
+        let deliveryFee = ""
+        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, pointRate: pointRate, isPurchasable: isPurchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
+        
+    }
+}
