@@ -1,7 +1,9 @@
 package develop.baminchan.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import develop.baminchan.entity.Banchan;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BanchanDto {
     private String detail_hash;
     private String image;
