@@ -7,14 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		764CE0A9263003A200DED09C /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0A8263003A200DED09C /* Detail.swift */; };
+		764CE0AE2630079C00DED09C /* DetailNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0AD2630079C00DED09C /* DetailNetworkManager.swift */; };
+		764CE0B3263008C500DED09C /* DetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0B2263008C500DED09C /* DetailUseCase.swift */; };
+		764CE0B8263008E200DED09C /* DetailUseCasePort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0B7263008E200DED09C /* DetailUseCasePort.swift */; };
+		764CE0BD26300A3000DED09C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0BC26300A3000DED09C /* DetailViewModel.swift */; };
+		764CE0C22630110500DED09C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0C12630110500DED09C /* DetailViewController.swift */; };
+		764CE0C72630167E00DED09C /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0C62630167E00DED09C /* DetailItem.swift */; };
+		764CE0CC26301E7000DED09C /* DetailViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0CB26301E7000DED09C /* DetailViewModelType.swift */; };
 		9386C100262D7400008645D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0FF262D7400008645D9 /* AppDelegate.swift */; };
 		9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C101262D7400008645D9 /* SceneDelegate.swift */; };
-		9386C104262D7400008645D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C103262D7400008645D9 /* ViewController.swift */; };
+		9386C104262D7400008645D9 /* SidedishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C103262D7400008645D9 /* SidedishViewController.swift */; };
 		9386C107262D7400008645D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9386C105262D7400008645D9 /* Main.storyboard */; };
 		9386C109262D7401008645D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9386C108262D7401008645D9 /* Assets.xcassets */; };
 		9386C10C262D7401008645D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9386C10A262D7401008645D9 /* LaunchScreen.storyboard */; };
 		9386C117262D7402008645D9 /* sidedishAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C116262D7402008645D9 /* sidedishAppTests.swift */; };
 		9386C122262D7402008645D9 /* sidedishAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C121262D7402008645D9 /* sidedishAppUITests.swift */; };
+		9386C133262D7B0B008645D9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C132262D7B0B008645D9 /* Item.swift */; };
+		9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C155262D86C3008645D9 /* LayoutManager.swift */; };
+		9386C162262D8BA9008645D9 /* SidedishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C161262D8BA9008645D9 /* SidedishViewModel.swift */; };
+		9386C16E262D8C02008645D9 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C16D262D8C02008645D9 /* Main.swift */; };
+		9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C173262DB13C008645D9 /* SidedishCell.swift */; };
+		9386C17F262DC52C008645D9 /* Soup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C17E262DC52C008645D9 /* Soup.swift */; };
+		9386C184262DC53B008645D9 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C183262DC53B008645D9 /* Side.swift */; };
+		9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C188262E4DB2008645D9 /* SectionHeader.swift */; };
+		9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C18D262E51F1008645D9 /* Endpoint.swift */; };
+		9386C19B262E52C6008645D9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C19A262E52C6008645D9 /* NetworkManager.swift */; };
+		9386C1A0262E5334008645D9 /* SidedishNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C19F262E5334008645D9 /* SidedishNetworkManager.swift */; };
+		9386C1A5262E54D5008645D9 /* SidedishUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C1A4262E54D5008645D9 /* SidedishUseCase.swift */; };
+		9386C1B1262E553C008645D9 /* SidedishUseCasePort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C1B0262E553C008645D9 /* SidedishUseCasePort.swift */; };
+		9386C1B6262EA2E8008645D9 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C1B5262EA2E8008645D9 /* RemoteImageView.swift */; };
+		9386C1C5262F311C008645D9 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C1C4262F311C008645D9 /* BadgeLabel.swift */; };
+		9386C1D2262FC561008645D9 /* SidedishViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C1D1262FC561008645D9 /* SidedishViewModelType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +59,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		764CE0A8263003A200DED09C /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		764CE0AD2630079C00DED09C /* DetailNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNetworkManager.swift; sourceTree = "<group>"; };
+		764CE0B2263008C500DED09C /* DetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCase.swift; sourceTree = "<group>"; };
+		764CE0B7263008E200DED09C /* DetailUseCasePort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCasePort.swift; sourceTree = "<group>"; };
+		764CE0BC26300A3000DED09C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		764CE0C12630110500DED09C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		764CE0C62630167E00DED09C /* DetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
+		764CE0CB26301E7000DED09C /* DetailViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelType.swift; sourceTree = "<group>"; };
 		9386C0FC262D7400008645D9 /* sidedishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9386C0FF262D7400008645D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9386C101262D7400008645D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9386C103262D7400008645D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9386C103262D7400008645D9 /* SidedishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishViewController.swift; sourceTree = "<group>"; };
 		9386C106262D7400008645D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9386C108262D7401008645D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9386C10B262D7401008645D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +81,22 @@
 		9386C11D262D7402008645D9 /* sidedishAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sidedishAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9386C121262D7402008645D9 /* sidedishAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sidedishAppUITests.swift; sourceTree = "<group>"; };
 		9386C123262D7402008645D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9386C132262D7B0B008645D9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9386C155262D86C3008645D9 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
+		9386C161262D8BA9008645D9 /* SidedishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishViewModel.swift; sourceTree = "<group>"; };
+		9386C16D262D8C02008645D9 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		9386C173262DB13C008645D9 /* SidedishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishCell.swift; sourceTree = "<group>"; };
+		9386C17E262DC52C008645D9 /* Soup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soup.swift; sourceTree = "<group>"; };
+		9386C183262DC53B008645D9 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
+		9386C188262E4DB2008645D9 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		9386C18D262E51F1008645D9 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		9386C19A262E52C6008645D9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9386C19F262E5334008645D9 /* SidedishNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishNetworkManager.swift; sourceTree = "<group>"; };
+		9386C1A4262E54D5008645D9 /* SidedishUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishUseCase.swift; sourceTree = "<group>"; };
+		9386C1B0262E553C008645D9 /* SidedishUseCasePort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishUseCasePort.swift; sourceTree = "<group>"; };
+		9386C1B5262EA2E8008645D9 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		9386C1C4262F311C008645D9 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		9386C1D1262FC561008645D9 /* SidedishViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishViewModelType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +149,9 @@
 			children = (
 				9386C0FF262D7400008645D9 /* AppDelegate.swift */,
 				9386C101262D7400008645D9 /* SceneDelegate.swift */,
-				9386C103262D7400008645D9 /* ViewController.swift */,
+				9386C192262E51F6008645D9 /* Data */,
+				9386C146262D83E1008645D9 /* Presentation */,
+				9386C137262D7B0E008645D9 /* Domain */,
 				9386C105262D7400008645D9 /* Main.storyboard */,
 				9386C108262D7401008645D9 /* Assets.xcassets */,
 				9386C10A262D7401008645D9 /* LaunchScreen.storyboard */,
@@ -126,6 +176,108 @@
 				9386C123262D7402008645D9 /* Info.plist */,
 			);
 			path = sidedishAppUITests;
+			sourceTree = "<group>";
+		};
+		9386C137262D7B0E008645D9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9386C13B262D7B15008645D9 /* Entity */,
+				9386C1A9262E54D9008645D9 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		9386C13B262D7B15008645D9 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9386C132262D7B0B008645D9 /* Item.swift */,
+				9386C16D262D8C02008645D9 /* Main.swift */,
+				9386C17E262DC52C008645D9 /* Soup.swift */,
+				9386C183262DC53B008645D9 /* Side.swift */,
+				764CE0A8263003A200DED09C /* Detail.swift */,
+				764CE0C62630167E00DED09C /* DetailItem.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		9386C146262D83E1008645D9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9386C14A262D83ED008645D9 /* UI */,
+				9386C166262D8BAC008645D9 /* ViewModels */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9386C14A262D83ED008645D9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9386C14E262D83F2008645D9 /* ViewControllers */,
+				9386C15A262D86C6008645D9 /* Views */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9386C14E262D83F2008645D9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9386C103262D7400008645D9 /* SidedishViewController.swift */,
+				764CE0C12630110500DED09C /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9386C15A262D86C6008645D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9386C155262D86C3008645D9 /* LayoutManager.swift */,
+				9386C173262DB13C008645D9 /* SidedishCell.swift */,
+				9386C188262E4DB2008645D9 /* SectionHeader.swift */,
+				9386C1B5262EA2E8008645D9 /* RemoteImageView.swift */,
+				9386C1C4262F311C008645D9 /* BadgeLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9386C166262D8BAC008645D9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9386C161262D8BA9008645D9 /* SidedishViewModel.swift */,
+				9386C1D1262FC561008645D9 /* SidedishViewModelType.swift */,
+				764CE0BC26300A3000DED09C /* DetailViewModel.swift */,
+				764CE0CB26301E7000DED09C /* DetailViewModelType.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9386C192262E51F6008645D9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9386C196262E5201008645D9 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9386C196262E5201008645D9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9386C18D262E51F1008645D9 /* Endpoint.swift */,
+				9386C19A262E52C6008645D9 /* NetworkManager.swift */,
+				9386C19F262E5334008645D9 /* SidedishNetworkManager.swift */,
+				764CE0AD2630079C00DED09C /* DetailNetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9386C1A9262E54D9008645D9 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				9386C1A4262E54D5008645D9 /* SidedishUseCase.swift */,
+				9386C1B0262E553C008645D9 /* SidedishUseCasePort.swift */,
+				764CE0B2263008C500DED09C /* DetailUseCase.swift */,
+				764CE0B7263008E200DED09C /* DetailUseCasePort.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +410,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9386C104262D7400008645D9 /* ViewController.swift in Sources */,
+				9386C1C5262F311C008645D9 /* BadgeLabel.swift in Sources */,
+				764CE0C72630167E00DED09C /* DetailItem.swift in Sources */,
+				764CE0AE2630079C00DED09C /* DetailNetworkManager.swift in Sources */,
+				764CE0C22630110500DED09C /* DetailViewController.swift in Sources */,
+				9386C104262D7400008645D9 /* SidedishViewController.swift in Sources */,
+				9386C1B6262EA2E8008645D9 /* RemoteImageView.swift in Sources */,
+				9386C162262D8BA9008645D9 /* SidedishViewModel.swift in Sources */,
+				9386C1A5262E54D5008645D9 /* SidedishUseCase.swift in Sources */,
+				9386C184262DC53B008645D9 /* Side.swift in Sources */,
+				764CE0CC26301E7000DED09C /* DetailViewModelType.swift in Sources */,
+				764CE0BD26300A3000DED09C /* DetailViewModel.swift in Sources */,
+				764CE0B8263008E200DED09C /* DetailUseCasePort.swift in Sources */,
+				764CE0A9263003A200DED09C /* Detail.swift in Sources */,
+				9386C19B262E52C6008645D9 /* NetworkManager.swift in Sources */,
+				9386C17F262DC52C008645D9 /* Soup.swift in Sources */,
+				9386C1D2262FC561008645D9 /* SidedishViewModelType.swift in Sources */,
+				9386C133262D7B0B008645D9 /* Item.swift in Sources */,
 				9386C100262D7400008645D9 /* AppDelegate.swift in Sources */,
+				9386C1A0262E5334008645D9 /* SidedishNetworkManager.swift in Sources */,
+				764CE0B3263008C500DED09C /* DetailUseCase.swift in Sources */,
+				9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */,
+				9386C16E262D8C02008645D9 /* Main.swift in Sources */,
+				9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */,
+				9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */,
+				9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */,
 				9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */,
+				9386C1B1262E553C008645D9 /* SidedishUseCasePort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
