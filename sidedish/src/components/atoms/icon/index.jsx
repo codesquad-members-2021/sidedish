@@ -7,17 +7,51 @@ import { ReactComponent as upSVG } from '../../../images/up.svg';
 import { ReactComponent as leftSVG } from '../../../images/left.svg';
 import { ReactComponent as rightSVG } from '../../../images/right.svg';
 
-const SearchIcon = styled(searchSVG)`
-  width: 24px;
-  height: 24px;
+const Icon = props => {
+  const defaultSetting = `width: ${props._width};
+height: ${props._width};
+stroke: ${props._color}`;
 
-  path {
-    fill: ${props => props.color};
+  const DownIcon = styled(downSVG)`
+    ${defaultSetting}
+  `;
+
+  const UpIcon = styled(upSVG)`
+    ${defaultSetting}
+  `;
+
+  const CloseIcon = styled(closeSVG)`
+    ${defaultSetting}
+  `;
+
+  const SearchIcon = styled(searchSVG)`
+    ${defaultSetting}
+  `;
+
+  const RighthIcon = styled(rightSVG)`
+    ${defaultSetting}
+  `;
+
+  const LeftIcon = styled(leftSVG)`
+    ${defaultSetting}
+  `;
+
+  switch (props._type) {
+    case 'DownIcon':
+      return <DownIcon />;
+    case 'UpIcon':
+      return <UpIcon />;
+    case 'CloseIcon':
+      return <CloseIcon />;
+    case 'SearchIcon':
+      return <SearchIcon />;
+    case 'RighthIcon':
+      return <RighthIcon />;
+    case 'LeftIcon':
+      return <LeftIcon />;
+    default:
+      break;
   }
-`;
-
-const AddCardButton = ({ id, handleAddButtonClick }) => {
-  return <SearchIcon />;
 };
 
-export default AddCardButton;
+export default Icon;

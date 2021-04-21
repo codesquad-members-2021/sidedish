@@ -1,12 +1,7 @@
 import './styles/style.scss';
-import Button from './components/atoms/button/index';
 
 function App() {
-  return (
-    <div className="App">
-      <Button deactive></Button>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

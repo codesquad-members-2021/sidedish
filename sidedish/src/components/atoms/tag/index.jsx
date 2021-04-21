@@ -1,57 +1,45 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const NewTagDiv = styled.div`
+const StyledTag = styled.button`
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 4px 16px;
 
-  position: absolute;
-  width: 84px;
-  height: 28px;
-  left: 137px;
-  top: 20px;
-
-  /* Light Blue */
-
-  background: #86c6ff;
   border-radius: 5px;
+
+  ${props =>
+    props._event &&
+    `width: 97px;
+    height: 28px;
+    background: #82d32d;`}
+
+  ${props =>
+    props._new &&
+    `width: 84px;
+    height: 28px;
+    background: #86C6FF;`}
 `;
 
-const NewTagSpan = styled.span`
-  position: static;
-  width: 52px;
-  height: 20px;
-  left: 16px;
-  top: 4px;
-
-  font-family: Noto Sans KR;
-  font-style: normal;
+const StyledTagSpan = styled.span`
   font-weight: bold;
   font-size: 14px;
   line-height: 20px;
 
-  /* White */
-
   color: #ffffff;
 
-  /* Inside Auto Layout */
-
   flex: none;
-  order: 0;
-  flex-grow: 0;
   margin: 0px 10px;
 `;
 
-const NewTag = () => {
+const Tag = props => {
+  const text = props._event ? '이벤트 특가' : '런칭특가';
   return (
-    <>
-      <NewTagDiv>
-        <NewTagSpan>런칭특가</NewTagSpan>
-      </NewTagDiv>
-    </>
+    <StyledTag {...props}>
+      <StyledTagSpan>{text}</StyledTagSpan>
+    </StyledTag>
   );
 };
 
-export default NewTag;
+export default Tag;
