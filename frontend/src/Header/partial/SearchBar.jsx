@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import { cssTranslate, cssFlexAlignCenter } from "../../common/CommonStyledCSS";
+import { cssTranslate, cssFlexAlignCenter } from "../../style/CommonStyledCSS";
 import { IoSearchOutline } from "react-icons/io5";
 
 const StyledSearchBar = styled.div`
