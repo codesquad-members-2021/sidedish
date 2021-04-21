@@ -2,7 +2,8 @@ import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from 'const';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Img = ({ cardSize }) => {
+const Img = ({ cardSize, image, alt }) => {
+  const url = image;
   const [opacitiy, setOpacity] = useState(0);
 
   const onToggleOpacity = (opacitiy) => {
@@ -16,10 +17,7 @@ const Img = ({ cardSize }) => {
       onMouseEnter={() => onToggleOpacity(opacitiy)}
       onMouseLeave={() => onToggleOpacity(opacitiy)}
     >
-      <img
-        src="http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg"
-        alt="img"
-      />
+      <img src={url} alt={alt} />
       <HoverText cardSize={cardSize} opacitiy={opacitiy} />
     </ImgDiv>
   );
