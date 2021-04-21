@@ -1,23 +1,17 @@
-import styled from 'styled-components';
-import theme from './constant';
-import Price from './Price';
+import styled from "styled-components";
+import theme from "./theme";
+import Price from "./Price";
 
 const Card = ({ product, cardSize }) => {
   return (
     <StyledLi cardSize={cardSize}>
       <StyledImg cardSize={cardSize} src={product.image} alt="card-image" />
-      <StyledTitle>
-        <span>{product.title}</span>
-      </StyledTitle>
-      <StyledDescription>
-        <span>{product.description}</span>
-      </StyledDescription>
+      <StyledTitle>{product.title}</StyledTitle>
+      <StyledDescription>{product.description}</StyledDescription>
       <Price product={product} />
     </StyledLi>
   );
 };
-
-// ============================= ● Styled components ● =============================
 
 const StyledLi = styled.li`
   width: ${(props) => props.cardSize};

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from './constant';
+import styled from "styled-components";
+import theme from "./theme";
 
 const Price = ({ product }) => {
   const isOnSale = !!product.n_price;
@@ -13,8 +13,6 @@ const Price = ({ product }) => {
     </StyledPriceWrapper>
   );
 };
-
-// ============================= ● Styled components ● =============================
 
 const StyledPriceWrapper = styled.div`
   display: flex;

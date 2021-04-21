@@ -7,14 +7,18 @@ const LABEL_TYPE = {
   LAUNCH: "런칭특가",
 };
 
-const Label = ({ type }) => <StyledLabel type={type}>{LABEL_TYPE[type]}</StyledLabel>;
+const Label = ({ type }) => (
+  <StyledLabel type={type}>{LABEL_TYPE[type]}</StyledLabel>
+);
 
 const StyledLabel = styled.span`
   padding: 4px 16px;
+  border-radius: ${theme.borders.radius};
   color: ${theme.colors.white};
   font-size: ${theme.fontSizes.XS};
   font-weight: bold;
-  background: ${({ type }) => (type === "EVENT" ? theme.colors.green : theme.colors.lightBlue)};
+  background: ${({ type }) =>
+    type === "EVENT" ? theme.colors.green : theme.colors.lightBlue};
 `;
 
 export default Label;
