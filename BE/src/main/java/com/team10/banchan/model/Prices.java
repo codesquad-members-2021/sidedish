@@ -34,4 +34,8 @@ public class Prices {
     public String getDeliveryFee() {
         return DECIMAL_FORMAT.format(deliveryFee);
     }
+
+    public String getPoints() {
+        return DECIMAL_FORMAT.format(sPrice.movePointLeft(2));
+    }
 }
