@@ -11,7 +11,7 @@ const MoreButton = ({ count, maxCount, handleClick }) => {
 
 const StyledMoreBtn = styled.div`
   min-width: 1320px;
-  margin-top: 10px;
+  margin-top: 30px;
   height: 80px;
   background-color: ${({ theme: { colors } }) => colors.lightGray};
   display: flex;

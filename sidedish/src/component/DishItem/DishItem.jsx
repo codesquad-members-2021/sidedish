@@ -1,31 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import DishHover from './DishHover';
 
 const DishItem = ({
   item: { detail_hash, image, alt, delivery_type, title, description, s_price, n_price, badge },
   size,
 }) => {
+  const [isHover, setIsHover] = useState(false);
   const handleErrorImg = ({ target }) => {
     target.src =
       'https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
   };
 
   const handleMouseEnter = () => {
-    console.log('enter');
+    setIsHover(true);
   };
   const handleMouseLeave = () => {
-    console.log('leave');
+    setIsHover(false);
   };
 
   return (
     <StyledDishItem size={size} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <img
-        src={image}
-        alt={alt}
-        width={size === 'L' ? '384px' : '308px'}
-        height={size === 'L' ? '384px' : '308px'}
-        onError={handleErrorImg}
-      />
+      <div className="imgContainer">
+        {isHover && <DishHover delivery_type={delivery_type} size={size} />}
+        <img
+          src={image}
+          alt={alt}
+          width={size === 'L' ? '384px' : '308px'}
+          height={size === 'L' ? '384px' : '308px'}
+          onError={handleErrorImg}
+        />
+      </div>
       <div className="title">{title}</div>
       <div className="description">{description}</div>
       <div className="price">
@@ -47,6 +52,9 @@ export default DishItem;
 const StyledDishItem = styled.div`
   width: ${({ size }) => (size === 'L' ? '384px' : '308px')};
   height: ${({ size }) => (size === 'L' ? '540px' : '456px')};
+  .imgContainer {
+    position: relative;
+  }
   img {
     border-radius: 5px;
     margin-bottom: 16px;
