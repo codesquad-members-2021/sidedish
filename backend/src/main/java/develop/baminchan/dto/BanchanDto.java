@@ -33,7 +33,7 @@ public class BanchanDto {
 
     private String[] convertStringToArray(String str) {
         String[] arr = str.split(",");
-        return arr;
+        return (str == null) ? null : arr;
     }
 
     // Entity -> DTO
