@@ -5,7 +5,7 @@ import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
 
 const CategoryColumn = styled.div`
   width: 1280px;
-  /* height: 479px; */
+  padding: 0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
@@ -14,6 +14,7 @@ const CategorySlideBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 80px;
 `
 const Button = styled.button`
   font-size: 36px;
@@ -26,10 +27,8 @@ const Button = styled.button`
 `
 
 const ButtonLeft = styled(Button)`
-  margin-left: 16px;
 `
 const ButtonRight = styled(Button)`
-  margin-right: 16px;
 `
 
 const ItemCards = mokdata.map(data => <ItemCard data={data} size={'S'} />)

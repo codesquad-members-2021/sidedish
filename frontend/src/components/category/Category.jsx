@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import CategoryList from './CategoryList'
 
 const CategoryDiv = styled.div`
+  margin: 80px 0;
   width: 100%;
 `
 

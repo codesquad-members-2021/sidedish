@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import HeaderLeft from './HeaderLeft'
 import HeaderRight from './headerRight'
+import { theme } from '../Theme'
 function Header () {
   const HeaderBlock = styled.div`
     width: 100%;
@@ -8,7 +9,7 @@ function Header () {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: ${theme.padding.globalPadding};
     box-sizing: border-box;
   `
 

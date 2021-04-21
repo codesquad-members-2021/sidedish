@@ -4,7 +4,10 @@ import ItemCard from '../ItemCard'
 import { AlignTextCenter } from '../Theme'
 import mokData from '../mokdata'
 const MainWrapper = styled.div`
-  margin: 0 40px;
+  margin-top: 40px;
+  width: 100%;
+  padding: ${theme.padding.globalPadding};
+  box-sizing: border-box;
 `
 const TabWrapper = styled.div`
   display: flex;

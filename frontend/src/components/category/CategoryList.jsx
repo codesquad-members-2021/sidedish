@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { theme, Title } from '../Theme'
 import CategorySlide from './CategorySlide'
 const CategoryListBlock = styled.div`
-margin-bottom: 36px;`
+  margin: 0 40px;
+`
 
 function CategoryList ({ title }) {
   return (
