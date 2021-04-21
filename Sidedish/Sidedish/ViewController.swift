@@ -29,7 +29,6 @@ class ViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
-//                self?.collectionView.reloadData()
             }.store(in: &fetchItemSubscription)
         
         self.itemViewModel.errorHandler = { error in
@@ -53,7 +52,6 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 cell.dishImage.image = UIImage(data: data)
             }
-            // 네트워크로부터 데이터를 가져오면 이미지 저장하기
             self.fileManager.write(fileName: url.lastPathComponent, image: data)
         }.resume()
     }
@@ -71,24 +69,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let item = self.itemViewModel.items[indexPath.row]
         
         guard let url = URL(string: item.image) else { return ItemCollectionViewCell() }
-        //downloadImage(from: url, to: cell)
-        
-        // 캐시 데이터가 있으면 가져오기
+
         guard let imageData = fileManager.checkCacheData(with: url.lastPathComponent) else {
-            // 실패시, 서버에서 다운로드
             downloadImage(from: url, to: cell)
             return cell
         }
-//        cell.dishName.text = item.title
-//        cell.dishDescription.text = item.description
-//        cell.sellingPrice.text = item.sPrice
         cell.configure(model: item)
         cell.configure(image: UIImage(data: imageData) ?? UIImage())
-        // 로드?
-//        DispatchQueue.main.async {
-//            collectionView.reloadData()
-//        }
-        
+
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: item.nPrice ?? "")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         cell.originalPrice.attributedText = attributeString
