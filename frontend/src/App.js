@@ -1,10 +1,12 @@
 import "./App.css";
 import MainMenu from "./components/mainmenu/MainMenu";
+import Category from "./components/category/Category";
 import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 body{
+  width: 1440px;
   font-family: Noto Sans KR;
-  margin: 0 80px;
+  margin: 0 auto;
 }`;
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
     <>
       <GlobalStyle />
       <MainMenu />
+      <Category />
     </>
   );
 }

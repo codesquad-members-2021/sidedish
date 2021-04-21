@@ -3,6 +3,7 @@ import { theme, Title } from "../Theme";
 import ItemCard from "../ItemCard";
 import { AlignTextCenter } from "../Theme";
 import mokData from "../mokdata";
+
 const TabWrapper = styled.div`
   display: flex;
 `;
@@ -24,7 +25,6 @@ const MainColumn = styled.div`
   grid-gap: 30px;
   padding: 40px;
 `;
-
 function MainMenu() {
   return (
     <>
