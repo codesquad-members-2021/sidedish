@@ -25,9 +25,10 @@ class FoodCardHeaderView: UICollectionReusableView {
         super.awakeFromNib()
     }
     
-    func configureHeader(index : IndexPath) {
+    func configureHeader(index: IndexPath, count: Int) {
         sectionTitle.setTitle(Path.allCases[index.section].title, for: .normal)
-        sectionDescription.text = "0개 상품이 등록되어 있습니다"
+        print(count)
+        sectionDescription.text = "\(count)개 상품이 등록되어 있습니다"
     }
     
     @IBAction func titleButtonTouched(_ sender: UIButton) {

@@ -35,8 +35,8 @@ class SideDishViewController: UIViewController {
         }
         
         let headerViewRegistration = UICollectionView.SupplementaryRegistration<FoodCardHeaderView>.init(supplementaryNib: FoodCardHeaderView.nib, elementKind: UICollectionView.elementKindSectionHeader) { (headerView, _, indexPath) in
-            
-            headerView.configureHeader(index: indexPath)
+            let rows = self.sideDishViewModel.didFetchHeaderRowCount(with: Path.allCases[indexPath.section])
+            headerView.configureHeader(index: indexPath, count: rows)
         }
         
         self.dataSource = UICollectionViewDiffableDataSource<Path, Item>(collectionView: SideDishCollectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
@@ -51,7 +51,7 @@ class SideDishViewController: UIViewController {
     func bind() {
         var snap = NSDiffableDataSourceSnapshot<Path,Item>()
         snap.appendSections(Path.allCases)
-
+        
         sideDishViewModel.didFetchSideDishes { (path, items) in
             snap.appendItems(items, toSection: path)
             self.dataSource.apply(snap)

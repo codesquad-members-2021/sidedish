@@ -45,6 +45,10 @@ class SideDishViewModel {
             }.store(in: &cancellable)
     }
     
+    func didFetchHeaderRowCount(with path: Path) -> Int {
+        return sidedishManager.getRowCount(path: path)
+    }
+    
     func except(completion: @escaping ((String) ->())) {
         $errorMessage
             .dropFirst()

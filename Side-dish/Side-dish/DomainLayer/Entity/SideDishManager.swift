@@ -15,7 +15,7 @@ class SideDishManager {
     
     private var sideDishesInfo : [Path : [Item]] = [:]
     
-    func insert(path : Path, items : [Item]) {
+    func insert(path: Path, items: [Item]) {
         sideDishesInfo[path] = items
         NotificationCenter.default.post(name: NotificationName.updatePath,
                                         object: self,
