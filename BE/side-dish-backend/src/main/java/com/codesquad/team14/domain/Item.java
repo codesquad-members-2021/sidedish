@@ -13,6 +13,15 @@ public class Item {
     private List<Badge> badges;
     private List<DeliveryType> deliveryTypes;
     private List<String> thumbImages;
+    private Long categoryId;
+
+    public Item(Long id, String title, String description, int normalPrice, Long categoryId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.normalPrice = normalPrice;
+        this.categoryId = categoryId;
+    }
 
     public Long getId() {
         return id;
@@ -59,6 +68,10 @@ public class Item {
 
     public int getPoint() {
         return salePrice / 100;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
     }
 
     public void setTitle(String title) {
