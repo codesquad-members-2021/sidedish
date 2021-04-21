@@ -23,10 +23,6 @@ public class Order {
         this.itemId = itemId;
     }
 
-    public Order withId(Long id, int count, String itemId) {
-        return new Order(id, count, itemId);
-    }
-
     public static Order of(int count, String itemId) {
         return new Order(null, count, itemId);
     }
