@@ -1,4 +1,4 @@
-package com.codesquad.sidedish.event;
+package com.codesquad.sidedish.event.domain;
 
 import org.springframework.data.annotation.Id;
 
@@ -11,6 +11,10 @@ public class SidedishEventItem {
 
     public SidedishEventItem(Long sidedishEvent) {
         this.sidedishEvent = sidedishEvent;
+    }
+
+    public Long getSidedishEvent() {
+        return sidedishEvent;
     }
 
     @Override

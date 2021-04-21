@@ -1,4 +1,4 @@
-package com.codesquad.sidedish.event;
+package com.codesquad.sidedish.event.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

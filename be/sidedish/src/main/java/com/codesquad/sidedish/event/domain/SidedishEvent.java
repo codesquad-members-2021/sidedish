@@ -1,7 +1,6 @@
-package com.codesquad.sidedish.event;
+package com.codesquad.sidedish.event.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +21,18 @@ public class SidedishEvent {
 
     public Long getId() {
         return id;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public String getEventColor() {
+        return eventColor;
+    }
+
+    public Set<SidedishEventItem> getEventItems() {
+        return eventItems;
     }
 
     @Override
