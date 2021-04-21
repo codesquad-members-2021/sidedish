@@ -35,6 +35,7 @@ class SideDishViewController: UIViewController {
         }
         
         let headerViewRegistration = UICollectionView.SupplementaryRegistration<FoodCardHeaderView>.init(supplementaryNib: FoodCardHeaderView.nib, elementKind: UICollectionView.elementKindSectionHeader) { (headerView, _, indexPath) in
+            
             headerView.configureHeader(index: indexPath)
         }
         
@@ -74,6 +75,6 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 80)
+        return CGSize(width: collectionView.frame.width, height: 85)
     }
 }

@@ -26,7 +26,7 @@ enum Path: CaseIterable {
     case soup
     case side
     
-    var message : String {
+    var title : String {
         switch self {
         case .main:
             return "한그릇 뚝딱 메인요리"

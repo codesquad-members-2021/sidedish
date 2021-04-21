@@ -4,42 +4,39 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="FoodCardHeaderView" customModule="Side_dish" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="j3I-dI-U5x" customClass="FoodCardHeaderView" customModule="Side_dish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="111"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VvA-GB-cdc">
-                    <rect key="frame" x="0.0" y="24" width="320" height="32"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="EqW-b7-OK2">
+                    <rect key="frame" x="0.0" y="24" width="343" height="32"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPo-Wa-zDS">
-                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrW-iw-J9E">
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="32" id="Jpo-wr-JP9"/>
+                                <constraint firstAttribute="height" constant="32" id="5sP-SH-35M"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                            <state key="normal" title="tttt">
+                            <state key="normal" title="Title">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="titleButtonTouched:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Lfg-oM-BJ4"/>
+                                <action selector="titleButtonTouched:" destination="j3I-dI-U5x" eventType="touchUpInside" id="EQn-Sb-QTQ"/>
                             </connections>
                         </button>
-                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dLY-KQ-qs3">
-                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="23"/>
+                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fjF-JL-Ld2">
+                            <rect key="frame" x="0.0" y="0.0" width="81.5" height="0.0"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ft-Cv-qfZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="39.5" height="23"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="23" id="8mO-fr-dsN"/>
-                                    </constraints>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YWF-ne-SJk">
+                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -47,23 +44,18 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <viewLayoutGuide key="safeArea" id="5fp-Yr-irM"/>
             <constraints>
-                <constraint firstItem="VvA-GB-cdc" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="Nj4-iG-Idz"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="VvA-GB-cdc" secondAttribute="trailing" id="U7K-6x-GNN"/>
-                <constraint firstItem="VvA-GB-cdc" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="24" id="iH9-mK-HGO"/>
+                <constraint firstItem="5fp-Yr-irM" firstAttribute="trailing" secondItem="EqW-b7-OK2" secondAttribute="trailing" id="bLv-LS-YJh"/>
+                <constraint firstItem="EqW-b7-OK2" firstAttribute="top" secondItem="j3I-dI-U5x" secondAttribute="top" constant="24" id="bjD-ee-7kR"/>
+                <constraint firstItem="EqW-b7-OK2" firstAttribute="leading" secondItem="j3I-dI-U5x" secondAttribute="leading" id="grQ-na-uZ0"/>
             </constraints>
             <connections>
-                <outlet property="descriptionStackView" destination="dLY-KQ-qs3" id="0OO-I4-BWJ"/>
-                <outlet property="sectionDescription" destination="7ft-Cv-qfZ" id="o1l-eS-arY"/>
-                <outlet property="sectionTitle" destination="RPo-Wa-zDS" id="xuW-9H-qJ2"/>
+                <outlet property="descriptionStackView" destination="fjF-JL-Ld2" id="5kZ-qW-kKi"/>
+                <outlet property="sectionDescription" destination="YWF-ne-SJk" id="h6i-bM-3d6"/>
+                <outlet property="sectionTitle" destination="RrW-iw-J9E" id="aqt-Dh-tAt"/>
             </connections>
-            <point key="canvasLocation" x="111.59420289855073" y="171.09375"/>
+            <point key="canvasLocation" x="50.000000000000007" y="135.60267857142856"/>
         </collectionReusableView>
     </objects>
-    <resources>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

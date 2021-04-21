@@ -39,34 +39,8 @@ class FoodCardCell: UICollectionViewCell {
         setBadge(badges: item.badge)
     }
     
-    func getImageData(imageURLString: String) -> AnyPublisher<Data, NetworkError>{
-        guard let safeURL = URL(string: imageURLString) else {
-            return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
-        }
-        
-        return URLSession.shared.dataTaskPublisher(for: safeURL)
-            .mapError { (_) -> Error in
-                NetworkError.invalidRequest
-            }
-            .tryMap { (data, response) -> Data in
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    throw NetworkError.invalidResponse
-                }
-                
-                guard 200..<300 ~= httpResponse.statusCode else {
-                    throw NetworkError.invalidStatusCode(httpResponse.statusCode)
-                }
-                guard !data.isEmpty else {
-                    throw NetworkError.emptyData
-                }
-                return data
-            }.mapError {
-                $0 as! NetworkError
-            }.eraseToAnyPublisher()
-    }
-    
     func setImage(itemURLString: String) {
-        getImageData(imageURLString: itemURLString)
+        ImageUseCase.execute(imageURLString: itemURLString)
             .receive(on: DispatchQueue.main)
             .sink { (complete) in
         } receiveValue: { (data) in

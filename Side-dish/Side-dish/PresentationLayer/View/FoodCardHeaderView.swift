@@ -26,12 +26,12 @@ class FoodCardHeaderView: UICollectionReusableView {
     }
     
     func configureHeader(index : IndexPath) {
-        sectionTitle.setTitle(Path.allCases[index.section].message, for: .normal)
+        sectionTitle.setTitle(Path.allCases[index.section].title, for: .normal)
         sectionDescription.text = "0개 상품이 등록되어 있습니다"
     }
     
     @IBAction func titleButtonTouched(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.descriptionStackView.isHidden = !self.descriptionStackView.isHidden
             self.layoutIfNeeded()
         }
