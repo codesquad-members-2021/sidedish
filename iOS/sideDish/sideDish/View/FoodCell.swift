@@ -40,6 +40,6 @@ extension FoodCell {
         foodInfoStackView = FoodInfoStackView(frame: .zero)
         addSubview(foodInfoStackView)
         foodInfoStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 130).isActive = true
-        foodInfoStackView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        foodInfoStackView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
     }
 }
