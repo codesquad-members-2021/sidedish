@@ -9,9 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var dishTableView: UITableView!
+    @IBOutlet weak var dishCollectionView: UICollectionView!
     
-    var datasource : UITableViewDiffableDataSource<section,DishCard>!
+    var datasource : UICollectionViewDiffableDataSource<section,DishCardCell>!
     let colorDictionary = ["이벤트특가" : UIColor.systemGreen, "런칭특가" : UIColor.systemBlue]
     
     override func viewDidLoad() {
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
 
         datasource = configureDataSource()
 
-        let testCard = DishCard.init()
-        let testCard1 = DishCard.init()
-        let testCard2 = DishCard.init()
+        let testCard = DishCardCell.init()
+        let testCard1 = DishCardCell.init()
+        let testCard2 = DishCardCell.init()
 
-        var snapshot = NSDiffableDataSourceSnapshot<section,DishCard>()
+        var snapshot = NSDiffableDataSourceSnapshot<section,DishCardCell>()
         snapshot.appendSections([section.main])
         snapshot.appendItems([testCard], toSection: section.main)
         snapshot.appendSections([section.soup])
@@ -34,28 +34,27 @@ class ViewController: UIViewController {
 //            snapshot.appendItems([testCard], toSection: section)
 //        }
 
-        datasource.apply(snapshot, animatingDifferences: true, completion: nil)
+        datasource.apply(snapshot)
     }
     
-    func configureDataSource() -> UITableViewDiffableDataSource<section,DishCard> {
-        let dataSource = DishTableViewDiffableDataSource(tableView: dishTableView, cellProvider: { tableView, indexPath, customCell in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DishCard", for: indexPath) as? DishCard else {
-                return UITableViewCell()
+    func configureDataSource() -> UICollectionViewDiffableDataSource<section,DishCardCell> {
+        let dataSource = UICollectionViewDiffableDataSource<section,DishCardCell> (collectionView: dishCollectionView, cellProvider: { collectionView,indexPath,customCell in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCardCell.reuseIdentifier, for: indexPath) as? DishCardCell else {
+                return UICollectionViewCell()
             }
-    //        cell.dishImage.image = UIImage()
+            
             cell.title.text = "title1123123123123123123123123123"
             
             cell.title.numberOfLines = 0
-//            cell.body.text = "body2"
+            cell.body.text = "body2"
             
-            cell.eventStackView.spacing = 10
-            cell.eventStackView.distribution = .equalCentering
+            cell.eventStackView.spacing = 4
             cell.eventStackView.addArrangedSubview(self.createEventLabel(text: "이벤트특가"))
             cell.eventStackView.addArrangedSubview(self.createEventLabel(text: "런칭특가"))
             
             return cell
-            
         })
+        
         return dataSource
     }
     
@@ -76,12 +75,6 @@ class ViewController: UIViewController {
         return label
     }
     
-}
-
-class DishTableViewDiffableDataSource : UITableViewDiffableDataSource<section, DishCard> {
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return snapshot().sectionIdentifiers[section].rawValue.uppercased()
-    }
 }
 
 enum section : String, CaseIterable {
