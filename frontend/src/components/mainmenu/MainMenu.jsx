@@ -1,20 +1,20 @@
-import styled from 'styled-components'
-import { theme, Title } from '../Theme'
-import ItemCard from '../ItemCard'
-import { AlignTextCenter } from '../Theme'
-import mokData from '../mokdata'
+import styled from "styled-components";
+import { theme, Title } from "../Theme";
+import ItemCard from "../ItemCard";
+import { AlignTextCenter } from "../Theme";
+import mokData from "../mokdata";
 
 const TabWrapper = styled.div`
   display: flex;
-`
+`;
 
 const Tab = styled(AlignTextCenter)`
-  width: 201px;
-  height: 58px;
-  background-color: ${theme.colors.skyblue};
-  margin-right: 5px;
-  font-size: ${theme.fontSize.btn};
-`
+width: 201px;
+height 58px;
+background-color: ${theme.colors.skyblue};
+margin-right: 5px;
+font-size: ${theme.fontSize.large};
+`;
 
 const MainColumn = styled.div`
   width: 1280px;
@@ -24,10 +24,8 @@ const MainColumn = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
   padding: 40px;
-`
-const itemCards = mokData.map(data => <ItemCard data={data} size={'L'} />)
-
-function MainMenu () {
+`;
+function MainMenu() {
   return (
     <>
       <Title>후기가 증명하는 베스트 반찬</Title>
@@ -38,9 +36,13 @@ function MainMenu () {
         <Tab>간편한 덮밥요리</Tab>
         <Tab>우리아이 영양반찬</Tab>
       </TabWrapper>
-      <MainColumn>{itemCards}</MainColumn>
+      <MainColumn>
+        {mokData.map((data, idx) => (
+          <ItemCard key={idx} data={data} size={"L"}></ItemCard>
+        ))}
+      </MainColumn>
     </>
-  )
+  );
 }
 
-export default MainMenu
+export default MainMenu;
