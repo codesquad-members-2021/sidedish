@@ -16,14 +16,18 @@ struct Endpoint {
         components.scheme = "https"
         components.host = "45a2d464-7981-45cc-8b6d-4667ad9bf6f5.mock.pstmn.io"
         components.path = "\(path)"
-        
+        print(path)
         let url = components.url
         assert(url != nil, "url is nil")
 
         return url!
     }
     
-    static func get(path: String) -> Self {
+    static func getCategory(path: String) -> Self {
         return Endpoint(path: "/\(path)")
+    }
+
+    static func getDetail(path category: String, path id: Int) -> Self {
+        return Endpoint(path: "/\(category)/\(id)")
     }
 }

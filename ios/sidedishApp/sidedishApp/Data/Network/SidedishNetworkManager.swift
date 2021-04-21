@@ -27,17 +27,17 @@ class SidedishNetworkManager: SidedishNetworkManagerProtocol {
     }
     
     func getMain() -> AnyPublisher<Main, Error> {
-        let endpoint = Endpoint.get(path: "main")
+        let endpoint = Endpoint.getCategory(path: "main")
         return networkManager.get(type: Main.self, url: endpoint.url)
     }
     
     func getSoup() -> AnyPublisher<Soup, Error> {
-        let endpoint = Endpoint.get(path: "soup")
+        let endpoint = Endpoint.getCategory(path: "soup")
         return networkManager.get(type: Soup.self, url: endpoint.url)
     }
     
     func getSide() -> AnyPublisher<Side, Error> {
-        let endpoint = Endpoint.get(path: "side")
+        let endpoint = Endpoint.getCategory(path: "side")
         return networkManager.get(type: Side.self, url: endpoint.url)
     }
 }

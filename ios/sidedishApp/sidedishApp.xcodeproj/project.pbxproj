@@ -58,6 +58,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		764CE0A8263003A200DED09C /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		764CE0AD2630079C00DED09C /* DetailNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNetworkManager.swift; sourceTree = "<group>"; };
+		764CE0B2263008C500DED09C /* DetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCase.swift; sourceTree = "<group>"; };
+		764CE0B7263008E200DED09C /* DetailUseCasePort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCasePort.swift; sourceTree = "<group>"; };
+		764CE0BC26300A3000DED09C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		764CE0C12630110500DED09C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		764CE0C62630167E00DED09C /* DetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
 		9386C0FC262D7400008645D9 /* sidedishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9386C0FF262D7400008645D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9386C101262D7400008645D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +192,8 @@
 				9386C16D262D8C02008645D9 /* Main.swift */,
 				9386C17E262DC52C008645D9 /* Soup.swift */,
 				9386C183262DC53B008645D9 /* Side.swift */,
+				764CE0A8263003A200DED09C /* Detail.swift */,
+				764CE0C62630167E00DED09C /* DetailItem.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -211,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				9386C103262D7400008645D9 /* SidedishViewController.swift */,
+				764CE0C12630110500DED09C /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +242,7 @@
 			children = (
 				9386C161262D8BA9008645D9 /* SidedishViewModel.swift */,
 				9386C1D1262FC561008645D9 /* SidedishViewModelType.swift */,
+				764CE0BC26300A3000DED09C /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 				9386C18D262E51F1008645D9 /* Endpoint.swift */,
 				9386C19A262E52C6008645D9 /* NetworkManager.swift */,
 				9386C19F262E5334008645D9 /* SidedishNetworkManager.swift */,
+				764CE0AD2630079C00DED09C /* DetailNetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
