@@ -1,9 +1,7 @@
 package com.codesquad.sidedish.utils;
 
 import com.codesquad.sidedish.web.sidedish.SidedishDTO;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
