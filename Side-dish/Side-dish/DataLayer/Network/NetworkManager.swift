@@ -18,6 +18,7 @@ class NetworkManager: NetworkManageable {
         guard let urlRequest = makeURLRequest(path: path, method: method) else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
+        
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
             .mapError { _ in
                 NetworkError.invalidRequest

@@ -30,7 +30,7 @@ class FoodCardCell: UICollectionViewCell {
         self.itemImageView.layer.cornerRadius = 10
     }
     
-    func configure(item: Item) {
+    func configure(with item: Item) {
         setImage(itemURLString: item.image)
         itemTitleLabel.text = item.title
         itemBodyLabel.text = item.description
@@ -39,55 +39,47 @@ class FoodCardCell: UICollectionViewCell {
         setBadge(badges: item.badge)
     }
     
-    func getImageData(imageURLString: String) -> AnyPublisher<Data, NetworkError>{
-        guard let safeURL = URL(string: imageURLString) else {
-            return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
-        }
-        
-        return URLSession.shared.dataTaskPublisher(for: safeURL)
-            .mapError { (_) -> Error in
-                NetworkError.invalidRequest
-            }
-            .tryMap { (data, response) -> Data in
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    throw NetworkError.invalidResponse
-                }
-                
-                guard 200..<300 ~= httpResponse.statusCode else {
-                    throw NetworkError.invalidStatusCode(httpResponse.statusCode)
-                }
-                guard !data.isEmpty else {
-                    throw NetworkError.emptyData
-                }
-                return data
-            }.mapError {
-                $0 as! NetworkError
-            }.eraseToAnyPublisher()
-    }
-    
     func setImage(itemURLString: String) {
-        getImageData(imageURLString: itemURLString)
+        ImageUseCase.execute(imageURLString: itemURLString)
             .receive(on: DispatchQueue.main)
             .sink { (complete) in
-            // error
         } receiveValue: { (data) in
             self.itemImageView.image = UIImage(data: data)
         }.store(in: &cancellable)
     }
     
     func setNPrice(nPrice: String?) {
-        guard let nPrice = nPrice else { return }
+        guard let nPrice = nPrice else {
+            hideView(UI: nPriceLabel)
+            return
+        }
+        showView(UI: nPriceLabel)
         let strokeEffect: [NSAttributedString.Key : Any] = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
         let strokeString = NSAttributedString(string: "\(nPrice)원", attributes: strokeEffect)
         self.nPriceLabel.attributedText = strokeString
     }
     
     func setBadge(badges: [Badge]?) {
-        guard let badges = badges else { return }
+        guard let badges = badges, !(badges.isEmpty) else {
+            hideView(UI: badgeStackView)
+            return
+        }
+        
+        showView(UI: badgeStackView)
+        self.badgeStackView.arrangedSubviews.forEach { (view) in
+                    view.removeFromSuperview()
+        }
         badges.forEach { (badge) in
-            let badgeLabel = BadgeLabel(withInsets: 4, 4, 8, 8)
+            let badgeLabel = BadgeLabel()
             badgeLabel.configure(with: badge)
             self.badgeStackView.addArrangedSubview(badgeLabel)
         }
+    }
+    
+    private func hideView<T : UIView>(UI : T) {
+        UI.isHidden = true
+    }
+    private func showView<T : UIView>(UI : T) {
+        UI.isHidden = false
     }
 }
