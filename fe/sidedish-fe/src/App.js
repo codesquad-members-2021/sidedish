@@ -1,16 +1,10 @@
 import './App.css';
+import { Header } from "./components/Header/Header.jsx"
 
 function App() {
   return (
     <div className="App">
-      <div className="Header">
-        <h1>BANCHAN 타이틀</h1>
-        <div>Header Title</div>
-        <div>Header Link</div>
-        <div>SearchBox</div>
-        <div>Login</div>
-        <div>Cart</div>
-      </div>
+      <Header></Header>
       <div className="BestMenu">
         <h1>후기가 증명하는 베스트 반찬</h1>
         <div></div>
