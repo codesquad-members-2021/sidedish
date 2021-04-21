@@ -22,7 +22,7 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     @PersistenceConstructor
-    public Category(Long id, String name) {
+    private Category(Long id, String name) {
         this.id = id;
         this.name = name;
     }

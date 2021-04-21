@@ -30,7 +30,7 @@ public class Item {
     private final String image;
 
     @PersistenceConstructor
-    public Item(String id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock) {
+    private Item(String id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock) {
         this.id = id;
         this.title = title;
         this.description = description;

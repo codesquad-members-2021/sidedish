@@ -17,7 +17,7 @@ public class Order {
     private final String itemId;
 
     @PersistenceConstructor
-    public Order(Long id, int count, String itemId) {
+    private Order(Long id, int count, String itemId) {
         this.id = id;
         this.count = count;
         this.itemId = itemId;
