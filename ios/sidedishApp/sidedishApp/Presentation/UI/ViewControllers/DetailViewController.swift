@@ -6,13 +6,19 @@
 //
 
 import UIKit
+import Combine
 
 class DetailViewController: UIViewController {
-
+    private var category: String!
+    private var id: Int!
+    private var cancellables: Set<AnyCancellable> = []
+    private var detailViewModel: DetailViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        detailViewModel = DetailViewModel()
+        fetchData()
+//        detailViewModel.fetchData(path: <#T##String#>, path: <#T##Int#>)
+           // Do any additional setup after loading the view.
     }
     
 
@@ -25,5 +31,16 @@ class DetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    private func fetchData() {
+        detailViewModel.dataChanged
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                
+            }
+            .store(in: &cancellables)
+        //        detailViewModel.fetchData(path: self.category, path: self.id)
+        detailViewModel.fetchData(path: "main", path: 0)
+    }
 
 }
+
