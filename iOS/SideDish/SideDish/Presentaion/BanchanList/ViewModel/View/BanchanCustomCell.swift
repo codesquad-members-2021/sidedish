@@ -25,5 +25,21 @@ class BanchanCustomCell: UICollectionViewCell {
     static var nib: UINib {
         return UINib(nibName: identifer, bundle: nil)
     }
+    
+    var banchan: Banchan? {
+        didSet{
+            guard let url = URL(string: "\(banchan!.image)"),
+                  let data = try? Data(contentsOf: url) else {
+                return
+            }
+            
+            imageView.image = UIImage(data: data)
+            titleLabel.text = banchan?.title
+            descriptionLabel.text = banchan?.description
+            netPriceLabel.text = "\(banchan?.netPrice ?? "")"
+            salePriceLabel.text = "\(banchan?.salePrice ?? "")"
+            priceTypeLabel.text = "\(banchan?.badge ?? [])"
+        }
+    }
 
 }
