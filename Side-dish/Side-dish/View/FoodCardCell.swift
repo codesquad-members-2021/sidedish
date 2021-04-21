@@ -30,7 +30,7 @@ class FoodCardCell: UICollectionViewCell {
         self.itemImageView.layer.cornerRadius = 10
     }
     
-    func configure(item: Item) {
+    func configure(with item: Item) {
         setImage(itemURLString: item.image)
         itemTitleLabel.text = item.title
         itemBodyLabel.text = item.description
@@ -75,18 +75,37 @@ class FoodCardCell: UICollectionViewCell {
     }
     
     func setNPrice(nPrice: String?) {
-        guard let nPrice = nPrice else { return }
+        guard let nPrice = nPrice else {
+            hideView(UI: nPriceLabel)
+            return
+        }
+        showView(UI: nPriceLabel)
         let strokeEffect: [NSAttributedString.Key : Any] = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
         let strokeString = NSAttributedString(string: "\(nPrice)원", attributes: strokeEffect)
         self.nPriceLabel.attributedText = strokeString
     }
     
     func setBadge(badges: [Badge]?) {
-        guard let badges = badges else { return }
+        guard let badges = badges, !(badges.isEmpty) else {
+            hideView(UI: badgeStackView)
+            return
+        }
+        
+        showView(UI: badgeStackView)
+        self.badgeStackView.arrangedSubviews.forEach { (view) in
+                    view.removeFromSuperview()
+        }
         badges.forEach { (badge) in
-            let badgeLabel = BadgeLabel(withInsets: 4, 4, 8, 8)
+            let badgeLabel = BadgeLabel()
             badgeLabel.configure(with: badge)
             self.badgeStackView.addArrangedSubview(badgeLabel)
         }
+    }
+    
+    private func hideView<T : UIView>(UI : T) {
+        UI.isHidden = true
+    }
+    private func showView<T : UIView>(UI : T) {
+        UI.isHidden = false
     }
 }

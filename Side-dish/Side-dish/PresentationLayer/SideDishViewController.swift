@@ -8,6 +8,12 @@
 import UIKit
 import Combine
 
+enum Section: String, CaseIterable {
+    case main = "한그릇 뚝딱 메인요리"
+    case soup = "김이 모락모락 국,찌개"
+    case side = "언제 먹어도 든든한 밑반찬"
+}
+
 class SideDishViewController: UIViewController {
     
     @IBOutlet weak var SideDishCollectionView: UICollectionView!
@@ -16,29 +22,15 @@ class SideDishViewController: UIViewController {
     
     private var dataSource : UICollectionViewDiffableDataSource<Section , Item>!
     
-    enum Section: String, CaseIterable {
-        case main = "한그릇 뚝딱 메인요리"
-        case soup = "김이 모락모락 국,찌개"
-        case side = "언제 먹어도 든든한 밑반찬"
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        SideDishCollectionView.register(FoodCardCell.nib, forCellWithReuseIdentifier: FoodCardCell.identifier)
         
         SideDishCollectionView.delegate = self
-        var snap = NSDiffableDataSourceSnapshot<Section,Item>()
-        snap.appendSections(Section.allCases)
-        sideDishViewModel.test { (sideDish) in
-            snap.appendItems(sideDish, toSection: .main)
-            self.dataSource.apply(snap)
-        }
-        sideDishViewModel.occur { (t) in
-            print("test : \(t)")
-        }
         
         configureDataSource()
+        bind()
     }
     
     func depend(sideDishViewModel: SideDishViewModel) {
@@ -46,22 +38,35 @@ class SideDishViewController: UIViewController {
     }
     
     func configureDataSource() {
-//        let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item> { (cell, indexPath, item) in
-//
-////            let index = sidedishes[indexPath.row]
-//
-//            cell.configure(item: item)
-//        }
+        let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item>.init(cellNib: FoodCardCell.nib) { (cell, indexPath, item) in
+            cell.configure(with: item)
+        }
         self.dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: SideDishCollectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCardCell.identifier, for: indexPath) as? FoodCardCell else { return UICollectionViewCell() }
-
-            cell.configure(item: item)
-            return cell
-            
-        
-//            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item) as FoodCardCell
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item) as FoodCardCell
         })
+    }
+    
+    func bind() {
+        var snap = NSDiffableDataSourceSnapshot<Section,Item>()
+        snap.appendSections(Section.allCases)
+//        sideDishViewModel.fetchMain { (sideDish) in
+//            snap.appendItems(sideDish, toSection: .main)
+//            self.dataSource.apply(snap)
+//        }
+        sideDishViewModel.fetchMain1 { (sideDish) in
+            print("fetchMain1 들어온 데이터 \(sideDish)")
+            snap.appendItems(sideDish, toSection: .main)
+            self.dataSource.apply(snap)
+        }
+        
+        sideDishViewModel.fetchMain2 { (sideDish) in
+            print("fetchMain2 들어온 데이터 \(sideDish)")
+            snap.appendItems(sideDish, toSection: .soup)
+            self.dataSource.apply(snap)
+        }
+        
+        sideDishViewModel.except { (t) in
+        }
     }
 }
 
