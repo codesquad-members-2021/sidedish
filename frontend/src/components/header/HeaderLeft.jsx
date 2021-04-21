@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import MenuTab from './MenuTab'
 function HeaderLeft () {
   const HeaderLeftBlock = styled.div`
     display: flex;
@@ -16,15 +16,21 @@ function HeaderLeft () {
     text-align: left;
   `
   const HeaderMenu = styled.ul`
-    width: 420px;
+    width: 393px;
     height: 23px;
-    margin-left: 56px;
+    margin-left: 47px;
     display: grid;
-    padding: 0;
-    grid-gap: 24px;
+    grid-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
+    font-size: 16px;
     li {
-      list-style: none;
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        ul {
+          display: flex;
+        }
+      }
     }
   `
 
@@ -32,9 +38,18 @@ function HeaderLeft () {
     <HeaderLeftBlock>
       <HeaderLogo>BANCHAN</HeaderLogo>
       <HeaderMenu>
-        <li>든든한 메인요리</li>
-        <li>뜨끈한 국물요리</li>
-        <li>정갈한 밑반찬</li>
+        <li>
+          든든한 메인요리
+          <MenuTab val={['육류 요리', '해산물 요리']} />
+        </li>
+        <li>
+          뜨끈한 국물요리
+          <MenuTab val={['국/탕/찌개']} />
+        </li>
+        <li>
+          정갈한 밑반찬
+          <MenuTab val={['나물/무침', '조림/볶음', '절임/장아찌']} />
+        </li>
       </HeaderMenu>
     </HeaderLeftBlock>
   )

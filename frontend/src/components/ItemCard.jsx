@@ -1,25 +1,30 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { theme, AlignTextCenter } from "./Theme";
-// import DeliveryMsg from "./DeliveryMsg";
-
+import line from "./line.png";
 const Card = styled.div`
   margin-top: 40px;
   width: ${(props) => {
     return props.size === "L" ? "384px" : "308px";
   }};
 `;
-const IMG = styled.img`
-  width: ${props => {
-    return props.size === 'L' ? '384px' : '308px'
+const IMG = styled(AlignTextCenter)`
+  position: relative;
+  width: ${(props) => {
+    return props.size === "L" ? "384px" : "308px";
   }};
-  height: ${props => {
-    return props.size === 'L' ? '384px' : '308px'
+  height: ${(props) => {
+    return props.size === "L" ? "384px" : "308px";
   }};
   margin-bottom: 32px;
-  filter: ${(props) => {
-    return props.hoverState ? "brightness(50%)" : "brightness(100%)";
-  }};
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  &:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(${(props) => props.image});
+    div {
+      opacity: 1;
+    }
+  }
 `;
 const ItemTitle = styled.div`
   font-size: ${theme.fontSize.medium};
@@ -32,7 +37,7 @@ const ItemDesc = styled.div`
   margin-bottom: 16px;
 `;
 const ItemPrice = styled.span`
-  font-size: ${theme.fontSize.price};
+  font-size: ${theme.fontSize.larger};
   font-weight: Bold;
   margin-right: 10px;
 `;
@@ -40,45 +45,62 @@ const ItemPriceNormal = styled.span`
   text-decoration: line-through;
   color: ${theme.colors.grey_text};
 `;
+const BadgeWrapper = styled.div`
+  display: flex;
+`;
 const Badge = styled(AlignTextCenter)`
   width: 97px;
   height: 28px;
   margin-top: 20px;
-  background-color: ${theme.colors.green};
+  margin-right: 20px;
+  background-color: ${(props) => {
+    return props.val === "이벤트특가"
+      ? theme.colors.green
+      : theme.colors.skyblue_badge;
+  }};
   color: ${theme.colors.white};
   font-weight: Bold;
   font-size: ${theme.fontSize.small};
   border-radius: 10px;
 `;
-
+const DeliveryBlock = styled.div`
+  color: ${theme.colors.white};
+  font-size: ${theme.fontSize.larger};
+  font-weight: ${theme.fontWeight.bold};
+  opacity: 0;
+`;
+const imgPosition = {
+  position: "relative",
+  top: "-7px",
+  left: "-7px",
+};
 function ItemCard({ data, size }) {
-  const [hoverState, setHoverState] = useState(false);
-  const handleMouseHover = () => {
-    setHoverState(!hoverState);
-  };
   return (
     <>
-      <Card
-        size={size}
-        onMouseEnter={handleMouseHover}
-        onMouseLeave={handleMouseHover}
-      >
-        <IMG
-          size={size}
-          hoverState={hoverState}
-          src={data.image}
-          alt={data.alt}
-        />
-        {/* <DeliveryMsg /> */}
+      <Card size={size}>
+        <IMG size={size} image={data.image} alt={data.alt}>
+          <DeliveryBlock>
+            <div>새벽배송</div>
+            <img style={imgPosition} src={line} alt="line"></img>
+            <div>전국택배</div>
+          </DeliveryBlock>
+        </IMG>
 
         <ItemTitle>{data.alt}</ItemTitle>
         <ItemDesc>{data.description}</ItemDesc>
         <ItemPrice>{data.s_price ? data.s_price : data.p_price}</ItemPrice>
         <ItemPriceNormal>{data.s_price && data.n_price}원</ItemPriceNormal>
-        {data.badge && <Badge>{data.badge}</Badge>}
+        <BadgeWrapper>
+          {data.badge &&
+            data.badge.map((el, idx) => (
+              <Badge key={idx} val={el}>
+                {el}
+              </Badge>
+            ))}
+        </BadgeWrapper>
       </Card>
     </>
   );
 }
 
-export default ItemCard
+export default ItemCard;

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import CategoryList from './CategoryList'
 
 const CategoryDiv = styled.div`
-  width: 1440px;
+  width: 100%;
 `
 
 const Button = styled.button`
@@ -14,7 +14,7 @@ const Button = styled.button`
   cursor: pointer;
 `
 const CategoryBtn = styled(Button)`
-  width: 1440px;
+  width: 100%;
   height: 100px;
   background-color: #f5f5f7;
   font-size: 18px;

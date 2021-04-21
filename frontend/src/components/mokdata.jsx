@@ -21,7 +21,7 @@ const mokData = [
     description: "오늘 저녁은 이상하게 안주빨을 세워보고 싶다!",
     n_price: "32,800",
     s_price: "24,000원",
-    badge: ["이벤트특가"],
+    badge: ["이벤트특가", "론칭특가"],
   },
   {
     detail_hash: "H7F20",
