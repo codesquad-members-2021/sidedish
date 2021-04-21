@@ -22,7 +22,7 @@ const BestSidedishList = ({ focusedCategory }) => {
 export default BestSidedishList;
 
 const BestListContainer = styled.div`
-  min-width: 1320px;
+  min-width: 1280px;
   display: flex;
   justify-content: space-evenly;
   background: #eef4fa;

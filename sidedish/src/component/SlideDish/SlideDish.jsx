@@ -41,7 +41,7 @@ const Header = styled.div`
 const StyledSlideList = styled.div`
   position: relative;
   display: flex;
-  min-width: 1320px;
+  min-width: 1280px;
   justify-content: space-between;
 `;
 

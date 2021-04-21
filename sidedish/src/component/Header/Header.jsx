@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   width: 100%;
-  min-width: 1320px;
+  min-width: 1280px;
   height: 70px;
   display: grid;
   grid-template-columns: 0.5fr 1.5fr 1fr;
