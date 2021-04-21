@@ -1,14 +1,11 @@
 package com.team10.banchan.model;
 
 public class Badge {
+
     private final BadgeType badgeType;
 
     Badge(BadgeType badgeType) {
         this.badgeType = badgeType;
-    }
-
-    public String name() {
-        return this.badgeType.name;
     }
 
     public static Badge event() {
@@ -17,6 +14,10 @@ public class Badge {
 
     public static Badge launching() {
         return new Badge(BadgeType.LAUNCHING);
+    }
+
+    public String getName() {
+        return this.badgeType.name;
     }
 
     enum BadgeType {

@@ -1,14 +1,11 @@
 package com.team10.banchan.model;
 
 public class DeliveryDay {
+
     private final TheDayOfWeek theDayOfWeek;
 
     DeliveryDay(TheDayOfWeek theDayOfWeek) {
         this.theDayOfWeek = theDayOfWeek;
-    }
-
-    public String korean() {
-        return theDayOfWeek.korean;
     }
 
     public static DeliveryDay monday() {
@@ -37,6 +34,10 @@ public class DeliveryDay {
 
     public static DeliveryDay sunday() {
         return new DeliveryDay(TheDayOfWeek.SUN);
+    }
+
+    public String korean() {
+        return theDayOfWeek.korean;
     }
 
     enum TheDayOfWeek {
