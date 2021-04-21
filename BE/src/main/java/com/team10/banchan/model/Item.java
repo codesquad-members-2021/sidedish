@@ -1,6 +1,7 @@
 package com.team10.banchan.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Embedded;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,13 +15,15 @@ public class Item {
     private final Long section;
     private final Long category;
 
-    private final String alt;
-    private final String topImage;
-    private final String title;
-    private final String description;
-    private final BigDecimal nPrice;
-    private final BigDecimal sPrice;
-    private final BigDecimal deliveryFee;
+    @Embedded.Nullable
+    private final TopImage topImage;
+
+    @Embedded.Nullable
+    private final Description description;
+
+    @Embedded.Nullable
+    private final Prices prices;
+
     private final Integer stock;
 
     private final List<DetailSection> detailSections;
@@ -29,17 +32,19 @@ public class Item {
     private final Set<DeliveryType> deliveryTypes;
     private final Set<DeliveryDay> deliveryDays;
 
-    Item(Long id, Long section, Long category, String alt, String topImage, String title, String description, BigDecimal nPrice, BigDecimal sPrice, BigDecimal deliveryFee, Integer stock, List<DetailSection> detailSections, List<ThumbImage> thumbImages, Set<Badge> badges, Set<DeliveryType> deliveryTypes, Set<DeliveryDay> deliveryDays) {
+    Item(Long id, Long section, Long category,
+         TopImage topImage,
+         Description description,
+         Prices prices,
+         Integer stock,
+         List<DetailSection> detailSections, List<ThumbImage> thumbImages,
+         Set<Badge> badges, Set<DeliveryType> deliveryTypes, Set<DeliveryDay> deliveryDays) {
         this.id = id;
         this.section = section;
         this.category = category;
-        this.alt = alt;
         this.topImage = topImage;
-        this.title = title;
         this.description = description;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
-        this.deliveryFee = deliveryFee;
+        this.prices = prices;
         this.stock = stock;
         this.detailSections = detailSections;
         this.thumbImages = thumbImages;
@@ -60,34 +65,17 @@ public class Item {
         return category;
     }
 
-    public String getAlt() {
-        return alt;
-    }
-
-    public String getTopImage() {
+    public TopImage getTopImage() {
         return topImage;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
 
-    public BigDecimal getNPrice() {
-        return nPrice;
+    public Prices getPrices() {
+        return prices;
     }
-
-    public BigDecimal getSPrice() {
-        return sPrice;
-    }
-
-    public BigDecimal getDeliveryFee() {
-        return deliveryFee;
-    }
-
     public Integer getStock() {
         return stock;
     }
@@ -133,11 +121,14 @@ public class Item {
     }
 
     public static Item newItem(Long section, Long category,
-                               String alt, String topImage, String title, String description,
-                               BigDecimal nPrice, BigDecimal sPrice, BigDecimal deliveryFee, Integer stock) {
+                               TopImage topImage, Description description,
+                               Prices prices,
+                               Integer stock) {
         return new Item(null, section, category,
-                alt, topImage, title, description,
-                nPrice, sPrice, deliveryFee, stock,
+                topImage,
+                description,
+                prices,
+                stock,
                 new ArrayList<>(), new ArrayList<>(), new HashSet<>(), new HashSet<>(), new HashSet<>());
     }
 }
