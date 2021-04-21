@@ -48,7 +48,14 @@ class SideDishViewController: UIViewController {
             self.dataSource.apply(snap)
         }
         
-        sideDishViewModel.except { (t) in
+        sideDishViewModel.except { (error) in
+            self.triggerAlert(by: error)
+        }
+    }
+    
+    private func triggerAlert(by error : String) {
+        DispatchQueue.main.async {
+            self.present(Alert.controller(title : error),animated: true)
         }
     }
 }
