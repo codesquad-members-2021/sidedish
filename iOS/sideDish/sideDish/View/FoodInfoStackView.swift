@@ -4,8 +4,8 @@ class FoodInfoStackView: UIStackView {
     
     var foodNameLabel: UILabel!
     var foodDescriptionLabel: UILabel!
-    var eventInfoLabel: UILabel?
     var priceStackView: PriceStackView!
+    var eventStackView: EventInfoStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +28,7 @@ extension FoodInfoStackView {
         configureFoodNameLabel()
         configureFoodDescriptionLabel()
         configurePriceStackView()
+        configureEventStackView()
     }
     
     private func configureMainView() {
@@ -60,5 +61,10 @@ extension FoodInfoStackView {
     private func configurePriceStackView() {
         priceStackView = PriceStackView(frame: .zero)
         addArrangedSubview(priceStackView)
+    }
+    
+    private func configureEventStackView() {
+        eventStackView = EventInfoStackView(frame: .zero)
+        addArrangedSubview(eventStackView)
     }
 }
