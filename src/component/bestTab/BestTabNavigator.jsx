@@ -22,7 +22,6 @@ const BestTabNavigatorItemStyle = styled.div.attrs(props => ({
   }
 `;
 
-
 export default function BestTabNavigator() {
   return (
     <BestTabNavigatorStyle>

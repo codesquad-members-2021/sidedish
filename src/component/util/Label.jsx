@@ -5,11 +5,12 @@ const LabelStyle = styled.div`
   padding: 0.25rem 1rem;
   color: #fff;
   font-size: 0.875rem;
-  background-color: #82D32D;
   display: inline-block;
   text-align: center;
+  color: ${props => props.color};
+  background-color: ${props => props.bgColor};
 `;
-
-export default function Label({ text }) {
-  return <LabelStyle>{text}</LabelStyle>
+// #86C6FF, #82D32D
+export default function Label({ text, color="#fff", bgColor="#333" }) {
+  return <LabelStyle color={color} bgColor={bgColor}>{text}</LabelStyle>
 }
