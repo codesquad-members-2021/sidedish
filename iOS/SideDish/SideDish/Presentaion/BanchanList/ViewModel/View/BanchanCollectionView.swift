@@ -22,5 +22,6 @@ class BanchanCollectionView: UICollectionView {
         self.register(BanchanCustomCell.nib, forCellWithReuseIdentifier: BanchanCustomCell.identifer)
         self.register(BanchanCustomCellHeader.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BanchanCustomCellHeader.identifier)
     }
-    
 }
+
+

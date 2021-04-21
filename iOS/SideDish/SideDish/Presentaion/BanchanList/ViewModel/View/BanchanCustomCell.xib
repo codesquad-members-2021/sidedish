@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjh-Lo-rq1">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5T-aK-miE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5T-aK-miE">
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="e4f-Sx-Vdg"/>
@@ -107,7 +107,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="xjh-Lo-rq1" secondAttribute="trailing" id="9xx-xc-aRG"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="xjh-Lo-rq1" secondAttribute="top" constant="44" id="X4j-v9-H8f"/>
+                <constraint firstAttribute="top" secondItem="xjh-Lo-rq1" secondAttribute="top" id="X4j-v9-H8f"/>
                 <constraint firstItem="xjh-Lo-rq1" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="mMe-X6-29W"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="xjh-Lo-rq1" secondAttribute="bottom" id="wmR-MA-Dh6"/>
             </constraints>
