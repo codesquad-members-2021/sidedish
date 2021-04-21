@@ -1,17 +1,13 @@
 import styled from "styled-components";
 import { theme, Title } from "../Theme";
 import ItemCard from "../ItemCard";
+import { AlignTextCenter } from "../Theme";
+import mokData from "../mokdata";
 const TabWrapper = styled.div`
   display: flex;
 `;
 
-const text = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Tab = styled(text)`
+const Tab = styled(AlignTextCenter)`
 width: 201px;
 height 58px;
 background-color: ${theme.colors.skyblue};
@@ -23,7 +19,9 @@ const MainColumn = styled.div`
   width: 1280px;
   height: 620px;
   background-color: ${theme.colors.skyblue};
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
   padding: 40px;
 `;
 
@@ -39,7 +37,9 @@ function MainMenu() {
         <Tab>우리아이 영양반찬</Tab>
       </TabWrapper>
       <MainColumn>
-        <ItemCard></ItemCard>
+        {mokData.map((data) => (
+          <ItemCard data={data} size={"L"}></ItemCard>
+        ))}
       </MainColumn>
     </>
   );

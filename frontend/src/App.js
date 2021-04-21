@@ -6,6 +6,7 @@ body{
   font-family: Noto Sans KR;
   margin: 0 80px;
 }`;
+
 function App() {
   return (
     <>
