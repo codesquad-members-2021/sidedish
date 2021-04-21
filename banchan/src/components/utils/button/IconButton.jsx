@@ -3,9 +3,9 @@ import theme from "../styles/theme";
 import { BUTTON_TYPE } from "../variables.js";
 import { Button } from "../styles/common";
 
-const IconButton = ({ type, fn }) => {
+const IconButton = ({ type, fn, disabled = false }) => {
   return (
-    <StyledIconButton type={type} onClick={fn}>
+    <StyledIconButton type={type} onClick={fn} disabled={disabled}>
       {BUTTON_TYPE[type]}
     </StyledIconButton>
   );
@@ -13,12 +13,9 @@ const IconButton = ({ type, fn }) => {
 
 const StyledIconButton = styled(Button)`
   cursor: pointer;
-  color: ${({ type }) =>
-    type === "UP" || type === "DOWN"
-      ? theme.colors.darkGray
-      : theme.colors.lightGray};
-  font-size: ${({ type }) =>
-    type === "UP" || type === "DOWN" ? theme.fontSizes.M : theme.fontSizes.XL};
+  color: ${(props) =>
+    props.disabled || props.type === "SEARCH" ? props.theme.colors.lightGray : props.theme.colors.darkGray};
+  font-size: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.fontSizes.M : "30px")};
 `;
 
 export default IconButton;

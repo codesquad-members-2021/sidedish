@@ -1,5 +1,13 @@
-import CarouselSection from './CarouselSection';
+import BestSidedish from "./BestSidedish";
+import CarouselSectionList from "./CarouselSectionList";
 
-const MainPage = (props) => <CarouselSection />;
+const MainPage = (props) => {
+  return (
+    <>
+      <BestSidedish />
+      <CarouselSectionList />
+    </>
+  );
+};
 
 export default MainPage;

@@ -2,9 +2,9 @@ import styled from "styled-components";
 import theme from "../utils/styles/theme.js";
 import Price from "./Price";
 
-const Card = ({ product, cardSize }) => {
+const Card = ({ product, cardSize, marginRight = 0 }) => {
   return (
-    <StyledLi cardSize={cardSize}>
+    <StyledLi {...{ cardSize, marginRight }}>
       <StyledImg cardSize={cardSize} src={product.image} alt="card-image" />
       <StyledTitle>{product.title}</StyledTitle>
       <StyledDescription>{product.description}</StyledDescription>
@@ -15,6 +15,7 @@ const Card = ({ product, cardSize }) => {
 
 const StyledLi = styled.li`
   width: ${(props) => props.cardSize};
+  margin-right: ${(props) => props.marginRight || "0"};
 `;
 
 const StyledImg = styled.img`
