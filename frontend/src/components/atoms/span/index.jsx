@@ -32,6 +32,11 @@ const StyledSpan = styled.span`
     font-weight:400;
     color:#BDBDBD;
     margin:8px 0;`}
+     ${(props) =>
+    props._logo &&
+    `font-size:40px;
+    font-weight:900;
+    color:#333;`}
 `;
 
 const Span = ({ children, ...props }) => (
