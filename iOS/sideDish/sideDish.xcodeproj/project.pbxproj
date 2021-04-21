@@ -19,6 +19,7 @@
 		719B37F7262E7AF900107FE6 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37F6262E7AF900107FE6 /* FoodCell.swift */; };
 		719B37FC262E7BFA00107FE6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37FB262E7BFA00107FE6 /* Constant.swift */; };
 		719B3801262E7CF100107FE6 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */; };
+		71A833DD262FE5D50060C4B4 /* PriceStacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A833DC262FE5D50060C4B4 /* PriceStacView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		719B37FB262E7BFA00107FE6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 		719B3805262E821300107FE6 /* Toaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Toaster.xcodeproj; path = "../../../Toaster-master/Toaster-master/Toaster.xcodeproj"; sourceTree = "<group>"; };
+		71A833DC262FE5D50060C4B4 /* PriceStacView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStacView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				719B37EE262E7A9F00107FE6 /* FoodInfoStackView.swift */,
 				719B37F6262E7AF900107FE6 /* FoodCell.swift */,
 				719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */,
+				71A833DC262FE5D50060C4B4 /* PriceStacView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				719B37B5262E781C00107FE6 /* SceneDelegate.swift in Sources */,
 				719B37EF262E7A9F00107FE6 /* FoodInfoStackView.swift in Sources */,
 				719B37FC262E7BFA00107FE6 /* Constant.swift in Sources */,
+				71A833DD262FE5D50060C4B4 /* PriceStacView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

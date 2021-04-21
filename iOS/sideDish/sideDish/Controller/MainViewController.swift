@@ -8,8 +8,21 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainCollectionView()
+        //setupTapGesture()
     }
 }
+
+//extension MainViewController {
+//
+//    private func setupTapGesture() {
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(didSectionHeaderTouched))
+//        mainCollectionView.addGestureRecognizer(gesture)
+//    }
+//
+//    @objc func didSectionHeaderTouched() {
+//        print("Toaster가 아닌거 같은데...?")
+//    }
+//}
 
 //MARK: -Setup && Cofiguration
 extension MainViewController {

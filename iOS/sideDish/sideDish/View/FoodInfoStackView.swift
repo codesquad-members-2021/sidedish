@@ -34,7 +34,7 @@ extension FoodInfoStackView {
     private func configureMainView() {
         axis = .vertical
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 130).isActive = true
+        //heightAnchor.constraint(equalToConstant: 130).isActive = true
         widthAnchor.constraint(equalToConstant: 213).isActive = true
     }
     
@@ -46,7 +46,7 @@ extension FoodInfoStackView {
         foodNameLabel.translatesAutoresizingMaskIntoConstraints = false
         foodNameLabel.widthAnchor.constraint(equalToConstant: 205).isActive = true
         foodNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        foodNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        //foodNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
     }
     
     private func configureFoodDescriptionLabel() {
