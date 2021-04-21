@@ -14,8 +14,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VvA-GB-cdc">
-                    <rect key="frame" x="0.0" y="24" width="320" height="58"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VvA-GB-cdc">
+                    <rect key="frame" x="0.0" y="24" width="320" height="32"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPo-Wa-zDS">
                             <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -30,8 +30,8 @@
                                 <action selector="titleButtonTouched:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Lfg-oM-BJ4"/>
                             </connections>
                         </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dLY-KQ-qs3">
-                            <rect key="frame" x="0.0" y="35" width="39.5" height="23"/>
+                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dLY-KQ-qs3">
+                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="23"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ft-Cv-qfZ">
                                     <rect key="frame" x="0.0" y="0.0" width="39.5" height="23"/>

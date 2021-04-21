@@ -21,7 +21,6 @@ class SideDishViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         SideDishCollectionView.delegate = self
-        
         configureDataSource()
         bind()
     }
@@ -34,9 +33,18 @@ class SideDishViewController: UIViewController {
         let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item>.init(cellNib: FoodCardCell.nib) { (cell, indexPath, item) in
             cell.configure(with: item)
         }
+        
+        let headerViewRegistration = UICollectionView.SupplementaryRegistration<FoodCardHeaderView>.init(supplementaryNib: FoodCardHeaderView.nib, elementKind: UICollectionView.elementKindSectionHeader) { (headerView, _, indexPath) in
+            headerView.configureHeader(index: indexPath)
+        }
+        
         self.dataSource = UICollectionViewDiffableDataSource<Path, Item>(collectionView: SideDishCollectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item) as FoodCardCell
         })
+        
+        self.dataSource.supplementaryViewProvider = { (view, kind, index) in
+            return self.SideDishCollectionView.dequeueConfiguredReusableSupplementary(using: headerViewRegistration, for: index)
+        }
     }
     
     func bind() {
@@ -63,5 +71,9 @@ class SideDishViewController: UIViewController {
 extension SideDishViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 130)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 80)
     }
 }
