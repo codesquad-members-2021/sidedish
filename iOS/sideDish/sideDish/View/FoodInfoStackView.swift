@@ -4,9 +4,8 @@ class FoodInfoStackView: UIStackView {
     
     var foodNameLabel: UILabel!
     var foodDescriptionLabel: UILabel!
-    var sellPriceLabel: UILabel!
-    var originalPriceLabel: UILabel?
     var eventInfoLabel: UILabel?
+    var priceStackView: PriceStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,13 +27,12 @@ extension FoodInfoStackView {
         configureMainView()
         configureFoodNameLabel()
         configureFoodDescriptionLabel()
-        configureSellPriceLabel()
+        configurePriceStackView()
     }
     
     private func configureMainView() {
         axis = .vertical
         translatesAutoresizingMaskIntoConstraints = false
-        //heightAnchor.constraint(equalToConstant: 130).isActive = true
         widthAnchor.constraint(equalToConstant: 213).isActive = true
     }
     
@@ -46,7 +44,6 @@ extension FoodInfoStackView {
         foodNameLabel.translatesAutoresizingMaskIntoConstraints = false
         foodNameLabel.widthAnchor.constraint(equalToConstant: 205).isActive = true
         foodNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        //foodNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
     }
     
     private func configureFoodDescriptionLabel() {
@@ -60,13 +57,8 @@ extension FoodInfoStackView {
         foodDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
     }
     
-    private func configureSellPriceLabel() {
-        sellPriceLabel = UILabel(frame: .zero)
-        sellPriceLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        addArrangedSubview(sellPriceLabel)
-        sellPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        sellPriceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        sellPriceLabel.widthAnchor.constraint(equalToConstant: 51).isActive = true
-        sellPriceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+    private func configurePriceStackView() {
+        priceStackView = PriceStackView(frame: .zero)
+        addArrangedSubview(priceStackView)
     }
 }

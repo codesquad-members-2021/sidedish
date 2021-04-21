@@ -72,7 +72,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.foodImageView.image = UIImage(named: "side")
         cell.foodInfoStackView.foodNameLabel.text = "[마샐미디쉬] 매콤마늘쫑 해산물볶음 180G"
         cell.foodInfoStackView.foodDescriptionLabel.text = "탱글탱글한 새우와 오징어를 .."
-        cell.foodInfoStackView.sellPriceLabel.text = "6,210원"
+        cell.foodInfoStackView.priceStackView.normalPriceLabel.text = "6,210원"
+        cell.foodInfoStackView.priceStackView.eventPriceLabel?.text = "7,800원"
         //End TestCode
         return cell
     }
