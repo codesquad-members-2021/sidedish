@@ -21,12 +21,10 @@ const HeaderLeft = styled.div`
   align-items: center;
 `;
 const Logo = styled.h1`
-  /* margin-right: 20px; */
   font-size:40px;
 `;
 const MainInput = styled.input`
   width: 80%;
-  /* height: 30px; */
   outline: none;
   background-color: #f0f0f0;
   border: none; 
@@ -73,8 +71,6 @@ const MenuBtn = styled.button`
   padding: 30px 0;
   position: relative;
   `;
-const Btn1 = styled.button`
-`;
 const DropBtn = styled.button`
   border: 0;
   outline: 0;
@@ -86,7 +82,9 @@ const DropBtn = styled.button`
     text-decoration: underline;
   }
 `;
+const DropList = styled.li`
 
+`;
 const Header = () => {
   const [isShownDrop1, setIsShownDrop1] = useState(false);
   const [isShownDrop2, setIsShownDrop2] = useState(false);
@@ -103,8 +101,8 @@ const Header = () => {
                       든든한 메인 요리
     {isShownDrop1 && (
     <DropMenu1>
-      <li><DropBtn>육류 요리</DropBtn></li>
-      <li><DropBtn>해산물 요리</DropBtn></li>
+      <DropList><DropBtn>육류 요리</DropBtn></DropList>
+      <DropList><DropBtn>해산물 요리</DropBtn></DropList>
     </DropMenu1>
       )}
                   </MenuBtn>
@@ -115,7 +113,7 @@ const Header = () => {
                       뜨끈한 국물요리
     {isShownDrop2 && (
     <DropMenu2>
-      <li><DropBtn>국탕찌개</DropBtn></li>
+      <DropList><DropBtn>국탕찌개</DropBtn></DropList>
     </DropMenu2>
       )}
                   </MenuBtn>
@@ -126,9 +124,9 @@ const Header = () => {
                       정갈한 밑반찬
     {isShownDrop3 && (
     <DropMenu3>
-      <li><DropBtn>나물/무침</DropBtn></li>
-      <li><DropBtn>조림/볶음</DropBtn></li>
-      <li><DropBtn>절임/장아찌</DropBtn></li>
+      <DropList><DropBtn>나물/무침</DropBtn></DropList>
+      <DropList><DropBtn>조림/볶음</DropBtn></DropList>
+      <DropList><DropBtn>절임/장아찌</DropBtn></DropList>
     </DropMenu3>
       )}
                   </MenuBtn>
