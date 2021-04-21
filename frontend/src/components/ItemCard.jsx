@@ -10,11 +10,11 @@ const Card = styled.div`
   }};
 `;
 const IMG = styled.img`
-  width: ${(props) => {
-    return props.size === "L" ? "384px" : "308px";
+  width: ${props => {
+    return props.size === 'L' ? '384px' : '308px'
   }};
-  height: ${(props) => {
-    return props.size === "L" ? "384px" : "308px";
+  height: ${props => {
+    return props.size === 'L' ? '384px' : '308px'
   }};
   margin-bottom: 32px;
   filter: ${(props) => {
@@ -81,4 +81,4 @@ function ItemCard({ data, size }) {
   );
 }
 
-export default ItemCard;
+export default ItemCard
