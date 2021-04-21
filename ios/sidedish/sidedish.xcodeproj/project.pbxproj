@@ -47,6 +47,101 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82A3F139262F1FE200FD86BE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				82FDB9C6262DCFD8009E3EB7 /* AppDelegate.swift */,
+				82FDB9C8262DCFD8009E3EB7 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		82A3F13C262F202A00FD86BE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E41EC94F262E6DF40043CC44 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		82A3F13E262F243300FD86BE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				82A3F140262F256C00FD86BE /* MainMenuList */,
+				82A3F149262F337000FD86BE /* SubMenuList */,
+				82A3F13F262F248300FD86BE /* ViewController */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		82A3F13F262F248300FD86BE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8214B70D262DE253004467C2 /* MainTableViewDataSource.swift */,
+				8214B710262DE4B4004467C2 /* MainTableViewDelegate.swift */,
+				82FDB9CA262DCFD8009E3EB7 /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		82A3F140262F256C00FD86BE /* MainMenuList */ = {
+			isa = PBXGroup;
+			children = (
+				82A3F142262F259600FD86BE /* ViewModel */,
+				82A3F141262F259200FD86BE /* View */,
+			);
+			path = MainMenuList;
+			sourceTree = "<group>";
+		};
+		82A3F141262F259200FD86BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82FDB9CC262DCFD8009E3EB7 /* Main.storyboard */,
+				8214B70A262DE07A004467C2 /* MenuCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		82A3F142262F259600FD86BE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		82A3F144262F2EB900FD86BE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				82FDB9CF262DCFD8009E3EB7 /* Assets.xcassets */,
+				82FDB9D1262DCFD8009E3EB7 /* LaunchScreen.storyboard */,
+				82FDB9D4262DCFD8009E3EB7 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		82A3F149262F337000FD86BE /* SubMenuList */ = {
+			isa = PBXGroup;
+			children = (
+				82A3F14B262F338700FD86BE /* ViewModel */,
+				82A3F14A262F337800FD86BE /* View */,
+			);
+			path = SubMenuList;
+			sourceTree = "<group>";
+		};
+		82A3F14A262F337800FD86BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		82A3F14B262F338700FD86BE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		82FDB9BA262DCFD8009E3EB7 = {
 			isa = PBXGroup;
 			children = (
@@ -66,17 +161,10 @@
 		82FDB9C5262DCFD8009E3EB7 /* sidedish */ = {
 			isa = PBXGroup;
 			children = (
-				82FDB9C6262DCFD8009E3EB7 /* AppDelegate.swift */,
-				82FDB9C8262DCFD8009E3EB7 /* SceneDelegate.swift */,
-				82FDB9CA262DCFD8009E3EB7 /* MainViewController.swift */,
-				8214B70D262DE253004467C2 /* MainTableViewDataSource.swift */,
-				8214B710262DE4B4004467C2 /* MainTableViewDelegate.swift */,
-				8214B70A262DE07A004467C2 /* MenuCell.swift */,
-				82FDB9CC262DCFD8009E3EB7 /* Main.storyboard */,
-				E41EC94F262E6DF40043CC44 /* Entity */,
-				82FDB9CF262DCFD8009E3EB7 /* Assets.xcassets */,
-				82FDB9D1262DCFD8009E3EB7 /* LaunchScreen.storyboard */,
-				82FDB9D4262DCFD8009E3EB7 /* Info.plist */,
+				82A3F13E262F243300FD86BE /* Presentation */,
+				82A3F13C262F202A00FD86BE /* Domain */,
+				82A3F139262F1FE200FD86BE /* Application */,
+				82A3F144262F2EB900FD86BE /* Resources */,
 			);
 			path = sidedish;
 			sourceTree = "<group>";
@@ -316,7 +404,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = sidedish/Info.plist;
+				INFOPLIST_FILE = sidedish/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,7 +423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = sidedish/Info.plist;
+				INFOPLIST_FILE = sidedish/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
