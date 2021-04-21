@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import DishItem from 'component/atoms/DishItem';
 import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
+import { URL } from 'util/data';
+import useFetch from 'hooks/useFetch';
 
-const SlideDish = () => {
-  const [slideData, setSlideData] = useState(data);
+const SlideDish = ({ category }) => {
+  const { data: slideData, loading } = useFetch(URL[category]());
+  const slideCategory =
+    slideData &&
+    slideData.body
+      .slice(0, 4)
+      .map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
 
-  const slideList = data
-    .slice(0, 4)
-    .map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
-  return (
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
       <StyledSlideList>
-        {slideList}
+        {slideCategory}
         <SlideArrow>
           <IoChevronBackSharp className="leftArrow" />
           <IoChevronForwardSharp className="rightArrow" />
@@ -22,7 +28,6 @@ const SlideDish = () => {
     </>
   );
 };
-
 export default SlideDish;
 
 const Header = styled.div`
