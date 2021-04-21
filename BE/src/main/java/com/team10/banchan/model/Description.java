@@ -1,6 +1,7 @@
 package com.team10.banchan.model;
 
 public class Description {
+
     private final String title;
     private final String description;
 

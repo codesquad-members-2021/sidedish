@@ -5,18 +5,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class ItemDetail {
-     private final String topImage;
-     private final List<String> thumbImages;
-     private final String title;
-     private final String productDescription;
-     private final String point;
-     private final String deliveryInfo;
-     private final String deliveryFee;
-     private final String nPrices;
-     private final String sPrices;
-     private final List<String> detailSection;
-     private final List<String> badges;
 
+    private final String topImage;
+    private final List<String> thumbImages;
+
+    private final String title;
+    private final String productDescription;
+
+    private final String point;
+    private final String deliveryInfo;
+
+    private final String deliveryFee;
+    private final String nPrices;
+    private final String sPrices;
+
+    private final List<String> detailSection;
+    private final List<String> badges;
 
     private ItemDetail(String topImage, List<String> thumbImages, String title, String productDescription, String point, String deliveryInfo, String deliveryFee, String nPrices, String sPrices, List<String> detailSection, List<String> badges) {
         this.topImage = topImage;

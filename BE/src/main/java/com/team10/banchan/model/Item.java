@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Item {
+
     @Id
     private final Long id;
     private final Long section;
@@ -55,15 +56,27 @@ public class Item {
         this.deliveryDays = deliveryDays;
     }
 
+    public static Item newItem(Long section, Long category,
+                               TopImage topImage, Description description,
+                               Prices prices,
+                               Integer stock) {
+        return new Item(null, section, category,
+                topImage,
+                description,
+                prices,
+                stock,
+                new ArrayList<>(), new ArrayList<>(), new HashSet<>(), new HashSet<>(), new HashSet<>());
+    }
+
     public Long getId() {
         return id;
     }
 
-    public void addDetailSection (DetailSection detailSection) {
+    public void addDetailSection(DetailSection detailSection) {
         this.detailSections.add(detailSection);
     }
 
-    public void addThumbImage (ThumbImage thumbImage) {
+    public void addThumbImage(ThumbImage thumbImage) {
         this.thumbImages.add(thumbImage);
     }
 
@@ -81,7 +94,7 @@ public class Item {
 
     public ItemDetail itemDetail() {
         return ItemDetail.of(
-                topImage.getTopImage(),
+                topImage.getUrl(),
                 thumbImagesUrl(),
                 description.getTitle(),
                 description.getDescription(),
@@ -98,7 +111,7 @@ public class Item {
     public ItemSummary itemSummary() {
         return ItemSummary.of(
                 id,
-                topImage.getTopImage(),
+                topImage.getUrl(),
                 topImage.getAlt(),
                 deliveryType(),
                 description.getTitle(),
@@ -140,19 +153,7 @@ public class Item {
 
     private List<String> badge() {
         return badges.stream()
-                .map(Badge::name)
+                .map(Badge::getName)
                 .collect(Collectors.toList());
-    }
-
-    public static Item newItem(Long section, Long category,
-                               TopImage topImage, Description description,
-                               Prices prices,
-                               Integer stock) {
-        return new Item(null, section, category,
-                topImage,
-                description,
-                prices,
-                stock,
-                new ArrayList<>(), new ArrayList<>(), new HashSet<>(), new HashSet<>(), new HashSet<>());
     }
 }

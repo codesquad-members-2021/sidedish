@@ -1,6 +1,7 @@
 package com.team10.banchan.model;
 
 public class TopImage {
+
     private final String alt;
     private final String topImage;
 
@@ -17,7 +18,7 @@ public class TopImage {
         return alt;
     }
 
-    public String getTopImage() {
+    public String getUrl() {
         return topImage;
     }
 }

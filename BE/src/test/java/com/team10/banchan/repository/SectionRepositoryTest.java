@@ -17,6 +17,6 @@ public class SectionRepositoryTest {
     @Test
     void getSection() {
         Section section = sectionRepository.findById(1L).orElseThrow(RuntimeException::new);
-        assertThat(section.getItems()).hasSize(1);
+        assertThat(section).hasFieldOrPropertyWithValue("name", "main");
     }
 }

@@ -1,18 +1,11 @@
 package com.team10.banchan.model;
 
 public class DeliveryType {
+
     private final DeliveryTypeEnum deliveryTypeName;
 
     DeliveryType(DeliveryTypeEnum deliveryTypeName) {
         this.deliveryTypeName = deliveryTypeName;
-    }
-
-    public String getName() {
-        return deliveryTypeName.name;
-    }
-
-    public String getDetail() {
-        return deliveryTypeName.detail;
     }
 
     public static DeliveryType nationwide() {
@@ -21,6 +14,14 @@ public class DeliveryType {
 
     public static DeliveryType dawn() {
         return new DeliveryType(DeliveryTypeEnum.DAWN);
+    }
+
+    public String getName() {
+        return deliveryTypeName.name;
+    }
+
+    public String getDetail() {
+        return deliveryTypeName.detail;
     }
 
     enum DeliveryTypeEnum {

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class Prices {
+
     @Transient
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###원");
 
@@ -20,7 +21,7 @@ public class Prices {
     }
 
     public static Prices of(BigDecimal nPrice, BigDecimal sPrice, BigDecimal deliveryFee) {
-        return new Prices(nPrice,sPrice, deliveryFee);
+        return new Prices(nPrice, sPrice, deliveryFee);
     }
 
     public String getnPrice() {
