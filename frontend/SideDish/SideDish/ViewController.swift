@@ -17,7 +17,22 @@ class ViewController: UIViewController {
         sideDishCollectionView.register(nibName, forCellWithReuseIdentifier: "menuCell")
         sideDishCollectionView.dataSource = self
         sideDishCollectionView.delegate = self
+        loadCard()
     }
+    
+    private func loadCard() {
+        DataTaskManager.get(completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                   print(data)
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
+    }
+    
 
 
 }
