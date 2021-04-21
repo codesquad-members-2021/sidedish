@@ -1,67 +1,123 @@
-DROP TABLE if EXISTS sidedish.dish;
+-- MySQL Workbench Forward Engineering
 
-ALTER DATABASE sidedish DEFAULT CHARACTER SET utf8;
-SET time_zone = 'Asia/Seoul';
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE TABLE sidedish.dish (
-                               detail_hash VARCHAR(10) PRIMARY KEY,
-                               image VARCHAR(100) NOT NULL,
-                               alt VARCHAR(50) NOT NULL,
-                               delivery_type VARCHAR(50) NOT NULL,
-                               title VARCHAR(50) NOT NULL,
-                               description VARCHAR(50) NOT NULL,
-                               n_price INT NOT NULL,
-                               s_price INT NOT NULL,
-                               badge VARCHAR(50) NOT NULL,
-                               created_date datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="Any dish";
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema sidedish
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `sidedish` ;
+
+-- -----------------------------------------------------
+-- Schema sidedish
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `sidedish` DEFAULT CHARACTER SET utf8 ;
+USE `sidedish` ;
+
+-- -----------------------------------------------------
+-- Table `sidedish`.`delivery`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`delivery` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`delivery` (
+    `id` INT(11) NOT NULL,
+    `type` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
 
 
-INSERT INTO sidedish.dish (
-    detail_hash,
-    image,
-    alt,
-    delivery_type,
-    title,
-    description,
-    n_price,
-    s_price,
-    badge,
-    created_date)
-VALUES
-(
-    "H9881",
-    "https://cdn.bmf.kr/_data/product/H9881/f2a7b4df359c850b1a9eb57e17ddf6fc.jpg",
-    "[소중한식사] 경상도 한상차림",
-    "[새벽배송, 전국택배]",
-    "[소중한식사] 경상도 한상차림",
-    "경상도 명물 요리 세 가지를 한 상에!",
-    39000,
-    31200,
-    "이벤트특가",
-    now()
-),
-(
-    "HDF4C",
-    "https://cdn.bmf.kr/_data/product/HDF4C/954b78f9111bbef54ede9fdcdf1298d8.jpg",
-    "[딩고] 시그니처 3종 SET",
-    "[새벽배송, 전국택배]",
-    "[딩고] 시그니처 3종 SET",
-    "오늘 저녁은 이상하게 안주빨을 세워보고 싶다!",
-    32800,
-    24000,
-    "이벤트특가",
-    now()
-),
-(
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    1,
-    2,
-    "",
-    now()
-);
+-- -----------------------------------------------------
+-- Table `sidedish`.`menu`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`menu` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`menu` (
+    `id` INT(11) NOT NULL,
+    `name` VARCHAR(45) NOT NULL,
+    `endpoint` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `sidedish`.`dish`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`dish` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`dish` (
+    `detail_hash` VARCHAR(50) NOT NULL,
+    `image` VARCHAR(100) NOT NULL,
+    `alt` VARCHAR(50) NOT NULL,
+    `title` VARCHAR(50) NOT NULL,
+    `description` VARCHAR(100) NOT NULL,
+    `n_price` VARCHAR(45) NOT NULL,
+    `menu_id` INT(11) NOT NULL,
+    PRIMARY KEY (`detail_hash`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `sidedish`.`dish_delivery`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`dish_delivery` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`dish_delivery` (
+    `id` INT(11) NOT NULL,
+    `dish_detail_hash` VARCHAR(50) NOT NULL,
+    `delivery_id` INT(11) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `sidedish`.`sale`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`sale` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`sale` (
+    `id` INT(11) NOT NULL,
+    `badge` VARCHAR(45) NOT NULL,
+    `sale_type` VARCHAR(45) NOT NULL,
+    `sale_vlaue` INT(11) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `sidedish`.`dish_sale`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`dish_sale` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`dish_sale` (
+    `id` INT(11) NOT NULL,
+    `dish_detail_hash` VARCHAR(50) NOT NULL,
+    `sale_id` INT(11) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+
+
+
+
+
+
+
