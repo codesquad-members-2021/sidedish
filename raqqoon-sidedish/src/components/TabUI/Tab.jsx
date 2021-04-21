@@ -1,10 +1,14 @@
-import { ACTIVE } from 'const';
+import { ACTIVE } from '../../const';
 import styled from 'styled-components';
 
-const Tab = ({ title, activeState }) => {
+const Tab = ({ name, activeState, setTabState, setTabIndex, idx }) => {
+  const handleClickTab = () => {
+    setTabIndex(idx);
+  };
+
   return (
-    <TabBoxDiv activeState={activeState}>
-      <span>{title || '할인특가 세트상품'}</span>
+    <TabBoxDiv activeState={activeState} onClick={handleClickTab}>
+      <span>{name}</span>
     </TabBoxDiv>
   );
 };
@@ -21,6 +25,7 @@ const TabBoxDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   & + div {
     margin-left: 8px;

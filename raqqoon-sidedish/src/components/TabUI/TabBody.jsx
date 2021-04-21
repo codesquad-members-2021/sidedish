@@ -1,12 +1,35 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import useFetch from '../../customHooks/useFetch';
+import TabList from './TabList';
 import TabMain from './TabMain';
-import TabMenu from './TabMenu';
 
 const TabBody = () => {
+  const bestData = useFetch(
+    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best`,
+    []
+  );
+
+  const useTab = (tabIdx, tabItemList) => {
+    const [tabIndex, setTabIndex] = useState(tabIdx);
+
+    return {
+      tabItemList: tabItemList[tabIndex] || [],
+      tabIndex: tabIndex,
+      setTabIndex: setTabIndex,
+    };
+  };
+
+  const { tabItemList, tabIndex, setTabIndex } = useTab(0, bestData);
+
   return (
     <TabBodyBoxDiv>
-      <TabMenu />
-      <TabMain />
+      <TabList
+        bestData={bestData}
+        setTabIndex={setTabIndex}
+        tabIndex={tabIndex}
+      />
+      <TabMain tabItemList={tabItemList} />
     </TabBodyBoxDiv>
   );
 };

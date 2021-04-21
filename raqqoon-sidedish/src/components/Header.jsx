@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import MenuList from 'components/nav/MenuList';
+import MenuList from '../components/nav/MenuList';
 
 const Header = () => {
   return (

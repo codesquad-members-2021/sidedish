@@ -1,6 +1,6 @@
-import Header from 'components/Header';
-import Main from 'components/Main';
-import 'reset.css';
+import Header from '../src/components/Header';
+import Main from '../src/components/Main';
+import './reset.css';
 import styled from 'styled-components';
 
 const App = () => {

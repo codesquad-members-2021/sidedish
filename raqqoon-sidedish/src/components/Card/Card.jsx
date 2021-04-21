@@ -1,21 +1,34 @@
-import Info from 'components/card/Info';
-import Price from 'components/card/Price';
-import Tag from 'components/card/Tag';
-import { EVENT, LAUNCHING } from 'const';
 import styled from 'styled-components';
 import Img from './Img';
+import Info from '../card/Info';
+import Price from '../card/Price';
+import Tag from '../card/Tag';
+import { EVENT, LAUNCHING, TAG_EVENT, TAG_LAUNCHING } from '../../const';
+import { v4 as uuidv4 } from 'uuid';
 
-const Card = ({ cardSize }) => {
+const Card = ({ cardSize, item, imgUrl }) => {
+  const { title, description, n_price, s_price, badge } = item;
+
   return (
     <CardBoxDiv>
-      {/* data 들어갈 자리 null */}
-      <Img cardSize={cardSize} />
-      <Info name={null} body={null} />
-      <Price normal={null} discount={`11,900원`} />
-      <TagBoxDiv>
-        <Tag type={EVENT} />
-        <Tag type={LAUNCHING} />
-      </TagBoxDiv>
+      <Img cardSize={cardSize} imgUrl={imgUrl} />
+      <Info name={title} body={description} />
+      <Price normal={s_price} discount={n_price} />
+      {badge && (
+        <TagBoxDiv>
+          {badge.map((badge) => {
+            switch (badge) {
+              case TAG_EVENT:
+                return <Tag type={EVENT} key={uuidv4()} />;
+              case TAG_LAUNCHING:
+                return <Tag type={LAUNCHING} key={uuidv4()} />;
+              default:
+                break;
+            }
+            return badge;
+          })}
+        </TagBoxDiv>
+      )}
     </CardBoxDiv>
   );
 };

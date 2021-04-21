@@ -10,7 +10,7 @@ const Price = ({ normal, discount }) => {
 };
 
 const Normal = ({ normal }) => {
-  return <NormalDiv>{normal || `10,700원`}</NormalDiv>;
+  return <NormalDiv>{normal}</NormalDiv>;
 };
 const Discount = ({ discount }) => {
   if (!discount) return null;

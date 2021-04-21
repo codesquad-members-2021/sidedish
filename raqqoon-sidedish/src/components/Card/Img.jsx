@@ -1,8 +1,8 @@
-import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from 'const';
+import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from '../../const';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Img = ({ cardSize }) => {
+const Img = ({ cardSize, imgUrl }) => {
   const [opacitiy, setOpacity] = useState(0);
 
   const onToggleOpacity = (opacitiy) => {
@@ -16,10 +16,7 @@ const Img = ({ cardSize }) => {
       onMouseEnter={() => onToggleOpacity(opacitiy)}
       onMouseLeave={() => onToggleOpacity(opacitiy)}
     >
-      <img
-        src="http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg"
-        alt="img"
-      />
+      <img src={imgUrl} alt="img" />
       <HoverText cardSize={cardSize} opacitiy={opacitiy} />
     </ImgDiv>
   );
@@ -72,6 +69,7 @@ const HoverTextBoxDiv = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 `;
 
 const TextDiv = styled.div`

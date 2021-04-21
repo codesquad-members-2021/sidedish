@@ -1,10 +1,4 @@
-import {
-  COLOR_GREEN,
-  COLOR_LIGHTBLUE,
-  EVENT,
-  TAG_EVENT,
-  TAG_LAUNCHING,
-} from 'const';
+import { COLOR_GREEN, COLOR_LIGHTBLUE, EVENT, TAG_EVENT } from '../../const';
 import styled from 'styled-components';
 
 const Tag = ({ type }) => {
@@ -26,7 +20,7 @@ const EventTag = ({ type }) => {
 const LaunchingTag = ({ type }) => {
   return (
     <TagDiv type={type}>
-      <span>{TAG_LAUNCHING}</span>
+      <span>런칭특가</span>
     </TagDiv>
   );
 };

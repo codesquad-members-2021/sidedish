@@ -2,7 +2,7 @@
 export const EVENT = 'event';
 export const LAUNCHING = 'launching';
 export const TAG_EVENT = '이벤트특가';
-export const TAG_LAUNCHING = '런칭특가';
+export const TAG_LAUNCHING = '론칭특가'; // api에서는 '론칭특가'
 
 // Color
 export const COLOR_GREEN = '#82D32D';
@@ -19,3 +19,4 @@ export const SIZE_MEDIUM = 'medium';
 // State
 export const ACTIVE = 'active';
 export const DEACTIVE = 'deactive';
+export const INITIAL = 'initial';

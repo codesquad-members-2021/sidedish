@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Carousel from './carousel/Carousel';
 import TabUI from './tabUI/TabUI';
+import Carousel from './carousel/Carousel';
 
 const Main = () => {
   return (
