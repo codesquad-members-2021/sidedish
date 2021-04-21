@@ -1,8 +1,14 @@
 package com.team10.banchan.model;
 
+import org.springframework.data.annotation.Transient;
+
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class Prices {
+    @Transient
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###원");
+
     private final BigDecimal nPrice;
     private final BigDecimal sPrice;
     private final BigDecimal deliveryFee;
@@ -17,15 +23,15 @@ public class Prices {
         return new Prices(nPrice,sPrice, deliveryFee);
     }
 
-    public BigDecimal getnPrice() {
-        return nPrice;
+    public String getnPrice() {
+        return DECIMAL_FORMAT.format(nPrice);
     }
 
-    public BigDecimal getsPrice() {
-        return sPrice;
+    public String getsPrice() {
+        return DECIMAL_FORMAT.format(sPrice);
     }
 
-    public BigDecimal getDeliveryFee() {
-        return deliveryFee;
+    public String getDeliveryFee() {
+        return DECIMAL_FORMAT.format(deliveryFee);
     }
 }
