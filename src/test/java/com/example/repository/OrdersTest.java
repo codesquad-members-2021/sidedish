@@ -34,13 +34,14 @@ class OrdersTest {
                 5200,
                 "이벤트 특가",
                 "새벽 배송 / 전국배송",
-                "http://localhost"));
+                "http://localhost", 10));
 
         categoryRepository.save(roach);
     }
 
     @Test
     void orderTest() {
+
         User user = User.of("1232@naver.com","12345");
         final List<Item> items = categoryRepository.findById(1L).get().getItems();
         final Item item = items.get(0);
@@ -50,6 +51,7 @@ class OrdersTest {
         userRepository.save(user);
 
         assertThat(userRepository.findById(1L).get().getOrders().get(0).getItemId()).isEqualTo(item.getId());
+
     }
 
 

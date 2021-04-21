@@ -19,6 +19,7 @@ public class Item {
     private final String title;
     private final String description;
     private final int price;
+    private final int stock;
 
     @Column("BADGE")
     private final String badges;
@@ -29,7 +30,7 @@ public class Item {
     private final String image;
 
     @PersistenceConstructor
-    public Item(Long id, String title, String description, int price, String badges, String deliveryTypes, String image) {
+    public Item(Long id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -37,14 +38,15 @@ public class Item {
         this.badges = badges;
         this.deliveryTypes = deliveryTypes;
         this.image = image;
+        this.stock = stock;
     }
 
-    public Item withId(Long id, String title, String description, int price, String badges, String deliveryTypes, String image){
-        return new Item(id, title, description, price, badges, deliveryTypes, image);
+    public Item withId(Long id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock){
+        return new Item(id, title, description, price, badges, deliveryTypes, image, stock);
     }
 
-    public static Item of(String title, String description, int price, String badges, String deliveryTypes, String image){
-        return new Item(null, title, description, price, badges, deliveryTypes, image);
+    public static Item of(String title, String description, int price, String badges, String deliveryTypes, String image, int stock){
+        return new Item(null, title, description, price, badges, deliveryTypes, image, stock);
     }
 
     public Long getId() {
