@@ -10,7 +10,9 @@ export const GlobalStyle = createGlobalStyle`
     margin:0;
   }
   body{
+    font-family: 'Noto Sans KR';
     box-sizing:border-box;
+    
   }
   ol, ul {
     list-style: none;

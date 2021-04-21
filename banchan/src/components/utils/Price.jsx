@@ -14,8 +14,6 @@ const Price = ({ product }) => {
   );
 };
 
-// ============================= ● Styled components ● =============================
-
 const StyledPriceWrapper = styled.div`
   display: flex;
   align-items: center;

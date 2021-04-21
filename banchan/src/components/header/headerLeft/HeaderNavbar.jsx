@@ -18,17 +18,16 @@ const HeaderNavbar = (props) => {
     },
   ];
 
-  const NavUL = styled.ul`
-    display: flex;
-    color: ${(props) => props.theme.colors.darkGray};
-    font-size: ${(props) => props.theme.fontSizes.S};
-  `;
-
   const navbarList = navLists.map((list, i) => (
     <NavListItems key={i} list={list} />
   ));
 
   return <NavUL>{navbarList}</NavUL>;
 };
+const NavUL = styled.ul`
+  display: flex;
+  color: ${(props) => props.theme.colors.darkGray};
+  font-size: ${(props) => props.theme.fontSizes.S};
+`;
 
 export default HeaderNavbar;

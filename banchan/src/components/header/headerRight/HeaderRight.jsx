@@ -1,21 +1,6 @@
 import styled from "styled-components";
 
 const HeaderRight = (props) => {
-  const HeaderRightDiv = styled.div`
-    display: flex;
-    align-items: center;
-  `;
-
-  const StyledSpan = styled.span`
-    margin: 0 12px;
-    font-size: ${(props) => props.theme.fontSizes.S};
-    font-family: "Noto Sans KR";
-    cursor: pointer;
-    &:hover {
-      font-weight: bold;
-    }
-  `;
-
   return (
     <HeaderRightDiv>
       <input />
@@ -24,5 +9,19 @@ const HeaderRight = (props) => {
     </HeaderRightDiv>
   );
 };
+
+const HeaderRightDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledSpan = styled.span`
+  margin: 0 12px;
+  font-size: ${(props) => props.theme.fontSizes.S};
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+`;
 
 export default HeaderRight;
