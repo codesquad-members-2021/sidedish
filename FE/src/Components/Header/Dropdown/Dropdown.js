@@ -21,13 +21,14 @@ const DropdownWrapper = styled.div`
 const MenuList = styled.ul`
   position: absolute;
   margin: auto;
-  padding: 10px 16px;
+  padding: 8px 16px;
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const MenuItem = styled.li`
   color:#828282;
-  margin: 10px 0;
+  margin: 5px 0;
+  line-height: 23px;
   &:hover{
     color: #000;
     text-decoration-line: underline;

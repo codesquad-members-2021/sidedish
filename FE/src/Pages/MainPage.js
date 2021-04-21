@@ -1,15 +1,16 @@
 import React from 'react'
+
 import styled from 'styled-components';
+import Header from '../Components/Header/Header';
+import Tabs from '../Components/Tabs/Tabs';
 import { FlexContainer, Container } from '../Components/commons/styledComponents';
-
-import Header from '../Components/Header/Header.js';
 import * as Carousel from '../Components/Carousel';
-
 
 const MainPage = () => {
   return (
     <MainPageLayout>
       <Header />
+      <Tabs />
       메인페이지입니다.
       <CarouselLayout>
         <Carousel.Container type={"default"}>
