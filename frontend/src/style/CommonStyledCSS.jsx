@@ -2,7 +2,7 @@
 import { css } from "styled-components";
 
 const cssTranslate = css`
-  background-color: Transparent;
+  background-color: transparent;
   background-repeat: no-repeat;
   overflow: hidden;
   outline: none;

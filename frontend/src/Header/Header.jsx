@@ -1,7 +1,7 @@
 // Header
-import React, { useState } from "react";
+import { useState } from "react";
 import styled, { css } from "styled-components";
-import { cssFlexAlignCenter, cssFlexStartRow } from "../common/CommonStyledCSS";
+import { cssFlexAlignCenter, cssFlexStartRow } from "../style/CommonStyledCSS";
 
 import MenuItem from "./partial/MenuItem";
 import Logo from "./partial/Logo";

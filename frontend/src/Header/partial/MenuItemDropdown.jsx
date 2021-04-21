@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import { cssFlexStartCol } from "../../common/CommonStyledCSS";
+import { cssFlexStartCol } from "../../style/CommonStyledCSS";
 
 const StyledMenuItemDropdown = styled.div`
   visibility: ${({ dropdownVisible }) =>

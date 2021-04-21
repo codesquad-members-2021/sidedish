@@ -40,33 +40,33 @@ const StyledCard = styled.div`
     }
     .card__title {
         margin-top: 16px; 
-        font-size: 16px;
+        font-size: ${({ theme }) => theme.fontSize.M};
         line-height: 23px;
-        color: #333;
+        color: ${({ theme }) => theme.colors.gray1};
     }
     .card__description {
         margin-top: 8px;
         font-size: 14px;
         line-height: 20px;
-        color: #828282;
+        color: ${({ theme }) => theme.colors.gray3};
     }
     .card__price {
         margin-top: ${({size}) => size === 'large' ? '16px' : '8px'};
         margin-bottom: 16px;
         display: flex;
         & > span:last-child {
-            font-size: 14px;
+            font-size: ${({ theme }) => theme.fontSize.S};
             line-height: 20px;
-            color: #bdbdbd;
+            color: ${({ theme }) => theme.colors.gray4};
             text-decoration: line-through;
             margin-top: 6px;
         }
         & > span:first-child {
             margin: 0 8px 0 0;
-            font-size: 20px;
+            font-size: ${({ theme }) => theme.fontSize.L};
             font-weight: bold;
             line-height: 28px;
-            color: #010101;
+            color: ${({ theme }) => theme.colors.black};
             text-decoration: none;
         }
     }
@@ -83,10 +83,10 @@ const StyledCard = styled.div`
         align-items: center;
         justify-content: center;
         .hover__txtBox {
-            font-size: 24px;
+            font-size: ${({ theme }) => theme.fontSize.XL};
             font-weight: bold;
             line-height: 35px;
-            color: #fff;
+            color: ${({ theme }) => theme.colors.white};
             box-sizing: border-box;
             div {
                 padding: 16px 0;

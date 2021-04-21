@@ -4,19 +4,25 @@
 const fontFamily = "Noto Sans KR";
 const fontWeight = {
   normal: 400,
-  bold: 900,
+  bold: 700,
+  logo: 900,
 };
 const fontSize = {
-  m: "16px",
-  l: "24px",
-  xxl: "40px",
+  S: "14px",
+  M: "16px",
+  L: "20px",
+  XL: "24px",
+  XXL: "40px",
 };
 const colors = {
   white: "#FFF",
-  black: "#333333",
-  gray: "#828282",
-  gray2: "#BDBDBD",
-  lightGray: "#F5F5F7",
+  black: "#010101",
+  gray1: "#333",
+  gray2: "#4F4F4F",
+  gray3: "#828282",
+  gray4: "#BDBDBD",
+  gray5: "#E0E0E0",
+  gray6: "#F5F5F7",
 };
 
 const theme = {

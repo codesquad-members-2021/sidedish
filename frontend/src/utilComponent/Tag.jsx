@@ -15,8 +15,8 @@ const StyledTag = styled.div`
     border-radius: 5px;
     margin-right: 10px;
     background: ${({type}) => (type === '이벤트특가') ? '#82D32D' : '#86C6FF'};
-    color: #fff;
-    font-size: 14px;
+    color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.fontSize.S};
     font-weight: bold;
 `
 

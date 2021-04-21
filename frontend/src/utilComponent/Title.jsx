@@ -15,9 +15,9 @@ const Title = ({type}) => {
 const StyledTitle = styled.h2`
     height: 35px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: ${({ theme }) => theme.fontSize.XL};
     line-height: 35px;
-    color: #333;
+    color: ${({ theme }) => theme.colors.gray1};
 `
 
 export default Title;
