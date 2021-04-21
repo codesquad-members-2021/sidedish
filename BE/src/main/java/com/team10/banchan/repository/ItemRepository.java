@@ -6,6 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
+
     @Override
     List<Item> findAll();
+
+    List<Item> findAllBySection(Long section);
+
+    List<Item> findAllByCategory(Long category);
 }
