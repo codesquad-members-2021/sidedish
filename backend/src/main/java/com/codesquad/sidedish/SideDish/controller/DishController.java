@@ -1,15 +1,10 @@
 package com.codesquad.sidedish.SideDish.controller;
 
-import com.codesquad.sidedish.SideDish.dto.CategoryDto;
-import com.codesquad.sidedish.SideDish.dto.DishDetailDto;
-import com.codesquad.sidedish.SideDish.dto.DishDto;
+import com.codesquad.sidedish.SideDish.dto.*;
 import com.codesquad.sidedish.SideDish.service.CategoryService;
 import com.codesquad.sidedish.SideDish.service.DishService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +29,18 @@ public class DishController {
     public ResponseEntity<DishDetailDto> getDetail(@PathVariable("hash") String hash) {
         DishDetailDto dishDetailDto = dishService.getDetail(hash);
         return ResponseEntity.ok().body(dishDetailDto);
+    }
+
+    @GetMapping("/detail/{hash}/refreshable")
+    public ResponseEntity<RefreshDto> getDetailRefreshable(@PathVariable("hash") String hash, @RequestParam("lastUpdated") int lastUpdated) {
+        RefreshDto refreshDto = dishService.getDetailRefreshable(hash, lastUpdated);
+        return ResponseEntity.ok().body(refreshDto);
+    }
+
+    @GetMapping("/detail/{hash}/quantity")
+    public ResponseEntity<QuantityDto> getDetailQuantity(@PathVariable("hash") String hash) {
+        QuantityDto quantityDto = dishService.getDetailQuantity(hash);
+        return ResponseEntity.ok().body(quantityDto);
     }
 
     @GetMapping("/main")

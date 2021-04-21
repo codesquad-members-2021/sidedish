@@ -1,8 +1,6 @@
 package com.codesquad.sidedish.SideDish.service;
 
-import com.codesquad.sidedish.SideDish.dto.DishDetailDataDto;
-import com.codesquad.sidedish.SideDish.dto.DishDetailDto;
-import com.codesquad.sidedish.SideDish.dto.DishDto;
+import com.codesquad.sidedish.SideDish.dto.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -10,6 +8,14 @@ import java.util.List;
 
 @Service
 public class DishService {
+
+    public RefreshDto getDetailRefreshable(String hash, long lastUpdated) {
+        return new RefreshDto(false);
+    }
+
+    public QuantityDto getDetailQuantity(String hash) {
+        return new QuantityDto(5);
+    }
 
     public DishDetailDto getDetail(String hash) {
         DishDetailDataDto.Builder builder = new DishDetailDataDto.Builder();

@@ -32,8 +32,7 @@ public class DishDetailDataDto {
         private String deliveryFee;
         private List<String> prices;
         private List<String> detailSection;
-
-
+        
         public DishDetailDataDto build() {
             return new DishDetailDataDto(this);
         }
