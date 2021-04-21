@@ -153,12 +153,25 @@ const CardHover = styled.ul`
 	line-height: 35px;
 `;
 
-const Card = ({ image, title, description, n_price, s_price, badge, size, delivery_type }) => {
+const Card = (props) => {
+	const { detail_hash, image, title, description, n_price, s_price, badge, size, delivery_type } = props
+	const { setModalData, setModalOn } = props
 	const [isHover, setHover] = useState(false);
 	const [src, setSrc] = useState(image);
+	const clickHandler = () => {
+		fetch(`https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/${detail_hash}`)
+		.then(res=>res.json())
+		.then(json=>{
+			if(!json.hash) return
+			json.data.name = title
+			json.data.badge = badge
+			setModalData(()=>json)
+			setModalOn(true)
+		})
+	}
 	return (
 		<CardWrapper>
-			<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+			<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={clickHandler}>
 				<CardImage src={src} size={size} isHover={isHover} onError={() => setSrc("https://codesquad.kr/img/company/codesquad2.png")}></CardImage>
 				<CardHover size={size}>{isHover ? delivery_type.map((e) => <li key={e}>{e}</li>) : ""}</CardHover>
 			</div>
