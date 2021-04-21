@@ -15,14 +15,14 @@ class EventInfoStackView: UIStackView {
     func launchingPriceLabel(label text: String) {
         let label = EventInfoBadge(frame: .zero)
         label.text = text
-        label.backgroundColor = UIColor.blue
+        label.backgroundColor = UIColor(red: 134/255, green: 198/255, blue: 255/255, alpha: 1)
         addArrangedSubview(label)
     }
     
     func eventPriceLabel(label text: String) {
         let label = EventInfoBadge(frame: .zero)
         label.text = text
-        label.backgroundColor = UIColor.systemGreen
+        label.backgroundColor = UIColor(red: 130/255, green: 211/255, blue: 45/255, alpha: 1)
         addArrangedSubview(label)
     }
 }
