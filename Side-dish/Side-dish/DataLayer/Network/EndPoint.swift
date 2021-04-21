@@ -21,8 +21,19 @@ enum Endpoint {
     }
 }
 
-enum Path {
+enum Path: CaseIterable {
     case main
     case soup
     case side
+    
+    var message : String {
+        switch self {
+        case .main:
+            return "한그릇 뚝딱 메인요리"
+        case .soup:
+            return "김이 모락모락 국,찌깨"
+        case .side:
+            return "언제 먹어도 든든한 밑반찬"
+        }
+    }
 }

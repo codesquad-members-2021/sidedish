@@ -12,6 +12,7 @@
 		8844B7D0262DB6A500FA49E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7CF262DB6A500FA49E9 /* Item.swift */; };
 		8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */; };
 		8844B7D9262E723300FA49E9 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B7D8262E723300FA49E9 /* BadgeLabel.swift */; };
+		BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB3262FF79600C0625E /* SideDishManager.swift */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
 		BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* SideDishViewController.swift */; };
@@ -33,6 +34,7 @@
 		8844B7CF262DB6A500FA49E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishes.swift; sourceTree = "<group>"; };
 		8844B7D8262E723300FA49E9 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		BFAE1BB3262FF79600C0625E /* SideDishManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishManager.swift; sourceTree = "<group>"; };
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,30 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BFAE1BB626301A5E00C0625E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BFAE1BB726301A7400C0625E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BFCE4956262D4891006C0882 /* SideDishViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BFAE1BB826301A9B00C0625E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BFAE1BB3262FF79600C0625E /* SideDishManager.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		BFCE4946262D4891006C0882 = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +140,6 @@
 				8844B7CD262DB62C00FA49E9 /* DataLayer */,
 				BFCE49B4262E74FF006C0882 /* DomainLayer */,
 				BFCE49BB262E7742006C0882 /* PresentationLayer */,
-				8844B7C1262D6CEC00FA49E9 /* View */,
 				BFCE496E262D883F006C0882 /* Main.storyboard */,
 				BFCE495B262D4895006C0882 /* Assets.xcassets */,
 				BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */,
@@ -137,6 +162,7 @@
 		BFCE49B4262E74FF006C0882 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BFAE1BB826301A9B00C0625E /* Entity */,
 				BFCE49B5262E7513006C0882 /* UseCase */,
 			);
 			path = DomainLayer;
@@ -153,8 +179,9 @@
 		BFCE49BB262E7742006C0882 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */,
-				BFCE4956262D4891006C0882 /* SideDishViewController.swift */,
+				BFAE1BB726301A7400C0625E /* ViewController */,
+				BFAE1BB626301A5E00C0625E /* ViewModel */,
+				8844B7C1262D6CEC00FA49E9 /* View */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -236,6 +263,7 @@
 				BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */,
 				BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */,
 				BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */,
+				BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */,
 				BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */,
 				BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */,
 				8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */,

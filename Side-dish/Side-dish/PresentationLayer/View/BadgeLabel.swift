@@ -9,7 +9,7 @@ import UIKit
 
 class BadgeLabel: UILabel {
 
-    @IBInspectable var padding: UIEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    private var padding: UIEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
     
     override func drawText(in rect: CGRect) {
         let paddingRect = rect.inset(by: padding)
