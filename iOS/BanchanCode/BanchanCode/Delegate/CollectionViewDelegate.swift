@@ -16,8 +16,7 @@ class CollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionVi
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.2)
         }else {
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.379)
-        }
-        
+        }        
     }
     
 }

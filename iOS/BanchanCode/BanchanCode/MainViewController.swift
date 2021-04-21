@@ -25,8 +25,12 @@ class MainViewController: UIViewController {
     }
     
     private func registerXib() {
-        let nibName = UINib(nibName: DishCell.identifier, bundle: nil)
-        dishCollectionView.register(nibName, forCellWithReuseIdentifier: DishCell.identifier)
+        let dishNib = UINib(nibName: DishCell.identifier, bundle: nil)
+        dishCollectionView.register(dishNib, forCellWithReuseIdentifier: DishCell.identifier)
+        
+        let headerNib = UINib(nibName: SectionHeaderView.identifier, bundle: nil)
+        dishCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
+
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
