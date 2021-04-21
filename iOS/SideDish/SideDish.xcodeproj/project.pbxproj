@@ -191,6 +191,10 @@
 		D4BFBB20262EA7B600D68297 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */,
+				D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */,
+				D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */,
+				D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */,
 				D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */,
 			);
 			path = View;
@@ -208,10 +212,6 @@
 			children = (
 				D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */,
 				D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */,
-				D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */,
-				D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */,
-				D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */,
-				D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
