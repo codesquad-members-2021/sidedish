@@ -11,7 +11,7 @@ public class DishDto {
     private final int nPrice;
     private final String sPrice;
     private final List<String> badge;
-
+    
     private DishDto(Builder builder) {
         this.detailHash = builder.detailHash;
         this.image = builder.image;

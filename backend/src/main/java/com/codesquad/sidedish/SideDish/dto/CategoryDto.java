@@ -1,16 +1,14 @@
 package com.codesquad.sidedish.SideDish.dto;
 
-import java.util.List;
-
 public class CategoryDto {
     private long id;
     private String categoryName;
-    private List<DishDto> dishes;
+    private String endPoint;
 
-    public CategoryDto(long id, String categoryName, List<DishDto> dishes) {
+    public CategoryDto(long id, String categoryName, String endPoint) {
         this.id = id;
         this.categoryName = categoryName;
-        this.dishes = dishes;
+        this.endPoint = endPoint;
     }
 
     public long getId() {
@@ -21,7 +19,7 @@ public class CategoryDto {
         return categoryName;
     }
 
-    public List<DishDto> getDishes() {
-        return dishes;
+    public String getEndPoint() {
+        return endPoint;
     }
 }
