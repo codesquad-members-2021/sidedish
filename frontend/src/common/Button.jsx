@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BtnStyle = styled.button`
+const StyledBtn = styled.button`
     display: block;
     outline: none;
     border: none;
@@ -19,12 +19,12 @@ const BtnStyle = styled.button`
 
 const Button = ({ type }) => {
     return (
-        <BtnStyle type={type}>
+        <StyledBtn type={type}>
             {type === 'order' 
                 ? <span>주문하기</span> 
                 : <span>일시품절</span> 
             }
-        </BtnStyle>
+        </StyledBtn>
     );
 }
 
