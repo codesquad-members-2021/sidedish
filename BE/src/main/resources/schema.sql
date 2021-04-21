@@ -37,7 +37,8 @@ CREATE TABLE BADGES
 (
     ID    bigint(20) auto_increment primary key,
     BADGE varchar(100),
-    DISH  bigint(20) references DISH (id)
+    DISH  bigint(20) references DISH (id),
+    DISH_KEY int
 );
 
 CREATE TABLE THUMB_IMAGES
