@@ -1,7 +1,8 @@
 package com.codesquad.sidedish.category.domain;
 
-import com.codesquad.sidedish.event.SidedishEvent;
-import com.codesquad.sidedish.event.SidedishEventRepository;
+import com.codesquad.sidedish.category.service.SidedishItemService;
+import com.codesquad.sidedish.event.domain.SidedishEvent;
+import com.codesquad.sidedish.event.domain.SidedishEventRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -22,6 +23,9 @@ class SidedishCategoryRepositoryTest {
 
     @Autowired
     SidedishEventRepository eventRepository;
+
+    @Autowired
+    SidedishItemService itemService;
 
     Logger logger = LoggerFactory.getLogger(SidedishCategoryRepositoryTest.class);
 
@@ -64,6 +68,33 @@ class SidedishCategoryRepositoryTest {
             sidedishItemList.forEach(System.out::println);
         }
     }
+
+    @Test
+    @DisplayName("아이템 DTO를 생성")
+    void createItemDTO() {
+
+        SidedishCategory mainCategory = categoryRepository.findByCategoryName("main");
+        SidedishEvent event = createSidedishEvent("점심 특가", "#ffffff");
+
+        SidedishItem sidedishItem1 = createSidedishItem("맛있는 반찬");
+        SidedishItem sidedishItem2 = createSidedishItem("상큼한 반찬");
+
+        sidedishItem1.addEvent(event);
+        sidedishItem2.addEvent(event);
+
+        mainCategory.addSidedishItem(sidedishItem1);
+        mainCategory.addSidedishItem(sidedishItem2);
+
+        categoryRepository.save(mainCategory);
+
+        List<SidedishItemDTO> itemDTOS = itemService.showItemList("main");
+
+
+        for (SidedishItemDTO sidedishItemDTO : itemDTOS) {
+            logger.info("ItemDTO : {}", sidedishItemDTO.toString());
+        }
+    }
+
 
     private SidedishItem createSidedishItem (String itemName) {
         return new SidedishItem(
