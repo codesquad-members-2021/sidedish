@@ -27,9 +27,6 @@ public class SidedishDTO {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
-        List<SidedishDTO> sidedishDTOS = objectMapper.readValue(jsonString, new TypeReference<List<SidedishDTO>>() {
-        });
-
         return objectMapper.readValue(
                 jsonString,
                 new TypeReference<List<SidedishDTO>>() {
