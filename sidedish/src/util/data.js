@@ -8,7 +8,13 @@ export const URL = {
   main() {
     return `${this.default()}main`;
   },
-  //   soup: `${URL.default}/soup`,
-  //   side: `${URL.default}/side`,
-  //   detail: `${URL.default}/detail`,
+  soup() {
+    return `${this.default()}soup`;
+  },
+  side() {
+    return `${this.default()}side`;
+  },
+  detail() {
+    return `${this.default()}detail`;
+  },
 };
