@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`dish_badge` (
 DROP TABLE IF EXISTS `side_dish`.`image`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`image` (
     `id` INT AUTO_INCREMENT,
-    `url` VARCHAR(45) NOT NULL,
+    `url` VARCHAR(255) NOT NULL,
     `top` TINYINT(1) NULL,
     `dish_id` INT NOT NULL,
     PRIMARY KEY (`id`),
