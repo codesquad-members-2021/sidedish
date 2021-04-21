@@ -3,6 +3,7 @@ import styled from "styled-components/";
 export const theme = {
   colors: {
     skyblue: "#EEF4FA",
+    skyblue_badge: "#86C6FF",
     grey_css: "#F5F5F7",
     grey_text: "#828282",
     green: "#82D32D",
@@ -12,8 +13,10 @@ export const theme = {
     small: "14px",
     medium: "16px",
     large: "18px",
-    btn: "18px",
-    price: "22px",
+    larger: "24px",
+  },
+  fontWeight: {
+    bold: 800,
   },
 };
 

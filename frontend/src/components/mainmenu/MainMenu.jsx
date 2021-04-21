@@ -12,7 +12,7 @@ width: 201px;
 height 58px;
 background-color: ${theme.colors.skyblue};
 margin-right: 5px;
-font-size: ${theme.fontSize.btn};
+font-size: ${theme.fontSize.large};
 `;
 
 const MainColumn = styled.div`
@@ -37,8 +37,8 @@ function MainMenu() {
         <Tab>우리아이 영양반찬</Tab>
       </TabWrapper>
       <MainColumn>
-        {mokData.map((data) => (
-          <ItemCard data={data} size={"L"}></ItemCard>
+        {mokData.map((data, idx) => (
+          <ItemCard key={idx} data={data} size={"L"}></ItemCard>
         ))}
       </MainColumn>
     </>
