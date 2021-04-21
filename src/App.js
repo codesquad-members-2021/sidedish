@@ -1,5 +1,6 @@
 import BestTab from "./component/bestTab/BestTab.jsx";
 import Header from "./component/Header.jsx";
+import ShowMoreBtn from "./component/ShowMoreBtn.jsx";
 import SlideContainer from "./component/slideContainer/SlideContainer.jsx";
 import GlobalStyle from "./style.js";
 
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <BestTab />
       <SlideContainer />
+      <ShowMoreBtn />
     </>
   );
 }
