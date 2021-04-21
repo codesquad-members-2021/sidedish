@@ -20,7 +20,7 @@ const rightBtn = styled.button``
 
 const ItemCards = mokdata.map(data => <ItemCard data={data} size={'S'} />)
 
-function CategorySlide () {
+function CategorySlide () { 
   return (
     <CategorySlideBlock>
      
