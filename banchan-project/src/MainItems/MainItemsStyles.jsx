@@ -20,9 +20,8 @@ const TotalCategoryButton = styled.button`
 
 const MainItemsCardWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  overflow: scroll;
+  align-items: center;
+  overflow: auto;
 `;
 
 const MainItemsCard = styled.div`
