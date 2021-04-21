@@ -2,6 +2,7 @@ import "./style/reset.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from './style/theme';
 import Header from "./header/Header";
+import SubContents from "./subContents/SubContents";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,6 +15,7 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <Header />
+    <SubContents />
   </ThemeProvider>
 );
 
