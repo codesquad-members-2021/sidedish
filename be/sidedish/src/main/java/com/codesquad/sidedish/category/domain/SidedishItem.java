@@ -1,6 +1,11 @@
 package com.codesquad.sidedish.category.domain;
 
+import com.codesquad.sidedish.event.SidedishEvent;
+import com.codesquad.sidedish.event.SidedishEventItem;
 import org.springframework.data.annotation.Id;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class SidedishItem {
     @Id
@@ -15,6 +20,8 @@ public class SidedishItem {
     private String itemDeliveryInfo;
     private String itemDeliveryFee;
 
+    private Set<SidedishEventItem> eventItems = new HashSet<>();
+
     public SidedishItem(String itemName, String itemDescription, int itemSalePrice, int itemNormalPrice, int itemQuantity, int itemPointRate, String itemDeliveryInfo, String itemDeliveryFee) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -24,6 +31,11 @@ public class SidedishItem {
         this.itemPointRate = itemPointRate;
         this.itemDeliveryInfo = itemDeliveryInfo;
         this.itemDeliveryFee = itemDeliveryFee;
+    }
+
+    public void addEvent(SidedishEvent sidedishEvent){
+        SidedishEventItem eventItem = new SidedishEventItem(sidedishEvent.getId());
+        eventItems.add(eventItem);
     }
 
     protected SidedishItem() {
@@ -67,16 +79,22 @@ public class SidedishItem {
 
     @Override
     public String toString() {
-        return "SidedishItem{" +
+        String result = "SidedishItem{" +
                 "id=" + id +
                 ", itemName='" + itemName + '\'' +
                 ", itemDescription='" + itemDescription + '\'' +
                 ", itemSalePrice=" + itemSalePrice +
                 ", itemNormalPrice=" + itemNormalPrice +
                 ", itemQuantity=" + itemQuantity +
-                ", pointRate=" + itemPointRate +
+                ", itemPointRate=" + itemPointRate +
                 ", itemDeliveryInfo='" + itemDeliveryInfo + '\'' +
                 ", itemDeliveryFee='" + itemDeliveryFee + '\'' +
-                '}';
+                ", eventItems=[";
+        for (SidedishEventItem eventItem : eventItems) {
+            result+= eventItem.toString();
+        }
+        result+="]}";
+
+        return result;
     }
 }
