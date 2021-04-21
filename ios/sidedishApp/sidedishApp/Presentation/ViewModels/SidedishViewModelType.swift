@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import Combine
+
+protocol SidedishViewModelType {
+    var dataChanged: PassthroughSubject<Void, Never> { get }
+    func getMainItems() -> [Item]
+    func getSoupItems() -> [Item]
+    func getSideItems() -> [Item]
+    func fetchData()
+}
