@@ -2,22 +2,19 @@ package com.example.repository;
 
 import com.example.domain.Category;
 import com.example.domain.Item;
-import com.example.domain.Orders;
+import com.example.domain.Order;
 import com.example.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-@Transactional
-class OrdersTest {
+class OrderTest {
 
     @Autowired
     CategoryRepository categoryRepository;
@@ -46,8 +43,8 @@ class OrdersTest {
         final List<Item> items = categoryRepository.findById(1L).get().getItems();
         final Item item = items.get(0);
         System.out.println(item.getId());
-        Orders orders = Orders.of(1, item.getId());
-        user.addOrder(orders);
+        Order order = Order.of(1, item.getId());
+        user.addOrder(order);
         userRepository.save(user);
 
         assertThat(userRepository.findById(1L).get().getOrders().get(0).getItemId()).isEqualTo(item.getId());
