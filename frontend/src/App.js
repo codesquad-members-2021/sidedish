@@ -13,6 +13,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header/>
+      <Category/>
     </> 
   );
 }
