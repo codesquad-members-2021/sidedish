@@ -11,7 +11,10 @@ const Main = () => {
     .map((category, idx) => <SlideDish key={idx} category={category} />);
 
   const plusSlideDish = () => {
-    setSlideDishCount((slideDishCount) => slideDishCount + 1);
+    setSlideDishCount((slideDishCount) => {
+      if (slideDishCount === slideDishes.length) return 1;
+      return slideDishCount + 1;
+    });
   };
 
   return (
