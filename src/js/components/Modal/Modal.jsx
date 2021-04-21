@@ -209,37 +209,36 @@ const CloseButton = styled.div`
 `;
 
 const Modal = ({ data, isModalOn, setModalOn }) => {
-	// 뱃지도 제목처럼 아에 누락된건지 확인 필요
 	const [count, setCount] = useState(1);
-	const price = parseInt((data.data.prices[1] ? data.data.prices[1] : data.data.prices[0]).replace("원", "").replace(",", ""));
+	const price = parseInt((data.prices[1] ? data.prices[1] : data.prices[0]).replace("원", "").replace(",", ""));
 	return (
 		<ModalWrapper isOn={isModalOn}>
 			<Box>
 				<ThumbNail {...data} />
 				<ProductInfo>
 					<ProductName>{data.name}</ProductName>
-					<ProductDescription>{data.data.product_description}</ProductDescription>
+					<ProductDescription>{data.product_description}</ProductDescription>
 					<ProductPrice>
-						{data.data.badge ? <Badge badge={data.data.badge} /> : ""}
-						<ProductPrice1>{data.data.prices[1] ? data.data.prices[1] : data.data.prices[0]}</ProductPrice1>
-						<ProductPrice2>{data.data.prices[1] ? data.data.prices[0] : ""}</ProductPrice2>
+						{data.badge ? <Badge badge={data.badge} /> : ""}
+						<ProductPrice1>{data.prices[1] ? data.prices[1] : data.prices[0]}</ProductPrice1>
+						<ProductPrice2>{data.prices[1] ? data.prices[0] : ""}</ProductPrice2>
 					</ProductPrice>
 					<Line />
-					<Content title="적립금" body={data.data.point} />
-					<Content title="배송정보" body={data.data.delivery_info} />
-					<Content title="배송비" body={data.data.delivery_fee} />
+					<Content title="적립금" body={data.point} />
+					<Content title="배송정보" body={data.delivery_info} />
+					<Content title="배송비" body={data.delivery_fee} />
 					<Line />
 					<Number>
 						<NumberLabel>수량</NumberLabel>
 						<NumberInput>{count}</NumberInput>
 						<NumberUpButton onClick={() => setCount((count) => ++count)}>
 							<svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M7 4.5L4 1.5L1 4.5" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M7 4.5L4 1.5L1 4.5" stroke="#333333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 							</svg>
 						</NumberUpButton>
 						<NumberDownButton onClick={() => setCount((count) => (count > 0 ? --count : 0))}>
 							<svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M12 9.5L15 12.5L18 9.5" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M12 9.5L15 12.5L18 9.5" stroke="#333333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 								<rect x="0.5" y="0.5" width="29" height="21" stroke="#E0E0E0" />
 							</svg>
 						</NumberDownButton>
@@ -253,10 +252,10 @@ const Modal = ({ data, isModalOn, setModalOn }) => {
 			</Box>
 			<CloseButton onClick={()=>setModalOn(()=>false)}>
 				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M1 1L17 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+					<path d="M1 1L17 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 				</svg>
 				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M17 1L1 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+					<path d="M17 1L1 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 				</svg>
 			</CloseButton>
 		</ModalWrapper>

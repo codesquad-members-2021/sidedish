@@ -30,9 +30,8 @@ const ThumbImage = styled.li`
 	background: #f5f5f7;
 	border-radius: 5px;
 `;
-//length가 5가될때까지
 const ThumbNail = (props) => {
-	const { top_image, thumb_images } = props.data;
+	const { top_image, thumb_images } = props;
 	const [topImage, setTopImage] = useState();
 	const [thumbImages, setThumbImages] = useState([]);
 	const clickHandler = ({target}) => setTopImage(()=>target.currentSrc)
@@ -43,7 +42,7 @@ const ThumbNail = (props) => {
 			while (foo.length < 5) foo.push("");
 			return foo.map((e, i) => <ThumbImage key={top_image + i}>{e ? <img src={e} alt={i} onClick={clickHandler} /> : ""}</ThumbImage>);
 		});
-	}, [top_image]);
+	}, [top_image, thumb_images]);
 	return (
 		<ThumbNailWrapper>
 			<TopImage src={topImage} />

@@ -41,14 +41,11 @@ const Box = styled.ul`
 	justify-content: space-evenly;
 	width: 1280px;
 	height: 620px;
-
-	/* White Blue */
-
 	background: #eef4fa;
 	border-radius: 0px 5px 5px 5px;
 `;
 
-const BestList = () => {
+const BestList = (props) => {
 	const [bestList, setBestList] = useState([{ items: [] }]);
 	const [index, setIndex] = useState(0);
 
@@ -72,7 +69,7 @@ const BestList = () => {
 			</TabList>
 			<Box>
 				{bestList[index].items.map((e) => (
-					<Card key={e.detail_hash} size="LARGE" {...e} />
+					<Card key={e.detail_hash} setModalData={props.setModalData} setModalOn={props.setModalOn} size="LARGE" {...e} />
 				))}
 			</Box>
 		</BestListWrapper>
