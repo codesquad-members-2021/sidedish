@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import Image from '../../atoms/image';
-import Span from '../../atoms/span';
-import EventTag from '../../atoms/eventTag';
+import React from "react";
+import styled from "styled-components";
+import Image from "../../atoms/image";
+import Span from "../../atoms/span";
 
 const Div = styled.div`
   display: flex;
   width: 308px;
+  flex-direction: column;
   font-family: Noto Sans KR;
 `;
 
@@ -19,14 +19,11 @@ const MediumCard = ({ children, ...props }) => {
   return (
     <Div>
       <Image />
-      <Span _color="#333333" _fontSize="16px" _fontWeight="400"></Span>
-      <Span _color="#828282" _fontSize="14px" _fontWeight="400"></Span>
+      <Span _title>안녕</Span>
+      <Span _description>나는</Span>
       <FlexDiv>
-        <Span _color="#010101" _fontSize="20px" _fontWeight="700"></Span>
-        <Span _color="#BDBDBD" _fontSize="14px" _fontWeight="400"></Span>
-      </FlexDiv>
-      <FlexDiv>
-        <EventTag />
+        <Span _nPrice>가격</Span>
+        <Span _sPrice>할인각겨</Span>
       </FlexDiv>
     </Div>
   );
