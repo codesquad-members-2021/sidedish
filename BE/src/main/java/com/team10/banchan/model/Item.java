@@ -1,6 +1,7 @@
 package com.team10.banchan.model;
 
 import com.team10.banchan.dto.ItemDetail;
+import com.team10.banchan.dto.ItemSummary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
 
@@ -94,6 +95,20 @@ public class Item {
         );
     }
 
+    public ItemSummary itemSummary() {
+        return ItemSummary.of(
+                id,
+                topImage.getTopImage(),
+                topImage.getAlt(),
+                deliveryType(),
+                description.getTitle(),
+                description.getDescription(),
+                prices.getnPrice(),
+                prices.getsPrice(),
+                badge()
+        );
+    }
+
     private List<String> thumbImagesUrl() {
         return thumbImages.stream()
                 .map(ThumbImage::getUrl)
@@ -114,6 +129,12 @@ public class Item {
     private List<String> detailSection() {
         return detailSections.stream()
                 .map(DetailSection::getUrl)
+                .collect(Collectors.toList());
+    }
+
+    private List<String> deliveryType() {
+        return deliveryTypes.stream()
+                .map(DeliveryType::getName)
                 .collect(Collectors.toList());
     }
 
