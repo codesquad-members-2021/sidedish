@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class DetailViewModel {
+class DetailViewModel: DetailViewModelType {
     private var item = Detail()
     private(set) var dataChanged = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
@@ -36,7 +36,6 @@ class DetailViewModel {
                     case .failure(let error): print(error.localizedDescription) } },
                   receiveValue: { item in
                     self.item = item
-                    dump(self.item)
                     self.dataChanged.send()
                   })
             .store(in: &cancellables)

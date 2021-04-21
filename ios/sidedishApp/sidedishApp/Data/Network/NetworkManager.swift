@@ -15,7 +15,6 @@ protocol HttpMethodProtocol: class {
 class NetworkManager: HttpMethodProtocol {
     func get<T>(type: T.Type, url: URL) -> AnyPublisher<T, Error> where T : Decodable {
         let urlRequest = URLRequest(url: url)
-        print(urlRequest)
         
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
             .map(\.data)

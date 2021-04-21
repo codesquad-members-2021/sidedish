@@ -10,7 +10,7 @@ import Foundation
 struct Detail: Codable {
     private let item: DetailItem
     
-    init(){
+    init() {
         let id = 0
         let detailImages = [""]
         let descriptionImages = [""]
@@ -18,12 +18,12 @@ struct Detail: Codable {
         let description = ""
         let normalPrice = 0
         let salePrice = 0
-        //        let eventBadgeList = ["]
+        let eventBadgeList = [EventBadge(name: "", colorHex: "")]
         let pointRate = 1
         let isPurchasable = false
         let deliveryInfo = ""
         let deliveryFee = ""
-        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, pointRate: pointRate, isPurchasable: isPurchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
+        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, eventBadgeList: eventBadgeList, pointRate: pointRate, isPurchasable: isPurchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
         
     }
 }

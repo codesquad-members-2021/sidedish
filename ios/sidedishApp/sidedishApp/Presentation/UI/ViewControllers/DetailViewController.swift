@@ -12,25 +12,13 @@ class DetailViewController: UIViewController {
     private var category: String!
     private var id: Int!
     private var cancellables: Set<AnyCancellable> = []
-    private var detailViewModel: DetailViewModel!
+    private var detailViewModel: DetailViewModelType!
     override func viewDidLoad() {
         super.viewDidLoad()
         detailViewModel = DetailViewModel()
         fetchData()
-//        detailViewModel.fetchData(path: <#T##String#>, path: <#T##Int#>)
-           // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     private func fetchData() {
         detailViewModel.dataChanged
             .receive(on: DispatchQueue.main)
