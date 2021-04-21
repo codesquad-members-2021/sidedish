@@ -14,6 +14,7 @@
 		1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */; };
 		1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADC262DDDFD0050FE6C /* LaunchScreen.storyboard */; };
 		D8279798DA0A1BCEB97E7780 /* Pods_SideDishApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A87B12151B0D006007CD63 /* Pods_SideDishApp.framework */; };
+		B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E6E262EA29200D5EBEC /* DishCardCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4942C5A177086C5C99933038 /* Pods-SideDishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.debug.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.debug.xcconfig"; sourceTree = "<group>"; };
 		605A37FD869863C7E023EE85 /* Pods-SideDishApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.release.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.release.xcconfig"; sourceTree = "<group>"; };
 		96A87B12151B0D006007CD63 /* Pods_SideDishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0911E6E262EA29200D5EBEC /* DishCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */,
+				B0911E6E262EA29200D5EBEC /* DishCardCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				1E1DBAD6262DDDFC0050FE6C /* ViewController.swift in Sources */,
 				1E1DBAD2262DDDFC0050FE6C /* AppDelegate.swift in Sources */,
+				B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
