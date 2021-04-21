@@ -104,7 +104,8 @@ public class Item {
                 prices.getnPrice(),
                 prices.getsPrice(),
                 detailSection(),
-                badge()
+                badge(),
+                inStock()
         );
     }
 
@@ -155,5 +156,9 @@ public class Item {
         return badges.stream()
                 .map(Badge::getName)
                 .collect(Collectors.toList());
+    }
+
+    private Boolean inStock() {
+        return stock > 0;
     }
 }

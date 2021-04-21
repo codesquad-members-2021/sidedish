@@ -22,7 +22,9 @@ public class ItemDetail {
     private final List<String> detailSection;
     private final List<String> badges;
 
-    private ItemDetail(String topImage, List<String> thumbImages, String title, String productDescription, String point, String deliveryInfo, String deliveryFee, String nPrices, String sPrices, List<String> detailSection, List<String> badges) {
+    private final Boolean inStock;
+
+    private ItemDetail(String topImage, List<String> thumbImages, String title, String productDescription, String point, String deliveryInfo, String deliveryFee, String nPrices, String sPrices, List<String> detailSection, List<String> badges, Boolean inStock) {
         this.topImage = topImage;
         this.thumbImages = thumbImages;
         this.title = title;
@@ -34,14 +36,15 @@ public class ItemDetail {
         this.sPrices = sPrices;
         this.detailSection = detailSection;
         this.badges = badges;
+        this.inStock = inStock;
     }
 
     public static ItemDetail of(String topImage, List<String> thumbImages,
                                 String title, String productDescription,
                                 String point, String deliveryInfo,
                                 String deliveryFee, String nPrices, String sPrices,
-                                List<String> detailSection, List<String> badges) {
-        return new ItemDetail(topImage, thumbImages, title, productDescription, point, deliveryInfo, deliveryFee, nPrices, sPrices, detailSection, badges);
+                                List<String> detailSection, List<String> badges, Boolean inStock) {
+        return new ItemDetail(topImage, thumbImages, title, productDescription, point, deliveryInfo, deliveryFee, nPrices, sPrices, detailSection, badges, inStock);
     }
 
     @JsonProperty("top_image")
@@ -98,6 +101,11 @@ public class ItemDetail {
     @JsonProperty("badge")
     public List<String> getBadges() {
         return badges;
+    }
+
+    @JsonProperty("in_stock")
+    public Boolean getInStock() {
+        return inStock;
     }
 }
 
