@@ -27,10 +27,6 @@ public class Category {
         this.name = name;
     }
 
-    public Category withId(Long id, String name) {
-        return new Category(id, name);
-    }
-
     public static Category of(String name) {
         return new Category(null, name);
     }

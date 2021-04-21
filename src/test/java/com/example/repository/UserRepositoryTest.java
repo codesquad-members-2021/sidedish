@@ -18,7 +18,7 @@ class UserRepositoryTest {
     @Test
     void test(){
 
-        User user = User.of("1232@naver.com","12345");
+        User user = User.of("123123@naver.com","12345");
 
         final User save = userRepository.save(user);
 

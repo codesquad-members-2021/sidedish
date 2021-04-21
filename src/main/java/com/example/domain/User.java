@@ -21,7 +21,7 @@ public class User {
     private List<Order> orders = new ArrayList<>();
 
     @PersistenceConstructor
-    public User(Long id, String email, String password) {
+    private User(Long id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -29,10 +29,6 @@ public class User {
 
     public static User of(String email, String password) {
         return new User(null, email, password);
-    }
-
-    public User withId(Long id, String email, String password) {
-        return new User(id, email, password);
     }
 
     public Long getId() {
