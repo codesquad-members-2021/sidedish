@@ -30,10 +30,33 @@ class Menu: Codable {
         self.s_price = s_price
         self.badge = badge
     }
+    
+    func configure(cell: MenuCell) {
+        cell.titleLabel.text = self.title
+        cell.bodyLabel.text = self.description
+        cell.currentPriceLabel.text = self.s_price
+    }
 }
 
-struct getMenu: Codable {
-    let category_id: String
-    let name: String
-    let items: [Menu]
+
+
+extension Menu: Hashable, Equatable {
+    static func == (lhs: Menu, rhs: Menu) -> Bool {
+        return lhs.detail_hash == rhs.detail_hash || lhs.image == rhs.image ||
+            lhs.alt == rhs.alt || lhs.delivery_type == rhs.delivery_type ||
+            lhs.title == rhs.title || lhs.description == rhs.description ||
+            lhs.n_price == rhs.n_price || lhs.s_price == rhs.s_price || lhs.badge == rhs.badge
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(detail_hash)
+        hasher.combine(image)
+        hasher.combine(alt)
+        hasher.combine(delivery_type)
+        hasher.combine(title)
+        hasher.combine(description)
+        hasher.combine(n_price)
+        hasher.combine(s_price)
+        hasher.combine(badge)
+    }
 }

@@ -9,14 +9,18 @@ import Foundation
 
 class Menus {
     
-    private var menus: [Menu]
+    private var menus: [Menu]!
     
-    init(menus: [Menu]) {
-        self.menus = menus
+    init() {
+        self.menus = nil
     }
     
-    func addMenu(menu: Menu) {
-        menus.append(menu)
+    func add(menuList: [Menu]) {
+        self.menus = menuList
+    }
+    
+    func giveMenu() -> [Menu] {
+        return self.menus
     }
 }
 

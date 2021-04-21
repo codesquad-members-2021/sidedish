@@ -25,11 +25,8 @@ class MenuCell: UICollectionViewCell {
     func configure() {
         self.eventLabel.layer.masksToBounds = true
         self.eventLabel.layer.cornerRadius = 5
-        self.eventLabel.layer.isHidden = true
         self.launchingLabel.layer.masksToBounds = true
         self.launchingLabel.layer.cornerRadius = 5
-        self.launchingLabel.leftAnchor.constraint(equalTo: self.thumbnailImage.rightAnchor, constant: 8).isActive = true
-        self.titleLabel.text = "[미노리키친] 일본식 우엉조림 (킨피라고보) 80g"
     }
 
 }

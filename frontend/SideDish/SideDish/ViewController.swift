@@ -11,13 +11,21 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
     
+    private var dataSource = MainDiffableDataSource()
+    private var menus = Menus()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configureCollectionView()
+        loadCard()
+    }
+    
+    private func configureCollectionView() {
         let nibName = UINib(nibName: "MenuCell", bundle: .none)
         sideDishCollectionView.register(nibName, forCellWithReuseIdentifier: "menuCell")
-        sideDishCollectionView.dataSource = self
-        sideDishCollectionView.delegate = self
-        loadCard()
+        self.dataSource.setupDataSource(collectionView: self.sideDishCollectionView)
     }
     
     private func loadCard() {
@@ -25,7 +33,8 @@ class ViewController: UIViewController {
             DispatchQueue.global().async {
                 switch result {
                 case .success(let data):
-                   print(data)
+                    self.menus.add(menuList: data.body)
+                    self.putData()
                 case.failure(let error):
                     print(error.localizedDescription)
                 }
@@ -33,23 +42,8 @@ class ViewController: UIViewController {
         })
     }
     
-
-
-}
-
-extension ViewController: UICollectionViewDelegate {
-    
-}
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    private func putData() {
+        self.dataSource.applySnapshot(data: menus.giveMenu())
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as?  MenuCell else {
-            return UICollectionViewCell()
-        }
-        return cell
-    }
+
 }

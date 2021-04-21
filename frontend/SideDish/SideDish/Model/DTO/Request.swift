@@ -9,7 +9,7 @@ import Foundation
 
 class RequestManager {
     
-    static let urlString = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/17011200"
+    static let urlString = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
     //GET
     static func getRequest() -> URLRequest {
         guard let url = URL(string: urlString) else {
