@@ -8,28 +8,22 @@ import styled, { css, keyframes } from "styled-components";
 // - VList에 요소가 남았다면 pop or shift해서 방향에 맞게 추가하고 리렌더링 후에 slideContanier
 
 const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
-  const virtureSlides = useRef(createVirtureSlides(items, itemsPerPeice));
-  const initialSlide = virtureSlides.current[0];
+  const [initialSlide, virture] = createVirtureSlides(items, itemsPerPeice);
+  const virtureSlides = useRef(virture);
   const [realSlides, setRealSlieds] = useState([initialSlide]);
-  // virtureSlides를 하나씩 없애면서, 좌로갈때는 translate 100인 상태에서 시작핟록, 그리고 translate에 "현재" 기준에 "더하거나 뺴는" 방식으로 변경
+
   const container = useRef();
   const currentSlideIndex = useRef(0);
-  const direction = useRef("none");
 
   const move = (dir) => {
     if (isThereItem(dir)) {
       slideContainer(dir);
-      currentSlideIndex.current =
-        dir === "prev"
-          ? currentSlideIndex.current - 1
-          : currentSlideIndex.current + 1;
+      changeCurrentIndex(dir);
       return;
     }
     const newSlides = isEmptyVirtureSlides()
       ? getMovedSlides(dir)
       : getAddedSlides(dir);
-    direction.current = dir;
-
     setRealSlieds(newSlides);
   };
   const getMovedSlides = (dir) => {
@@ -41,9 +35,11 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
       const opposite = newSlides.shift();
       newSlides.push(opposite);
     }
+
     return newSlides;
   };
   const getAddedSlides = (dir) => {
+    console.log("add");
     const newSlide =
       dir === "prev"
         ? virtureSlides.current.pop()
@@ -54,9 +50,16 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
 
     return newSlides;
   };
+  const changeCurrentIndex = (dir) => {
+    currentSlideIndex.current =
+      dir === "prev"
+        ? currentSlideIndex.current - 1
+        : currentSlideIndex.current + 1;
+  };
   const slideContainer = (dir) => {
-    container.current.style.transform =
-      dir === "prev" ? "translate(100%)" : "translate(-100%)";
+    const i = currentSlideIndex.current;
+    container.current.style.animation =
+      dir === "prev" ? `${moveToPrev} 1s` : "translate(-100%)";
   };
   const renderList = () => {
     const list = realSlides;
@@ -83,7 +86,7 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   return (
     <CarouselWrapper>
       <Button prev onClick={() => move("prev")} />
-      <CarouselContainer ref={container} direction={direction.current}>
+      <CarouselContainer ref={container} current={currentSlideIndex.current}>
         {renderList()}
       </CarouselContainer>
       <Button next onClick={() => move("next")} />
@@ -92,11 +95,12 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
 };
 
 const createVirtureSlides = (items, itemsPerPeice) => {
-  return items.reduce((result, item, index) => {
+  const newItems = items.reduce((result, item, index) => {
     const [i, j] = divmod(index, itemsPerPeice);
     result[i] ? (result[i][j] = item) : (result[i] = [item]);
     return result;
   }, []);
+  return [newItems.shift(), newItems];
 };
 
 const divmod = (a, b) => {
@@ -104,40 +108,39 @@ const divmod = (a, b) => {
 };
 const moveToPrev = keyframes`
     from{
-    transform: translateX(0px);
-    }to{
-    transform: translateX(100%);
-    }; 
-`;
-
-const moveToNext = keyframes`
-    from{
-    transform: translateX(100%);
+    transform: translateX(-100%);
     }to{
     transform: translateX(0);
     }; 
 `;
+
+const moveToNext = (current) => keyframes`
+    from{
+    transform: translateX(${current * 100 + 100}%);
+    }to{
+    transform: translateX(${current * 100}%);
+    }; 
+`;
 const CarouselWrapper = styled.div`
-  background-color: #b5b5b5;
-  /* overflow: hidden; */
+  background: #b5b5b5;
   position: relative;
 `;
 const CarouselContainer = styled.div`
-  transition: all 1s ease;
   display: flex;
-  ${({ direction }) => {
+  /* transition: all 1s ease; */
+  /* ${({ direction, current }) => {
     if (direction === "none") return;
     return direction === "prev"
       ? css`
           animation: ${moveToPrev} 1s;
         `
       : css`
-          animation: ${moveToNext} 1s;
+          animation: ${moveToNext(current)} 1s;
         `;
-  }}
+  }}; */
 `;
 const Slide = styled.ul`
-  background-color: #777777;
+  background: #777777;
   display: flex;
   width: 100%;
   flex: 1 0 auto;
