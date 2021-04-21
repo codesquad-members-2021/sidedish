@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DishItem = ({
-  item: { detail_hash, image, alt, delivery_type, title, description, n_price, badge },
-  item,
+  item: { detail_hash, image, alt, delivery_type, title, description, s_price, n_price, badge },
   size,
 }) => {
   const handleErrorImg = ({ target }) => {
@@ -22,7 +21,7 @@ const DishItem = ({
       <div className="title">{title}</div>
       <div className="description">{description}</div>
       <div className="price">
-        <span className="mainPrice">{item.s_price}</span>
+        <span className="mainPrice">{s_price}</span>
         {n_price && <span className="subPrice">{n_price}원</span>}
       </div>
       {badge &&
