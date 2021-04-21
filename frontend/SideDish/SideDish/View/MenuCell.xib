@@ -51,7 +51,7 @@
                                 <rect key="frame" x="138" y="62" width="22" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="M0r-fI-ITt"/>
-                                    <constraint firstAttribute="width" constant="22" id="WfW-c3-gye"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="WfW-c3-gye"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>

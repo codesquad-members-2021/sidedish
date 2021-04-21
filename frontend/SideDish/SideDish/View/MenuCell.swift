@@ -27,7 +27,6 @@ class MenuCell: UICollectionViewCell {
         self.eventLabel.layer.cornerRadius = 5
         self.launchingLabel.layer.masksToBounds = true
         self.launchingLabel.layer.cornerRadius = 5
-        self.titleLabel.text = "[미노리키친] 일본식 우엉조림 (킨피라고보) 80g"
     }
 
 }
