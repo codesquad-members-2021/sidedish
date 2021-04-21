@@ -15,7 +15,7 @@ import java.util.UUID;
 public class Item {
 
     @Id
-    private final Long id;
+    private final String id;
     private final String title;
     private final String description;
     private final int price;
@@ -30,7 +30,7 @@ public class Item {
     private final String image;
 
     @PersistenceConstructor
-    public Item(Long id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock) {
+    public Item(String id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -41,15 +41,11 @@ public class Item {
         this.stock = stock;
     }
 
-    public Item withId(Long id, String title, String description, int price, String badges, String deliveryTypes, String image, int stock){
-        return new Item(id, title, description, price, badges, deliveryTypes, image, stock);
-    }
-
     public static Item of(String title, String description, int price, String badges, String deliveryTypes, String image, int stock){
-        return new Item(null, title, description, price, badges, deliveryTypes, image, stock);
+        return new Item(UUID.randomUUID().toString(), title, description, price, badges, deliveryTypes, image, stock);
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
