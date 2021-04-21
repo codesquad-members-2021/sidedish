@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BestSidedishItem from 'component/BestSidedish/BestSidedishList/BestSidedishItem';
 import useFetch from 'hooks/useFetch';
 import styled from 'styled-components';
+import DishItem from 'component/atoms/DishItem';
 
 const BestSidedishList = ({ focusedCategory }) => {
   const { data, loading } = useFetch(
@@ -10,7 +11,7 @@ const BestSidedishList = ({ focusedCategory }) => {
   );
 
   const bestSidedishList = data
-    ? data.items.map((item) => <BestSidedishItem key={item.detail_hash} item={item} />)
+    ? data.items.map((item) => <DishItem key={item.detail_hash} item={item} size="L" />)
     : null;
   return loading ? (
     <div>Loading...</div>
@@ -22,10 +23,9 @@ const BestSidedishList = ({ focusedCategory }) => {
 export default BestSidedishList;
 
 const BestListContainer = styled.div`
+  min-width: 1320px;
   display: flex;
   justify-content: space-evenly;
   background: #eef4fa;
-  width: 1280px;
-  height: 620px;
   padding: 40px 0;
 `;

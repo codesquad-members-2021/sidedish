@@ -10,17 +10,28 @@ const SlideDish = () => {
     .slice(0, 4)
     .map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
   return (
-    <StyledSlideList>
-      {slideList}
-      <SlideArrow>
-        <IoChevronBackSharp className="leftArrow" />
-        <IoChevronForwardSharp className="rightArrow" />
-      </SlideArrow>
-    </StyledSlideList>
+    <>
+      <Header>모두가 좋아하는 든든한 메인요리</Header>
+      <StyledSlideList>
+        {slideList}
+        <SlideArrow>
+          <IoChevronBackSharp className="leftArrow" />
+          <IoChevronForwardSharp className="rightArrow" />
+        </SlideArrow>
+      </StyledSlideList>
+    </>
   );
 };
 
 export default SlideDish;
+
+const Header = styled.div`
+  color: #333333, 100%;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+`;
 
 const StyledSlideList = styled.div`
   position: relative;

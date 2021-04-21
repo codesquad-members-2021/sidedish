@@ -22,8 +22,8 @@ const DishItem = ({
       <div className="title">{title}</div>
       <div className="description">{description}</div>
       <div className="price">
-        {item.s_price && <span className="mainPrice">{item.s_price}</span>}
-        <span className="subPrice">{item.s_price ? n_price : item.s_price}</span>
+        <span className="mainPrice">{item.s_price}</span>
+        {n_price && <span className="subPrice">{n_price}원</span>}
       </div>
       {badge &&
         badge.map((item, i) => (

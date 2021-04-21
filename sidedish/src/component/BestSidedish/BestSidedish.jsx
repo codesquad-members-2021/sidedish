@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BestTabList from 'component/BestSidedish/BestTabList/BestTabList';
 import BestSidedishList from 'component/BestSidedish/BestSidedishList/BestSidedishList';
 import useFetch from 'hooks/useFetch';
+import styled from 'styled-components';
 
 const BestSidedish = () => {
   const [bestList, setBestList] = useState(null);
@@ -24,9 +25,9 @@ const BestSidedish = () => {
   const handleFocusedCategory = (categoryId) => {
     setFocusedCategory(categoryId);
   };
-
   return (
     <div>
+      <Header>후기가 증명하는 베스트 반찬</Header>
       {bestList && (
         <BestTabList
           bestList={bestList}
@@ -50,3 +51,11 @@ const parseBestList = (data) => {
 };
 
 export default BestSidedish;
+
+const Header = styled.div`
+  color: #333333, 100%;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+`;
