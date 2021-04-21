@@ -33,7 +33,8 @@ class SidedishCell: UICollectionViewCell {
         self.descriptionLabel.text = item.getDescription()
         self.normalPriceLabel.text = "\(item.getNormalPrice())"
         self.salePriceLabel.text = "\(item.getSalePrice())"
-        self.thumbnailImageView.setImage(with: URL(string: item.getThumbnailImage())!)
+        guard let url = URL(string: item.getThumbnailImage()) else { return }
+        self.thumbnailImageView.setImage(with: url)
         self.badgeLabel.backgroundColor = .systemGreen
         self.badgeLabel.text = "이벤트특가"
     }
