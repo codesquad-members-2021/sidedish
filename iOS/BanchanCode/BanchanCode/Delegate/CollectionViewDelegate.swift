@@ -19,4 +19,11 @@ class CollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionVi
         }        
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width: CGFloat = collectionView.frame.width
+        let height: CGFloat = 32
+        return CGSize(width: width, height: height)
+    }
+    
+    
 }
