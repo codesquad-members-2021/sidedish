@@ -19,14 +19,14 @@ extension EventInfoBadge {
     private func setupMainView() {
         font = UIFont.boldSystemFont(ofSize: 12)
         textColor = UIColor.white
-        textAlignment = .center
+        textAlignment = NSTextAlignment.center
         configureMainView()
     }
     
     private func configureMainView() {
-        numberOfLines = 1
+        numberOfLines = 0
+        adjustsFontSizeToFitWidth = true
         translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalToConstant: 53).isActive = true
         layer.masksToBounds = true
         layer.cornerRadius = 8
     }
