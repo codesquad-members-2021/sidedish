@@ -2,7 +2,7 @@ import "./App.css";
 import StateProvider from "./components/StateProvider";
 import { createGlobalStyle } from "styled-components";
 import { ThemeProvider } from "styled-components";
-import theme from "./components/utils/theme.js";
+import theme from "./components/utils/styles/theme";
 
 export const GlobalStyle = createGlobalStyle`
   *{

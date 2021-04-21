@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../utils/Card";
-import theme from "../utils/theme";
+import theme from "../utils/styles/theme";
 
 const CarouselSection = (props) => {
   const [products, setProducts] = useState([]);

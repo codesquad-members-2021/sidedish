@@ -1,6 +1,7 @@
 import HeaderLeft from "./headerLeft/HeaderLeft";
 import HeaderRight from "./headerRight/HeaderRight";
 import styled from "styled-components";
+import { CenterContainer } from "../utils/styles/common";
 
 const Header = () => {
   return (
@@ -11,8 +12,7 @@ const Header = () => {
   );
 };
 
-const HeaderContainer = styled.div`
-  display: flex;
+const HeaderContainer = styled(CenterContainer)`
   justify-content: space-between;
   margin: 32px 80px 20px 80px;
 `;

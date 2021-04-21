@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "./theme";
+import theme from "../utils/styles/theme.js";
 import Price from "./Price";
 
 const Card = ({ product, cardSize }) => {

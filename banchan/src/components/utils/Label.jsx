@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "./constant";
-
-const LABEL_TYPE = {
-  EVENT: "이벤트특가",
-  LAUNCH: "런칭특가",
-};
+import theme from "./styles/theme.js";
+import { LABEL_TYPE } from "./variables.js";
 
 const Label = ({ type }) => (
   <StyledLabel type={type}>{LABEL_TYPE[type]}</StyledLabel>

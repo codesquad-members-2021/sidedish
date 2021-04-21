@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import HeaderNavbar from "./HeaderNavbar.jsx";
+import { CenterContainer } from "../../utils/styles/common.jsx";
 
 const HeaderLeft = () => {
   return (
@@ -10,10 +11,7 @@ const HeaderLeft = () => {
   );
 };
 
-const HeaderLeftDiv = styled.div`
-  display: flex;
-  align-items: center;
-`;
+const HeaderLeftDiv = styled(CenterContainer)``;
 
 const BanchanTitle = styled.div`
   color: ${(props) => props.theme.colors.darkGray};
@@ -21,4 +19,5 @@ const BanchanTitle = styled.div`
   font-weight: 900;
   margin-right: 12px;
 `;
+
 export default HeaderLeft;
