@@ -8,21 +8,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainCollectionView()
-        //setupTapGesture()
     }
 }
-
-//extension MainViewController {
-//
-//    private func setupTapGesture() {
-//        let gesture = UITapGestureRecognizer(target: self, action: #selector(didSectionHeaderTouched))
-//        mainCollectionView.addGestureRecognizer(gesture)
-//    }
-//
-//    @objc func didSectionHeaderTouched() {
-//        print("Toaster가 아닌거 같은데...?")
-//    }
-//}
 
 //MARK: -Setup && Cofiguration
 extension MainViewController {
@@ -69,11 +56,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.foodCell, for: indexPath) as! FoodCell
         //Start TestCode
+        let attributedText = PriceStackView.convertToNSAttributedString(from: "7,880원")
         cell.foodImageView.image = UIImage(named: "side")
         cell.foodInfoStackView.foodNameLabel.text = "[마샐미디쉬] 매콤마늘쫑 해산물볶음 180G"
         cell.foodInfoStackView.foodDescriptionLabel.text = "탱글탱글한 새우와 오징어를 .."
         cell.foodInfoStackView.priceStackView.normalPriceLabel.text = "6,210원"
-        cell.foodInfoStackView.priceStackView.eventPriceLabel?.text = "7,800원"
+        cell.foodInfoStackView.priceStackView.eventPriceLabel?.attributedText = attributedText
         //End TestCode
         return cell
     }

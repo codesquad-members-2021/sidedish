@@ -50,5 +50,12 @@ extension PriceStackView {
         addArrangedSubview(eventPriceLabel)
         eventPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         eventPriceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        eventPriceLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    static func convertToNSAttributedString(from string: String) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: string)
+        attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributedText.length))
+        return attributedText
     }
 }
