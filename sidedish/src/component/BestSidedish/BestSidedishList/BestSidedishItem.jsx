@@ -12,7 +12,7 @@ const BestSidedishItem = ({
         <div className="description">{description}</div>
         <div className="price">
           <span className="salePrice">{s_price}</span>
-          <span className="normalPrice">{n_price}원</span>
+          <span className="normalPrice">{n_price && `${n_price}원`}</span>
         </div>
         <div className="badges">
           {badge &&

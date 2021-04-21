@@ -28,6 +28,7 @@ const Tab = styled.div`
   font-weight: ${({ focused }) => focused && `bold`};
   width: 10rem;
   height: 3rem;
+  border-radius: 5px;
   color: #828282, 100%;
   font-size: 16px;
   text-align: center;
