@@ -9,9 +9,9 @@ import styled, { css, keyframes } from "styled-components";
 
 const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   const virtureSlides = useRef(createVirtureSlides(items, itemsPerPeice));
-  const initialSlide = virtureSlides.current.shift();
+  const initialSlide = virtureSlides.current[0];
   const [realSlides, setRealSlieds] = useState([initialSlide]);
-
+  // virtureSlides를 하나씩 없애면서, 좌로갈때는 translate 100인 상태에서 시작핟록, 그리고 translate에 "현재" 기준에 "더하거나 뺴는" 방식으로 변경
   const container = useRef();
   const currentSlideIndex = useRef(0);
   const direction = useRef("none");
@@ -19,47 +19,52 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   const move = (dir) => {
     if (isThereItem(dir)) {
       slideContainer(dir);
+      currentSlideIndex.current =
+        dir === "prev"
+          ? currentSlideIndex.current - 1
+          : currentSlideIndex.current + 1;
       return;
     }
     const newSlides = isEmptyVirtureSlides()
       ? getMovedSlides(dir)
-      : getAddedSlides();
+      : getAddedSlides(dir);
+    direction.current = dir;
 
-    setRealSlieds((newSlides) => newSlides);
-
-    if (dir === "prev") {
-      currentSlideIndex.current -= 1;
-      direction.current = "prev";
-      //   setRealSlieds([newSlide, ...realSlides]);
-    } else {
-      currentSlideIndex.current += 1;
-      direction.current = "next";
-      //   setRealSlieds([...realSlides, newSlide]);
-    }
+    setRealSlieds(newSlides);
   };
   const getMovedSlides = (dir) => {
-    let newSlides = [...realSlides];
+    const newSlides = [...realSlides];
     if (dir === "prev") {
-      const opposite = newSlides.current.pop();
+      const opposite = newSlides.pop();
       newSlides.unshift(opposite);
     } else {
-      const opposite = newSlides.current.shift();
+      const opposite = newSlides.shift();
       newSlides.push(opposite);
     }
     return newSlides;
   };
-  const getAddedSlides = () => {};
+  const getAddedSlides = (dir) => {
+    const newSlide =
+      dir === "prev"
+        ? virtureSlides.current.pop()
+        : virtureSlides.current.shift();
+
+    const newSlides =
+      dir === "prev" ? [newSlide, ...realSlides] : [...realSlides, newSlide];
+
+    return newSlides;
+  };
   const slideContainer = (dir) => {
     container.current.style.transform =
       dir === "prev" ? "translate(100%)" : "translate(-100%)";
   };
   const renderList = () => {
     const list = realSlides;
-    return list.map((slide) => {
+    return list.map((slide, index) => {
       return (
-        <Slide>
-          {slide.map((item) => (
-            <SlideItem>{item}</SlideItem>
+        <Slide key={index}>
+          {slide.map((item, index) => (
+            <SlideItem key={index}>{item}</SlideItem>
           ))}
         </Slide>
       );
@@ -67,9 +72,9 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   };
   const isThereItem = (direction) => {
     if (direction === "prev") {
-      return currentSlideIndex !== 0;
+      return currentSlideIndex.current !== 0;
     } else {
-      return currentSlideIndex !== realSlides.length - 1;
+      return currentSlideIndex.current !== realSlides.length - 1;
     }
   };
   const isEmptyVirtureSlides = () => {
