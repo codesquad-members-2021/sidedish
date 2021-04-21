@@ -18,7 +18,7 @@ public class User {
     private final String password;
 
     @MappedCollection(idColumn = "USER_ID", keyColumn = "USER_KEY")
-    private List<Orders> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     @PersistenceConstructor
     public User(Long id, String email, String password) {
@@ -47,11 +47,11 @@ public class User {
         return password;
     }
 
-    public void addOrder(Orders order) {
+    public void addOrder(Order order) {
         orders.add(order);
     }
 
-    public List<Orders> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 

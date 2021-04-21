@@ -2,15 +2,11 @@ package com.example.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.List;
-
 @Table(value = "ORDERS")
-public class Orders {
+public class Order {
 
     @Id
     private final Long id;
@@ -18,21 +14,21 @@ public class Orders {
     private final int count;
 
     @Column(value = "ITEM_ID")
-    private final Long itemId;
+    private final String itemId;
 
     @PersistenceConstructor
-    public Orders(Long id, int count, Long itemId) {
+    public Order(Long id, int count, String itemId) {
         this.id = id;
         this.count = count;
         this.itemId = itemId;
     }
 
-    public Orders withId(Long id, int count, Long itemId) {
-        return new Orders(id, count, itemId);
+    public Order withId(Long id, int count, String itemId) {
+        return new Order(id, count, itemId);
     }
 
-    public static Orders of(int count, Long itemId) {
-        return new Orders(null, count, itemId);
+    public static Order of(int count, String itemId) {
+        return new Order(null, count, itemId);
     }
 
     public Long getId() {
@@ -43,7 +39,7 @@ public class Orders {
         return count;
     }
 
-    public Long getItemId() {
+    public String getItemId() {
         return itemId;
     }
 
