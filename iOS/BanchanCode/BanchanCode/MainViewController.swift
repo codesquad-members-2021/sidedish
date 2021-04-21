@@ -22,6 +22,10 @@ class MainViewController: UIViewController {
         dishCollectionView.dataSource = mainDataSource        
         
         registerXib()
+        
+        DispatchQueue.main.async {
+            JSONPaser().loadDishes()
+        }
     }
     
     private func registerXib() {

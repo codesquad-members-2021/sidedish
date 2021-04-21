@@ -12,6 +12,8 @@
 		E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */; };
 		E4FC9C8E262EA2E000BEAAE4 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C8C262EA2E000BEAAE4 /* DishCell.swift */; };
 		E4FC9C8F262EA2E000BEAAE4 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FC9C8D262EA2E000BEAAE4 /* DishCell.xib */; };
+		E4FC9CBB26300D5800BEAAE4 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9CBA26300D5800BEAAE4 /* Dish.swift */; };
+		E4FC9CC72630105700BEAAE4 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9CC62630105700BEAAE4 /* JSONParser.swift */; };
 		FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA864A772630030500A3C429 /* SectionHeaderView.swift */; };
 		FA864A7A2630030600A3C429 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA864A782630030600A3C429 /* SectionHeaderView.xib */; };
 		FA88E9DF262E7F50001C3E53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88E9DE262E7F50001C3E53 /* AppDelegate.swift */; };
@@ -47,6 +49,8 @@
 		E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewConstant.swift; sourceTree = "<group>"; };
 		E4FC9C8C262EA2E000BEAAE4 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		E4FC9C8D262EA2E000BEAAE4 /* DishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCell.xib; sourceTree = "<group>"; };
+		E4FC9CBA26300D5800BEAAE4 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		E4FC9CC62630105700BEAAE4 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		FA864A772630030500A3C429 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		FA864A782630030600A3C429 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		FA88E9DB262E7F50001C3E53 /* BanchanCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanchanCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4DCCD662630152E00206747 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E4FC9CB926300D4E00BEAAE4 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		E4FC9C77262E9DE700BEAAE4 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +110,22 @@
 				E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		E4FC9CB926300D4E00BEAAE4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E4FC9CBA26300D5800BEAAE4 /* Dish.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E4FC9CC52630104600BEAAE4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E4FC9CC62630105700BEAAE4 /* JSONParser.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FA864A73262FFB6600A3C429 /* Views */ = {
@@ -135,6 +163,8 @@
 		FA88E9DD262E7F50001C3E53 /* BanchanCode */ = {
 			isa = PBXGroup;
 			children = (
+				E4FC9CC52630104600BEAAE4 /* Network */,
+				E4DCCD662630152E00206747 /* Domain */,
 				E4FC9C77262E9DE700BEAAE4 /* Delegate */,
 				FA88E9DE262E7F50001C3E53 /* AppDelegate.swift */,
 				FA88E9E0262E7F50001C3E53 /* SceneDelegate.swift */,
@@ -303,6 +333,8 @@
 				FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */,
 				FA88E9DF262E7F50001C3E53 /* AppDelegate.swift in Sources */,
 				E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */,
+				E4FC9CC72630105700BEAAE4 /* JSONParser.swift in Sources */,
+				E4FC9CBB26300D5800BEAAE4 /* Dish.swift in Sources */,
 				E4FC9C8E262EA2E000BEAAE4 /* DishCell.swift in Sources */,
 				FA88E9E1262E7F50001C3E53 /* SceneDelegate.swift in Sources */,
 			);
