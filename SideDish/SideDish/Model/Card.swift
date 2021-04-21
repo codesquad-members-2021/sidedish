@@ -12,12 +12,11 @@ class Card : Hashable{
     
     let title : String
     let detail : String
-    let discountPrice : Int
-    let originalPrice : Int
-    let imageURL : URL
+    let discountPrice : String?
+    let originalPrice : String?
+    let imageURL : URL?
    
-    init(id : String, title : String, detail: String, d_price : Int, o_price : Int, url : URL){
-        
+    init(id : String, title : String, detail: String, d_price : String?, o_price : String?, url : URL?){
         self.id = id
         self.title = title
         self.detail = detail

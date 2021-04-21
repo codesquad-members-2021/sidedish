@@ -18,11 +18,23 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     var sections = Section.allSections
-    
+    var testCards = [Card]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cardCollectionView.dataSource = self
         registerNIB()
+        API.shared.loadMainDish{ (cardsResponse) in
+            for item in cardsResponse {
+                let card = Card(id: item.id,
+                                title: item.title,
+                                detail: item.description,
+                                d_price: item.discountPrice,
+                                o_price: item.originalPrice,
+                                url: URL(string: item.image))
+                self.testCards.append(card)
+            }
+            self.cardCollectionView.reloadData()
+        }
     }
     
     func registerNIB() {
@@ -33,7 +45,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return testCards.count
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
@@ -41,6 +53,7 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCell
+        cell.card = testCards[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

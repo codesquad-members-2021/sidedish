@@ -24,8 +24,8 @@ class CardCell: UICollectionViewCell {
             thumbnail.load(url: card?.imageURL)
             title.text = card?.title
             detail.text = card?.detail
-            discountPrice.text = card?.discountPrice.description
-            originalPrice.text = card?.originalPrice.description
+            discountPrice.text = card?.discountPrice?.description
+            originalPrice.text = card?.originalPrice?.description
         }
     }
     override func awakeFromNib() {
