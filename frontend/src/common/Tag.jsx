@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+const Tag = ({ type }) => {
+    return (
+        <StyledTag type={type}>
+            <span>{type}</span>
+        </StyledTag>
+    );
+}
+
 const StyledTag = styled.div`
     display: inline-block;
     box-sizing: border-box;
@@ -11,13 +19,5 @@ const StyledTag = styled.div`
     font-size: 14px;
     font-weight: bold;
 `
-
-const Tag = ({ type }) => {
-    return (
-        <StyledTag type={type}>
-            <span>{type}</span>
-        </StyledTag>
-    );
-}
 
 export default Tag;

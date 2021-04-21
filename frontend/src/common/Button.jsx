@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+const Button = ({ type }) => {
+    return (
+        <StyledBtn type={type}>
+            {type === 'order' 
+                ? <span>주문하기</span> 
+                : <span>일시품절</span> 
+            }
+        </StyledBtn>
+    );
+}
+
 const StyledBtn = styled.button`
     display: block;
     outline: none;
@@ -16,16 +27,5 @@ const StyledBtn = styled.button`
         font-weight: bold;
     }
 `
-
-const Button = ({ type }) => {
-    return (
-        <StyledBtn type={type}>
-            {type === 'order' 
-                ? <span>주문하기</span> 
-                : <span>일시품절</span> 
-            }
-        </StyledBtn>
-    );
-}
 
 export default Button;
