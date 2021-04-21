@@ -34,6 +34,8 @@ const FlexWrapper = styled.div`
 const FlexBetweenWrapper = styled(Container)`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 80px;
+  margin-top: 32px;
 `;
 
 export default Header;
