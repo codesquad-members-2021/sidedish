@@ -23,7 +23,6 @@ const ItemCards = mokdata.map(data => <ItemCard data={data} size={'S'} />)
 function CategorySlide () { 
   return (
     <CategorySlideBlock>
-     
       <leftBtn>왼쪽</leftBtn>
       <CategoryColumn>{ItemCards}</CategoryColumn>
       <rightBtn>오른쪽</rightBtn>
