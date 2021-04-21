@@ -1,18 +1,14 @@
 import styled from 'styled-components'
 import { theme, Title } from '../Theme'
-import mokData from '../mokdata'
 import ItemCard from '../ItemCard'
+import { AlignTextCenter } from '../Theme'
+import mokData from '../mokdata'
+
 const TabWrapper = styled.div`
   display: flex;
 `
 
-const text = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const Tab = styled(text)`
+const Tab = styled(AlignTextCenter)`
   width: 201px;
   height: 58px;
   background-color: ${theme.colors.skyblue};
@@ -24,10 +20,12 @@ const MainColumn = styled.div`
   width: 1280px;
   height: 620px;
   background-color: ${theme.colors.skyblue};
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
   padding: 40px;
 `
-const itemCards = mokData.map(data =>  <ItemCard data={data} size={'L'} />)
+const itemCards = mokData.map(data => <ItemCard data={data} size={'L'} />)
 
 function MainMenu () {
   return (
@@ -40,9 +38,7 @@ function MainMenu () {
         <Tab>간편한 덮밥요리</Tab>
         <Tab>우리아이 영양반찬</Tab>
       </TabWrapper>
-      <MainColumn>
-        {itemCards}
-      </MainColumn>
+      <MainColumn>{itemCards}</MainColumn>
     </>
   )
 }

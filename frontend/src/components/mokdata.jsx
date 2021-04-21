@@ -26,7 +26,7 @@ const mokData = [
   {
     detail_hash: "H7F20",
     image:
-      "http://public.codesquad.kr/jk/storeapp/data/8fd330b5f5dbccbcbf4f5731e5e9e29b.jpg",
+      "http://public.codesquad.kr/jk/storeapp/data/422befe07f7e2860b9a83a8d7049ec2e.jpg",
     alt: "[집밥의완성]초여름보양세트",
     delivery_type: ["새벽배송", "전국택배"],
     title: "[집밥의완성]초여름보양세트",
