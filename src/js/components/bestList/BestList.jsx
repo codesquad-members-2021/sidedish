@@ -9,7 +9,7 @@ const Title = styled.div`
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 35px;
-	margin-bottom:32px;
+	margin-bottom: 32px;
 `;
 const TabList = styled.ul`
 	display: flex;
