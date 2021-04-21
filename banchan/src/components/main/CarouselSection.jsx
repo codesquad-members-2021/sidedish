@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+// import mockData from "../utils/mockData.js";
 import Card from "../utils/Card";
 import styled from "styled-components";
 import IconButton from "../utils/button/IconButton";
@@ -6,13 +7,14 @@ import { CenterContainer } from "../utils/styles/common";
 
 const CarouselSection = ({ key, url, title }) => {
   const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState(mockData);
   const [currentX, setX] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(4);
   const [leftDisabled, setLeftDisabled] = useState(false);
   const [rightDisabled, setRightDisabled] = useState(true);
   const slides = useRef();
   const slideCount = 4;
-  const slideWidth = 320 + 16;
+  const slideWidth = 320;
   const totalWidth = 320 * slideCount + 16;
 
   useEffect(() => {
@@ -40,9 +42,9 @@ const CarouselSection = ({ key, url, title }) => {
   };
 
   const moveRight = () => {
-    const remainSlideCount = currentIndex - 1;
+    const remainSlideCount = currentIndex - slideCount;
     const distance = remainSlideCount >= slideCount ? currentX + totalWidth : currentX + slideWidth * remainSlideCount;
-    const nextIndex = remainSlideCount >= slideCount ? currentIndex - slideCount : currentIndex + remainSlideCount;
+    const nextIndex = remainSlideCount >= slideCount ? currentIndex - slideCount : currentIndex - remainSlideCount;
     moveSlide(300, distance, nextIndex);
     !distance && setRightDisabled(true);
     nextIndex < products.length && setLeftDisabled(false);
@@ -82,6 +84,7 @@ const SectionContainer = styled(CenterContainer)`
 
 const SectionBox = styled.div`
   /*border: 1px solid violet;*/
+  /* 사실상 배치를 위한 컴포넌트인데 그냥 이렇게 쓰는게 좋을지 아니면 <div></div>로 하는게 좋을지.. 통일감은 이게 나은거 같긴 한데..*/
 `;
 
 const SectionContent = styled.div`
