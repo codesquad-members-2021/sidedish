@@ -17,14 +17,21 @@ enum PriceType {
     static let event = "이벤트특가"
 }
 
-struct Banchan {
-    private var hash: String
-    private var image: URL
-    private var alt: String
-    private var title: String
-    private var description: String
-    private var netPrice: Int
-    private var salePrice: Int?
-    private var badge: [PriceType]
-    private var delivery_type: [Delivery]
+struct Banchan: Hashable {
+    private (set) var hash: String
+    private (set) var image: URL
+    private (set) var alt: String
+    private (set) var title: String
+    private (set) var description: String
+    private (set) var netPrice: Int
+    private (set) var salePrice: Int?
+    private (set) var badge: [PriceType]
+    private (set) var delivery_type: [Delivery]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(hash)
+    }
+    static func == (lhs: Banchan, rhs: Banchan) -> Bool {
+        lhs.hash == rhs.hash
+    }
 }

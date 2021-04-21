@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4o-0b-QQA">
-                    <rect key="frame" x="0.0" y="0.0" width="343" height="32"/>
+                    <rect key="frame" x="16" y="0.0" width="311" height="32"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -23,9 +23,9 @@
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
                 <constraint firstItem="Y4o-0b-QQA" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="DqX-UG-rjs"/>
-                <constraint firstAttribute="trailing" secondItem="Y4o-0b-QQA" secondAttribute="trailing" id="O6a-at-ypl"/>
+                <constraint firstAttribute="trailing" secondItem="Y4o-0b-QQA" secondAttribute="trailing" constant="16" id="O6a-at-ypl"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="Y4o-0b-QQA" secondAttribute="bottom" id="TuJ-Ku-8Wc"/>
-                <constraint firstItem="Y4o-0b-QQA" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="eYy-qZ-XAQ"/>
+                <constraint firstItem="Y4o-0b-QQA" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="eYy-qZ-XAQ"/>
             </constraints>
             <connections>
                 <outlet property="titleLabel" destination="Y4o-0b-QQA" id="I1o-TD-iuc"/>
