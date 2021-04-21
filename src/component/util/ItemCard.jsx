@@ -30,7 +30,7 @@ const HoverStyle = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  padding: 10rem 8rem;
+  padding: calc(50% - 3rem) calc(50% - 4rem);
   display: none;
   div {
     margin: 1rem;
@@ -73,7 +73,7 @@ const SalePriceStyle = styled.div`
   display: inline-block;
 `;
 
-export default function ItemCard({ src = "", title = "", description = "", salePrice, normalPrice }) {
+export default function ItemCard({ src = "", title = "", description = "", salePrice, normalPrice, text, color, bgColor }) {
   return (
     <ItemCardStyle>
       <ImgContainerStyle>
@@ -90,7 +90,7 @@ export default function ItemCard({ src = "", title = "", description = "", saleP
           <SalePriceStyle>{salePrice}원</SalePriceStyle>
           <NormalPriceStyle>{normalPrice}원</NormalPriceStyle>
         </PricesStyle>
-        <Label text="이벤트특가" />
+        <Label text={text} color={color} bgColor={bgColor}/>
       </div>
     </ItemCardStyle>
   )

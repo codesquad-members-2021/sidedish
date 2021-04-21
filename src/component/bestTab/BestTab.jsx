@@ -6,6 +6,7 @@ const BestTabStyle = styled.div`
   h2 {
     margin-bottom: 2rem;
   }
+  margin-bottom: 5rem;
 `;
 
 export default function BestTab() {
