@@ -9,12 +9,22 @@
 /* Begin PBXBuildFile section */
 		D4BFBAD3262E989000D68297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD2262E989000D68297 /* AppDelegate.swift */; };
 		D4BFBAD5262E989000D68297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD4262E989000D68297 /* SceneDelegate.swift */; };
-		D4BFBAD7262E989000D68297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD6262E989000D68297 /* ViewController.swift */; };
+		D4BFBAD7262E989000D68297 /* BanchanListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */; };
 		D4BFBADA262E989000D68297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBAD8262E989000D68297 /* Main.storyboard */; };
 		D4BFBADC262E989300D68297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBADB262E989300D68297 /* Assets.xcassets */; };
 		D4BFBADF262E989300D68297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */; };
 		D4BFBAEA262E989300D68297 /* SideDishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAE9262E989300D68297 /* SideDishTests.swift */; };
 		D4BFBAF5262E989300D68297 /* SideDishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAF4262E989300D68297 /* SideDishUITests.swift */; };
+		D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */; };
+		D4BFBB0B262E9A8200D68297 /* DetailBanchanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */; };
+		D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB29262EA93700D68297 /* Banchan.swift */; };
+		D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB2E262EAD1C00D68297 /* DetailBanchan.swift */; };
+		D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */; };
+		D4BFBB36262EB89800D68297 /* BanchanCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */; };
+		D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */; };
+		D4BFBB3D262EC8DB00D68297 /* BanchanCustomCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */; };
+		FFA10EAA262FBBD200D584B6 /* BanchanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA10EA9262FBBD200D584B6 /* BanchanListViewModel.swift */; };
+		FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +48,7 @@
 		D4BFBACF262E989000D68297 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BFBAD2262E989000D68297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BFBAD4262E989000D68297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D4BFBAD6262E989000D68297 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanListViewController.swift; sourceTree = "<group>"; };
 		D4BFBAD9262E989000D68297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4BFBADB262E989300D68297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4BFBADE262E989300D68297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +59,16 @@
 		D4BFBAF0262E989300D68297 /* SideDishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideDishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BFBAF4262E989300D68297 /* SideDishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishUITests.swift; sourceTree = "<group>"; };
 		D4BFBAF6262E989300D68297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBanchanViewController.swift; sourceTree = "<group>"; };
+		D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBanchanViewController.xib; sourceTree = "<group>"; };
+		D4BFBB29262EA93700D68297 /* Banchan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banchan.swift; sourceTree = "<group>"; };
+		D4BFBB2E262EAD1C00D68297 /* DetailBanchan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBanchan.swift; sourceTree = "<group>"; };
+		D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCustomCell.swift; sourceTree = "<group>"; };
+		D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BanchanCustomCell.xib; sourceTree = "<group>"; };
+		D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCustomCellHeader.swift; sourceTree = "<group>"; };
+		D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BanchanCustomCellHeader.xib; sourceTree = "<group>"; };
+		FFA10EA9262FBBD200D584B6 /* BanchanListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BanchanListViewModel.swift; sourceTree = "<group>"; };
+		FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +119,11 @@
 		D4BFBAD1262E989000D68297 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
-				D4BFBAD2262E989000D68297 /* AppDelegate.swift */,
-				D4BFBAD4262E989000D68297 /* SceneDelegate.swift */,
-				D4BFBAD6262E989000D68297 /* ViewController.swift */,
+				D4BFBB1B262EA76300D68297 /* Data */,
+				D4BFBB1A262EA75D00D68297 /* Domain */,
+				D4BFBB19262EA74E00D68297 /* Presentaion */,
+				D4BFBB28262EA83E00D68297 /* SupportingFiles */,
 				D4BFBAD8262E989000D68297 /* Main.storyboard */,
-				D4BFBADB262E989300D68297 /* Assets.xcassets */,
-				D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */,
 				D4BFBAE0262E989300D68297 /* Info.plist */,
 			);
 			path = SideDish;
@@ -126,6 +145,129 @@
 				D4BFBAF6262E989300D68297 /* Info.plist */,
 			);
 			path = SideDishUITests;
+			sourceTree = "<group>";
+		};
+		D4BFBB19262EA74E00D68297 /* Presentaion */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB1F262EA7AC00D68297 /* DetailBanchan */,
+				D4BFBB1E262EA7A100D68297 /* BanchanList */,
+			);
+			path = Presentaion;
+			sourceTree = "<group>";
+		};
+		D4BFBB1A262EA75D00D68297 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB25262EA7E800D68297 /* UseCases */,
+				D4BFBB24262EA7D800D68297 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D4BFBB1B262EA76300D68297 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB27262EA80B00D68297 /* PersistentStorages */,
+				D4BFBB26262EA7F500D68297 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D4BFBB1E262EA7A100D68297 /* BanchanList */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB21262EA7BC00D68297 /* ViewModel */,
+			);
+			path = BanchanList;
+			sourceTree = "<group>";
+		};
+		D4BFBB1F262EA7AC00D68297 /* DetailBanchan */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB23262EA7C700D68297 /* ViewModel */,
+				D4BFBB22262EA7C200D68297 /* VIew */,
+			);
+			path = DetailBanchan;
+			sourceTree = "<group>";
+		};
+		D4BFBB20262EA7B600D68297 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */,
+				FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */,
+				D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */,
+				D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */,
+				D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */,
+				D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D4BFBB21262EA7BC00D68297 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FFA10EA9262FBBD200D584B6 /* BanchanListViewModel.swift */,
+				D4BFBB20262EA7B600D68297 /* View */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D4BFBB22262EA7C200D68297 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */,
+				D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		D4BFBB23262EA7C700D68297 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D4BFBB24262EA7D800D68297 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBB29262EA93700D68297 /* Banchan.swift */,
+				D4BFBB2E262EAD1C00D68297 /* DetailBanchan.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D4BFBB25262EA7E800D68297 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		D4BFBB26262EA7F500D68297 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D4BFBB27262EA80B00D68297 /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		D4BFBB28262EA83E00D68297 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBAD2262E989000D68297 /* AppDelegate.swift */,
+				D4BFBAD4262E989000D68297 /* SceneDelegate.swift */,
+				D4BFBADB262E989300D68297 /* Assets.xcassets */,
+				D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4BFBADF262E989300D68297 /* LaunchScreen.storyboard in Resources */,
+				D4BFBB0B262E9A8200D68297 /* DetailBanchanViewController.xib in Resources */,
 				D4BFBADC262E989300D68297 /* Assets.xcassets in Resources */,
+				D4BFBB3D262EC8DB00D68297 /* BanchanCustomCellHeader.xib in Resources */,
+				D4BFBB36262EB89800D68297 /* BanchanCustomCell.xib in Resources */,
 				D4BFBADA262E989000D68297 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,9 +403,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4BFBAD7262E989000D68297 /* ViewController.swift in Sources */,
+				D4BFBAD7262E989000D68297 /* BanchanListViewController.swift in Sources */,
 				D4BFBAD3262E989000D68297 /* AppDelegate.swift in Sources */,
+				FFA10EAA262FBBD200D584B6 /* BanchanListViewModel.swift in Sources */,
 				D4BFBAD5262E989000D68297 /* SceneDelegate.swift in Sources */,
+				FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */,
+				D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */,
+				D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */,
+				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,
+				D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */,
+				D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
