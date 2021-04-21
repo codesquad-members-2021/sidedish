@@ -16,12 +16,13 @@ function HeaderLeft () {
     text-align: left;
   `
   const HeaderMenu = styled.ul`
+    width: 420px;
     height: 23px;
-    width: 354px;
     margin-left: 56px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     padding: 0;
+    grid-gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr;
     li {
       list-style: none;
     }

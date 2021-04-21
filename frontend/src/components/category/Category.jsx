@@ -2,10 +2,18 @@ import styled from 'styled-components'
 import CategoryList from './CategoryList'
 
 const CategoryDiv = styled.div`
-  width: 1392px;
-  height: 554px;
+  width: 1440px;
 `
-const CategoryBtn = styled.button`
+
+const Button = styled.button`
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
+`
+const CategoryBtn = styled(Button)`
   width: 1440px;
   height: 100px;
   background-color: #f5f5f7;

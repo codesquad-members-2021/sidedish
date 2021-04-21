@@ -8,11 +8,13 @@ body{
   font-family: Noto Sans KR;
   margin: 0 80px;
 }`;
+
 function App() {
   return (
     <>
       <GlobalStyle />
       <Header/>
+      <MainMenu/>
       <Category/>
     </> 
   );
@@ -21,6 +23,3 @@ function App() {
 export default App;
 
 
-  // {/* <Header/>
-  // <MainMenu/> */}
-  // <Category/>

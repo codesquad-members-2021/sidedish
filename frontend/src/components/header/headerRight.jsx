@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 function HeaderRight () {
   const HeaderRightBlock = styled.div`
-  width: 50%;
   `
 
   const HeaderSeachBar = styled.input`
