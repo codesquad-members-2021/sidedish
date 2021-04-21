@@ -1,7 +1,9 @@
 package com.example.dto;
 
+import com.example.domain.Item;
 import com.example.util.Badge;
 import com.example.util.DeliveryType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
@@ -13,13 +15,19 @@ public class ItemInfoDto {
     @JsonProperty(value = "detail_hash")
     private String id;
 
+    @JsonProperty(value = "image")
     private String image;
+
+    @JsonProperty(value = "alt")
     private String alt;
 
     @JsonProperty(value = "delivery_type")
     private final List<DeliveryType> deliveryType;
 
+    @JsonProperty(value = "title")
     private String title;
+
+    @JsonProperty(value = "description")
     private String description;
 
     @JsonProperty(value = "n_price")
@@ -28,7 +36,10 @@ public class ItemInfoDto {
     @JsonProperty(value = "badge")
     private final List<Badge> badges;
 
-    public ItemInfoDto(String uuid, String image, String title, String description, int price, String delivery, String badge) {
+    @JsonIgnore
+    private final int stock;
+
+    public ItemInfoDto(String uuid, String image, String title, String description, int price, String delivery, String badge, int stock) {
         this.id = uuid;
         this.image = image;
         this.title = title;
@@ -37,6 +48,7 @@ public class ItemInfoDto {
         this.price = price;
         this.deliveryType = parsingDeliveryType(delivery);
         this.badges = parsingBadges(badge);
+        this.stock = stock;
     }
 
     private List<DeliveryType> parsingDeliveryType(String delivery) {
@@ -101,6 +113,10 @@ public class ItemInfoDto {
 
     public List<Badge> getBadges() {
         return badges;
+    }
+
+    public static ItemInfoDto of (Item item){
+        return new ItemInfoDto(item.getId(),item.getImage(),item.getTitle(),item.getDescription(),item.getPrice(),item.getDeliveryTypes(),item.getBadges(),item.getStock());
     }
 
 }
