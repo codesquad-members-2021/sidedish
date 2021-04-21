@@ -1,11 +1,11 @@
-import "./reset.css";
+import "./style/reset.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import theme from './common/theme';
+import theme from './style/theme';
 import Header from "./header/Header";
 
 const GlobalStyle = createGlobalStyle`
   body {
-      width: 1280px;
+      width: 1440px;
       margin: 0 auto;
   }
 `;

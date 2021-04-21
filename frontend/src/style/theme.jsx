@@ -5,7 +5,7 @@ const fontFamily = "Noto Sans KR";
 const fontWeight = {
   normal: 400,
   bold: 700,
-  logo: 900,
+  bold2: 900,
 };
 const fontSize = {
   S: "14px",
@@ -25,10 +25,17 @@ const colors = {
   gray6: "#F5F5F7",
 };
 
+const globalInfo = {
+  // 전체 틀의 좌우 Margin 혹은 Padding
+  mp80: "0 80px",
+};
+
+
 const theme = {
   fontFamily,
   fontWeight,
   fontSize,
   colors,
+  globalInfo,
 };
 export default theme;

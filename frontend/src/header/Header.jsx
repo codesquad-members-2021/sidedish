@@ -7,23 +7,6 @@ import MenuItem from "./partial/MenuItem";
 import Logo from "./partial/Logo";
 import SearchBar from "./partial/SearchBar";
 
-const StyledHeader = styled.div`
-  ${cssFlexAlignCenter};
-  padding: 52px 0;
-  font-family: ${({ theme }) => theme.fontFamily};
-  color: ${({ theme }) => theme.colors.gray};
-`;
-
-const MenuItems = styled.div`
-  ${cssFlexStartRow};
-  margin-left: ${({ type }) => (type === "auth" ? "26px" : "56px")};
-  ${({ type }) =>
-    type !== "auth" &&
-    css`
-      margin-right: auto;
-    `};
-`;
-
 const Header = () => {
   const [tempData] = useState([
     {
@@ -68,3 +51,22 @@ const Header = () => {
 };
 
 export default Header;
+
+// --- Styled Components ---
+const StyledHeader = styled.div`
+  ${cssFlexAlignCenter};
+  padding: 52px 0;
+  margin: ${({ theme }) => theme.globalInfo.mp80};
+  font-family: ${({ theme }) => theme.fontFamily};
+  color: ${({ theme }) => theme.colors.gray3};
+`;
+
+const MenuItems = styled.div`
+  ${cssFlexStartRow};
+  margin-left: ${({ type }) => (type === "auth" ? "26px" : "56px")};
+  ${({ type }) =>
+    type !== "auth" &&
+    css`
+      margin-right: auto;
+    `};
+`;

@@ -1,6 +1,25 @@
 import styled from "styled-components";
 import { cssFlexStartCol } from "../../style/CommonStyledCSS";
 
+const MenuItemDropdown = ({ data, dropdownVisible }) => {
+  const dropdownItems =
+    data &&
+    data.map((v, i) => (
+      <DropdownItem key={i} href="#">
+        {v}
+      </DropdownItem>
+    ));
+
+  return (
+    <StyledMenuItemDropdown dropdownVisible={dropdownVisible}>
+      <DropdownItems>{dropdownItems && dropdownItems}</DropdownItems>
+    </StyledMenuItemDropdown>
+  );
+};
+
+export default MenuItemDropdown;
+
+// --- Styled Components ---
 const StyledMenuItemDropdown = styled.div`
   visibility: ${({ dropdownVisible }) =>
     dropdownVisible ? "visible" : "hidden"};
@@ -23,31 +42,13 @@ const DropdownItem = styled.li`
   text-decoration: none;
   cursor: pointer;
 
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.gray3};
   font-family: ${({ theme }) => theme.fontFamily};
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme }) => theme.fontSize.M};
   margin: 8px 0px;
 
   &:hover {
     text-decoration: underline;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.gray1};
   }
 `;
-
-const MenuItemDropdown = ({ data, dropdownVisible }) => {
-  const dropdownItems =
-    data &&
-    data.map((v, i) => (
-      <DropdownItem key={i} href="#">
-        {v}
-      </DropdownItem>
-    ));
-
-  return (
-    <StyledMenuItemDropdown dropdownVisible={dropdownVisible}>
-      <DropdownItems>{dropdownItems && dropdownItems}</DropdownItems>
-    </StyledMenuItemDropdown>
-  );
-};
-
-export default MenuItemDropdown;
