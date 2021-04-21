@@ -1,5 +1,6 @@
 package com.team10.banchan.model;
 
+import com.team10.banchan.dto.ItemDetail;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Item {
     @Id
@@ -56,49 +58,6 @@ public class Item {
         return id;
     }
 
-    public Long getSection() {
-        return section;
-    }
-
-    public Long getCategory() {
-        return category;
-    }
-
-    public TopImage getTopImage() {
-        return topImage;
-    }
-
-    public Description getDescription() {
-        return description;
-    }
-
-    public Prices getPrices() {
-        return prices;
-    }
-    public Integer getStock() {
-        return stock;
-    }
-
-    public List<DetailSection> getDetailSections() {
-        return detailSections;
-    }
-
-    public List<ThumbImage> getThumbImages() {
-        return thumbImages;
-    }
-
-    public Set<Badge> getBadges() {
-        return badges;
-    }
-
-    public Set<DeliveryType> getDeliveryTypes() {
-        return deliveryTypes;
-    }
-
-    public Set<DeliveryDay> getDeliveryDays() {
-        return deliveryDays;
-    }
-
     public void addDetailSection (DetailSection detailSection) {
         this.detailSections.add(detailSection);
     }
@@ -117,6 +76,51 @@ public class Item {
 
     public void addDeliveryDay(DeliveryDay deliveryDay) {
         this.deliveryDays.add(deliveryDay);
+    }
+
+    public ItemDetail itemDetail() {
+        return ItemDetail.of(
+                topImage.getTopImage(),
+                thumbImagesUrl(),
+                description.getTitle(),
+                description.getDescription(),
+                prices.getPoints(),
+                deliveryInfo(),
+                prices.getDeliveryFee(),
+                prices.getnPrice(),
+                prices.getsPrice(),
+                detailSection(),
+                badge()
+        );
+    }
+
+    private List<String> thumbImagesUrl() {
+        return thumbImages.stream()
+                .map(ThumbImage::getUrl)
+                .collect(Collectors.toList());
+    }
+
+    private String deliveryInfo() {
+        return deliveryTypes.stream()
+                .map(DeliveryType::getDetail)
+                .reduce((x, y) -> String.join(" / ", x, y)) +
+                " [" +
+                deliveryDays.stream()
+                        .map(DeliveryDay::korean)
+                        .reduce((x, y) -> String.join(" · ", x, y)) +
+                "] 수령 가능한 상품입니다.";
+    }
+
+    private List<String> detailSection() {
+        return detailSections.stream()
+                .map(DetailSection::getUrl)
+                .collect(Collectors.toList());
+    }
+
+    private List<String> badge() {
+        return badges.stream()
+                .map(Badge::name)
+                .collect(Collectors.toList());
     }
 
     public static Item newItem(Long section, Long category,

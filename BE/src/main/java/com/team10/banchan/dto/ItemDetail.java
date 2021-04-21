@@ -91,9 +91,9 @@ public class ItemDetail {
         return detailSection;
     }
 
-    @JsonProperty("badges")
+    @JsonProperty("badge")
     public List<String> getBadges() {
-        return detailSection;
+        return badges;
     }
 }
 
