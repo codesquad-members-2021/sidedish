@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import BestSidedishItem from 'component/BestSidedish/BestSidedishList/BestSidedishItem';
 import useFetch from 'hooks/useFetch';
 import styled from 'styled-components';
-import DishItem from 'component/atoms/DishItem';
+import DishItem from 'component/DishItem/DishItem';
 
 const BestSidedishList = ({ focusedCategory }) => {
   const { data, loading } = useFetch(

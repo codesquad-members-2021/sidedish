@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import DishItem from 'component/atoms/DishItem';
+import DishItem from 'component/DishItem/DishItem';
 import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 import { URL } from 'util/data';
 import useFetch from 'hooks/useFetch';
