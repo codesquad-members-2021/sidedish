@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     var sections = Section.allSections
-    var testCards = [Card]()
+    var mainFood = [Card]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cardCollectionView.dataSource = self
@@ -30,8 +30,9 @@ class ViewController: UIViewController {
                                 detail: item.description,
                                 d_price: item.discountPrice,
                                 o_price: item.originalPrice,
-                                url: URL(string: item.image))
-                self.testCards.append(card)
+                                url: URL(string: item.image),
+                                badge: item.badge)
+                self.mainFood.append(card)
             }
             self.cardCollectionView.reloadData()
         }
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return testCards.count
+        return mainFood.count
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
@@ -53,7 +54,7 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCell
-        cell.card = testCards[indexPath.row]
+        cell.card = mainFood[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
