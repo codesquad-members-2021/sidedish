@@ -18,5 +18,13 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var originalPrice: UILabel!
     @IBOutlet var badges: [UILabel]!
     
+    func configure(model: SidedishItem) {
+        dishName.text = model.title
+        dishDescription.text = model.description
+        sellingPrice.text = model.sPrice
+    }
     
+    func configure(image: UIImage) {
+        dishImage.image = image
+    }
 }

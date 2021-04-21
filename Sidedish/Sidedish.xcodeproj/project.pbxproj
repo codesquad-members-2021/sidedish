@@ -26,6 +26,7 @@
 		22BBE64E262D9FCC001D06D5 /* SidedishOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE64D262D9FCC001D06D5 /* SidedishOfCategory.swift */; };
 		22BBE653262DA9BC001D06D5 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE652262DA9BB001D06D5 /* HeaderViewModel.swift */; };
 		22CEDE63262E7CDF00DB37B4 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEDE62262E7CDF00DB37B4 /* Networking.swift */; };
+		D084F8AB262FD14000FFDEF9 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084F8AA262FD14000FFDEF9 /* FileManager.swift */; };
 		D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		22CEDE62262E7CDF00DB37B4 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		499E51924357C5AFEF94978D /* Pods-Sidedish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.release.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.release.xcconfig"; sourceTree = "<group>"; };
 		69AD776A2215C9567BE9325D /* Pods_Sidedish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sidedish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D084F8AA262FD14000FFDEF9 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6FF97B8F04F0E1EF7926092 /* Pods-Sidedish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.debug.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */,
+				D084F8AA262FD14000FFDEF9 /* FileManager.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D084F8AB262FD14000FFDEF9 /* FileManager.swift in Sources */,
 				2240D5C2262D8F490077EF4D /* DataManager.swift in Sources */,
 				22418746262D4D8300AC14C7 /* ViewController.swift in Sources */,
 				22CEDE63262E7CDF00DB37B4 /* Networking.swift in Sources */,
