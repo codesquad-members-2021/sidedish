@@ -5,7 +5,7 @@ import com.mj_eno.sidedish.domain.dish.Dish;
 
 import java.util.List;
 
-public class BestDishResponseDTO {
+public class MainDishResponseDTO {
 
     String hash;
     String image;
@@ -15,9 +15,18 @@ public class BestDishResponseDTO {
     String description;
     int nPrice;
     int sPrice;
-    List<Badge> badges;
+    List<String> badges;
 
-    public BestDishResponseDTO(Dish dish) {
+    public MainDishResponseDTO(Dish dish, String image, List<String> badges) {
+        this.hash = dish.getHash();
+        this.image = image;
+        this.alt = dish.getAlt();
+        this.deliveryType = dish.getDeliveryType();
+        this.title = dish.getTitle();
+        this.description = dish.getDescription();
+        this.nPrice = dish.getnPrice();
+        this.sPrice = dish.getsPrice();
+        this.badges = badges;
     }
 
     public String getHash() {
@@ -52,7 +61,7 @@ public class BestDishResponseDTO {
         return sPrice;
     }
 
-    public List<Badge> getBadges() {
+    public List<String> getBadges() {
         return badges;
     }
 }
