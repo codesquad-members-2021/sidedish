@@ -27,7 +27,6 @@ class FoodCardHeaderView: UICollectionReusableView {
     
     func configureHeader(index: IndexPath, count: Int) {
         sectionTitle.setTitle(Path.allCases[index.section].title, for: .normal)
-        print(count)
         sectionDescription.text = "\(count)개 상품이 등록되어 있습니다"
     }
     
