@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
 
+    let menuListViewModel = MenuListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        menuListViewModel.fetchDishes()
     }
-
-
 }
 
