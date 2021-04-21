@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SidedishViewController.swift
 //  sidedishApp
 //
 //  Created by zombietux on 2021/04/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SidedishViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
