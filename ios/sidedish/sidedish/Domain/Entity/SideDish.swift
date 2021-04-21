@@ -9,15 +9,14 @@ import Foundation
 
 class SideDish: Codable {
     
-    var id: String  //detail_hash? Int?(id?)
+    var detail_hash : String
     var image: String //library/cache의 파일명
-    var alt: String //"[소중한식사] 골뱅이무침 195g"
     var title: String //"[소중한식사] 골뱅이무침 195g"
     var description: String //"매콤새콤달콤, 반찬으로도 안주로도 좋은"
     var deliveryTypes: [String] //["새벽배송","전국택배"]
     var price: Int //7,000
     var salePrice: Int //6,300
-    var badges: [String] //["이벤트특가"]
+    var badges: [String] //["이벤트특가", "런칭특가"]
     
     var detail: Detail?
     
