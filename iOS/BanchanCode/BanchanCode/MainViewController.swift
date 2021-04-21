@@ -28,5 +28,10 @@ class MainViewController: UIViewController {
         let nibName = UINib(nibName: DishCell.identifier, bundle: nil)
         dishCollectionView.register(nibName, forCellWithReuseIdentifier: DishCell.identifier)
     }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        dishCollectionView.collectionViewLayout.invalidateLayout()        
+    }
+    
 }
 
