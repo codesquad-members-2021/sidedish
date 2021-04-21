@@ -25,21 +25,21 @@ public class DishController {
         return ResponseEntity.ok().body(categories);
     }
 
-    @GetMapping("/detail/{hash}")
-    public ResponseEntity<DishDetailDto> getDetail(@PathVariable("hash") String hash) {
-        DishDetailDto dishDetailDto = dishService.getDetail(hash);
+    @GetMapping("/detail/{detailHash}")
+    public ResponseEntity<DishDetailDto> getDetail(@PathVariable("detailHash") String detailHash) {
+        DishDetailDto dishDetailDto = dishService.getDetail(detailHash);
         return ResponseEntity.ok().body(dishDetailDto);
     }
 
-    @GetMapping("/detail/{hash}/refreshable")
-    public ResponseEntity<RefreshDto> getDetailRefreshable(@PathVariable("hash") String hash, @RequestParam("lastUpdated") int lastUpdated) {
-        RefreshDto refreshDto = dishService.getDetailRefreshable(hash, lastUpdated);
+    @GetMapping("/detail/{detailHash}/refreshable")
+    public ResponseEntity<RefreshDto> getDetailRefreshable(@PathVariable("detailHash") String detailHash, @RequestParam("lastUpdated") int lastUpdated) {
+        RefreshDto refreshDto = dishService.getDetailRefreshable(detailHash, lastUpdated);
         return ResponseEntity.ok().body(refreshDto);
     }
 
-    @GetMapping("/detail/{hash}/quantity")
-    public ResponseEntity<QuantityDto> getDetailQuantity(@PathVariable("hash") String hash) {
-        QuantityDto quantityDto = dishService.getDetailQuantity(hash);
+    @GetMapping("/detail/{detailHash}/quantity")
+    public ResponseEntity<QuantityDto> getDetailQuantity(@PathVariable("detailHash") String detailHash) {
+        QuantityDto quantityDto = dishService.getDetailQuantity(detailHash);
         return ResponseEntity.ok().body(quantityDto);
     }
 
