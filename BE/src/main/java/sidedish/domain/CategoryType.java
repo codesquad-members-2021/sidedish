@@ -10,4 +10,5 @@ public enum CategoryType {
     CategoryType(String title) {
         this.title = title;
     }
+
 }

@@ -10,15 +10,15 @@ public class Category {
     @Id
     private Long id;
 
-    private CategoryType categoryType;
+    private String categoryType;
     private Set<Dish> dishes;
 
-    public Category(CategoryType categoryType) {
+    public Category(String categoryType) {
         this.categoryType = categoryType;
         this.dishes = new HashSet<>();
     }
 
-    public CategoryType getTitle() {
+    public String getTitle() {
         return categoryType;
     }
 
