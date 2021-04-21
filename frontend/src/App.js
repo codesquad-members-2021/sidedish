@@ -1,15 +1,24 @@
-import './App.css';
-import Header from './components/header/Header';
-import Category from './components/category/Category';
-import MainMenu from  './components/mainmenu/MainMenu'
+import "./App.css";
+import MainMenu from "./components/mainmenu/MainMenu";
+import Category from "./components/category/Category"
+import { createGlobalStyle } from "styled-components";
+const GlobalStyle = createGlobalStyle`
+body{
+  font-family: Noto Sans KR;
+  margin: 0 80px;
+}`;
 function App() {
   return (
-  <>
-  {/* <Header/>
-  <MainMenu/> */}
-  <Category/>
-  </>
+    <>
+      <GlobalStyle />
+      <Category/>
+    </>
   );
 }
 
 export default App;
+
+
+  // {/* <Header/>
+  // <MainMenu/> */}
+  // <Category/>
