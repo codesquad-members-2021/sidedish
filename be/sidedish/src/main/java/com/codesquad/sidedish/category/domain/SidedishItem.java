@@ -1,7 +1,7 @@
 package com.codesquad.sidedish.category.domain;
 
-import com.codesquad.sidedish.event.SidedishEvent;
-import com.codesquad.sidedish.event.SidedishEventItem;
+import com.codesquad.sidedish.event.domain.SidedishEvent;
+import com.codesquad.sidedish.event.domain.SidedishEventItem;
 import org.springframework.data.annotation.Id;
 
 import java.util.HashSet;
@@ -75,6 +75,10 @@ public class SidedishItem {
 
     public String getItemDeliveryFee() {
         return itemDeliveryFee;
+    }
+
+    public Set<SidedishEventItem> getEventItems() {
+        return eventItems;
     }
 
     @Override
