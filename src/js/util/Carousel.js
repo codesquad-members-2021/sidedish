@@ -1,24 +1,23 @@
-import { useRef, useState } from "react";
-import styled, { css, keyframes } from "styled-components";
-
-// 1. 진행 방향에 요소가 있는가?
-// - 있다면 리렌더 없이 slideContainer
-// 2. 없다면, VList가 비어있는가?
-// - 비어있다면, 반대변에서 가져와서 새로 리렌더링 후에, slideContainer
-// - VList에 요소가 남았다면 pop or shift해서 방향에 맞게 추가하고 리렌더링 후에 slideContanier
+import { useEffect, useRef, useState } from "react";
+import styled, { css } from "styled-components";
 
 const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   const [initialSlide, virture] = createVirtureSlides(items, itemsPerPeice);
   const virtureSlides = useRef(virture);
-  const [realSlides, setRealSlieds] = useState([initialSlide]);
-
   const container = useRef();
   const currentSlideIndex = useRef(0);
+  const direction = useRef("none");
+  const [realSlides, setRealSlieds] = useState([initialSlide]);
+
+  useEffect(() => {
+    slideContainer(direction.current);
+  });
 
   const move = (dir) => {
+    direction.current = dir;
     if (isThereItem(dir)) {
-      slideContainer(dir);
       changeCurrentIndex(dir);
+      slideContainer(dir);
       return;
     }
     const newSlides = isEmptyVirtureSlides()
@@ -26,41 +25,52 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
       : getAddedSlides(dir);
     setRealSlieds(newSlides);
   };
+
   const getMovedSlides = (dir) => {
     const newSlides = [...realSlides];
     if (dir === "prev") {
       const opposite = newSlides.pop();
       newSlides.unshift(opposite);
+      container.current.style.transition = "none";
+      container.current.style.transform = "translate(-100%)";
     } else {
+      const i = currentSlideIndex.current;
       const opposite = newSlides.shift();
       newSlides.push(opposite);
+      container.current.style.transition = "none";
+      container.current.style.transform = `translate(-${i * 100 - 100}%)`;
     }
 
     return newSlides;
   };
   const getAddedSlides = (dir) => {
-    console.log("add");
-    const newSlide =
-      dir === "prev"
-        ? virtureSlides.current.pop()
-        : virtureSlides.current.shift();
-
-    const newSlides =
-      dir === "prev" ? [newSlide, ...realSlides] : [...realSlides, newSlide];
+    let newSlide;
+    let newSlides;
+    if (dir === "prev") {
+      newSlide = virtureSlides.current.pop();
+      newSlides = [newSlide, ...realSlides];
+      container.current.style.transition = "none";
+      container.current.style.transform = "translate(-100%)";
+    } else {
+      currentSlideIndex.current++;
+      newSlide = virtureSlides.current.shift();
+      newSlides = [...realSlides, newSlide];
+    }
 
     return newSlides;
   };
   const changeCurrentIndex = (dir) => {
     currentSlideIndex.current =
       dir === "prev"
-        ? currentSlideIndex.current - 1
-        : currentSlideIndex.current + 1;
+        ? --currentSlideIndex.current
+        : ++currentSlideIndex.current;
   };
   const slideContainer = (dir) => {
     const i = currentSlideIndex.current;
-    container.current.style.animation =
-      dir === "prev" ? `${moveToPrev} 1s` : "translate(-100%)";
+    container.current.style.transition = `all 1s ease`;
+    container.current.style.transform = `translate(-${i * 100}%)`;
   };
+  
   const renderList = () => {
     const list = realSlides;
     return list.map((slide, index) => {
@@ -86,7 +96,7 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   return (
     <CarouselWrapper>
       <Button prev onClick={() => move("prev")} />
-      <CarouselContainer ref={container} current={currentSlideIndex.current}>
+      <CarouselContainer ref={container} dir={direction.current}>
         {renderList()}
       </CarouselContainer>
       <Button next onClick={() => move("next")} />
@@ -106,38 +116,14 @@ const createVirtureSlides = (items, itemsPerPeice) => {
 const divmod = (a, b) => {
   return [parseInt(a / b), a % b];
 };
-const moveToPrev = keyframes`
-    from{
-    transform: translateX(-100%);
-    }to{
-    transform: translateX(0);
-    }; 
-`;
 
-const moveToNext = (current) => keyframes`
-    from{
-    transform: translateX(${current * 100 + 100}%);
-    }to{
-    transform: translateX(${current * 100}%);
-    }; 
-`;
 const CarouselWrapper = styled.div`
   background: #b5b5b5;
   position: relative;
 `;
+
 const CarouselContainer = styled.div`
   display: flex;
-  /* transition: all 1s ease; */
-  /* ${({ direction, current }) => {
-    if (direction === "none") return;
-    return direction === "prev"
-      ? css`
-          animation: ${moveToPrev} 1s;
-        `
-      : css`
-          animation: ${moveToNext(current)} 1s;
-        `;
-  }}; */
 `;
 const Slide = styled.ul`
   background: #777777;
@@ -155,7 +141,7 @@ const Button = styled.div`
   width: 50px;
   height: 50px;
   background: orange;
-  top: 0;
+  top: 50px;
 
   ${(props) => css`
     ${props.prev &&

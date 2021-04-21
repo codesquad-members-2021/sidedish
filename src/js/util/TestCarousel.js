@@ -15,7 +15,7 @@ const TestCarousel = () => {
     <StyledBlock>
       <h2>테스트 중입니다</h2>
       <Carousel
-        itemsPerPeice={1}
+        itemsPerPeice={2}
         onClickItem={() => {
           console.log("click item!");
         }}
@@ -24,6 +24,10 @@ const TestCarousel = () => {
         <TestBlock>test2</TestBlock>
         <TestBlock>test3</TestBlock>
         <TestBlock>test4</TestBlock>
+        <TestBlock>test5</TestBlock>
+        <TestBlock>test6</TestBlock>
+        <TestBlock>test7</TestBlock>
+        <TestBlock>test8</TestBlock>
       </Carousel>
     </StyledBlock>
   );
