@@ -9,10 +9,10 @@ const StyledBlock = styled.div`
 `;
 const TestBlock = styled.div`
   background-color: tan;
-  width: 90px;
   height: 50px;
   box-sizing: border-box;
 `;
+const array = [1, 2, 3, 4, 6, 7, 8];
 const TestCarousel = () => {
   return (
     <StyledBlock>
@@ -25,14 +25,9 @@ const TestCarousel = () => {
           console.log(1, target);
         }}
       >
-        <TestBlock>test1</TestBlock>
-        <TestBlock>test2</TestBlock>
-        <TestBlock>test3</TestBlock>
-        <TestBlock>test4</TestBlock>
-        <TestBlock>test5</TestBlock>
-        <TestBlock>test6</TestBlock>
-        <TestBlock>test7</TestBlock>
-        <TestBlock>test8</TestBlock>
+        {array.map((el) => (
+          <TestBlock>el</TestBlock>
+        ))}
       </Carousel>
     </StyledBlock>
   );
