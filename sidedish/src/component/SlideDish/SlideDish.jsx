@@ -9,9 +9,7 @@ const SlideDish = ({ category }) => {
   const { data: slideData, loading } = useFetch(URL[category]());
   const slideCategory =
     slideData &&
-    slideData.body
-      .slice(0, 4)
-      .map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
+    slideData.body.map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
 
   return loading ? (
     <div>Loading...</div>
