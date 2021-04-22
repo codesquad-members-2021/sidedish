@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.category.service;
 
 import com.codesquad.sidedish.category.domain.*;
+import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
 import com.codesquad.sidedish.category.exception.EmptyItemException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventDTO;

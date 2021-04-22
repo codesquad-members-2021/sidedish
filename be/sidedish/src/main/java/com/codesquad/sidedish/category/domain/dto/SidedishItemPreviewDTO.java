@@ -40,4 +40,32 @@ public class SidedishItemPreviewDTO {
                 ", eventBadgeList=" + eventBadgeList +
                 '}';
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getThumbnailImage() {
+        return thumbnailImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getNormalPrice() {
+        return normalPrice;
+    }
+
+    public int getSalePrice() {
+        return salePrice;
+    }
+
+    public Set<SidedishEventDTO> getEventBadgeList() {
+        return eventBadgeList;
+    }
 }

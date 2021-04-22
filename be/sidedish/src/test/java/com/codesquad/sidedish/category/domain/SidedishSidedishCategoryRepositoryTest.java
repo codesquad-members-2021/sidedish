@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 
 @SpringBootTest
-@Transactional
 class SidedishSidedishCategoryRepositoryTest {
 
     @Autowired

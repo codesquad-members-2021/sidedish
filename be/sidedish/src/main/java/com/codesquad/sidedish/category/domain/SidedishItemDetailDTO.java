@@ -57,4 +57,52 @@ public class SidedishItemDetailDTO {
                 ", DeliveryFee='" + DeliveryFee + '\n' +
                 '}';
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<String> getDetailImages() {
+        return detailImages;
+    }
+
+    public List<String> getDescriptionImages() {
+        return descriptionImages;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getNormalPrice() {
+        return normalPrice;
+    }
+
+    public int getSalePrice() {
+        return salePrice;
+    }
+
+    public Set<SidedishEventDTO> getEventBadgeList() {
+        return eventBadgeList;
+    }
+
+    public int getPointRate() {
+        return PointRate;
+    }
+
+    public boolean isPurchasable() {
+        return isPurchasable;
+    }
+
+    public String getDeliveryInfo() {
+        return DeliveryInfo;
+    }
+
+    public String getDeliveryFee() {
+        return DeliveryFee;
+    }
 }
