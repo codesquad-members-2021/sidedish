@@ -11,7 +11,7 @@ const Main = () => {
 			point: "",
 			delivery_info: "",
 			delivery_fee: "",
-			prices: ["14000원"],
+			prices: ["원"],
 			detail_section: [],
 		},
 	};

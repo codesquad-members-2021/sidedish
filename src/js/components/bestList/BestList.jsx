@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../common/Card";
 
-const BestListWrapper = styled.div``;
-const Title = styled.div`
+const BestListWrapper = styled.div`
 	font-family: Noto Sans KR;
 	font-style: normal;
+	font-weight: normal;
+`;
+const Title = styled.div`
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 35px;
@@ -22,14 +24,9 @@ const Tab = styled.li`
 	position: relative;
 	padding: 16px 32px;
 	list-style: none;
-
 	background: ${(props) => (props.index === props.select ? "#EEF4FA" : "#f5f5f7")};
 	border-radius: 5px 5px 0px 0px;
 	margin-right: 8px;
-
-	font-family: Noto Sans KR;
-	font-style: normal;
-	font-weight: normal;
 	font-size: 18px;
 	line-height: 26px;
 	color: #828282;
