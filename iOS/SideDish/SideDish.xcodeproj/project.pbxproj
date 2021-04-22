@@ -31,6 +31,7 @@
 		FFEF70F926310FB400189376 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70F826310FB400189376 /* NetworkService.swift */; };
 		FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */; };
 		FFEF71042631107200189376 /* FetchBanchanListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */; };
+		FFEF71092631128900189376 /* FetchImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF71082631128900189376 /* FetchImageUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		FFEF70F826310FB400189376 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BanchanListDTO+Mapping.swift"; sourceTree = "<group>"; };
 		FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchBanchanListUseCase.swift; sourceTree = "<group>"; };
+		FFEF71082631128900189376 /* FetchImageUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchImageUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */,
+				FFEF71082631128900189376 /* FetchImageUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */,
 				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,
 				D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */,
+				FFEF71092631128900189376 /* FetchImageUseCase.swift in Sources */,
 				D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
