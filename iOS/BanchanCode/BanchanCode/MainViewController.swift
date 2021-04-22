@@ -19,13 +19,9 @@ class MainViewController: UIViewController {
         mainDataSource = CollectionViewDataSource()
         
         dishCollectionView.delegate = mainDelegate
-        dishCollectionView.dataSource = mainDataSource        
+        dishCollectionView.dataSource = mainDataSource
         
         registerXib()
-        
-        DispatchQueue.main.async {
-            JSONPaser().loadDishes()
-        }
     }
     
     private func registerXib() {
@@ -34,12 +30,11 @@ class MainViewController: UIViewController {
         
         let headerNib = UINib(nibName: SectionHeaderView.identifier, bundle: nil)
         dishCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
-
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        dishCollectionView.collectionViewLayout.invalidateLayout()        
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        dishCollectionView.collectionViewLayout.invalidateLayout()
     }
-    
 }
 
