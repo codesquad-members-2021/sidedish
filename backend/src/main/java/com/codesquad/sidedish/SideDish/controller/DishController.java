@@ -63,14 +63,14 @@ public class DishController {
     @GetMapping("/side")
     @ApiOperation(value = "반찬 요리", notes = "반찬 요리의 목록을 반환합니다.")
     public ResponseEntity<List<DishDto>> getSideList() {
-        List<DishDto> dishes = dishService.getList(1);
+        List<DishDto> dishes = dishService.getList(3);
         return ResponseEntity.ok().body(dishes);
     }
 
     @GetMapping("/soup")
     @ApiOperation(value = "국물 요리", notes = "국물 요리의 목록을 반환합니다.")
     public ResponseEntity<List<DishDto>> getSoupList() {
-        List<DishDto> dishes = dishService.getList(1);
+        List<DishDto> dishes = dishService.getList(2);
         return ResponseEntity.ok().body(dishes);
     }
 }
