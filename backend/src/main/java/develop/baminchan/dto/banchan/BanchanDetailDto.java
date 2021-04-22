@@ -1,27 +1,40 @@
 package develop.baminchan.dto.banchan;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import develop.baminchan.entity.banchan.Data;
 import develop.baminchan.entity.banchan.BanchanDetail;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class BanchanDetailDto {
     private String hash;
-    private Data data;
+    private DataDto data;
 
     public BanchanDetailDto(BanchanDetail banchanDetail) {
         this.hash = banchanDetail.getHash();
-        this.data = banchanDetail.getData();
+        data = new DataDto.DataDtoBuilder()
+                .setTop_image(banchanDetail.getData().getTop_image())
+                .setThumb_images(convertStringToSet(banchanDetail.getData().getThumb_images()))
+                .build();
     }
 
-    public BanchanDetailDto(String hash, Data data) {
-        this.hash = hash;
-        this.data = data;
+    private Set<String> convertStringToSet(String column) {
+        if (column == null) {
+            return null;
+        }
+        Set<String> set = new HashSet<>();
+        String[] arr = column.split(",");
+        set.addAll(Arrays.asList(arr));
+        return set;
     }
 
     public String getHash() {
         return hash;
     }
 
-    public Data getData() {
+    public DataDto getData() {
         return data;
     }
 
