@@ -15,6 +15,7 @@
 		764CE0C22630110500DED09C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0C12630110500DED09C /* DetailViewController.swift */; };
 		764CE0C72630167E00DED09C /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0C62630167E00DED09C /* DetailItem.swift */; };
 		764CE0CC26301E7000DED09C /* DetailViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0CB26301E7000DED09C /* DetailViewModelType.swift */; };
+		937326DC263147A000FBF7C3 /* SidedishFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937326DB263147A000FBF7C3 /* SidedishFactory.swift */; };
 		9386C100262D7400008645D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0FF262D7400008645D9 /* AppDelegate.swift */; };
 		9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C101262D7400008645D9 /* SceneDelegate.swift */; };
 		9386C104262D7400008645D9 /* SidedishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C103262D7400008645D9 /* SidedishViewController.swift */; };
@@ -67,6 +68,7 @@
 		764CE0C12630110500DED09C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		764CE0C62630167E00DED09C /* DetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
 		764CE0CB26301E7000DED09C /* DetailViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelType.swift; sourceTree = "<group>"; };
+		937326DB263147A000FBF7C3 /* SidedishFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishFactory.swift; sourceTree = "<group>"; };
 		9386C0FC262D7400008645D9 /* sidedishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9386C0FF262D7400008645D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9386C101262D7400008645D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				9386C1B0262E553C008645D9 /* SidedishUseCasePort.swift */,
 				764CE0B2263008C500DED09C /* DetailUseCase.swift */,
 				764CE0B7263008E200DED09C /* DetailUseCasePort.swift */,
+				937326DB263147A000FBF7C3 /* SidedishFactory.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9386C1C5262F311C008645D9 /* BadgeLabel.swift in Sources */,
+				937326DC263147A000FBF7C3 /* SidedishFactory.swift in Sources */,
 				764CE0C72630167E00DED09C /* DetailItem.swift in Sources */,
 				764CE0AE2630079C00DED09C /* DetailNetworkManager.swift in Sources */,
 				764CE0C22630110500DED09C /* DetailViewController.swift in Sources */,
