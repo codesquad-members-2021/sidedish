@@ -24,6 +24,11 @@ class BanchanCustomCellHeader: UICollectionReusableView {
         return UINib(nibName: identifier, bundle: nil)
     }
     
+    func configure(title: String, count: Int) {
+        titleLabel.text = title
+        cellCount = count
+    }
+    
     @objc func headerTouched(_ sender: UITapGestureRecognizer) {
         Toast(text: "\(cellCount)개 상품이 등록되어 있습니다.").show()
     }

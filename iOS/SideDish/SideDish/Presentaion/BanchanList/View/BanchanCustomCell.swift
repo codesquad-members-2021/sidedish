@@ -28,11 +28,26 @@ class BanchanCustomCell: UICollectionViewCell {
     
     var banchan: Banchan? {
         didSet{
+            loadImages(imgURL: banchan?.image ?? "")
             titleLabel.text = banchan?.title
             descriptionLabel.text = banchan?.description
             netPriceLabel.text = "1000"
             salePriceLabel.text = "2000"
             priceTypeLabel.text = "3000"
+        }
+    }
+    
+    private func loadImages(imgURL: String) {
+        DispatchQueue.global().async {
+            FetchImageUseCase.fetch(network: NetworkSerivce.shared,
+                                    imgURL: self.banchan?.image ?? "") { (data) in
+                guard let data = data else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data)
+                }
+            }
         }
     }
 }

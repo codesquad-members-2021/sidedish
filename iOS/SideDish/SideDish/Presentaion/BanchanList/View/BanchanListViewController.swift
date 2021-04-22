@@ -52,12 +52,6 @@ extension BanchanListViewController {
         let dataSource = DataSource(collectionView: banchanCollectionView) { (collectionView, indexPath, banchan) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BanchanCustomCell.identifer, for: indexPath) as? BanchanCustomCell else { return nil }
             
-            FetchImageUseCase.fetch(network: NetworkSerivce.shared, imgURL: banchan.image) { (data) in
-                guard let data = data else {
-                    return
-                }
-                cell.imageView.image = UIImage(data: data)
-            }
             cell.banchan = banchan
             return cell
         }
@@ -69,8 +63,7 @@ extension BanchanListViewController {
     
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BanchanCustomCellHeader.identifier, for: indexPath) as? BanchanCustomCellHeader else { return nil }
             
-            view.titleLabel.text = section.rawValue
-            view.cellCount = self.viewModel.count(section: section)
+            view.configure(title: section.rawValue, count: self.viewModel.count(section: section))
             return view
             
         }
@@ -90,7 +83,6 @@ extension BanchanListViewController {
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }
-
 
 // MARK: - Delegate
 extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
