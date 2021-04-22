@@ -16,11 +16,11 @@ INSERT INTO dish_category(dish_category_name) VALUES ("정갈한 밑찬반");
 
 --item
 INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)
-    VALUES ("[소중한식사] 경상도 한상차림", "오늘 저녁은 이상하게 안주빨을 세워보고 싶다!", 39000, 31200,1, 1, 20, "이벤트 특가");
+    VALUES ("[소중한식사] 경상도 한상차림", "오늘 저녁은 이상하게 안주빨을 세워보고 싶다!", 39000, 31200,1, 1, 20, "이벤트 특가, 런칭특가");
 INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)
     VALUES ("[집밥의완성]초여름보양세트", "무더위에 대비하는 6월 한상차림 초여름 보양세트", 26000, 18200, 2, 2, 20, "이벤트 특가");
 INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)
-    VALUES ("[아내의쉐프] 아쉐찜닭", "아내의쉐프가 자신 있게 만들어서 이름도 '아쉐찜닭'입니다", 11900, 10700, 2, 3, 20, "이벤트 특가");
+    VALUES ("[아내의쉐프] 아쉐찜닭", "아내의쉐프가 자신 있게 만들어서 이름도 '아쉐찜닭'입니다", 11900, 10700, 2, 3, 20, "이벤트 특가, 런칭특가");
 INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)
     VALUES ("[애슐리투고] 로스트 콤보 450g", "립과 치킨이 만나  더욱 맛있게", 10900, 10900, 2, 4, 20, "이벤트 특가");
 INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)

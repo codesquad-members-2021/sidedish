@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
     List<Item> findAll();
+    List<Item> findAllByBestCategoryId(Long bestCategoryId);
 }

@@ -1,6 +1,10 @@
 package codsquad.team17.sidedish.dto;
 
+import codsquad.team17.sidedish.domain.Image;
+import codsquad.team17.sidedish.domain.Item;
+
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemDto {
@@ -18,6 +22,22 @@ public class ItemDto {
 
     public ItemDto(){
 
+    }
+
+    public ItemDto(Item entity, Image image) {
+        this.itemId = entity.getItemId();
+        this.title = entity.getTitle();
+        this.description = entity.getDescription();
+        this.n_price = entity.getnPrice();
+        this.s_price = entity.getsPrice();
+        this.badge = parseBadge(entity.getBadge());
+        this.image = image.getUrl();
+        this.dishCategoryId = entity.getDishCategoryId();
+    }
+
+
+    private List<String> parseBadge(String badge) {
+        return Arrays.asList(badge.split(", "));
     }
 
     public Long getItemId() {
