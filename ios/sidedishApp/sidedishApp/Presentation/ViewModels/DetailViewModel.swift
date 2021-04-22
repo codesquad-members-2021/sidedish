@@ -33,7 +33,7 @@ class DetailViewModel: DetailViewModelType {
             .sink(receiveCompletion: { (result)
                     in switch result {
                     case .finished: break
-                    case .failure(let error): print(error.localizedDescription) } },
+                    case .failure(_): break } },
                   receiveValue: { item in
                     self.item = item
                     self.dataChanged.send()

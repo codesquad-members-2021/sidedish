@@ -37,12 +37,14 @@ class SidedishViewController: UIViewController {
     private var sidedishViewModel: SidedishViewModelType!
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, DataItem>!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sidedishViewModel = SidedishViewModel()
         configureCollectionView()
-        fetchData()
+        fetchMainData()
+        fetchSoupData()
+        fetchSideData()
     }
     
     private func configureCollectionView() {
@@ -100,7 +102,7 @@ class SidedishViewController: UIViewController {
         }
     }
     
-    private func fetchData() {
+    private func fetchMainData() {
         self.sidedishViewModel.dataChanged
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -108,17 +110,38 @@ class SidedishViewController: UIViewController {
             }
             .store(in: &cancellables)
         
-        self.sidedishViewModel.fetchData()
+        self.sidedishViewModel.fetchMainData()
+    }
+    
+    private func fetchSoupData() {
+        self.sidedishViewModel.dataChanged
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.updateSnapshot()
+            }
+            .store(in: &cancellables)
+        
+        self.sidedishViewModel.fetchSoupData()
+    }
+    
+    private func fetchSideData() {
+        self.sidedishViewModel.dataChanged
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.updateSnapshot()
+            }
+            .store(in: &cancellables)
+        
+        self.sidedishViewModel.fetchSideData()
     }
     
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataItem>()
         snapshot.appendSections(Section.allCases)
-        
+
         snapshot.appendItems(sidedishViewModel.getMainItems().map { DataItem.main($0) }, toSection: .main)
         snapshot.appendItems(sidedishViewModel.getSoupItems().map { DataItem.soup($0) }, toSection: .soup)
         snapshot.appendItems(sidedishViewModel.getSideItems().map { DataItem.side($0) }, toSection: .side)
-        
         self.dataSource.apply(snapshot)
     }
 }

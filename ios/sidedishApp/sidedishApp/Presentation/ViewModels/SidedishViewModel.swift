@@ -37,31 +37,49 @@ class SidedishViewModel: SidedishViewModelType {
         return self.side.getItems()
     }
     
-    func fetchData() {
-        let mainPub = sidedishUseCase.getMain()
-            .catch { error -> AnyPublisher<Main, Never> in
-                return Just(Main(items: [])).eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
-        
-        let soupPub = sidedishUseCase.getSoup()
-            .catch { error -> AnyPublisher<Soup, Never> in
-                return Just(Soup(items: [])).eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
-        
-        let sidePub = sidedishUseCase.getSide()
-            .catch { error -> AnyPublisher<Side, Never> in
-                return Just(Side(items: [])).eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
-        
-        Publishers.CombineLatest3(mainPub, soupPub, sidePub)
+    func fetchMainData() {
+        sidedishUseCase.getMain()
             .receive(on: DispatchQueue.global())
-            .sink(receiveValue: {
-                self.main = $0.0
-                self.soup = $0.1
-                self.side = $0.2
+            .sink(receiveCompletion: { (result)
+                in switch result {
+                case .finished: break
+                case .failure(_): break }
+                
+            },
+            receiveValue: { main in
+                self.main = main
+                self.dataChanged.send()
+            })
+            .store(in: &cancellables)
+    }
+    
+    func fetchSoupData() {
+        sidedishUseCase.getSoup()
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { (result)
+                in switch result {
+                case .finished: break
+                case .failure(_): break }
+                
+            },
+            receiveValue: { soup in
+                self.soup = soup
+                self.dataChanged.send()
+            })
+            .store(in: &cancellables)
+    }
+    
+    func fetchSideData() {
+        sidedishUseCase.getSide()
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { (result)
+                in switch result {
+                case .finished: break
+                case .failure(_): break }
+                
+            },
+            receiveValue: { side in
+                self.side = side
                 self.dataChanged.send()
             })
             .store(in: &cancellables)
