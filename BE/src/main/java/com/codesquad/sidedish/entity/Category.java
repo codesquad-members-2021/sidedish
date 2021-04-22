@@ -2,14 +2,17 @@ package com.codesquad.sidedish.entity;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Category {
 
     @Id
     private Long id;
-
     private String name;
-
     private String type;
+
+    private Set<Dish> dishes = new HashSet<>();
 
     private Category(Long id, String name, String type) {
         this.id = id;
@@ -22,6 +25,10 @@ public class Category {
         this.type = type;
     }
 
+    public void addDish(Dish dish){
+        dishes.add(dish);
+    }
+
     public Long getId() {
         return id;
     }
@@ -32,5 +39,9 @@ public class Category {
 
     public String getType() {
         return type;
+    }
+
+    public Set<Dish> getDishes() {
+        return dishes;
     }
 }
