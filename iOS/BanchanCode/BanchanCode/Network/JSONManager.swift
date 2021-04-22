@@ -1,8 +1,8 @@
 //
-//  JSONParser.swift
+//  JSONManager.swift
 //  BanchanCode
 //
-//  Created by Song on 2021/04/21.
+//  Created by Song on 2021/04/22.
 //
 
 import Foundation
