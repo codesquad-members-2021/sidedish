@@ -26,12 +26,12 @@
 		D4BFBB36262EB89800D68297 /* BanchanCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */; };
 		D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */; };
 		D4BFBB3D262EC8DB00D68297 /* BanchanCustomCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */; };
-		D4BFBB5626301B6B00D68297 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB5526301B6B00D68297 /* Section.swift */; };
 		FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */; };
 		FFEF70F926310FB400189376 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70F826310FB400189376 /* NetworkService.swift */; };
 		FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */; };
 		FFEF71042631107200189376 /* FetchBanchanListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */; };
 		FFEF71092631128900189376 /* FetchImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF71082631128900189376 /* FetchImageUseCase.swift */; };
+		FFEF7123263119C500189376 /* BanchanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF7122263119C500189376 /* BanchanListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +81,6 @@
 		D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BanchanCustomCell.xib; sourceTree = "<group>"; };
 		D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCustomCellHeader.swift; sourceTree = "<group>"; };
 		D4BFBB3B262EC8DB00D68297 /* BanchanCustomCellHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BanchanCustomCellHeader.xib; sourceTree = "<group>"; };
-		D4BFBB5526301B6B00D68297 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		D7433C6120AE2C2B5B290532 /* Pods_SideDishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5121CE39396F4ECB1937C15 /* Pods-SideDish-SideDishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDish-SideDishUITests.debug.xcconfig"; path = "Target Support Files/Pods-SideDish-SideDishUITests/Pods-SideDish-SideDishUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCollectionView.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BanchanListDTO+Mapping.swift"; sourceTree = "<group>"; };
 		FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchBanchanListUseCase.swift; sourceTree = "<group>"; };
 		FFEF71082631128900189376 /* FetchImageUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchImageUseCase.swift; sourceTree = "<group>"; };
+		FFEF7122263119C500189376 /* BanchanListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +255,7 @@
 		D4BFBB21262EA7BC00D68297 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D4BFBB5526301B6B00D68297 /* Section.swift */,
+				FFEF7122263119C500189376 /* BanchanListViewModel.swift */,
 				D4BFBB20262EA7B600D68297 /* View */,
 			);
 			path = ViewModel;
@@ -575,7 +575,6 @@
 				D4BFBAD7262E989000D68297 /* BanchanListViewController.swift in Sources */,
 				D4BFBAD3262E989000D68297 /* AppDelegate.swift in Sources */,
 				D4BFBAD5262E989000D68297 /* SceneDelegate.swift in Sources */,
-				D4BFBB5626301B6B00D68297 /* Section.swift in Sources */,
 				FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */,
 				D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */,
 				D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */,
@@ -584,6 +583,7 @@
 				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,
 				D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */,
 				FFEF71092631128900189376 /* FetchImageUseCase.swift in Sources */,
+				FFEF7123263119C500189376 /* BanchanListViewModel.swift in Sources */,
 				D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,19 +11,21 @@ class BanchanListViewController: UIViewController {
     
     @IBOutlet weak var banchanCollectionView: BanchanCollectionView!
     
-    //var viewModel = BanchanListViewModel()
-    private var sections = Section.allSections
+    var viewModel = BanchanListViewModel()
     lazy var dataSource = configureDataSource()
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Banchan>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Banchan>
+    typealias Section = BanchanListViewModel.Section
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        applySnapshot(animatingDifferences: false)
+        
+        applySnapshot(animatingDifferences: true)
         banchanCollectionView.dataSource = self.dataSource
         banchanCollectionView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applySnapshot(animatingDifferences:)), name: Notification.Name("updateMenu"), object: viewModel)
     }
 }
 
@@ -31,40 +33,32 @@ class BanchanListViewController: UIViewController {
 extension BanchanListViewController {
     func configureDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: banchanCollectionView) { (collectionView, indexPath, banchan) -> UICollectionViewCell? in
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BanchanCustomCell.identifer, for: indexPath) as? BanchanCustomCell else {
-                    return nil
-                }
-                cell.banchan = banchan
-                return cell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BanchanCustomCell.identifer, for: indexPath) as? BanchanCustomCell else { return nil }
+            cell.banchan = banchan
+            return cell
         }
-       
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            guard kind == UICollectionView.elementKindSectionHeader else {
-                return nil
-            }
-            
-            guard let view = collectionView.dequeueReusableSupplementaryView(
-                    ofKind: kind,
-                    withReuseIdentifier: BanchanCustomCellHeader.identifier,
-                    for: indexPath) as? BanchanCustomCellHeader else {
-                return nil
-            }
+            guard kind == UICollectionView.elementKindSectionHeader else { return nil }
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            view.titleLabel.text = section.title.rawValue
+            guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BanchanCustomCellHeader.identifier, for: indexPath) as? BanchanCustomCellHeader else { return nil }
+            view.titleLabel.text = section.rawValue
             return view
             
         }
         return dataSource
     }
     
+    @objc
     func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
-       
-        snapshot.appendSections(sections)
         
-        sections.forEach { section in
-            snapshot.appendItems(section.banchans, toSection: section)
+        snapshot.appendSections(Section.allCases)
+        
+        Section.allCases.forEach { section in
+            guard let banchans = viewModel.getBanchans(section: section) else { return }
+            snapshot.appendItems(banchans, toSection: section)
         }
+        
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }

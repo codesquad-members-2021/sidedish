@@ -8,10 +8,11 @@
 import Foundation
 
 struct FetchBanchanListUseCase {
-    private static let url: String = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
+    private static let baseURL: String = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/"
     
-    static func fetchBanchanList(network: NetworkRequest, completion: @escaping ([Banchan]?) -> Void) {
-        network.request(url: self.url, httpMethod: .get) { dataDummy in
+    static func fetchBanchanList(network: NetworkRequest,section: String, completion: @escaping ([Banchan]?) -> Void) {
+        let url = baseURL+section
+        network.request(url: url, httpMethod: .get) { dataDummy in
             guard let data = dataDummy.data else { return }
             
             guard let banchans = try? JSONDecoder().decode(BanchanListDTO.self, from: data) else { return }
