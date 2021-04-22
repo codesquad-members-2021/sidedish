@@ -10,7 +10,7 @@ public class Item {
     private Long itemId;
     private String title;
 
-    private String discription;
+    private String description;
 
     private String badge;
     private BigDecimal nPrice;
@@ -25,10 +25,10 @@ public class Item {
     public Item() {
     }
 
-    public Item(Long itemId, String title, String discription, String badge, BigDecimal nPrice, BigDecimal sPrice, int stock, Long dishCategoryId, Long bestCategoryId) {
+    public Item(Long itemId, String title, String description, String badge, BigDecimal nPrice, BigDecimal sPrice, int stock, Long dishCategoryId, Long bestCategoryId) {
         this.itemId = itemId;
         this.title = title;
-        this.discription = discription;
+        this.description = description;
         this.badge = badge;
         this.nPrice = nPrice;
         this.sPrice = sPrice;
