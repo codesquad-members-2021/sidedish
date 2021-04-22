@@ -6,7 +6,8 @@ const useFetch = (url, initial) => {
   const fetchData = async () => {
     const res = await fetch(url);
     const data = await res.json();
-    setResponse(data.body);
+    const dataBody = await data.body;
+    setResponse(dataBody);
   };
 
   useEffect(() => {

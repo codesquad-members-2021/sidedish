@@ -2,9 +2,9 @@ import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from '../../const';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Img = ({ cardSize, imgUrl }) => {
+const Img = ({ cardSize, image, alt }) => {
+  const url = image;
   const [opacitiy, setOpacity] = useState(0);
-
   const onToggleOpacity = (opacitiy) => {
     if (opacitiy === 0) return setOpacity(100);
     return setOpacity(0);
@@ -20,8 +20,8 @@ const Img = ({ cardSize, imgUrl }) => {
       onMouseLeave={() => onToggleOpacity(opacitiy)}
     >
       <img
-        src={imgUrl}
-        alt="img"
+        src={url}
+        alt={alt}
         onError={handleErrorImg}
         width={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
         height={cardSize === SIZE_MEDIUM ? '308px' : '384px'}

@@ -45,6 +45,7 @@ const Card = ({ cardSize, item, imgUrl }) => {
 export default Card;
 
 const CardBoxDiv = styled.div`
+  padding-right: 3rem;
   width: fit-content;
   margin: 10px 5px;
 
