@@ -23,12 +23,20 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
         label.font = .boldSystemFont(ofSize: 22)
         label.backgroundColor = .white
         
+        let popupGesture : TableViewTapToasterGesture = TableViewTapToasterGesture(target: self, action: #selector(popupToast(sender: )))
+        popupGesture.count = viewModel.sideDishesCount(section: section)
+        
         headerView.addSubview(label)
+        headerView.addGestureRecognizer(popupGesture)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 56 // headerView의 height(32) + figma에서 지정해 준 헤더와 셀 간의 간격!
+    }
+    
+    @objc func popupToast(sender : TableViewTapToasterGesture){
+        sender.show(messageType: .category)
     }
 }
