@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CategoryRepository extends CrudRepository<SidedishCategory, Long> {
+public interface SidedishCategoryRepository extends CrudRepository<SidedishCategory, Long> {
 
     SidedishCategory findByCategoryName(String categoryName);
 

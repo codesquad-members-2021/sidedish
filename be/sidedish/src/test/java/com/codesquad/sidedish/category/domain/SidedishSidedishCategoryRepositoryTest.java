@@ -3,6 +3,10 @@ package com.codesquad.sidedish.category.domain;
 import com.codesquad.sidedish.category.service.SidedishItemService;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventRepository;
+import com.codesquad.sidedish.image.domain.SidedishImage;
+import com.codesquad.sidedish.image.domain.SidedishImageRepository;
+import com.codesquad.sidedish.image.domain.SidedishImageTypeEnum;
+import com.codesquad.sidedish.image.domain.SidedishItemImage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -12,14 +16,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @SpringBootTest
 @Transactional
-class SidedishCategoryRepositoryTest {
+class SidedishSidedishCategoryRepositoryTest {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    SidedishCategoryRepository sidedishCategoryRepository;
 
     @Autowired
     SidedishEventRepository eventRepository;
@@ -27,15 +32,19 @@ class SidedishCategoryRepositoryTest {
     @Autowired
     SidedishItemService itemService;
 
-    Logger logger = LoggerFactory.getLogger(SidedishCategoryRepositoryTest.class);
+    @Autowired
+    SidedishImageRepository imageRepository;
+
+
+    Logger logger = LoggerFactory.getLogger(SidedishSidedishCategoryRepositoryTest.class);
 
     @Test
     @DisplayName("카테고리를 생성할 수 있어야 함")
     void createCategory() {
         SidedishCategory sidedishCategory = new SidedishCategory("메인요리");
-        categoryRepository.save(sidedishCategory);
+        sidedishCategoryRepository.save(sidedishCategory);
 
-        Iterable<SidedishCategory> categories = categoryRepository.findAll();
+        Iterable<SidedishCategory> categories = sidedishCategoryRepository.findAll();
 
         for (SidedishCategory currentSidedishCategory : categories) {
             logger.info("category : {}", currentSidedishCategory);
@@ -58,9 +67,9 @@ class SidedishCategoryRepositoryTest {
         sidedishCategory.addSidedishItem(sidedishItem1);
         sidedishCategory.addSidedishItem(sidedishItem2);
 
-        categoryRepository.save(sidedishCategory);
+        sidedishCategoryRepository.save(sidedishCategory);
 
-        Iterable<SidedishCategory> categories = categoryRepository.findAll();
+        Iterable<SidedishCategory> categories = sidedishCategoryRepository.findAll();
 
         for (SidedishCategory currentSidedishCategory : categories) {
             logger.info("category : {}", currentSidedishCategory);
@@ -73,7 +82,7 @@ class SidedishCategoryRepositoryTest {
     @DisplayName("아이템 DTO를 생성")
     void createItemDTO() {
 
-        SidedishCategory mainCategory = categoryRepository.findByCategoryName("main");
+        SidedishCategory mainCategory = sidedishCategoryRepository.findByCategoryName("main");
         SidedishEvent event = createSidedishEvent("점심 특가", "#ffffff");
 
         SidedishItem sidedishItem1 = createSidedishItem("맛있는 반찬");
@@ -85,13 +94,38 @@ class SidedishCategoryRepositoryTest {
         mainCategory.addSidedishItem(sidedishItem1);
         mainCategory.addSidedishItem(sidedishItem2);
 
-        categoryRepository.save(mainCategory);
+        sidedishCategoryRepository.save(mainCategory);
 
         List<SidedishItemDTO> itemDTOS = itemService.showItemList("main");
 
 
         for (SidedishItemDTO sidedishItemDTO : itemDTOS) {
             logger.info("ItemDTO : {}", sidedishItemDTO.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("아이템 안에 이미지 목록을 생성")
+    void createImages() {
+
+        SidedishCategory mainCategory = sidedishCategoryRepository.findByCategoryName("main");
+        SidedishItem sidedishItem = createSidedishItem("맛있는 반찬");
+        mainCategory.addSidedishItem(sidedishItem);
+        sidedishCategoryRepository.save(mainCategory);
+
+        sidedishItem.addImage(createSidedishImage("thumb.jpg", SidedishImageTypeEnum.THUMBNAIL));
+        sidedishItem.addImage(createSidedishImage("detail1.jpg", SidedishImageTypeEnum.DETAIL));
+        sidedishItem.addImage(createSidedishImage("detail2.jpg", SidedishImageTypeEnum.DETAIL));
+        sidedishItem.addImage(createSidedishImage("desc1.jpg", SidedishImageTypeEnum.DESCRIPTION));
+        sidedishItem.addImage(createSidedishImage("desc2.jpg", SidedishImageTypeEnum.DESCRIPTION));
+        sidedishItem.addImage(createSidedishImage("desc3.jpg", SidedishImageTypeEnum.DESCRIPTION));
+
+        sidedishCategoryRepository.save(mainCategory);
+
+        for (SidedishItem item : mainCategory.getSidedishItemList()) {
+            Iterable<SidedishImage> images = imageRepository.findAllById(item.getSidedishItemImages().stream()
+                    .map(SidedishItemImage::getSidedishImage).collect(Collectors.toList()));
+            images.forEach(System.out::println);
         }
     }
 
@@ -107,5 +141,9 @@ class SidedishCategoryRepositoryTest {
 
     private SidedishEvent createSidedishEvent (String eventName,String eventColor) {
         return eventRepository.save(new SidedishEvent(eventName,eventColor));
+    }
+
+    private SidedishImage createSidedishImage (String imageUrl, SidedishImageTypeEnum imageTypeEnum) {
+        return imageRepository.save(new SidedishImage(imageUrl, imageTypeEnum));
     }
 }

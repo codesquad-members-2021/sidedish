@@ -1,6 +1,6 @@
 package com.codesquad.sidedish.category.service;
 
-import com.codesquad.sidedish.category.domain.CategoryRepository;
+import com.codesquad.sidedish.category.domain.SidedishCategoryRepository;
 import com.codesquad.sidedish.category.domain.SidedishCategory;
 import com.codesquad.sidedish.category.domain.SidedishItem;
 import com.codesquad.sidedish.category.domain.SidedishItemDTO;
@@ -17,17 +17,17 @@ import java.util.stream.Collectors;
 @Service
 public class SidedishItemService {
 
-    private final CategoryRepository categoryRepository;
+    private final SidedishCategoryRepository sidedishCategoryRepository;
     private final SidedishEventRepository sidedishEventRepository;
 
-    public SidedishItemService(CategoryRepository categoryRepository, SidedishEventRepository sidedishEventRepository) {
-        this.categoryRepository = categoryRepository;
+    public SidedishItemService(SidedishCategoryRepository sidedishCategoryRepository, SidedishEventRepository sidedishEventRepository) {
+        this.sidedishCategoryRepository = sidedishCategoryRepository;
         this.sidedishEventRepository = sidedishEventRepository;
     }
 
     public List<SidedishItemDTO> showItemList(String categoryName){
 
-        SidedishCategory category = categoryRepository.findByCategoryName(categoryName);
+        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName);
         List<SidedishItem> items = category.getSidedishItemList();
 
         List<SidedishItemDTO> itemDTOs = new ArrayList<>();
