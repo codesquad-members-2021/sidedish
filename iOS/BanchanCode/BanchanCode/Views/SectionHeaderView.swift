@@ -15,7 +15,5 @@ class SectionHeaderView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        sectionTitleLabel.text = "모두가 좋아하는 든든한 메인 요리"
     }
 }

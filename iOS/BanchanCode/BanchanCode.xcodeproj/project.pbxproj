@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,7 @@
 		A25F0ADF39C821B9C0905711 /* Pods_BanchanCodeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9620CD78B3676D347046E4C1 /* Pods_BanchanCodeTests.framework */; };
 		E46342E5263117BD0001D87A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E4263117BD0001D87A /* MockData.swift */; };
 		E46342EA2631199B0001D87A /* DishesResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E92631199B0001D87A /* DishesResponseDTO+Mapping.swift */; };
-		E46343052631471C0001D87A /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46343042631471C0001D87A /* JSONManager.swift */; };
+		E463431E263155C00001D87A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E463431D263155C00001D87A /* NetworkManager.swift */; };
 		E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */; };
 		E4FC9C7F262E9ED800BEAAE4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */; };
 		E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */; };
@@ -60,7 +60,7 @@
 		E01634C4D66E2B7A6151C644 /* Pods-BanchanCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchanCode.release.xcconfig"; path = "Target Support Files/Pods-BanchanCode/Pods-BanchanCode.release.xcconfig"; sourceTree = "<group>"; };
 		E46342E4263117BD0001D87A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		E46342E92631199B0001D87A /* DishesResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DishesResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
-		E46343042631471C0001D87A /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		E463431D263155C00001D87A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewConstant.swift; sourceTree = "<group>"; };
@@ -123,7 +123,6 @@
 				15846E4B96248A5D3CA67764 /* Pods-BanchanCodeTests.debug.xcconfig */,
 				DE03188D48C619947090424E /* Pods-BanchanCodeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -174,7 +173,7 @@
 		E4FC9CC52630104600BEAAE4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E46343042631471C0001D87A /* JSONManager.swift */,
+				E463431D263155C00001D87A /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -491,8 +490,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FC9C7F262E9ED800BEAAE4 /* CollectionViewDataSource.swift in Sources */,
-				E46343052631471C0001D87A /* JSONManager.swift in Sources */,
 				FA88E9E3262E7F50001C3E53 /* MainViewController.swift in Sources */,
+				E463431E263155C00001D87A /* NetworkManager.swift in Sources */,
 				E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */,
 				FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */,
 				E46342EA2631199B0001D87A /* DishesResponseDTO+Mapping.swift in Sources */,
