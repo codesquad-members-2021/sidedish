@@ -26,6 +26,7 @@ const Tab = styled(AlignTextCenter)`
     clickedID === id ? theme.fontWeight.bold : theme.fontWeight.normal};
   margin-right: 5px;
   font-size: ${theme.fontSize.large};
+  cursor: pointer;
 `;
 
 const MainColumn = styled.div`
