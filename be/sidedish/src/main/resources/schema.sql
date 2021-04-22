@@ -1,7 +1,7 @@
 use
 sidedish;
 
-drop table if exists SIDEDISH_ITEM;
+/*drop table if exists SIDEDISH_ITEM;
 drop table if exists SIDEDISH_CATEGORY;
 drop table if exists SIDEDISH_EVENT_ITEM;
 drop table if exists SIDEDISH_EVENT;
@@ -60,4 +60,4 @@ CREATE TABLE SIDEDISH_ITEM_IMAGE
     IMAGE_TYPE VARCHAR(15) NOT NULL,
     SIDEDISH_ITEM_KEY INT
 );
-
+*/

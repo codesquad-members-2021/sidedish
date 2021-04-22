@@ -18,4 +18,7 @@ public class SidedishItemPreviewListDTO {
         }
     }
 
+    public List<SidedishItemPreviewDTO> getItems() {
+        return items;
+    }
 }

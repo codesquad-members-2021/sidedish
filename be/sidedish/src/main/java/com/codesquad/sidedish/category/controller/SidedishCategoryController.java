@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.category.controller;
 
+import com.codesquad.sidedish.category.domain.SidedishItemDetailDTO;
 import com.codesquad.sidedish.category.domain.dto.SidedishItemDetailListDTO;
 import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
 import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewListDTO;
@@ -25,14 +26,13 @@ public class SidedishCategoryController {
     public ResponseEntity<SidedishItemPreviewListDTO> previewDish(@PathVariable String category) {
         List<SidedishItemPreviewDTO> previewDTOs = itemService.showItemList(category);
         SidedishItemPreviewListDTO previewListDTO = new SidedishItemPreviewListDTO(previewDTOs);
-        return new ResponseEntity(previewListDTO, HttpStatus.OK);
+        return new ResponseEntity<>(previewListDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{category}/{id}")
-    public ResponseEntity<SidedishItemDetailDTO> previewDish(@PathVariable String category, @PathVariable Long id) {
+    public ResponseEntity<SidedishItemDetailListDTO> detailDish(@PathVariable String category, @PathVariable Long id) {
         SidedishItemDetailDTO detailDTOs = itemService.showItem(category, id);
-        SidedishItemDetailListDTO detailListDTO =new SidedishItemDetailListDTO(detailDTOs);
-        return new ResponseEntity(detailListDTO, HttpStatus.OK);
+        SidedishItemDetailListDTO detailListDTO = new SidedishItemDetailListDTO(detailDTOs);
+        return new ResponseEntity<>(detailListDTO, HttpStatus.OK);
     }
-
 }

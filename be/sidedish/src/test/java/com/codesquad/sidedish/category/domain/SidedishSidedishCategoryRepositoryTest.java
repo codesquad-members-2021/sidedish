@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 
 @SpringBootTest
-@Transactional
 class SidedishSidedishCategoryRepositoryTest {
 
     @Autowired
@@ -87,12 +86,16 @@ class SidedishSidedishCategoryRepositoryTest {
 
         SidedishItem sidedishItem1 = createSidedishItem("맛있는 반찬");
         SidedishItem sidedishItem2 = createSidedishItem("상큼한 반찬");
+        mainCategory.addSidedishItem(sidedishItem1);
+        mainCategory.addSidedishItem(sidedishItem2);
+
+        sidedishCategoryRepository.save(mainCategory);
 
         sidedishItem1.addEvent(event);
         sidedishItem2.addEvent(event);
 
-        mainCategory.addSidedishItem(sidedishItem1);
-        mainCategory.addSidedishItem(sidedishItem2);
+        sidedishItem1.addThumbnailImage(createSidedishImage("thumb.jpg"));
+        sidedishItem2.addThumbnailImage(createSidedishImage("thumb.jpg"));
 
         sidedishCategoryRepository.save(mainCategory);
 
@@ -147,6 +150,30 @@ class SidedishSidedishCategoryRepositoryTest {
         sidedishCategoryRepository.save(mainCategory);
 
         itemService.showItemList("main").forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("Item 상세보기 서비스 기능")
+    void detailItem() {
+        SidedishCategory mainCategory = sidedishCategoryRepository.findByCategoryName("main");
+        SidedishItem sidedishItem = createSidedishItem("맛있는 반찬");
+        mainCategory.addSidedishItem(sidedishItem);
+        sidedishCategoryRepository.save(mainCategory);
+
+        sidedishItem.addThumbnailImage(createSidedishImage("thumb.jpg"));
+        sidedishItem.addDetailImage(createSidedishImage("detail1.jpg"));
+        sidedishItem.addDetailImage(createSidedishImage("detail2.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc1.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc2.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc3.jpg"));
+
+        sidedishItem.addEvent(createSidedishEvent("좋은 이벤트", "#ffffff"));
+        sidedishItem.addEvent(createSidedishEvent("신기한 이벤트", "#ffffff"));
+
+        sidedishCategoryRepository.save(mainCategory);
+
+        SidedishItemDetailDTO detailDTO = itemService.showItem("main", sidedishItem.getId());
+        logger.info("detailDto : {}", detailDTO);
     }
 
     private SidedishItem createSidedishItem (String itemName) {

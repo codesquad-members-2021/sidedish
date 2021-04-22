@@ -29,7 +29,8 @@ public class SidedishItem {
 
     private List<SidedishItemImage> sidedishItemImages = new ArrayList<>();
 
-    public SidedishItem(String itemName, String itemDescription, int itemSalePrice, int itemNormalPrice, int itemQuantity, int itemPointRate, String itemDeliveryInfo, String itemDeliveryFee) {
+    public SidedishItem(String itemName, String itemDescription, int itemSalePrice, int itemNormalPrice,
+                        int itemQuantity, int itemPointRate, String itemDeliveryInfo, String itemDeliveryFee) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemSalePrice = itemSalePrice;
@@ -38,6 +39,14 @@ public class SidedishItem {
         this.itemPointRate = itemPointRate;
         this.itemDeliveryInfo = itemDeliveryInfo;
         this.itemDeliveryFee = itemDeliveryFee;
+    }
+
+    public boolean isSameId(Long itemId) {
+        return id.equals(itemId);
+    }
+
+    public boolean isPurchasable() {
+        return itemQuantity > 0;
     }
 
     public void addEvent(SidedishEvent sidedishEvent) {

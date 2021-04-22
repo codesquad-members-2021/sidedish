@@ -17,6 +17,9 @@ public class SidedishItemImage {
         this.imageType = imageType;
     }
 
+    public boolean isSameType(SidedishImageTypeEnum imageTypeEnum) {
+        return imageType == imageTypeEnum;
+    }
     public boolean isThumbnailImage() {
         return imageType == SidedishImageTypeEnum.THUMBNAIL;
     }
