@@ -8,7 +8,7 @@
 import UIKit
 
 class DishCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -23,14 +23,13 @@ class DishCell: UICollectionViewCell {
         super.awakeFromNib()
         
         thumbnailImageView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        nameLabel.text = "Jackson!!!!"
-        
         thumbnailImageView.layer.masksToBounds = true
         thumbnailImageView.layer.cornerRadius = 5.0
         
+        nameLabel.text = "Jackson!!!!"
+        descriptionLabel.text = "LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong"
+        
         badgeBackgroundView.layer.masksToBounds = true
         badgeBackgroundView.layer.cornerRadius = 5.0
-        
     }
-
 }
