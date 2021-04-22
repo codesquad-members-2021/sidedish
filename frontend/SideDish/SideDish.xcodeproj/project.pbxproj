@@ -22,6 +22,10 @@
 		BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA95262FF9FC00803154 /* Parsing.swift */; };
 		BDFABA9B262FFA0600803154 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA9A262FFA0600803154 /* Request.swift */; };
 		BDFABAA0262FFA1C00803154 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA9F262FFA1C00803154 /* Network.swift */; };
+		CE8E2E4026313B3C007EEEBB /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E3F26313B3C007EEEBB /* JSONModel.swift */; };
+		CE8E2E4526313B48007EEEBB /* MainDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */; };
+		CE8E2E4B26313C19007EEEBB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E4926313C19007EEEBB /* HeaderView.swift */; };
+		CE8E2E4C26313C19007EEEBB /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E2E4A26313C19007EEEBB /* HeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		BDFABA95262FF9FC00803154 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		BDFABA9A262FFA0600803154 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BDFABA9F262FFA1C00803154 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		CE8E2E3F26313B3C007EEEBB /* JSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDiffableDataSource.swift; sourceTree = "<group>"; };
+		CE8E2E4926313C19007EEEBB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		CE8E2E4A26313C19007EEEBB /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +118,11 @@
 		BD090667262EBD820094421D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */,
 				BD090656262E9B450094421D /* MenuCell.swift */,
 				BD090657262E9B450094421D /* MenuCell.xib */,
+				CE8E2E4926313C19007EEEBB /* HeaderView.swift */,
+				CE8E2E4A26313C19007EEEBB /* HeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +139,7 @@
 		BD090674262ED1CA0094421D /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				CE8E2E3F26313B3C007EEEBB /* JSONModel.swift */,
 				BDFABA95262FF9FC00803154 /* Parsing.swift */,
 				BDFABA9A262FFA0600803154 /* Request.swift */,
 				BDFABA9F262FFA1C00803154 /* Network.swift */,
@@ -293,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD930B64262D6F5900906633 /* LaunchScreen.storyboard in Resources */,
+				CE8E2E4C26313C19007EEEBB /* HeaderView.xib in Resources */,
 				BD930B61262D6F5900906633 /* Assets.xcassets in Resources */,
 				BD090659262E9B450094421D /* MenuCell.xib in Resources */,
 				BD930B5F262D6F5800906633 /* Main.storyboard in Resources */,
@@ -320,11 +333,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8E2E4526313B48007EEEBB /* MainDiffableDataSource.swift in Sources */,
 				BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */,
 				BDFABA9B262FFA0600803154 /* Request.swift in Sources */,
 				BD930B5C262D6F5800906633 /* ViewController.swift in Sources */,
 				BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */,
 				BD090658262E9B450094421D /* MenuCell.swift in Sources */,
+				CE8E2E4026313B3C007EEEBB /* JSONModel.swift in Sources */,
+				CE8E2E4B26313C19007EEEBB /* HeaderView.swift in Sources */,
 				BDFABAA0262FFA1C00803154 /* Network.swift in Sources */,
 				BD930B5A262D6F5800906633 /* SceneDelegate.swift in Sources */,
 				BD09066D262EC5120094421D /* Menus.swift in Sources */,

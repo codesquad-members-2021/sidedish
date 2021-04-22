@@ -25,6 +25,11 @@ class ViewController: UIViewController {
     private func configureCollectionView() {
         let nibName = UINib(nibName: "MenuCell", bundle: .none)
         sideDishCollectionView.register(nibName, forCellWithReuseIdentifier: "menuCell")
+        
+        let nibHeaderName = UINib(nibName: "HeaderView", bundle: .none)
+//        sideDishCollectionView.register(nibHeaderName, forCellWithReuseIdentifier: "headerView")
+        sideDishCollectionView.register(nibHeaderName, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
+        
         self.dataSource.setupDataSource(collectionView: self.sideDishCollectionView)
     }
     
