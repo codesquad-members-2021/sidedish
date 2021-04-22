@@ -12,4 +12,8 @@ enum RequestType: String {
     case post = "POST"
     case put = "PUT"
     case delete = "DELETE"
+    
+    var value: String {
+        return rawValue
+    }
 }

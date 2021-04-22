@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-protocol manufactureDataforViewModel {
+protocol ManufactureDataforViewModel {
     func manufactureForMainView() -> AnyPublisher<SideDishesCollection, Error>
 }
 
-class TurnonAppUsecase : manufactureDataforViewModel {
+class TurnonAppUsecase : ManufactureDataforViewModel {
 
     private let networkmanager : NetworkProtocol
     
@@ -21,11 +21,11 @@ class TurnonAppUsecase : manufactureDataforViewModel {
     }
     
     convenience init(){
-        let networkmanager = NetworkManager(requestManager: RequestManager(baseAddress: ""), jsonManager: JsonManager())
+        let networkmanager = NetworkManager(baseAddress: "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com")
         self.init(networkmanager : networkmanager)
     }
     
     func manufactureForMainView() -> AnyPublisher<SideDishesCollection, Error> {
-        return networkmanager.get(type: SideDishesCollection.self, url: URL(string: "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best")!)
+        return networkmanager.get(type: SideDishesCollection.self, endPoint: .best)
     }
 }

@@ -15,11 +15,13 @@ class RequestManager {
         self.baseAddress = baseAddress
     }
     
-    func create(path: String, body: Data?, requestType: RequestType) -> URLRequest? {
-        guard let url = URL(string: self.baseAddress + path) else { return nil }
+    func create(endPoint: EndPoint, body: Data?, requestType: RequestType) -> URLRequest {
+        guard let url = URL(string: self.baseAddress + endPoint.path) else {
+            return URLRequest(url: URL(string: baseAddress)!)
+        }
         
         var request = URLRequest(url: url)
-        request.httpMethod = requestType.rawValue
+        request.httpMethod = requestType.value
         
         if let body = body {
             request.httpBody = body
