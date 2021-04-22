@@ -52,6 +52,7 @@ extension ViewController {
                                                                        withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier,
                                                                        for: indexPath) as? SectionHeaderReusableView
             headerView?.title.text = section.title
+            headerView?.configure()
             return headerView
         }
     }
