@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Span from "../../atoms/span";
 const WrapDiv = styled.div`
   display: flex;
-  /* flex-direction: c; */
   margin: 32px 0 80px 80px;
+  min-width: 700px;
 `;
 
 const Li = styled.li`

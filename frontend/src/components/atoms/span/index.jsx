@@ -31,7 +31,8 @@ const StyledSpan = styled.span`
     `font-size:14px;
     font-weight:400;
     color:#BDBDBD;
-    margin:8px 0;`}
+    margin:8px 0;
+    text-decoration:line-through;`}
      ${(props) =>
     props._logo &&
     `font-size:40px;

@@ -1,16 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ReactComponent as searchSVG } from '../../../images/search.svg';
-import { ReactComponent as closeSVG } from '../../../images/close.svg';
-import { ReactComponent as downSVG } from '../../../images/down.svg';
-import { ReactComponent as upSVG } from '../../../images/up.svg';
-import { ReactComponent as leftSVG } from '../../../images/left.svg';
-import { ReactComponent as rightSVG } from '../../../images/right.svg';
+import React from "react";
+import styled from "styled-components";
+import { ReactComponent as searchSVG } from "../../../images/search.svg";
+import { ReactComponent as closeSVG } from "../../../images/close.svg";
+import { ReactComponent as downSVG } from "../../../images/down.svg";
+import { ReactComponent as upSVG } from "../../../images/up.svg";
+import { ReactComponent as leftSVG } from "../../../images/left.svg";
+import { ReactComponent as rightSVG } from "../../../images/right.svg";
 
-const Icon = props => {
-  const defaultSetting = `width: ${props._width};
-height: ${props._width};
-stroke: ${props._color}`;
+const Icon = (props) => {
+  const defaultSetting = `
+  width: ${props._width};
+  height: ${props._width};
+  stroke: ${props._color};
+  position:${props._position};
+  right:${props._right};
+  `;
 
   const DownIcon = styled(downSVG)`
     ${defaultSetting}
@@ -37,17 +41,17 @@ stroke: ${props._color}`;
   `;
 
   switch (props._type) {
-    case 'DownIcon':
+    case "DownIcon":
       return <DownIcon />;
-    case 'UpIcon':
+    case "UpIcon":
       return <UpIcon />;
-    case 'CloseIcon':
+    case "CloseIcon":
       return <CloseIcon />;
-    case 'SearchIcon':
+    case "SearchIcon":
       return <SearchIcon />;
-    case 'RighthIcon':
+    case "RighthIcon":
       return <RighthIcon />;
-    case 'LeftIcon':
+    case "LeftIcon":
       return <LeftIcon />;
     default:
       break;
