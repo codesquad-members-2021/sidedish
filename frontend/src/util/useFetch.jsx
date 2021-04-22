@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 
 const useFetch = (callback, type) => {
   const getUrl = () => {
-    let url;
+    let url = 'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/';
     switch (type) {
       case 'mainDish':
-        url =
-          'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main';
-        return url;
+        url += 'main';
+
       default:
+        return url;
     }
   };
 

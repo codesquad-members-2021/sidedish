@@ -10,7 +10,8 @@ import { ReactComponent as rightSVG } from '../../../images/right.svg';
 const Icon = props => {
   const defaultSetting = `width: ${props._width};
 height: ${props._width};
-stroke: ${props._color}`;
+stroke: ${props._color};
+`;
 
   const DownIcon = styled(downSVG)`
     ${defaultSetting}

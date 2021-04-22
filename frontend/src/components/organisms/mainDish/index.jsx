@@ -1,30 +1,45 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { CardStyle, WrapCard, WrapMain } from './index.style';
 import MediumCard from '../../molecules/MediumCard';
+import Icon from '../../atoms/icon';
+import UseFetch from '../../../util/useFetch';
 
 const MainDish = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await (
-        await fetch(
-          'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/soup'
-        )
-      ).json();
-      const dataBody = data.body;
-      setData(dataBody);
-    };
-    getData();
-  }, []);
+  UseFetch(setData, 'mainDish');
 
-  const Foo = () => {
-    return data.map((card, i) => <div key={i}>{card.title}</div>);
+  const Cards = () => {
+    return data.map((card, i) => (
+      <MediumCard
+        key={i}
+        _image={card.image}
+        _title={card.title}
+        _description={card.description}
+        _nPrice={card.n_price}
+        _sPrice={card.s_price}
+        _badge={card.badge}
+      ></MediumCard>
+    ));
   };
 
   return (
-    <div>
-      <Foo />
-    </div>
+    <>
+      <WrapMain>
+        <Icon _width="32px" _height="32px" _color="#BDBDBD" _type="LeftIcon" />
+        <WrapCard>
+          <CardStyle>
+            <Cards />
+          </CardStyle>
+        </WrapCard>
+        <Icon
+          _width="32px"
+          _height="32px"
+          _color="#BDBDBD"
+          _type="RighthIcon"
+        />
+      </WrapMain>
+    </>
   );
 };
 
