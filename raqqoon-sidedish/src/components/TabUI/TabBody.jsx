@@ -26,4 +26,7 @@ const TabBody = () => {
 
 export default TabBody;
 
-const TabBodyBoxDiv = styled.div``;
+const TabBodyBoxDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

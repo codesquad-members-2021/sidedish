@@ -4,15 +4,15 @@ import TabHeader from 'components/tabUI/TabHeader';
 
 const TabUI = () => {
   return (
-    <TabUIBoxDiv>
+    <TabUIBoxSection>
       <TabHeader />
       <TabBody />
-    </TabUIBoxDiv>
+    </TabUIBoxSection>
   );
 };
 
 export default TabUI;
 
-const TabUIBoxDiv = styled.div`
-  width: fit-content;
+const TabUIBoxSection = styled.section`
+  width: 1280px;
 `;

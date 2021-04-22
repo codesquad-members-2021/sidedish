@@ -15,7 +15,6 @@ const App = () => {
 export default App;
 
 const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 1440px;
+  margin: 0 auto;
 `;

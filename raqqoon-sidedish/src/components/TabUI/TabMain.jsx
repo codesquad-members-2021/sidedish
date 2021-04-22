@@ -40,7 +40,9 @@ export default TabMain;
 
 const TabMainBoxDiv = styled.div`
   display: flex;
+  justify-content: space-evenly;
   background: ${COLOR_LIGHTYELLOW};
+  padding: 40px 0;
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 0px 5px 5px 5px;
 `;

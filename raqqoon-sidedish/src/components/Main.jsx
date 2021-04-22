@@ -15,7 +15,6 @@ export default Main;
 
 const MainBoxDiv = styled.div`
   width: 100%;
-  //   width: 100vw;
   padding: 0 5rem;
   box-sizing: border-box;
 `;

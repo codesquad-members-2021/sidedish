@@ -22,8 +22,9 @@ const Header = () => {
 export default Header;
 
 const HeaderWrap = styled.header`
-  padding: 2rem 5rem;
-  width: 100vw;
+  width: 1280px;
+  margin: 0 5rem;
+  padding: 2rem 0;
   height: 10.95rem;
 `;
 

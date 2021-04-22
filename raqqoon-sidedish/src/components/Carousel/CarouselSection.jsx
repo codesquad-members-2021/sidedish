@@ -13,12 +13,16 @@ const CarouselSection = () => {
 export default CarouselSection;
 
 const CarouselWrapper = styled.section`
-  margin: 2rem 5rem;
+  margin: 5rem 0 2rem;
+  width: 1280px;
+
   position: relative;
   h2 {
     font-family: Noto Sans KR;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 24px;
+    line-height: 35px;
+    color: #333333;
   }
 `;
