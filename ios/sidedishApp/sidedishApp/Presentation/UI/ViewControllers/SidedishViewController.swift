@@ -9,6 +9,8 @@ import UIKit
 import Combine
 
 class SidedishViewController: UIViewController {
+    typealias FetchData = () -> ()
+    
     enum Section: Int, CaseIterable {
         case main
         case soup
@@ -103,28 +105,18 @@ class SidedishViewController: UIViewController {
     }
     
     private func fetchMainData() {
-        self.sidedishViewModel.dataChanged
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.updateSnapshot()
-            }
-            .store(in: &cancellables)
-        
-        self.sidedishViewModel.fetchMainData()
+        self.fetchData(fetchData: self.sidedishViewModel.fetchMainData)
     }
     
     private func fetchSoupData() {
-        self.sidedishViewModel.dataChanged
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.updateSnapshot()
-            }
-            .store(in: &cancellables)
-        
-        self.sidedishViewModel.fetchSoupData()
+        self.fetchData(fetchData: self.sidedishViewModel.fetchSoupData)
     }
     
     private func fetchSideData() {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchSideData)
+    }
+    
+    private func fetchData(fetchData handler: FetchData) {
         self.sidedishViewModel.dataChanged
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -132,7 +124,7 @@ class SidedishViewController: UIViewController {
             }
             .store(in: &cancellables)
         
-        self.sidedishViewModel.fetchSideData()
+        handler()
     }
     
     private func updateSnapshot() {
