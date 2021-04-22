@@ -20,7 +20,6 @@
 		BD930B6F262D6F5900906633 /* SideDishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B6E262D6F5900906633 /* SideDishTests.swift */; };
 		BD930B7A262D6F5900906633 /* SideDishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B79262D6F5900906633 /* SideDishUITests.swift */; };
 		BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA95262FF9FC00803154 /* Parsing.swift */; };
-		BDFABA9B262FFA0600803154 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA9A262FFA0600803154 /* Request.swift */; };
 		BDFABAA0262FFA1C00803154 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA9F262FFA1C00803154 /* Network.swift */; };
 		CE8E2E4026313B3C007EEEBB /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E3F26313B3C007EEEBB /* JSONModel.swift */; };
 		CE8E2E4526313B48007EEEBB /* MainDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */; };
@@ -65,7 +64,6 @@
 		BD930B79262D6F5900906633 /* SideDishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishUITests.swift; sourceTree = "<group>"; };
 		BD930B7B262D6F5900906633 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDFABA95262FF9FC00803154 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
-		BDFABA9A262FFA0600803154 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BDFABA9F262FFA1C00803154 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CE8E2E3F26313B3C007EEEBB /* JSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDiffableDataSource.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			children = (
 				CE8E2E3F26313B3C007EEEBB /* JSONModel.swift */,
 				BDFABA95262FF9FC00803154 /* Parsing.swift */,
-				BDFABA9A262FFA0600803154 /* Request.swift */,
 				BDFABA9F262FFA1C00803154 /* Network.swift */,
 			);
 			path = DTO;
@@ -335,7 +332,6 @@
 			files = (
 				CE8E2E4526313B48007EEEBB /* MainDiffableDataSource.swift in Sources */,
 				BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */,
-				BDFABA9B262FFA0600803154 /* Request.swift in Sources */,
 				BD930B5C262D6F5800906633 /* ViewController.swift in Sources */,
 				BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */,
 				BD090658262E9B450094421D /* MenuCell.swift in Sources */,

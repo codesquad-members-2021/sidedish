@@ -24,7 +24,7 @@ class DataTaskManager {
         }
         session.dataTask(with: url){ data, response, error in
             if let data = data {
-                guard let menuList = ParsingManager.decodeData(type: getMenu.self, data: data) else { print("d"); return }
+                guard let menuList = ParsingManager.decodeData(type: getMenu.self, data: data) else { return }
                 completion(.success(menuList))
             } else {
                 guard let error = error?.localizedDescription as? Error else { return }
