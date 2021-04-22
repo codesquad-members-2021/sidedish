@@ -142,4 +142,4 @@ const temp = [
   },
 ];
 
-export default mockData;
+export { mockData, temp };

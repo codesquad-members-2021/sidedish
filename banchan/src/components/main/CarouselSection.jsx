@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-// import mockData from "../utils/mockData.js";
+// import { mockData, temp } from "../utils/mockData.js";
 import Card from "../utils/Card";
 import styled from "styled-components";
 import IconButton from "../utils/button/IconButton";
@@ -10,8 +10,8 @@ const CarouselSection = ({ key, url, title }) => {
   // const [products, setProducts] = useState(mockData);
   const [currentX, setX] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(4);
-  const [leftDisabled, setLeftDisabled] = useState(false);
-  const [rightDisabled, setRightDisabled] = useState(true);
+  const [rightDisabled, setLeftDisabled] = useState(false);
+  const [leftDisabled, setRightDisabled] = useState(true);
   const slides = useRef();
   const slideCount = 4;
   const slideWidth = 320;
@@ -32,7 +32,7 @@ const CarouselSection = ({ key, url, title }) => {
     setCurrentIndex(nextIndex);
   };
 
-  const moveLeft = () => {
+  const moveRight = () => {
     const remainSlideCount = products.length - currentIndex;
     const distance = remainSlideCount >= slideCount ? currentX - totalWidth : currentX - slideWidth * remainSlideCount;
     const nextIndex = remainSlideCount >= slideCount ? currentIndex + slideCount : currentIndex + remainSlideCount;
@@ -41,7 +41,7 @@ const CarouselSection = ({ key, url, title }) => {
     nextIndex >= products.length && setLeftDisabled(true);
   };
 
-  const moveRight = () => {
+  const moveLeft = () => {
     const remainSlideCount = currentIndex - slideCount;
     const distance = remainSlideCount >= slideCount ? currentX + totalWidth : currentX + slideWidth * remainSlideCount;
     const nextIndex = remainSlideCount >= slideCount ? currentIndex - slideCount : currentIndex - remainSlideCount;
