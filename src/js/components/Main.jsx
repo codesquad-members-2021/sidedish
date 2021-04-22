@@ -1,6 +1,12 @@
 import { useState } from "react";
+import styled from "styled-components"
 import BestList from "./bestList/BestList";
 import Modal from "./Modal/Modal";
+
+const Wrapper = styled.div`
+	filter: ${(props) => (props.isModalOn ? "brightness(40%)" : "brightness(100%)")};
+	background-color : #fff;
+`;
 
 const Main = () => {
 	const test = {
@@ -19,7 +25,9 @@ const Main = () => {
 	const [isModalOn, setModalOn] = useState(false);
 	return (
 		<>
-			<BestList setModalData={setModalData} setModalOn={setModalOn} />
+			<Wrapper isModalOn={isModalOn}>
+				<BestList setModalData={setModalData} setModalOn={setModalOn} />
+			</Wrapper>
 			<Modal data={modalData.data} isModalOn={isModalOn} setModalOn={setModalOn} />
 		</>
 	);
