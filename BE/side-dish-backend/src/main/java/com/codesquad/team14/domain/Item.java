@@ -1,26 +1,31 @@
 package com.codesquad.team14.domain;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Item {
 
-    private final Long id;
+    @Id
+    private Long id;
+
     private String title;
     private String description;
-    private int normalPrice;
-    private int salePrice;
+    private int nPrice;
+    private int sPrice;
     private List<Badge> badges;
     private List<DeliveryType> deliveryTypes;
-    private List<String> thumbImages;
-    private final Long categoryId;
+    private String images;
+    private Category category;
 
-    public Item(Long id, String title, String description, int normalPrice, Long categoryId) {
-        this.id = id;
+    public Item(String title, String description, int nPrice, int sPrice, Category category) {
         this.title = title;
         this.description = description;
-        this.normalPrice = normalPrice;
-        this.categoryId = categoryId;
+        this.nPrice = nPrice;
+        this.sPrice = sPrice;
+        this.category = category;
     }
 
     public Long getId() {
@@ -35,12 +40,12 @@ public class Item {
         return description;
     }
 
-    public int getNormalPrice() {
-        return normalPrice;
+    public int getNPrice() {
+        return nPrice;
     }
 
-    public int getSalePrice() {
-        return salePrice;
+    public int getSPrice() {
+        return sPrice;
     }
 
     public List<Badge> getBadges() {
@@ -51,27 +56,12 @@ public class Item {
         return deliveryTypes;
     }
 
-    public List<String> getThumbImages() {
-        return thumbImages;
+    public String getImages() {
+        return images;
     }
 
-    public List<Integer> getPrices() {
-        List<Integer> prices = new ArrayList<>();
-
-        if (normalPrice != salePrice) {
-            prices.add(normalPrice);
-        }
-        prices.add(salePrice);
-
-        return prices;
-    }
-
-    public int getPoint() {
-        return salePrice / 100;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
     public void setTitle(String title) {
@@ -82,12 +72,12 @@ public class Item {
         this.description = description;
     }
 
-    public void setNormalPrice(int normalPrice) {
-        this.normalPrice = normalPrice;
+    public void setnPrice(int nPrice) {
+        this.nPrice = nPrice;
     }
 
-    public void setSalePrice(int salePrice) {
-        this.salePrice = salePrice;
+    public void setsPrice(int sPrice) {
+        this.sPrice = sPrice;
     }
 
     public void setBadges(List<Badge> badges) {
@@ -98,7 +88,24 @@ public class Item {
         this.deliveryTypes = deliveryTypes;
     }
 
-    public void setThumbImages(List<String> thumbImages) {
-        this.thumbImages = thumbImages;
+    public void setImages(String images) {
+        this.images = images;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(id, item.id) && Objects.equals(category, item.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, category);
     }
 }
