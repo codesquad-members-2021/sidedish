@@ -15,18 +15,30 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let mainDTO = JSONManager.decode(MockData.mainJSON, into: DishesResponseDTO.self) else { return }
-        guard let soupDTO = JSONManager.decode(MockData.soupJSON, into: DishesResponseDTO.self) else { return }
-        guard let sideDTO = JSONManager.decode(MockData.sideJSON, into: DishesResponseDTO.self) else { return }
-        let main = mainDTO.toDomain()
-        let soup = soupDTO.toDomain()
-        let side = sideDTO.toDomain()
-        
         mainDelegate = CollectionViewDelegate()
-        mainDataSource = CollectionViewDataSource(allDishes: [main, soup, side])
+        mainDataSource = CollectionViewDataSource(allDishes: [])
         
         dishCollectionView.delegate = mainDelegate
         dishCollectionView.dataSource = mainDataSource
+        
+        NetworkManager.performRequest(urlString: "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/main") { (mainDishes) in
+            self.mainDataSource?.load(dishes: mainDishes.toDomain())
+            DispatchQueue.main.async {
+                self.dishCollectionView.reloadData()
+            }
+        }
+        NetworkManager.performRequest(urlString: "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/soup") { (soupDishes) in
+            self.mainDataSource?.load(dishes: soupDishes.toDomain())
+            DispatchQueue.main.async {
+                self.dishCollectionView.reloadData()
+            }
+        }
+        NetworkManager.performRequest(urlString: "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/side") { (sideDishes) in
+            self.mainDataSource?.load(dishes: sideDishes.toDomain())
+            DispatchQueue.main.async {
+                self.dishCollectionView.reloadData()
+            }
+        }
         
         registerXib()
     }

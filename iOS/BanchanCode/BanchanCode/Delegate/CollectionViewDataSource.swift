@@ -15,6 +15,10 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         super.init()
     }
     
+    func load(dishes: DishList) {
+        allDishes.append(dishes)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return allDishes.count
     }
