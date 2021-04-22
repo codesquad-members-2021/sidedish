@@ -1,10 +1,8 @@
 package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Category;
-import com.codesquad.sidedish.domain.Item;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 

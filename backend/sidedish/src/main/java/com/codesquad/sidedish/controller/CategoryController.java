@@ -4,6 +4,7 @@ import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.dto.CategoryDto;
 import com.codesquad.sidedish.service.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,14 +25,9 @@ public class CategoryController {
     }
 
 
-    @GetMapping("/soup")
-    public String getSoup() {
-        return null;
-    }
+    @PostMapping
+    public void createCategory(Category category) {
 
-    @GetMapping("/side")
-    public String getSide() {
-        return null;
     }
 
 }
