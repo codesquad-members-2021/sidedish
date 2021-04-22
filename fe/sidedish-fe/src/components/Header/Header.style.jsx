@@ -20,21 +20,20 @@ const HeaderStyle = styled.div`
 const HeaderLeftStyle = styled(CenterContainer)`
     display:flex;
     flex-direction: row;
-    margin-left: 5%;
     width:55%;
+    margin-left: 5%;
 `;
 
 const HeaderRightStyle = styled.div`
     display:flex;
     flex-direction: row;
     margin-right: 5%;
-    width: 27%;
+    width: 528px;
 `;
 
 const LogoStyle = styled.div`
     font-weight: 900;
     font-size: 40px;
-    line-height: 58px;
     margin-right: 3%;
 
     letter-spacing: -0.04em;
@@ -71,7 +70,7 @@ const SearchBarStyle = styled.input`
 const SearchButtonStyle = styled.button`
     background: none;
     border:none;
-    outline: none;
+    /* outline: none; */
     margin:8px;
 `
 
@@ -86,16 +85,22 @@ const SearchBarFormStyle = styled.div`
     flex-direction: row;
 `
 
-const LoginStyle = styled.div`
+const LoginStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 6%;
+    width: 60px;
+    background-color: transparent;
+    border:none;
 `
 
-const BasketStyle = styled.div`
+const BasketStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 0;
+    width: 75px;
+    background-color: transparent;
+    border:none;
 `
 
 
