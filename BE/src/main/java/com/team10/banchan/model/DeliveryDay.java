@@ -1,6 +1,6 @@
 package com.team10.banchan.model;
 
-public class DeliveryDay {
+public class DeliveryDay implements Comparable<DeliveryDay> {
 
     private final TheDayOfWeek theDayOfWeek;
 
@@ -54,6 +54,11 @@ public class DeliveryDay {
         TheDayOfWeek(String korean) {
             this.korean = korean;
         }
+    }
+
+    @Override
+    public int compareTo(DeliveryDay o) {
+        return this.theDayOfWeek.compareTo(o.theDayOfWeek);
     }
 }
 

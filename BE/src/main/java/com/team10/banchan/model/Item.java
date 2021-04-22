@@ -131,12 +131,16 @@ public class Item {
 
     private String deliveryInfo() {
         return deliveryTypes.stream()
+                .sorted()
                 .map(DeliveryType::getDetail)
-                .reduce((x, y) -> String.join(" / ", x, y)) +
+                .reduce((x, y) -> String.join(" / ", x, y))
+                .orElse("") +
                 " [" +
                 deliveryDays.stream()
+                        .sorted()
                         .map(DeliveryDay::korean)
-                        .reduce((x, y) -> String.join(" · ", x, y)) +
+                        .reduce((x, y) -> String.join(" · ", x, y))
+                        .orElse("") +
                 "] 수령 가능한 상품입니다.";
     }
 
@@ -148,12 +152,14 @@ public class Item {
 
     private List<String> deliveryType() {
         return deliveryTypes.stream()
+                .sorted()
                 .map(DeliveryType::getName)
                 .collect(Collectors.toList());
     }
 
     private List<String> badge() {
         return badges.stream()
+                .sorted()
                 .map(Badge::getName)
                 .collect(Collectors.toList());
     }
