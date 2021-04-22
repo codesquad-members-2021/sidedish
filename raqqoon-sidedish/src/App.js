@@ -1,5 +1,5 @@
-import Header from '../src/components/Header';
-import Main from '../src/components/Main';
+import Header from 'components/Header';
+import Main from 'components/Main';
 import './reset.css';
 import styled from 'styled-components';
 
@@ -15,7 +15,6 @@ const App = () => {
 export default App;
 
 const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 1440px;
+  margin: 0 auto;
 `;

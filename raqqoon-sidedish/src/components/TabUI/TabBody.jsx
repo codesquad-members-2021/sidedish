@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import useFetch from '../../customHooks/useFetch';
-import useTab from '../../customHooks/useTab';
-import TabList from './TabList';
-import TabMain from './TabMain';
+import useFetch from 'customHooks/useFetch';
+import useTab from 'customHooks/useTab';
+import TabList from 'components/tabUI/TabList';
+import TabMain from 'components/tabUI/TabMain';
 
 const TabBody = () => {
   const bestData = useFetch(
@@ -26,4 +26,7 @@ const TabBody = () => {
 
 export default TabBody;
 
-const TabBodyBoxDiv = styled.div``;
+const TabBodyBoxDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

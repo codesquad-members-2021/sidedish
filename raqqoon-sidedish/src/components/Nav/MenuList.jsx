@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import Menu from '../nav/Menu';
+import Menu from 'components/nav/Menu';
 
 const MenuList = () => {
   const navMenus = [

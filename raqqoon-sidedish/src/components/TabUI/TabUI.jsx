@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import TabBody from './TabBody';
-import TabHeader from './TabHeader';
+import TabBody from 'components/tabUI/TabBody';
+import TabHeader from 'components/tabUI/TabHeader';
 
 const TabUI = () => {
   return (
-    <TabUIBoxDiv>
+    <TabUIBoxSection>
       <TabHeader />
       <TabBody />
-    </TabUIBoxDiv>
+    </TabUIBoxSection>
   );
 };
 
 export default TabUI;
 
-const TabUIBoxDiv = styled.div`
-  width: fit-content;
+const TabUIBoxSection = styled.section`
+  width: 1280px;
 `;

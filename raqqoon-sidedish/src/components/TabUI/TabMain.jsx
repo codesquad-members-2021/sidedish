@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_LIGHTYELLOW, SIZE_LARGE } from '../../const';
-import useFetch from '../../customHooks/useFetch';
-import Card from '../card/Card';
+import { COLOR_LIGHTYELLOW, SIZE_LARGE } from 'const';
+import useFetch from 'customHooks/useFetch';
+import Card from 'components/card/Card';
 
 const TabMain = ({ tabItemList }) => {
   const imgData = useFetch(
@@ -40,7 +40,9 @@ export default TabMain;
 
 const TabMainBoxDiv = styled.div`
   display: flex;
+  justify-content: space-evenly;
   background: ${COLOR_LIGHTYELLOW};
+  padding: 40px 0;
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 0px 5px 5px 5px;
 `;

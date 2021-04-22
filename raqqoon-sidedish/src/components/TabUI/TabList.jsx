@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ACTIVE, DEACTIVE } from '../../const';
-import Tab from './Tab';
+import { ACTIVE, DEACTIVE } from 'const';
+import Tab from 'components/tabUI/Tab';
 
 const TabList = ({ bestData, tabIndex, setTabIndex }) => {
   return (

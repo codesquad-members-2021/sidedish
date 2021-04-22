@@ -7,7 +7,7 @@ import {
   TAG_BEST,
   LAUNCHING,
   BEST,
-} from '../../const';
+} from 'const';
 import styled from 'styled-components';
 
 const Tag = ({ type }) => {
