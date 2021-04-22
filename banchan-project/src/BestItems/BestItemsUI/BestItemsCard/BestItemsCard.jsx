@@ -14,8 +14,8 @@ const BestItemsCard = () => {
       <BestItemsCardTitle></BestItemsCardTitle>
 
       <BestItemsCardDescription></BestItemsCardDescription>
-      <BestItemsCardNPrice></BestItemsCardNPrice>
       <BestItemsCardSPrice></BestItemsCardSPrice>
+      <BestItemsCardNPrice></BestItemsCardNPrice>
 
       <BestItemsCardBadge></BestItemsCardBadge>
     </S.BestItemsCard>
