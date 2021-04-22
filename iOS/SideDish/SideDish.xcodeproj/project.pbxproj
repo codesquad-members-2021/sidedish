@@ -29,6 +29,7 @@
 		D4BFBB5626301B6B00D68297 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB5526301B6B00D68297 /* Section.swift */; };
 		FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */; };
 		FFEF70F926310FB400189376 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70F826310FB400189376 /* NetworkService.swift */; };
+		FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E5121CE39396F4ECB1937C15 /* Pods-SideDish-SideDishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDish-SideDishUITests.debug.xcconfig"; path = "Target Support Files/Pods-SideDish-SideDishUITests/Pods-SideDish-SideDishUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCollectionView.swift; sourceTree = "<group>"; };
 		FFEF70F826310FB400189376 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BanchanListDTO+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				FFEF70F826310FB400189376 /* NetworkService.swift */,
+				FFEF70FD2631103C00189376 /* DataMapping */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -311,6 +314,14 @@
 				D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FFEF70FD2631103C00189376 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */,
+			);
+			path = DataMapping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,6 +573,7 @@
 				FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */,
 				D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */,
 				D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */,
+				FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */,
 				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,
 				D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */,
 				D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */,
