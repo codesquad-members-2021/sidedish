@@ -23,8 +23,8 @@ class SideDishViewModel {
     }
     
     private func request() {
-        Path.allCases.forEach { (path) in
-            sideDishUseCase.execute(path: path)
+        Menu.allCases.forEach { (path) in
+            sideDishUseCase.requestSideDishes(path: path)
                 .sink { (complete) in
                     if case .failure(let error) = complete {
                         self.errorMessage = error.message
@@ -35,21 +35,21 @@ class SideDishViewModel {
         }
     }
 
-    func didFetchSideDishes(completion: @escaping ((Path,[Item])) -> ()) {
+    func didFetchSideDishes(completion: @escaping ((Menu,[Item])) -> ()) {
         NotificationCenter.default
             .publisher(for: SideDishManager.NotificationName.updatePath)
-            .map{ ($0.userInfo?["path"] as! Path) }
+            .map{ ($0.userInfo?["path"] as! Menu) }
             .sink { path in
                 completion((path,
                             self.sideDishManager.getSideDishes(with: path)))
             }.store(in: &cancellable)
     }
     
-    func didFetchHeaderRowCount(with path: Path) -> Int {
+    func didFetchHeaderRowCount(with path: Menu) -> Int {
         return sideDishManager.getRowCount(path: path)
     }
     
-    func didFetchItemDatailHash(with path: Path, sequence: Int) -> String {
+    func didFetchItemDatailHash(with path: Menu, sequence: Int) -> String {
         return sideDishManager.getItemDetailHash(with: path, sequence: sequence)
     }
     

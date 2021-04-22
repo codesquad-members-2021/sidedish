@@ -24,7 +24,7 @@ class DetailViewModel {
     }
     
     func request(with detailHash: String) {
-        sideDishUseCase.execute2(detailHash: detailHash)
+        sideDishUseCase.requestItemDetails(detailHash: detailHash)
             .sink { (complete) in
                 if case .failure(let error) = complete {
                     self.errorMessage = error.message

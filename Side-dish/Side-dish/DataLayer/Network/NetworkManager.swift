@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol NetworkManageable {
-    func requestResource(path: Path, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError>
+    func requestResource(path: Menu, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError>
     func requestDetails(detailHash: String, method: HTTPMethod) -> AnyPublisher<ItemDetails, NetworkError>
 }
 
@@ -19,7 +19,7 @@ class NetworkManager: NetworkManageable {
         guard let urlRequest = makeURLRequest(detailHash: detailHash, method: method) else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
-        
+        print(urlRequest)
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
             .mapError { _ in
                 NetworkError.invalidRequest
@@ -39,7 +39,7 @@ class NetworkManager: NetworkManageable {
             }.eraseToAnyPublisher()
     }
     
-    func requestResource(path: Path, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError> {
+    func requestResource(path: Menu, method: HTTPMethod) -> AnyPublisher<SideDishes, NetworkError> {
         guard let urlRequest = makeURLRequest(path: path, method: method) else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
@@ -63,7 +63,7 @@ class NetworkManager: NetworkManageable {
             }.eraseToAnyPublisher()
     }
     
-    private func makeURLRequest(path: Path, method: HTTPMethod) -> URLRequest? {
+    private func makeURLRequest(path: Menu, method: HTTPMethod) -> URLRequest? {
         guard let url = Endpoint.url(path: path) else {
             return nil
         }

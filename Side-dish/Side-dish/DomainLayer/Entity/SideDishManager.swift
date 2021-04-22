@@ -13,24 +13,24 @@ class SideDishManager {
         static let updatePath = Notification.Name("updatePath")
     }
     
-    private var sideDishesInfo : [Path : [Item]] = [:]
+    private var sideDishesInfo : [Menu : [Item]] = [:]
     
-    func insert(path: Path, items: [Item]) {
+    func insert(path: Menu, items: [Item]) {
         sideDishesInfo[path] = items
         NotificationCenter.default.post(name: NotificationName.updatePath,
                                         object: self,
                                         userInfo: ["path": path])
     }
     
-    func getSideDishes(with path: Path) -> [Item] {
+    func getSideDishes(with path: Menu) -> [Item] {
         return sideDishesInfo[path] ?? []
     }
  
-    func getRowCount(path : Path) -> Int {
+    func getRowCount(path : Menu) -> Int {
         return sideDishesInfo[path]?.count ?? 0
     }
     
-    func getItemDetailHash(with path: Path, sequence: Int) -> String {
+    func getItemDetailHash(with path: Menu, sequence: Int) -> String {
         return sideDishesInfo[path]?[sequence].detailHash ?? ""
     }
 }

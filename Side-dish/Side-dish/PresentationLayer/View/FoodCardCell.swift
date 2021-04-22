@@ -46,10 +46,10 @@ class FoodCardCell: UICollectionViewCell {
     
     func setNPrice(nPrice: String?) {
         guard let nPrice = nPrice else {
-            hideView(UI: nPriceLabel)
+            hideView(ui: nPriceLabel)
             return
         }
-        showView(UI: nPriceLabel)
+        showView(ui: nPriceLabel)
         let strokeEffect: [NSAttributedString.Key : Any] = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
         let strokeString = NSAttributedString(string: "\(nPrice)원", attributes: strokeEffect)
         self.nPriceLabel.attributedText = strokeString
@@ -57,11 +57,11 @@ class FoodCardCell: UICollectionViewCell {
     
     func setBadge(badges: [Badge]?) {
         guard let badges = badges, !(badges.isEmpty) else {
-            hideView(UI: badgeStackView)
+            hideView(ui: badgeStackView)
             return
         }
         
-        showView(UI: badgeStackView)
+        showView(ui: badgeStackView)
         self.badgeStackView.arrangedSubviews.forEach { (view) in
                     view.removeFromSuperview()
         }
@@ -72,10 +72,10 @@ class FoodCardCell: UICollectionViewCell {
         }
     }
     
-    private func hideView<T : UIView>(UI : T) {
-        UI.isHidden = true
+    private func hideView<T : UIView>(ui : T) {
+        ui.isHidden = true
     }
-    private func showView<T : UIView>(UI : T) {
-        UI.isHidden = false
+    private func showView<T : UIView>(ui : T) {
+        ui.isHidden = false
     }
 }

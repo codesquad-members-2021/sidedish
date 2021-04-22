@@ -10,16 +10,16 @@ import Combine
 
 class SideDishViewController: UIViewController {
     
-    @IBOutlet weak var SideDishCollectionView: UICollectionView!
+    @IBOutlet weak var sideDishCollectionView: UICollectionView!
     private var cancellable = Set<AnyCancellable>()
     private var sideDishViewModel: SideDishViewModel!
-    private var dataSource : UICollectionViewDiffableDataSource<Path , Item>!
+    private var dataSource : UICollectionViewDiffableDataSource<Menu , Item>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         
-        SideDishCollectionView.delegate = self
+        sideDishCollectionView.delegate = self
         configureDataSource()
         bind()
     }
@@ -37,22 +37,22 @@ class SideDishViewController: UIViewController {
         }
         
         let headerViewRegistration = UICollectionView.SupplementaryRegistration<FoodCardHeaderView>.init(supplementaryNib: FoodCardHeaderView.nib, elementKind: UICollectionView.elementKindSectionHeader) { (headerView, _, indexPath) in
-            let rows = self.sideDishViewModel.didFetchHeaderRowCount(with: Path.allCases[indexPath.section])
+            let rows = self.sideDishViewModel.didFetchHeaderRowCount(with: Menu.allCases[indexPath.section])
             headerView.configureHeader(index: indexPath, count: rows)
         }
         
-        self.dataSource = UICollectionViewDiffableDataSource<Path, Item>(collectionView: SideDishCollectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+        self.dataSource = UICollectionViewDiffableDataSource<Menu, Item>(collectionView: sideDishCollectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item) as FoodCardCell
         })
         
         self.dataSource.supplementaryViewProvider = { (view, kind, index) in
-            return self.SideDishCollectionView.dequeueConfiguredReusableSupplementary(using: headerViewRegistration, for: index)
+            return self.sideDishCollectionView.dequeueConfiguredReusableSupplementary(using: headerViewRegistration, for: index)
         }
     }
     
     func bind() {
-        var snap = NSDiffableDataSourceSnapshot<Path,Item>()
-        snap.appendSections(Path.allCases)
+        var snap = NSDiffableDataSourceSnapshot<Menu,Item>()
+        snap.appendSections(Menu.allCases)
         
         sideDishViewModel.didFetchSideDishes { (path, items) in
             snap.appendItems(items, toSection: path)
@@ -66,7 +66,7 @@ class SideDishViewController: UIViewController {
     
     private func triggerAlert(by error : String) {
         DispatchQueue.main.async {
-            self.present(Alert.controller(title : error),animated: true)
+            self.present(Alert.create(title : error),animated: true)
         }
     }
 }
@@ -84,7 +84,7 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
 //        let cell = SideDishCollectionView.cellForItem(at: indexPath) as! FoodCardCell
         let tappedItemSection = indexPath.section
         let tappedItemRow = indexPath.row
-        let path = Path.allCases[tappedItemSection]
+        let path = Menu.allCases[tappedItemSection]
         let itemDetailHash = sideDishViewModel.didFetchItemDatailHash(with: path, sequence: tappedItemRow)
         
         guard let targetVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
