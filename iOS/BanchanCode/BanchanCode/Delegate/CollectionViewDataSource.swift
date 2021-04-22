@@ -42,7 +42,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         let originalPrice = allDishes[indexPath.section].dishes[indexPath.row].prices[0]
         if prices.count > 1 {
             let discountPrice = allDishes[indexPath.section].dishes[indexPath.row].prices[1]
-            cell.originalPriceLabel.text = "\(originalPrice)"
+            cell.originalPriceLabel.attributedText = "\(originalPrice)".strikethrough()
             cell.discountPriceLabel.text = "\(discountPrice)"
         } else {
             cell.discountPriceLabel.text = "\(originalPrice)"
