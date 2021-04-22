@@ -12,6 +12,11 @@ class EventInfoBadge: UILabel {
         setupMainView()
     }
     
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        super.drawText(in: rect.inset(by: insets))
+    }
+    
 }
 
 extension EventInfoBadge {
@@ -24,7 +29,6 @@ extension EventInfoBadge {
     }
     
     private func configureMainView() {
-        numberOfLines = 0
         adjustsFontSizeToFitWidth = true
         translatesAutoresizingMaskIntoConstraints = false
         layer.masksToBounds = true

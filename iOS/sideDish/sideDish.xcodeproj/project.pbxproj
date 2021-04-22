@@ -19,7 +19,7 @@
 		719B37F7262E7AF900107FE6 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37F6262E7AF900107FE6 /* FoodCell.swift */; };
 		719B37FC262E7BFA00107FE6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B37FB262E7BFA00107FE6 /* Constant.swift */; };
 		719B3801262E7CF100107FE6 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */; };
-		71A833DD262FE5D50060C4B4 /* PriceStacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A833DC262FE5D50060C4B4 /* PriceStacView.swift */; };
+		71A833DD262FE5D50060C4B4 /* PriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A833DC262FE5D50060C4B4 /* PriceStackView.swift */; };
 		71A833E5262FEA3D0060C4B4 /* EventInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A833E4262FEA3D0060C4B4 /* EventInfoStackView.swift */; };
 		71A833EA262FF6130060C4B4 /* EventInfoBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A833E9262FF6130060C4B4 /* EventInfoBadge.swift */; };
 /* End PBXBuildFile section */
@@ -96,7 +96,7 @@
 		719B37FB262E7BFA00107FE6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 		719B3805262E821300107FE6 /* Toaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Toaster.xcodeproj; path = "../../../Toaster-master/Toaster-master/Toaster.xcodeproj"; sourceTree = "<group>"; };
-		71A833DC262FE5D50060C4B4 /* PriceStacView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStacView.swift; sourceTree = "<group>"; };
+		71A833DC262FE5D50060C4B4 /* PriceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStackView.swift; sourceTree = "<group>"; };
 		71A833E4262FEA3D0060C4B4 /* EventInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoStackView.swift; sourceTree = "<group>"; };
 		71A833E9262FF6130060C4B4 /* EventInfoBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoBadge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,7 +203,7 @@
 				719B37EE262E7A9F00107FE6 /* FoodInfoStackView.swift */,
 				719B37F6262E7AF900107FE6 /* FoodCell.swift */,
 				719B3800262E7CF100107FE6 /* CollectionViewHeader.swift */,
-				71A833DC262FE5D50060C4B4 /* PriceStacView.swift */,
+				71A833DC262FE5D50060C4B4 /* PriceStackView.swift */,
 				71A833E4262FEA3D0060C4B4 /* EventInfoStackView.swift */,
 				71A833E9262FF6130060C4B4 /* EventInfoBadge.swift */,
 			);
@@ -398,7 +398,7 @@
 				719B37EF262E7A9F00107FE6 /* FoodInfoStackView.swift in Sources */,
 				719B37FC262E7BFA00107FE6 /* Constant.swift in Sources */,
 				71A833EA262FF6130060C4B4 /* EventInfoBadge.swift in Sources */,
-				71A833DD262FE5D50060C4B4 /* PriceStacView.swift in Sources */,
+				71A833DD262FE5D50060C4B4 /* PriceStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

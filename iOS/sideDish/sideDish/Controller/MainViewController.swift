@@ -62,8 +62,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.foodInfoStackView.foodDescriptionLabel.text = "탱글탱글한 새우와 오징어를 .."
         cell.foodInfoStackView.priceStackView.normalPriceLabel.text = "6,210원"
         cell.foodInfoStackView.priceStackView.eventPriceLabel?.attributedText = attributedText
-        cell.foodInfoStackView.eventStackView.eventPriceLabel(label: "이벤트특가")
-        cell.foodInfoStackView.eventStackView.launchingPriceLabel(label: "런칭특가")
+        cell.foodInfoStackView.eventStackView.eventPriceLabel?.text = "이벤트 특가"
+        cell.foodInfoStackView.eventStackView.launchingPriceLabel?.text = "런칭특가"
         //End TestCode
         return cell
     }
