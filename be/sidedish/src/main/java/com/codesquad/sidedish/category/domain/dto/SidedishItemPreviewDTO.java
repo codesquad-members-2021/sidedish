@@ -1,5 +1,6 @@
-package com.codesquad.sidedish.category.domain;
+package com.codesquad.sidedish.category.domain.dto;
 
+import com.codesquad.sidedish.category.domain.SidedishItem;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventDTO;
 import com.codesquad.sidedish.image.domain.SidedishImage;
