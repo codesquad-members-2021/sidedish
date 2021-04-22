@@ -1,8 +1,8 @@
 package develop.baminchan.entity;
 
+import develop.baminchan.entity.banchan.BanchanDetail;
 import org.springframework.data.annotation.Id;
-
-import java.util.Set;
+import org.springframework.data.relational.core.mapping.Embedded;
 
 public class Banchan {
     @Id
@@ -18,7 +18,12 @@ public class Banchan {
     private String s_price;
     private String badge;
 
-    public Banchan(Long id, String detail_hash, String image, String alt, String delivery_type, String title, String description, String n_price, String s_price, String badge) {
+    private String tag;
+
+    @Embedded.Nullable
+    private BanchanDetail banchanDetail;
+
+    public Banchan(Long id, String detail_hash, String image, String alt, String delivery_type, String title, String description, String n_price, String s_price, String badge, String tag, BanchanDetail banchanDetail) {
         this.id = id;
         this.detail_hash = detail_hash;
         this.image = image;
@@ -29,6 +34,8 @@ public class Banchan {
         this.n_price = n_price;
         this.s_price = s_price;
         this.badge = badge;
+        this.tag = tag;
+        this.banchanDetail = banchanDetail;
     }
 
     public Long getId() {
@@ -69,5 +76,31 @@ public class Banchan {
 
     public String getBadge() {
         return badge;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public BanchanDetail getBanchanDetail() {
+        return banchanDetail;
+    }
+
+    @Override
+    public String toString() {
+        return "Banchan{" +
+                "id=" + id +
+                ", detail_hash='" + detail_hash + '\'' +
+                ", image='" + image + '\'' +
+                ", alt='" + alt + '\'' +
+                ", delivery_type='" + delivery_type + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", n_price='" + n_price + '\'' +
+                ", s_price='" + s_price + '\'' +
+                ", badge='" + badge + '\'' +
+                ", tag='" + tag + '\'' +
+                ", banchanDetail=" + banchanDetail +
+                '}';
     }
 }

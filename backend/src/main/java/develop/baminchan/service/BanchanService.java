@@ -1,12 +1,11 @@
 package develop.baminchan.service;
 
 import develop.baminchan.dto.BanchanDto;
+import develop.baminchan.dto.banchan.BanchanDetailDto;
 import develop.baminchan.entity.Banchan;
 import develop.baminchan.repository.BanchanRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 public class BanchanService {
@@ -26,5 +25,12 @@ public class BanchanService {
     @Transactional
     public void createBanchan(Banchan banchan) {
         banchanRepository.save(banchan);
+    }
+
+    public BanchanDetailDto findBanchanDetailByDetailHash(String detail_hash) {
+        Banchan banchan = banchanRepository.findBanchanByDetail_hash(detail_hash);
+        System.out.println(banchan);
+        BanchanDetailDto banchanDetailDto = new BanchanDetailDto(banchan.getBanchanDetail());
+        return banchanDetailDto;
     }
 }
