@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "4d19ad82f80cc71ff829b941ded114c56f4f604c",
+          "version": "5.4.2"
+        }
+      },
+      {
+        "package": "Toaster",
+        "repositoryURL": "https://github.com/devxoul/Toaster.git",
+        "state": {
+          "branch": "master",
+          "revision": "b4fa1aa8d9231ea62dac5c3255f4313d727d22a4",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
