@@ -9,18 +9,17 @@ const TabMain = ({ tabItemList }) => {
     []
   );
 
-  if (!tabItemList.items) return <div>No data...</div>;
-  if (!imgData) return <div>No data...</div>;
-
   const randomIndex = (list) =>
     Math.floor(Math.random() * (list.length - 0) + 0);
 
-  const imgList = [
-    imgData[randomIndex(imgData)].image,
-    imgData[randomIndex(imgData)].image,
-    imgData[randomIndex(imgData)].image,
-  ];
+  if (!tabItemList.items) return <div>No data...</div>;
+  if (!imgData) return <div>No data...</div>;
 
+  // const imgList = [
+  //   imgData[randomIndex(imgData)].image,
+  //   imgData[randomIndex(imgData)].image,
+  //   imgData[randomIndex(imgData)].image,
+  // ];
   return (
     <TabMainBoxDiv>
       {tabItemList.items.map((item, idx) => {
@@ -29,7 +28,7 @@ const TabMain = ({ tabItemList }) => {
             type={SIZE_LARGE}
             item={item}
             key={item.detail_hash}
-            imgUrl={imgList[idx]}
+            imgUrl={item.image}
           />
         );
       })}

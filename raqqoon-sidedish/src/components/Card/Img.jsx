@@ -10,13 +10,22 @@ const Img = ({ cardSize, imgUrl }) => {
     return setOpacity(0);
   };
 
+  const handleErrorImg = (e) => {
+    e.target.src = `https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFjY29vbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60`;
+  };
   return (
     <ImgDiv
       cardSize={cardSize}
       onMouseEnter={() => onToggleOpacity(opacitiy)}
       onMouseLeave={() => onToggleOpacity(opacitiy)}
     >
-      <img src={imgUrl} alt="img" />
+      <img
+        src={imgUrl}
+        alt="img"
+        onError={handleErrorImg}
+        width={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
+        height={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
+      />
       <HoverText cardSize={cardSize} opacitiy={opacitiy} />
     </ImgDiv>
   );
