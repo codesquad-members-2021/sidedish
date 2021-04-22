@@ -19,7 +19,7 @@ enum PriceType {
 
 struct Banchan: Hashable {
     private (set) var hash: String
-    private (set) var image: Data?
+    private (set) var image: String
     private (set) var alt: String
     private (set) var title: String
     private (set) var description: String

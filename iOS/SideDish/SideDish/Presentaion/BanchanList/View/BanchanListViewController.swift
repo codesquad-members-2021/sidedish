@@ -51,6 +51,13 @@ extension BanchanListViewController {
     func configureDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: banchanCollectionView) { (collectionView, indexPath, banchan) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BanchanCustomCell.identifer, for: indexPath) as? BanchanCustomCell else { return nil }
+            
+            FetchImageUseCase.fetch(network: NetworkSerivce.shared, imgURL: banchan.image) { (data) in
+                guard let data = data else {
+                    return
+                }
+                cell.imageView.image = UIImage(data: data)
+            }
             cell.banchan = banchan
             return cell
         }
