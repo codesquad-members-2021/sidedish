@@ -3,6 +3,7 @@ import * as style from "./Header.style"
 import { BiSearch } from 'react-icons/bi';
 import "./Header.css"
 import styled from "styled-components";
+import DropDown from "./Dropdown"
 
 // class Question extends React.Component {
 //   render() {
@@ -33,7 +34,7 @@ function Header() {
     // const toggleDropdown = () => {
     //     setDropdownVisible(!dropdownVisible);
     //   };
-
+    const FirstContents = ["육류 요리","AAA"]
     return (
         <style.HeaderStyle>
             {/* <div className="dropdown">
@@ -44,6 +45,8 @@ function Header() {
             </div>     */}
             <style.HeaderLeftStyle>
                 <style.LogoStyle>BANCHAN</style.LogoStyle>
+                <DropDown title={"든든한 메인요리"} contents={FirstContents}></DropDown>
+{/*                 
                     <div className="dropdown">
                         <button className="dropdown-button">Dropdown2</button>
                         <div className="dropdown-content">
@@ -68,7 +71,7 @@ function Header() {
                         </div>
                 </NavStyle>
                 <style.NavStyle>뜨끈한 국물요리</style.NavStyle>
-                <style.NavStyle>정갈한 밑반찬</style.NavStyle>
+                <style.NavStyle>정갈한 밑반찬</style.NavStyle> */}
             </style.HeaderLeftStyle>
             <style.HeaderRightStyle>
                 <style.SearchBarFormStyle>
