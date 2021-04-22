@@ -2,9 +2,6 @@ package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Collections;
-import java.util.List;
-
 public class Dish {
 
     @Id
@@ -13,16 +10,16 @@ public class Dish {
     private String name;
     private String topImage;
     private String description;
-    private List<Integer> prices;
-    private List<String> badges;
+    private String prices;
+    private String badges;
     private Long stock;
     private Integer point;
     private String deliveryInfo;
-    private List<String> thumbImages;
-    private List<String> detailImages;
+    private String thumbImages;
+    private String detailImages;
 
-    public Dish(String name, String topImage, String description, List<Integer> prices, List<String> badges,
-                Long stock, String deliveryInfo, List<String> thumbImages, List<String> detailImages) {
+    public Dish(String name, String topImage, String description, String prices,
+                String badges, Long stock, String deliveryInfo, String thumbImages, String detailImages) {
         this.name = name;
         this.topImage = topImage;
         this.description = description;
@@ -35,8 +32,9 @@ public class Dish {
         this.detailImages = detailImages;
     }
 
-    private Integer createPoint(List<Integer> prices) {
-        return Collections.min(prices) / 100;
+    private Integer createPoint(String prices) {
+        String[] priceArr = prices.split(",");
+        return Integer.parseInt(priceArr[0].trim()) / 100;
     }
 
     public Long getId() {
@@ -55,11 +53,11 @@ public class Dish {
         return description;
     }
 
-    public List<Integer> getPrices() {
+    public String getPrices() {
         return prices;
     }
 
-    public List<String> getBadges() {
+    public String getBadges() {
         return badges;
     }
 
@@ -75,11 +73,11 @@ public class Dish {
         return deliveryInfo;
     }
 
-    public List<String> getThumbImages() {
+    public String getThumbImages() {
         return thumbImages;
     }
 
-    public List<String> getDetailImages() {
+    public String getDetailImages() {
         return detailImages;
     }
 }

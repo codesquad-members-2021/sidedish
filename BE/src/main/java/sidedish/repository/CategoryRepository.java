@@ -2,9 +2,10 @@ package sidedish.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import sidedish.domain.Category;
-import sidedish.domain.CategoryType;
+
+import java.util.Optional;
 
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-    Category findCategoryByCategoryType(String categoryType);
+    Optional<Category> findCategoryByTitle(String title);
 }

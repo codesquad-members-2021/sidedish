@@ -12,6 +12,7 @@ public class MainPageDishDTO {
     private String top_image;
     private String description;
     private List<Integer> prices;
+    private List<String> badges;
 
     public MainPageDishDTO(Dish dish) {
         this.id = dish.getId();
@@ -19,6 +20,7 @@ public class MainPageDishDTO {
         this.top_image = dish.getTopImage();
         this.description = dish.getDescription();
         this.prices = ConvertUtils.convertToIntegerList(dish.getPrices());
+        this.badges = ConvertUtils.convertToStringList(dish.getBadges());
     }
 
     public Long getId() {
@@ -39,5 +41,20 @@ public class MainPageDishDTO {
 
     public List<Integer> getPrices() {
         return prices;
+    }
+
+    public List<String> getBadges() {
+        return badges;
+    }
+
+    @Override
+    public String toString() {
+        return "MainPageDishDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", top_image='" + top_image + '\'' +
+                ", description='" + description + '\'' +
+                ", prices=" + prices +
+                '}';
     }
 }

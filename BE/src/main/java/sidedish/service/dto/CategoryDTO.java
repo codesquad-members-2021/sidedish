@@ -4,18 +4,15 @@ import sidedish.domain.Category;
 import sidedish.domain.Dish;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class CategoryDTO {
 
-    private Long id;
-    private String categoryType;
+    private String title;
     private Set<MainPageDishDTO> dishes;
 
     public CategoryDTO(Category category) {
-        this.id = category.getId();
-        this.categoryType = category.getCategoryType();
+        this.title = category.getTitle();
         this.dishes = convertToMainPageDishDTO(category);
     }
 
@@ -27,4 +24,13 @@ public class CategoryDTO {
         }
         return mainPageDishDTOs;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Set<MainPageDishDTO> getDishes() {
+        return dishes;
+    }
+
 }

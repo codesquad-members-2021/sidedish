@@ -2,7 +2,6 @@ package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Category {
@@ -10,16 +9,23 @@ public class Category {
     @Id
     private Long id;
 
-    private String categoryType;
+    private String title;
     private Set<Dish> dishes;
 
-    public Category(String categoryType) {
-        this.categoryType = categoryType;
-        this.dishes = new HashSet<>();
+    public Category(String title) {
+        this.title = title;
+    }
+
+    public void addDish(Dish dish) {
+        dishes.add(dish);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
-        return categoryType;
+        return title;
     }
 
     public Set<Dish> getDishes() {

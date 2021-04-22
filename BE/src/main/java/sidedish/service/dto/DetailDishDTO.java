@@ -76,4 +76,21 @@ public class DetailDishDTO {
     public List<String> getDetail_images() {
         return detail_images;
     }
+
+    @Override
+    public String toString() {
+        return "DetailDishDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", top_image='" + top_image + '\'' +
+                ", description='" + description + '\'' +
+                ", prices=" + prices +
+                ", badges=" + badges +
+                ", stock=" + stock +
+                ", point=" + point +
+                ", delivery_info='" + delivery_info + '\'' +
+                ", thumb_images=" + thumb_images +
+                ", detail_images=" + detail_images +
+                '}';
+    }
 }
