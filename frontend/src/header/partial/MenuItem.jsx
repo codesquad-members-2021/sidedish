@@ -4,14 +4,14 @@ import MenuItemDropdown from "./MenuItemDropdown";
 
 const MenuItem = ({ children, dropdownData, ...props }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const dropdownMouseEnter = () => setDropdownVisible(true);
-  const dropdownMouseLeave = () => setDropdownVisible(false);
+  const handleMouseEnter = () => setDropdownVisible(true);
+  const handleMouseLeave = () => setDropdownVisible(false);
 
   return (
     <StyledMenuItem
       {...props}
-      onMouseEnter={dropdownMouseEnter}
-      onMouseLeave={dropdownMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <TextItem hoverState={dropdownVisible}>{children}</TextItem>
       {dropdownData && (

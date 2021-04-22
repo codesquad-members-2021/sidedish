@@ -1,139 +1,70 @@
-// SubContents (Carousel Slider)
+// 모든 카테고리 보기 or 데이터 처리하여 SubContents Section 생성
+import _ from "../ref";
 import { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { cssTranslate, cssFlexAlignCenter } from "../style/CommonStyledCSS";
+import useFetch from "../hooks/useFetch2";
+import SubContentsSection from "./partial/SubContentsSection";
+import AllSubContentsView from "./partial/AllSubContentsView";
 
 const SubContents = () => {
-  const [startPos, setStartPos] = useState(1);
-  const [endPos, setEndPos] = useState(-1);
-  const [currPos, setCurrPos] = useState(0);
-  
-  const [turnOverCnt] = useState(4);
+  const [contentData, setContentData] = useState({});
+  const [allLoading, setAllLoading] = useState(true);
+  const [contentsSections, setContentsSections] = useState([]);
 
-  const [data, setData] = useState( Array.from({length: 14}, (_, i) => i) );
+  const { response: mainResponse, loading: mainLoading, error: mainError } = useFetch(_.URL + "main");
+  const { response: soupResponse, loading: soupLoading, error: soupError } = useFetch(_.URL + "soup");
+  const { response: sideResponse, loading: sideLoading, error: sideError } = useFetch(_.URL + "side");
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => setEndPos(data.length > turnOverCnt ? turnOverCnt : data.length), []);
+  useEffect(() => {
+    if (mainLoading || soupLoading || sideLoading) return;
+    setContentData({
+      ...contentData,
+      main: mainError || mainResponse.body,
+      soup: soupError || soupResponse.body,
+      side: sideError || sideResponse.body,
+    });
+    setAllLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mainLoading, soupLoading, sideLoading]);
 
-  //  <  [1 2 3 4] [5 6 7 8] [7 8 (9 10)]   >
-  /*
-                          left          currPos      startPos      endPos
-      [1 2 3 4]           0%            (0)           1             4
-      [5 6 7 8]           -100%          (-4)         5             8
-      [9 10 11 12]        -200%          (-8)         9             12
-      [11 12 (13 14)]     -250%          (-10)        11            14
-      // currPos는 ((startPos-1) * -1)
-  */
+  useEffect(() => {
+    if (allLoading) return;
+    setContentsSections((arr) =>
+      arr.concat(
+        <SubContentsSection
+          type="main"
+          key={0}
+          data={[...contentData["main"]]}
+        />
+      )
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allLoading]);
 
-  const carouselLeftClickHandler = () => {  // <
-    if (startPos === 1) return;
-
-    const nextEndPos =
-      (endPos - turnOverCnt) < 1
-        ? data.length
-        : (endPos - turnOverCnt);
-    const nextStartPos = 
-      ( (nextEndPos - (turnOverCnt-1)) < 1 )
-        ? 1
-        : (nextEndPos - (turnOverCnt-1));
-    const nextCurrPos = -(nextStartPos - 1);
-    setStartPos(nextStartPos);
-    setEndPos(nextEndPos);
-    setCurrPos(nextCurrPos);
+  const handleContentViewClick = () => {
+    const types = ["soup", "side"];
+    types.forEach((type, i) => {
+      setContentsSections((arr) =>
+        arr.concat(
+          <SubContentsSection
+            type={type}
+            key={i+1}
+            data={[...contentData[type]]}
+          />
+        )
+      );
+    });
   };
-
-  const carouselRightClickHandler = () => { // >
-    if (endPos === data.length) return;
-
-    // const nextEndPos =
-    //   (endPos + turnOverCnt) > data.length
-    //     ? data.length
-    //     : (endPos + turnOverCnt);
-
-    let nextEndPos = endPos;
-    if (turnOverCnt > nextEndPos)
-      nextEndPos = turnOverCnt;
-
-    nextEndPos =
-      (nextEndPos + turnOverCnt) > data.length
-        ? data.length
-        : (nextEndPos + turnOverCnt);
-
-    const nextStartPos = (nextEndPos - (turnOverCnt -1 ) );
-    const nextCurrPos = -(nextStartPos - 1);
-    setStartPos(nextStartPos);
-    setEndPos(nextEndPos);
-    setCurrPos(nextCurrPos);
-  };
-
 
   return (
-    <StyledSubContents>
-
-      <SubContentItemsWrapper>
-        <SubContentItems currPos={currPos} turnOverCnt={turnOverCnt}>
-            {data &&
-              data.map((v, i) => (
-                <SubContentItem key={i} turnOverCnt={turnOverCnt}>
-                  {v + 1}
-                </SubContentItem>
-              ))}
-          </SubContentItems>
-      </SubContentItemsWrapper>
-
-      <ControlButton onClick={carouselLeftClickHandler}>
-        <MdKeyboardArrowLeft />
-      </ControlButton>
-      <ControlButton onClick={carouselRightClickHandler} control="right">
-        <MdKeyboardArrowRight />
-      </ControlButton>
-
-    </StyledSubContents>
+    <>
+      {allLoading || !contentsSections ? "loading..." : contentsSections}
+      {!allLoading && contentsSections && contentsSections.length < 3 && (
+        <AllSubContentsView onClick={handleContentViewClick}>
+          모든 카테고리 보기
+        </AllSubContentsView>
+      )}
+    </>
   );
 };
 
 export default SubContents;
-
-// --- Styled Components ---
-const StyledSubContents = styled.div`
-  position: relative;
-  height: 20vh;
-  padding: ${({theme}) => theme.globalInfo.mp80};
-`;
-
-const SubContentItemsWrapper = styled.div`
-  overflow: hidden;
-`;
-
-const SubContentItems = styled.ul`
-  display: flex;
-  flex-wrap: nowrap;
-  transition: 1.5s;
-
-  position: relative;
-  left: ${({ currPos, turnOverCnt }) =>
-    `calc((100% / ${turnOverCnt}) * ${currPos})`};
-`;
-
-const SubContentItem = styled.li`
-  // flex-grow | flex-shrink | flex-basis
-  flex: ${({turnOverCnt }) => `1 0 calc(100% / ${turnOverCnt})`};
-`;
-
-const ControlButton = styled.button`
-  ${cssTranslate};
-  ${cssFlexAlignCenter};
-  font-size: ${({ theme }) => theme.fontSize.L};
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  ${({ control }) =>
-    control === "right"
-      ? css`
-          right: 0;
-        `
-      : css`
-          left: 0;
-        `}
-`;
