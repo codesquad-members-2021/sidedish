@@ -2,7 +2,7 @@ package com.example.controller;
 
 import com.example.error.ErrorCode;
 import com.example.error.ErrorResponse;
-import com.example.error.exception.NotFoundException;
+import com.example.error.exception.notfound.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

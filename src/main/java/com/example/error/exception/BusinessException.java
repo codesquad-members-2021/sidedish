@@ -2,11 +2,11 @@ package com.example.error.exception;
 
 import com.example.error.ErrorCode;
 
-public class NotFoundException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
     private final ErrorCode errorCode;
 
-    public NotFoundException(ErrorCode errorCode) {
+    public BusinessException(ErrorCode errorCode) {
         super(errorCode.getReason());
         this.errorCode = errorCode;
     }

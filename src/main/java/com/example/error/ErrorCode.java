@@ -10,6 +10,7 @@ public enum ErrorCode {
     CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 Category 을 찾을 수 없습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 User 을 찾을 수 없습니다."),
     ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 Item 을 찾을 수 없습니다."),
+    LOGIN_NOT_VALID(HttpStatus.BAD_REQUEST, "해당 로그인에 문제가있습니다."),
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "허용되지 않은 메소드 입니다."),
     UNKNOWN(HttpStatus.INTERNAL_SERVER_ERROR, "서버 에러");
 
