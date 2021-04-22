@@ -5,13 +5,24 @@ import { EVENT, LAUNCHING } from 'const';
 import styled from 'styled-components';
 import Img from './Img';
 
-const Card = ({ cardSize }) => {
+const Card = ({ cardSize, data }) => {
+  const {
+    title,
+    n_price,
+    s_price,
+    image,
+    detail_hash,
+    description,
+    delivery_type,
+    badge,
+    alt,
+  } = data;
+
   return (
     <CardBoxDiv>
-      {/* data 들어갈 자리 null */}
-      <Img cardSize={cardSize} />
-      <Info name={null} body={null} />
-      <Price normal={null} discount={`11,900원`} />
+      <Img cardSize={cardSize} image={image} alt={alt} />
+      <Info name={title} body={description} />
+      <Price normal={n_price} discount={s_price} />
       <TagBoxDiv>
         <Tag type={EVENT} />
         <Tag type={LAUNCHING} />
@@ -23,8 +34,8 @@ const Card = ({ cardSize }) => {
 export default Card;
 
 const CardBoxDiv = styled.div`
+  padding-right: 3rem;
   width: fit-content;
-  margin: 10px;
 `;
 
 const TagBoxDiv = styled.div`

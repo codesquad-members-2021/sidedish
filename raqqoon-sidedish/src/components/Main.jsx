@@ -1,12 +1,12 @@
-import Carousel from './carousel/Carousel';
+import CarouselSection from './carousel/CarouselSection';
 import TabUI from './tabUI/TabUI';
 
 const Main = () => {
   return (
-    <div>
-      <TabUI />
-      <Carousel />
-    </div>
+    <main>
+      {/* <TabUI /> */}
+      <CarouselSection />
+    </main>
   );
 };
 
