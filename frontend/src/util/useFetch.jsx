@@ -8,14 +8,19 @@ const useFetch = (callback, type) => {
     switch (type) {
       case "mainDish":
         url += "main";
-      // case "bestDish":
-      //   url += "best";
-      // case "soupDish":
-      //   url += "soup";
-      // case "sideDish":
-      //   url += "side";
-      // case "detailDish":
-      //   url += "detail";
+        return url;
+      case "bestDish":
+        url += "best";
+        return url;
+      case "soupDish":
+        url += "soup";
+        return url;
+      case "sideDish":
+        url += "side";
+        return url;
+      case "detailDish":
+        url += "detail";
+        return url;
 
       default:
         return url;
@@ -24,6 +29,8 @@ const useFetch = (callback, type) => {
 
   const fetchInitialData = async () => {
     const response = await fetch(getUrl());
+    // .then((response) => response.json())
+    // .then((data) => data.body);
     const initialData = await response.json();
     const dataBody = initialData.body;
     callback(dataBody);

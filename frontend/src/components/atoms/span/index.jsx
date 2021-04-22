@@ -21,13 +21,13 @@ const StyledSpan = styled.span`
     color:#828282;
     margin:0 8px;`}
   ${(props) =>
-    props._nPrice &&
+    props._sPrice &&
     `font-size:20px;
     font-weight:700;
     color:#010101;
     margin:8px 0;`}
   ${(props) =>
-    props._sPrice &&
+    props._nPrice &&
     `font-size:14px;
     font-weight:400;
     color:#BDBDBD;
@@ -38,6 +38,19 @@ const StyledSpan = styled.span`
     `font-size:40px;
     font-weight:900;
     color:#333;`}
+     ${(props) =>
+    props._tabDeact &&
+    `font-size:18px;
+    font-weight:400;
+    color:#828282;
+    margin:16px 32px;
+    `}
+     ${(props) =>
+    props._tabAct &&
+    `font-size:18px;
+    font-weight:700;
+    color:#333;
+    `}
 `;
 
 const Span = ({ children, ...props }) => (

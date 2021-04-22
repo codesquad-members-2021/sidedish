@@ -33,12 +33,7 @@ const MainDish = () => {
             <Cards />
           </CardStyle>
         </WrapCard>
-        <Icon
-          _width="32px"
-          _height="32px"
-          _color="#BDBDBD"
-          _type="RighthIcon"
-        />
+        <Icon _width="32px" _height="32px" _color="#BDBDBD" _type="RightIcon" />
       </WrapMain>
     </>
   );
