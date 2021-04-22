@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Img from 'Img';
+import Img from '../card/Img';
 import Info from '../card/Info';
 import Price from '../card/Price';
 import Tag from '../card/Tag';
@@ -13,12 +13,12 @@ import {
 } from '../../const';
 import { v4 as uuidv4 } from 'uuid';
 
-const Card = ({ cardSize, item, imgUrl }) => {
-  const { title, description, n_price, s_price, badge } = item;
+const Card = ({ cardSize, item }) => {
+  const { title, description, n_price, s_price, badge, image } = item;
 
   return (
     <CardBoxDiv>
-      <Img cardSize={cardSize} imgUrl={imgUrl} />
+      <Img cardSize={cardSize} image={image} />
       <Info name={title} body={description} />
       <Price normal={s_price} discount={n_price} />
       {badge && (

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import useFetch from 'customHooks/useFetch.js';
-import Card from 'components/card/Card';
-import Arrow from 'components/icons/Arrow';
-import { SIZE_MEDIUM } from 'const.js';
 import { v4 as uuidv4 } from 'uuid';
+import { SIZE_MEDIUM } from '../../const';
+import useFetch from '../../customHooks/useFetch';
+import Card from '../card/Card';
+import Arrow from '../icons/Arrow';
 
 const Carousel = () => {
   const mainDishData = useFetch(
@@ -13,8 +13,8 @@ const Carousel = () => {
     <>
       <OutBox>
         <CategoryContents>
-          {mainDishData.map((data) => (
-            <Card key={uuidv4()} data={data} cardSize={SIZE_MEDIUM} />
+          {mainDishData.map((item) => (
+            <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
           ))}
         </CategoryContents>
         <button>
