@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Span from "../../atoms/span";
+import Span from "../../atoms/Span";
 const WrapDiv = styled.div`
   display: flex;
   margin: 32px 0 80px 80px;

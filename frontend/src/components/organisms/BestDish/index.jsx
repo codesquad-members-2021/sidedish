@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import url from "../../../util/url";
-import loadData from "../../../util/loadData";
 import Tab from "../../molecules/Tab";
 import LargeCard from "../../molecules/LargeCard";
+import useFetch from "../../../util/useFetch";
 // import Span from "../../atoms/span";
 const BestDish = ({ children, ...props }) => {
   const WrapDiv = styled.div`
@@ -14,9 +13,7 @@ const BestDish = ({ children, ...props }) => {
 
   const [bestDish, setBestDish] = useState([]);
 
-  useEffect(() => {
-    loadData(setBestDish, url.bestDish);
-  }, []);
+  useFetch(setBestDish, "bestDish");
   return (
     <WrapDiv>
       {bestDish.map(({ category_id, name, items }) => {

@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import Image from "../../atoms/image";
-import Span from "../../atoms/span";
-import EventTag from "../../atoms/eventTag";
+import Image from "../../atoms/Image";
+import Span from "../../atoms/Span";
+import Tag from "../../atoms/Tag";
 
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 308px;
+  height: 412px;
+  margin: 0px 16px;
 `;
 
 const FlexDiv = styled.div`
@@ -16,15 +19,23 @@ const FlexDiv = styled.div`
 `;
 
 const MediumCard = ({ children, ...props }) => {
+  debugger;
+  const TagType = () => {
+    if (props._badge) {
+      return props.badge === '["론칭특가"]' ? <Tag _new /> : <Tag _event />;
+    }
+    return <></>;
+  };
   return (
     <Div>
-      <Image />
-      <Span _title>안녕</Span>
-      <Span _description>안녕</Span>
+      <Image src={props._image} />
+      <Span _title>{props._title}</Span>
+      <Span _description>{props._description}</Span>
       <FlexDiv>
-        <Span _nPrice>안녕</Span>
-        <Span _sPrice>안녕</Span>
+        <Span _nPrice>{props._nPrice}</Span>
+        <Span _sPrice>{props._sPrice}</Span>
       </FlexDiv>
+      <TagType />
     </Div>
   );
 };

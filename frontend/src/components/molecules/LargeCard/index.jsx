@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Image from "../../atoms/image";
-import Span from "../../atoms/span";
+import Image from "../../atoms/Image";
+import Span from "../../atoms/Span";
 
 const Div = styled.div`
   display: flex;

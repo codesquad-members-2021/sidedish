@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Span from "../../atoms/span";
+import Span from "../../atoms/Span";
+
 const Tab = ({ children, ...props }) => {
   // const [bestDish, setBestDish] = useState([]);
 

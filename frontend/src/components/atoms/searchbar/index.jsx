@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Icon from "../icon";
+import Icon from "../Icon";
 
 const WrapDiv = styled.div`
   position: relative;
