@@ -3,9 +3,9 @@ package develop.baminchan.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import develop.baminchan.entity.Banchan;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+
+import static develop.baminchan.dto.util.StringConvertor.convertToSet;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BanchanDto {
@@ -27,22 +27,12 @@ public class BanchanDto {
         this.detail_hash = banchan.getDetail_hash();
         this.image = banchan.getImage();
         this.alt = banchan.getAlt();
-        this.delivery_type = convertStringToSet(banchan.getDelivery_type());
+        this.delivery_type = convertToSet(banchan.getDelivery_type());
         this.title = banchan.getTitle();
         this.description = banchan.getDescription();
         this.n_price = banchan.getN_price();
         this.s_price = banchan.getS_price();
-        this.badge = convertStringToSet(banchan.getBadge());
-    }
-
-    private Set<String> convertStringToSet(String column) {
-        if (column == null) {
-            return null;
-        }
-        Set<String> set = new HashSet<>();
-        String[] arr = column.split(",");
-        set.addAll(Arrays.asList(arr));
-        return set;
+        this.badge = convertToSet(banchan.getBadge());
     }
 
     // Entity -> DTO
