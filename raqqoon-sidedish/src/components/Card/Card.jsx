@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Img from './Img';
+import Img from 'Img';
 import Info from '../card/Info';
 import Price from '../card/Price';
 import Tag from '../card/Tag';
