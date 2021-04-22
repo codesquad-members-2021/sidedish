@@ -53,7 +53,7 @@ public class SidedishItemService {
                     .collect(Collectors.toSet());
             SidedishItemImage thumbnailItemImage = item.getSidedishItemImages().stream().filter(SidedishItemImage::isThumbnailImage).findFirst().orElseThrow(ImageNotFoundException::new);
             SidedishImage thumbnailImage = sidedishImageRepository.findById(thumbnailItemImage.getSidedishImage()).orElseThrow(ImageNotFoundException::new);
-            itemDTOs.add(new SidedishItemDTO(item, eventSet, thumbnailImage.getImageUrl()));
+            itemDTOs.add(new SidedishItemDTO(item, eventSet, thumbnailImage));
         }
         return itemDTOs;
     }

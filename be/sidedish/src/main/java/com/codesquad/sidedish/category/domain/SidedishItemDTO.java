@@ -2,6 +2,7 @@ package com.codesquad.sidedish.category.domain;
 
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventDTO;
+import com.codesquad.sidedish.image.domain.SidedishImage;
 
 import java.util.List;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class SidedishItemDTO {
     private Set<SidedishEventDTO> eventBadgeList;
     private String thumbnailImage;
 
-    public SidedishItemDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, String thumbnailImageUrl) {
+    public SidedishItemDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
         this.name = item.getItemName();
         this.description = item.getItemDescription();
         this.salePrice = item.getItemSalePrice();
@@ -30,7 +31,7 @@ public class SidedishItemDTO {
         this.DeliveryInfo = item.getItemDeliveryInfo();
         this.DeliveryFee = item.getItemDeliveryFee();
         this.eventBadgeList = eventBadgeList;
-        this.thumbnailImage = thumbnailImageUrl;
+        this.thumbnailImage = thumbnailImageUrl.getImageUrl();
     }
 
     @Override
