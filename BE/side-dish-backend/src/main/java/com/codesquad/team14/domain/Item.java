@@ -2,11 +2,11 @@ package com.codesquad.team14.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Item {
+    private static final String DELIVERY_FEE_POLICY = "2,500원 (40,000원 이상 구매 시 무료)";
 
     @Id
     private Long id;
@@ -62,6 +62,21 @@ public class Item {
 
     public Category getCategory() {
         return category;
+    }
+
+    public String getDeliveryInfo() {
+        StringBuilder deliverInfo = new StringBuilder();
+        for (int i = 0; i < deliveryTypes.size(); i++) {
+            deliverInfo.append(deliveryTypes.get(i).getDetail());
+            if (i != deliveryTypes.size() - 1) {
+                deliverInfo.append(" / ");
+            }
+        }
+        return deliverInfo.toString();
+    }
+
+    public String getDeliveryFeePolicy() {
+        return DELIVERY_FEE_POLICY;
     }
 
     public void setTitle(String title) {
