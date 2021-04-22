@@ -1,5 +1,5 @@
 use
-sidedish;
+    sidedish;
 
 /*drop table if exists SIDEDISH_ITEM;
 drop table if exists SIDEDISH_CATEGORY;

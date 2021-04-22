@@ -20,6 +20,7 @@ public class SidedishItemImage {
     public boolean isSameType(SidedishImageTypeEnum imageTypeEnum) {
         return imageType == imageTypeEnum;
     }
+
     public boolean isThumbnailImage() {
         return imageType == SidedishImageTypeEnum.THUMBNAIL;
     }

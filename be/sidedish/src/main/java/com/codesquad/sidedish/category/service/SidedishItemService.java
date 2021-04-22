@@ -1,6 +1,11 @@
 package com.codesquad.sidedish.category.service;
 
-import com.codesquad.sidedish.category.domain.*;
+import com.codesquad.sidedish.category.domain.SidedishCategory;
+import com.codesquad.sidedish.category.domain.SidedishCategoryRepository;
+import com.codesquad.sidedish.category.domain.SidedishItem;
+import com.codesquad.sidedish.category.domain.SidedishItemDetailDTO;
+import com.codesquad.sidedish.category.domain.dto.DetailItemDTO;
+import com.codesquad.sidedish.category.domain.dto.PreviewListDTO;
 import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
 import com.codesquad.sidedish.category.exception.EmptyItemException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
@@ -30,7 +35,7 @@ public class SidedishItemService {
         this.sidedishImageRepository = sidedishImageRepository;
     }
 
-    public List<SidedishItemPreviewDTO> showItemList(String categoryName) {
+    public PreviewListDTO showItemList(String categoryName) {
         SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName);
         List<SidedishItem> items = category.getSidedishItemList();
 
@@ -42,10 +47,10 @@ public class SidedishItemService {
             SidedishImage thumbnailImage = findThumbnailImage(item);
             itemDTOs.add(new SidedishItemPreviewDTO(item, eventSet, thumbnailImage));
         }
-        return itemDTOs;
+        return new PreviewListDTO(itemDTOs);
     }
 
-    public SidedishItemDetailDTO showItem(String categoryName, Long itemId) {
+    public DetailItemDTO showItem(String categoryName, Long itemId) {
         SidedishCategory sidedishCategory = sidedishCategoryRepository.findByCategoryName(categoryName);
         SidedishItem sidedishItem = sidedishCategory.getSidedishItemList().stream()
                 .filter(item -> item.isSameId(itemId))
@@ -55,8 +60,8 @@ public class SidedishItemService {
         Set<SidedishEventDTO> eventSet = createEventDtoSet(sidedishItem);
         List<SidedishImage> detailImages = findImagesByType(sidedishItem, SidedishImageTypeEnum.DETAIL);
         List<SidedishImage> descriptionImages = findImagesByType(sidedishItem, SidedishImageTypeEnum.DESCRIPTION);
-
-        return new SidedishItemDetailDTO(sidedishItem, eventSet, detailImages, descriptionImages);
+        SidedishItemDetailDTO sidedishItemDetailDTO = new SidedishItemDetailDTO(sidedishItem, eventSet, detailImages, descriptionImages);
+        return new DetailItemDTO(sidedishItemDetailDTO);
     }
 
     private SidedishImage findThumbnailImage(SidedishItem item) {

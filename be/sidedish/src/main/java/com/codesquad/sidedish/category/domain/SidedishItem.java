@@ -41,6 +41,9 @@ public class SidedishItem {
         this.itemDeliveryFee = itemDeliveryFee;
     }
 
+    protected SidedishItem() {
+    }
+
     public boolean isSameId(Long itemId) {
         return id.equals(itemId);
     }
@@ -68,9 +71,6 @@ public class SidedishItem {
 
     private void addImage(SidedishImage sidedishImage, SidedishImageTypeEnum imageTypeEnum) {
         sidedishItemImages.add(new SidedishItemImage(sidedishImage.getId(), id, imageTypeEnum));
-    }
-
-    protected SidedishItem() {
     }
 
     public Long getId() {

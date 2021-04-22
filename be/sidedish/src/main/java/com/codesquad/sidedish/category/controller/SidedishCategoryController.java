@@ -1,17 +1,13 @@
 package com.codesquad.sidedish.category.controller;
 
-import com.codesquad.sidedish.category.domain.SidedishItemDetailDTO;
-import com.codesquad.sidedish.category.domain.dto.SidedishItemDetailListDTO;
-import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
-import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewListDTO;
+import com.codesquad.sidedish.category.domain.dto.DetailItemDTO;
+import com.codesquad.sidedish.category.domain.dto.PreviewListDTO;
 import com.codesquad.sidedish.category.service.SidedishItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class SidedishCategoryController {
@@ -23,16 +19,14 @@ public class SidedishCategoryController {
     }
 
     @GetMapping("/{category}")
-    public ResponseEntity<SidedishItemPreviewListDTO> previewDish(@PathVariable String category) {
-        List<SidedishItemPreviewDTO> previewDTOs = itemService.showItemList(category);
-        SidedishItemPreviewListDTO previewListDTO = new SidedishItemPreviewListDTO(previewDTOs);
+    public ResponseEntity<PreviewListDTO> previewItemList(@PathVariable String category) {
+        PreviewListDTO previewListDTO = itemService.showItemList(category);
         return new ResponseEntity<>(previewListDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{category}/{id}")
-    public ResponseEntity<SidedishItemDetailListDTO> detailDish(@PathVariable String category, @PathVariable Long id) {
-        SidedishItemDetailDTO detailDTOs = itemService.showItem(category, id);
-        SidedishItemDetailListDTO detailListDTO = new SidedishItemDetailListDTO(detailDTOs);
-        return new ResponseEntity<>(detailListDTO, HttpStatus.OK);
+    public ResponseEntity<DetailItemDTO> detailItem(@PathVariable String category, @PathVariable Long id) {
+        DetailItemDTO detailDTO = itemService.showItem(category, id);
+        return new ResponseEntity<>(detailDTO, HttpStatus.OK);
     }
 }
