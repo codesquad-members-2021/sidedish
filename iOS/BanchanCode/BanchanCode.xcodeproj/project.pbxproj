@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E46342E5263117BD0001D87A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E4263117BD0001D87A /* MockData.swift */; };
-		E46342EA2631199B0001D87A /* DishesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E92631199B0001D87A /* DishesResponseDTO.swift */; };
+		E46342EA2631199B0001D87A /* DishesResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E92631199B0001D87A /* DishesResponseDTO+Mapping.swift */; };
 		E46343052631471C0001D87A /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46343042631471C0001D87A /* JSONManager.swift */; };
 		E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */; };
 		E4FC9C7F262E9ED800BEAAE4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */; };
@@ -47,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		E46342E4263117BD0001D87A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
-		E46342E92631199B0001D87A /* DishesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesResponseDTO.swift; sourceTree = "<group>"; };
+		E46342E92631199B0001D87A /* DishesResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DishesResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		E46343042631471C0001D87A /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		E46342EE2631199F0001D87A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E46342E92631199B0001D87A /* DishesResponseDTO.swift */,
+				E46342E92631199B0001D87A /* DishesResponseDTO+Mapping.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 				FA88E9E3262E7F50001C3E53 /* MainViewController.swift in Sources */,
 				E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */,
 				FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */,
-				E46342EA2631199B0001D87A /* DishesResponseDTO.swift in Sources */,
+				E46342EA2631199B0001D87A /* DishesResponseDTO+Mapping.swift in Sources */,
 				FA88E9DF262E7F50001C3E53 /* AppDelegate.swift in Sources */,
 				E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */,
 				E4FC9CBB26300D5800BEAAE4 /* Dish.swift in Sources */,
