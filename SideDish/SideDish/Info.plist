@@ -19,8 +19,8 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSansKR-Bold.ttf</string>
-		<string>NotoSansKR-Regular.ttf</string>
+		<string>NotoSansKR-Bold.otf</string>
+		<string>NotoSansKR-Regular.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

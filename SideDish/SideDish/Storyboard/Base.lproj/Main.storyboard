@@ -40,14 +40,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-lz-n60">
-                                            <rect key="frame" x="20" y="15" width="362" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-lz-n60">
+                                            <rect key="frame" x="16" y="4" width="382" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="awT-XC-3c0"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="zJP-Od-tic"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qyB-lz-n60" firstAttribute="top" secondItem="u5o-lx-mc2" secondAttribute="top" constant="4" id="6Wu-R6-shR"/>
+                                        <constraint firstItem="qyB-lz-n60" firstAttribute="leading" secondItem="u5o-lx-mc2" secondAttribute="leading" constant="16" id="8QK-ji-D8Y"/>
+                                        <constraint firstAttribute="trailing" secondItem="qyB-lz-n60" secondAttribute="trailing" constant="16" id="sye-Wt-f69"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="title" destination="qyB-lz-n60" id="Sbb-4V-Tbm"/>
                                     </connections>

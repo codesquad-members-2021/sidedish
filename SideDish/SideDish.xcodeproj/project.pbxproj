@@ -130,13 +130,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		1086ED24262FF5FA004B8D42 /* Font */ = {
+		1086ED24262FF5FA004B8D42 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				1086ED2B262FF720004B8D42 /* NotoSansKR-Bold.otf */,
 				1086ED2A262FF720004B8D42 /* NotoSansKR-Regular.otf */,
 			);
-			path = Font;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		108A8942262E761400C828AC /* Model */ = {
@@ -171,7 +171,7 @@
 		B3D25400262D6AC900F57C61 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
-				1086ED24262FF5FA004B8D42 /* Font */,
+				1086ED24262FF5FA004B8D42 /* Fonts */,
 				1041837B262E9F2500280647 /* Extension */,
 				B3D25443262D6F2A00F57C61 /* Storyboard */,
 				10418395262EB0CF00280647 /* Network */,
