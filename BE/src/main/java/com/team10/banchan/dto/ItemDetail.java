@@ -72,12 +72,12 @@ public class ItemDetail {
         return point;
     }
 
-    @JsonProperty("devliery_info")
+    @JsonProperty("delivery_info")
     public String getDeliveryInfo() {
         return deliveryInfo;
     }
 
-    @JsonProperty("devliery_fee")
+    @JsonProperty("delivery_fee")
     public String getDeliveryFee() {
         return deliveryFee;
     }
