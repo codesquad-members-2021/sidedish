@@ -12,7 +12,7 @@ public class Category {
 
     private String name;
 
-    private Set<Item> items = new HashSet<>();
+    private final Set<Item> items = new HashSet<>();
 
     public Category(String name) {
         this.name = name;

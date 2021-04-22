@@ -1,27 +1,25 @@
 package com.codesquad.team14.dto;
 
 import com.codesquad.team14.domain.Badge;
-import com.codesquad.team14.domain.Category;
-import com.codesquad.team14.domain.DeliveryType;
 import com.codesquad.team14.domain.Item;
 
 import java.util.List;
 
 public class ItemDto {
     public static class Response {
-        private Long id;
-        private String image;
-        private String deliveryTypes;
-        private String title;
-        private String description;
-        private int nPrice;
-        private int sPrice;
-        private List<Badge> badges;
+        private final Long id;
+        private final String topImage;
+        private final String deliveryTypes;
+        private final String title;
+        private final String description;
+        private final int nPrice;
+        private final int sPrice;
+        private final List<Badge> badges;
 
         private Response(Long id, String image, String deliveryTypes, String title,
-                        String description, int nPrice, int sPrice, List<Badge> badges) {
+                         String description, int nPrice, int sPrice, List<Badge> badges) {
             this.id = id;
-            this.image = image;
+            this.topImage = image;
             this.deliveryTypes = deliveryTypes;
             this.title = title;
             this.description = description;
@@ -47,8 +45,8 @@ public class ItemDto {
             return id;
         }
 
-        public String getImage() {
-            return image;
+        public String getTopImage() {
+            return topImage;
         }
 
         public String getDeliveryTypes() {
