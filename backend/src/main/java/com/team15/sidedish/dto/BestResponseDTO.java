@@ -1,7 +1,5 @@
 package com.team15.sidedish.dto;
 
-import com.team15.sidedish.domain.Dish;
-
 import java.util.Set;
 
 public class BestResponseDTO {
@@ -28,7 +26,4 @@ public class BestResponseDTO {
     public Set<ItemDTO> getDishes() {
         return dishes;
     }
-
-
-
 }

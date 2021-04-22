@@ -32,8 +32,9 @@ public class DishController {
 
     }
 
-//    @GetMapping("/dish/{sectionName}")
-//    public List<Dish> showDishesBySectionName(@PathVariable String sectionName) {
-//        return dishService.showDishesBySectionName(sectionName);
-//    }
+    @GetMapping("/{section}")
+    public List<ItemDTO> showDishsBySection(@PathVariable String section){
+        return dishService.showDishsBySection(section);
+    }
+
 }

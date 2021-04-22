@@ -17,4 +17,7 @@ public interface DishRepository extends CrudRepository<ItemDTO, String> {
     @Override
     List<ItemDTO> findAll();
 
+    @Query("select di.`hash` AS `detail_hash`, di.`top_image` AS `image`, di.`title` AS `alt`, de.`delivery_type`, di.`title`, di.`description`, di.`n_price`, di.`s_price`, e.`badge` from dish di JOIN delivery de on di.`hash` = de.`dish_hash` LEFT OUTER JOIN `event` e on e.`dish_hash` = di.`hash` where di.`section_name` LIKE CONCAT('%', :section, '%')")
+    List<ItemDTO> findAllBySection(String section);
+
 }
