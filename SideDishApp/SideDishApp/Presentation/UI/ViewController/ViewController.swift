@@ -11,13 +11,13 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var dishCollectionView: UICollectionView!
     
-    var datasource : UICollectionViewDiffableDataSource<section,DishCardCell>!
+    var dataSource : UICollectionViewDiffableDataSource<section,DishCardCell>!
     let colorDictionary = ["이벤트특가" : UIColor.systemGreen, "런칭특가" : UIColor.systemBlue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        datasource = configureDataSource()
+        dataSource = configureDataSource()
 
         let testCard = DishCardCell.init()
         let testCard1 = DishCardCell.init()
@@ -33,8 +33,34 @@ class ViewController: UIViewController {
 //        for section in section.allCases {
 //            snapshot.appendItems([testCard], toSection: section)
 //        }
+        
+        let headerRegistration = UICollectionView.SupplementaryRegistration
+        <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) {
+            [unowned self] (headerView, elementKind, indexPath) in
+            
+            // Obtain header item using index path
+            let headerItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            
+            // Configure header view content based on headerItem
+            var configuration = headerView.defaultContentConfiguration()
+            configuration.text = headerItem.rawValue
+            
+            // Customize header appearance to make it more eye-catching
+            configuration.textProperties.font = .boldSystemFont(ofSize: 16)
+            configuration.textProperties.color = .systemBlue
+            
+            // Apply the configuration to header view
+            headerView.contentConfiguration = configuration
+        }
+        
+        dataSource.supplementaryViewProvider = { [unowned self]
+            (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+            
+            return self.dishCollectionView.dequeueConfiguredReusableSupplementary(
+                using: headerRegistration, for: indexPath)
+        }
 
-        datasource.apply(snapshot)
+        dataSource.apply(snapshot)
     }
     
     func configureDataSource() -> UICollectionViewDiffableDataSource<section,DishCardCell> {
