@@ -28,7 +28,6 @@ class BanchanCustomCell: UICollectionViewCell {
     
     var banchan: Banchan? {
         didSet{
-            imageView.image = UIImage(data: banchan!.image ?? Data())
             titleLabel.text = banchan?.title
             descriptionLabel.text = banchan?.description
             netPriceLabel.text = "1000"

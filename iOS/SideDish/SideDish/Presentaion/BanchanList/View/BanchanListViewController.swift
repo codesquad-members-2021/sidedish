@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class BanchanListViewController: UIViewController {
     
@@ -13,6 +14,7 @@ class BanchanListViewController: UIViewController {
     
     var viewModel = BanchanListViewModel()
     lazy var dataSource = configureDataSource()
+    var subscriptions = Set<AnyCancellable>()
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Banchan>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Banchan>
@@ -21,11 +23,26 @@ class BanchanListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        applySnapshot(animatingDifferences: true)
+        applySnapshot(animatingDifferences: false)
         banchanCollectionView.dataSource = self.dataSource
         banchanCollectionView.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(applySnapshot(animatingDifferences:)), name: Notification.Name("updateMenu"), object: viewModel)
+        bind()
+    }
+    
+    private func bind() {
+        viewModel.$menu
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { (result) in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            }, receiveValue: { (value) in
+                self.applySnapshot()
+            })
+            .store(in: &subscriptions)
     }
 }
 
@@ -34,21 +51,32 @@ extension BanchanListViewController {
     func configureDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: banchanCollectionView) { (collectionView, indexPath, banchan) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BanchanCustomCell.identifer, for: indexPath) as? BanchanCustomCell else { return nil }
+            
+            FetchImageUseCase.fetch(network: NetworkSerivce.shared, imgURL: banchan.image) { (data) in
+                guard let data = data else {
+                    return
+                }
+                cell.imageView.image = UIImage(data: data)
+            }
             cell.banchan = banchan
             return cell
         }
+        
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+            
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+    
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BanchanCustomCellHeader.identifier, for: indexPath) as? BanchanCustomCellHeader else { return nil }
+            
             view.titleLabel.text = section.rawValue
+            view.cellCount = self.viewModel.count(section: section)
             return view
             
         }
         return dataSource
     }
     
-    @objc
     func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         
@@ -63,23 +91,6 @@ extension BanchanListViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource Implementation
-//extension VideosViewController {
-//  override func collectionView(
-//    _ collectionView: UICollectionView,
-//    didSelectItemAt indexPath: IndexPath
-//  ) {
-//    guard let video = dataSource.itemIdentifier(for: indexPath) else {
-//      return
-//    }
-//    guard let link = video.link else {
-//      print("Invalid link")
-//      return
-//    }
-//    let safariViewController = SFSafariViewController(url: link)
-//    present(safariViewController, animated: true, completion: nil)
-//  }
-//}
 
 // MARK: - Delegate
 extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

@@ -48,12 +48,6 @@ extension BanchanListDTO {
 
 extension BanchanListDTO.BanchanListItemDTO {
     func toDomain() -> Banchan {
-        var newData: Data?
-        FetchImageUseCase.fetch(network: NetworkSerivce.shared, imgURL: image) { data in
-            DispatchQueue.main.async {
-                newData = data
-            }
-        }
-        return .init(hash: hash, image: newData, alt: alt, title: title, description: description, netPrice: normalPrice, salePrice: salePrice, badge: badge, delivery_type: deliveryType)
+        return .init(hash: hash, image: image, alt: alt, title: title, description: description, netPrice: normalPrice, salePrice: salePrice, badge: badge, delivery_type: deliveryType)
     }
 }
