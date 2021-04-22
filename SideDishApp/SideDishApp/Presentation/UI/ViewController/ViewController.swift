@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         bind()
         menuListViewModel.requestDishes()
         dataSource = configureDataSource()
-
+        
         sleep(3)
         
         var snapshot = NSDiffableDataSourceSnapshot<Dishes,Dish>()
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             configuration.textProperties.font = .boldSystemFont(ofSize: 16)
             configuration.textProperties.color = .systemBlue
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
+            let tap = CustomTapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)), dishCount: headerItem.dishes.count)
             headerView.addGestureRecognizer(tap)
             
             // Apply the configuration to header view
@@ -157,15 +157,17 @@ class ViewController: UIViewController {
         return label
     }
     
-    @objc private func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        
-        self.view.makeToast("Toaster 출력 \(recognizer.view)")
+    @objc private func handleTapGesture(recognizer: CustomTapGestureRecognizer) {
+        self.view.hideAllToasts()
+        self.view.makeToast("상품 \(recognizer.dishCount)개 있어요!")
     }
-    
 }
 
-enum section : String, CaseIterable {
-    case main = "main"
-    case soup = "soup"
-    case side = "side"
+class CustomTapGestureRecognizer: UITapGestureRecognizer {
+    var dishCount : Int
+    
+    init(target: Any?, action: Selector?, dishCount: Int) {
+        self.dishCount = dishCount
+        super.init(target: target, action: action)
+    }
 }
