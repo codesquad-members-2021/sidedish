@@ -1,23 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
-const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
+const Carousel = ({
+  children: items,
+  itemsPerPeice,
+  onClickItem,
+  gap = "0.5rem",
+  autoFit = false,
+}) => {
   const [initialSlide, virture] = createVirtureSlides(items, itemsPerPeice);
   const virtureSlides = useRef(virture);
   const container = useRef();
   const currentSlideIndex = useRef(0);
   const direction = useRef("none");
   const [realSlides, setRealSlieds] = useState([initialSlide]);
-
+  const didMountRef = useRef(false);
   useEffect(() => {
-    slideContainer(direction.current);
+    if (didMountRef.current) {
+      slideContainer(direction.current);
+    }
   });
 
   const move = (dir) => {
+    didMountRef.current = true;
     direction.current = dir;
     if (isThereItem(dir)) {
       changeCurrentIndex(dir);
-      slideContainer(dir);
+      slideContainer();
       return;
     }
     const newSlides = isEmptyVirtureSlides()
@@ -32,7 +42,7 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
       const opposite = newSlides.pop();
       newSlides.unshift(opposite);
       container.current.style.transition = "none";
-      container.current.style.transform = "translate(-100%)";
+      container.current.style.transform = "translate(calc(-100%))";
     } else {
       const i = currentSlideIndex.current;
       const opposite = newSlides.shift();
@@ -68,16 +78,27 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   const slideContainer = (dir) => {
     const i = currentSlideIndex.current;
     container.current.style.transition = `all 1s ease`;
-    container.current.style.transform = `translate(-${i * 100}%)`;
+    // container.current.style.transform = `translateX(calc(-${i * 100}% ${
+    //   dir === "next" ? `- ${gap}` : ""
+    // }))`;
+    container.current.style.transform = `translateX(-${i * 100}%)`;
   };
-  
+
   const renderList = () => {
     const list = realSlides;
     return list.map((slide, index) => {
       return (
-        <Slide key={index}>
+        <Slide key={index} gap={gap}>
           {slide.map((item, index) => (
-            <SlideItem key={index}>{item}</SlideItem>
+            <SlideItem
+              gap={gap}
+              autoFit={autoFit}
+              key={index}
+              onClick={onClickItem}
+              itemsPerPeice={itemsPerPeice}
+            >
+              {item}
+            </SlideItem>
           ))}
         </Slide>
       );
@@ -95,11 +116,17 @@ const Carousel = ({ children: items, itemsPerPeice, onClickItem }) => {
   };
   return (
     <CarouselWrapper>
-      <Button prev onClick={() => move("prev")} />
-      <CarouselContainer ref={container} dir={direction.current}>
-        {renderList()}
-      </CarouselContainer>
-      <Button next onClick={() => move("next")} />
+      <Button prev onClick={() => move("prev")}>
+        <HiOutlineChevronLeft />
+      </Button>
+      <CarouselContent>
+        <CarouselContainer gap={gap} ref={container} dir={direction.current}>
+          {renderList()}
+        </CarouselContainer>
+      </CarouselContent>
+      <Button next onClick={() => move("next")}>
+        <HiOutlineChevronRight />
+      </Button>
     </CarouselWrapper>
   );
 };
@@ -119,11 +146,16 @@ const divmod = (a, b) => {
 
 const CarouselWrapper = styled.div`
   background: #b5b5b5;
-  position: relative;
-`;
-
-const CarouselContainer = styled.div`
   display: flex;
+`;
+const CarouselContent = styled.div`
+  width: 90%;
+  overflow: hidden;
+`;
+const CarouselContainer = styled.div`
+  display: inline-flex;
+  width: 100%;
+  padding-right: ${({ gap }) => `${gap}`};
 `;
 const Slide = styled.ul`
   background: #777777;
@@ -131,27 +163,32 @@ const Slide = styled.ul`
   width: 100%;
   flex: 1 0 auto;
   padding: 0;
+  padding-right: ${({ gap }) => `${gap}`};
+  &::first-child {
+  }
 `;
 const SlideItem = styled.li`
   list-style-type: none;
-  width: 100%;
+  ${({ autoFit, itemsPerPeice, gap }) => css`
+    width: ${autoFit ? `calc(100%/${itemsPerPeice})` : "auto"};
+    & + & {
+      margin-left: ${gap};
+    }
+  `}
 `;
 const Button = styled.div`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: orange;
-  top: 50px;
+  flex: 1;
+  z-index: 2;
 
   ${(props) => css`
     ${props.prev &&
     css`
-      left: 10px;
+      left: 10%;
     `}
     ${props.next &&
     css`
-      right: 10px;
+      right: 10%;
     `}
-  `}
+  `};
 `;
 export default Carousel;
