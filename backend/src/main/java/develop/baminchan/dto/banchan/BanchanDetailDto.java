@@ -6,11 +6,11 @@ import static develop.baminchan.dto.util.StringConvertor.convertToSet;
 
 public class BanchanDetailDto {
     private String hash;
-    private DataDto data;
+    private BanchanDetailDataDto data;
 
     public BanchanDetailDto(BanchanDetail banchanDetail) {
         this.hash = banchanDetail.getHash();
-        data = new DataDto.DataDtoBuilder()
+        data = new BanchanDetailDataDto.DataDtoBuilder()
                 .setTop_image(banchanDetail.getData().getTop_image())
                 .setThumb_images(convertToSet(banchanDetail.getData().getThumb_images()))
                 .build();
@@ -20,7 +20,7 @@ public class BanchanDetailDto {
         return hash;
     }
 
-    public DataDto getData() {
+    public BanchanDetailDataDto getData() {
         return data;
     }
 

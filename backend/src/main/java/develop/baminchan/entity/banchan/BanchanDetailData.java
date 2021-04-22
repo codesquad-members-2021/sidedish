@@ -3,12 +3,12 @@ package develop.baminchan.entity.banchan;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Data {
+public class BanchanDetailData {
 
     private String top_image;
     private String thumb_images;
 
-    public Data(String top_image, String thumb_images) {
+    public BanchanDetailData(String top_image, String thumb_images) {
         this.top_image = top_image;
         this.thumb_images = thumb_images;
     }

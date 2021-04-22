@@ -6,26 +6,26 @@ public class BanchanDetail {
     private String hash;
 
     @Embedded.Nullable
-    private Data data;
+    private BanchanDetailData banchanDetailData;
 
-    public BanchanDetail(String hash, Data data) {
+    public BanchanDetail(String hash, BanchanDetailData banchanDetailData) {
         this.hash = hash;
-        this.data = data;
+        this.banchanDetailData = banchanDetailData;
     }
 
     public String getHash() {
         return hash;
     }
 
-    public Data getData() {
-        return data;
+    public BanchanDetailData getData() {
+        return banchanDetailData;
     }
 
     @Override
     public String toString() {
         return "BanchanDetail{" +
                 "hash='" + hash + '\'' +
-                ", data=" + data +
+                ", data=" + banchanDetailData +
                 '}';
     }
 }
