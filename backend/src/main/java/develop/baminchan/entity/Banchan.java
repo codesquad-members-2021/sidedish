@@ -86,8 +86,6 @@ public class Banchan {
         return banchanDetail;
     }
 
-
-
     @Override
     public String toString() {
         return "Banchan{" +

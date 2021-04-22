@@ -24,4 +24,12 @@ public class BanchanDetailDto {
     public Data getData() {
         return data;
     }
+
+    @Override
+    public String toString() {
+        return "BanchanDetailDto{" +
+                "hash='" + hash + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

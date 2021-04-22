@@ -20,5 +20,13 @@ public class BanchanDetail {
     public Data getData() {
         return data;
     }
+
+    @Override
+    public String toString() {
+        return "BanchanDetail{" +
+                "hash='" + hash + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
 
