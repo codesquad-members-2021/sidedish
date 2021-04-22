@@ -15,26 +15,21 @@ class ViewController: UIViewController {
     
     private let menuListViewModel = MenuListViewModel()
     private var subscriptions = Set<AnyCancellable>()
-    var datasource : UICollectionViewDiffableDataSource<section,DishCardCell>!
+    var dataSource : UICollectionViewDiffableDataSource<Dishes,Dish>!
     let colorDictionary = ["이벤트특가" : UIColor.systemGreen, "런칭특가" : UIColor.systemBlue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
         menuListViewModel.requestDishes()
-        datasource = configureDataSource()
+        dataSource = configureDataSource()
 
-        let testCard = DishCardCell.init()
-        let testCard1 = DishCardCell.init()
-        let testCard2 = DishCardCell.init()
-
-        var snapshot = NSDiffableDataSourceSnapshot<section,DishCardCell>()
-        snapshot.appendSections([section.main])
-        snapshot.appendItems([testCard], toSection: section.main)
-        snapshot.appendSections([section.soup])
-        snapshot.appendItems([testCard1], toSection: section.soup)
-        snapshot.appendSections([section.side])
-        snapshot.appendItems([testCard2], toSection: section.side)
+        sleep(3)
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Dishes,Dish>()
+        snapshot.appendSections([menuListViewModel.main[0]])
+        snapshot.appendItems(menuListViewModel.main[0].dishes,
+                             toSection: menuListViewModel.main[0])
 //        for section in section.allCases {
 //            snapshot.appendItems([testCard], toSection: section)
 //        }
@@ -48,7 +43,7 @@ class ViewController: UIViewController {
             
             // Configure header view content based on headerItem
             var configuration = headerView.defaultContentConfiguration()
-            configuration.text = headerItem.rawValue
+            configuration.text = headerItem.name
             
             // Customize header appearance to make it more eye-catching
             configuration.textProperties.font = .boldSystemFont(ofSize: 16)
@@ -100,21 +95,45 @@ class ViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    func configureDataSource() -> UICollectionViewDiffableDataSource<section,DishCardCell> {
-        let dataSource = UICollectionViewDiffableDataSource<section,DishCardCell> (collectionView: dishCollectionView, cellProvider: { collectionView,indexPath,customCell in
+    func createImage(url: String) -> UIImage {
+        guard let imageURL = URL(string: url),
+              let imageData = try? Data(contentsOf: imageURL),
+              let image = UIImage(data: imageData) else
+        {
+            return UIImage()
+        }
+        return image
+    }
+    
+    func configureDataSource() -> UICollectionViewDiffableDataSource<Dishes,Dish> {
+        let dataSource = UICollectionViewDiffableDataSource<Dishes,Dish> (collectionView: dishCollectionView, cellProvider: { collectionView, indexPath, dishData in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCardCell.reuseIdentifier, for: indexPath) as? DishCardCell else {
                 return UICollectionViewCell()
             }
-            sleep(2)
-            cell.title.text = "\(self.menuListViewModel.main[0].dishes[indexPath.row].title)"
+        
+            for subview in cell.eventStackView.arrangedSubviews{
+                cell.eventStackView.removeArrangedSubview(subview)
+            }
             
-            cell.title.numberOfLines = 0
-            cell.body.text = "\(self.menuListViewModel.main[0].dishes[indexPath.row].description)"
+            DispatchQueue.main.async {
+                cell.dishImage.image = self.createImage(url: dishData.image)
+            }
             
-            cell.eventStackView.spacing = 4
-            cell.eventStackView.addArrangedSubview(self.createEventLabel(text: "이벤트특가"))
-            cell.eventStackView.addArrangedSubview(self.createEventLabel(text: "런칭특가"))
+            cell.title.text = "\(dishData.title)"
+            cell.body.text = "\(dishData.description)"
             
+            var badgeArray = dishData.badge.components(separatedBy: ",")
+            
+            for badgeText in badgeArray {
+                let label = self.createEventLabel(text: badgeText)
+                cell.eventStackView.addArrangedSubview(label)
+            }
+            
+            if dishData.sellingPrice != "" {
+                cell.charge.attributedText = (dishData.normalPrice + " " + dishData.sellingPrice).addStroke(target: dishData.normalPrice)
+            } else {
+                cell.charge.text = dishData.normalPrice
+            }
             return cell
         })
         
@@ -139,6 +158,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        
         self.view.makeToast("Toaster 출력 \(recognizer.view)")
     }
     
