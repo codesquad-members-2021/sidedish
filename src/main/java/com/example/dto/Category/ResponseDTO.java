@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 public class ResponseDTO {
 
     @JsonProperty("category_id")
-    private final Long id;
+    private Long id;
 
     @JsonProperty("name")
-    private final String name;
+    private String name;
 
     @JsonProperty("items")
     private List<ItemInfoDto> items = new ArrayList<>();
