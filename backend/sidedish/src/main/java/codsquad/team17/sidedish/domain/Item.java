@@ -17,15 +17,15 @@ public class Item {
 
     private BigDecimal sPrice;
     private int stock;
-    private Long dishCategoryId;
 
+    private Long dishCategoryId;
     private Long bestCategoryId;
-    private Long imageId;
+
 
     public Item() {
     }
 
-    public Item(Long itemId, String title, String discription, String badge, BigDecimal nPrice, BigDecimal sPrice, int stock, Long dishCategoryId, Long bestCategoryId, Long imageId) {
+    public Item(Long itemId, String title, String discription, String badge, BigDecimal nPrice, BigDecimal sPrice, int stock, Long dishCategoryId, Long bestCategoryId) {
         this.itemId = itemId;
         this.title = title;
         this.discription = discription;
@@ -35,7 +35,5 @@ public class Item {
         this.stock = stock;
         this.dishCategoryId = dishCategoryId;
         this.bestCategoryId = bestCategoryId;
-        this.imageId = imageId;
     }
-
 }

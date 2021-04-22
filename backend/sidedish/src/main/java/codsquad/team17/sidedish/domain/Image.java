@@ -7,12 +7,14 @@ public class Image {
     @Id
     private Long imageId;
     private String url;
+    private Long itemId;
 
     public Image() {
     }
 
-    public Image(Long imageId, String url) {
+    public Image(Long imageId, String url, Long itemId) {
         this.imageId = imageId;
         this.url = url;
+        this.itemId = itemId;
     }
 }
