@@ -9,7 +9,7 @@ import Foundation
 
 class Menus {
     
-    private var menus: [Menu]!
+    private var menus: [Menu]?
     
     init() {
         self.menus = nil
@@ -19,7 +19,7 @@ class Menus {
         self.menus = menuList
     }
     
-    func giveMenu() -> [Menu] {
+    func giveMenu() -> [Menu]? {
         return self.menus
     }
 }

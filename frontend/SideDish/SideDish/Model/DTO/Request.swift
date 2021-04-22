@@ -9,15 +9,14 @@ import Foundation
 
 class RequestManager {
     
-    static let urlString = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
     //GET
-    static func getRequest() -> URLRequest {
-        guard let url = URL(string: urlString) else {
-            print("The URL is inappropriate.")
-            return URLRequest(url: URL(string: "")!)
-        }
-        return URLRequest(url: url)
-    }
-    
+//    static func getRequest(urlString: url) -> URLRequest {
+//        guard let url = URL(string: urlString.rawValue) else {
+//            print("The URL is inappropriate.")
+//            return URLRequest(url: URL(string: "")!)
+//        }
+//        return URLRequest(url: url)
+//    }
+//    
     
 }

@@ -23,6 +23,9 @@
                             <state key="normal" title="모두가 좋아하는 든든한 메인요리">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="buttonPressed:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="OSc-iq-LqO"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -11,8 +11,18 @@ class DataTaskManager {
     
     static let session = URLSession(configuration: .default)
     
-    static func get(completion: @escaping (Result<getMenu, Error>) -> Void) {
-        session.dataTask(with: RequestManager.getRequest()) { data, response, error in
+    enum url: String {
+        case main = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
+        case soup = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/soup"
+        case side = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
+    }
+    
+    static func get(url: url ,completion: @escaping (Result<getMenu, Error>) -> Void) {
+        guard let url = URL(string: url.rawValue) else {
+            print("The URL is inappropriate.")
+            return
+        }
+        session.dataTask(with: url){ data, response, error in
             if let data = data {
                 guard let menuList = ParsingManager.decodeData(type: getMenu.self, data: data) else { print("d"); return }
                 completion(.success(menuList))

@@ -14,4 +14,6 @@ class HeaderView: UICollectionReusableView {
     func configureButtonName(text: String) {
         self.headerButton.setTitle(text, for: .normal)
     }
+    @IBAction func buttonPressed(_ sender: Any) {
+    }
 }

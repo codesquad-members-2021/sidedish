@@ -12,14 +12,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
     
     private var dataSource = MainDiffableDataSource()
-    private var menus = Menus()
+    private var mainMenus = Menus()
+    private var soupMenus = Menus()
+    private var sideMenus = Menus()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureCollectionView()
-        loadCard()
+        loadMain()
+        loadSoup()
+        loadSide()
     }
     
     private func configureCollectionView() {
@@ -33,12 +37,40 @@ class ViewController: UIViewController {
         self.dataSource.setupDataSource(collectionView: self.sideDishCollectionView)
     }
     
-    private func loadCard() {
-        DataTaskManager.get(completion: { (result) in
+    private func loadMain() {
+        DataTaskManager.get(url: .main, completion: { (result) in
             DispatchQueue.global().async {
                 switch result {
                 case .success(let data):
-                    self.menus.add(menuList: data.body)
+                    self.mainMenus.add(menuList: data.body)
+                    self.putData()
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
+    }
+    
+    private func loadSoup() {
+        DataTaskManager.get(url: .soup, completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                    self.soupMenus.add(menuList: data.body)
+                    self.putData()
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        })
+    }
+    
+    private func loadSide() {
+        DataTaskManager.get(url: .side, completion: { (result) in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let data):
+                    self.sideMenus.add(menuList: data.body)
                     self.putData()
                 case.failure(let error):
                     print(error.localizedDescription)
@@ -48,7 +80,8 @@ class ViewController: UIViewController {
     }
     
     private func putData() {
-        self.dataSource.applySnapshot(data: menus.giveMenu())
+        guard let main = mainMenus.giveMenu(), let soup = soupMenus.giveMenu(), let side = sideMenus.giveMenu() else { return }
+        self.dataSource.applySnapshot(main: main, soup: soup, side: side)
     }
 
 }

@@ -24,11 +24,14 @@ class MainDiffableDataSource {
         self.dataSource.supplementaryViewProvider = setupHeader(collectionView: kind: indexPath:)
     }
     
-    func applySnapshot(data: [Menu]) {
-        let menus = data
+    func applySnapshot(main: [Menu], soup: [Menu], side: [Menu]) {
         var snapshot = NSDiffableDataSourceSnapshot<sectionTitle, Menu>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(menus, toSection: .main)
+        snapshot.appendItems(main, toSection: .main)
+        snapshot.appendSections([.soup])
+        snapshot.appendItems(soup, toSection: .soup)
+        snapshot.appendSections([.side])
+        snapshot.appendItems(side, toSection: .side)
 
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
