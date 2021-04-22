@@ -3,13 +3,17 @@ import styled from 'styled-components'
 
 const StyledPreview = styled.div`
   flex: 0 0 47%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   padding: 16px;
 `;
 
 const SelectedImg = styled.img`
   width: 100%;
-  height: 203px;
+  height: 297px;
+  margin-bottom: 3px;
   border-radius: 5px;
 `;
 
@@ -38,7 +42,7 @@ const ImgListItem = styled.li`
   }
 
   &.select > img {
-    border: 1.5px solid #82D32D;
+    border: 2px solid #82D32D;
   }
 
   &:hover {

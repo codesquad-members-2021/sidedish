@@ -6,6 +6,7 @@ const StyledEventSpecialBadge = styled.div`
   justify-content: center;
   width: ${props => props.width ?? "97px"};
   height: ${props => props.height ?? "28px"};
+  font-size: 14px;
   font-weight: 800;
   color: #FFFFFF;
   background-color: #82D32D;
