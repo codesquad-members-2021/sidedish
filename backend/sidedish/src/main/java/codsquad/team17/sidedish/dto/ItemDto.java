@@ -19,4 +19,36 @@ public class ItemDto {
     public ItemDto(){
 
     }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getN_price() {
+        return n_price;
+    }
+
+    public BigDecimal getS_price() {
+        return s_price;
+    }
+
+    public List<String> getBadge() {
+        return badge;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public Long getDishCategoryId() {
+        return dishCategoryId;
+    }
 }

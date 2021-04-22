@@ -16,4 +16,12 @@ public class BestCategory {
         this.bestCategoryId = bestCategoryId;
         this.bestCategoryName = bestCategoryName;
     }
+
+    public Long getBestCategoryId() {
+        return bestCategoryId;
+    }
+
+    public String getBestCategoryName() {
+        return bestCategoryName;
+    }
 }

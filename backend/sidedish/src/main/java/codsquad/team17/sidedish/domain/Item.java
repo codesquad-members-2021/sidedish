@@ -36,4 +36,40 @@ public class Item {
         this.dishCategoryId = dishCategoryId;
         this.bestCategoryId = bestCategoryId;
     }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getBadge() {
+        return badge;
+    }
+
+    public BigDecimal getnPrice() {
+        return nPrice;
+    }
+
+    public BigDecimal getsPrice() {
+        return sPrice;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public Long getDishCategoryId() {
+        return dishCategoryId;
+    }
+
+    public Long getBestCategoryId() {
+        return bestCategoryId;
+    }
 }

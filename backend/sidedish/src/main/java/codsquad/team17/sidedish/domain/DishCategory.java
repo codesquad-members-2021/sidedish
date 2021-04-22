@@ -15,4 +15,12 @@ public class DishCategory {
         this.dishCategoryId = dishCategoryId;
         this.dishCategoryName = dishCategoryName;
     }
+
+    public Long getDishCategoryId() {
+        return dishCategoryId;
+    }
+
+    public String getDishCategoryName() {
+        return dishCategoryName;
+    }
 }

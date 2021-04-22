@@ -16,4 +16,16 @@ public class BestCategoryDto {
         this.bestCategoryName = bestCategoryName;
         this.items = items;
     }
+
+    public Long getBestCategoryId() {
+        return bestCategoryId;
+    }
+
+    public String getBestCategoryName() {
+        return bestCategoryName;
+    }
+
+    public List<ItemDto> getItems() {
+        return items;
+    }
 }
