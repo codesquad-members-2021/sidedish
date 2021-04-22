@@ -1,4 +1,6 @@
 INSERT INTO `section`(id, `name`) VALUES (1, 'main');
+INSERT INTO `section`(id, `name`) VALUES (2, 'soup');
+INSERT INTO `section`(id, `name`) VALUES (3, 'side');
 INSERT INTO `category`(id, `name`) VALUES (1, 'best');
 INSERT INTO `item`(id, section, category, alt, top_image, title, description, n_price, s_price, delivery_fee, stock) VALUES (1, 1, 1, 'alt', 'url', 'title', 'description', 10000, 10000, 2500, 3);
 INSERT INTO `detail_section`(item, item_key, url) VALUES (1, 0, 'url1');
