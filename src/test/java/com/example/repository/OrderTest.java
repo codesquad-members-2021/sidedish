@@ -5,6 +5,7 @@ import com.example.domain.Item;
 import com.example.domain.Order;
 import com.example.domain.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,10 +38,11 @@ class OrderTest {
     }
 
     @Test
+    @DisplayName("USER 가 Order 에 Item 을 추가한다.")
     void orderTest() {
 
         User user = User.of("1232@naver.com","12345");
-        final List<Item> items = categoryRepository.findById(1L).get().getItems();
+        final List<Item> items = categoryRepository.findAll().get(0).getItems();
         final Item item = items.get(0);
         System.out.println(item.getId());
         Order order = Order.of(1, item.getId());
