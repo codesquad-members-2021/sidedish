@@ -1,8 +1,9 @@
-import TestCarousel from "./js/util/TestCarousel";
+import Main from "./js/components/Main"
+
 function App() {
   return (
     <>
-      <TestCarousel />
+      <Main />
     </>
   );
 }

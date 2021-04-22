@@ -5,7 +5,6 @@ const BadgeWrapper = styled.ul`
 	flex-direction: row;
 	align-items: flex-start;
 	padding: 0px;
-
 	position: static;
 `;
 
@@ -27,7 +26,7 @@ const Tag = styled.li`
 	font-size: 14px;
 	line-height: 20px;
 
-	color: #ffffff;
+	color: #fff;
     
     margin-right:8px;
 `;
