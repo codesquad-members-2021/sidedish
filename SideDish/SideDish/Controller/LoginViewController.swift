@@ -18,24 +18,6 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let callbackUrlScheme = "codeissue"
-        var url = config.authenticate()?.appending([URLQueryItem(name: "redirect_uri", value: "codeissue://tracker")])
-        
-        webAuthSession = ASWebAuthenticationSession.init(url: url!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
-            
-            // handle auth response
-            guard error == nil, let successURL = callBack else {
-                return
-            }
-            
-            self.config.handleOpenURL(url: successURL) { config in
-                self.loadCurrentUser(config: config) // purely optional of course
-            }
-        })
-        
-        // Kick it off
-        webAuthSession?.presentationContextProvider = self
-        webAuthSession?.start() 
     }
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
@@ -52,7 +34,6 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
                     home?.modalPresentationStyle = .fullScreen
                     self.present(home!, animated: true, completion: nil)
                 }
-//                print(user.login, user.email, user.name)
             case .failure(let error):
               print(error)
             }
@@ -60,22 +41,25 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
         }
     
     @IBAction func access(_ sender: UIButton) {
+        let callbackUrlScheme = "codeissue"
+        let url = config.authenticate()?.appending([URLQueryItem(name: "redirect_uri", value: "codeissue://tracker")])
+        
+        webAuthSession = ASWebAuthenticationSession.init(url: url!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
+            guard error == nil, let successURL = callBack else { return }
+            self.config.handleOpenURL(url: successURL) { config in
+                self.loadCurrentUser(config: config)
+            }
+        })
+        webAuthSession?.presentationContextProvider = self
+        webAuthSession?.start()
     }
     
 }
 
 extension URL {
-    /// Returns a new URL by adding the query items, or nil if the URL doesn't support it.
-    /// URL must conform to RFC 3986.
     func appending(_ queryItems: [URLQueryItem]) -> URL? {
-        guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true) else {
-            // URL is not conforming to RFC 3986 (maybe it is only conforming to RFC 1808, RFC 1738, and RFC 2732)
-            return nil
-        }
-        // append the query items to the existing ones
+        guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true) else { return nil }
         urlComponents.queryItems = (urlComponents.queryItems ?? []) + queryItems
-
-        // return the url from new url components
         return urlComponents.url
     }
 }
