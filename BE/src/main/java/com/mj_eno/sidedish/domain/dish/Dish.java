@@ -18,7 +18,20 @@ public class Dish {
     String deliveryInfo;
     String deliveryFee;
     int menuCategoryId;
-    int bestMenuCategoryId;
+    Integer bestMenuCategoryId;
+
+    public Dish(String hash, int stock) {
+        this.hash = hash;
+        this.stock = stock;
+    }
+
+    public void order(Dish dish) {
+        this.stock -= dish.stock;
+    }
+
+    public boolean orderCheck(Dish dish) {
+        return (stock - dish.stock) >= 0;
+    }
 
     public Long getId() {
         return id;
@@ -74,5 +87,15 @@ public class Dish {
 
     public int getBestMenuCategoryId() {
         return bestMenuCategoryId;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", menuCategoryId=" + menuCategoryId +
+                ", bestMenuCategoryId=" + bestMenuCategoryId +
+                '}';
     }
 }
