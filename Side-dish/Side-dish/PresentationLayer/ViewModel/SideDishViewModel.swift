@@ -11,14 +11,14 @@ import Combine
 class SideDishViewModel {
     
     private let sideDishUseCase: SideDishProtocol
-    private var sidedishManager : SideDishManager
+    private var sideDishManager: SideDishManager
     private var cancellable = Set<AnyCancellable>()
     
     @Published var errorMessage = ""
     
     init(sideDishUseCase: SideDishProtocol) {
         self.sideDishUseCase = sideDishUseCase
-        self.sidedishManager = SideDishManager()
+        self.sideDishManager = SideDishManager()
         request()
     }
     
@@ -30,7 +30,7 @@ class SideDishViewModel {
                         self.errorMessage = error.message
                     }
                 } receiveValue: { (SideDishes) in
-                    self.sidedishManager.insert(path: path, items: SideDishes.body)
+                    self.sideDishManager.insert(path: path, items: SideDishes.body)
                 }.store(in: &cancellable)
         }
     }
@@ -41,12 +41,16 @@ class SideDishViewModel {
             .map{ ($0.userInfo?["path"] as! Path) }
             .sink { path in
                 completion((path,
-                            self.sidedishManager.getSideDishes(with: path)))
+                            self.sideDishManager.getSideDishes(with: path)))
             }.store(in: &cancellable)
     }
     
     func didFetchHeaderRowCount(with path: Path) -> Int {
-        return sidedishManager.getRowCount(path: path)
+        return sideDishManager.getRowCount(path: path)
+    }
+    
+    func didFetchItemDatailHash(with path: Path, sequence: Int) -> String {
+        return sideDishManager.getItemDetailHash(with: path, sequence: sequence)
     }
     
     func except(completion: @escaping ((String) ->())) {
@@ -57,3 +61,4 @@ class SideDishViewModel {
         }.store(in: &cancellable)
     }
 }
+
