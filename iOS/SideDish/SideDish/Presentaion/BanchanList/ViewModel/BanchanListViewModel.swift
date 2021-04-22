@@ -23,6 +23,10 @@ class BanchanListViewModel {
         fetchMenu()
     }
     
+    func count(section: Section) -> Int {
+        return menu[section]?.count ?? 0
+    }
+    
     func fetchMenu() {
         FetchBanchanListUseCase.fetchBanchanList(network: network, section: "main", completion: { banchans in
             guard let banchans = banchans else { return }

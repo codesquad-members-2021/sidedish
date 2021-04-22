@@ -23,7 +23,7 @@ class BanchanListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        applySnapshot(animatingDifferences: true)
+        applySnapshot(animatingDifferences: false)
         banchanCollectionView.dataSource = self.dataSource
         banchanCollectionView.delegate = self
         bind()
@@ -54,18 +54,22 @@ extension BanchanListViewController {
             cell.banchan = banchan
             return cell
         }
+        
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+            
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+    
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BanchanCustomCellHeader.identifier, for: indexPath) as? BanchanCustomCellHeader else { return nil }
+            
             view.titleLabel.text = section.rawValue
+            view.cellCount = self.viewModel.count(section: section)
             return view
             
         }
         return dataSource
     }
     
-    @objc
     func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         
