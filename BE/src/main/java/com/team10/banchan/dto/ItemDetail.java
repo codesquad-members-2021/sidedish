@@ -57,7 +57,7 @@ public class ItemDetail {
         return thumbImages;
     }
 
-    @JsonProperty("product_description")
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }

@@ -1,6 +1,6 @@
 package com.team10.banchan.model;
 
-public class DeliveryType {
+public class DeliveryType implements Comparable<DeliveryType> {
 
     private final DeliveryTypeEnum deliveryTypeName;
 
@@ -25,8 +25,8 @@ public class DeliveryType {
     }
 
     enum DeliveryTypeEnum {
-        NATIONWIDE("전국택배", "전국택배 (제주 및 도서산간 불가)"),
-        DAWN("새벽배송", "서울 경기 새벽배송");
+        DAWN("새벽배송", "서울 경기 새벽배송"),
+        NATIONWIDE("전국택배", "전국택배 (제주 및 도서산간 불가)");
 
         private final String name;
         private final String detail;
@@ -35,6 +35,11 @@ public class DeliveryType {
             this.name = name;
             this.detail = detail;
         }
+    }
+
+    @Override
+    public int compareTo(DeliveryType o) {
+        return deliveryTypeName.compareTo(o.deliveryTypeName);
     }
 
 }

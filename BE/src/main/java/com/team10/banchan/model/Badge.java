@@ -1,6 +1,6 @@
 package com.team10.banchan.model;
 
-public class Badge {
+public class Badge implements Comparable<Badge> {
 
     private final BadgeType badgeType;
 
@@ -29,6 +29,11 @@ public class Badge {
         BadgeType(String name) {
             this.name = name;
         }
+    }
+
+    @Override
+    public int compareTo(Badge o) {
+        return this.badgeType.compareTo(o.badgeType);
     }
 }
 

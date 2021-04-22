@@ -3,7 +3,6 @@ package com.team10.banchan.controller;
 import com.team10.banchan.dto.ItemDetailResponse;
 import com.team10.banchan.response.ResponseBody;
 import com.team10.banchan.service.ItemDetailService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
