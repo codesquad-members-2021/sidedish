@@ -1,13 +1,12 @@
 package com.mj_eno.sidedish.web.dto;
 
-import com.mj_eno.sidedish.domain.badge.Badge;
 import com.mj_eno.sidedish.domain.dish.Dish;
 
 import java.util.List;
 
-public class MainDishResponseDTO {
+public class DishResponseDTO {
 
-    String hash;
+    String detailHash;
     String image;
     String alt;
     String deliveryType;
@@ -17,8 +16,8 @@ public class MainDishResponseDTO {
     int sPrice;
     List<String> badges;
 
-    public MainDishResponseDTO(Dish dish, String image, List<String> badges) {
-        this.hash = dish.getHash();
+    public DishResponseDTO(Dish dish, String image, List<String> badges) {
+        this.detailHash = dish.getHash();
         this.image = image;
         this.alt = dish.getAlt();
         this.deliveryType = dish.getDeliveryType();
@@ -29,8 +28,8 @@ public class MainDishResponseDTO {
         this.badges = badges;
     }
 
-    public String getHash() {
-        return hash;
+    public String getDetailHash() {
+        return detailHash;
     }
 
     public String getImage() {
