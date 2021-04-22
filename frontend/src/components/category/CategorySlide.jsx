@@ -2,13 +2,21 @@ import styled from "styled-components";
 import ItemCard from "../ItemCard";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import useFetch from "../useFetch";
-
+const CategoryWrapper = styled.div`
+  display: flex;
+  overflow: hidden;
+`;
 const CategoryColumn = styled.div`
   width: 1280px;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
+  padding: 0px;
+  display: flex;
+  overflow: hidden;
+  div {
+    margin-left: 16px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
 `;
 const CategorySlideBlock = styled.div`
   display: flex;
@@ -40,12 +48,14 @@ function CategorySlide() {
       <ButtonLeft>
         <VscChevronLeft />
       </ButtonLeft>
-      <CategoryColumn>
-        {!loadingState &&
-          resData.map((data, idx) => (
-            <ItemCard key={idx} data={data} size={"S"} />
-          ))}
-      </CategoryColumn>
+      <CategoryWrapper>
+        <CategoryColumn>
+          {!loadingState &&
+            resData.map((data, idx) => (
+              <ItemCard key={idx} data={data} size={"S"} />
+            ))}
+        </CategoryColumn>
+      </CategoryWrapper>
       <ButtonRight>
         <VscChevronRight />
       </ButtonRight>

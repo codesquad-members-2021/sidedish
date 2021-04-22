@@ -3,7 +3,7 @@ import { theme, Title } from "../Theme";
 import ItemCard from "../ItemCard";
 import { AlignTextCenter } from "../Theme";
 import useFetch from "../useFetch";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const MainWrapper = styled.div`
   margin-top: 40px;
@@ -46,7 +46,6 @@ function MainMenu() {
   //5개: 탭 전체 데이터 요청
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
   const bestDishData = bestDishMenu.body;
-
   const [clickedID, setClickedID] = useState("17011200");
 
   //초기 베스트메뉴 url 설정
@@ -55,15 +54,10 @@ function MainMenu() {
   const [initData, loadingState] = useFetch(fetchData);
   mokData = initData.items;
 
-  const clickedTab = useRef();
-
   //클릭한 후 해당 탭 데이터 요청
   const handleClick = (target, id) => {
     setClickedID(id);
     setFetchData(basicUrl + id);
-    console.log(clickedTab);
-    clickedTab.current.classList.remove("focused");
-    target.classList.add("foucused");
   };
 
   return (
@@ -77,7 +71,6 @@ function MainMenu() {
               clickedID={clickedID}
               id={data.category_id}
               key={idx}
-              ref={clickedTab}
             >
               {data.name}
             </Tab>

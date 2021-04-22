@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { Title } from "../Theme";
 import CategorySlide from "./CategorySlide";
-const CategoryListBlock = styled.div`
+const TitleWrapper = styled.div`
   margin: 0 40px;
 `;
 
 function CategoryList({ title }) {
   return (
-    <CategoryListBlock>
-      <Title>{title}</Title>
+    <>
+      <TitleWrapper>
+        <Title>{title}</Title>
+      </TitleWrapper>
       <CategorySlide />
-    </CategoryListBlock>
+    </>
   );
 }
 

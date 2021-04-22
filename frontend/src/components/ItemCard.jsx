@@ -72,7 +72,7 @@ const DeliveryBlock = styled.div`
 const imgPosition = {
   position: "relative",
   top: "-7px",
-  left: "-7px",
+  left: "2px",
 };
 function ItemCard({ data, size }) {
   return (
