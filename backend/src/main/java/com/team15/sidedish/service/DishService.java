@@ -2,6 +2,7 @@ package com.team15.sidedish.service;
 
 import com.team15.sidedish.domain.Dish;
 import com.team15.sidedish.domain.DishRepository;
+import com.team15.sidedish.dto.ItemDTO;
 import org.springframework.stereotype.Service;
 
 import java.security.PublicKey;
@@ -15,14 +16,12 @@ public class DishService {
         this.dishRepository = dishRepository;
     }
 
-    public List<Dish> showDishes() {
-        List<Dish> dishes = (List<Dish>) dishRepository.findAll();
-        return dishes;
+    public List<ItemDTO> showDishes() {
+        return dishRepository.findAll();
     }
 
-    public Dish showSingleDish(String hash) {
-        Dish dish = dishRepository.findById(hash).get();
-        return dish;
+    public ItemDTO showSingleDish(String hash) {
+        return dishRepository.findById(hash).orElseThrow(IllegalArgumentException::new);
     }
 
 //    public List<Dish> showDishesBySectionName(String sectionName) {

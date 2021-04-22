@@ -1,6 +1,6 @@
 package com.team15.sidedish.controller;
 
-import com.team15.sidedish.domain.Dish;
+import com.team15.sidedish.dto.ItemDTO;
 import com.team15.sidedish.service.DishService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,13 +20,13 @@ public class DishController {
     }
 
     @GetMapping("/dishes")
-    public List<Dish> showDishByHash() {
+    public List<ItemDTO> showDishByHash() {
         logger.info("Test show dishes");
         return dishService.showDishes();
     }
 
     @GetMapping("/dish/{hash}")
-    public Dish showSingleDish(@PathVariable String hash) {
+    public ItemDTO showSingleDish(@PathVariable String hash) {
         logger.info("Show single dish by hash");
         return dishService.showSingleDish(hash);
 

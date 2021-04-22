@@ -8,9 +8,9 @@ public class BestResponseDTO {
 
     private Integer categoryId;
     private String name;
-    private Set<DishDTO> dishes;
+    private Set<ItemDTO> dishes;
 
-    public BestResponseDTO(Integer categoryId, String name, Set<DishDTO> dishes){
+    public BestResponseDTO(Integer categoryId, String name, Set<ItemDTO> dishes) {
         this.categoryId = categoryId;
         this.name = name;
         this.dishes = dishes;
@@ -25,7 +25,7 @@ public class BestResponseDTO {
         return name;
     }
 
-    public Set<DishDTO> getDishes() {
+    public Set<ItemDTO> getDishes() {
         return dishes;
     }
 
