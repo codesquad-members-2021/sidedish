@@ -19,6 +19,7 @@
 		1ECD5F6D262F3C1700DC56C0 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F6C262F3C1700DC56C0 /* Dish.swift */; };
 		1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */; };
 		1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */; };
+		B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E6E262EA29200D5EBEC /* DishCardCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		1ECD5F6C262F3C1700DC56C0 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListUseCase.swift; sourceTree = "<group>"; };
 		1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
+		1E1DBADF262DDDFD0050FE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		B0911E6E262EA29200D5EBEC /* DishCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */,
+				B0911E6E262EA29200D5EBEC /* DishCardCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +278,7 @@
 				1E1DBAD2262DDDFC0050FE6C /* AppDelegate.swift in Sources */,
 				1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */,
 				1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */,
+				B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
 				1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */,
 			);
