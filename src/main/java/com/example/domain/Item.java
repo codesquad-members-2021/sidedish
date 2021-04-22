@@ -2,13 +2,9 @@ package com.example.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Table(value = "ITEM")
@@ -71,6 +67,10 @@ public class Item {
 
     public String getImage() {
         return image;
+    }
+
+    public int getStock() {
+        return stock;
     }
 
 }
