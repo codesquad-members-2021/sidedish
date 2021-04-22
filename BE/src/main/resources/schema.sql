@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS item (
     `id`  BIGINT AUTO_INCREMENT PRIMARY KEY,
     `section` BIGINT,
     `category` BIGINT,
+    `image` VARCHAR (255),
     `alt` VARCHAR(50),
     `top_image` VARCHAR(255),
     `title` VARCHAR(50),

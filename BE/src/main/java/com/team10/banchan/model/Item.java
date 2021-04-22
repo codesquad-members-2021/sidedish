@@ -19,7 +19,7 @@ public class Item {
     private final Long category;
 
     @Embedded.Nullable
-    private final TopImage topImage;
+    private final ItemImages itemImages;
 
     @Embedded.Nullable
     private final Description description;
@@ -36,7 +36,7 @@ public class Item {
     private final Set<DeliveryDay> deliveryDays;
 
     Item(Long id, Long section, Long category,
-         TopImage topImage,
+         ItemImages itemImages,
          Description description,
          Prices prices,
          Integer stock,
@@ -45,7 +45,7 @@ public class Item {
         this.id = id;
         this.section = section;
         this.category = category;
-        this.topImage = topImage;
+        this.itemImages = itemImages;
         this.description = description;
         this.prices = prices;
         this.stock = stock;
@@ -57,11 +57,11 @@ public class Item {
     }
 
     public static Item newItem(Long section, Long category,
-                               TopImage topImage, Description description,
+                               ItemImages itemImages, Description description,
                                Prices prices,
                                Integer stock) {
         return new Item(null, section, category,
-                topImage,
+                itemImages,
                 description,
                 prices,
                 stock,
@@ -94,7 +94,7 @@ public class Item {
 
     public ItemDetail itemDetail() {
         return ItemDetail.of(
-                topImage.getUrl(),
+                itemImages.getTopImage(),
                 thumbImagesUrl(),
                 description.getTitle(),
                 description.getDescription(),
@@ -112,8 +112,8 @@ public class Item {
     public ItemSummary itemSummary() {
         return ItemSummary.of(
                 id,
-                topImage.getUrl(),
-                topImage.getAlt(),
+                itemImages.getImage(),
+                itemImages.getAlt(),
                 deliveryType(),
                 description.getTitle(),
                 description.getDescription(),
