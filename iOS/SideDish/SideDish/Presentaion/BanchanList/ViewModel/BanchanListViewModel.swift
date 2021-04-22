@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class BanchanListViewModel {
     enum Section: String, CaseIterable {
@@ -14,11 +15,7 @@ class BanchanListViewModel {
         case main = "모두가 좋아하는 든든한 메인요리"
     }
     
-    var menu: Dictionary<Section, [Banchan]> {
-        didSet {
-            NotificationCenter.default.post(name: Notification.Name("updateMenu"), object: self)
-        }
-    }
+    @Published var menu: Dictionary<Section, [Banchan]>
     var network = NetworkSerivce.shared
     
     init() {

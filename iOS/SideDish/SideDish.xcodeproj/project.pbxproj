@@ -225,6 +225,7 @@
 		D4BFBB1E262EA7A100D68297 /* BanchanList */ = {
 			isa = PBXGroup;
 			children = (
+				D4BFBB20262EA7B600D68297 /* View */,
 				D4BFBB21262EA7BC00D68297 /* ViewModel */,
 			);
 			path = BanchanList;
@@ -256,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				FFEF7122263119C500189376 /* BanchanListViewModel.swift */,
-				D4BFBB20262EA7B600D68297 /* View */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
