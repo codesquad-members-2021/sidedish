@@ -16,12 +16,14 @@ public class ItemController {
     }
 
     @GetMapping
-    public Item getDetailItem(@PathVariable Long categor    yId, @PathVariable String hash) {//ItemDTO로 수정
+    public Item getDetailItem(@PathVariable Long categoryId, @PathVariable String hash) {//ItemDTO로 수정
         return categoryService.findItemByHash(categoryId, hash);
     }
 
     @PostMapping
     public String order(@PathVariable Long categoryId, @PathVariable String hash, Order order) {
         categoryService.order(categoryId, hash, order);
+        return null;
     }
+
 }

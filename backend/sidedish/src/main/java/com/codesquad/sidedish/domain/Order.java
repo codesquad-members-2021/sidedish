@@ -11,7 +11,7 @@ public class Order {
     private String detailHash;
     private int count;
 
-    private Order(Long orderId, String email, String detailHash, int count) {
+    public Order(Long orderId, String email, String detailHash, int count) {
         this.orderId = orderId;
         this.email = email;
         this.detailHash = detailHash;

@@ -25,15 +25,14 @@ public class Item {
     private String productDescription;
     private Integer point;
     private String deliveryInfo;
-    private Integer deliveryFee;
+    private String deliveryFee;
     private List<Integer> prices;//x
     private List<String> detailSection;
-
     private int stock;
 
-    Item(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice,
+    public Item(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice,
          Integer salePrice, List<String> badge, String topImage, List<String> thumbImages, String productDescription, Integer point,
-         String deliveryInfo, Integer deliveryFee, List<Integer> prices, List<String> detailSection, int stock) {
+         String deliveryInfo, String deliveryFee, List<Integer> prices, List<String> detailSection, int stock) {
         this.detailHash = detailHash;
         this.image = image;
         this.alt = alt;
@@ -71,5 +70,6 @@ public class Item {
         return new DetailItemDto(item.detailHash, item.topImage, item.thumbImages, item.productDescription,
                 item.point, item.deliveryInfo, item.deliveryFee, item.prices, item.detailSection);
     }
+
 
 }

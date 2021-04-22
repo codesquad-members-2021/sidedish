@@ -1,9 +1,12 @@
 package com.codesquad.sidedish.domain;
 
+import com.codesquad.sidedish.dto.CategoryDto;
+import com.codesquad.sidedish.dto.ItemDto;
 import org.springframework.data.annotation.Id;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Category {
 
@@ -19,16 +22,9 @@ public class Category {
         this.items = items;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Set<Item> getItems() {
-        return items;
+    public static CategoryDto createCategoryDto(Category category) {
+        Set<ItemDto> itemDtos = category.items.stream().map(item -> Item.createItemDto(item)).collect(Collectors.toSet());
+        return new CategoryDto(category.categoryId, category.name, itemDtos);
     }
 
     public Item getItem(String hash) {
@@ -37,4 +33,5 @@ public class Category {
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
+
 }

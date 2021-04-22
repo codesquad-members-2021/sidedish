@@ -1,16 +1,19 @@
 package com.codesquad.sidedish.dto;
 
-import com.codesquad.sidedish.domain.Category;
-import com.codesquad.sidedish.domain.Item;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class CategoryDto {
 
+    @JsonProperty
     private Long categoryId;
+
+    @JsonProperty
     private String name;
+
+    @JsonProperty
     private Set<ItemDto> items = new HashSet<>();
 
     public CategoryDto(Long categoryId, String name, Set<ItemDto> items) {
@@ -19,21 +22,5 @@ public class CategoryDto {
         this.items = items;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Set<ItemDto> getItems() {
-        return items;
-    }
-
-    public static CategoryDto of(Category category) {
-        Set<ItemDto> itemDtos = category.getItems().stream().map(item -> Item.createItemDto(item)).collect(Collectors.toSet());
-        return new CategoryDto(category.getCategoryId(), category.getName(), itemDtos);
-    }
 
 }

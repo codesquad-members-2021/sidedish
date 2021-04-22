@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.service;
 
+import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Item;
 import com.codesquad.sidedish.domain.Order;
 import com.codesquad.sidedish.dto.CategoryDto;
@@ -19,7 +20,7 @@ public class CategoryService {
     }
 
     public List<CategoryDto> findAll() {
-         return categoryRepository.findAll().stream().map(category -> CategoryDto.of(category)).collect(Collectors.toList());
+         return categoryRepository.findAll().stream().map(category -> Category.createCategoryDto(category)).collect(Collectors.toList());
     }
 
     public Item findItemByHash(Long categoryId, String hash) {
@@ -31,7 +32,7 @@ public class CategoryService {
         if(item.getStock() < order.getCount()) {
             //error
         }
-
+        return null;
     }
 
 }
