@@ -26,9 +26,19 @@ public class ItemController {
 
     }
 
-    @GetMapping("/{section}")
-    public List<ItemDTO> showDishsBySection(@PathVariable String section){
-        return itemService.showDishsBySection(section);
+    @GetMapping("/main")
+    public List<ItemDTO> showMainDishes(){
+        return itemService.showDishsBySection("main");
+    }
+
+    @GetMapping("/soup")
+    public List<ItemDTO> showSoupDishes(){
+        return itemService.showDishsBySection("soup");
+    }
+
+    @GetMapping("/side")
+    public List<ItemDTO> showSideDishes(){
+        return itemService.showDishsBySection("side");
     }
 
 }
