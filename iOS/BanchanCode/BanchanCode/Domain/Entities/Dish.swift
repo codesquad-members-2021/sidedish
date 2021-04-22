@@ -17,6 +17,22 @@ struct Dish {
 }
 
 struct DishList {
-    let category: String
+    enum Category {
+        case main
+        case soup
+        case side
+        
+        func getSectionTitle() -> String {
+            switch self {
+            case .main:
+                return "모두가 좋아하는 든든한 메인요리"
+            case .soup:
+                return "정성이 담긴 뜨끈뜨끈 국물요리"
+            case .side:
+                return "식탁을 풍성하게 하는 정갈한 밑반찬"
+            }
+        }
+    }
+    let category: Category
     let dishes: [Dish]
 }
