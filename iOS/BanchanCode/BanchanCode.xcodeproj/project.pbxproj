@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E46342E5263117BD0001D87A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E4263117BD0001D87A /* MockData.swift */; };
+		E46342EA2631199B0001D87A /* DishesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46342E92631199B0001D87A /* DishesResponseDTO.swift */; };
 		E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */; };
 		E4FC9C7F262E9ED800BEAAE4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */; };
 		E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		E46342E4263117BD0001D87A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		E46342E92631199B0001D87A /* DishesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesResponseDTO.swift; sourceTree = "<group>"; };
 		E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewConstant.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E46342EE2631199F0001D87A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E46342E92631199B0001D87A /* DishesResponseDTO.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		E4DCCD662630152E00206747 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 				FA88E9E0262E7F50001C3E53 /* SceneDelegate.swift */,
 				FA88E9E2262E7F50001C3E53 /* MainViewController.swift */,
 				FA864A73262FFB6600A3C429 /* Views */,
+				E46342EE2631199F0001D87A /* Data */,
 				FA88E9E7262E7F53001C3E53 /* Assets.xcassets */,
 				FA88E9E9262E7F53001C3E53 /* LaunchScreen.storyboard */,
 				FA88E9EC262E7F53001C3E53 /* Info.plist */,
@@ -334,6 +345,7 @@
 				FA88E9E3262E7F50001C3E53 /* MainViewController.swift in Sources */,
 				E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */,
 				FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */,
+				E46342EA2631199B0001D87A /* DishesResponseDTO.swift in Sources */,
 				FA88E9DF262E7F50001C3E53 /* AppDelegate.swift in Sources */,
 				E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */,
 				E4FC9CC72630105700BEAAE4 /* JSONParser.swift in Sources */,
