@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Dropdown from 'components/nav/Dropdown';
+import Dropdown from '../nav/Dropdown';
 
 const Menu = ({ title, subMenu }) => {
   const [isHovering, setIsHovering] = useState(false);

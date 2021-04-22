@@ -1,4 +1,3 @@
-import { SIZE_LARGE } from 'const';
 import styled from 'styled-components';
 import { COLOR_LIGHTYELLOW, SIZE_LARGE } from '../../const';
 import useFetch from '../../customHooks/useFetch';

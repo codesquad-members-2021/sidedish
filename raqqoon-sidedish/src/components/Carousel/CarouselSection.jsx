@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Carousel from 'components/carousel/Carousel';
+import Carousel from './Carousel';
 
 const CarouselSection = () => {
   return (
