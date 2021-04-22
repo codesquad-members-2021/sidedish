@@ -3,12 +3,14 @@ import React from 'react'
 import styled from 'styled-components';
 import Header from '../Components/Header/Header';
 import Tabs from '../Components/Tabs/Tabs';
+import DetailProductModal from '../Components/Modal/DetailProductModal';
 import { FlexContainer, Container } from '../Components/commons/styledComponents';
 import * as Carousel from '../Components/Carousel';
 
 const MainPage = () => {
   return (
     <MainPageLayout>
+      {/* <DetailProductModal /> */}
       <Header />
       <Tabs />
       메인페이지입니다.
@@ -24,7 +26,7 @@ const MainPage = () => {
           <Carousel.Item> <Card /> </Carousel.Item>
         </Carousel.Container>
       </CarouselLayout>
-      
+
     </MainPageLayout>
   )
 }
