@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { SIZE_MEDIUM } from '../../const';
-import useFetch from '../../customHooks/useFetch';
-import Card from '../card/Card';
-import Arrow from '../icons/Arrow';
+import { SIZE_MEDIUM } from 'const';
+import useFetch from 'customHooks/useFetch';
+import Card from 'components/card/Card';
+import Arrow from 'components/icons/Arrow';
 
 const Carousel = () => {
   const mainDishData = useFetch(

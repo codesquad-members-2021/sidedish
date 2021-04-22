@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_LIGHTYELLOW, SIZE_LARGE } from '../../const';
-import useFetch from '../../customHooks/useFetch';
-import Card from '../card/Card';
+import { COLOR_LIGHTYELLOW, SIZE_LARGE } from 'const';
+import useFetch from 'customHooks/useFetch';
+import Card from 'components/card/Card';
 
 const TabMain = ({ tabItemList }) => {
   const imgData = useFetch(

@@ -1,4 +1,4 @@
-import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from '../../const';
+import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from 'const';
 import { useState } from 'react';
 import styled from 'styled-components';
 

@@ -1,4 +1,4 @@
-import { ACTIVE, COLOR_LIGHTYELLOW } from '../../const';
+import { ACTIVE, COLOR_LIGHTYELLOW } from 'const';
 import styled from 'styled-components';
 
 const Tab = ({ name, activeState, setTabIndex, idx }) => {

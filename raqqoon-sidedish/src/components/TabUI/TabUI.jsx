@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import TabBody from './TabBody';
-import TabHeader from './TabHeader';
+import TabBody from 'components/tabUI/TabBody';
+import TabHeader from 'components/tabUI/TabHeader';
 
 const TabUI = () => {
   return (

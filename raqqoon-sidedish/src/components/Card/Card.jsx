@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Img from '../card/Img';
-import Info from '../card/Info';
-import Price from '../card/Price';
-import Tag from '../card/Tag';
+import Img from 'components/card/Img';
+import Info from 'components/card/Info';
+import Price from 'components/card/Price';
+import Tag from 'components/card/Tag';
 import {
   BEST,
   EVENT,
@@ -10,7 +10,7 @@ import {
   TAG_BEST,
   TAG_EVENT,
   TAG_LAUNCHING,
-} from '../../const';
+} from 'const';
 import { v4 as uuidv4 } from 'uuid';
 
 const Card = ({ cardSize, item }) => {

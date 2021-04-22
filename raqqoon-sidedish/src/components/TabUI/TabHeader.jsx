@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TabTitle from './TabTitle';
+import TabTitle from 'components/tabUI/TabTitle';
 
 const TabHeader = () => {
   return (
