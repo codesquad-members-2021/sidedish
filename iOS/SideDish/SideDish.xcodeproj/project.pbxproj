@@ -30,6 +30,7 @@
 		FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */; };
 		FFEF70F926310FB400189376 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70F826310FB400189376 /* NetworkService.swift */; };
 		FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */; };
+		FFEF71042631107200189376 /* FetchBanchanListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		FFA10EB0262FC6CD00D584B6 /* BanchanCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCollectionView.swift; sourceTree = "<group>"; };
 		FFEF70F826310FB400189376 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FFEF70FE2631104B00189376 /* BanchanListDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BanchanListDTO+Mapping.swift"; sourceTree = "<group>"; };
+		FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchBanchanListUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,7 @@
 		D4BFBB25262EA7E800D68297 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				FFEF71032631107200189376 /* FetchBanchanListUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */,
 				D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */,
 				D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */,
+				FFEF71042631107200189376 /* FetchBanchanListUseCase.swift in Sources */,
 				FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */,
 				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,
 				D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */,
