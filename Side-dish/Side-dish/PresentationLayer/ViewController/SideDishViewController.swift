@@ -13,7 +13,6 @@ class SideDishViewController: UIViewController {
     @IBOutlet weak var SideDishCollectionView: UICollectionView!
     private var cancellable = Set<AnyCancellable>()
     private var sideDishViewModel: SideDishViewModel!
-    
     private var dataSource : UICollectionViewDiffableDataSource<Path , Item>!
     
     override func viewDidLoad() {
@@ -31,6 +30,9 @@ class SideDishViewController: UIViewController {
     
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item>.init(cellNib: FoodCardCell.nib) { (cell, indexPath, item) in
+            ImageUseCase().loadImage(imageURL: item.image) { (imageURL) in
+                cell.setImage(itemURL: imageURL)
+            }
             cell.configure(with: item)
         }
         

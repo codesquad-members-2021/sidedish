@@ -31,7 +31,6 @@ class FoodCardCell: UICollectionViewCell {
     }
     
     func configure(with item: Item) {
-        setImage(itemURLString: item.image)
         itemTitleLabel.text = item.title
         itemBodyLabel.text = item.description
         sPriceLabel.text = item.sPrice
@@ -39,13 +38,10 @@ class FoodCardCell: UICollectionViewCell {
         setBadge(badges: item.badge)
     }
     
-    func setImage(itemURLString: String) {
-        ImageUseCase.execute(imageURLString: itemURLString)
-            .receive(on: DispatchQueue.main)
-            .sink { (complete) in
-        } receiveValue: { (data) in
-            self.itemImageView.image = UIImage(data: data)
-        }.store(in: &cancellable)
+    func setImage(itemURL: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.itemImageView.image = UIImage(contentsOfFile: itemURL)
+        }
     }
     
     func setNPrice(nPrice: String?) {
