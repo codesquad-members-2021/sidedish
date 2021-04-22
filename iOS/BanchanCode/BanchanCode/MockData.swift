@@ -39,7 +39,7 @@ struct MockData {
             {
                 "id": 3,
                 "name": "[수하동] 특곰탕 850g" ,
-                "description": ,
+                "description": "description": "100% 한우양지로 끓여낸 70년전통의 서울식곰탕",
                 "top_image": "http://public.codesquad.kr/jk/storeapp/data/d1fccf125f0a78113d0e06cb888f2e74.jpg",
                 "prices": [15000, 14200],
                 "badges": ["이벤트특가", "런칭특가"]
