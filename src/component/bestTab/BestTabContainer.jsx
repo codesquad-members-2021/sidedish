@@ -3,10 +3,10 @@ import BestItems from "./BestItems";
 
 const BestTabContainerStyle = styled.div``;
 
-export default function BestTabContainer() {
+export default function BestTabContainer({ bestItem }) {
   return (
     <BestTabContainerStyle>
-      <BestItems/>
+      {<BestItems childs={bestItem.childs}/>}
     </BestTabContainerStyle>
   )
 }

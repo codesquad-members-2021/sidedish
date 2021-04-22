@@ -15,6 +15,7 @@ const ImgStyle = styled.img.attrs((props) => ({
   src: props.src
 }))`
   width: 100%;
+  height: 18rem;
   &:hover + div {
     display: block;
   }
@@ -73,7 +74,7 @@ const SalePriceStyle = styled.div`
   display: inline-block;
 `;
 
-export default function ItemCard({ src = "", title = "", description = "", salePrice, normalPrice, text, color, bgColor }) {
+export default function ItemCard({ src = "", title = "", description = "", salePrice, normalPrice, labels=[] }) {
   return (
     <ItemCardStyle>
       <ImgContainerStyle>
@@ -90,7 +91,9 @@ export default function ItemCard({ src = "", title = "", description = "", saleP
           <SalePriceStyle>{salePrice}원</SalePriceStyle>
           <NormalPriceStyle>{normalPrice}원</NormalPriceStyle>
         </PricesStyle>
-        <Label text={text} color={color} bgColor={bgColor}/>
+        {
+          labels.map((label, idx) => <Label text={label} key={idx}/>)
+        }
       </div>
     </ItemCardStyle>
   )

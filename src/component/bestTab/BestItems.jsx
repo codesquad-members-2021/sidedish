@@ -9,12 +9,34 @@ const BestItemsStyle = styled.div`
   padding: 2.5rem;
 `;
 
-export default function BestItems() {
+export default function BestItems({ childs }) {
+
+  const getRandom = (n, max) => {
+    const set = new Set();
+    while(set.size < n) {
+      set.add(Math.floor(Math.random() * max));
+    }
+    return Array.from(set);
+  }
+
+  const getSalePrice = (price, discountRate) => {
+    return price - (price * (discountRate / 100));
+  }
+
   return (
     <BestItemsStyle>
-      <ItemCard src = "http://web.archive.org/web/20190129014225im_/https://cdn.bmf.kr/_data/product/IF235/20ea0478c029ad4fda3fa2885d53c5d4.jpg" title = "[집밥의완성]초여름보양세트" description = "무더위에 대비하는 6월 한상차림 초여름 보양세트" salePrice="5000" normalPrice="6000" text="이벤트특가" color="#fff" bgColor="#82D32D"/>
-      <ItemCard src = "http://web.archive.org/web/20190129014225im_/https://cdn.bmf.kr/_data/product/IF235/20ea0478c029ad4fda3fa2885d53c5d4.jpg" title = "[집밥의완성]초여름보양세트" description = "무더위에 대비하는 6월 한상차림 초여름 보양세트" salePrice="5000" normalPrice="6000" text="이벤트특가" color="#fff" bgColor="#82D32D"/>
-      <ItemCard src = "http://web.archive.org/web/20190129014225im_/https://cdn.bmf.kr/_data/product/IF235/20ea0478c029ad4fda3fa2885d53c5d4.jpg" title = "[집밥의완성]초여름보양세트" description = "무더위에 대비하는 6월 한상차림 초여름 보양세트" salePrice="5000" normalPrice="6000" text="이벤트특가" color="#fff" bgColor="#82D32D"/>
+      {
+        getRandom(3, childs.length).map(idx => (
+          <ItemCard
+            src={childs[idx].img}
+            title={childs[idx].title}
+            description={childs[idx].description}
+            salePrice={getSalePrice(childs[idx].price, childs[idx].discount)}
+            normalPrice={childs[idx].price}
+            labels={childs[idx].label}
+            key={idx}/>
+        ))
+      }
     </BestItemsStyle>
   )
 }

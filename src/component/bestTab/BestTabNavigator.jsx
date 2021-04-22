@@ -22,14 +22,21 @@ const BestTabNavigatorItemStyle = styled.div.attrs(props => ({
   }
 `;
 
-export default function BestTabNavigator() {
+export default function BestTabNavigator({ bestItems, active, setActive }) {
   return (
     <BestTabNavigatorStyle>
-      <BestTabNavigatorItemStyle active={true}>할인특가 세트상품</BestTabNavigatorItemStyle>
+      {bestItems.map((bestItem, i) => (
+        <BestTabNavigatorItemStyle 
+          key={i}
+          onClick={() => setActive(i)} 
+          active={(i === active)}>{bestItem.title}
+        </BestTabNavigatorItemStyle>
+      ))}
+      {/*
       <BestTabNavigatorItemStyle>풍성한 고기반찬</BestTabNavigatorItemStyle>
       <BestTabNavigatorItemStyle>편리한 반찬세트</BestTabNavigatorItemStyle>
       <BestTabNavigatorItemStyle>간편한 덮밥요리</BestTabNavigatorItemStyle>
-      <BestTabNavigatorItemStyle>우리아이 영양반찬</BestTabNavigatorItemStyle>
+      <BestTabNavigatorItemStyle>우리아이 영양반찬</BestTabNavigatorItemStyle> */}
     </BestTabNavigatorStyle>
   )
 }
