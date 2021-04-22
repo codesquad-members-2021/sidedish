@@ -1,5 +1,6 @@
 package com.example.domain;
 
+import com.example.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.relational.core.mapping.MappedCollection;
@@ -29,6 +30,10 @@ public class User {
 
     public static User of(String email, String password) {
         return new User(null, email, password);
+    }
+
+    public static User map(UserDto userDto) {
+        return new User(null, userDto.getEmail(), userDto.getPassword());
     }
 
     public Long getId() {
