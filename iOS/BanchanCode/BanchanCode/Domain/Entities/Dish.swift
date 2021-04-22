@@ -7,16 +7,16 @@
 
 import Foundation
 
-class Dish: Codable {
-    let hash: String
+struct Dish {
+    let id: Int
     let name: String
     let description: String
-    let top_image: String
+    let imageURL: String
     let prices: [Int]
     let badges: [String]
-    let stock: Int?
-    let point: Int?
-    let delivery_info: String?
-    let thumb_images: [String]?
-    let detail_images: [String]?
+}
+
+struct DishList {
+    let category: String
+    let dishes: [Dish]
 }
