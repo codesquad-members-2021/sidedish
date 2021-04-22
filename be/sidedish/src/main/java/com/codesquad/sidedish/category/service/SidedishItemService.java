@@ -9,6 +9,10 @@ import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventDTO;
 import com.codesquad.sidedish.event.domain.SidedishEventItem;
 import com.codesquad.sidedish.event.domain.SidedishEventRepository;
+import com.codesquad.sidedish.image.domain.SidedishImage;
+import com.codesquad.sidedish.image.domain.SidedishImageRepository;
+import com.codesquad.sidedish.image.domain.SidedishItemImage;
+import com.codesquad.sidedish.image.exception.ImageNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,10 +23,12 @@ public class SidedishItemService {
 
     private final SidedishCategoryRepository sidedishCategoryRepository;
     private final SidedishEventRepository sidedishEventRepository;
+    private final SidedishImageRepository sidedishImageRepository;
 
-    public SidedishItemService(SidedishCategoryRepository sidedishCategoryRepository, SidedishEventRepository sidedishEventRepository) {
+    public SidedishItemService(SidedishCategoryRepository sidedishCategoryRepository, SidedishEventRepository sidedishEventRepository, SidedishImageRepository sidedishImageRepository) {
         this.sidedishCategoryRepository = sidedishCategoryRepository;
         this.sidedishEventRepository = sidedishEventRepository;
+        this.sidedishImageRepository = sidedishImageRepository;
     }
 
     public List<SidedishItemDTO> showItemList(String categoryName){
@@ -45,9 +51,9 @@ public class SidedishItemService {
                     .map(eventItem -> events.get(eventItem.getSidedishEvent()))
                     .map(SidedishEventDTO::new)
                     .collect(Collectors.toSet());
-
-            itemDTOs.add(new SidedishItemDTO(item, eventSet));
-
+            SidedishItemImage thumbnailItemImage = item.getSidedishItemImages().stream().filter(SidedishItemImage::isThumbnailImage).findFirst().orElseThrow(ImageNotFoundException::new);
+            SidedishImage thumbnailImage = sidedishImageRepository.findById(thumbnailItemImage.getSidedishImage()).orElseThrow(ImageNotFoundException::new);
+            itemDTOs.add(new SidedishItemDTO(item, eventSet, thumbnailImage.getImageUrl()));
         }
         return itemDTOs;
     }

@@ -7,11 +7,9 @@ public class SidedishImage {
     private Long id;
 
     private String imageUrl;
-    private SidedishImageTypeEnum imageType;
 
-    public SidedishImage(String imageUrl, SidedishImageTypeEnum imageType) {
+    public SidedishImage(String imageUrl) {
         this.imageUrl = imageUrl;
-        this.imageType = imageType;
     }
 
     protected SidedishImage() {
@@ -25,16 +23,11 @@ public class SidedishImage {
         return imageUrl;
     }
 
-    public SidedishImageTypeEnum getImageType() {
-        return imageType;
-    }
-
     @Override
     public String toString() {
         return "SidedishImage{" +
                 "id=" + id +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", imageType=" + imageType +
                 '}';
     }
 }

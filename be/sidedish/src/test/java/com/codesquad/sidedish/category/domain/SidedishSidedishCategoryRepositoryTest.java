@@ -98,7 +98,6 @@ class SidedishSidedishCategoryRepositoryTest {
 
         List<SidedishItemDTO> itemDTOS = itemService.showItemList("main");
 
-
         for (SidedishItemDTO sidedishItemDTO : itemDTOS) {
             logger.info("ItemDTO : {}", sidedishItemDTO.toString());
         }
@@ -113,12 +112,12 @@ class SidedishSidedishCategoryRepositoryTest {
         mainCategory.addSidedishItem(sidedishItem);
         sidedishCategoryRepository.save(mainCategory);
 
-        sidedishItem.addImage(createSidedishImage("thumb.jpg", SidedishImageTypeEnum.THUMBNAIL));
-        sidedishItem.addImage(createSidedishImage("detail1.jpg", SidedishImageTypeEnum.DETAIL));
-        sidedishItem.addImage(createSidedishImage("detail2.jpg", SidedishImageTypeEnum.DETAIL));
-        sidedishItem.addImage(createSidedishImage("desc1.jpg", SidedishImageTypeEnum.DESCRIPTION));
-        sidedishItem.addImage(createSidedishImage("desc2.jpg", SidedishImageTypeEnum.DESCRIPTION));
-        sidedishItem.addImage(createSidedishImage("desc3.jpg", SidedishImageTypeEnum.DESCRIPTION));
+        sidedishItem.addThumbnailImage(createSidedishImage("thumb.jpg"));
+        sidedishItem.addDetailImage(createSidedishImage("detail1.jpg"));
+        sidedishItem.addDetailImage(createSidedishImage("detail2.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc1.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc2.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc3.jpg"));
 
         sidedishCategoryRepository.save(mainCategory);
 
@@ -129,6 +128,26 @@ class SidedishSidedishCategoryRepositoryTest {
         }
     }
 
+    @Test
+    @DisplayName("썸네일이 포함된 DTO 생성")
+    void createTiemDtoWithImageUrl() {
+
+        SidedishCategory mainCategory = sidedishCategoryRepository.findByCategoryName("main");
+        SidedishItem sidedishItem = createSidedishItem("맛있는 반찬");
+        mainCategory.addSidedishItem(sidedishItem);
+        sidedishCategoryRepository.save(mainCategory);
+
+        sidedishItem.addThumbnailImage(createSidedishImage("thumb.jpg"));
+        sidedishItem.addDetailImage(createSidedishImage("detail1.jpg"));
+        sidedishItem.addDetailImage(createSidedishImage("detail2.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc1.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc2.jpg"));
+        sidedishItem.addDescriptionImage(createSidedishImage("desc3.jpg"));
+
+        sidedishCategoryRepository.save(mainCategory);
+
+        itemService.showItemList("main").forEach(System.out::println);
+    }
 
     private SidedishItem createSidedishItem (String itemName) {
         return new SidedishItem(
@@ -143,7 +162,7 @@ class SidedishSidedishCategoryRepositoryTest {
         return eventRepository.save(new SidedishEvent(eventName,eventColor));
     }
 
-    private SidedishImage createSidedishImage (String imageUrl, SidedishImageTypeEnum imageTypeEnum) {
-        return imageRepository.save(new SidedishImage(imageUrl, imageTypeEnum));
+    private SidedishImage createSidedishImage (String imageUrl) {
+        return imageRepository.save(new SidedishImage(imageUrl));
     }
 }

@@ -9,9 +9,24 @@ public class SidedishItemImage {
     private Long sidedishImage;
     private Long sidedishItem;
 
-    public SidedishItemImage(Long sidedishImage, Long sidedishItem) {
+    private SidedishImageTypeEnum imageType;
+
+    public SidedishItemImage(Long sidedishImage, Long sidedishItem, SidedishImageTypeEnum imageType) {
         this.sidedishImage = sidedishImage;
         this.sidedishItem = sidedishItem;
+        this.imageType = imageType;
+    }
+
+    public boolean isThumbnailImage() {
+        return imageType == SidedishImageTypeEnum.THUMBNAIL;
+    }
+
+    public boolean isDetailImage() {
+        return imageType == SidedishImageTypeEnum.DETAIL;
+    }
+
+    public boolean isDescriptionImage() {
+        return imageType == SidedishImageTypeEnum.DESCRIPTION;
     }
 
     public Long getId() {
@@ -26,12 +41,17 @@ public class SidedishItemImage {
         return sidedishItem;
     }
 
+    public SidedishImageTypeEnum getImageType() {
+        return imageType;
+    }
+
     @Override
     public String toString() {
         return "SidedishItemImage{" +
                 "id=" + id +
-                ", sidedishImageId=" + sidedishImage +
-                ", sidedishItemId=" + sidedishItem +
+                ", sidedishImage=" + sidedishImage +
+                ", sidedishItem=" + sidedishItem +
+                ", imageType=" + imageType +
                 '}';
     }
 }

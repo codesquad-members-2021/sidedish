@@ -18,8 +18,9 @@ public class SidedishItemDTO {
     private String DeliveryFee;
 
     private Set<SidedishEventDTO> eventBadgeList;
+    private String thumbnailImage;
 
-    public SidedishItemDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList) {
+    public SidedishItemDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, String thumbnailImageUrl) {
         this.name = item.getItemName();
         this.description = item.getItemDescription();
         this.salePrice = item.getItemSalePrice();
@@ -29,20 +30,22 @@ public class SidedishItemDTO {
         this.DeliveryInfo = item.getItemDeliveryInfo();
         this.DeliveryFee = item.getItemDeliveryFee();
         this.eventBadgeList = eventBadgeList;
+        this.thumbnailImage = thumbnailImageUrl;
     }
 
     @Override
     public String toString() {
         return "SidedishItemDTO{" +
                 "name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + description + '\n' +
                 ", salePrice=" + salePrice +
                 ", normalPrice=" + normalPrice +
                 ", Quantity=" + Quantity +
                 ", PointRate=" + PointRate +
-                ", DeliveryInfo='" + DeliveryInfo + '\'' +
-                ", DeliveryFee='" + DeliveryFee + '\'' +
-                ", eventBadgeList=" + eventBadgeList +
+                ", DeliveryInfo='" + DeliveryInfo + '\n' +
+                ", DeliveryFee='" + DeliveryFee + '\n' +
+                ", eventBadgeList=" + eventBadgeList + '\n' +
+                ", thumbnailImage=" + thumbnailImage + '\n' +
                 '}';
     }
 }

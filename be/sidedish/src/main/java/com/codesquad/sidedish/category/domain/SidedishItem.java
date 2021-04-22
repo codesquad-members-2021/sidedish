@@ -3,6 +3,7 @@ package com.codesquad.sidedish.category.domain;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventItem;
 import com.codesquad.sidedish.image.domain.SidedishImage;
+import com.codesquad.sidedish.image.domain.SidedishImageTypeEnum;
 import com.codesquad.sidedish.image.domain.SidedishItemImage;
 import org.springframework.data.annotation.Id;
 
@@ -44,8 +45,20 @@ public class SidedishItem {
         eventItems.add(eventItem);
     }
 
-    public void addImage(SidedishImage sidedishImage) {
-        sidedishItemImages.add(new SidedishItemImage(sidedishImage.getId(), id));
+    public void addThumbnailImage(SidedishImage sidedishImage) {
+        addImage(sidedishImage, SidedishImageTypeEnum.THUMBNAIL);
+    }
+
+    public void addDetailImage(SidedishImage sidedishImage) {
+        addImage(sidedishImage, SidedishImageTypeEnum.DETAIL);
+    }
+
+    public void addDescriptionImage(SidedishImage sidedishImage) {
+        addImage(sidedishImage, SidedishImageTypeEnum.DESCRIPTION);
+    }
+
+    private void addImage(SidedishImage sidedishImage, SidedishImageTypeEnum imageTypeEnum) {
+        sidedishItemImages.add(new SidedishItemImage(sidedishImage.getId(), id, imageTypeEnum));
     }
 
     protected SidedishItem() {
