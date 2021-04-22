@@ -18,7 +18,7 @@ const All = ({ URL }) => {
       setSide(sideData.concat(sideData));
     };
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line
 
   const randerImage = () => {
     rander ? setRander(false) : setRander(true);

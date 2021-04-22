@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Svg from "../../Svg/Button";
+import {
+  BeforeRight,
+  AfterRight,
+  BeforeLeft,
+  AfterLeft,
+} from "../../Svg/Button";
 import Content from "./Content";
 
-const Carousel = ({ MainTitle, Food, setFood, Ref }) => {
-  const [Right, setRight] = useState(Svg.BeforeRight);
-  const [Left, setLeft] = useState(Svg.BeforeLeft);
-  const [xtransform, setXtransform] = useState("-1360");
+const Carousel = ({ MainTitle, Food, setFood, Ref, setModal }) => {
+  const [Right, setRight] = useState(BeforeRight);
+  const [Left, setLeft] = useState(BeforeLeft);
+  const [xtransform] = useState("-1360");
 
   const MouseEnter = (e) => {
     e.target.classList.contains("Left")
-      ? setLeft(Svg.AfterLeft)
-      : setRight(Svg.AfterRight);
+      ? setLeft(AfterLeft)
+      : setRight(AfterRight);
   };
   const MouseLeave = (e) => {
     e.target.classList.contains("Left")
-      ? setLeft(Svg.BeforeLeft)
-      : setRight(Svg.BeforeRight);
+      ? setLeft(BeforeLeft)
+      : setRight(BeforeRight);
   };
 
   const Slider = (e) => {
@@ -86,6 +91,7 @@ const Carousel = ({ MainTitle, Food, setFood, Ref }) => {
                       n_price={n_price}
                       s_price={s_price}
                       badge={badge}
+                      setModal={setModal}
                     />
                   );
                 }
@@ -109,6 +115,7 @@ const Carousel = ({ MainTitle, Food, setFood, Ref }) => {
 const Box = styled.div`
   width: 1392px;
   height: 534px;
+  margin: auto;
 `;
 
 const CarouselTitle = styled.div`

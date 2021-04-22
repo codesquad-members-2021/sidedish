@@ -11,10 +11,14 @@ const Content = ({
   n_price,
   s_price,
   badge,
+  setModal,
 }) => {
+  const openModal = () => {
+    return setModal(true);
+  };
   return (
     <ContentMain>
-      <Image src={image} />
+      <Image image={image} onClick={openModal} />
       <Title>{title}</Title>
       <Description>{description}</Description>
 
@@ -45,10 +49,45 @@ const ContentMain = styled.div`
   margin: 0 16px;
 `;
 
-const Image = styled.img`
+const Image = styled.div`
+  cursor: pointer;
+  background-image: ${({ image }) => `url(${image})`};
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 308px;
   height: 308px;
   border-radius: 5px;
+  &:active {
+    transform: translateY(1px);
+  }
+  &:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      ${({ image }) => `url(${image})`};
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+    &::before {
+      position: absolute;
+      top: 117px;
+      font-size: 22px;
+      font-weight: normal;
+      content: "새벽배송";
+    }
+
+    &::after {
+      background-color: transparent;
+      width: 82px;
+      height: 0.1px;
+      border-top: 1px solid white;
+      line-height: 50px;
+      font-size: 22px;
+      content: "전국택배";
+    }
+  }
 `;
 
 const Title = styled.div`
