@@ -3,6 +3,7 @@ import { theme, Title } from "../Theme";
 import ItemCard from "../ItemCard";
 import { AlignTextCenter } from "../Theme";
 import useFetch from "../useFetch";
+import { useState, useRef } from "react";
 
 const MainWrapper = styled.div`
   margin-top: 40px;
@@ -17,7 +18,12 @@ const TabWrapper = styled.div`
 const Tab = styled(AlignTextCenter)`
   width: 201px;
   height: 58px;
-  background-color: ${theme.colors.skyblue};
+  color: ${({ clickedID, id }) =>
+    clickedID === id ? theme.colors.black : theme.colors.grey_text};
+  background-color: ${({ clickedID, id }) =>
+    clickedID === id ? theme.colors.skyblue : theme.colors.grey_css};
+  font-weight: ${({ clickedID, id }) =>
+    clickedID === id ? theme.fontWeight.bold : theme.fontWeight.normal};
   margin-right: 5px;
   font-size: ${theme.fontSize.large};
 `;
@@ -33,21 +39,51 @@ const MainColumn = styled.div`
 `;
 
 function MainMenu() {
-  const [initData, loadingState] = useFetch(
-    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/17010300"
-  );
-  const mokData = initData.items;
+  let mokData;
+  const basicUrl =
+    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/";
+
+  //5개: 탭 전체 데이터 요청
+  const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
+  const bestDishData = bestDishMenu.body;
+
+  const [clickedID, setClickedID] = useState("17011200");
+
+  //초기 베스트메뉴 url 설정
+  const [fetchData, setFetchData] = useState(basicUrl + clickedID);
+  //3개: 초기 베스트메뉴 데이터 요청
+  const [initData, loadingState] = useFetch(fetchData);
+  mokData = initData.items;
+
+  const clickedTab = useRef();
+
+  //클릭한 후 해당 탭 데이터 요청
+  const handleClick = (target, id) => {
+    setClickedID(id);
+    setFetchData(basicUrl + id);
+    console.log(clickedTab);
+    clickedTab.current.classList.remove("focused");
+    target.classList.add("foucused");
+  };
 
   return (
     <MainWrapper>
       <Title>후기가 증명하는 베스트 반찬</Title>
       <TabWrapper>
-        <Tab>할인특가 세트상품</Tab>
-        <Tab>풍성한 고기반찬</Tab>
-        <Tab>편리한 반찬세트</Tab>
-        <Tab>간편한 덮밥요리</Tab>
-        <Tab>우리아이 영양반찬</Tab>
+        {!bestDishLoading &&
+          bestDishData.map((data, idx) => (
+            <Tab
+              onClick={({ target }) => handleClick(target, data.category_id)}
+              clickedID={clickedID}
+              id={data.category_id}
+              key={idx}
+              ref={clickedTab}
+            >
+              {data.name}
+            </Tab>
+          ))}
       </TabWrapper>
+
       <MainColumn>
         {!loadingState &&
           mokData.map((data, idx) => (
