@@ -10,11 +10,43 @@ import Combine
 
 class ViewController: UIViewController {
 
-    let menuListViewModel = MenuListViewModel()
+    private let menuListViewModel = MenuListViewModel()
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuListViewModel.fetchDishes()
+        bind()
+        menuListViewModel.requestDishes()
+     
+    }
+    
+    func bind() {
+        menuListViewModel.$main
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+                //error
+            }, receiveValue: { _ in
+                print("메인 화면처리 해야함")
+            })
+            .store(in: &subscriptions)
+        
+        menuListViewModel.$soup
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+                //error
+            }, receiveValue: { _ in
+                print("수프 화면처리 해야함")
+            })
+            .store(in: &subscriptions)
+        
+        menuListViewModel.$side
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+                //error
+            }, receiveValue: { _ in
+                print("사이드 화면처리 해야함 ")
+            })
+            .store(in: &subscriptions)
     }
 }
 

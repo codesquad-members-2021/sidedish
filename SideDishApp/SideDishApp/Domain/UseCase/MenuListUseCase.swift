@@ -8,11 +8,15 @@
 import Foundation
 import Combine
 
-class MenuListUseCase {
+protocol MenuListUseCasePort {
+    func showMenu(food path: String) -> AnyPublisher<[Dishes], NetworkError>
+}
+
+class MenuListUseCase: MenuListUseCasePort {
     
-    private let sideDishNetworkManager = SideDishNetworkManager()
+    private let sideDishNetworkManager = DishNetworkManager()
     
-    func showMenu() -> AnyPublisher<[Dishes], NetworkError> {
-        return sideDishNetworkManager.getSideDishes()
+    func showMenu(food path: String) -> AnyPublisher<[Dishes], NetworkError> {
+        return sideDishNetworkManager.getDishes(path: path)
     }
 }

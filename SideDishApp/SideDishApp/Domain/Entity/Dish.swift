@@ -9,28 +9,20 @@ import Foundation
 
 // MARK: - Dishes
 struct Dishes: Codable {
-    let category: String
-    let name: String
-    let dishes: [Dish]
+    private let category: String
+    private(set) var name: String
+    private(set) var dishes: [Dish]
 }
 
 // MARK: - Dish
 struct Dish: Codable {
-    let dishId: String
-    let image: String
-    let alt: String
-    let deliveryType: String
-    let title: String
-    let description: String
-    let normalPrice: String
-    let sellingPrice: String?
-    let badge: String?
-    
-//
-//    enum CodingKeys: String, CodingKey {
-//        case dishID = "dishId"
-//        case image, alt, deliveryType, title
-//        case dishDescription = "description"
-//        case normalPrice, sellingPrice, badge
-//    }
+    private let dishId: String
+    private(set) var image: String
+    private let alt: String
+    private(set) var deliveryType: String
+    private(set) var title: String
+    private(set) var description: String
+    private(set) var normalPrice: String
+    private(set) var sellingPrice: String?
+    private(set) var badge: String?
 }
