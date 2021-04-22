@@ -6,6 +6,9 @@ const CarouselSection = () => {
     <CarouselWrapper>
       <h2>모두가 좋아하는 든든한 메인요리</h2>
       <Carousel />
+      <button>
+        <span>모든 카테고리 보기</span>
+      </button>
     </CarouselWrapper>
   );
 };
@@ -13,7 +16,7 @@ const CarouselSection = () => {
 export default CarouselSection;
 
 const CarouselWrapper = styled.section`
-  margin: 2rem 5rem;
+  margin: 2rem 0;
   position: relative;
   h2 {
     font-family: Noto Sans KR;
