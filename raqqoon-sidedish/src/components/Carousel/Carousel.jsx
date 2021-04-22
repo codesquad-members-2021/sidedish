@@ -5,30 +5,44 @@ import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = () => {
-  const mainDishData = useFetch(
-    'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main'
+const Carousel = ({ path }) => {
+  const dishData = useFetch(
+    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
   );
-  const mainDishList =
-    mainDishData &&
-    mainDishData.map((item) => (
+  const dishList =
+    dishData &&
+    dishData.map((item) => (
       <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
     ));
 
-  return mainDishList ? (
-    <>
+  const handleClickArrowBtn = () => {
+    moveRight();
+    moveLeft();
+  };
+
+  const moveRight = () => {};
+
+  const moveLeft = () => {};
+
+  return dishList ? (
+    <CarouselStyled>
       <OutBox>
-        <CategoryContents>{mainDishList}</CategoryContents>
+        <CategoryContents position={1}>{dishList}</CategoryContents>
       </OutBox>
       <Arrow size={'L'} direction={'RIGHT'} />
       <Arrow size={'L'} direction={'LEFT'} />
-    </>
+    </CarouselStyled>
   ) : (
     <div>로딩중입니다!!!!!!!</div>
   );
 };
 
 export default Carousel;
+
+const CarouselStyled = styled.div`
+  position: relative;
+  width: 100%;
+`;
 
 const OutBox = styled.div`
   margin-top: 2rem;
@@ -40,4 +54,5 @@ const CategoryContents = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
+  transform: ${({ position }) => `translateX(${position}px)`};
 `;
