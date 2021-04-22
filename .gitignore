@@ -161,3 +161,4 @@ gradle-app.setting
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/modules.xml
+.idea/jarRepositories.xml
