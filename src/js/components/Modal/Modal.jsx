@@ -42,12 +42,15 @@ const ModalWrapper = styled.div`
 	height: 1076px;
 	left: 220px;
 	top: 170px;
+	font-family: Noto Sans KR;
+	font-style: normal;
+	font-weight: normal;
 `;
 
 const Box = styled.div`
 	width: 960px;
 	height: 680px;
-	background: #ffffff;
+	background: #fff;
 	border-radius: 5px 5px 0px 0px;
 `;
 
@@ -60,8 +63,6 @@ const ProductInfo = styled.div`
 `;
 
 const ProductName = styled.div`
-	font-family: Noto Sans KR;
-	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 35px;
@@ -69,9 +70,6 @@ const ProductName = styled.div`
 `;
 
 const ProductDescription = styled.div`
-	font-family: Noto Sans KR;
-	font-style: normal;
-	font-weight: normal;
 	font-size: 18px;
 	line-height: 26px;
 	color: #828282;
@@ -88,17 +86,12 @@ const ProductPrice = styled.div`
 `;
 
 const ProductPrice1 = styled.div`
-	font-family: Noto Sans KR;
-	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 35px;
 	margin-right: 8px;
 `;
 const ProductPrice2 = styled.div`
-	font-family: Noto Sans KR;
-	font-style: normal;
-	font-weight: normal;
 	font-size: 16px;
 	line-height: 23px;
 	text-decoration-line: line-through;
@@ -121,9 +114,6 @@ const Number = styled.div`
 const NumberLabel = styled.div`
 	width: 60px;
 	height: 23px;
-	font-family: Noto Sans KR;
-	font-style: normal;
-	font-weight: normal;
 	font-size: 16px;
 	line-height: 23px;
 	color: #828282;
@@ -176,9 +166,6 @@ const TotalPrice = styled.div`
 `;
 const TotalPriceLabel = styled.div`
 	height: 26px;
-
-	font-family: Noto Sans KR;
-	font-style: normal;
 	font-weight: bold;
 	font-size: 18px;
 	line-height: 26px;
@@ -187,9 +174,6 @@ const TotalPriceLabel = styled.div`
 `;
 const TotalPriceContent = styled.div`
 	height: 46px;
-
-	font-family: Noto Sans KR;
-	font-style: normal;
 	font-weight: bold;
 	font-size: 32px;
 	line-height: 46px;
