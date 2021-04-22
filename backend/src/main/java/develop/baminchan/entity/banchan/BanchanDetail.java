@@ -1,13 +1,13 @@
 package develop.baminchan.entity.banchan;
 
 public class BanchanDetail {
-    private String test;
+    private String hash;
 
-    public BanchanDetail(String test) {
-        this.test = test;
+    public BanchanDetail(String hash) {
+        this.hash = hash;
     }
 
-    public String getTest() {
-        return test;
+    public String getHash() {
+        return hash;
     }
 }

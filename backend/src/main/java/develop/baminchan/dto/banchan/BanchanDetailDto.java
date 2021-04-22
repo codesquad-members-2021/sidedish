@@ -3,24 +3,24 @@ package develop.baminchan.dto.banchan;
 import develop.baminchan.entity.banchan.BanchanDetail;
 
 public class BanchanDetailDto {
-    private String test;
+    private String hash;
 
-    public BanchanDetailDto(String test) {
-        this.test = test;
+    public BanchanDetailDto(String hash) {
+        this.hash = hash;
     }
 
     public BanchanDetailDto(BanchanDetail banchanDetail) {
-        this.test = banchanDetail.getTest();
+        this.hash = banchanDetail.getHash();
     }
 
-    public String getTest() {
-        return test;
+    public String getHash() {
+        return hash;
     }
 
     @Override
     public String toString() {
         return "BanchanDetailDto{" +
-                "test='" + test + '\'' +
+                "hash='" + hash + '\'' +
                 '}';
     }
 
