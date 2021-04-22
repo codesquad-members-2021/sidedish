@@ -1,5 +1,8 @@
 package develop.baminchan.entity.banchan;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Data {
 
     private String top_image;
@@ -16,5 +19,13 @@ public class Data {
 
     public String getThumb_images() {
         return thumb_images;
+    }
+
+    @Override
+    public String toString() {
+        return "Data{" +
+                "top_image='" + top_image + '\'' +
+                ", thumb_images='" + thumb_images + '\'' +
+                '}';
     }
 }
