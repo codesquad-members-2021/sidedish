@@ -39,12 +39,10 @@ const Category = () => {
     setDisplay("none");
   };
 
-  // 복사되는중 ..
   return (
     <>
       <S.Category>
         {categoryNameList.map((category, idx) => {
-          console.log("id", currentCategoryId, idx);
           return (
             <S.CategoryList
               key={idx}

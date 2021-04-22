@@ -7,17 +7,29 @@ import BestItemsCardDescription from "./BestItemsCardDescription";
 import BestItemsCardNPrice from "./BestItemsCardNPrice";
 import BestItemsCardSPrice from "./BestItemsCardSPrice";
 
-const BestItemsCard = () => {
+const BestItemsCard = ({ item }) => {
+  console.log(item);
+  const {
+    id,
+    image,
+    title,
+    description,
+    s_price,
+    n_price,
+    badge,
+    dish_category,
+  } = { ...item };
+
   return (
-    <S.BestItemsCard>
-      <BestItemsCardImage></BestItemsCardImage>
-      <BestItemsCardTitle></BestItemsCardTitle>
+    <S.BestItemsCard id={id}>
+      <BestItemsCardImage {...{ image }}></BestItemsCardImage>
+      <BestItemsCardTitle {...{ title }}></BestItemsCardTitle>
 
-      <BestItemsCardDescription></BestItemsCardDescription>
-      <BestItemsCardSPrice></BestItemsCardSPrice>
-      <BestItemsCardNPrice></BestItemsCardNPrice>
+      <BestItemsCardDescription {...{ description }}></BestItemsCardDescription>
+      <BestItemsCardSPrice {...{ s_price }}></BestItemsCardSPrice>
+      <BestItemsCardNPrice {...{ n_price }}></BestItemsCardNPrice>
 
-      <BestItemsCardBadge></BestItemsCardBadge>
+      <BestItemsCardBadge {...{ badge }}></BestItemsCardBadge>
     </S.BestItemsCard>
   );
 };
