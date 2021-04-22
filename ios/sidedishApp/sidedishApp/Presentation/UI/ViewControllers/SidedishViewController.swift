@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class SidedishViewController: UIViewController {
-    typealias FetchData = () -> ()
+    typealias FetchDataHandler = (String) -> ()
     
     enum Section: Int, CaseIterable {
         case main
@@ -39,14 +39,17 @@ class SidedishViewController: UIViewController {
     private var sidedishViewModel: SidedishViewModelType!
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, DataItem>!
+    private let mainPath = "main"
+    private let soupPath = "soup"
+    private let sidePath = "side"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sidedishViewModel = SidedishViewModel()
         configureCollectionView()
-        fetchMainData()
-        fetchSoupData()
-        fetchSideData()
+        fetchMainData(path: mainPath)
+        fetchSoupData(path: soupPath)
+        fetchSideData(path: sidePath)
     }
     
     private func configureCollectionView() {
@@ -104,19 +107,19 @@ class SidedishViewController: UIViewController {
         }
     }
     
-    private func fetchMainData() {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchMainData)
+    private func fetchMainData(path: String) {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchMainData, path: path)
     }
     
-    private func fetchSoupData() {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchSoupData)
+    private func fetchSoupData(path: String) {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchSoupData, path: path)
     }
     
-    private func fetchSideData() {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchSideData)
+    private func fetchSideData(path: String) {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchSideData, path: path)
     }
     
-    private func fetchData(fetchData handler: FetchData) {
+    private func fetchData(fetchData handler: FetchDataHandler, path: String) {
         self.sidedishViewModel.dataChanged
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -124,7 +127,7 @@ class SidedishViewController: UIViewController {
             }
             .store(in: &cancellables)
         
-        handler()
+        handler(path)
     }
     
     private func updateSnapshot() {
@@ -137,4 +140,3 @@ class SidedishViewController: UIViewController {
         self.dataSource.apply(snapshot)
     }
 }
-

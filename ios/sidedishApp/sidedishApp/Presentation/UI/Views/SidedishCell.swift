@@ -33,6 +33,7 @@ class SidedishCell: UICollectionViewCell {
         self.descriptionLabel.text = item.getDescription()
         self.normalPriceLabel.text = "\(item.getNormalPrice())"
         self.salePriceLabel.text = "\(item.getSalePrice())"
+        self.salePriceLabel.isHidden = item.isNotSale()
         guard let url = URL(string: item.getThumbnailImage()) else { return }
         self.thumbnailImageView.setImage(with: url)
         self.badgeLabel.backgroundColor = .systemGreen

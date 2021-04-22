@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 class SidedishViewModel: SidedishViewModelType {
-    private var main = Main(items: [])
-    private var soup = Soup(items: [])
-    private var side = Side(items: [])
+    private var main = Category(items: [])
+    private var soup = Category(items: [])
+    private var side = Category(items: [])
     private(set) var dataChanged = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     private var sidedishUseCase: SidedishUseCasePort!
@@ -37,8 +37,8 @@ class SidedishViewModel: SidedishViewModelType {
         return self.side.getItems()
     }
     
-    func fetchMainData() {
-        sidedishUseCase.getMain()
+    func fetchMainData(path: String) {
+        sidedishUseCase.getCategory(path: path)
             .receive(on: DispatchQueue.global())
             .sink(receiveCompletion: { (result)
                 in switch result {
@@ -53,8 +53,8 @@ class SidedishViewModel: SidedishViewModelType {
             .store(in: &cancellables)
     }
     
-    func fetchSoupData() {
-        sidedishUseCase.getSoup()
+    func fetchSoupData(path: String) {
+        sidedishUseCase.getCategory(path: path)
             .receive(on: DispatchQueue.global())
             .sink(receiveCompletion: { (result)
                 in switch result {
@@ -69,8 +69,8 @@ class SidedishViewModel: SidedishViewModelType {
             .store(in: &cancellables)
     }
     
-    func fetchSideData() {
-        sidedishUseCase.getSide()
+    func fetchSideData(path: String) {
+        sidedishUseCase.getCategory(path: path)
             .receive(on: DispatchQueue.global())
             .sink(receiveCompletion: { (result)
                 in switch result {

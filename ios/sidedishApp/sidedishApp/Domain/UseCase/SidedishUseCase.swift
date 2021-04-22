@@ -20,16 +20,8 @@ class SidedishUseCase: SidedishUseCasePort {
         self.init(sidedishNetworkManager: sidedishNetworkManager)
     }
     
-    func getMain() -> AnyPublisher<Main, Error> {
-        return sidedishNetworkManager.getMain()
-    }
-    
-    func getSoup() -> AnyPublisher<Soup, Error> {
-        return sidedishNetworkManager.getSoup()
-    }
-    
-    func getSide() -> AnyPublisher<Side, Error> {
-        return sidedishNetworkManager.getSide()
+    func getCategory(path: String) -> AnyPublisher<Category, Error> {
+        return sidedishNetworkManager.getCategory(path: path)
     }
 }
 
