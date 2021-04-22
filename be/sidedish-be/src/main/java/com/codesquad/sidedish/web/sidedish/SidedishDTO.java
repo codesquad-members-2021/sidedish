@@ -34,12 +34,12 @@ public class SidedishDTO {
         );
     }
 
-    public static List<SidedishDTO> listFrom(File file) throws IOException {
+    public static List<SidedishDTO> listFrom(File jsonFile) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
         return objectMapper.readValue(
-                file,
+                jsonFile,
                 new TypeReference<List<SidedishDTO>>() {
                 }
         );

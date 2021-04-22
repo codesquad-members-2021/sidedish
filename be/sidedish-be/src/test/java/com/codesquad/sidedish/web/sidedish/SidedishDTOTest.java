@@ -13,8 +13,8 @@ import org.springframework.core.env.Profiles;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SidedishDTOTest {
 
     @Autowired
-    Environment env;
+    Environment environment;
 
     @ParameterizedTest
     @MethodSource
@@ -259,7 +259,7 @@ class SidedishDTOTest {
     @ParameterizedTest
     @MethodSource
     void listFromWithFile(String jsonFilePath, String expected) throws IOException {
-        if (!env.acceptsProfiles(Profiles.of("dev"))) {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
             return;
         }
 
