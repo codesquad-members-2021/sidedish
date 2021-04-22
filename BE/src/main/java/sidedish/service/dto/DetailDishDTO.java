@@ -9,28 +9,28 @@ public class DetailDishDTO {
 
     private Long id;
     private String name;
-    private String topImage;
+    private String top_image;
     private String description;
     private List<Integer> prices;
     private List<String> badges;
     private Long stock;
     private Integer point;
-    private String deliveryInfo;
-    private List<String> thumbImages;
-    private List<String> detailImages;
+    private String delivery_info;
+    private List<String> thumb_images;
+    private List<String> detail_images;
 
     public DetailDishDTO(Dish dish) {
         this.id = dish.getId();
         this.name = dish.getName();
-        this.topImage = dish.getTopImage();
+        this.top_image = dish.getTopImage();
         this.description = dish.getDescription();
         this.prices = ConvertUtils.convertToIntegerList(dish.getPrices());
         this.badges = ConvertUtils.convertToStringList(dish.getBadges());
         this.stock = dish.getStock();
         this.point = dish.getPoint();
-        this.deliveryInfo = dish.getDeliveryInfo();
-        this.thumbImages = ConvertUtils.convertToStringList(dish.getThumbImages());
-        this.detailImages = ConvertUtils.convertToStringList(dish.getDetailImages());
+        this.delivery_info = dish.getDeliveryInfo();
+        this.thumb_images = ConvertUtils.convertToStringList(dish.getThumbImages());
+        this.detail_images = ConvertUtils.convertToStringList(dish.getDetailImages());
     }
 
     public Long getId() {
@@ -41,8 +41,8 @@ public class DetailDishDTO {
         return name;
     }
 
-    public String getTopImage() {
-        return topImage;
+    public String getTop_image() {
+        return top_image;
     }
 
     public String getDescription() {
@@ -65,15 +65,15 @@ public class DetailDishDTO {
         return point;
     }
 
-    public String getDeliveryInfo() {
-        return deliveryInfo;
+    public String getDelivery_info() {
+        return delivery_info;
     }
 
-    public List<String> getThumbImages() {
-        return thumbImages;
+    public List<String> getThumb_images() {
+        return thumb_images;
     }
 
-    public List<String> getDetailImages() {
-        return detailImages;
+    public List<String> getDetail_images() {
+        return detail_images;
     }
 }

@@ -9,14 +9,14 @@ public class MainPageDishDTO {
 
     private Long id;
     private String name;
-    private String topImage;
+    private String top_image;
     private String description;
     private List<Integer> prices;
 
     public MainPageDishDTO(Dish dish) {
         this.id = dish.getId();
         this.name = dish.getName();
-        this.topImage = dish.getTopImage();
+        this.top_image = dish.getTopImage();
         this.description = dish.getDescription();
         this.prices = ConvertUtils.convertToIntegerList(dish.getPrices());
     }
@@ -29,8 +29,8 @@ public class MainPageDishDTO {
         return name;
     }
 
-    public String getTopImage() {
-        return topImage;
+    public String getTop_image() {
+        return top_image;
     }
 
     public String getDescription() {
