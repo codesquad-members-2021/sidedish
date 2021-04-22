@@ -5,7 +5,7 @@ target 'SideDish' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 pod 'Toaster'
-
+  pod 'Alamofire', '~> 5.2'
   # Pods for SideDish
 
   target 'SideDishTests' do
