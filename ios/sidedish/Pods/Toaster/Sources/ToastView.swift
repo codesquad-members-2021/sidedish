@@ -167,8 +167,16 @@ open class ToastView: UIView {
 
 
   // MARK: Layout
-
-  override open func layoutSubviews() {
+    public enum AlignType: CGFloat {
+        case center = 0.5
+        case left = 0.07
+        
+        var offset: CGFloat {
+            return rawValue
+        }
+    }
+    
+    open func layoutSubviews(alignType: AlignType) {
     super.layoutSubviews()
     let containerSize = ToastWindow.shared.frame.size
     let constraintSize = CGSize(
@@ -209,7 +217,8 @@ open class ToastView: UIView {
     }
 
     let backgroundViewSize = self.backgroundView.frame.size
-    x = (width - backgroundViewSize.width) * 0.5
+    let offset = orientation.isLandscape && alignType == .left ? alignType.offset * 1.4 : alignType.offset
+    x = (width - backgroundViewSize.width) * offset
     y = height - (backgroundViewSize.height + y)
     self.frame = CGRect(
       x: x,
