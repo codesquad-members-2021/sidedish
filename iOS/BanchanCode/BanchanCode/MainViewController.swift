@@ -15,8 +15,15 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let mainDTO = JSONManager.decode(MockData.mainJSON, into: DishesResponseDTO.self) else { return }
+        guard let soupDTO = JSONManager.decode(MockData.soupJSON, into: DishesResponseDTO.self) else { return }
+        guard let sideDTO = JSONManager.decode(MockData.sideJSON, into: DishesResponseDTO.self) else { return }
+        let main = mainDTO.toDomain()
+        let soup = soupDTO.toDomain()
+        let side = sideDTO.toDomain()
+        
         mainDelegate = CollectionViewDelegate()
-        mainDataSource = CollectionViewDataSource()
+        mainDataSource = CollectionViewDataSource(allDishes: [main, soup, side])
         
         dishCollectionView.delegate = mainDelegate
         dishCollectionView.dataSource = mainDataSource
