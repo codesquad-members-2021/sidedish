@@ -23,7 +23,7 @@ public class BestCategoryController {
 
     @GetMapping
     public ResponseEntity getBestCategoryList(){
-
+        List<Item> items = itemRepository.findAll();
 
 
         return new ResponseEntity("", HttpStatus.OK);
