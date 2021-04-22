@@ -3,6 +3,8 @@ package com.codesquad.sidedish.image.domain;
 import com.codesquad.sidedish.category.domain.SidedishCategory;
 import org.springframework.data.repository.CrudRepository;
 
-public interface SidedishImageRepository extends CrudRepository<SidedishImage, Long> {
+import java.util.List;
 
+public interface SidedishImageRepository extends CrudRepository<SidedishImage, Long> {
+    List<SidedishImage> findAllById(Iterable<Long> imageIds);
 }

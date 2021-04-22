@@ -9,44 +9,34 @@ import java.util.Set;
 
 public class SidedishItemPreviewDTO {
 
+    private Long id;
+    private String thumbnailImage;
     private String name;
     private String description;
-    private int salePrice;
     private int normalPrice;
-    private int Quantity;
-    private int PointRate;
-    private String DeliveryInfo;
-    private String DeliveryFee;
-
+    private int salePrice;
     private Set<SidedishEventDTO> eventBadgeList;
-    private String thumbnailImage;
 
     public SidedishItemPreviewDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
+        this.id = item.getId();
+        this.thumbnailImage = thumbnailImageUrl.getImageUrl();
         this.name = item.getItemName();
         this.description = item.getItemDescription();
-        this.salePrice = item.getItemSalePrice();
         this.normalPrice = item.getItemNormalPrice();
-        this.Quantity = item.getItemQuantity();
-        this.PointRate = item.getPointRate();
-        this.DeliveryInfo = item.getItemDeliveryInfo();
-        this.DeliveryFee = item.getItemDeliveryFee();
+        this.salePrice = item.getItemSalePrice();
         this.eventBadgeList = eventBadgeList;
-        this.thumbnailImage = thumbnailImageUrl.getImageUrl();
     }
 
     @Override
     public String toString() {
-        return "SidedishItemDTO{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\n' +
-                ", salePrice=" + salePrice +
+        return "SidedishItemPreviewDTO{" +
+                "id=" + id +
+                ", thumbnailImage='" + thumbnailImage + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", normalPrice=" + normalPrice +
-                ", Quantity=" + Quantity +
-                ", PointRate=" + PointRate +
-                ", DeliveryInfo='" + DeliveryInfo + '\n' +
-                ", DeliveryFee='" + DeliveryFee + '\n' +
-                ", eventBadgeList=" + eventBadgeList + '\n' +
-                ", thumbnailImage=" + thumbnailImage + '\n' +
+                ", salePrice=" + salePrice +
+                ", eventBadgeList=" + eventBadgeList +
                 '}';
     }
 }
