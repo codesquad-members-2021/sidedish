@@ -10,6 +10,9 @@
 		8214B70B262DE07A004467C2 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8214B70A262DE07A004467C2 /* MenuCell.swift */; };
 		8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8214B70D262DE253004467C2 /* MainTableViewDataSource.swift */; };
 		8214B711262DE4B4004467C2 /* MainTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8214B710262DE4B4004467C2 /* MainTableViewDelegate.swift */; };
+		821A75F226306F1F0083026F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A75F126306F1F0083026F /* NetworkProtocol.swift */; };
+		8268E35726301419002F518C /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35626301419002F518C /* MenuCellViewModel.swift */; };
+		8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35E26301B00002F518C /* TurnonAppUsecase.swift */; };
 		82BBBBB72630067B008F89CB /* SideDishFindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBBB52630067B008F89CB /* SideDishFindable.swift */; };
 		82BBBBB82630067B008F89CB /* SideDishesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBBB62630067B008F89CB /* SideDishesCollection.swift */; };
 		82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FDB9C6262DCFD8009E3EB7 /* AppDelegate.swift */; };
@@ -30,6 +33,9 @@
 		8214B70A262DE07A004467C2 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		8214B70D262DE253004467C2 /* MainTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewDataSource.swift; sourceTree = "<group>"; };
 		8214B710262DE4B4004467C2 /* MainTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewDelegate.swift; sourceTree = "<group>"; };
+		821A75F126306F1F0083026F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		8268E35626301419002F518C /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
+		8268E35E26301B00002F518C /* TurnonAppUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnonAppUsecase.swift; sourceTree = "<group>"; };
 		82BBBBB52630067B008F89CB /* SideDishFindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishFindable.swift; sourceTree = "<group>"; };
 		82BBBBB62630067B008F89CB /* SideDishesCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishesCollection.swift; sourceTree = "<group>"; };
 		82FDB9C3262DCFD8009E3EB7 /* sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8268E35D26301A63002F518C /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				8268E35E26301B00002F518C /* TurnonAppUsecase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		82A3F139262F1FE200FD86BE /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +85,7 @@
 		82A3F13C262F202A00FD86BE /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				8268E35D26301A63002F518C /* UseCase */,
 				E41EC94F262E6DF40043CC44 /* Entity */,
 			);
 			path = Domain;
@@ -117,6 +132,7 @@
 		82A3F142262F259600FD86BE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8268E35626301419002F518C /* MenuCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -200,6 +216,7 @@
 				E41EC962263013220043CC44 /* RequestManager.swift */,
 				E41EC971263030860043CC44 /* JsonManager.swift */,
 				E41EC975263030980043CC44 /* NetworkManager.swift */,
+				821A75F126306F1F0083026F /* NetworkProtocol.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -276,15 +293,18 @@
 			files = (
 				82BBBBB82630067B008F89CB /* SideDishesCollection.swift in Sources */,
 				E41EC954262EBA2E0043CC44 /* SideDishes.swift in Sources */,
+				8268E35726301419002F518C /* MenuCellViewModel.swift in Sources */,
 				E41EC951262E6E9A0043CC44 /* SideDish.swift in Sources */,
 				82FDB9CB262DCFD8009E3EB7 /* MainViewController.swift in Sources */,
 				82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */,
 				8214B70B262DE07A004467C2 /* MenuCell.swift in Sources */,
 				8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */,
 				E41EC963263013220043CC44 /* RequestManager.swift in Sources */,
+				8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */,
 				82FDB9C9262DCFD8009E3EB7 /* SceneDelegate.swift in Sources */,
 				82BBBBB72630067B008F89CB /* SideDishFindable.swift in Sources */,
 				E41EC976263030980043CC44 /* NetworkManager.swift in Sources */,
+				821A75F226306F1F0083026F /* NetworkProtocol.swift in Sources */,
 				8214B711262DE4B4004467C2 /* MainTableViewDelegate.swift in Sources */,
 				E41EC96F263030730043CC44 /* RequestType.swift in Sources */,
 				E41EC972263030860043CC44 /* JsonManager.swift in Sources */,

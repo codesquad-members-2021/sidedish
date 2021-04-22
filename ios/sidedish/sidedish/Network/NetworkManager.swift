@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-class NetworkManager {
+class NetworkManager : NetworkProtocol {
     
     private let requestManager: RequestManager
     private let jsonManager: JsonManager
@@ -41,5 +42,14 @@ class NetworkManager {
         }
         
         dataTask.resume()
+    }
+    
+    func get<T>(type : T.Type, url: URL) -> AnyPublisher<T, Error> where T: Decodable {
+        let urlRequest = URLRequest(url: url)
+        
+        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .map(\.data)
+            .decode(type: T.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
 }

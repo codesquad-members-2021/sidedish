@@ -9,32 +9,31 @@ import Foundation
 
 class SideDishes: Codable {
     
-    private(set) var category: Category
+    private var category_id : String
+    var name : String
+    var items : [SideDish]
     
-    enum Category: Int, Codable {
-        case main = 1
-        case soup = 2
-        case side = 3
-    }
+//    enum Category: Int, Codable {
+//        case main = 1
+//        case soup = 2
+//        case side = 3
+//    }
     
-    private var list: [SideDish]
     
-    init(category: Category, list: [SideDish]) {
-        self.category = category
-        self.list = list
-    }
-    
+//    init(category: Category, list: [SideDish]) {
+//        self.category = category
+//        self.list = list
+//    }
 }
 
 extension SideDishes: SideDishFindable {
     
     func count() -> Int {
-        return list.count
+        return items.count
     }
     
     func sideDish(at index: Int) -> SideDish? {
         guard count() > index else { return nil }
-        return list[index]
+        return items[index]
     }
-    
 }
