@@ -1,7 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
 import ThumbNail from "./ThumbNail";
 import Badge from "../common/Badge";
-import { useState } from "react";
+import Button from "../common/Button";
 
 const ContentWrapper = styled.div`
 	display: flex;
@@ -36,7 +37,7 @@ const Content = ({ title, body }) => {
 };
 
 const ModalWrapper = styled.div`
-    visibility: ${props=>props.isOn? "visible" : "hidden"};
+	visibility: ${(props) => (props.isOn ? "visible" : "hidden")};
 	position: absolute;
 	width: 1000px;
 	height: 1076px;
@@ -187,9 +188,14 @@ const CloseButton = styled.div`
 	height: 32px;
 	left: 968px;
 	top: 0px;
-    svg{
-        position:absolute;
-    }
+	svg {
+		position: absolute;
+	}
+`;
+const ButtonWrapper = styled.div`
+	position: absolute;
+	top:574px;
+	left:472px;
 `;
 
 const Modal = ({ data, isModalOn, setModalOn }) => {
@@ -234,7 +240,10 @@ const Modal = ({ data, isModalOn, setModalOn }) => {
 					<TotalPriceContent>{(price * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</TotalPriceContent>
 				</TotalPrice>
 			</Box>
-			<CloseButton onClick={()=>setModalOn(()=>false)}>
+			<ButtonWrapper>
+				<Button isAble={true} clickHandler={() => console.log("공사중")} />
+			</ButtonWrapper>
+			<CloseButton onClick={() => setModalOn(() => false)}>
 				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M1 1L17 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 				</svg>
