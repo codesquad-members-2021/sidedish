@@ -26,12 +26,16 @@ const MainItems = () => {
     <>
       <MainItemsTitle />
       <S.MainItemsCardWrapper>
+        <div>
+          <CS.LeftButton />
+        </div>
         {data.map((items, index) => (
           <MainItemsCard key={index} items={items} />
         ))}
+        <div>
+          <CS.RightButton />
+        </div>
       </S.MainItemsCardWrapper>
-      <CS.LeftButton />
-      <CS.RightButton />
       <TotalCategoryButton />
     </>
   );

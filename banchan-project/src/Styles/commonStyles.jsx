@@ -11,8 +11,12 @@ const Title = styled.div`
   color: #333;
 `;
 
-const LeftButton = styled(LeftButtonSvg)``;
-const RightButton = styled(RightButtonSvg)``;
+const LeftButton = styled(LeftButtonSvg)`
+  margin: 20px;
+`;
+const RightButton = styled(RightButtonSvg)`
+  margin: 20px;
+`;
 
 const Card = {
   CardImage: styled.div`
