@@ -14,6 +14,7 @@ const StyledCounter = styled.div`
     padding: 4px 0;
     font-size: 14px;
     line-height: 20px;
+    color: #4F4F4F;
   }
 
   .btn-cont {
@@ -47,7 +48,7 @@ function Counter({ onChangeCount }) {
   const [count, setCount] = useState(1);
 
   useEffect(() => {
-    onChangeCount?.();
+    onChangeCount?.(count);
   }, [count]);
 
   const handleClickUpBtn = () => {

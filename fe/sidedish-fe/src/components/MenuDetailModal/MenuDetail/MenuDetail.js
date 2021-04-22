@@ -71,13 +71,15 @@ function MenuDetail({ hash, title }) {
 
   return (
     <StyledMenuDetail>
-      <div className="upper-cont">
-        <Preview imgs={[rvimg, bpimg]}/>
-        <OrderInfo title={title} data={data}/>
-      </div>
-      <div className="bottom-cont">
-        <RecommendSlider data={data?.detail_section}/>
-      </div>
+      {data && <>
+        <div className="upper-cont">
+          <Preview imgs={[rvimg, bpimg]}/>
+          <OrderInfo title={title} data={data}/>
+        </div>
+        <div className="bottom-cont">
+          <RecommendSlider data={data.detail_section}/>
+        </div>
+      </>}
     </StyledMenuDetail>
   );
 };
