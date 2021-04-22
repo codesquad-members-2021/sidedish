@@ -29,6 +29,13 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCell.identifier, for: indexPath) as! DishCell
+        if let dishImageUrl = URL(string: allDishes[indexPath.section].dishes[indexPath.row].imageURL) {
+            if let dishImageData = try? Data(contentsOf: dishImageUrl) {
+                let dishImage = UIImage(data: dishImageData)
+                cell.thumbnailImageView.image = dishImage
+            }
+        }
+        
         cell.nameLabel.text = allDishes[indexPath.section].dishes[indexPath.row].name
         cell.descriptionLabel.text = allDishes[indexPath.section].dishes[indexPath.row].description
         let prices = allDishes[indexPath.section].dishes[indexPath.row].prices
