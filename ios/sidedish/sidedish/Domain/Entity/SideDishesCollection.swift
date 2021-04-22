@@ -7,18 +7,8 @@
 
 import Foundation
 
-class SideDishesCollection: Codable {
+struct SideDishesCollection: Codable{
     
-    private var recentUpdate: Date?
-    private var list: [SideDishes]
+    private(set) var body: [SideDishes]
     
-    init(recentUpdate: Date, list: [SideDishes]) {
-        self.recentUpdate = recentUpdate
-        self.list = list
-    }
-    
-    func update(list: [SideDishes]) {
-        self.list = list
-        recentUpdate = Date()
-    }
 }

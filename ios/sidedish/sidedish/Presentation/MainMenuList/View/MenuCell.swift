@@ -27,4 +27,8 @@ class MenuCell : UITableViewCell {
             menuPrice.isHidden = true
         }
     }
+    
+    func updateMenu(titleText: String){
+        self.menuTitle.text = titleText
+    }
 }

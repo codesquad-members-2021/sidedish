@@ -8,13 +8,18 @@
 import UIKit
 
 class MainTableViewDelegate : NSObject, UITableViewDelegate {
+    private let viewModel : MenuCellViewModel
+    
+    init(viewModel : MenuCellViewModel) {
+        self.viewModel = viewModel
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 32))
         
-        let label = UILabel() //나중에 별도의 유즈케이스를 처리할 프로토콜 필요할 거 같아요
+        let label = UILabel() 
         label.frame = CGRect.init(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
-        label.text = "모두가 좋아하는 든든한 메인요리"
+        label.text = viewModel.dishes.body[section].name
         label.font = .boldSystemFont(ofSize: 22)
         label.backgroundColor = .white
         

@@ -8,12 +8,25 @@
 import UIKit
 
 class MainTableViewDataSource : NSObject, UITableViewDataSource {
+    
+    private let menuCellViewModel : MenuCellViewModel
+    
+    init(menucellViewModel : MenuCellViewModel) {
+        self.menuCellViewModel = menucellViewModel
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return menuCellViewModel.sideCategoryCount()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return menuCellViewModel.sideDishesCount(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell : MenuCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as? MenuCell else { return UITableViewCell() }
+        cell.updateMenu(titleText: menuCellViewModel.dishes.body[indexPath.section].sideDish(at: indexPath.row)!.title)
+        
         return cell
     }
 }
