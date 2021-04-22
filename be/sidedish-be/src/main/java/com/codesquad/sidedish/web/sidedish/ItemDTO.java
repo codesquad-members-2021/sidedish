@@ -1,5 +1,13 @@
 package com.codesquad.sidedish.web.sidedish;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
@@ -28,6 +36,28 @@ public class ItemDTO {
         this.nPrice = nPrice;
         this.sPrice = sPrice;
         this.badge = badge;
+    }
+
+    public static List<ItemDTO> listFrom(String jsonString) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+
+        return objectMapper.readValue(
+                jsonString,
+                new TypeReference<List<ItemDTO>>() {
+                }
+        );
+    }
+
+    public static List<ItemDTO> listForm(File jsonFile) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+
+        return objectMapper.readValue(
+                jsonFile,
+                new TypeReference<List<ItemDTO>>() {
+        }
+        );
     }
 
     public String getDetailHash() {
