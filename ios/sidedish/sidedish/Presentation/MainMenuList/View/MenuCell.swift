@@ -30,5 +30,6 @@ class MenuCell : UITableViewCell {
     
     func updateMenu(titleText: String){
         self.menuTitle.text = titleText
+        selectionStyle = .none //나중에 옮기자
     }
 }

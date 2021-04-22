@@ -7,9 +7,17 @@
 
 import UIKit
 import Combine
-import Toaster
 
-class MainViewController: UIViewController {
+protocol ViewChangable {
+    func pushNextView() -> Void
+}
+
+class MainViewController: UIViewController, ViewChangable {
+    
+    func pushNextView() {
+        performSegue(withIdentifier: "detailView", sender: .none)
+    }
+    
     @IBOutlet weak var menuTableView: UITableView!
     
     private let tableViewDataSource : MainTableViewDataSource
@@ -41,6 +49,7 @@ class MainViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        self.tableViewDelegate.set(delegate: self)
         self.menuTableView.dataSource = tableViewDataSource
         self.menuTableView.delegate = tableViewDelegate
         mainMenuViewModel.configureMainmenuBoard()
