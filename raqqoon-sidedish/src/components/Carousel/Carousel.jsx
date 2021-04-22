@@ -9,17 +9,16 @@ const Carousel = () => {
   const mainDishData = useFetch(
     'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main'
   );
-  return mainDishData ? (
+  const mainDishList =
+    mainDishData &&
+    mainDishData.map((item) => (
+      <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
+    ));
+
+  return mainDishList ? (
     <>
       <OutBox>
-        <CategoryContents>
-          {mainDishData.map((item) => (
-            <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
-          ))}
-        </CategoryContents>
-        <button>
-          <span>모든 카테고리 보기</span>
-        </button>
+        <CategoryContents>{mainDishList}</CategoryContents>
       </OutBox>
       <Arrow size={'L'} direction={'RIGHT'} />
       <Arrow size={'L'} direction={'LEFT'} />
