@@ -19,12 +19,6 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-    @GetMapping("/dishes")
-    public List<ItemDTO> showDishByHash() {
-        logger.info("Test show dishes");
-        return dishService.showDishes();
-    }
-
     @GetMapping("/dish/{hash}")
     public ItemDTO showSingleDish(@PathVariable String hash) {
         logger.info("Show single dish by hash");
