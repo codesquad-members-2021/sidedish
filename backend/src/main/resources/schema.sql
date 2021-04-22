@@ -38,9 +38,9 @@ DROP TABLE IF EXISTS `sidedish`.`delivery`;
 CREATE TABLE IF NOT EXISTS `sidedish`.`delivery` (
     `id` INT NOT NULL,
     `is_monday` TINYINT NOT NULL,
-    `delivery_type` VARCHAR(255) NOT NULL,
-    `delivery_fee` DECIMAL (4,0) NOT NULL,
-    `delivery_condition` DECIMAL (5,0) NOT NULL,
+    `delivery_type` VARCHAR(255) NOT NULL DEFAULT '새벽배송, 택배배송',
+    `delivery_fee` DECIMAL (4,0) NOT NULL DEFAULT 2500,
+    `delivery_condition` DECIMAL (5,0) NOT NULL DEFAULT 40000,
     `dish_hash` CHAR(5) NOT NULL,
     PRIMARY KEY (`id`),
     INDEX `fk_Delivery_dish1_idx` (`dish_hash` ASC) VISIBLE,

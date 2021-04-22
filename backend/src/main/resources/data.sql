@@ -5,7 +5,7 @@ INSERT INTO dish(hash, top_image, title, description, n_price, s_price, section_
 
 INSERT INTO dish(hash, top_image, title, description, n_price, s_price, section_name, stock) VALUES('HBDEF', 'imageurl', '[미노리키친] 규동 250g', '일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 5200, 'main,course', 10);
 
-INSERT INTO dish(hash, top_image, title, description, n_price, s_price, section_name, stock) VALUES('HDF73', 'imageurl', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '편식하는 아이도 좋아하는 건강한 연근조림', 0, 5500, 'main', 10);
+INSERT INTO dish(hash, top_image, title, description, n_price, s_price, section_name, stock) VALUES('HDF73', 'imageurl', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '편식하는 아이도 좋아하는 건강한 연근조림', 0, 5500, 'main,soup', 10);
 INSERT INTO dish(hash, top_image, title, description, n_price, s_price, section_name, stock) VALUES('HF778', 'imageurl', '[소중한식사] 골뱅이무침 195g', '매콤새콤달콤, 반찬으로도 안주로도 좋은', 7000, 6300, 'main', 10);
 
 
@@ -22,11 +22,12 @@ INSERT INTO event(id, badge, dish_hash) VALUES (4, 'event', 'HBDEF');
 INSERT INTO event(id, badge, dish_hash) VALUES (5, 'event', 'HF778');
 
 
-INSERT INTO delivery(id, is_monday, delivery_type, delivery_fee, delivery_condition, dish_hash) VALUES (1, 1, '새벽배송, 택배배송', 2500, 40000, 'H9881');
-INSERT INTO delivery(id, is_monday, delivery_type, delivery_fee, delivery_condition, dish_hash) VALUES (2, 1, '새벽배송, 택배배송', 2500, 40000, 'HDF4C');
-INSERT INTO delivery(id, is_monday, delivery_type, delivery_fee, delivery_condition, dish_hash) VALUES (3, 1, '새벽배송, 택배배송', 2500, 40000, 'HBDEF');
-INSERT INTO delivery(id, is_monday, delivery_type, delivery_fee, delivery_condition, dish_hash) VALUES (4, 0, '새벽배송, 택배배송', 2500, 40000, 'HDF73');
-INSERT INTO delivery(id, is_monday, delivery_type, delivery_fee, delivery_condition, dish_hash) VALUES (5, 0, '새벽배송, 택배배송', 2500, 40000, 'HF778');
+INSERT INTO delivery(id, is_monday, dish_hash) VALUES (1, 1, 'H9881');
+INSERT INTO delivery(id, is_monday, dish_hash) VALUES (2, 1, 'HDF4C');
+INSERT INTO delivery(id, is_monday, dish_hash) VALUES (3, 1, 'HBDEF');
+INSERT INTO delivery(id, is_monday, dish_hash) VALUES (4, 0, 'HDF73');
+INSERT INTO delivery(id, is_monday, dish_hash) VALUES (5, 0, 'HF778');
+INSERT INTO delivery(id, is_monday, dish_hash) VALUES (6, 1, 'H7F20');
 
 
 INSERT INTO best(category_id, name) VALUES (17011200, '할인특가 세트상품');
