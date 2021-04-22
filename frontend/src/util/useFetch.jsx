@@ -2,18 +2,20 @@ import { useEffect } from "react";
 
 const useFetch = (callback, type) => {
   const getUrl = () => {
-    let url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/";
+    let url =
+      "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/";
+
     switch (type) {
       case "mainDish":
         url += "main";
-      case "bestDish":
-        url += "best";
-      case "soupDish":
-        url += "soup";
-      case "sideDish":
-        url += "side";
-      case "detailDish":
-        url += "detail";
+      // case "bestDish":
+      //   url += "best";
+      // case "soupDish":
+      //   url += "soup";
+      // case "sideDish":
+      //   url += "side";
+      // case "detailDish":
+      //   url += "detail";
 
       default:
         return url;

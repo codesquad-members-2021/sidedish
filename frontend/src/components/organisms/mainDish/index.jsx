@@ -10,7 +10,7 @@ const MainDish = () => {
   UseFetch(setData, "mainDish");
 
   const Cards = () => {
-    debugger;
+    // debugger;
     return data.map((card, i) => (
       <MediumCard
         key={i}

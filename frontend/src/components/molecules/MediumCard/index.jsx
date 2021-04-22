@@ -19,7 +19,6 @@ const FlexDiv = styled.div`
 `;
 
 const MediumCard = ({ children, ...props }) => {
-  debugger;
   const TagType = () => {
     if (props._badge) {
       return props.badge === '["론칭특가"]' ? <Tag _new /> : <Tag _event />;

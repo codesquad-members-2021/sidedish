@@ -1,6 +1,5 @@
 import "./styles/style.scss";
 import React, { useState, useEffect } from "react";
-import Image from "./components/atoms/Image";
 import Header from "./components/organisms/Header";
 import BestDish from "./components/organisms/BestDish";
 import MainDish from "./components/organisms/MainDish";
@@ -13,7 +12,7 @@ function App() {
       <Header />
       <MainDish />
       <More />
-      {/* <BestDish />x */}
+      {/* <BestDish /> */}
 
       {/* {bestDish.map(({ category_id, name, items }) => {
         return (
