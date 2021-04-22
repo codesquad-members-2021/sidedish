@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class ViewController: UIViewController {
 
@@ -48,6 +49,9 @@ class ViewController: UIViewController {
             // Customize header appearance to make it more eye-catching
             configuration.textProperties.font = .boldSystemFont(ofSize: 16)
             configuration.textProperties.color = .systemBlue
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
+            headerView.addGestureRecognizer(tap)
             
             // Apply the configuration to header view
             headerView.contentConfiguration = configuration
@@ -99,6 +103,10 @@ class ViewController: UIViewController {
         }
         
         return label
+    }
+    
+    @objc private func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        self.view.makeToast("Toaster 출력 \(recognizer.view)")
     }
     
 }
