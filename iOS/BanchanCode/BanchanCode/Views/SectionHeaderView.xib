@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdj-U5-2Ym">
-                    <rect key="frame" x="0.0" y="11.5" width="320" height="27"/>
+                    <rect key="frame" x="16" y="11.5" width="56" height="27"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <color key="textColor" name="NameTextColor"/>
                     <nil key="highlightedColor"/>
@@ -23,9 +23,9 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Cdj-U5-2Ym" secondAttribute="trailing" id="Js3-Dk-dkY"/>
+                <constraint firstItem="Cdj-U5-2Ym" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="0oV-HS-CGC"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Cdj-U5-2Ym" secondAttribute="trailing" id="Js3-Dk-dkY"/>
                 <constraint firstItem="Cdj-U5-2Ym" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="K1j-wE-9YH"/>
-                <constraint firstItem="Cdj-U5-2Ym" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="mvN-ch-AyS"/>
             </constraints>
             <connections>
                 <outlet property="sectionTitleLabel" destination="Cdj-U5-2Ym" id="eUK-Dt-qy5"/>
