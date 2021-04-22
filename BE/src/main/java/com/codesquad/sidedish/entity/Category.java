@@ -3,18 +3,23 @@ package com.codesquad.sidedish.entity;
 import org.springframework.data.annotation.Id;
 
 public class Category {
+
     @Id
     private Long id;
+
     private String name;
-    private String dishType;
 
-    private Category() {
-    }
+    private String type;
 
-    public Category(Long id, String name, String dishType) {
+    private Category(Long id, String name, String type) {
         this.id = id;
         this.name = name;
-        this.dishType = dishType;
+        this.type = type;
+    }
+
+    public Category(String name, String type) {
+        this.name = name;
+        this.type = type;
     }
 
     public Long getId() {
@@ -25,15 +30,7 @@ public class Category {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDishType() {
-        return dishType;
-    }
-
-    public void setDishType(String dishType) {
-        this.dishType = dishType;
+    public String getType() {
+        return type;
     }
 }
