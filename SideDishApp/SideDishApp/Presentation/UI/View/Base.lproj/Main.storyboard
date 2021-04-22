@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iTz-BX-poK">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="16" y="44" width="382" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dJ2-Og-OAI">
                                     <size key="itemSize" width="343" height="130"/>
@@ -28,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="DishCardCell" id="BLK-Py-BTR" customClass="DishCardCell" customModule="SideDishApp" customModuleProvider="target">
-                                        <rect key="frame" x="35.5" y="58" width="343" height="130"/>
+                                        <rect key="frame" x="19.5" y="58" width="343" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lFI-3O-vlZ">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
@@ -92,7 +92,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="u1b-OK-KXr">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -101,8 +101,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iTz-BX-poK" secondAttribute="bottom" id="CGD-oJ-VGh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iTz-BX-poK" secondAttribute="trailing" id="apj-0E-3O0"/>
-                            <constraint firstItem="iTz-BX-poK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eap-5D-rQA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iTz-BX-poK" secondAttribute="trailing" constant="16" id="apj-0E-3O0"/>
+                            <constraint firstItem="iTz-BX-poK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eap-5D-rQA"/>
                             <constraint firstItem="iTz-BX-poK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kAN-ht-zoQ"/>
                         </constraints>
                     </view>
