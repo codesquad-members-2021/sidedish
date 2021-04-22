@@ -13,6 +13,12 @@
 		1E1DBAD9262DDDFC0050FE6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */; };
 		1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */; };
 		1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADC262DDDFD0050FE6C /* LaunchScreen.storyboard */; };
+		1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F61262F256000DC56C0 /* Endpoint.swift */; };
+		1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */; };
+		1ECD5F6A262F3B6500DC56C0 /* DishNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */; };
+		1ECD5F6D262F3C1700DC56C0 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F6C262F3C1700DC56C0 /* Dish.swift */; };
+		1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */; };
+		1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */; };
 		B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E6E262EA29200D5EBEC /* DishCardCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +30,13 @@
 		1E1DBAD8262DDDFC0050FE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E1DBADD262DDDFD0050FE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1E1DBADF262DDDFD0050FE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ECD5F61262F256000DC56C0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishNetworkManager.swift; sourceTree = "<group>"; };
+		1ECD5F6C262F3C1700DC56C0 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListUseCase.swift; sourceTree = "<group>"; };
+		1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 		1E1DBADF262DDDFD0050FE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		B0911E6E262EA29200D5EBEC /* DishCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +76,6 @@
 				1E1DBAE9262DDE0C0050FE6C /* Presentation */,
 				1E1DBAE8262DDE0A0050FE6C /* Data */,
 				1E1DBAF3262DDF020050FE6C /* SupportingFiles */,
-				1E1DBADF262DDDFD0050FE6C /* Info.plist */,
 			);
 			path = SideDishApp;
 			sourceTree = "<group>";
@@ -78,6 +90,9 @@
 		1E1DBAE7262DDE070050FE6C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1ECD5F61262F256000DC56C0 /* Endpoint.swift */,
+				1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */,
+				1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -137,6 +152,7 @@
 		1E1DBAEE262DDE710050FE6C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -153,6 +169,7 @@
 		1E1DBAF0262DDEA20050FE6C /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -160,6 +177,7 @@
 		1E1DBAF1262DDEA80050FE6C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1ECD5F6C262F3C1700DC56C0 /* Dish.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -178,6 +196,7 @@
 			children = (
 				1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */,
 				1E1DBADC262DDDFD0050FE6C /* LaunchScreen.storyboard */,
+				1E1DBADF262DDDFD0050FE6C /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -252,10 +271,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ECD5F6D262F3C1700DC56C0 /* Dish.swift in Sources */,
 				1E1DBAD6262DDDFC0050FE6C /* ViewController.swift in Sources */,
+				1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */,
+				1ECD5F6A262F3B6500DC56C0 /* DishNetworkManager.swift in Sources */,
 				1E1DBAD2262DDDFC0050FE6C /* AppDelegate.swift in Sources */,
+				1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */,
+				1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */,
 				B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
+				1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SideDishApp/Info.plist;
+				INFOPLIST_FILE = SideDishApp/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +446,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SideDishApp/Info.plist;
+				INFOPLIST_FILE = SideDishApp/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
