@@ -26,4 +26,10 @@ class SidedishNetworkCenter {
             }
         }
     }
+    
+    func fetchImage(url: URL, completion: @escaping ((Data) -> ())) {
+        self.networking.downloadImage(from: url) { (data) in
+            completion(data)
+        }
+    }
 }

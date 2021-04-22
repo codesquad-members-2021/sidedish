@@ -9,11 +9,13 @@ import Foundation
 
 class ItemViewModel {
     @Published var items: [SidedishItem]
+    @Published var images: [Data?]
     var errorHandler: ((String) -> ())?
     var sidedishProcessing: SidedishProcessing
     
     init() {
         self.items = [SidedishItem]()
+        self.images = [Data?]()
         self.sidedishProcessing = SidedishProcessing()
     }
     
@@ -23,9 +25,21 @@ class ItemViewModel {
             switch result {
             case .success(let sidedishItems):
                 self.items = sidedishItems
+                self.images = Array(repeating: nil, count: sidedishItems.count)
             case .failure(let error):
                 print(error)
                 self.errorHandler?(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchImage() {
+        for (index, item) in self.items.enumerated() {
+            guard let url = URL(string: item.image) else { return }
+            DispatchQueue.global().async {
+                self.sidedishProcessing.getImage(url: url) { (data) in
+                    self.images[index] = data
+                }
             }
         }
     }

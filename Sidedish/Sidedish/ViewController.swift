@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var itemViewModel: ItemViewModel!
     var headerViewModel: HeaderViewModel!
     var fetchItemSubscription = Set<AnyCancellable>()
-    var fileManager = FileManagerService()
+    var fetchImageSubscription = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,14 @@ class ViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
+                self?.itemViewModel.fetchImage()
             }.store(in: &fetchItemSubscription)
+        
+        self.itemViewModel.$images
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] (imageDatas) in
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
+            }.store(in: &fetchImageSubscription)
         
         self.itemViewModel.errorHandler = { error in
             Toast(text: error).show()
@@ -41,19 +48,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    func downloadImage(from url: URL, to cell: ItemCollectionViewCell) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            DispatchQueue.main.async {
-                cell.dishImage.image = UIImage(data: data)
-            }
-            self.fileManager.write(fileName: url.lastPathComponent, image: data)
-        }.resume()
     }
 }
 
@@ -68,17 +62,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         let item = self.itemViewModel.items[indexPath.row]
         
-        guard let url = URL(string: item.image) else { return ItemCollectionViewCell() }
-
-        guard let imageData = fileManager.checkCacheData(with: url.lastPathComponent) else {
-            downloadImage(from: url, to: cell)
-            return cell
-        }
         cell.configure(model: item)
-        cell.configure(image: UIImage(data: imageData) ?? UIImage())
+        guard let data = self.itemViewModel.images[indexPath.row] else { return cell }
+        cell.configure(data: data)
 
-        
-        
         return cell
     }
     

@@ -44,8 +44,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(image: UIImage) {
-        dishImage.image = image
+    func configure(data: Data) {
+        dishImage.image = UIImage(data: data)
     }
     
     override func prepareForReuse() {

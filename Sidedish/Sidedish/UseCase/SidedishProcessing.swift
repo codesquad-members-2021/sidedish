@@ -24,4 +24,10 @@ class SidedishProcessing {
             }
         }
     }
+    
+    func getImage(url: URL, completion: @escaping ((Data) -> ())) {
+        self.sideDishNetworkCenter.fetchImage(url: url) { (data) in
+            completion(data)
+        }
+    }
 }
