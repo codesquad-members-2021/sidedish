@@ -3,7 +3,14 @@ import Img from './Img';
 import Info from '../card/Info';
 import Price from '../card/Price';
 import Tag from '../card/Tag';
-import { EVENT, LAUNCHING, TAG_EVENT, TAG_LAUNCHING } from '../../const';
+import {
+  BEST,
+  EVENT,
+  LAUNCHING,
+  TAG_BEST,
+  TAG_EVENT,
+  TAG_LAUNCHING,
+} from '../../const';
 import { v4 as uuidv4 } from 'uuid';
 
 const Card = ({ cardSize, item, imgUrl }) => {
@@ -22,6 +29,8 @@ const Card = ({ cardSize, item, imgUrl }) => {
                 return <Tag type={EVENT} key={uuidv4()} />;
               case TAG_LAUNCHING:
                 return <Tag type={LAUNCHING} key={uuidv4()} />;
+              case TAG_BEST:
+                return <Tag type={BEST} key={uuidv4()} />;
               default:
                 break;
             }

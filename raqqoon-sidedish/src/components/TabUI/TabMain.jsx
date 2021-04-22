@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SIZE_LARGE } from '../../const';
+import { COLOR_LIGHTYELLOW, SIZE_LARGE } from '../../const';
 import useFetch from '../../customHooks/useFetch';
 import Card from '../card/Card';
 
@@ -41,7 +41,7 @@ export default TabMain;
 
 const TabMainBoxDiv = styled.div`
   display: flex;
-  background: #eef4fa;
+  background: ${COLOR_LIGHTYELLOW};
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 0px 5px 5px 5px;
 `;

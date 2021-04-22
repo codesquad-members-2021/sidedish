@@ -1,7 +1,7 @@
-import { ACTIVE } from '../../const';
+import { ACTIVE, COLOR_LIGHTYELLOW } from '../../const';
 import styled from 'styled-components';
 
-const Tab = ({ name, activeState, setTabState, setTabIndex, idx }) => {
+const Tab = ({ name, activeState, setTabIndex, idx }) => {
   const handleClickTab = () => {
     setTabIndex(idx);
   };
@@ -20,7 +20,7 @@ const TabBoxDiv = styled.div`
   width: 184px;
   height: 58px;
   background: ${(props) =>
-    props.activeState === ACTIVE ? `#eef4fa` : `#f5f5f7`};
+    props.activeState === ACTIVE ? `${COLOR_LIGHTYELLOW}` : `#f5f5f7`};
   border-radius: 5px 5px 0px 0px;
   display: flex;
   justify-content: center;
