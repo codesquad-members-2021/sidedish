@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Category;
+import com.codesquad.sidedish.domain.Item;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class CategoryDto {
     }
 
     public static CategoryDto of(Category category) {
-        Set<ItemDto> itemDtos = category.getItems().stream().map(item -> ItemDto.of(item)).collect(Collectors.toSet());
+        Set<ItemDto> itemDtos = category.getItems().stream().map(item -> Item.createItemDto(item)).collect(Collectors.toSet());
         return new CategoryDto(category.getCategoryId(), category.getName(), itemDtos);
     }
 

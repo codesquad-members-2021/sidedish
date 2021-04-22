@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.domain;
 
+import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.dto.ItemDto;
 import org.springframework.data.annotation.Id;
 
@@ -24,13 +25,15 @@ public class Item {
     private String productDescription;
     private Integer point;
     private String deliveryInfo;
-    private String deliveryFee;
+    private Integer deliveryFee;
     private List<Integer> prices;//x
     private List<String> detailSection;
 
     private int stock;
 
-    Item(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice, Integer salePrice, List<String> badge, String topImage, List<String> thumbImages, String productDescription, Integer point, String deliveryInfo, String deliveryFee, List<Integer> prices, List<String> detailSection, int stock) {
+    Item(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice,
+         Integer salePrice, List<String> badge, String topImage, List<String> thumbImages, String productDescription, Integer point,
+         String deliveryInfo, Integer deliveryFee, List<Integer> prices, List<String> detailSection, int stock) {
         this.detailHash = detailHash;
         this.image = image;
         this.alt = alt;
@@ -51,80 +54,22 @@ public class Item {
         this.stock = stock;
     }
 
-    public static ItemDto of(Item item) {
-        
-    }
-
-
     public String getDetailHash() {
         return detailHash;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getAlt() {
-        return alt;
-    }
-
-    public List<String> getDeliveryType() {
-        return deliveryType;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Integer getNormalPrice() {
-        return normalPrice;
-    }
-
-    public Integer getSalePrice() {
-        return salePrice;
-    }
-
-    public List<String> getBadge() {
-        return badge;
-    }
-
-    public String getTopImage() {
-        return topImage;
-    }
-
-    public List<String> getThumbImages() {
-        return thumbImages;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public Integer getPoint() {
-        return point;
-    }
-
-    public String getDeliveryInfo() {
-        return deliveryInfo;
-    }
-
-    public String getDeliveryFee() {
-        return deliveryFee;
-    }
-
-    public List<Integer> getPrices() {
-        return prices;
-    }
-
-    public List<String> getDetailSection() {
-        return detailSection;
     }
 
     public int getStock() {
         return stock;
     }
+
+    public static ItemDto createItemDto(Item item) {
+        return new ItemDto(item.detailHash, item.image, item.alt, item.deliveryType, item.title,
+                item.description, item.normalPrice, item.salePrice, item.badge);
+    }
+
+    public static DetailItemDto createDetailItemDto(Item item) {
+        return new DetailItemDto(item.detailHash, item.topImage, item.thumbImages, item.productDescription,
+                item.point, item.deliveryInfo, item.deliveryFee, item.prices, item.detailSection);
+    }
+
 }

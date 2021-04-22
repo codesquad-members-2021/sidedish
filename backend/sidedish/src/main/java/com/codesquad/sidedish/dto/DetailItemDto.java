@@ -1,18 +1,20 @@
 package com.codesquad.sidedish.dto;
 
+import java.util.List;
+
 public class DetailItemDto {
 
     private String detailHash;
     private String topImage;
-    private String thumbImages;
+    private List<String> thumbImages;
     private String productDescription;
     private Integer point;
     private String deliveryInfo;
     private Integer deliveryFee;
-    private Integer prices;
-    private String detailSection;
+    private List<Integer> prices;
+    private List<String> detailSection;
 
-    public DetailItemDto(String detailHash, String topImage, String thumbImages, String productDescription, Integer point, String deliveryInfo, Integer deliveryFee, Integer prices, String detailSection) {
+    public DetailItemDto(String detailHash, String topImage, List<String> thumbImages, String productDescription, Integer point, String deliveryInfo, Integer deliveryFee, List<Integer> prices, List<String> detailSection) {
         this.detailHash = detailHash;
         this.topImage = topImage;
         this.thumbImages = thumbImages;
@@ -23,38 +25,4 @@ public class DetailItemDto {
         this.prices = prices;
         this.detailSection = detailSection;
     }
-
-    public String getTopImage() {
-        return topImage;
-    }
-
-    public String getThumbImages() {
-        return thumbImages;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public Integer getPoint() {
-        return point;
-    }
-
-    public String getDeliveryInfo() {
-        return deliveryInfo;
-    }
-
-    public Integer getDeliveryFee() {
-        return deliveryFee;
-    }
-
-    public Integer getPrices() {
-        return prices;
-    }
-
-    public String getDetailSection() {
-        return detailSection;
-    }
-
-
 }
