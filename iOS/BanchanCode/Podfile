@@ -1,0 +1,19 @@
+platform :ios, '10.0'
+
+target 'BanchanCode' do
+  use_frameworks!
+
+  # Pods for BanchanCode
+
+  pod 'Alamofire', '~> 5.2'
+
+  target 'BanchanCodeTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'BanchanCodeUITests' do
+    # Pods for testing
+  end
+
+end

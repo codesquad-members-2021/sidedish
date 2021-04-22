@@ -1,0 +1,6 @@
+framework module Pods_BanchanCodeTests {
+  umbrella header "Pods-BanchanCodeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
