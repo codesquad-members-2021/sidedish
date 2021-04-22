@@ -3,7 +3,7 @@ package com.codesquad.sidedish.category.service;
 import com.codesquad.sidedish.category.domain.SidedishCategoryRepository;
 import com.codesquad.sidedish.category.domain.SidedishCategory;
 import com.codesquad.sidedish.category.domain.SidedishItem;
-import com.codesquad.sidedish.category.domain.SidedishItemDTO;
+import com.codesquad.sidedish.category.domain.SidedishItemPreviewDTO;
 import com.codesquad.sidedish.category.exception.EmptyItemException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventDTO;
@@ -31,12 +31,12 @@ public class SidedishItemService {
         this.sidedishImageRepository = sidedishImageRepository;
     }
 
-    public List<SidedishItemDTO> showItemList(String categoryName){
+    public List<SidedishItemPreviewDTO> showItemList(String categoryName){
 
         SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName);
         List<SidedishItem> items = category.getSidedishItemList();
 
-        List<SidedishItemDTO> itemDTOs = new ArrayList<>();
+        List<SidedishItemPreviewDTO> itemDTOs = new ArrayList<>();
         Map<Long, SidedishEvent> events = new HashMap<>();
 
         for(SidedishItem item : items){
@@ -53,7 +53,7 @@ public class SidedishItemService {
                     .collect(Collectors.toSet());
             SidedishItemImage thumbnailItemImage = item.getSidedishItemImages().stream().filter(SidedishItemImage::isThumbnailImage).findFirst().orElseThrow(ImageNotFoundException::new);
             SidedishImage thumbnailImage = sidedishImageRepository.findById(thumbnailItemImage.getSidedishImage()).orElseThrow(ImageNotFoundException::new);
-            itemDTOs.add(new SidedishItemDTO(item, eventSet, thumbnailImage));
+            itemDTOs.add(new SidedishItemPreviewDTO(item, eventSet, thumbnailImage));
         }
         return itemDTOs;
     }

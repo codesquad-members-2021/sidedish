@@ -5,7 +5,6 @@ import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventRepository;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 import com.codesquad.sidedish.image.domain.SidedishImageRepository;
-import com.codesquad.sidedish.image.domain.SidedishImageTypeEnum;
 import com.codesquad.sidedish.image.domain.SidedishItemImage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -96,10 +95,10 @@ class SidedishSidedishCategoryRepositoryTest {
 
         sidedishCategoryRepository.save(mainCategory);
 
-        List<SidedishItemDTO> itemDTOS = itemService.showItemList("main");
+        List<SidedishItemPreviewDTO> itemDTOS = itemService.showItemList("main");
 
-        for (SidedishItemDTO sidedishItemDTO : itemDTOS) {
-            logger.info("ItemDTO : {}", sidedishItemDTO.toString());
+        for (SidedishItemPreviewDTO sidedishItemPreviewDTO : itemDTOS) {
+            logger.info("ItemDTO : {}", sidedishItemPreviewDTO.toString());
         }
     }
 

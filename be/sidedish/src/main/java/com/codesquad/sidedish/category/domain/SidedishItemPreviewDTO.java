@@ -7,7 +7,7 @@ import com.codesquad.sidedish.image.domain.SidedishImage;
 import java.util.List;
 import java.util.Set;
 
-public class SidedishItemDTO {
+public class SidedishItemPreviewDTO {
 
     private String name;
     private String description;
@@ -21,7 +21,7 @@ public class SidedishItemDTO {
     private Set<SidedishEventDTO> eventBadgeList;
     private String thumbnailImage;
 
-    public SidedishItemDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
+    public SidedishItemPreviewDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
         this.name = item.getItemName();
         this.description = item.getItemDescription();
         this.salePrice = item.getItemSalePrice();
