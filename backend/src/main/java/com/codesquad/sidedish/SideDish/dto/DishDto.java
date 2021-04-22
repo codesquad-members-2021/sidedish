@@ -1,37 +1,52 @@
 package com.codesquad.sidedish.SideDish.dto;
 
+import com.codesquad.sidedish.SideDish.domain.Dish;
+
 import java.util.List;
 
 public class DishDto {
     private final String detailHash;
     private final String image;
-    private final List<String> deliveryType;
     private final String title;
     private final String description;
-    private final int nPrice;
-    private final String sPrice;
-    private final List<String> badge;
-    
+    private final List<String> deliveryTypes;
+    private final int price;
+    private final int salePrice;
+    private final List<String> badges;
+
     private DishDto(Builder builder) {
         this.detailHash = builder.detailHash;
         this.image = builder.image;
-        this.deliveryType = builder.deliveryType;
+        this.deliveryTypes = builder.deliveryTypes;
         this.title = builder.title;
         this.description = builder.description;
-        this.nPrice = builder.nPrice;
-        this.sPrice = builder.sPrice;
-        this.badge = builder.badge;
+        this.price = builder.price;
+        this.salePrice = builder.salePrice;
+        this.badges = builder.badges;
+    }
+
+    public static DishDto from(Dish dish) {
+        return new Builder()
+                .detailHash(dish.getDetailHash())
+                .image(dish.getImage())
+                .title(dish.getTitle())
+                .description(dish.getDescription())
+                .deliveryTypes(dish.getDeliveryTypes())
+                .price(dish.getPrice())
+                .salePrice(dish.getSalePrice())
+                .badges(dish.getBadges())
+                .build();
     }
 
     public static class Builder {
         private String detailHash;
         private String image;
-        private List<String> deliveryType;
         private String title;
         private String description;
-        private int nPrice;
-        private String sPrice;
-        private List<String> badge;
+        private List<String> deliveryTypes;
+        private int price;
+        private int salePrice;
+        private List<String> badges;
 
         public DishDto build() {
             return new DishDto(this);
@@ -48,11 +63,6 @@ public class DishDto {
             return this;
         }
 
-        public Builder deliveryType(List<String> deliveryType) {
-            this.deliveryType = deliveryType;
-            return this;
-        }
-
         public Builder title(String title) {
             this.title = title;
             return this;
@@ -63,18 +73,23 @@ public class DishDto {
             return this;
         }
 
-        public Builder nPrice(int nPrice) {
-            this.nPrice = nPrice;
+        public Builder deliveryTypes(List<String> deliveryTypes) {
+            this.deliveryTypes = deliveryTypes;
             return this;
         }
 
-        public Builder sPrice(String sPrice) {
-            this.sPrice = sPrice;
+        public Builder price(int price) {
+            this.price = price;
             return this;
         }
 
-        public Builder badge(List<String> badge) {
-            this.badge = badge;
+        public Builder salePrice(int salePrice) {
+            this.salePrice = salePrice;
+            return this;
+        }
+
+        public Builder badges(List<String> badges) {
+            this.badges = badges;
             return this;
         }
     }
@@ -87,8 +102,8 @@ public class DishDto {
         return image;
     }
 
-    public List<String> getDeliveryType() {
-        return deliveryType;
+    public List<String> getDeliveryTypes() {
+        return deliveryTypes;
     }
 
     public String getTitle() {
@@ -99,15 +114,15 @@ public class DishDto {
         return description;
     }
 
-    public int getnPrice() {
-        return nPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public String getsPrice() {
-        return sPrice;
+    public int getSalePrice() {
+        return salePrice;
     }
 
-    public List<String> getBadge() {
-        return badge;
+    public List<String> getBadges() {
+        return badges;
     }
 }

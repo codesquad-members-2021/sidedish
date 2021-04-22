@@ -1,18 +1,28 @@
 package com.codesquad.sidedish.SideDish.service;
 
+import com.codesquad.sidedish.SideDish.domain.CategoryMockRepository;
+import com.codesquad.sidedish.SideDish.domain.CategoryRepository;
 import com.codesquad.sidedish.SideDish.dto.CategoryDto;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
+    private final CategoryRepository categoryRepository;
+
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+
+    public CategoryService() {
+        this(new CategoryMockRepository());
+    }
+
     public List<CategoryDto> getList() {
-        return Arrays.asList(
-                new CategoryDto(1, "메인", "/main"),
-                new CategoryDto(2, "국", "/soup"),
-                new CategoryDto(3, "반찬", "side")
-        );
+        return categoryRepository.findAll()
+                .stream().map(CategoryDto::from)
+                .collect(Collectors.toList());
     }
 }
