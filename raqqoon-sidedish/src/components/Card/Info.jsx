@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
 const Name = ({ name }) => {
-  return <NameDiv>{name || `[아내의쉐프] 아쉐찜닭`}</NameDiv>;
+  return <NameDiv>{name}</NameDiv>;
 };
 const Body = ({ body }) => {
-  return (
-    <BodyDiv>
-      {body || `아내의 쉐프가 자신있게 만들어서 이름도 '아쉐찜'`}
-    </BodyDiv>
-  );
+  return <BodyDiv>{body}</BodyDiv>;
 };
 
 const Info = ({ name, body }) => {
