@@ -8,7 +8,7 @@
 import UIKit
 
 class BanchanCustomCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -28,18 +28,12 @@ class BanchanCustomCell: UICollectionViewCell {
     
     var banchan: Banchan? {
         didSet{
-            guard let url = URL(string: "\(banchan!.image)"),
-                  let data = try? Data(contentsOf: url) else {
-                return
-            }
-            
-            imageView.image = UIImage(data: data)
+            imageView.image = UIImage(data: banchan!.image ?? Data())
             titleLabel.text = banchan?.title
             descriptionLabel.text = banchan?.description
-            netPriceLabel.text = "\(banchan?.netPrice ?? "")"
-            salePriceLabel.text = "\(banchan?.salePrice ?? "")"
-            priceTypeLabel.text = "\(banchan?.badge ?? [])"
+            netPriceLabel.text = "1000"
+            salePriceLabel.text = "2000"
+            priceTypeLabel.text = "3000"
         }
     }
-
 }

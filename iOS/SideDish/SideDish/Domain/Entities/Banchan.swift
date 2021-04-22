@@ -19,14 +19,14 @@ enum PriceType {
 
 struct Banchan: Hashable {
     private (set) var hash: String
-    private (set) var image: String
+    private (set) var image: Data?
     private (set) var alt: String
     private (set) var title: String
     private (set) var description: String
     private (set) var netPrice: String?
     private (set) var salePrice: String
-    private (set) var badge: [PriceType]
-    private (set) var delivery_type: [Delivery]
+    private (set) var badge: [String]?
+    private (set) var delivery_type: [String]
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(hash)

@@ -14,6 +14,11 @@ protocol NetworkRequest {
 
 class NetworkSerivce: NetworkRequest {
     
+    static let shared = NetworkSerivce()
+    
+    private init() {
+    }
+    
     func request(url strUrl: String, httpMethod: HTTPMethod, completion: @escaping (AFDataResponse<Data>) -> Void) {
         guard let url = URL(string: strUrl) else { return }
         
