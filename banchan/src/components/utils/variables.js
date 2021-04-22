@@ -20,8 +20,9 @@ const BUTTON_TYPE = {
 };
 
 const LABEL_TYPE = {
-  EVENT: "이벤트특가",
-  LAUNCH: "런칭특가",
+  이벤트특가: "EVENT",
+  론칭특가: "LAUNCH",
+  베스트: "BEST",
 };
 
 export { BUTTON_TYPE, LABEL_TYPE };

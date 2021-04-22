@@ -8,6 +8,7 @@ const theme = {
     green: "#82D32D",
     lightBlue: "#86C6FF",
     white: "#FFF",
+    pink: "#F16B6F",
   },
   fontSizes: {
     XS: "14px",

@@ -12,4 +12,16 @@ const CenterContainer = styled.div`
   justify-content: center;
 `;
 
-export { Button, CenterContainer };
+const SectionTitle = styled.div`
+  font-size: ${(props) => props.theme.fontSizes.XL};
+  font-weight: bold;
+  color: ${(props) => props.theme.darkGray};
+  margin: 28px 0;
+`;
+
+const CardList = styled.ul`
+  display: flex;
+  justify-content: center;
+`;
+
+export { Button, CenterContainer, SectionTitle, CardList };

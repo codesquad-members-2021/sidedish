@@ -3,9 +3,7 @@ import styled from "styled-components";
 import theme from "./styles/theme.js";
 import { LABEL_TYPE } from "./variables.js";
 
-const Label = ({ type }) => (
-  <StyledLabel type={type}>{LABEL_TYPE[type]}</StyledLabel>
-);
+const Label = ({ badgeName }) => <StyledLabel type={LABEL_TYPE[badgeName]}>{badgeName}</StyledLabel>;
 
 const StyledLabel = styled.span`
   padding: 4px 16px;
@@ -14,7 +12,9 @@ const StyledLabel = styled.span`
   font-size: ${theme.fontSizes.XS};
   font-weight: bold;
   background: ${({ type }) =>
-    type === "EVENT" ? theme.colors.green : theme.colors.lightBlue};
+    type === "EVENT" ? theme.colors.green : type === "BEST" ? theme.colors.pink : theme.colors.lightBlue};
+  margin-right: 10px;
+  margin-top: 20px;
 `;
 
 export default Label;

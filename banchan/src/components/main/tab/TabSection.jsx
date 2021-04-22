@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Card from "../../utils/Card";
 import { CenterContainer } from "../../utils/styles/common";
-import { Button } from "../../utils/styles/common";
+import { Button, SectionTitle, CardList } from "../../utils/styles/common";
 
 const tempUrl = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best";
 
@@ -34,11 +34,9 @@ const TabSection = (props) => {
                 {item.name}
               </TabButton>
             ))}
-          {/* map Tab */}
         </TabList>
         <TabContent>
           <CardList>
-            {/* map Card */}
             {bestSidedishes.length &&
               bestSidedishes[activeTab].items.map((item) => (
                 <Card product={item} cardSize={(props) => props.theme.cardSizes.L} margin={12} />
@@ -68,22 +66,9 @@ const TabButton = styled(Button)`
 const TabList = styled.ul``;
 
 const TabContent = styled.div`
-  width: 1280px;
-  height: 620px;
-`;
-
-const CardList = styled.ul`
-  display: flex;
-  padding: 40px 0;
   background-color: ${(props) => props.theme.colors.whiteBlue};
-  justify-content: center;
-`;
-
-const SectionTitle = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.XL};
-  font-weight: bold;
-  color: ${(props) => props.theme.darkGray};
-  margin: 28px 0;
+  padding: 40px 0;
+  width: 1280px;
 `;
 
 export default TabSection;
