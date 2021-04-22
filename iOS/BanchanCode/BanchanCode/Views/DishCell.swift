@@ -22,12 +22,8 @@ class DishCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        thumbnailImageView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         thumbnailImageView.layer.masksToBounds = true
         thumbnailImageView.layer.cornerRadius = 5.0
-        
-        nameLabel.text = "Jackson!!!!"
-        descriptionLabel.text = "LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong"
         
         badgeBackgroundView.layer.masksToBounds = true
         badgeBackgroundView.layer.cornerRadius = 5.0
