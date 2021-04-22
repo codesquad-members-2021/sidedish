@@ -12,6 +12,6 @@ class SectionHeaderReusableView: UICollectionReusableView {
       return String(describing: SectionHeaderReusableView.self)
     }
     
-    @IBOutlet weak var label : UILabel!
+    @IBOutlet weak var title : UILabel!
     
 }

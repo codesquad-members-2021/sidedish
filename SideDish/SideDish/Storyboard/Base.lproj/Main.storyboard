@@ -49,7 +49,7 @@
                                         </label>
                                     </subviews>
                                     <connections>
-                                        <outlet property="label" destination="qyB-lz-n60" id="Sbb-4V-Tbm"/>
+                                        <outlet property="title" destination="qyB-lz-n60" id="Sbb-4V-Tbm"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>

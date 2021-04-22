@@ -13,9 +13,11 @@
 		10418397262EB1B700280647 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418396262EB1B700280647 /* Response.swift */; };
 		1041839F262EB30800280647 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041839E262EB30800280647 /* API.swift */; };
 		104183A5262EB35A00280647 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 104183A4262EB35A00280647 /* Alamofire */; };
-		104183AB262EB99B00280647 /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104183AA262EB99B00280647 /* APITest.swift */; };
 		1050395B262DAAA000C8C0FB /* Toaster in Frameworks */ = {isa = PBXBuildFile; productRef = 1050395A262DAAA000C8C0FB /* Toaster */; };
 		10503968262DAB9300C8C0FB /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */; };
+		105467172631101600DAB4E3 /* LoadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105467162631101600DAB4E3 /* LoadError.swift */; };
+		1054672426311A6900DAB4E3 /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1054672326311A6900DAB4E3 /* APITest.swift */; };
+		10B9F8A626311DF800B3130D /* CardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B9F8A526311DF800B3130D /* CardAPI.swift */; };
 		B3D25402262D6AC900F57C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25401262D6AC900F57C61 /* AppDelegate.swift */; };
 		B3D25404262D6AC900F57C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25403262D6AC900F57C61 /* SceneDelegate.swift */; };
 		B3D25406262D6AC900F57C61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D25405262D6AC900F57C61 /* ViewController.swift */; };
@@ -52,10 +54,12 @@
 		10418384262EA17300280647 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		10418396262EB1B700280647 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		1041839E262EB30800280647 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		104183AA262EB99B00280647 /* APITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
 		10503967262DAB9300C8C0FB /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
+		105467162631101600DAB4E3 /* LoadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadError.swift; sourceTree = "<group>"; };
+		1054672326311A6900DAB4E3 /* APITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
 		1086ED2A262FF720004B8D42 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		1086ED2B262FF720004B8D42 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		10B9F8A526311DF800B3130D /* CardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAPI.swift; sourceTree = "<group>"; };
 		B3D253FE262D6AC900F57C61 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D25401262D6AC900F57C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3D25403262D6AC900F57C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,8 +117,10 @@
 		10418395262EB0CF00280647 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				10418396262EB1B700280647 /* Response.swift */,
+				105467162631101600DAB4E3 /* LoadError.swift */,
 				1041839E262EB30800280647 /* API.swift */,
+				10B9F8A526311DF800B3130D /* CardAPI.swift */,
+				10418396262EB1B700280647 /* Response.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -135,13 +141,6 @@
 				10418384262EA17300280647 /* Section.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		108A8943262E761A00C828AC /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B3D253F5262D6AC900F57C61 = {
@@ -173,7 +172,6 @@
 				10418395262EB0CF00280647 /* Network */,
 				108A8942262E761400C828AC /* Model */,
 				B3D25441262D6F0300F57C61 /* Controller */,
-				108A8943262E761A00C828AC /* ViewModel */,
 				B3D2543F262D6EF500F57C61 /* View */,
 				B3D25401262D6AC900F57C61 /* AppDelegate.swift */,
 				B3D25403262D6AC900F57C61 /* SceneDelegate.swift */,
@@ -190,7 +188,7 @@
 			children = (
 				B3D2541B262D6ACA00F57C61 /* SideDishTests.swift */,
 				B3D2541D262D6ACA00F57C61 /* Info.plist */,
-				104183AA262EB99B00280647 /* APITest.swift */,
+				1054672326311A6900DAB4E3 /* APITest.swift */,
 			);
 			path = SideDishTests;
 			sourceTree = "<group>";
@@ -369,8 +367,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				105467172631101600DAB4E3 /* LoadError.swift in Sources */,
 				1041839F262EB30800280647 /* API.swift in Sources */,
 				10418385262EA17300280647 /* Section.swift in Sources */,
+				10B9F8A626311DF800B3130D /* CardAPI.swift in Sources */,
 				1041837D262E9F3B00280647 /* ImageView+load.swift in Sources */,
 				B3D25439262D6ECA00F57C61 /* CardCell.swift in Sources */,
 				10503968262DAB9300C8C0FB /* SectionHeaderReusableView.swift in Sources */,
@@ -387,7 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				104183AB262EB99B00280647 /* APITest.swift in Sources */,
+				1054672426311A6900DAB4E3 /* APITest.swift in Sources */,
 				B3D2541C262D6ACA00F57C61 /* SideDishTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

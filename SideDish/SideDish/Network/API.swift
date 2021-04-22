@@ -7,44 +7,42 @@
 
 import Alamofire
 import Foundation
-
-enum CardAPIURL : String, CodingKey {
-    case main
-    case soup
-    case side
-    
-    static let baseURL = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/"
-    var path : String { self.stringValue }
-    var url : URL { URL(string: CardAPIURL.baseURL + path)! }
-}
+import Combine
 
 class API {
-    static let shared : API = API()
-    private var request: DataRequest? {
-        didSet {
-            oldValue?.cancel()
-        }
+
+    struct Response<T> {
+        let value: T
+        let response : URLResponse
     }
     
-    func loadMainDish(completion: @escaping ([CardResponse]) -> Void){
-        self.request = AF.request(CardAPIURL.main.url, method: .get)
-        self.request?
-            .validate()
+    func run<T: Decodable>(_ request: DataRequest, _ decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<API.Response<T>, APIError> {
+
+        return request
             .validate(contentType: ["application/json"])
-            .responseDecodable(of: CardsResponse.self) { (response) in
-                debugPrint(response)
-                switch response.result {
-                case .success(let cards):
-                    completion(cards.body)
-                case .failure(let error):
-                    print(error)
+            .validate()
+            .publishData(emptyResponseCodes: [200, 204, 205])
+            .tryMap { result -> API.Response<T> in
+                // TODO: Error Handling
+                
+                if let data = result.data {
+                    // 응답이 성공이고 result가 있을 때
+                    let value = try decoder.decode(T.self, from: data)
+                    return Response(value: value, response: result.response!)
+                } else {
+                    // 응답이 성공이고 result가 없을 때 Empty를 리턴
+                    return Response(value: Empty.emptyValue() as! T, response: result.response!)
                 }
             }
-    }
-    func loadSoup(){
-        
-    }
-    func loadSide(){
+            .mapError({ (error) -> APIError in
+                if let apiError = error as? APIError {
+                    return apiError
+                } else {
+                    return .other(error)
+                }
+            })
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
         
     }
 }

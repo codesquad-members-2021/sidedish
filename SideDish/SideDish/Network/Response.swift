@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CardResponse : Codable {
+struct FoodItem : Codable {
     let id : String
     let image : String
     let alt : String
@@ -33,5 +33,24 @@ struct CardResponse : Codable {
 
 struct CardsResponse : Codable {
     let statusCode : Int
-    let body : [CardResponse]
+    let body : [FoodItem]
+    
+    func getCards() -> [Card] {
+        var cards = [Card]()
+        for item in self.body {
+            let card = responseToCard(response: item)
+            cards.append(card)
+        }
+        return cards
+    }
+    private func responseToCard(response item : FoodItem) -> Card {
+        let card = Card(id: item.id,
+                        title: item.title,
+                        detail: item.description,
+                        d_price: item.discountPrice,
+                        o_price: item.originalPrice,
+                        url: URL(string: item.image),
+                        badge: item.badge)
+        return card
+    }
 }

@@ -7,79 +7,77 @@
 
 import UIKit
 import Toaster
+import Combine
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var cardCollectionView: UICollectionView!
     
     // MARK: - Value Types
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Card>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Card>
     
     // MARK: - Properties
-    var sections = Section.allSections
-    var mainFood = [Card]()
+    @IBOutlet weak var cardCollectionView: UICollectionView!
+    
+    private var cancellables: Set<AnyCancellable> = []
+    private var sections = Section.allSections
+    private lazy var dataSource = makeDataSource()
+    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cardCollectionView.dataSource = self
         registerNIB()
-        API.shared.loadMainDish{ (cardsResponse) in
-            for item in cardsResponse {
-                let card = Card(id: item.id,
-                                title: item.title,
-                                detail: item.description,
-                                d_price: item.discountPrice,
-                                o_price: item.originalPrice,
-                                url: URL(string: item.image),
-                                badge: item.badge)
-                self.mainFood.append(card)
+        fetchData()
+        makeSectionHeader()
+    }
+}
+// MARK: - Functions
+extension ViewController {
+    func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: cardCollectionView,
+            cellProvider: { ( collectionview, indexPath, card) -> UICollectionViewCell? in
+                let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell
+                cell?.card = card
+                return cell
+            })
+        return dataSource
+    }
+    func makeSectionHeader(){
+        self.dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionHeader else {
+                return nil
             }
-            self.cardCollectionView.reloadData()
+            let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                       withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier,
+                                                                       for: indexPath) as? SectionHeaderReusableView
+            headerView?.title.text = section.title
+            return headerView
         }
     }
-    
+    func fetchData(){
+        self.sections.forEach{
+            $0.$cards.receive(on: DispatchQueue.main)
+                .sink(receiveValue: {[weak self] _ in
+                    self?.applySnapshot()
+                })
+                .store(in: &cancellables)
+        }
+        self.sections[0].loadCards(type: .main)
+        self.sections[1].loadCards(type: .soup)
+        self.sections[2].loadCards(type: .side)
+    }
+    func applySnapshot(animatingDifferences : Bool = true){
+        var snapshot = Snapshot()
+        snapshot.appendSections(sections)
+        sections.forEach{ section in
+            snapshot.appendItems(section.cards, toSection: section)
+        }
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
     func registerNIB() {
         let nibName = UINib(nibName: "CardCell", bundle: nil)
         cardCollectionView.register(nibName, forCellWithReuseIdentifier: "cardCell")
-    }
-}
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mainFood.count
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCell
-        cell.card = mainFood[indexPath.row]
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        // header의 title을 지정
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "\(SectionHeaderReusableView.self)",
-                for: indexPath) as? SectionHeaderReusableView
-        else {
-            return SectionHeaderReusableView()
-        }
-        let searchTerm = sections[indexPath.section]
-        headerView.label.text = searchTerm.title
-        headerView.label.font = .boldSystemFont(ofSize: 22)
-        
-        // header의 touch event
-        let touchGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(touchDetected))
-        headerView.addGestureRecognizer(touchGestureRecognizer)
-        
-        return headerView
-    }
-    @objc func touchDetected(){
-        let toast = Toast(text: "Hello, world!", duration: Delay.long)
-        toast.show()
     }
 }
 
