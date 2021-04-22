@@ -72,7 +72,7 @@ const DeliveryBlock = styled.div`
 const imgPosition = {
   position: "relative",
   top: "-7px",
-  left: "-7px",
+  left: "2px",
 };
 function ItemCard({ data, size }) {
   return (
@@ -88,8 +88,9 @@ function ItemCard({ data, size }) {
 
         <ItemTitle>{data.alt}</ItemTitle>
         <ItemDesc>{data.description}</ItemDesc>
-        <ItemPrice>{data.s_price ? data.s_price : data.p_price}</ItemPrice>
-        <ItemPriceNormal>{data.s_price && data.n_price}원</ItemPriceNormal>
+        <ItemPrice>{data.s_price ? data.s_price : data.n_price}</ItemPrice>
+        {data.s_price && <ItemPriceNormal>{data.n_price}원</ItemPriceNormal>}
+
         <BadgeWrapper>
           {data.badge &&
             data.badge.map((el, idx) => (
