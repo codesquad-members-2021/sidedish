@@ -1,4 +1,5 @@
 import * as S from "../../BestItemsStyles";
+import * as CS from "../../../Styles/commonStyles";
 import BestItemsCardImage from "./BestItemsCardImage";
 import BestItemsCardTitle from "./BestItemsCardTitle";
 import BestItemsCardBadge from "./BestItemsCardBadge";

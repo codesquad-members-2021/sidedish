@@ -8,7 +8,7 @@ const Title = styled.div`
   font-weight: bold;
   font-size: 24px;
   line-height: 35px;
-  color: #33333;
+  color: #333;
 `;
 
 const LeftButton = styled(LeftButtonSvg)``;
@@ -16,13 +16,11 @@ const RightButton = styled(RightButtonSvg)``;
 
 const Card = {
   CardImage: styled.div`
-    width: ${(props) => props.width}px;
-    height: ${(props) => props.height}px;
+    width: ${props => props.width}px;
+    height: ${props => props.height}px;
 
-    background: url(${(props) => props.imgUrl});
+    background: url(${props => props.imgUrl});
     border-radius: 5px;
-
-    margin: 16px 0px;
   `,
 
   CardTitle: styled.div`
@@ -31,7 +29,6 @@ const Card = {
     font-weight: normal;
     font-size: 16px;
     line-height: 23px;
-
     color: #333333;
 
     margin: 8px 0px;
@@ -49,10 +46,9 @@ const Card = {
     margin: 8px 0px;
   `,
 
-  CardNPrice: styled.div`
+  CardSPrice: styled.span`
+    //할인 후 가격
     font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
     font-size: 14px;
     line-height: 20px;
     text-decoration-line: line-through;
@@ -62,7 +58,8 @@ const Card = {
     margin: 0px 8px;
   `,
 
-  CardSPrice: styled.div`
+  CardNPrice: styled.span`
+    //할인 전 가격
     font-family: Noto Sans KR;
     font-style: normal;
     font-weight: bold;
@@ -70,49 +67,41 @@ const Card = {
     line-height: 29px;
 
     color: #010101;
-
-    margin: 0px 8px;
   `,
 
   CardEventBadge: styled.div`
-    width: 67px;
+    width: 97px;
+    height: 28px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
     padding: 4px 16px;
 
     background: #82d32d;
     border-radius: 5px;
 
-    margin: 8px 10px;
-
     font-family: Noto Sans KR;
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
 
     color: #ffffff;
   `,
 
   CardLaunchingBadge: styled.div`
-    width: 67px;
+    width: 97px;
+    height: 28px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
     padding: 4px 16px;
 
     background: #86c6ff;
     border-radius: 5px;
 
-    margin: 8px 10px;
-
     font-family: Noto Sans KR;
     font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
+    font-weight: 700;
+    font-size: 14px;
     line-height: 20px;
 
     color: #ffffff;

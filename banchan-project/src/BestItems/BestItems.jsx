@@ -1,12 +1,14 @@
 import * as S from "./BestItemsStyles";
 import BestItemsTitle from "./BestItemsTitle";
-import BestItemsUI from "./BestItemsUI/BestItemsUI";
+import BestItemsTab from "./BestItemsUI/BestItemsTab/BestItemsTab";
+import BestItemsCardWrapper from "./BestItemsUI/BestItemsCardWrapper";
 
 const BestItems = () => {
   return (
     <S.BestItems>
       <BestItemsTitle></BestItemsTitle>
-      <BestItemsUI></BestItemsUI>
+      <BestItemsTab></BestItemsTab>
+      <BestItemsCardWrapper></BestItemsCardWrapper>
     </S.BestItems>
   );
 };
