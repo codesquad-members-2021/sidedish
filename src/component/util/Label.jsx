@@ -7,10 +7,15 @@ const LabelStyle = styled.div`
   font-size: 0.875rem;
   display: inline-block;
   text-align: center;
-  color: ${props => props.color};
   background-color: ${props => props.bgColor};
 `;
 // #86C6FF, #82D32D
-export default function Label({ text, color="#fff", bgColor="#333" }) {
-  return <LabelStyle color={color} bgColor={bgColor}>{text}</LabelStyle>
+const COLOR = {
+  "이벤트특가" : "#82D32D",
+  "런칭특가" : "#86C6FF",
+  "베스트" : "#D980FA"
+}
+
+export default function Label({ text }) {
+  return <LabelStyle bgColor={COLOR.text}>{text}</LabelStyle>
 }
