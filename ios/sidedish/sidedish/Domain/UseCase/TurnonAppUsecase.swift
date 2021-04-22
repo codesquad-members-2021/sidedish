@@ -9,8 +9,7 @@ import Foundation
 import Combine
 
 protocol manufactureDataforViewModel {
-    func factureToMainView() -> AnyPublisher<SideDishesCollection, Error>
-    func factureToDetailView() -> Void
+    func manufactureForMainView() -> AnyPublisher<SideDishesCollection, Error>
 }
 
 class TurnonAppUsecase : manufactureDataforViewModel {
@@ -26,12 +25,7 @@ class TurnonAppUsecase : manufactureDataforViewModel {
         self.init(networkmanager : networkmanager)
     }
     
-    func factureToMainView() -> AnyPublisher<SideDishesCollection, Error> {
+    func manufactureForMainView() -> AnyPublisher<SideDishesCollection, Error> {
         return networkmanager.get(type: SideDishesCollection.self, url: URL(string: "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best")!)
     }
-    
-    func factureToDetailView() {
-        //
-    }
-    
 }

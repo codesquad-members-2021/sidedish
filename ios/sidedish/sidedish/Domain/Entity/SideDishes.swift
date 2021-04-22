@@ -10,20 +10,9 @@ import Foundation
 class SideDishes: Codable {
     
     private var category_id : String
-    var name : String
-    var items : [SideDish]
+    private(set) var name : String
+    private(set) var items : [SideDish]
     
-//    enum Category: Int, Codable {
-//        case main = 1
-//        case soup = 2
-//        case side = 3
-//    }
-    
-    
-//    init(category: Category, list: [SideDish]) {
-//        self.category = category
-//        self.list = list
-//    }
 }
 
 extension SideDishes: SideDishFindable {

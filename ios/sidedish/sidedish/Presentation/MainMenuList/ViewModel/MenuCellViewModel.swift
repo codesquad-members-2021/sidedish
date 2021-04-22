@@ -25,7 +25,7 @@ class MenuCellViewModel{
     }
     
     func configureMainmenuBoard(){
-        turnonAppUsecase.factureToMainView()
+        turnonAppUsecase.manufactureForMainView()
             .sink(receiveCompletion: { (result) in
                 switch result {
                 case .finished: print("finished")
