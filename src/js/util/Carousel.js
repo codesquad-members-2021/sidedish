@@ -78,9 +78,6 @@ const Carousel = ({
   const slideContainer = (dir) => {
     const i = currentSlideIndex.current;
     container.current.style.transition = `all 1s ease`;
-    // container.current.style.transform = `translateX(calc(-${i * 100}% ${
-    //   dir === "next" ? `- ${gap}` : ""
-    // }))`;
     container.current.style.transform = `translateX(-${i * 100}%)`;
   };
 
@@ -132,6 +129,9 @@ const Carousel = ({
 };
 
 const createVirtureSlides = (items, itemsPerPeice) => {
+  if (!Array.isArray(items)) {
+    return [[items], []];
+  }
   const newItems = items.reduce((result, item, index) => {
     const [i, j] = divmod(index, itemsPerPeice);
     result[i] ? (result[i][j] = item) : (result[i] = [item]);
