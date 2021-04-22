@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Toaster
 
 class MainViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView!
@@ -30,7 +31,7 @@ class MainViewController: UIViewController {
         self.tableViewDelegate = MainTableViewDelegate(viewModel: mainMenuViewModel)
         super.init(coder: coder)
     }
-
+    
     func bind() {
         mainMenuViewModel.$dishes
             .receive(on: DispatchQueue.main)
