@@ -7,9 +7,8 @@ import java.util.Set;
 
 public class Best {
     @Id
-    private int categoryId;
+    private Integer categoryId;
     private String name;
-
     private Set<Dish> dishes = new HashSet<>();
 
     public Best() { }
