@@ -27,7 +27,16 @@ const Content = ({
         <NPrice false>{s_price}</NPrice>
       )}
 
-      {badge && <Badge>{badge}</Badge>}
+      {badge !== undefined &&
+        badge.length !== 0 &&
+        (badge.length <= 1 ? (
+          <Badge badge={badge}>{badge}</Badge>
+        ) : (
+          <BadgeBox>
+            <Badge badge={badge[0]}>{badge[0]}</Badge>
+            <Badge badge={badge[1]}>{badge[1]}</Badge>
+          </BadgeBox>
+        ))}
     </ContentMain>
   );
 };
@@ -85,7 +94,7 @@ const SPrice = styled.span`
   margin: 0 8px;
 `;
 
-const Badge = styled.div`
+const Badge = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,10 +102,15 @@ const Badge = styled.div`
   padding: 4px 16px;
   width: 62px;
   height: 18px;
-  background: #82d32d;
+  background-color: ${({ badge }) =>
+    badge == "이벤트특가" ? "#82d32d" : "#86C6FF"};
   border-radius: 5px;
   color: white;
   font-size: 14px;
   line-height: 20px;
+  margin-right: 10px;
+`;
+const BadgeBox = styled.div`
+  display: flex;
 `;
 export default Content;
