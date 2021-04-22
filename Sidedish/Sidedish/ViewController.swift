@@ -77,9 +77,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.configure(model: item)
         cell.configure(image: UIImage(data: imageData) ?? UIImage())
 
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: item.nPrice ?? "")
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        cell.originalPrice.attributedText = attributeString
+        
         
         return cell
     }

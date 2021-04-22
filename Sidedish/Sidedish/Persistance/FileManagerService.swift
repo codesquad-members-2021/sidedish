@@ -1,8 +1,8 @@
 //
-//  FileManager.swift
+//  FileManagerService.swift
 //  Sidedish
 //
-//  Created by Ador on 2021/04/21.
+//  Created by Ador on 2021/04/22.
 //
 
 import Foundation
@@ -29,6 +29,8 @@ class FileManagerService {
         let file = cacheDirectory.appendingPathComponent(fileName)
         do {
             try image.write(to: file)
+        } catch {
+            // error 처리
         }
     }
 }

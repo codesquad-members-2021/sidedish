@@ -26,7 +26,8 @@
 		22BBE64E262D9FCC001D06D5 /* SidedishOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE64D262D9FCC001D06D5 /* SidedishOfCategory.swift */; };
 		22BBE653262DA9BC001D06D5 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE652262DA9BB001D06D5 /* HeaderViewModel.swift */; };
 		22CEDE63262E7CDF00DB37B4 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEDE62262E7CDF00DB37B4 /* Networking.swift */; };
-		D084F8AB262FD14000FFDEF9 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084F8AA262FD14000FFDEF9 /* FileManager.swift */; };
+		D06C739626310CD3002404A3 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C739526310CD3002404A3 /* BadgeLabel.swift */; };
+		D06C739B26310DB5002404A3 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C739A26310DB5002404A3 /* FileManagerService.swift */; };
 		D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +54,8 @@
 		22CEDE62262E7CDF00DB37B4 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		499E51924357C5AFEF94978D /* Pods-Sidedish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.release.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.release.xcconfig"; sourceTree = "<group>"; };
 		69AD776A2215C9567BE9325D /* Pods_Sidedish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sidedish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D084F8AA262FD14000FFDEF9 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		D06C739526310CD3002404A3 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		D06C739A26310DB5002404A3 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6FF97B8F04F0E1EF7926092 /* Pods-Sidedish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.debug.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */,
 				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
+				D06C739526310CD3002404A3 /* BadgeLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,9 +142,10 @@
 				2245D890262D92D700E0B637 /* Repository */,
 				2240D5B9262D8DF90077EF4D /* Service */,
 				22418776262D6C1700AC14C7 /* Entity */,
-				2241874A262D4D8600AC14C7 /* Assets.xcassets */,
+				D06C739F26310DC7002404A3 /* Persistance */,
 				2241874C262D4D8600AC14C7 /* LaunchScreen.storyboard */,
 				2241874F262D4D8600AC14C7 /* Info.plist */,
+				2241874A262D4D8600AC14C7 /* Assets.xcassets */,
 			);
 			path = Sidedish;
 			sourceTree = "<group>";
@@ -160,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */,
-				D084F8AA262FD14000FFDEF9 /* FileManager.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -179,6 +182,14 @@
 				69AD776A2215C9567BE9325D /* Pods_Sidedish.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D06C739F26310DC7002404A3 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				D06C739A26310DB5002404A3 /* FileManagerService.swift */,
+			);
+			path = Persistance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D084F8AB262FD14000FFDEF9 /* FileManager.swift in Sources */,
+				D06C739626310CD3002404A3 /* BadgeLabel.swift in Sources */,
 				2240D5C2262D8F490077EF4D /* DataManager.swift in Sources */,
 				22418746262D4D8300AC14C7 /* ViewController.swift in Sources */,
 				22CEDE63262E7CDF00DB37B4 /* Networking.swift in Sources */,
@@ -306,6 +317,7 @@
 				22418761262D5C8400AC14C7 /* HeaderCollectionReusableView.swift in Sources */,
 				2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */,
 				2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */,
+				D06C739B26310DB5002404A3 /* FileManagerService.swift in Sources */,
 				22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */,
 				22418774262D6B3400AC14C7 /* Category.swift in Sources */,
 				22548347262E7A3800AC8582 /* TapToastGestureRecognizer.swift in Sources */,
