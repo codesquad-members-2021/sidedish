@@ -9,27 +9,34 @@ const DropdownContents = (props) => {
     let renderItems = () => contents.map((content) =>
         <DropdownItem key={content} content={content}></DropdownItem>
     )
-
     return (
-        <div>
-            {renderItems()}
-        </div>
+        renderItems()
     )
 }
 
 const Dropdown = ( props ) => {
+    let propsItem = Object.values(props)[0]
+    let title = propsItem[0].title
+    let contents = propsItem[1].contents
     return (
         <div className="dropdown">
-            <button className="dropdown-button">{props.title}</button>
+            <button className="dropdown-button">{title}</button>
             <div className="dropdown-content">
-                <DropdownContents contents={props.contents}>
+                <DropdownContents contents={contents}>
                 </DropdownContents>
-                {/* <a href="#">HTML</a>
-                <a href="#">CSS</a>
-                <a href="#">JS</a> */}
             </div>
         </div>
     )
 }
 
-export default Dropdown
+const DropdownNav = ( props ) =>{
+    let navItems = Object.values(props)[0]
+    let renderNav = () => navItems.map((v)=>
+        <Dropdown key={v[0].title} props={v}></Dropdown>
+    )
+    return (
+        renderNav()
+    )
+}
+
+export default DropdownNav

@@ -27,6 +27,11 @@
     text-decoration: none;
     display: block;
 }
+
+.dropdown-content a:hover {
+    font-weight: bold;
+}
 /* .dropdown-content a:hover { background-color: #CD853F; } */
-.dropdown:hover .dropdown-content { display: block; }
+/* .dropdown:hover .dropdown-content a { display: block;  font-weight: bold;} */
+.dropdown:hover .dropdown-content { display: block;  }
 .dropdown:hover .dropdown-button { font-weight: bold; }
