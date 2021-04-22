@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`image` (
 DROP TABLE IF EXISTS `side_dish`.`detail_image`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`detail_image` (
     `id` INT AUTO_INCREMENT,
-    `url` VARCHAR(45) NOT NULL,
+    `url` VARCHAR(255) NOT NULL,
     `dish_id` INT NOT NULL,
     PRIMARY KEY (`id`),
     INDEX `fk_detail_image_dish1_idx` (`dish_id` ASC) VISIBLE,
