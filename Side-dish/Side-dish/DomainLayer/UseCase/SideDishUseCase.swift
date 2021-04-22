@@ -10,6 +10,7 @@ import Combine
 
 protocol SideDishProtocol {
     func execute(path: Path) -> AnyPublisher<SideDishes, NetworkError>
+    func execute2(detailHash: String) -> AnyPublisher<ItemDetails, NetworkError>
 }
 
 class SideDishUseCase: SideDishProtocol {
@@ -22,5 +23,9 @@ class SideDishUseCase: SideDishProtocol {
     
     func execute(path: Path) -> AnyPublisher<SideDishes, NetworkError> {
         return networkManager.requestResource(path: path, method: .get)
+    }
+    
+    func execute2(detailHash: String) -> AnyPublisher<ItemDetails, NetworkError> {
+        return networkManager.requestDetails(detailHash: detailHash, method: .get)
     }
 }

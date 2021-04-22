@@ -14,4 +14,12 @@ class DIContainer {
         let viewModel = SideDishViewModel(sideDishUseCase: useCase)
         return viewModel
     }
+    
+    static func createDI2() -> DetailViewModel {
+        let networkManage = NetworkManager()
+        let useCase = SideDishUseCase(networkManager: networkManage)
+        let viewModel = DetailViewModel(sideDishUseCase: useCase)
+        print("viewModel has been created")
+        return viewModel
+    }
 }

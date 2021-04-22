@@ -29,4 +29,8 @@ class SideDishManager {
     func getRowCount(path : Path) -> Int {
         return sideDishesInfo[path]?.count ?? 0
     }
+    
+    func getItemDetailHash(with path: Path, sequence: Int) -> String {
+        return sideDishesInfo[path]?[sequence].detailHash ?? ""
+    }
 }
