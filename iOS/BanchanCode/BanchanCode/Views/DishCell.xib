@@ -44,7 +44,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ6-ez-y79">
-                        <rect key="frame" x="139" y="12.5" width="38" height="17"/>
+                        <rect key="frame" x="139" y="12.5" width="37.5" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" name="NameTextColor"/>
                         <nil key="highlightedColor"/>
@@ -79,12 +79,15 @@
                 <constraint firstItem="u2C-ZI-SDw" firstAttribute="top" secondItem="jZ6-ez-y79" secondAttribute="bottom" constant="4" id="L84-xU-ajk"/>
                 <constraint firstItem="UVr-8m-rNI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="YxD-oj-ksE"/>
                 <constraint firstItem="0gq-YR-BVe" firstAttribute="top" secondItem="u2C-ZI-SDw" secondAttribute="bottom" constant="8" id="aN7-JT-Bpq"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zyF-jG-JsS" secondAttribute="trailing" id="fx6-BQ-bvD"/>
                 <constraint firstItem="BOI-Fv-3kb" firstAttribute="leading" secondItem="UVr-8m-rNI" secondAttribute="trailing" constant="8" id="gXJ-Fj-Web"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u2C-ZI-SDw" secondAttribute="trailing" id="hAv-iv-iIz"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0gq-YR-BVe" secondAttribute="trailing" id="iNU-Xk-FKI"/>
                 <constraint firstItem="zyF-jG-JsS" firstAttribute="top" secondItem="BOI-Fv-3kb" secondAttribute="bottom" constant="8" id="iNj-TW-ayO"/>
                 <constraint firstAttribute="bottom" secondItem="zyF-jG-JsS" secondAttribute="bottom" constant="12.5" id="rHZ-7A-gER"/>
                 <constraint firstAttribute="bottom" secondItem="UVr-8m-rNI" secondAttribute="bottom" id="rTI-xa-eNl"/>
                 <constraint firstItem="jZ6-ez-y79" firstAttribute="leading" secondItem="UVr-8m-rNI" secondAttribute="trailing" constant="8" id="tPB-ne-dzY"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jZ6-ez-y79" secondAttribute="trailing" id="xTo-5J-yAK"/>
                 <constraint firstItem="jZ6-ez-y79" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12.5" id="yN0-EF-elP"/>
             </constraints>
             <size key="customSize" width="285" height="131"/>
