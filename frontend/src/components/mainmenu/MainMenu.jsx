@@ -1,17 +1,18 @@
-import styled from 'styled-components'
-import { theme, Title } from '../Theme'
-import ItemCard from '../ItemCard'
-import { AlignTextCenter } from '../Theme'
-import mokData from '../mokdata'
+import styled from "styled-components";
+import { theme, Title } from "../Theme";
+import ItemCard from "../ItemCard";
+import { AlignTextCenter } from "../Theme";
+import useFetch from "../useFetch";
+
 const MainWrapper = styled.div`
   margin-top: 40px;
   width: 100%;
   padding: ${theme.padding.globalPadding};
   box-sizing: border-box;
-`
+`;
 const TabWrapper = styled.div`
   display: flex;
-`
+`;
 
 const Tab = styled(AlignTextCenter)`
   width: 201px;
@@ -19,7 +20,7 @@ const Tab = styled(AlignTextCenter)`
   background-color: ${theme.colors.skyblue};
   margin-right: 5px;
   font-size: ${theme.fontSize.large};
-`
+`;
 
 const MainColumn = styled.div`
   width: 1280px;
@@ -29,8 +30,14 @@ const MainColumn = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
   padding: 40px;
-`
-function MainMenu () {
+`;
+
+function MainMenu() {
+  const [initData, loadingState] = useFetch(
+    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/17010300"
+  );
+  const mokData = initData.items;
+
   return (
     <MainWrapper>
       <Title>후기가 증명하는 베스트 반찬</Title>
@@ -42,12 +49,13 @@ function MainMenu () {
         <Tab>우리아이 영양반찬</Tab>
       </TabWrapper>
       <MainColumn>
-        {mokData.map((data, idx) => (
-          <ItemCard key={idx} data={data} size={'L'}></ItemCard>
-        ))}
+        {!loadingState &&
+          mokData.map((data, idx) => (
+            <ItemCard key={idx} data={data} size={"L"}></ItemCard>
+          ))}
       </MainColumn>
     </MainWrapper>
-  )
+  );
 }
 
-export default MainMenu
+export default MainMenu;
