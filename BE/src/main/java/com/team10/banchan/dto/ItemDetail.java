@@ -87,7 +87,6 @@ public class ItemDetail {
         return nPrices;
     }
 
-
     @JsonProperty("s_prices")
     public String getsPrices() {
         return sPrices;
