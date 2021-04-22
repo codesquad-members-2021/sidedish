@@ -3,7 +3,8 @@ import styled from "styled-components";
 import theme from "../../utils/styles/theme";
 import Card from "../../utils/Card";
 
-const tempUrl = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main";
+const tempUrl =
+  "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best";
 
 const TabSection = (props) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -26,17 +27,19 @@ const TabSection = (props) => {
     <>
       <SectionTitle>후기가 증명하는 베스트 반찬</SectionTitle>
       <TabList>
-        {bestSidedishes.map((item, i) => (
-          <button onClick={() => handleTab(i)}>{item.name}</button>
-        ))}
+        {bestSidedishes.length &&
+          bestSidedishes.map((item, i) => (
+            <button onClick={() => handleTab(i)}>{item.name}</button>
+          ))}
         {/* map Tab */}
       </TabList>
       <TabContent>
         <CardList>
           {/* map Card */}
-          {bestSidedishes[activeTab].items.map((item) => (
-            <Card product={item} cardSize={theme.cardSizes.L} />
-          ))}
+          {bestSidedishes.length &&
+            bestSidedishes[activeTab].items.map((item) => (
+              <Card product={item} cardSize={theme.cardSizes.L} />
+            ))}
         </CardList>
       </TabContent>
     </>
