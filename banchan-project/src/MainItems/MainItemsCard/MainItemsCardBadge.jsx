@@ -10,6 +10,8 @@ const MainItemsCardBadge = ({ badge }) => {
         return <Card.CardEventBadge>{badge}</Card.CardEventBadge>;
       case "론칭특가":
         return <Card.CardLaunchingBadge>{badge}</Card.CardLaunchingBadge>;
+      default:
+        return;
     }
   };
 
