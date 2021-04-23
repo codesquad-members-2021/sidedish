@@ -1,5 +1,6 @@
 package com.team10.banchan.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -77,6 +78,7 @@ public class ItemSummary {
         return description;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("n_price")
     public String getnPrice() {
         return nPrice;
