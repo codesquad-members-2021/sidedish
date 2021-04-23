@@ -23,11 +23,11 @@ public class CategoryService {
 
     public CategoryDto findBestBanchansByCategory(String category_id) {
         Category category = categoryRepository.findCategoryByCategory_id(category_id);
-        CategoryDto categoryDto = CategoryDto.of(category, getBanchanListByCategoryId(category_id));
+        CategoryDto categoryDto = CategoryDto.of(category, findBanchanListByCategoryId(category_id));
         return categoryDto;
     }
 
-    private List<BanchanDto> getBanchanListByCategoryId(String catrgory_id) {
+    private List<BanchanDto> findBanchanListByCategoryId(String catrgory_id) {
         List<BanchanDto> banchanDtoList = new ArrayList<>();
         List<Banchan> banchanList = new ArrayList<>();
 

@@ -37,6 +37,6 @@ class SidedishApplicationTests {
 	@DisplayName("반찬레포에서 카테고리에 따라서 잘 가져오는지 확인")
 	void getBanchanList() {
 		List<Banchan> banchanList = banchanRepository.findBanchansByCategory_id("17011200");
-		assertThat(banchanList).isNull();
+		assertThat(banchanList).isNotNull();
 	}
 }
