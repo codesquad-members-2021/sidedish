@@ -1,4 +1,4 @@
-package com.codesquad.team14.domain;
+package com.codesquad.team14.utils;
 
 public enum DeliveryType {
     NEXT_DAY("서울 경기 새벽배송"),
