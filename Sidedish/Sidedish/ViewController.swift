@@ -62,7 +62,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         let item = self.itemViewModel.items[indexPath.row]
         
-        cell.configure(model: item)
+        let priceString = item.nPrice == nil ? "" : "\(item.nPrice ?? "")원"
+
+        let badge = handleBadge(badge: item.badge)
+        cell.configure(model: item, nPrice: priceString, badge: badge)
+        
         guard let data = self.itemViewModel.images[indexPath.row] else { return cell }
         cell.configure(data: data)
 
@@ -102,4 +106,15 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     
     
+}
+
+extension ViewController {
+    func handleBadge(badge: [String]?) -> [Bool] {
+        var isHiddenBadges = [true, true]
+        if badge != nil {
+            isHiddenBadges[0] = badge!.contains("이벤트특가") ? false : true
+            isHiddenBadges[1] = badge!.contains("론칭특가") ? false : true
+        }
+        return isHiddenBadges
+    }
 }

@@ -19,29 +19,17 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventBadge: UILabel!
     @IBOutlet weak var launchBadge: UILabel!
     
-    func configure(model: SidedishItem) {
+    func configure(model: SidedishItem, nPrice: String, badge: [Bool]) {
         dishName.text = model.title
         dishDescription.text = model.description
         sellingPrice.text = model.sPrice
         
-        let priceString = model.nPrice == nil ? "" : "\(model.nPrice ?? "")원"
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: priceString)
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: nPrice)
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         originalPrice.attributedText = attributeString
         
-        model.badge?.forEach { text in
-            switch text {
-            case Badge.event.rawValue:
-                eventBadge.text = text
-                eventBadge.isHidden = false
-            case Badge.launch.rawValue:
-                launchBadge.text = text
-                launchBadge.isHidden = false
-            default:
-                eventBadge.isHidden = true
-                launchBadge.isHidden = true
-            }
-        }
+        eventBadge.isHidden = badge[0]
+        launchBadge.isHidden = badge[1]
     }
     
     func configure(data: Data) {
