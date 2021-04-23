@@ -23,6 +23,7 @@ create table dish (
     delivery_fee varchar(45) not null,
     detail_section varchar(1000) not null,
     stock int not null,
+    point int not null,
     primary key (id),
     foreign key (category_id) references category (id)
 );
