@@ -25,18 +25,25 @@ public class Prices {
     }
 
     public String getnPrice() {
-        return DECIMAL_FORMAT.format(nPrice);
+        return getFormattedPrice(nPrice);
     }
 
     public String getsPrice() {
-        return DECIMAL_FORMAT.format(sPrice);
+        return getFormattedPrice(sPrice);
     }
 
     public String getDeliveryFee() {
-        return DECIMAL_FORMAT.format(deliveryFee);
+        return getFormattedPrice(deliveryFee);
     }
 
     public String getPoints() {
-        return DECIMAL_FORMAT.format(sPrice.movePointLeft(2));
+        return getFormattedPrice(sPrice.movePointLeft(2));
+    }
+
+    private String getFormattedPrice(BigDecimal price) {
+        if (price == null) {
+            return null;
+        }
+        return DECIMAL_FORMAT.format(price);
     }
 }
