@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ItemCard from "../ItemCard";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import useFetch from "../useFetch";
+import { Button } from "../Theme";
 const CategoryWrapper = styled.div`
   display: flex;
   overflow: hidden;
@@ -24,16 +25,6 @@ const CategorySlideBlock = styled.div`
   justify-content: space-between;
   margin-bottom: 80px;
 `;
-const Button = styled.button`
-  font-size: 36px;
-  border: none;
-  background-color: transparent;
-  &:focus {
-    outline: none;
-  }
-  cursor: pointer;
-`;
-
 const ButtonLeft = styled(Button)``;
 const ButtonRight = styled(Button)``;
 

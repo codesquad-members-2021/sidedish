@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { theme, AlignTextCenter } from "./Theme";
 import line from "./line.png";
+import { useState } from "react";
+import DetailPage from "./detail/DetailPage";
 const Card = styled.div`
   margin-top: 40px;
   width: ${(props) => {
@@ -30,11 +32,17 @@ const ItemTitle = styled.div`
   font-size: ${theme.fontSize.medium};
   font-weight: Bold;
   margin-bottom: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const ItemDesc = styled.div`
   font-size: ${theme.fontSize.small};
   color: ${theme.colors.grey_text};
   margin-bottom: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const ItemPrice = styled.span`
   font-size: ${theme.fontSize.larger};
@@ -74,20 +82,36 @@ const imgPosition = {
   top: "-7px",
   left: "2px",
 };
+const ClickArea = styled.div`
+  cursor: pointer;
+`;
+
 function ItemCard({ data, size }) {
+  const [ModalMode, setModalState] = useState(false);
+  const handleClick = (hash) => {
+    setModalState(!ModalMode);
+  };
   return (
     <>
+      {ModalMode && (
+        <DetailPage
+          ModalMode={ModalMode}
+          setModalState={setModalState}
+        ></DetailPage>
+      )}
       <Card size={size}>
-        <IMG size={size} image={data.image} alt={data.alt}>
-          <DeliveryBlock>
-            <div>새벽배송</div>
-            <img style={imgPosition} src={line} alt="line"></img>
-            <div>전국택배</div>
-          </DeliveryBlock>
-        </IMG>
+        <ClickArea onClick={() => handleClick(data.detail_hash)}>
+          <IMG size={size} image={data.image} alt={data.alt}>
+            <DeliveryBlock>
+              <div>새벽배송</div>
+              <img style={imgPosition} src={line} alt="line"></img>
+              <div>전국택배</div>
+            </DeliveryBlock>
+          </IMG>
 
-        <ItemTitle>{data.alt}</ItemTitle>
-        <ItemDesc>{data.description}</ItemDesc>
+          <ItemTitle>{data.alt}</ItemTitle>
+          <ItemDesc>{data.description}</ItemDesc>
+        </ClickArea>
         <ItemPrice>{data.s_price ? data.s_price : data.n_price}</ItemPrice>
         {data.s_price && <ItemPriceNormal>{data.n_price}원</ItemPriceNormal>}
 

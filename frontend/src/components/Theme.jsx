@@ -42,3 +42,13 @@ const TitleBlock = styled.div`
 export function Title({ children }) {
   return <TitleBlock>{children}</TitleBlock>;
 }
+
+export const Button = styled.button`
+  font-size: 36px;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
+`;
