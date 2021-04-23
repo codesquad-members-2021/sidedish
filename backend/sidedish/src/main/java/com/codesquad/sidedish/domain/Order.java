@@ -25,6 +25,26 @@ public class Order {
         this.count = count;
     }
 
+    public Order setOrderId(Long orderId) {
+        this.orderId = orderId;
+        return this;
+    }
+
+    public Order setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public Order setDetailHash(String detailHash) {
+        this.detailHash = detailHash;
+        return this;
+    }
+
+    public Order setCount(int count) {
+        this.count = count;
+        return this;
+    }
+
     public static Order of(String email, String detailHash, int count) {
         return new Order(email, detailHash, count);
     }

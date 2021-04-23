@@ -2,12 +2,10 @@ package com.codesquad.sidedish.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 public class ItemDto {
 
     @JsonProperty
-    private String detailHash;
+    private Long detailHash;
 
     @JsonProperty
     private String image;
@@ -16,7 +14,7 @@ public class ItemDto {
     private String alt;
 
     @JsonProperty
-    private List<String> deliveryType;
+    private String deliveryType;//list
 
     @JsonProperty
     private String title;
@@ -31,9 +29,9 @@ public class ItemDto {
     private Integer salePrice;
 
     @JsonProperty
-    private List<String> badge;
+    private String badge;//list
 
-    public ItemDto(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice, Integer salePrice, List<String> badge) {
+    public ItemDto(Long detailHash, String image, String alt, String deliveryType, String title, String description, Integer normalPrice, Integer salePrice, String badge) {
         this.detailHash = detailHash;
         this.image = image;
         this.alt = alt;

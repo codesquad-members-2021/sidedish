@@ -3,39 +3,38 @@ package com.codesquad.sidedish.domain;
 import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.dto.ItemDto;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 import java.util.List;
 
 public class Item {
 
     @Id
-    private String detailHash;
+    private Long detailHash;
 
     private String image;
     private String alt;
-    private List<String> deliveryType;
+    private String deliveryType;// = new ArrayList<>();
     private String title;
     private String description;
     private Integer normalPrice;
     private Integer salePrice;
-    private List<String> badge;
+    private String badge;// = new ArrayList<>();
 
     private String topImage;//x
-    private List<String> thumbImages;
+    private String thumbImages;// = new ArrayList<>();
     private String productDescription;
     private Integer point;
     private String deliveryInfo;
     private String deliveryFee;
-    private List<Integer> prices;//x
-    private List<String> detailSection;
+    private String prices;// = new ArrayList<>();
+    private String detailSection;// = new ArrayList<>();
     private int stock;
 
-    public Item(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice,
-         Integer salePrice, List<String> badge, String topImage, List<String> thumbImages, String productDescription, Integer point,
-         String deliveryInfo, String deliveryFee, List<Integer> prices, List<String> detailSection, int stock) {
-        System.out.println("==========================================");
-        System.out.println("Item.Item");
-        System.out.println("==========================================");
+    @PersistenceConstructor
+    public Item(Long detailHash, String image, String alt, String deliveryType, String title, String description, Integer normalPrice,
+                Integer salePrice, String badge, String topImage, String thumbImages, String productDescription, Integer point,
+                String deliveryInfo, String deliveryFee, String prices, String detailSection, int stock) {
         this.detailHash = detailHash;
         this.image = image;
         this.alt = alt;
@@ -56,12 +55,8 @@ public class Item {
         this.stock = stock;
     }
 
-    public String getDetailHash() {
+    public Long getDetailHash() {
         return detailHash;
-    }
-
-    public int getStock() {
-        return stock;
     }
 
     public boolean checkStock(int orderCount) {
@@ -89,6 +84,12 @@ public class Item {
         this.stock -= orderCount;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "stock=" + stock +
+                '}';
+    }
 
 
 }

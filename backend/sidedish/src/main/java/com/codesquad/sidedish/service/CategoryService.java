@@ -2,7 +2,6 @@ package com.codesquad.sidedish.service;
 
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Item;
-import com.codesquad.sidedish.domain.Order;
 import com.codesquad.sidedish.dto.CategoryDto;
 import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.repository.CategoryRepository;
@@ -27,24 +26,26 @@ public class CategoryService {
          return categoryRepository.findAll().stream().map(category -> Category.createCategoryDto(category)).collect(Collectors.toList());
     }
 
-    public DetailItemDto findDetailItemDtoByHash(Long categoryId, String hash) {
-        Item item = categoryRepository.findById(categoryId).orElseThrow(IllegalAccessError::new).getItem(hash);
+    public DetailItemDto findDetailItemDtoByHash(Long categoryId, Long hash) {
+        Item item = categoryRepository.findById(categoryId).orElseThrow(IllegalAccessError::new).findItem(hash);
         return Item.createDetailItemDto(item);
     }
 
-    public void order(Long categoryId, String hash, int orderCount) {
+    public void order(Long categoryId, Long hash, int orderCount) {
 
+        System.out.println("categoryId = " + categoryId);
+        System.out.println("hash = " + hash);
+        System.out.println("orderCount = " + orderCount);
+        System.out.println("=======================================");
         Category category = categoryRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
-        Item updateItem = category.getItem(hash);
-        updateItem.purchase(orderCount);
 
-        Order order = new Order(null, "hihi@naver.com", hash, orderCount);
-//        Order order = Order.of("hihi@nave.com", hash, orderCount);
+        Item item = category.findItem(hash);
 
-//        category.updateItemStock(updateItem);
+        item.purchase(orderCount);
+
+        System.out.println("category = " + category);
 
         categoryRepository.save(category);
-        orderRepository.save(order);
     }
 
 }
