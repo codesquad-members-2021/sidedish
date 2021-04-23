@@ -1,11 +1,13 @@
-import styled from "styled-components";
-import ItemCard from "../ItemCard";
-import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
-import useFetch from "../useFetch";
+import styled from 'styled-components'
+import ItemCard from '../ItemCard'
+import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
+import { AlignTextCenter } from '../Theme'
+
+import useFetch from '../useFetch'
 const CategoryWrapper = styled.div`
   display: flex;
   overflow: hidden;
-`;
+`
 const CategoryColumn = styled.div`
   width: 1280px;
   padding: 0px;
@@ -17,13 +19,13 @@ const CategoryColumn = styled.div`
       margin-left: 0px;
     }
   }
-`;
+`
 const CategorySlideBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 80px;
-`;
+`
 const Button = styled.button`
   font-size: 36px;
   border: none;
@@ -32,16 +34,23 @@ const Button = styled.button`
     outline: none;
   }
   cursor: pointer;
-`;
+`
 
-const ButtonLeft = styled(Button)``;
-const ButtonRight = styled(Button)``;
+const ButtonLeft = styled(Button)``
+const ButtonRight = styled(Button)``
+const LoadingWapper = styled(AlignTextCenter)`
+  width: 1280px;
+  height: 384px;
+`
 
-function CategorySlide() {
-  const [initData, loadingState] = useFetch(
-    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
-  );
-  const resData = initData.body;
+function CategorySlide ({ data }) {
+  const ItemCards = Array.isArray(data) ? (
+    data.map((data, idx) => <ItemCard key={idx} data={data} size={'S'} />)
+  ) : (
+    <LoadingWapper>
+      <img src={"data.img"} alt={'loading'} />
+    </LoadingWapper>
+  )
 
   return (
     <CategorySlideBlock>
@@ -49,18 +58,13 @@ function CategorySlide() {
         <VscChevronLeft />
       </ButtonLeft>
       <CategoryWrapper>
-        <CategoryColumn>
-          {!loadingState &&
-            resData.map((data, idx) => (
-              <ItemCard key={idx} data={data} size={"S"} />
-            ))}
-        </CategoryColumn>
+        <CategoryColumn>{ItemCards}</CategoryColumn>
       </CategoryWrapper>
       <ButtonRight>
         <VscChevronRight />
       </ButtonRight>
     </CategorySlideBlock>
-  );
+  )
 }
 
-export default CategorySlide;
+export default CategorySlide

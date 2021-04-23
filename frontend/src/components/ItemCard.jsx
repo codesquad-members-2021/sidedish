@@ -70,7 +70,7 @@ const DeliveryBlock = styled.div`
   opacity: 0;
 `;
 const imgPosition = {
-  position: "relative",
+  position: "absolute",
   top: "-7px",
   left: "2px",
 };
