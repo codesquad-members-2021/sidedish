@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import Carousel from 'components/carousel/Carousel';
 import CarouselContainer from 'components/carousel/CarouselContainer';
+import CategoryButton from 'components/carousel/CategoryBtn';
 
 const CarouselSection = () => {
   const paths = ['main', 'soup', 'side'];
   const firstPath = paths[0];
   const firstCarousel = <Carousel key={uuidv4()} path={firstPath} />;
   const [categoryContents, setCategoryContents] = useState([firstCarousel]);
+  const [isFolded, setIsFolded] = useState(false);
 
   const handleClickMoreBtn = () => {
     if (categoryContents.length === 1) return updateCarouselList();
@@ -17,22 +19,25 @@ const CarouselSection = () => {
 
   const updateCarouselList = () => {
     const allCategories = paths
-      .filter((_, i) => i !== 0)
+      .filter((_, idx) => idx !== 0)
       .map((path) => <Carousel key={uuidv4()} path={path} />);
-    setCategoryContents([categoryContents[0], ...allCategories]);
+    setCategoryContents([...categoryContents, ...allCategories]);
   };
 
   const resetCategoryList = () => {
     setCategoryContents([categoryContents[0]]);
   };
 
+  useEffect(() => {
+    console.log('rendered');
+    setIsFolded(!isFolded);
+  }, [categoryContents]);
+
   return (
     <CarouselWrapper>
       <h2>모두가 좋아하는 든든한 메인요리</h2>
       <CarouselContainer categoryContents={categoryContents} />
-      <button onClick={handleClickMoreBtn}>
-        <span>모든 카테고리 보기</span>
-      </button>
+      <CategoryButton onClick={handleClickMoreBtn} isFolded={isFolded} />
     </CarouselWrapper>
   );
 };
