@@ -51,16 +51,21 @@ class SampleDataFactoryTest {
                 .isEqualTo(ItemDTOTestResults.MAIN_MENU);
     }
 
-    @Test
-    void createDetails() throws JsonProcessingException {
+    @ParameterizedTest
+    @MethodSource
+    void createDetails(String hash, String expected) throws JsonProcessingException {
         if (!environment.acceptsProfiles(Profiles.of("dev"))) {
             return;
         }
         Map<String, DetailDTO> createDetails = SampleDataFactory.createDetails();
 
-        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(createDetails));
+        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(createDetails.get(hash)))
+                .isEqualTo(expected);
+    }
 
-//        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOS))
-//                .isEqualTo(ItemDTOTestResults.MAIN_MENU);
+    static Stream<Arguments> createDetails() {
+        return Stream.of(
+                Arguments.of("H9881", DetailDTOTestResults.H9881)
+        );
     }
 }
