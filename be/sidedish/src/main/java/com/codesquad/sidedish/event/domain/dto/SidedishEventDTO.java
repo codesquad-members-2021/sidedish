@@ -1,11 +1,12 @@
-package com.codesquad.sidedish.event.domain;
+package com.codesquad.sidedish.event.domain.dto;
+
+import com.codesquad.sidedish.event.domain.SidedishEvent;
 
 public class SidedishEventDTO {
 
     private Long id;
     private String name;
     private String colorHex;
-
 
     public SidedishEventDTO(SidedishEvent sidedishEvent) {
         this.id = sidedishEvent.getId();

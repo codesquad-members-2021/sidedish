@@ -1,7 +1,7 @@
 package com.codesquad.sidedish.category.domain.dto;
 
 import com.codesquad.sidedish.category.domain.SidedishItem;
-import com.codesquad.sidedish.event.domain.SidedishEventDTO;
+import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 
 import java.util.Set;

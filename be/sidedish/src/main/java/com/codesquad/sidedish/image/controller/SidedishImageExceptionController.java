@@ -1,9 +1,5 @@
 package com.codesquad.sidedish.image.controller;
 
-import com.codesquad.sidedish.category.exception.CategoryNotFoundException;
-import com.codesquad.sidedish.category.exception.ItemNotFoundException;
-import com.codesquad.sidedish.category.exception.OutOfStockException;
-import com.codesquad.sidedish.event.exception.EventNotFoundException;
 import com.codesquad.sidedish.global.domain.dto.ErrorResponseDTO;
 import com.codesquad.sidedish.image.exception.ImageNotFoundException;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.codesquad.sidedish.category.domain;
 
-import com.codesquad.sidedish.event.domain.SidedishEventDTO;
+import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 
 import java.util.List;

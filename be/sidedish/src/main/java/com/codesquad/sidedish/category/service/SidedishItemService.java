@@ -11,7 +11,7 @@ import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
 import com.codesquad.sidedish.category.exception.CategoryNotFoundException;
 import com.codesquad.sidedish.event.exception.EventNotFoundException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
-import com.codesquad.sidedish.event.domain.SidedishEventDTO;
+import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
 import com.codesquad.sidedish.event.domain.SidedishEventItem;
 import com.codesquad.sidedish.event.domain.SidedishEventRepository;
 import com.codesquad.sidedish.image.domain.SidedishImage;
