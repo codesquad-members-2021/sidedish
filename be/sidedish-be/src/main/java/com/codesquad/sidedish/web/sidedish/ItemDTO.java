@@ -1,7 +1,5 @@
 package com.codesquad.sidedish.web.sidedish;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import java.util.List;
 
 public class ItemDTO {
@@ -11,11 +9,8 @@ public class ItemDTO {
     private List<String> deliveryType;
     private String title;
     private String description;
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Price nPrice;
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Price sPrice;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> badge;
 
     public ItemDTO() {
