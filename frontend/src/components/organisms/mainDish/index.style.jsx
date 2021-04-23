@@ -7,13 +7,15 @@ const WrapMain = styled.div`
 `;
 
 const WrapCarousal = styled.div`
-  margin-bottom: 40px;
+  margin-top: 40px;
+
   display: flex;
 `;
 
 const WrapCard = styled.div`
   display: flex;
   justify-content: center;
+  min-width: 1280px;
   width: 1280px;
   height: 479px;
   overflow: hidden;

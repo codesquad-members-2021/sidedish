@@ -50,13 +50,16 @@ const MainDish = (props) => {
   return (
     <>
       <WrapMain>
-        <Span _innerTitle>모두가 좋아하는 든든한 메인요리</Span>
+        <Span _innerTitle _margin="0 0 0 80px">
+          모두가 좋아하는 든든한 메인요리
+        </Span>
         <WrapCarousal>
           <Icon
             moveSlide={moveSlide}
             _width="32px"
             _color="#BDBDBD"
             _type="LeftIcon"
+            _margin="130px 25px 0 25px"
           />
           <WrapCard>
             <CardStyle ref={directionRef}>
@@ -69,6 +72,7 @@ const MainDish = (props) => {
             _width="32px"
             _color="#BDBDBD"
             _type="RightIcon"
+            _margin="130px 25px 0 25px"
           />
         </WrapCarousal>
       </WrapMain>
