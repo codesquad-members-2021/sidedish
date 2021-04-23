@@ -72,23 +72,26 @@ class DiffableProvider  {
             
             headerView.backgroundColor = .white
             
-            self.toasterCloser[headerView.hash] = {
-                guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
-                    return
-                }
-                let message = "상품 \(headerItem.dishes.count)개 있어요!"
-                
-                mainView.hideAllToasts()
-                mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
-            }
+            self.addCloser(headerSection: headerView, sectionData: headerItem)
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
             headerView.addGestureRecognizer(tap)
             
-            // Apply the configuration to header view
             headerView.contentConfiguration = configuration
         }
         return headerRegistration
+    }
+    
+    private func addCloser(headerSection: UIView, sectionData: Dishes) {
+        self.toasterCloser[headerSection.hash] = {
+            guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
+                return
+            }
+            let message = "상품 \(sectionData.dishes.count)개 있어요!"
+            
+            mainView.hideAllToasts()
+            mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
+        }
     }
     
     private func removeResidualBadges(stackView : UIStackView) {
