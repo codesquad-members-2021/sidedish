@@ -4,7 +4,6 @@ import DishItem from 'component/DishItem/DishItem';
 import { URL } from 'util/data';
 import useFetch from 'hooks/useFetch';
 import Carousel from 'component/Carousel/Carousel';
-import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 
 const SlideDish = ({ category }) => {
   const { data: slideData, loading } = useFetch(URL[category]());
@@ -17,13 +16,9 @@ const SlideDish = ({ category }) => {
   ) : (
     <SlideContainer>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
-      <Carousel wrapperWidth={1280} itemWidth={324} maxItem={3}>
+      <Carousel itemWidth={324} maxItem={4} skipItem={2} className="carouselWrapper">
         {slideCategory}
       </Carousel>
-      {/* <CarouselArrow>
-        <IoChevronBackSharp className="leftArrow" />
-        <IoChevronForwardSharp className="rightArrow" />
-      </CarouselArrow> */}
     </SlideContainer>
   );
 };
@@ -33,6 +28,9 @@ export default SlideDish;
 const SlideContainer = styled.div`
   min-width: 1280px;
   position: relative;
+  .carouselWrapper {
+    min-width: 1280px;
+  }
 `;
 
 const Header = styled.div`
@@ -41,23 +39,4 @@ const Header = styled.div`
   font-weight: bold;
   margin-top: 5rem;
   margin-bottom: 2rem;
-`;
-const CarouselArrow = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  top: 0;
-  left: -4%;
-  width: 108%;
-  height: 100%;
-  font-size: 1.2rem;
-  .leftArrow:hover {
-    color: red;
-    //속성으로 색깔비교
-  }
-  .rightArrow:hover {
-    color: red;
-    //속성으로 색깔비교
-  }
 `;
