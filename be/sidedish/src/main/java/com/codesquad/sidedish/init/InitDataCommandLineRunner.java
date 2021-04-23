@@ -8,6 +8,7 @@ import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventRepository;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 import com.codesquad.sidedish.image.domain.SidedishImageRepository;
+import com.codesquad.sidedish.util.DefaultImageUtil;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +30,8 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        DefaultImageUtil.initNotFoundImage(createSidedishImage(DefaultImageUtil.NOT_FOUND_IMAGE_URL));
+
         List<SidedishCategory> categoryList = new ArrayList<>();
         String[] prefixArr = {"메인요리", "국물요리", "반찬요리"};
         categoryList.add(sidedishCategoryRepository.findByCategoryName("main").orElseThrow(CategoryNotFoundException::new));

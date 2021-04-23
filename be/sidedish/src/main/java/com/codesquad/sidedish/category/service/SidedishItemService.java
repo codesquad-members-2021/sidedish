@@ -18,7 +18,9 @@ import com.codesquad.sidedish.image.domain.SidedishImage;
 import com.codesquad.sidedish.image.domain.SidedishImageRepository;
 import com.codesquad.sidedish.image.domain.SidedishImageTypeEnum;
 import com.codesquad.sidedish.image.domain.SidedishItemImage;
+import com.codesquad.sidedish.image.exception.ImageItemNotFoundException;
 import com.codesquad.sidedish.image.exception.ImageNotFoundException;
+import com.codesquad.sidedish.util.DefaultImageUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,12 +70,16 @@ public class SidedishItemService {
     }
 
     private SidedishImage findThumbnailImage(SidedishItem item) {
-        SidedishItemImage sidedishItemImage = item.getSidedishItemImages().stream()
-                .filter(SidedishItemImage::isThumbnailImage)
-                .findFirst()
-                .orElseThrow(ImageNotFoundException::new);
-        return sidedishImageRepository.findById(sidedishItemImage.getSidedishImage())
-                .orElseThrow(ImageNotFoundException::new);
+        SidedishItemImage sidedishItemImage = null;
+        try {
+            sidedishItemImage = item.getSidedishItemImages().stream()
+                    .filter(SidedishItemImage::isThumbnailImage)
+                    .findFirst()
+                    .orElseThrow(ImageItemNotFoundException::new);
+        } catch (ImageItemNotFoundException e) {
+            return DefaultImageUtil.getNotFoundImage();
+        }
+        return sidedishImageRepository.findById(sidedishItemImage.getSidedishImage()).orElseThrow(ImageNotFoundException::new);
     }
 
     private List<SidedishImage> findImagesByType(SidedishItem item, SidedishImageTypeEnum imageTypeEnum) {
