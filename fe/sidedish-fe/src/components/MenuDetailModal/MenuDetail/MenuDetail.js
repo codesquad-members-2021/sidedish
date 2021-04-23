@@ -71,7 +71,8 @@ function MenuDetail({ hash, title }) {
 
   return (
     <StyledMenuDetail>
-      {data && <>
+      {data &&
+      <>
         <div className="upper-cont">
           <Preview imgs={[rvimg, bpimg]}/>
           <OrderInfo title={title} data={data}/>

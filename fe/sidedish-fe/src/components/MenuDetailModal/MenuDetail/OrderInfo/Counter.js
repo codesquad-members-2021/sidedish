@@ -64,10 +64,10 @@ function Counter({ onChangeCount }) {
       <div className="count">{count}</div>
       <div className="btn-cont">
         <ControlBtn onClick={handleClickUpBtn}>
-          <img src={UpBtnSvg}/>
+          <img src={UpBtnSvg} alt="image not found"/>
         </ControlBtn>
         <ControlBtn down disabled={count === 1} onClick={handleClickDownBtn}>
-          <img src={DownBtnSvg}/>
+          <img src={DownBtnSvg} alt="image not found"/>
         </ControlBtn>
       </div>
     </StyledCounter>
