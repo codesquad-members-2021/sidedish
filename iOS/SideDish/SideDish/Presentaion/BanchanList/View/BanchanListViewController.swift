@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Toaster
 
 class BanchanListViewController: UIViewController {
     
@@ -44,6 +45,10 @@ class BanchanListViewController: UIViewController {
             })
             .store(in: &subscriptions)
     }
+    
+    @objc func headerTouched(_ sender: CustomTapGestureRecognizer) {
+        Toast(text: "\(sender.cellCount)개 상품이 등록되어 있습니다.").show()
+    }
 }
 
 // MARK: - DataSource
@@ -63,7 +68,12 @@ extension BanchanListViewController {
     
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BanchanCustomCellHeader.identifier, for: indexPath) as? BanchanCustomCellHeader else { return nil }
             
-            view.configure(title: section.description(), count: self.viewModel.count(section: section))
+            let tapRecognizer = CustomTapGestureRecognizer(target: self,
+                                                           action: #selector(self.headerTouched(_:)),
+                                                           cellCount: self.viewModel.count(section: section))
+            view.addGestureRecognizer(tapRecognizer)
+            
+            view.configure(title: section.description())
             return view
         }
         return dataSource
@@ -88,6 +98,15 @@ extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize = CGSize(width: 343, height: 130)
         return cellSize
+    }
+}
+
+class CustomTapGestureRecognizer: UITapGestureRecognizer {
+    private (set) var cellCount: Int
+    
+    init(target: Any?, action: Selector?, cellCount: Int) {
+        self.cellCount = cellCount
+        super.init(target: target, action: action)
     }
 }
 
