@@ -1,21 +1,7 @@
 import styled from 'styled-components';
 
-import loadingImage from '../../images/loading.gif';
-import SpecialLabelTag from './SpecialLabelTag';
-
-import ResponsiveCard from './Cards/ResponsiveCard.js';
-
-const Card = ({type = "default", number }) => {
+const ResponsiveCard = ({number, loadingImage, SpecialLabelTag}) => {
   
-  switch (type) {
-    case "responsive":
-      return <ResponsiveCard number={number} loadingImage={loadingImage} SpecialLabelTag />
-    case "default":
-      break; // 수정예정
-    default:
-      break;
-  }
-
   return (
     <CardWrapper>
       <ImageWrapper>
@@ -28,25 +14,26 @@ const Card = ({type = "default", number }) => {
           </OverlayText>
         </Overlay>
       </ImageWrapper>
+      {number}
       <TitleDiv>[소중한 식사] 경상도 한상차림</TitleDiv>
       <DescriptionDiv>경상도 명물 요리 세가지를 한상에!</DescriptionDiv>
       <PriceWrapper>
         <SalePriceSpan>31200</SalePriceSpan>
         <NetPriceSpan>39000</NetPriceSpan>
       </PriceWrapper>
-      <SpecialLabelTag event scene />
+      {/* <SpecialLabelTag /> */}
     </CardWrapper>
   )
 }
 
 const CardWrapper = styled.div`
-  width: 384px;
+  width: 100%;
   height: 540px;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
-  width: 384px;
+  width: 100%;
   height: 384px;
   margin: 0 0 16px 0;
   &:hover{
@@ -117,5 +104,4 @@ const PriceWrapper = styled.div`
   margin: 0 0 16px 0;
 `;
 
-
-export default Card;
+export default ResponsiveCard

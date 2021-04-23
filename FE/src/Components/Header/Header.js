@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation/Navigation';
 import SearchBar from './SearchBar/SearchBar';
-import { Container } from '../commons/styledComponents';
+import { Container } from '../commons/base';
 
 const Header = () => {
   return (
