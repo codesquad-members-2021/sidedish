@@ -13,41 +13,25 @@ struct BanchanListDTO: Codable {
 
 extension BanchanListDTO {
     struct BanchanListItemDTO: Codable {
-        let hash: String
+        let detailHash: String
         let image: String
         let alt: String
         let deliveryType: [String]
         let description: String
         let title: String
-        let normalPrice: String?
-        let salePrice: String
+        let nPrice: String?
+        let sPrice: String
         let badge: [String]?
         
-        private enum CodingKeys: String, CodingKey {
-            case hash = "detail_hash"
-            case image
-            case alt
-            case deliveryType = "delivery_type"
-            case description
-            case title
-            case normalPrice = "n_price"
-            case salePrice = "s_price"
-            case badge
+        func toDomain() -> Banchan {
+            return .init(detailHash: detailHash, image: image, alt: alt, title: title, description: description, nPrice: nPrice, sPrice: sPrice, badge: badge, deliveryType: deliveryType)
         }
     }
-}
-
-extension BanchanListDTO {
+    
     func toDomain() -> [Banchan] {
-        let banchans = self.body.map {
-            $0.toDomain()
+        let banchans = self.body.map { banchanListitemDTO in
+            banchanListitemDTO.toDomain()
         }
         return banchans
-    }
-}
-
-extension BanchanListDTO.BanchanListItemDTO {
-    func toDomain() -> Banchan {
-        return .init(hash: hash, image: image, alt: alt, title: title, description: description, netPrice: normalPrice, salePrice: salePrice, badge: badge, delivery_type: deliveryType)
     }
 }

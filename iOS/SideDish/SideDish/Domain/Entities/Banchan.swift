@@ -18,20 +18,20 @@ enum PriceType {
 }
 
 struct Banchan: Hashable {
-    private (set) var hash: String
+    private (set) var detailHash: String
     private (set) var image: String
     private (set) var alt: String
     private (set) var title: String
     private (set) var description: String
-    private (set) var netPrice: String?
-    private (set) var salePrice: String
+    private (set) var nPrice: String?
+    private (set) var sPrice: String
     private (set) var badge: [String]?
-    private (set) var delivery_type: [String]
+    private (set) var deliveryType: [String]
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(hash)
+        hasher.combine(detailHash)
     }
     static func == (lhs: Banchan, rhs: Banchan) -> Bool {
-        lhs.hash == rhs.hash
+        lhs.detailHash == rhs.detailHash
     }
 }

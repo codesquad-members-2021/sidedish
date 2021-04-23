@@ -12,10 +12,12 @@ struct FetchBanchanListUseCase {
     
     static func fetchBanchanList(network: NetworkRequest,section: String, completion: @escaping ([Banchan]?) -> Void) {
         let url = baseURL+section
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         network.request(url: url, httpMethod: .get) { dataDummy in
             guard let data = dataDummy.data else { return }
             
-            guard let banchans = try? JSONDecoder().decode(BanchanListDTO.self, from: data) else { return }
+            guard let banchans = try? decoder.decode(BanchanListDTO.self, from: data) else { return }
             completion(banchans.toDomain())
         }
     }
