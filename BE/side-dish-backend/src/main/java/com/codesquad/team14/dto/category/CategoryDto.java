@@ -1,17 +1,16 @@
 package com.codesquad.team14.dto.category;
 
 import com.codesquad.team14.domain.Category;
-import com.codesquad.team14.domain.Item;
+import com.codesquad.team14.dto.item.ItemDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDto {
     private Long id;
     private String name;
-    private List<Item> items;
+    private List<ItemDto> items;
 
-    private CategoryDto(Long id, String name, List<Item> items) {
+    private CategoryDto(Long id, String name, List<ItemDto> items) {
         this.id = id;
         this.name = name;
         this.items = items;
@@ -21,7 +20,7 @@ public class CategoryDto {
         return new CategoryDto(
                 category.getId(),
                 category.getName(),
-                new ArrayList<>(category.getItems())
+                category.getItemDtoList()
         );
     }
 
@@ -33,7 +32,7 @@ public class CategoryDto {
         return name;
     }
 
-    public List<Item> getItems() {
+    public List<ItemDto> getItems() {
         return items;
     }
 }
