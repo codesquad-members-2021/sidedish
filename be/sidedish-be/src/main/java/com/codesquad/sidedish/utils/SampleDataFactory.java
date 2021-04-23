@@ -1,15 +1,16 @@
 package com.codesquad.sidedish.utils;
 
+import com.codesquad.sidedish.web.sidedish.DTO.DetailDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
-import com.codesquad.sidedish.web.sidedish.DTO.DetailDTO;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import org.springframework.core.io.ClassPathResource;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -56,10 +57,12 @@ public class SampleDataFactory {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
-        try {
-            return objectMapper.readValue(new ClassPathResource(jsonFilePath).getInputStream(), typeReference);
+        try (InputStream is = new ClassPathResource(jsonFilePath).getInputStream()) {
+            return objectMapper.readValue(is, typeReference);
+        } catch (JsonParseException e) {
+            throw new IllegalStateException("Json파일 파싱 중 에러 발생. jsonFilePath: " + jsonFilePath, e);
         } catch (IOException e) {
-            throw new IllegalStateException("경로가 올바르지 않습니다. 경로: " + jsonFilePath, e);
+            throw new IllegalStateException("파일 읽는 중 에러 발생. jsonFilePath: " + jsonFilePath, e);
         }
     }
 }
