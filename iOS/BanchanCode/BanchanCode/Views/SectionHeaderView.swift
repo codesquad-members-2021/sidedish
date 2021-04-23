@@ -20,8 +20,7 @@ class SectionHeaderView: UICollectionReusableView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-             //총 몇개인지를 어떻게 받아올까?
+             
              Toast(text: "\(countOfMenus)개 상품이 등록되어 있습니다").show()
          }
 }
