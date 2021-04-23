@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     var sPrice : String!
     private var cancellable = Set<AnyCancellable>()
     private var detailViewModel: DetailViewModel!
+    @IBOutlet weak var amountButtomViewModel: AmountButtonViewModel!
+    private let sideDishAmountViewModel = SideDishAmountViewModel()
     
     @IBOutlet weak var thumbScrollView: UIScrollView!
     @IBOutlet weak var detailSectionStackView: UIStackView!
@@ -27,10 +29,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var deliveryFeeLabel: UILabel!
     @IBOutlet weak var sPriceLabel: UILabel!
     @IBOutlet weak var nPriceLabel: UILabel!
-
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var totalPrice: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
         self.title = sideDishTitle
         
         if let safeDetailViewModel = detailViewModel {
@@ -60,6 +63,22 @@ class DetailViewController: UIViewController {
         
         detailViewModel.except { [weak self] (error) in
             self?.triggerAlert(by: error)
+        }
+        
+        amountButtomViewModel.bind { [weak self] (action) in
+            switch action {
+            case .plus:
+                self?.sideDishAmountViewModel.amountState.Increase()
+            case .minus:
+                self?.sideDishAmountViewModel.amountState.Decrease()
+            }
+        }
+        
+        sideDishAmountViewModel.bind(sPrice: sPrice) { [weak self] (totalPrice, amount) in
+            DispatchQueue.main.async {
+                self?.amountLabel.text = amount
+                self?.totalPrice.text = totalPrice
+            }
         }
     }
     
@@ -139,17 +158,9 @@ class DetailViewController: UIViewController {
             self?.present(Alert.create(title : error),animated: true)
         }
     }
-    
-    
+        
     func depend2(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    deinit {
-        print("deinit")
-    }
 }

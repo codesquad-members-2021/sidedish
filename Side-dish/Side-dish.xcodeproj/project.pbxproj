@@ -34,6 +34,9 @@
 		BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */; };
 		BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */; };
 		BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49C1262E8918006C0882 /* DIContainer.swift */; };
+		BFDBECCB2632956300628672 /* SideDishAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */; };
+		BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */; };
+		BFDBECD526329C9000628672 /* AmountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD426329C9000628672 /* AmountState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishUseCase.swift; sourceTree = "<group>"; };
 		BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishViewModel.swift; sourceTree = "<group>"; };
 		BFCE49C1262E8918006C0882 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishAmountViewModel.swift; sourceTree = "<group>"; };
+		BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButtonViewModel.swift; sourceTree = "<group>"; };
+		BFDBECD426329C9000628672 /* AmountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,9 @@
 			children = (
 				BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */,
 				8844B8572631AB1300FA49E9 /* DetailViewModel.swift */,
+				BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */,
+				BFDBECD426329C9000628672 /* AmountState.swift */,
+				BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,8 +299,10 @@
 				BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */,
 				8844B8552631AB0500FA49E9 /* DetailViewController.swift in Sources */,
 				BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */,
+				BFDBECCB2632956300628672 /* SideDishAmountViewModel.swift in Sources */,
 				BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */,
 				8844B8582631AB1300FA49E9 /* DetailViewModel.swift in Sources */,
+				BFDBECD526329C9000628672 /* AmountState.swift in Sources */,
 				BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */,
 				BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */,
 				BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */,
@@ -300,6 +311,7 @@
 				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
 				BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */,
+				BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */,
 				BFAE1BC426302DB600C0625E /* ImageUseCase.swift in Sources */,
 				8844B8522631A97300FA49E9 /* ItemDetails.swift in Sources */,
 				8844B7D9262E723300FA49E9 /* BadgeLabel.swift in Sources */,
