@@ -19,6 +19,7 @@ const Icon = props => {
   stroke: ${props._color};
   position:${props._position};
   right:${props._right};
+  top:${props._top};
   `;
 
     switch (props._type) {

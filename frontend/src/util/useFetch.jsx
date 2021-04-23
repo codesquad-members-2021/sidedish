@@ -6,6 +6,7 @@ const useFetch = (callback, type) => {
       'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/';
 
     switch (type) {
+
       case 'mainDish':
         return (url += 'main');
       case 'bestDish':
@@ -16,11 +17,14 @@ const useFetch = (callback, type) => {
         return (url += 'side');
       case 'detailDish':
         return (url += 'detail');
+
     }
   };
 
   const fetchInitialData = async () => {
     const response = await fetch(getUrl());
+    // .then((response) => response.json())
+    // .then((data) => data.body);
     const initialData = await response.json();
     const dataBody = initialData.body;
     if (type !== 'bestDish') {

@@ -20,10 +20,14 @@ const HeaderRight = ({ children, ...props }) => {
       <SearchBar />
       <ul>
         <Li>
-          <Span _title>로그인</Span>
+          <Span _login _margin="16px 24px 0 0">
+            로그인
+          </Span>
         </Li>
         <Li>
-          <Span _title>장바구니</Span>
+          <Span _login _margin="16px 0 0 0">
+            장바구니
+          </Span>
         </Li>
       </ul>
     </WrapDiv>

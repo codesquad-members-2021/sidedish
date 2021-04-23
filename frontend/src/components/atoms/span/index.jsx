@@ -13,37 +13,62 @@ const StyledSpan = styled.span`
     `font-size:16px;
     font-weight:400;
     color:#333;
-    margin:0 8px;`}
-  ${props =>
+
+    margin:16px 0 0 0;`}
+  ${(props) =>
+
     props._description &&
     `font-size:14px;
     font-weight:400;
     color:#828282;
-    margin:0 8px;`}
-    ${props =>
-    props._nPrice &&
+
+    margin:8px 0;`}
+  ${(props) =>
+    props._sPrice &&
     `font-size:20px;
     font-weight:700;
     color:#010101;
-    margin:8px 0;`}
-    ${props =>
-    props._sPrice &&
+    `}
+  ${(props) =>
+    props._nPrice &&
+
     `font-size:14px;
     font-weight:400;
     color:#BDBDBD;
-    margin:8px 0;
+    margin:9px 0 0 8px;
     text-decoration:line-through;`}
     ${props =>
     props._logo &&
     `font-size:40px;
     font-weight:900;
     color:#333;`}
+
+     ${(props) =>
+    props._tabDeact &&
+    `font-size:18px;
+    font-weight:400;
+    color:#828282;
+    margin:16px 32px;
+    `}
+     ${(props) =>
+    props._tabAct &&
+    `font-size:18px;
+    font-weight:700;
+    color:#333;
+    `}
+    ${(props) =>
+    props._login &&
+    `font-size:16px;
+    font-weight:400;
+    color:#333;`}
+
     ${props =>
     props._innerTitle &&
     `font-size:24px;
     font-weight:700;
     padding: 30px 30px;
     `};
+
 `;
 
 const Span = ({ children, ...props }) => (

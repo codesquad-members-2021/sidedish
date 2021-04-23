@@ -63,12 +63,16 @@ const MainDish = props => {
             <Cards />
           </CardStyle>
         </WrapCard>
+
+
+
         <Icon
           moveSlide={moveSlide}
           _width="32px"
           _color="#BDBDBD"
           _type="RightIcon"
         />
+
       </WrapMain>
     </>
   );

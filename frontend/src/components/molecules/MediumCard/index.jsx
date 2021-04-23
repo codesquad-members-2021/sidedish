@@ -31,8 +31,8 @@ const MediumCard = ({ children, ...props }) => {
       <Span _title>{props._title}</Span>
       <Span _description>{props._description}</Span>
       <FlexDiv>
-        <Span _nPrice>{props._nPrice}</Span>
         <Span _sPrice>{props._sPrice}</Span>
+        <Span _nPrice>{props._nPrice}</Span>
       </FlexDiv>
       <TagType />
     </Div>

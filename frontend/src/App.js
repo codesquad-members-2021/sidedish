@@ -10,8 +10,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <MainDish _dishType="mainDish" />
-      <ViewMore />
+
+      <BestDish />
+      {/* <MainDish /> */}
+      <More />
+
+      
       {/* <BestDish /> */}
 
       {/* {bestDish.map(({ category_id, name, items }) => {
