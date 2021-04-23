@@ -6,6 +6,7 @@ target 'BanchanCode' do
   # Pods for BanchanCode
 
   pod 'Alamofire', '~> 5.2'
+  pod 'Toaster'
 
   target 'BanchanCodeTests' do
     inherit! :search_paths
