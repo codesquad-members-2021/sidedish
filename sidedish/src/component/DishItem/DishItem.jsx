@@ -53,6 +53,7 @@ const StyledDishItem = styled.div`
   width: ${({ size }) => (size === 'L' ? '384px' : '308px')};
   height: ${({ size }) => (size === 'L' ? '540px' : '456px')};
   margin-right: ${({ size }) => size === 'M' && '16px'};
+  z-index: 100;
   .imgContainer {
     position: relative;
   }
