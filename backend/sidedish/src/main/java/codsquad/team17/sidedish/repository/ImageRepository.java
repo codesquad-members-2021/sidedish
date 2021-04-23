@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface ImageRepository extends CrudRepository<Image, Long> {
 
     @Query("SELECT image_id, url, item_id FROM image WHERE item_id=:itemId LIMIT 1;")
-    Optional<Image> findByItemIdLimit(@Param("itemId") Long itemId);
+    Image findByItemIdLimit(@Param("itemId") Long itemId);
 }

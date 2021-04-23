@@ -18,8 +18,6 @@ public class ItemDto {
     private List<String> badge;
     private String image;
 
-    private Long dishCategoryId;
-
     public ItemDto(){
 
     }
@@ -32,9 +30,7 @@ public class ItemDto {
         this.s_price = entity.getsPrice();
         this.badge = parseBadge(entity.getBadge());
         this.image = image.getUrl();
-        this.dishCategoryId = entity.getDishCategoryId();
     }
-
 
     private List<String> parseBadge(String badge) {
         return Arrays.asList(badge.split(", "));
@@ -66,9 +62,5 @@ public class ItemDto {
 
     public String getImage() {
         return image;
-    }
-
-    public Long getDishCategoryId() {
-        return dishCategoryId;
     }
 }

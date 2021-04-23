@@ -19,8 +19,6 @@ public class BestCategoryDto {
         this.items = items;
     }
 
-
-
     public Long getBestCategoryId() {
         return bestCategoryId;
     }

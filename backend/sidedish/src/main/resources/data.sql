@@ -25,6 +25,8 @@ INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_ca
     VALUES ("[애슐리투고] 로스트 콤보 450g", "립과 치킨이 만나  더욱 맛있게", 10900, 10900, 2, 4, 20, "이벤트 특가");
 INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)
     VALUES ("title5", "discription5", 50000, 40000, 2, 5, 20, "이벤트 특가");
+INSERT INTO item(title, description, n_price, s_price, dish_category_id, best_category_id, stock, badge)
+    VALUES ("title6", "discription6", 50000, 40000, 2, 1, 20, "이벤트 특가, 런칭 특가");
 
 
 --image
@@ -49,6 +51,10 @@ INSERT INTO image(url,item_id) VALUES('https://cdn.bmf.kr/_data/product/HA567/f1
 -- 애슐리투고
 INSERT INTO image(url,item_id) VALUES('https://cdn.bmf.kr/_data/product/H206E/de61f1b996cb6a0c5e797b55178307f5.jpg',4);
 
+-- 가나다라
+INSERT INTO image(url,item_id) VALUES('https://cdn.bmf.kr/_data/product/HA567/f14a921e2abc277c7f2033d34155f372.jpg',5);
+
+INSERT INTO image(url,item_id) VALUES('https://cdn.bmf.kr/_data/product/HA567/f14a921e2abc277c7f2033d34155f372.jpg',6);
 
 
 
