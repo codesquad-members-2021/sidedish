@@ -10,6 +10,7 @@ class MainDiffableDataSource {
         case side = "식탁을 풍성하게 하는 정갈한 밑반찬"
     }
     
+    
     private var dataSource : UICollectionViewDiffableDataSource<sectionTitle, Menu>!
     
     func setupDataSource(collectionView: UICollectionView) {
@@ -17,7 +18,8 @@ class MainDiffableDataSource {
             (collectionView, indexPath, menu) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as? MenuCell else { preconditionFailure() }
             
-            menu.configure(cell: cell)
+//            menu.configure(cell: cell)
+            cell.configure(menu: menu)
             return cell
         }
         

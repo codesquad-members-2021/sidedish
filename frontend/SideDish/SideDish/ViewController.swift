@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     }
     
     private func putData(menu: [Menu]?, section: MainDiffableDataSource.sectionTitle) {
-        guard let main = menu else { return }
-        self.dataSource.applySnapshot(menu: main, section: section)
+        guard let menu = menu else { return }
+        self.dataSource.applySnapshot(menu: menu, section: section)
     }
 }

@@ -60,7 +60,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYD-RR-LB2">
                                 <rect key="frame" x="164" y="62" width="21" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="ZXW-ZK-guk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="ZXW-ZK-guk"/>
                                     <constraint firstAttribute="height" constant="20" id="ejP-yT-rgd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
