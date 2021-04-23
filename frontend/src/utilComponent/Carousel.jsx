@@ -48,6 +48,13 @@ const Carousel = ({arrData, carouselMargin, arrowTopPos, ...props}) => {
     updatePos(nextStartPos, nextEndPos, nextCurrPos);
   };
 
+  const arrowOption = {
+    cssTopPos: arrowTopPos,
+    startPos, 
+    endPos, 
+    dataLength: arrData.length,
+  };
+
   return (
     <StyledCarousel carouselMargin={carouselMargin} >
 
@@ -56,14 +63,14 @@ const Carousel = ({arrData, carouselMargin, arrowTopPos, ...props}) => {
           {arrData &&
             arrData.map((item, i) => (
               <ContentItem key={i} turnOverCnt={turnOverCnt}>
-                <ProductCard key={item.detail_hash} size="small" item={item}/>
+                <ProductCard size="small" item={item}/>
               </ContentItem>
             ))}
         </ContentItems>
       </ContentItemsWrap>
 
-      <ArrowButton onClick={handleCarouselLeftClick} topPos={arrowTopPos} direction="L" />
-      <ArrowButton onClick={handleCarouselRightClick} topPos={arrowTopPos} direction="R" />
+      <ArrowButton onClick={handleCarouselLeftClick} arrowOption={arrowOption} direction="L" />
+      <ArrowButton onClick={handleCarouselRightClick} arrowOption={arrowOption} direction="R" />
 
     </StyledCarousel>
   );

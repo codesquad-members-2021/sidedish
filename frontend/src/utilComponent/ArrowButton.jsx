@@ -19,15 +19,20 @@ export default ArrowButton;
 const StyledArrowButton = styled.button`
   ${cssTranslate};
   ${cssFlexAlignCenter};
-  font-size: ${({ theme }) => theme.fontSize.XL || "16px"};
+  font-size: 32px;
   cursor: pointer;
 
-  ${({ direction, topPos }) =>
+  ${({ direction, arrowOption: { cssTopPos, startPos, endPos, dataLength } }) =>
     direction &&
     css`
       position: absolute;
-      top: ${topPos || "50%"};
+      top: ${cssTopPos || "50%"};
       left: ${direction === "L" ? "-4rem" : "auto"};
       right: ${direction === "R" ? "-4rem" : "auto"};
+
+      color: ${(direction === "L" && startPos <= 1) ||
+      (direction === "R" && endPos >= dataLength) 
+        ? ({ theme }) => theme.colors.gray4 || "lightgray"
+        : ({ theme }) => theme.fontSize.gray1 || "black"};
     `}
 `;
