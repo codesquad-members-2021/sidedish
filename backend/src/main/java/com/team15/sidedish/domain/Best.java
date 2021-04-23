@@ -1,6 +1,7 @@
 package com.team15.sidedish.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 
 import java.util.HashSet;
 import java.util.Set;

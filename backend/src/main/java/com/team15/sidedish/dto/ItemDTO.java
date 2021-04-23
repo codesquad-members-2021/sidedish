@@ -12,10 +12,10 @@ public class ItemDTO {
     private Integer sPrice;
     private String[] badge;
 
-    public ItemDTO(String detailHash, String image, String alt, String deliveryType, String title, String description, Integer nPrice, Integer sPrice, String[] badge) {
+    public ItemDTO(String detailHash, String image, String deliveryType, String title, String description, Integer nPrice, Integer sPrice, String[] badge) {
         this.detailHash = detailHash;
         this.image = image;
-        this.alt = alt;
+        this.alt = title;
         this.deliveryType = deliveryType;
         this.title = title;
         this.description = description;

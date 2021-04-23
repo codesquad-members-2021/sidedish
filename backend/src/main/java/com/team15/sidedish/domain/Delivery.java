@@ -48,8 +48,6 @@ public class Delivery {
         return dishHash;
     }
 
-
-
     //    private List<DeliveryType> parsingDeliveryType(String delivery) {
 //        return Arrays.stream(delivery.split(“,”))
 //                .map(DeliveryType::valueOf)
