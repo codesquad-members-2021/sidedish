@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { theme, AlignTextCenter } from "./Theme";
+import {
+  theme,
+  AlignTextCenter,
+  ItemPrice,
+  ItemPriceNormal,
+  BadgeWrapper,
+  Badge,
+} from "./Theme";
 import { useState } from "react";
 import DetailPage from "./detail/DetailPage";
 import useFetch from "./useFetch";
@@ -9,6 +16,22 @@ const Card = styled.div`
   width: ${(props) => {
     return props.size === "L" ? "384px" : "308px";
   }};
+`;
+const ItemTitle = styled.div`
+  font-size: ${theme.fontSize.medium};
+  font-weight: Bold;
+  margin-bottom: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+const ItemDesc = styled.div`
+  font-size: ${theme.fontSize.small};
+  color: ${theme.colors.grey_text};
+  margin-bottom: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const IMG = styled(AlignTextCenter)`
   position: relative;
@@ -29,49 +52,7 @@ const IMG = styled(AlignTextCenter)`
     }
   }
 `;
-const ItemTitle = styled.div`
-  font-size: ${theme.fontSize.medium};
-  font-weight: Bold;
-  margin-bottom: 16px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-const ItemDesc = styled.div`
-  font-size: ${theme.fontSize.small};
-  color: ${theme.colors.grey_text};
-  margin-bottom: 16px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-const ItemPrice = styled.span`
-  font-size: ${theme.fontSize.larger};
-  font-weight: Bold;
-  margin-right: 10px;
-`;
-const ItemPriceNormal = styled.span`
-  text-decoration: line-through;
-  color: ${theme.colors.grey_text};
-`;
-const BadgeWrapper = styled.div`
-  display: flex;
-`;
-const Badge = styled(AlignTextCenter)`
-  width: 97px;
-  height: 28px;
-  margin-top: 20px;
-  margin-right: 20px;
-  background-color: ${(props) => {
-    return props.val === "이벤트특가"
-      ? theme.colors.green
-      : theme.colors.skyblue_badge;
-  }};
-  color: ${theme.colors.white};
-  font-weight: Bold;
-  font-size: ${theme.fontSize.small};
-  border-radius: 10px;
-`;
+
 const DeliveryBlock = styled.div`
   color: ${theme.colors.white};
   font-size: ${theme.fontSize.larger};
@@ -92,10 +73,7 @@ function ItemCard({ data, size }) {
   const [ModalMode, setModalState] = useState(false);
   const handleClick = (hash) => {
     setModalState(!ModalMode); //작업중
-    setDetailFetchUrl(
-      "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/" +
-        hash
-    );
+    setDetailFetchUrl("http://15.164.68.136:8080/detail/" + hash);
   };
   const [detailData, loadingState] = useFetch(detailFetchUrl); //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가?
   return (
@@ -105,10 +83,12 @@ function ItemCard({ data, size }) {
           detailData={detailData.data}
           ModalMode={ModalMode}
           setModalState={setModalState}
+          item={data.alt}
+          badges={data.badges}
         ></DetailPage>
       )}
       <Card size={size}>
-        <ClickArea onClick={() => handleClick(data.detail_hash)}>
+        <ClickArea onClick={() => handleClick(data.detailHash, data.badges)}>
           <IMG size={size} image={data.image} alt={data.alt}>
             <DeliveryBlock>
               <div>새벽배송</div>
@@ -120,12 +100,12 @@ function ItemCard({ data, size }) {
           <ItemTitle>{data.alt}</ItemTitle>
           <ItemDesc>{data.description}</ItemDesc>
         </ClickArea>
-        <ItemPrice>{data.s_price ? data.s_price : data.n_price}</ItemPrice>
-        {data.s_price && <ItemPriceNormal>{data.n_price}원</ItemPriceNormal>}
+        <ItemPrice>{data.sPrice ? data.sPrice + "원" : data.nPrice}</ItemPrice>
+        {data.sPrice && <ItemPriceNormal>{data.nPrice}원</ItemPriceNormal>}
 
         <BadgeWrapper>
-          {data.badge &&
-            data.badge.map((el, idx) => (
+          {data.badges &&
+            data.badges.map((el, idx) => (
               <Badge key={idx} val={el}>
                 {el}
               </Badge>

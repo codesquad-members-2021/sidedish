@@ -40,14 +40,11 @@ const MainColumn = styled.div`
 
 function MainMenu() {
   let mokData;
-  const basicUrl =
-    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/";
+  const basicUrl = "http://15.164.68.136:8080/best/";
 
   //5개: 탭 전체 데이터 요청
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
-  const bestDishData = bestDishMenu.body;
-  const [clickedID, setClickedID] = useState("17011200");
-
+  const [clickedID, setClickedID] = useState("1");
   //초기 베스트메뉴 url 설정
   const [fetchData, setFetchData] = useState(basicUrl + clickedID);
 
@@ -66,11 +63,11 @@ function MainMenu() {
       <Title>후기가 증명하는 베스트 반찬</Title>
       <TabWrapper>
         {!bestDishLoading &&
-          bestDishData.map((data, idx) => (
+          bestDishMenu.map((data, idx) => (
             <Tab
-              onClick={({ target }) => handleClick(target, data.category_id)}
+              onClick={({ target }) => handleClick(target, data.bestCategoryId)}
               clickedID={clickedID}
-              id={data.category_id}
+              id={data.bestCategoryId}
               key={idx}
             >
               {data.name}
