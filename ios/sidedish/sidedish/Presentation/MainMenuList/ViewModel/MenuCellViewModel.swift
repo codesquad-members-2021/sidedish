@@ -10,7 +10,8 @@ import Combine
 
 class MenuCellViewModel{
     
-    @Published var dishes : SideDishesManageable!
+    @Published var dishesCategory : [SideDishesCategory]!
+    @Published var dishes : [[SideDish]]!
     @Published var errorMessage : String = ""
     
     private var subscriptions = Set<AnyCancellable>()
@@ -23,34 +24,57 @@ class MenuCellViewModel{
     convenience init() {
         let turnonAppUsecase = TurnonAppUsecase()
         self.init(turnonAppUsecase : turnonAppUsecase)
+        self.dishes = [[],[],[]]
     }
     
     func configureMainmenuBoard(){
-        turnonAppUsecase.manufactureForMainView()
+        turnonAppUsecase.manufactureForMainViewCategory()
+            .sink(receiveCompletion: { (result) in
+                if case .failure(let error) = result {
+                    self.errorMessage = error.localizedDescription
+                }
+            }, receiveValue: { (category) in
+                self.dishesCategory = category
+            }).store(in: &subscriptions)
+        
+        turnonAppUsecase.manufactureforMainViewMainDishes()
             .sink(receiveCompletion: { (result) in
                 if case .failure(let error) = result {
                     self.errorMessage = error.localizedDescription
                 }
             }, receiveValue: { (dishes) in
-                self.dishes = dishes
+                for i in 0..<dishes.count {
+                    self.dishes[0].append(dishes[i])
+                }
+            }).store(in: &subscriptions)
+        
+        turnonAppUsecase.manufactureforMainViewSideDishes()
+            .sink(receiveCompletion: { (result) in
+                if case .failure(let error) = result {
+                    self.errorMessage = error.localizedDescription
+                }
+            }, receiveValue: { (dishes) in
+                for i in 0..<dishes.count {
+                    self.dishes[1].append(dishes[i])
+                }
             }).store(in: &subscriptions)
     }
     
     func sideCategoryCount() -> Int{
-        if dishes == nil {
+        if dishesCategory == nil {
             return 0
         }
         else {
-            return dishes.getCountdishesSection()
+            return dishes.count
         }
     }
     
     func sideDishesCount(section : Int) -> Int{
-        if dishes == nil{
+        if dishes.isEmpty {
             return 0
         }
         else {
-            return dishes.getCountdishes(section: section)
+            return dishes[section].count
         }
     }
     

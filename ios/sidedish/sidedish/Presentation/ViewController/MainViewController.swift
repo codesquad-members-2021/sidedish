@@ -46,6 +46,11 @@ class MainViewController: UIViewController, ViewChangable {
             .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.menuTableView.reloadData() })
             .store(in: &self.subscription)
         
+        mainMenuViewModel.$dishesCategory
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.menuTableView.reloadData() })
+            .store(in: &self.subscription)
+        
         mainMenuViewModel.configureAlertMessage { (error) in
             self.showAlert(message: error)
         }

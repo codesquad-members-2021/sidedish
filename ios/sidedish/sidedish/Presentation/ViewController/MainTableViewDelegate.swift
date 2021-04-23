@@ -18,7 +18,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerWidth = tableView.frame.width
         let headerHeight = ViewPosition.headerViewHeight.rawValue
-        let titleText = viewModel.dishes.getsidedish(section: section).name
+        let titleText = viewModel.dishesCategory[section].categoryName
         let headerView = CustomTableHeaderView.makeCustomTableHeaderView(width: headerWidth,
                                                                          height: headerHeight,
                                                                          text: titleText)
