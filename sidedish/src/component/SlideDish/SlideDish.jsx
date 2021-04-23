@@ -6,7 +6,7 @@ import useFetch from 'hooks/useFetch';
 import Carousel from 'component/Carousel/Carousel';
 
 const SlideDish = ({ category }) => {
-  const { data: slideData, loading } = useFetch(URL[category]());
+  const { data: slideData, loading } = useFetch({ url: URL[category]() });
   const slideCategory =
     slideData &&
     slideData.body.map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
