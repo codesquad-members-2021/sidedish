@@ -36,13 +36,10 @@ class SideDishViewModel {
     }
 
     func didFetchSideDishes(completion: @escaping ((Menu,[Item])) -> ()) {
-        NotificationCenter.default
-            .publisher(for: SideDishManager.NotificationName.updatePath)
-            .map{ ($0.userInfo?["path"] as! Menu) }
-            .sink { path in
-                completion((path,
-                            self.sideDishManager.getSideDishes(with: path)))
-            }.store(in: &cancellable)
+        self.sideDishManager.arriveMenuType.sink { (menu) in
+            completion((menu,
+                        self.sideDishManager.getSideDishes(with: menu)))
+        }.store(in: &cancellable)
     }
     
     func didFetchHeaderRowCount(with path: Menu) -> Int {

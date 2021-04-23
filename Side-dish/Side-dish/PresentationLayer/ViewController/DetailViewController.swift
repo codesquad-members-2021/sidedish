@@ -12,6 +12,8 @@ class DetailViewController: UIViewController {
     var detailHash: String?
     var sideDishTitle : String!
     var badges : [Badge]?
+    var nPrice : String?
+    var sPrice : String!
     private var cancellable = Set<AnyCancellable>()
     private var detailViewModel: DetailViewModel!
     
@@ -19,11 +21,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailSectionStackView: UIStackView!
     @IBOutlet weak var sideDishTitleLabel: UILabel!
     @IBOutlet weak var badgesStackView: UIStackView!
-    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var deliveryInfoLabel: UILabel!
+    @IBOutlet weak var deliveryFeeLabel: UILabel!
+    @IBOutlet weak var sPriceLabel: UILabel!
+    @IBOutlet weak var nPriceLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.title = sideDishTitle
+        
         if let safeDetailViewModel = detailViewModel {
             self.detailViewModel.request(with: detailHash ?? "")
         } else {
@@ -31,6 +40,7 @@ class DetailViewController: UIViewController {
         }
         sideDishTitleLabel.text = sideDishTitle
         configureBadges(badges: badges)
+        configurePrices()
         bind()
         
     }
@@ -39,6 +49,13 @@ class DetailViewController: UIViewController {
         detailViewModel.didFetchDetails { [weak self] (itemDetail) in
             self?.thumbImageLoad(images: itemDetail.thumbImages)
             self?.desctionImageLoad(desctionImages: itemDetail.detailSection)
+            
+            DispatchQueue.main.async {
+                self?.descriptionLabel.text = itemDetail.productDescription
+                self?.pointLabel.text = itemDetail.point
+                self?.deliveryInfoLabel.text = itemDetail.deliveryInfo
+                self?.deliveryFeeLabel.text = itemDetail.deliveryFee
+            }
         }
         
         detailViewModel.except { [weak self] (error) in
@@ -102,6 +119,20 @@ class DetailViewController: UIViewController {
         }
     }
     
+    func configurePrices() {
+        sPriceLabel.text = sPrice
+        setNPrice(nPrice: nPrice)
+    }
+    
+    private func setNPrice(nPrice: String?) {
+        guard let nPrice = nPrice else {
+            nPriceLabel.isHidden = true
+            return
+        }
+        let strokeEffect: [NSAttributedString.Key : Any] = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+        let strokeString = NSAttributedString(string: "\(nPrice)원", attributes: strokeEffect)
+        self.nPriceLabel.attributedText = strokeString
+    }
     
     private func triggerAlert(by error : String) {
         DispatchQueue.main.async { [weak self] in

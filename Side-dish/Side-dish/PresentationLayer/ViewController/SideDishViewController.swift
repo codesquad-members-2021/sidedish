@@ -13,7 +13,7 @@ class SideDishViewController: UIViewController {
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
     private var cancellable = Set<AnyCancellable>()
     private var sideDishViewModel: SideDishViewModel!
-    private var dataSource : UICollectionViewDiffableDataSource<Menu , Item>!
+    private var dataSource : UICollectionViewDiffableDataSource<Menu, Item>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +54,13 @@ class SideDishViewController: UIViewController {
         var snap = NSDiffableDataSourceSnapshot<Menu,Item>()
         snap.appendSections(Menu.allCases)
         
-        sideDishViewModel.didFetchSideDishes { (path, items) in
+        sideDishViewModel.didFetchSideDishes { [weak self] (path, items) in
             snap.appendItems(items, toSection: path)
-            self.dataSource.apply(snap)
+            self?.dataSource.apply(snap)
         }
         
-        sideDishViewModel.except { (error) in
-            self.triggerAlert(by: error)
+        sideDishViewModel.except { [weak self] (error) in
+            self?.triggerAlert(by: error)
         }
     }
     
@@ -81,11 +81,10 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = SideDishCollectionView.cellForItem(at: indexPath) as! FoodCardCell
         let tappedItemSection = indexPath.section
         let tappedItemRow = indexPath.row
-        let path = Menu.allCases[tappedItemSection]
-        guard let itemDetailHash = sideDishViewModel.didFetchItemDatailHash(with: path, sequence: tappedItemRow) else {
+        let menu = Menu.allCases[tappedItemSection]
+        guard let itemDetailHash = sideDishViewModel.didFetchItemDatailHash(with: menu, sequence: tappedItemRow) else {
             return
         }
         
@@ -97,6 +96,8 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         targetVC.sideDishTitle = itemDetailHash.title
         targetVC.badges = itemDetailHash.badge
         targetVC.detailHash = itemDetailHash.detailHash
+        targetVC.nPrice = itemDetailHash.nPrice
+        targetVC.sPrice = itemDetailHash.sPrice
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
     
