@@ -1,6 +1,6 @@
 import TabSection from './tab/TabSection';
 import CarouselSectionList from './CarouselSectionList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { CenterContainer } from '../utils/styles/common';
 import Modal from './Modal';
@@ -8,9 +8,24 @@ import Modal from './Modal';
 const MainPage = (props) => {
   const [modalState, setModalState] = useState(false);
   const [modalData, setModalData] = useState({});
+  const [detailDataMap, setDetailDataMap] = useState(new Map());
+
+  useEffect(() => {
+    fetch(
+      'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail'
+    )
+      .then((res) => res.json())
+      .then((response) => {
+        response.body.forEach((e) => {
+          setDetailDataMap(detailDataMap.set(e.hash, e.data));
+        });
+      });
+  }, []);
+
   const handleModal = (product) => {
     setModalState(true);
-    setModalData({ ...product });
+    const detailData = detailDataMap.get(product.detail_hash);
+    setModalData({ ...product, ...detailData });
   };
 
   return (

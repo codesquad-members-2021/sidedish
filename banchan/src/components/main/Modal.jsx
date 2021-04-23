@@ -8,17 +8,18 @@ import {
 } from '../utils/styles/common';
 
 const Modal = ({ product }) => {
+  console.log(product);
   return (
     <ModalCard>
       <ProductImage>
-        <img src="" alt="product-thumbnail" />
-        <ul>
-          <li className="product-image"></li>
-          <li className="product-image"></li>
-          <li className="product-image"></li>
-          <li className="product-image"></li>
-          <li className="product-image"></li>
-        </ul>
+        <img src={product.top_image} alt="product-thumbnail" />
+        <ThumbnailUL>
+          {product.thumb_images.map((i) => (
+            <li>
+              <Thumbnail src={i} />
+            </li>
+          ))}
+        </ThumbnailUL>
       </ProductImage>
       <Information>
         <ProductMainInfo>
@@ -29,9 +30,15 @@ const Modal = ({ product }) => {
             <Price product={product} />
           </div>
         </ProductMainInfo>
-        <ProductBuyInfo></ProductBuyInfo>
+        <ProductBuyInfo>
+          <div>적립금: {product.point}</div>
+          <div>배송정보: {product.delivery_info}</div>
+          <div>배송비 : {product.delivery_fee}</div>
+        </ProductBuyInfo>
         <ProductCount></ProductCount>
-        <ProductPrice></ProductPrice>
+        <ProductPrice>
+          여기는 총 주문 금액이 들어갈 예정입니다. 카운트를 같이 계산해서..
+        </ProductPrice>
         <TextButton type="ORDER"></TextButton>
       </Information>
     </ModalCard>
@@ -42,6 +49,15 @@ const ModalCard = styled.div`
   background: white;
   width: 960px;
   height: 1076px;
+`;
+
+const ThumbnailUL = styled.div`
+  display: flex;
+`;
+
+const Thumbnail = styled.img`
+  width: 100px;
+  height: 100px;
 `;
 
 const ProductImage = styled.div``;

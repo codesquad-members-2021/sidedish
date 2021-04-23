@@ -15,7 +15,7 @@ const CarouselSection = ({ key, url, title, onModal }) => {
   const slides = useRef();
   const slideCount = 4;
   const slideWidth = 320;
-  const totalWidth = 320 * slideCount + 16 + 8; /* 원래 8 없음 */
+  const totalWidth = 320 * slideCount + 16;
 
   useEffect(() => {
     (async () => {
@@ -97,14 +97,13 @@ const SectionContainer = styled(CenterContainer)`
 
 const SectionBox = styled.div`
   /*border: 1px solid violet;*/
-  /* 사실상 배치를 위한 컴포넌트인데 그냥 이렇게 쓰는게 좋을지 아니면 <div></div>로 하는게 좋을지.. 통일감은 이게 나은거 같긴 한데..*/
 `;
 
 const SectionContent = styled.div`
   position: relative;
   display: flex;
   margin: 20px 0;
-  width: 1288px; /* 원래 1280 */
+  width: 1296px; /* 원래 1280 */
   height: 500px;
   /*border: 1px solid black;*/
   overflow: hidden;
