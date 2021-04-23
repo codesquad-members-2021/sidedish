@@ -39,7 +39,7 @@ class BanchanListViewController: UIViewController {
                 case .finished:
                     break
                 }
-            }, receiveValue: { (value) in
+            }, receiveValue: { [unowned self] _ in
                 self.applySnapshot()
             })
             .store(in: &subscriptions)
@@ -87,7 +87,8 @@ extension BanchanListViewController {
 // MARK: - Delegate
 extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 343, height: 130)
+        let cellSize = CGSize(width: 343, height: 130)
+        return cellSize
     }
 }
 
