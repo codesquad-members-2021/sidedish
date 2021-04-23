@@ -25,4 +25,8 @@ const LABEL_TYPE = {
   베스트: "BEST",
 };
 
-export { BUTTON_TYPE, LABEL_TYPE };
+const URLS = {
+  base: "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/",
+};
+
+export { BUTTON_TYPE, LABEL_TYPE, URLS };

@@ -1,11 +1,11 @@
-import CarouselSection from "./CarouselSection";
-import TabSection from "./tab/TabSection";
+import TabSection from './tab/TabSection';
+import CarouselSectionList from './CarouselSectionList';
 
 const MainPage = (props) => {
   return (
     <>
       <TabSection />
-      <CarouselSection />
+      <CarouselSectionList />
     </>
   );
 };

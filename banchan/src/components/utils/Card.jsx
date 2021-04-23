@@ -1,18 +1,18 @@
-import styled from "styled-components";
-import theme from "../utils/styles/theme.js";
-import Price from "./Price";
-import Label from "./Label";
-import { CenterContainer } from "./styles/common.jsx";
+import styled from 'styled-components';
+import theme from '../utils/styles/theme.js';
+import Price from './Price';
+import Label from './Label';
+import { CenterContainer } from './styles/common.jsx';
 
 const mockImage =
-  "https://recipe1.ezmember.co.kr/cache/recipe/2020/09/23/5e308abb30b00ecb9c1b9b398db5b4451.jpg";
+  'https://recipe1.ezmember.co.kr/cache/recipe/2020/09/23/5e308abb30b00ecb9c1b9b398db5b4451.jpg';
 
 const Card = ({ product, cardSize, margin = 0, type }) => {
   return (
     <StyledLi cardSize={cardSize} margin={margin}>
       <StyledImg
         cardSize={cardSize}
-        src={type === "베스트" ? mockImage : product.image}
+        src={type === '베스트' ? mockImage : product.image}
         alt="card-image"
       />
       <StyledTitle>{product.title}</StyledTitle>
