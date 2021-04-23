@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import useFetch from 'hooks/useFetch';
 import styled from 'styled-components';
 import DishItem from 'component/DishItem/DishItem';
+import { URL } from 'util/data';
 
 const BestSidedishList = ({ focusedCategory }) => {
-  const { data, loading } = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/${focusedCategory}`,
-    focusedCategory
-  );
+  const { data, loading } = useFetch({ url: URL.best(focusedCategory), target: [focusedCategory] });
 
   const bestSidedishList = data
     ? data.items.map((item) => <DishItem key={item.detail_hash} item={item} size="L" />)

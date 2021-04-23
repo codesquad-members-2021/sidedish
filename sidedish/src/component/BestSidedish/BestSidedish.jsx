@@ -3,32 +3,31 @@ import BestTabList from 'component/BestSidedish/BestTabList/BestTabList';
 import BestSidedishList from 'component/BestSidedish/BestSidedishList/BestSidedishList';
 import useFetch from 'hooks/useFetch';
 import styled from 'styled-components';
+import { URL } from 'util/data';
 
 const BestSidedish = () => {
-  const [bestList, setBestList] = useState(null);
-  const [focusedCategory, setFocusedCategory] = useState(null);
-
-  useEffect(() => {
-    initBestSidedish(
-      `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best`
-    );
-  }, []);
-
-  const initBestSidedish = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
-    const parsedData = parseBestList(data);
-    setBestList(parsedData);
-    setFocusedCategory(parsedData[0].id);
+  const parseBestList = (json) => {
+    setFocusedCategory(json.body[0].category_id);
+    const parsedBestList = json.body.map(({ category_id, name }) => ({
+      id: category_id,
+      title: name,
+    }));
+    return parsedBestList;
   };
+
+  const { data: bestList, loading } = useFetch({ url: URL.best(), parse: parseBestList });
+  const [focusedCategory, setFocusedCategory] = useState(null);
 
   const handleFocusedCategory = (categoryId) => {
     setFocusedCategory(categoryId);
   };
-  return (
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <div>
       <Header>후기가 증명하는 베스트 반찬</Header>
-      {bestList && (
+      {bestList !== null && (
         <BestTabList
           bestList={bestList}
           focusedCategory={focusedCategory}
@@ -38,16 +37,6 @@ const BestSidedish = () => {
       {focusedCategory && <BestSidedishList focusedCategory={focusedCategory} />}
     </div>
   );
-};
-
-const parseBestList = (data) => {
-  if (!data || !data.body) return;
-  return data.body.map(({ category_id, name }) => {
-    return {
-      id: category_id,
-      title: name,
-    };
-  });
 };
 
 export default BestSidedish;
