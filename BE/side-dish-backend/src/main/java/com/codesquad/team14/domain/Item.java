@@ -1,5 +1,7 @@
 package com.codesquad.team14.domain;
 
+import com.codesquad.team14.utils.Badge;
+import com.codesquad.team14.utils.DeliveryType;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
