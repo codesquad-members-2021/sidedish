@@ -34,7 +34,6 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     }
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row, indexPath.section)
         let count = indexPath.row
         CustomToaster.show(count: count, messageType: .stock, isTop: false)
         self.delegate?.pushNextView()

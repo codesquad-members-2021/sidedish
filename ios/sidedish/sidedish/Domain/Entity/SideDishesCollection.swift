@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SideDishesCollection: Codable{
+struct SideDishesCollection: Decodable{
     
     private(set) var body: [SideDishes]
     

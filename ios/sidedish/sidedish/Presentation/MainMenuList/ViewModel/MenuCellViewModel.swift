@@ -11,6 +11,7 @@ import Combine
 class MenuCellViewModel{
     
     @Published var dishes : SideDishesCollection!
+    @Published var errorMessage : String = ""
     
     private var subscriptions = Set<AnyCancellable>()
     private var turnonAppUsecase : TurnonAppUsecase
@@ -27,9 +28,8 @@ class MenuCellViewModel{
     func configureMainmenuBoard(){
         turnonAppUsecase.manufactureForMainView()
             .sink(receiveCompletion: { (result) in
-                switch result {
-                case .finished: print("finished")
-                case .failure(let error): print(error.localizedDescription)
+                if case .failure(let error) = result {
+                    self.errorMessage = error.localizedDescription
                 }
             }, receiveValue: { (dishes) in
                 self.dishes = dishes
@@ -52,6 +52,13 @@ class MenuCellViewModel{
         else {
             return dishes.body[section].items.count
         }
-        
+    }
+    
+    func configureAlertMessage(completion : @escaping ((String)->())){
+        $errorMessage
+            .dropFirst()
+            .sink { (message) in
+                completion(message)
+            }.store(in: &subscriptions)
     }
 }

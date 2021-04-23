@@ -40,11 +40,21 @@ class MainViewController: UIViewController, ViewChangable {
         super.init(coder: coder)
     }
     
-    func bind() {
+    private func bind() {
         mainMenuViewModel.$dishes
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.menuTableView.reloadData() })
             .store(in: &self.subscription)
+        
+        mainMenuViewModel.configureAlertMessage { (error) in
+            self.showAlert(message: error)
+        }
+    }
+    
+    private func showAlert(message : String){
+        DispatchQueue.main.async {
+            self.present(AlertMessageController.makeAlertController(error: message), animated: true)
+        }
     }
     
     override func loadView() {
@@ -52,8 +62,8 @@ class MainViewController: UIViewController, ViewChangable {
         self.tableViewDelegate.set(delegate: self)
         self.menuTableView.dataSource = tableViewDataSource
         self.menuTableView.delegate = tableViewDelegate
-        mainMenuViewModel.configureMainmenuBoard()
         bind()
+        mainMenuViewModel.configureMainmenuBoard()
     }
     
     override func viewDidLoad() {

@@ -15,6 +15,7 @@
 		821A75F226306F1F0083026F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A75F126306F1F0083026F /* NetworkProtocol.swift */; };
 		8268E35726301419002F518C /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35626301419002F518C /* MenuCellViewModel.swift */; };
 		8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35E26301B00002F518C /* TurnonAppUsecase.swift */; };
+		82A971D426323CC3005E419A /* AlertMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971D326323CC3005E419A /* AlertMessageController.swift */; };
 		82BBBBB72630067B008F89CB /* SideDishFindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBBB52630067B008F89CB /* SideDishFindable.swift */; };
 		82BBBBB82630067B008F89CB /* SideDishesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBBB62630067B008F89CB /* SideDishesCollection.swift */; };
 		82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FDB9C6262DCFD8009E3EB7 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		821A75F126306F1F0083026F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		8268E35626301419002F518C /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		8268E35E26301B00002F518C /* TurnonAppUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnonAppUsecase.swift; sourceTree = "<group>"; };
+		82A971D326323CC3005E419A /* AlertMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageController.swift; sourceTree = "<group>"; };
 		82BBBBB52630067B008F89CB /* SideDishFindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishFindable.swift; sourceTree = "<group>"; };
 		82BBBBB62630067B008F89CB /* SideDishesCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishesCollection.swift; sourceTree = "<group>"; };
 		82FDB9C3262DCFD8009E3EB7 /* sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				8214B70A262DE07A004467C2 /* MenuCell.swift */,
 				8208FC5826315CCA009504EE /* TableViewTapToasterGesture.swift */,
 				E41EC98A263172760043CC44 /* CustomToaster.swift */,
+				82A971D326323CC3005E419A /* AlertMessageController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				82FDB9CB262DCFD8009E3EB7 /* MainViewController.swift in Sources */,
 				82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */,
 				8214B70B262DE07A004467C2 /* MenuCell.swift in Sources */,
+				82A971D426323CC3005E419A /* AlertMessageController.swift in Sources */,
 				8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */,
 				E41EC963263013220043CC44 /* RequestManager.swift in Sources */,
 				8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */,

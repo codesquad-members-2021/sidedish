@@ -7,9 +7,9 @@
 
 import Foundation
 
-class SideDishes: Codable {
+class SideDishes: Decodable {
     
-    private var category_id : String
+    private let category_id : String
     private(set) var name : String
     private(set) var items : [SideDish]
     
