@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../commons/styledComponents';
+
+import { Container } from '../commons/base.js';
 import Card from '../commons/Card';
 
 const Tabs = () => {
