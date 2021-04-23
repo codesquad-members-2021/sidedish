@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ItemDto {
-    private Long itemId;
+    private Long item_id;
     private String title;
     private String description;
 
@@ -23,7 +23,7 @@ public class ItemDto {
     }
 
     public ItemDto(Item entity, Image image) {
-        this.itemId = entity.getItemId();
+        this.item_id = entity.getItemId();
         this.title = entity.getTitle();
         this.description = entity.getDescription();
         this.n_price = entity.getnPrice();
@@ -36,8 +36,8 @@ public class ItemDto {
         return Arrays.asList(badge.split(", "));
     }
 
-    public Long getItemId() {
-        return itemId;
+    public Long getItem_id() {
+        return item_id;
     }
 
     public String getTitle() {
