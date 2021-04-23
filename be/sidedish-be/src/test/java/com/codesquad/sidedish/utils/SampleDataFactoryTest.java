@@ -1,9 +1,6 @@
 package com.codesquad.sidedish.utils;
 
-import com.codesquad.sidedish.web.sidedish.ItemDTO;
-import com.codesquad.sidedish.web.sidedish.ItemDTOTestResults;
-import com.codesquad.sidedish.web.sidedish.SidedishDTO;
-import com.codesquad.sidedish.web.sidedish.SidedishDTOTestResults;
+import com.codesquad.sidedish.web.sidedish.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -14,6 +11,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -46,5 +44,18 @@ class SampleDataFactoryTest {
 
         assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOS))
                 .isEqualTo(ItemDTOTestResults.MAIN_MENU);
+    }
+
+    @Test
+    void createDetails() throws JsonProcessingException {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
+            return;
+        }
+        Map<String, DetailDTO> createDetails = SampleDataFactory.createDetails();
+
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(createDetails));
+
+//        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOS))
+//                .isEqualTo(ItemDTOTestResults.MAIN_MENU);
     }
 }
