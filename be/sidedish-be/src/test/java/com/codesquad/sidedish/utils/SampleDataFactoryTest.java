@@ -69,4 +69,15 @@ class SampleDataFactoryTest {
         assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
                 .isEqualTo(ItemDTOTestResults.SOUP_MENU);
     }
+
+    @Test
+    void createSideSidedishes() throws JsonProcessingException {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
+            return;
+        }
+        List<ItemDTO> itemDTOs = SampleDataFactory.createSoupSidedishes();
+
+        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
+                .isEqualTo(ItemDTOTestResults.SIDE_MENU);
+    }
 }
