@@ -9,6 +9,12 @@ const cssTranslate = css`
   border: none;
 `;
 
+const cssFlexCenter = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const cssFlexAlignCenter = css`
   display: flex;
   align-items: center;
@@ -26,4 +32,4 @@ const cssFlexStartCol = css`
   align-items: flex-start;
 `;
 
-export { cssTranslate, cssFlexAlignCenter, cssFlexStartRow, cssFlexStartCol };
+export { cssTranslate, cssFlexCenter, cssFlexAlignCenter, cssFlexStartRow, cssFlexStartCol };

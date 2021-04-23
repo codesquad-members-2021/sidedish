@@ -24,6 +24,7 @@ const StyledMenuItemDropdown = styled.div`
   visibility: ${({ dropdownVisible }) =>
     dropdownVisible ? "visible" : "hidden"};
   position: absolute;
+  z-index: 999;
 `;
 
 const DropdownItems = styled.ul`
