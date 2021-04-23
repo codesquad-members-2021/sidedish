@@ -21,7 +21,7 @@ class SidedishUseCase: SidedishUseCasePort {
     }
     
     func getCategory(path: String) -> AnyPublisher<Category, Error> {
-        return sidedishNetworkManager.getCategory(path: path)
+        return sidedishNetworkManager.requestCategory(path: path)
     }
 }
 

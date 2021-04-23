@@ -26,15 +26,15 @@ class SidedishViewModel: SidedishViewModelType {
     }
     
     func getMainItems() -> [Item] {
-        return self.main.getItems()
+        return self.main.categories()
     }
     
     func getSoupItems() -> [Item] {
-        return self.soup.getItems()
+        return self.soup.categories()
     }
     
     func getSideItems() -> [Item] {
-        return self.side.getItems()
+        return self.side.categories()
     }
     
     func fetchMainData(path: String) {

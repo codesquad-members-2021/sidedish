@@ -27,10 +27,8 @@
 		9386C133262D7B0B008645D9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C132262D7B0B008645D9 /* Item.swift */; };
 		9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C155262D86C3008645D9 /* LayoutManager.swift */; };
 		9386C162262D8BA9008645D9 /* SidedishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C161262D8BA9008645D9 /* SidedishViewModel.swift */; };
-		9386C16E262D8C02008645D9 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C16D262D8C02008645D9 /* Main.swift */; };
+		9386C16E262D8C02008645D9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C16D262D8C02008645D9 /* Category.swift */; };
 		9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C173262DB13C008645D9 /* SidedishCell.swift */; };
-		9386C17F262DC52C008645D9 /* Soup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C17E262DC52C008645D9 /* Soup.swift */; };
-		9386C184262DC53B008645D9 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C183262DC53B008645D9 /* Side.swift */; };
 		9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C188262E4DB2008645D9 /* SectionHeader.swift */; };
 		9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C18D262E51F1008645D9 /* Endpoint.swift */; };
 		9386C19B262E52C6008645D9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C19A262E52C6008645D9 /* NetworkManager.swift */; };
@@ -86,10 +84,8 @@
 		9386C132262D7B0B008645D9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		9386C155262D86C3008645D9 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		9386C161262D8BA9008645D9 /* SidedishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishViewModel.swift; sourceTree = "<group>"; };
-		9386C16D262D8C02008645D9 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		9386C16D262D8C02008645D9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		9386C173262DB13C008645D9 /* SidedishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishCell.swift; sourceTree = "<group>"; };
-		9386C17E262DC52C008645D9 /* Soup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soup.swift; sourceTree = "<group>"; };
-		9386C183262DC53B008645D9 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 		9386C188262E4DB2008645D9 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		9386C18D262E51F1008645D9 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		9386C19A262E52C6008645D9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -193,9 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				9386C132262D7B0B008645D9 /* Item.swift */,
-				9386C16D262D8C02008645D9 /* Main.swift */,
-				9386C17E262DC52C008645D9 /* Soup.swift */,
-				9386C183262DC53B008645D9 /* Side.swift */,
+				9386C16D262D8C02008645D9 /* Category.swift */,
 				764CE0A8263003A200DED09C /* Detail.swift */,
 				764CE0C62630167E00DED09C /* DetailItem.swift */,
 			);
@@ -422,20 +416,18 @@
 				9386C1B6262EA2E8008645D9 /* RemoteImageView.swift in Sources */,
 				9386C162262D8BA9008645D9 /* SidedishViewModel.swift in Sources */,
 				9386C1A5262E54D5008645D9 /* SidedishUseCase.swift in Sources */,
-				9386C184262DC53B008645D9 /* Side.swift in Sources */,
 				764CE0CC26301E7000DED09C /* DetailViewModelType.swift in Sources */,
 				764CE0BD26300A3000DED09C /* DetailViewModel.swift in Sources */,
 				764CE0B8263008E200DED09C /* DetailUseCasePort.swift in Sources */,
 				764CE0A9263003A200DED09C /* Detail.swift in Sources */,
 				9386C19B262E52C6008645D9 /* NetworkManager.swift in Sources */,
-				9386C17F262DC52C008645D9 /* Soup.swift in Sources */,
 				9386C1D2262FC561008645D9 /* SidedishViewModelType.swift in Sources */,
 				9386C133262D7B0B008645D9 /* Item.swift in Sources */,
 				9386C100262D7400008645D9 /* AppDelegate.swift in Sources */,
 				9386C1A0262E5334008645D9 /* SidedishNetworkManager.swift in Sources */,
 				764CE0B3263008C500DED09C /* DetailUseCase.swift in Sources */,
 				9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */,
-				9386C16E262D8C02008645D9 /* Main.swift in Sources */,
+				9386C16E262D8C02008645D9 /* Category.swift in Sources */,
 				9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */,
 				9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */,
 				9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */,

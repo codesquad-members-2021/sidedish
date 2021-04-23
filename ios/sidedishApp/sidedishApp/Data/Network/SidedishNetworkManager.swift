@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol SidedishNetworkManagerProtocol: class {
-    func getCategory(path: String) -> AnyPublisher<Category, Error>
+    func requestCategory(path: String) -> AnyPublisher<Category, Error>
 }
 
 class SidedishNetworkManager: SidedishNetworkManagerProtocol {
@@ -24,7 +24,7 @@ class SidedishNetworkManager: SidedishNetworkManagerProtocol {
         self.init(networkManager: networkManager)
     }
     
-    func getCategory(path: String) -> AnyPublisher<Category, Error> {
+    func requestCategory(path: String) -> AnyPublisher<Category, Error> {
         let endpoint = Endpoint.getCategory(path: path)
         return networkManager.get(type: Category.self, url: endpoint.url)
     }
