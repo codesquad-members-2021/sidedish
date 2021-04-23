@@ -10,6 +10,8 @@ import Toast_Swift
 
 class DiffableProvider  {
     
+    private var toasterCloser = Dictionary<Int, () -> Void>()
+    
     private let colorDictionary = ["이벤트특가" : UIColor.init(displayP3Red: 130/255, green: 211/255, blue: 45/255, alpha: 1), "론칭특가" : UIColor.init(displayP3Red: 134/255, green: 198/255, blue: 255/255, alpha: 1)]
     
     func configureDataSource(collectionView : UICollectionView) -> UICollectionViewDiffableDataSource<Dishes,Dish> {
@@ -70,7 +72,17 @@ class DiffableProvider  {
             
             headerView.backgroundColor = .white
             
-            let tap = CustomTapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)), dishCount: headerItem.dishes.count)
+            self.toasterCloser[headerView.hash] = {
+                guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
+                    return
+                }
+                let message = "상품 \(headerItem.dishes.count)개 있어요!"
+                
+                mainView.hideAllToasts()
+                mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
+            }
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
             headerView.addGestureRecognizer(tap)
             
             // Apply the configuration to header view
@@ -143,23 +155,17 @@ class DiffableProvider  {
         return attributedText
     }
     
-    @objc private func handleTapGesture(recognizer: CustomTapGestureRecognizer) {
-        guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
+    @objc private func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        guard let targetHeader = recognizer.view else {
             return
         }
-        let message = "상품 \(recognizer.dishCount)개 있어요!"
         
-        mainView.hideAllToasts()
-        mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
+        guard let toaster = toasterCloser.first(where: {
+            $0.key == targetHeader.hash
+        }) else {
+            return
+        }
+        toaster.value()
     }
     
-}
-
-class CustomTapGestureRecognizer: UITapGestureRecognizer {
-    var dishCount : Int
-    
-    init(target: Any?, action: Selector?, dishCount: Int) {
-        self.dishCount = dishCount
-        super.init(target: target, action: action)
-    }
 }
