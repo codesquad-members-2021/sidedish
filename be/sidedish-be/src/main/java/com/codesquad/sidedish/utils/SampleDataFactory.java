@@ -2,9 +2,7 @@ package com.codesquad.sidedish.utils;
 
 import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
-import com.codesquad.sidedish.web.sidedish.DetailDTO;
-import com.codesquad.sidedish.web.sidedish.ItemDTO;
-import com.codesquad.sidedish.web.sidedish.SidedishDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.DetailDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -13,6 +11,8 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SampleDataFactory {
 

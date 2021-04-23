@@ -1,5 +1,7 @@
 package com.codesquad.sidedish.web.sidedish.DTO;
 
+import com.codesquad.sidedish.web.sidedish.Price;
+
 import java.util.List;
 
 public class ItemDTO {

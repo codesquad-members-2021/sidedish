@@ -1,4 +1,6 @@
-package com.codesquad.sidedish.web.sidedish;
+package com.codesquad.sidedish.web.sidedish.DTO;
+
+import com.codesquad.sidedish.web.sidedish.Price;
 
 import java.util.List;
 import java.util.stream.Collectors;

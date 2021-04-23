@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.utils;
 
 import com.codesquad.sidedish.web.sidedish.*;
+import com.codesquad.sidedish.web.sidedish.DTO.DetailDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.ItemDTOTestResults;
 import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
@@ -17,7 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
