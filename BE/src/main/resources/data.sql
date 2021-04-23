@@ -18,80 +18,80 @@ insert into menu_category(name) values ('side');
 -- -----------------------------------------------------
 -- best/1
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H9881', '[소중한식사] 경상도 한상차림', '[소중한식사] 경상도 한상차림','경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, 123, 1, 1);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HDF4C', '[딩고] 시그니처 3종 SET', '[딩고] 시그니처 3종 SET','오늘 저녁은 이상하게 안주빨을 세워보고 싶다!', 32800, 24000, 123, 1, 1);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H7F20', '[집밥의완성]초여름보양세트', '[집밥의완성]초여름보양세트','무더위에 대비하는 6월 한상차림 초여름 보양세트', 26000, 18000, 123, 1, 1);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('E055F', '[동네부엌] 사계절 건강식단 작은상', '[동네부엌] 사계절 건강식단 작은상','마포엄마들이 사랑해온 건강반찬', 24000, 10000, 123, 1, 1);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('FDAEB', '[집밥의완성] 한상 가득 세트 (3~4인)', '[집밥의완성] 한상 가득 세트 (3~4인)','[집밥의완성] 한상 가득 세트 (3~4인)', 40000, 31000, 100, 1, 1);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H762E', '[옹가솜씨] 한끼뚝딱세트', '[옹가솜씨] 한끼뚝딱세트','한 세트만 있으면 한 끼 뚝딱', 19000, 15000, 123, 1, 1);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H988101', '[소중한식사] 경상도 한상차림', '[소중한식사] 경상도 한상차림','경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, 123, 1, 1);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HDF4C02', '[딩고] 시그니처 3종 SET', '[딩고] 시그니처 3종 SET','오늘 저녁은 이상하게 안주빨을 세워보고 싶다!', 32800, 24000, 123, 1, 1);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H7F2003', '[집밥의완성]초여름보양세트', '[집밥의완성]초여름보양세트','무더위에 대비하는 6월 한상차림 초여름 보양세트', 26000, 18000, 123, 1, 1);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('E055F04', '[동네부엌] 사계절 건강식단 작은상', '[동네부엌] 사계절 건강식단 작은상','마포엄마들이 사랑해온 건강반찬', 24000, 10000, 123, 1, 1);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('FDAEB05', '[집밥의완성] 한상 가득 세트 (3~4인)', '[집밥의완성] 한상 가득 세트 (3~4인)','[집밥의완성] 한상 가득 세트 (3~4인)', 40000, 31000, 100, 1, 1);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H762E06', '[옹가솜씨] 한끼뚝딱세트', '[옹가솜씨] 한끼뚝딱세트','한 세트만 있으면 한 끼 뚝딱', 19000, 15000, 123, 1, 1);
 
 -- -----------------------------------------------------
 -- best/2
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA567', '[아내의쉐프] 아쉐찜닭', '[아내의쉐프] 아쉐찜닭','[아내의쉐프] 아쉐찜닭', 11000, 10000, 123, 1, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E', '[애슐리투고] 로스트 콤보 450g', '[애슐리투고] 로스트 콤보 450g','립과 치킨이 만나  더욱 맛있게', 12000, 10000, 100, 1, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H75A2', '[한옥집]소갈비김치찜 2인분', '[한옥집]소갈비김치찜 2인분','부드러운 소갈비와 함께 푹 쪄낸 김치찜!', 16000, 15000, 90, 1, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E', '[남도애꽃] 통오징어초롱 300g', '[남도애꽃] 통오징어초롱 300g','국내산 오징어를 통째로 불맛소스와 함께', 14000, 10000, 123, 1, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA8B9', '[황태종가] 황태양념구이 300g', '[황태종가] 황태양념구이 300g','청정 황태마을 인제에서 온 깊은 맛', 15000, 11000, 100, 1, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA56707', '[아내의쉐프] 아쉐찜닭', '[아내의쉐프] 아쉐찜닭','[아내의쉐프] 아쉐찜닭', 11000, 10000, 123, 1, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E08', '[애슐리투고] 로스트 콤보 450g', '[애슐리투고] 로스트 콤보 450g','립과 치킨이 만나  더욱 맛있게', 12000, 10000, 100, 1, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H75A209', '[한옥집]소갈비김치찜 2인분', '[한옥집]소갈비김치찜 2인분','부드러운 소갈비와 함께 푹 쪄낸 김치찜!', 16000, 15000, 90, 1, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E10', '[남도애꽃] 통오징어초롱 300g', '[남도애꽃] 통오징어초롱 300g','국내산 오징어를 통째로 불맛소스와 함께', 14000, 10000, 123, 1, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA8B911', '[황태종가] 황태양념구이 300g', '[황태종가] 황태양념구이 300g','청정 황태마을 인제에서 온 깊은 맛', 15000, 11000, 100, 1, 2);
 
 -- -----------------------------------------------------
 -- best/3
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E', '[남도애꽃] 통오징어초롱 300g', '[남도애꽃] 통오징어초롱 300g','국내산 오징어를 통째로 불맛소스와 함께', 14000, 10000, 123, 1, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA8B9', '[황태종가] 황태양념구이 300g', '[황태종가] 황태양념구이 300g','청정 황태마을 인제에서 온 깊은 맛', 15000, 11000, 100, 1, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA567', '[아내의쉐프] 아쉐찜닭', '[아내의쉐프] 아쉐찜닭','[아내의쉐프] 아쉐찜닭', 11000, 10000, 123, 1, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E', '[애슐리투고] 로스트 콤보 450g', '[애슐리투고] 로스트 콤보 450g','립과 치킨이 만나  더욱 맛있게', 12000, 10000, 100, 1, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H75A2', '[한옥집]소갈비김치찜 2인분', '[한옥집]소갈비김치찜 2인분','부드러운 소갈비와 함께 푹 쪄낸 김치찜!', 16000, 15000, 90, 1, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E12', '[남도애꽃] 통오징어초롱 300g', '[남도애꽃] 통오징어초롱 300g','국내산 오징어를 통째로 불맛소스와 함께', 14000, 10000, 123, 1, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA8B913', '[황태종가] 황태양념구이 300g', '[황태종가] 황태양념구이 300g','청정 황태마을 인제에서 온 깊은 맛', 15000, 11000, 100, 1, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HA56714', '[아내의쉐프] 아쉐찜닭', '[아내의쉐프] 아쉐찜닭','[아내의쉐프] 아쉐찜닭', 11000, 10000, 123, 1, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H206E15', '[애슐리투고] 로스트 콤보 450g', '[애슐리투고] 로스트 콤보 450g','립과 치킨이 만나  더욱 맛있게', 12000, 10000, 100, 1, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H75A216', '[한옥집]소갈비김치찜 2인분', '[한옥집]소갈비김치찜 2인분','부드러운 소갈비와 함께 푹 쪄낸 김치찜!', 16000, 15000, 90, 1, 3);
 
 -- -----------------------------------------------------
 -- best/4
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('E055F', '[동네부엌] 사계절 건강식단 작은상', '[동네부엌] 사계절 건강식단 작은상','마포엄마들이 사랑해온 건강반찬', 24000, 10000, 123, 1, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('FDAEB', '[집밥의완성] 한상 가득 세트 (3~4인)', '[집밥의완성] 한상 가득 세트 (3~4인)','[집밥의완성] 한상 가득 세트 (3~4인)', 40000, 31000, 100, 1, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H762E', '[옹가솜씨] 한끼뚝딱세트', '[옹가솜씨] 한끼뚝딱세트','한 세트만 있으면 한 끼 뚝딱', 19000, 15000, 123, 1, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H9881', '[소중한식사] 경상도 한상차림', '[소중한식사] 경상도 한상차림','경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, 123, 1, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HDF4C', '[딩고] 시그니처 3종 SET', '[딩고] 시그니처 3종 SET','오늘 저녁은 이상하게 안주빨을 세워보고 싶다!', 32800, 24000, 123, 1, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H7F20', '[집밥의완성]초여름보양세트', '[집밥의완성]초여름보양세트','무더위에 대비하는 6월 한상차림 초여름 보양세트', 26000, 18000, 123, 1, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('E055F17', '[동네부엌] 사계절 건강식단 작은상', '[동네부엌] 사계절 건강식단 작은상','마포엄마들이 사랑해온 건강반찬', 24000, 10000, 123, 1, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('FDAEB18', '[집밥의완성] 한상 가득 세트 (3~4인)', '[집밥의완성] 한상 가득 세트 (3~4인)','[집밥의완성] 한상 가득 세트 (3~4인)', 40000, 31000, 100, 1, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H762E19', '[옹가솜씨] 한끼뚝딱세트', '[옹가솜씨] 한끼뚝딱세트','한 세트만 있으면 한 끼 뚝딱', 19000, 15000, 123, 1, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H988120', '[소중한식사] 경상도 한상차림', '[소중한식사] 경상도 한상차림','경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, 123, 1, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HDF4C21', '[딩고] 시그니처 3종 SET', '[딩고] 시그니처 3종 SET','오늘 저녁은 이상하게 안주빨을 세워보고 싶다!', 32800, 24000, 123, 1, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H7F2022', '[집밥의완성]초여름보양세트', '[집밥의완성]초여름보양세트','무더위에 대비하는 6월 한상차림 초여름 보양세트', 26000, 18000, 123, 1, 4);
 
 -- -----------------------------------------------------
 -- best/5
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H05FB', '[옹가솜씨] 소고기쩜짜장 280g', '[옹가솜씨] 소고기쩜짜장 280g','짜장의 착한 변신', 8000, 5000, 123, 1, 5);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H0699', '[무명식당]뿌리채소비빔밥 2인분', '[무명식당]뿌리채소비빔밥 2인분','각종 뿌리채소를 듬뿍 넣어 지은 뿌리채소영양밥', 40000, 31000, 100, 1, 5);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HBDEF', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 19000, 15000, 123, 1, 5);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H9881', '[소중한식사] 경상도 한상차림', '[소중한식사] 경상도 한상차림','경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, 123, 1, 5);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HDF4C', '[딩고] 시그니처 3종 SET', '[딩고] 시그니처 3종 SET','오늘 저녁은 이상하게 안주빨을 세워보고 싶다!', 32800, 24000, 123, 1, 5);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H7F20', '[집밥의완성]초여름보양세트', '[집밥의완성]초여름보양세트','무더위에 대비하는 6월 한상차림 초여름 보양세트', 26000, 18000, 123, 1, 5);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H05FB23', '[옹가솜씨] 소고기쩜짜장 280g', '[옹가솜씨] 소고기쩜짜장 280g','짜장의 착한 변신', 8000, 5000, 123, 1, 5);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H069924', '[무명식당]뿌리채소비빔밥 2인분', '[무명식당]뿌리채소비빔밥 2인분','각종 뿌리채소를 듬뿍 넣어 지은 뿌리채소영양밥', 40000, 31000, 100, 1, 5);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HBDEF25', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 19000, 15000, 123, 1, 5);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H988126', '[소중한식사] 경상도 한상차림', '[소중한식사] 경상도 한상차림','경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, 123, 1, 5);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('HDF4C27', '[딩고] 시그니처 3종 SET', '[딩고] 시그니처 3종 SET','오늘 저녁은 이상하게 안주빨을 세워보고 싶다!', 32800, 24000, 123, 1, 5);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id, best_menu_category_id) values ('H7F2028', '[집밥의완성]초여름보양세트', '[집밥의완성]초여름보양세트','무더위에 대비하는 6월 한상차림 초여름 보양세트', 26000, 18000, 123, 1, 5);
 
 -- -----------------------------------------------------
 -- main
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF73', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF73', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF73', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF31', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7332', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF33', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7334', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF35', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7336', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
 
 -- -----------------------------------------------------
 -- soup
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C3', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C3', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C3', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C341', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE42', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C343', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE44', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C345', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE46', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
 
 -- -----------------------------------------------------
 -- side
 -- -----------------------------------------------------
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H1939', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H1939', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H1939', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC51', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193952', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC53', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193954', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC55', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193956', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
 
 -- -----------------------------------------------------
 -- badge
@@ -179,6 +179,126 @@ insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/sto
 insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg', 1, 27);
 insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg', 1, 28);
 
+
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 1);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 2);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 3);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 4);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 5);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 6);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 7);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 8);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 9);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 10);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 11);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 12);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 13);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 14);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 15);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 16);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 17);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 18);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 19);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 20);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 21);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 22);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 23);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 24);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 25);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 26);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 27);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 28);
+
+
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 1);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 2);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 3);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 4);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 5);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 6);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 7);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 8);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 9);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 10);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 11);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 12);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 13);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 14);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 15);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 16);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 17);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 18);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 19);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 20);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 21);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 22);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 23);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 24);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 25);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 26);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 27);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 28);
+
+
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 1);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 2);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 3);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 4);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 5);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 6);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 7);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 8);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 9);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 10);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 11);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 12);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 13);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 14);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 15);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 16);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 17);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 18);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 19);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 20);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 21);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 22);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 23);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 24);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 25);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 26);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 27);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 28);
+
+
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 1);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 2);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 3);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 4);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 5);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 6);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 7);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 8);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 9);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 10);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 11);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 12);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 13);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 14);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 15);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 16);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 17);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 18);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 19);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 20);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 21);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 22);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 23);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 24);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 25);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 26);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 27);
+insert into image(url, top, dish_id) values ('https://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 28);
+
 -- -----------------------------------------------------
 -- image for main
 -- -----------------------------------------------------
@@ -188,6 +308,38 @@ insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/stor
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/7674311a02ba7c88675f3186ddaeef9e.jpg', 1, 32);
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg', 1, 33);
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/7674311a02ba7c88675f3186ddaeef9e.jpg', 1, 34);
+
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 29);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 30);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 31);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 32);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 33);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 34);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 29);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 30);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 31);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 32);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 33);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 34);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 29);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 30);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 31);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 32);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 33);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 34);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 29);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 30);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 31);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 32);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 33);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 34);
+
+
+
 
 -- -----------------------------------------------------
 -- image for soup
@@ -199,6 +351,37 @@ insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/stor
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/d1fccf125f0a78113d0e06cb888f2e74.jpg', 1, 39);
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/c069bc32cb37727c59e1f0c2839311a0.jpg', 1, 40);
 
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 35);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 36);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 40);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 37);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 38);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 39);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 35);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 40);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 36);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 37);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 38);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 39);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 35);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 40);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 36);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 37);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 38);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 39);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 35);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 40);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 36);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 37);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 38);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 39);
+
+
+
 -- -----------------------------------------------------
 -- image for side
 -- -----------------------------------------------------
@@ -208,6 +391,37 @@ insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/stor
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/e5646e5fc09a01a9243979b229e0572b.jpg', 1, 44);
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/fdb0d5fcfb86e332505785225a6d9ade.jpg', 1, 45);
 insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/e5646e5fc09a01a9243979b229e0572b.jpg', 1, 46);
+
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 41);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 42);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 43);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 44);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 45);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg', 0, 46);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 41);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 42);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 43);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 44);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 45);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/6ef14155afc5b47e8c9efd762f7a6096.jpg', 0, 46);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 41);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 42);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 43);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 44);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 45);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/8744504ff3bc315f901dca1f26fe63a1.jpg', 0, 46);
+
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 41);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 42);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 43);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 44);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 45);
+insert into image(url, top, dish_id) values ('http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/e30bd6de9340fc05db3cd1d1329b2c56.jpg', 0, 46);
+
+
 
 -- -----------------------------------------------------
 -- detail image for best
