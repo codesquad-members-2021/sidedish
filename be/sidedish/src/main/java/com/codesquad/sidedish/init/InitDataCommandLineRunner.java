@@ -85,14 +85,16 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
                 }
         };
 
+        SidedishEvent event1 = createSidedishEvent("이벤트 특가", "#86C6FF");
+        SidedishEvent event2 = createSidedishEvent("할인 특가", "#82D32D");
         SidedishEvent[][] events = {
                 {
-                        createSidedishEvent("이벤트 특가", "#ffffff"),
-                        createSidedishEvent("할인 특가", "#ffffff")
+                        event1,
+                        event2
                 },
                 {},
                 {
-                        createSidedishEvent("이벤트 특가", "#ffffff"),
+                        event1
                 }
 
         };
