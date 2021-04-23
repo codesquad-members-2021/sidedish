@@ -1,12 +1,18 @@
 import * as S from "../BestItemsStyles";
 import BestItemsCard from "./BestItemsCard/BestItemsCard";
 
-const BestItemsCardWrapper = () => {
+const BestItemsCardWrapper = ({ initialTabData }) => {
   return (
     <S.BestItemsCardWrapper>
-      <BestItemsCard></BestItemsCard>
-      <BestItemsCard></BestItemsCard>
-      <BestItemsCard></BestItemsCard>
+      {initialTabData.items ? (
+        initialTabData.items.map((item, idx) => {
+          return (
+            <BestItemsCard key={idx} id={idx + 1} {...{ item }}></BestItemsCard>
+          );
+        })
+      ) : (
+        <BestItemsCard></BestItemsCard>
+      )}
     </S.BestItemsCardWrapper>
   );
 };

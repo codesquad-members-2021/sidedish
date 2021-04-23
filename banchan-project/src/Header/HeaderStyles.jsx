@@ -33,12 +33,17 @@ const MenuList = styled.li`
 
   font-family: Noto Sans KR;
   font-size: 16px;
+  font-weight: 400;
   line-height: 23px;
-  color: #333333;
+  color: #828282;
+  &:hover {
+    text-decoration-line: underline;
+    color: #333;
+  }
 `;
 
 const MenuWrapper = styled.div`
-  display: block;
+  display: ${props => props._display};
   position: absolute;
 
   width: 112px;
@@ -75,6 +80,9 @@ const CategoryList = styled.li`
   order: 2;
   flex-grow: 0;
   margin: 0px 24px;
+  &:hover {
+    font-weight: 700;
+  }
 `;
 
 const Category = styled.div`

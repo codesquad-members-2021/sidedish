@@ -1,10 +1,9 @@
 import * as S from "../../BestItemsStyles";
 import * as CS from "../../../Styles/commonStyles";
-const BestItemsCardSPrice = () => {
-  const sale = "31,200원";
+const BestItemsCardSPrice = ({ s_price }) => {
   return (
     <S.BestItemsCardSPrice>
-      <CS.Card.CardSPrice>{sale}</CS.Card.CardSPrice>
+      <CS.Card.CardSPrice>{s_price}</CS.Card.CardSPrice>
     </S.BestItemsCardSPrice>
   );
 };
