@@ -1,5 +1,3 @@
-import styled from "styled-components";
-import theme from "../constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -21,9 +19,10 @@ const BUTTON_TYPE = {
   SOLDOUT: "일시품절",
 };
 
-const Button = styled.button`
-  all: unset;
-  border-radius: ${theme.borders.radius};
-`;
+const LABEL_TYPE = {
+  이벤트특가: "EVENT",
+  론칭특가: "LAUNCH",
+  베스트: "BEST",
+};
 
-export { BUTTON_TYPE, Button };
+export { BUTTON_TYPE, LABEL_TYPE };

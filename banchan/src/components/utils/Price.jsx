@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import theme from './constant';
+import styled from "styled-components";
+import theme from "../utils/styles/theme.js";
+import { CenterContainer } from "./styles/common.jsx";
 
 const Price = ({ product }) => {
   const isOnSale = !!product.n_price;
@@ -14,11 +15,8 @@ const Price = ({ product }) => {
   );
 };
 
-// ============================= ● Styled components ● =============================
-
-const StyledPriceWrapper = styled.div`
-  display: flex;
-  align-items: center;
+const StyledPriceWrapper = styled(CenterContainer)`
+  justify-content: start;
 `;
 
 const StyledFinalPriceSpan = styled.span`

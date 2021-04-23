@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import theme from "../constant";
-import { BUTTON_TYPE, Button } from "./Button";
+import theme from "../styles/theme";
+import { BUTTON_TYPE } from "../variables.js";
+import { Button } from "../styles/common";
 
 const IconButton = ({ type, fn }) => {
   return (
@@ -12,8 +13,12 @@ const IconButton = ({ type, fn }) => {
 
 const StyledIconButton = styled(Button)`
   cursor: pointer;
-  color: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.colors.darkGray : theme.colors.lightGray)};
-  font-size: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.fontSizes.M : theme.fontSizes.XL)};
+  color: ${({ type }) =>
+    type === "UP" || type === "DOWN"
+      ? theme.colors.darkGray
+      : theme.colors.lightGray};
+  font-size: ${({ type }) =>
+    type === "UP" || type === "DOWN" ? theme.fontSizes.M : theme.fontSizes.XL};
 `;
 
 export default IconButton;

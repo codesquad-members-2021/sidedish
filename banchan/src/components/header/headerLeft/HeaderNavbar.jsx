@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../utils/constant";
+import styled from "styled-components";
 import NavListItems from "./NavListItems";
 
 const HeaderNavbar = (props) => {
@@ -19,21 +18,16 @@ const HeaderNavbar = (props) => {
     },
   ];
 
-  const NavUL = styled.ul`
-    display: flex;
-    color: ${(props) => props.theme.colors.darkGray};
-    font-size: ${(props) => props.theme.fontSizes.S};
-  `;
-
   const navbarList = navLists.map((list, i) => (
     <NavListItems key={i} list={list} />
   ));
 
-  return (
-    <NavUL>
-      <ThemeProvider theme={theme}>{navbarList}</ThemeProvider>
-    </NavUL>
-  );
+  return <NavUL>{navbarList}</NavUL>;
 };
+const NavUL = styled.ul`
+  display: flex;
+  color: ${(props) => props.theme.colors.darkGray};
+  font-size: ${(props) => props.theme.fontSizes.S};
+`;
 
 export default HeaderNavbar;
