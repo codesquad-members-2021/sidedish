@@ -322,7 +322,7 @@ INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (8, 'FRI');
 INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (8, 'SAT');
 
 INSERT INTO `item`(id, section, category, image, alt, top_image, title, description, n_price, s_price, delivery_fee, stock)
-VALUES (9, 1, null,
+VALUES (9, 2, null,
         'http://public.codesquad.kr/jk/storeapp/data/d1fccf125f0a78113d0e06cb888f2e74.jpg',
         '[수하동] 특곰탕 850g',
         'http://public.codesquad.kr/jk/storeapp/data/d1fccf125f0a78113d0e06cb888f2e74.jpg',
@@ -361,7 +361,7 @@ INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (9, 'FRI');
 INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (9, 'SAT');
 
 INSERT INTO `item`(id, section, category, image, alt, top_image, title, description, n_price, s_price, delivery_fee, stock)
-VALUES (10, 1, null,
+VALUES (10, 2, null,
         'http://public.codesquad.kr/jk/storeapp/data/c069bc32cb37727c59e1f0c2839311a0.jpg',
         '[빅마마의밥친구] 된장찌개 900g',
         'http://public.codesquad.kr/jk/storeapp/data/c069bc32cb37727c59e1f0c2839311a0.jpg',
@@ -397,7 +397,7 @@ INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (10, 'FRI');
 INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (10, 'SAT');
 
 INSERT INTO `item`(id, section, category, image, alt, top_image, title, description, n_price, s_price, delivery_fee, stock)
-VALUES (11, 1, null,
+VALUES (11, 2, null,
         'http://public.codesquad.kr/jk/storeapp/data/f31fc3f5828c27ff60e4cf89a862d31c.jpg',
         '[탐나는밥상] 동태탕 1000g',
         'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/4e96f386d5a5c4459bc0ac6ffd0c1fce.jpg',
@@ -429,7 +429,7 @@ INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (11, 'FRI');
 INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (11, 'SAT');
 
 INSERT INTO `item`(id, section, category, image, alt, top_image, title, description, n_price, s_price, delivery_fee, stock)
-VALUES (12, 1, null,
+VALUES (12, 2, null,
         'http://public.codesquad.kr/jk/storeapp/data/6edbb16da52708e8533b85fbf743f882.jpg',
         '[국물닷컴] 치즈부대찌개 600g',
         'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/4e96f386d5a5c4459bc0ac6ffd0c1fce.jpg',
