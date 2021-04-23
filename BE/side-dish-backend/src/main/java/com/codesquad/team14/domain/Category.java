@@ -12,6 +12,8 @@ public class Category {
 
     private String name;
 
+    private boolean isBest;
+
     private final Set<Item> items = new HashSet<>();
 
     public Category(String name) {
@@ -26,12 +28,20 @@ public class Category {
         return name;
     }
 
+    public boolean isBest() {
+        return isBest;
+    }
+
     public Set<Item> getItems() {
         return items;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setBest() {
+        isBest = !isBest;
     }
 
     public void addItem(Item item) {
