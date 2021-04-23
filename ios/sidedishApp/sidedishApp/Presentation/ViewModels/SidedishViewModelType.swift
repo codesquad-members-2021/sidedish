@@ -13,7 +13,7 @@ protocol SidedishViewModelType {
     func getMainItems() -> [Item]
     func getSoupItems() -> [Item]
     func getSideItems() -> [Item]
-    func fetchMainData()
-    func fetchSoupData()
-    func fetchSideData()
+    func fetchMainData(path: String)
+    func fetchSoupData(path: String)
+    func fetchSideData(path: String)
 }

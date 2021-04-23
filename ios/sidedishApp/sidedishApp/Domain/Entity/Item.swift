@@ -43,6 +43,10 @@ struct Item: Codable, Equatable, Hashable {
     func getEventBadgeColor(_ index: Int) -> String {
         return self.eventBadgeList[index].getColorHex()
     }
+    
+    func isNotSale() -> Bool {
+        return self.salePrice == -1 ? true : false
+    }
 }
 
 struct EventBadge: Codable, Equatable, Hashable {

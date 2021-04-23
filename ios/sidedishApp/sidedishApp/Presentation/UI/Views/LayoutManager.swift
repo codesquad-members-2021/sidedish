@@ -11,7 +11,7 @@ struct LayoutManager {
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
          
-            guard let sectionKind = SidedishViewController.Section(rawValue: sectionIndex) else {
+            guard let sectionKind = Section(rawValue: sectionIndex) else {
                 fatalError("Undefined section for value: \(sectionIndex)")//수정해야 함
             }
             
@@ -47,7 +47,7 @@ struct LayoutManager {
     
     func createSectionHeaderSupplementary() -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70))
-        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: SidedishViewController.SupplementaryElementKind.sectionHeader, alignment: .top)
+        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: SupplementaryElementKind.sectionHeader, alignment: .top)
 
         return headerSupplementary
     }

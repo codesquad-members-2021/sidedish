@@ -9,44 +9,27 @@ import UIKit
 import Combine
 
 class SidedishViewController: UIViewController {
-    typealias FetchData = () -> ()
-    
-    enum Section: Int, CaseIterable {
-        case main
-        case soup
-        case side
-        
-        var sectionHeader: String {
-            switch self {
-            case .main: return "모두가 좋아하는 든든한 메인요리"
-            case .soup: return "정성이 담긴 뜨끈뜨끈 국물요리"
-            case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
-            }
-        }
-    }
-    
-    enum DataItem: Hashable {
-        case main(Item)
-        case soup(Item)
-        case side(Item)
-    }
-    
-    enum SupplementaryElementKind {
-        static let sectionHeader = "supplementary-section-header"
-    }
+    typealias FetchDataHandler = (String) -> ()
     
     private var cancellables: Set<AnyCancellable> = []
     private var sidedishViewModel: SidedishViewModelType!
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, DataItem>!
+    private let mainPath = "main"
+    private let soupPath = "soup"
+    private let sidePath = "side"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sidedishViewModel = SidedishViewModel()
         configureCollectionView()
-        fetchMainData()
-        fetchSoupData()
-        fetchSideData()
+        congigureFetchData()
+    }
+    
+    private func congigureFetchData() {
+        self.fetchMainData(path: self.mainPath)
+        self.fetchSoupData(path: self.soupPath)
+        self.fetchSideData(path: self.sidePath)
     }
     
     private func configureCollectionView() {
@@ -104,19 +87,19 @@ class SidedishViewController: UIViewController {
         }
     }
     
-    private func fetchMainData() {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchMainData)
+    private func fetchMainData(path: String) {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchMainData, path: path)
     }
     
-    private func fetchSoupData() {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchSoupData)
+    private func fetchSoupData(path: String) {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchSoupData, path: path)
     }
     
-    private func fetchSideData() {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchSideData)
+    private func fetchSideData(path: String) {
+        self.fetchData(fetchData: self.sidedishViewModel.fetchSideData, path: path)
     }
     
-    private func fetchData(fetchData handler: FetchData) {
+    private func fetchData(fetchData handler: FetchDataHandler, path: String) {
         self.sidedishViewModel.dataChanged
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -124,7 +107,7 @@ class SidedishViewController: UIViewController {
             }
             .store(in: &cancellables)
         
-        handler()
+        handler(path)
     }
     
     private func updateSnapshot() {
@@ -138,3 +121,26 @@ class SidedishViewController: UIViewController {
     }
 }
 
+enum Section: Int, CaseIterable {
+    case main
+    case soup
+    case side
+    
+    var sectionHeader: String {
+        switch self {
+        case .main: return "모두가 좋아하는 든든한 메인요리"
+        case .soup: return "정성이 담긴 뜨끈뜨끈 국물요리"
+        case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
+        }
+    }
+}
+
+enum DataItem: Hashable {
+    case main(Item)
+    case soup(Item)
+    case side(Item)
+}
+
+enum SupplementaryElementKind {
+    static let sectionHeader = "supplementary-section-header"
+}

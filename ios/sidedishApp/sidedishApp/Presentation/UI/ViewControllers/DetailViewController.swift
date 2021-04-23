@@ -9,6 +9,12 @@ import UIKit
 import Combine
 
 class DetailViewController: UIViewController {
+    enum Section: Int, CaseIterable {
+        case main
+        case soup
+        case side
+    }
+    
     private var category: String!
     private var id: Int!
     private var cancellables: Set<AnyCancellable> = []
@@ -26,7 +32,6 @@ class DetailViewController: UIViewController {
                 
             }
             .store(in: &cancellables)
-        //        detailViewModel.fetchData(path: self.category, path: self.id)
         detailViewModel.fetchData(path: "main", path: 0)
     }
 

@@ -9,7 +9,5 @@ import Foundation
 import Combine
 
 protocol SidedishUseCasePort {
-    func getMain() -> AnyPublisher<Main, Error>
-    func getSoup() -> AnyPublisher<Soup, Error>
-    func getSide() -> AnyPublisher<Side, Error>
+    func getCategory(path: String) -> AnyPublisher<Category, Error>
 }
