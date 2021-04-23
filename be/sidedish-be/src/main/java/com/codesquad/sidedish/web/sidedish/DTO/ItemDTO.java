@@ -1,4 +1,4 @@
-package com.codesquad.sidedish.web.sidedish;
+package com.codesquad.sidedish.web.sidedish.DTO;
 
 import java.util.List;
 

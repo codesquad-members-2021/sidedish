@@ -1,5 +1,7 @@
 package com.codesquad.sidedish.utils;
 
+import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
 import com.codesquad.sidedish.web.sidedish.DetailDTO;
 import com.codesquad.sidedish.web.sidedish.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.SidedishDTO;
@@ -11,8 +13,6 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class SampleDataFactory {
 
@@ -27,6 +27,21 @@ public class SampleDataFactory {
 
     public static List<ItemDTO> createMainSidedishes() {
         return jsonToObject("sample-data/main-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
+    public static List<ItemDTO> createCourseSidedishes() {
+        return jsonToObject("sample-data/course-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
+    public static List<ItemDTO> createSoupSidedishes() {
+        return jsonToObject("sample-data/soup-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
+    public static List<ItemDTO> createSideSidedishes() {
+        return jsonToObject("sample-data/side-sidedishes.json", new TypeReference<List<ItemDTO>>() {
         });
     }
 
