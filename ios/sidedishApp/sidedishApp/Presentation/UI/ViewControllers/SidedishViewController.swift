@@ -47,9 +47,13 @@ class SidedishViewController: UIViewController {
         super.viewDidLoad()
         sidedishViewModel = SidedishViewModel()
         configureCollectionView()
-        fetchMainData(path: mainPath)
-        fetchSoupData(path: soupPath)
-        fetchSideData(path: sidePath)
+        congigureFetchData()
+    }
+    
+    private func congigureFetchData() {
+        self.fetchMainData(path: self.mainPath)
+        self.fetchSoupData(path: self.soupPath)
+        self.fetchSideData(path: self.sidePath)
     }
     
     private func configureCollectionView() {
