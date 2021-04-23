@@ -19,6 +19,8 @@
 		1ECD5F6D262F3C1700DC56C0 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F6C262F3C1700DC56C0 /* Dish.swift */; };
 		1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */; };
 		1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */; };
+		1ECF2E812632A70F006982BE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ECF2E802632A70F006982BE /* LoadingView.xib */; };
+		1ECF2E842632A862006982BE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2E832632A862006982BE /* LoadingView.swift */; };
 		B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E6E262EA29200D5EBEC /* DishCardCell.swift */; };
 		B0911EA026316B9A00D5EBEC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E9F26316B9A00D5EBEC /* String+Extension.swift */; };
 		B0911EA42631AF3400D5EBEC /* DiffableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911EA32631AF3400D5EBEC /* DiffableProvider.swift */; };
@@ -40,6 +42,8 @@
 		1ECD5F6C262F3C1700DC56C0 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		1ECD5F6F262F3F1C00DC56C0 /* MenuListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListUseCase.swift; sourceTree = "<group>"; };
 		1ECD5F72262F405100DC56C0 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
+		1ECF2E802632A70F006982BE /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		1ECF2E832632A862006982BE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		4942C5A177086C5C99933038 /* Pods-SideDishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.debug.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.debug.xcconfig"; sourceTree = "<group>"; };
 		605A37FD869863C7E023EE85 /* Pods-SideDishApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.release.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.release.xcconfig"; sourceTree = "<group>"; };
 		96A87B12151B0D006007CD63 /* Pods_SideDishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +160,8 @@
 			children = (
 				1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */,
 				B0911E6E262EA29200D5EBEC /* DishCardCell.swift */,
+				1ECF2E802632A70F006982BE /* LoadingView.xib */,
+				1ECF2E832632A862006982BE /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */,
+				1ECF2E812632A70F006982BE /* LoadingView.xib in Resources */,
 				1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */,
 				1E1DBAD9262DDDFC0050FE6C /* Main.storyboard in Resources */,
 			);
@@ -363,6 +370,7 @@
 				B0911EA42631AF3400D5EBEC /* DiffableProvider.swift in Sources */,
 				B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
+				1ECF2E842632A862006982BE /* LoadingView.swift in Sources */,
 				1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

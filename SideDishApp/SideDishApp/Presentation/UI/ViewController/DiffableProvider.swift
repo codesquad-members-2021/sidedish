@@ -75,14 +75,15 @@ class DiffableProvider  {
             configuration.text = headerItem.name
             
             // Customize header appearance to make it more eye-catching
-            configuration.textProperties.font = .boldSystemFont(ofSize: 16)
-            configuration.textProperties.color = .systemBlue
+            configuration.textProperties.font = .boldSystemFont(ofSize: 20)
+            configuration.textProperties.color = .black
             
             
             let tap = CustomTapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)), dishCount: headerItem.dishes.count)
             headerView.addGestureRecognizer(tap)
             
             // Apply the configuration to header view
+            headerView.backgroundColor = .white
             headerView.contentConfiguration = configuration
         }
         return headerRegistration
