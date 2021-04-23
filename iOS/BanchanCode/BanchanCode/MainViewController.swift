@@ -59,4 +59,3 @@ class MainViewController: UIViewController {
         dishCollectionView.collectionViewLayout.invalidateLayout()
     }
 }
-
