@@ -1,6 +1,8 @@
 package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
+import sidedish.service.ConvertUtils;
+import sidedish.service.dto.DetailDishDTO;
 
 public class Dish {
 
@@ -18,6 +20,8 @@ public class Dish {
     private String thumbImages;
     private String detailImages;
 
+    public Dish() { }
+
     public Dish(String name, String topImage, String description, String prices,
                 String badges, Long stock, String deliveryInfo, String thumbImages, String detailImages) {
         this.name = name;
@@ -30,6 +34,19 @@ public class Dish {
         this.deliveryInfo = deliveryInfo;
         this.thumbImages = thumbImages;
         this.detailImages = detailImages;
+    }
+
+    public Dish(DetailDishDTO dto) {
+        this.name = dto.getName();
+        this.topImage = dto.getTop_image();
+        this.description = dto.getDescription();
+        this.prices = ConvertUtils.convertToString(dto.getPrices());
+        this.badges = ConvertUtils.convertToString(dto.getBadges());
+        this.stock = dto.getStock();
+        this.point = dto.getPoint();
+        this.deliveryInfo = dto.getDelivery_info();
+        this.thumbImages = ConvertUtils.convertToString(dto.getThumb_images());
+        this.detailImages = ConvertUtils.convertToString(dto.getDetail_images());
     }
 
     private Integer createPoint(String prices) {
@@ -79,5 +96,22 @@ public class Dish {
 
     public String getDetailImages() {
         return detailImages;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", topImage='" + topImage + '\'' +
+                ", description='" + description + '\'' +
+                ", prices='" + prices + '\'' +
+                ", badges='" + badges + '\'' +
+                ", stock=" + stock +
+                ", point=" + point +
+                ", deliveryInfo='" + deliveryInfo + '\'' +
+                ", thumbImages='" + thumbImages + '\'' +
+                ", detailImages='" + detailImages + '\'' +
+                '}';
     }
 }
