@@ -9,18 +9,36 @@ import Foundation
 
 class Menus {
     
-    private var menus: [Menu]?
+    private var mainMenus: [Menu]?
+    private var soupMenus: [Menu]?
+    private var sideMenus: [Menu]?
     
     init() {
-        self.menus = nil
+        self.mainMenus = nil
+        self.soupMenus = nil
+        self.sideMenus = nil
     }
     
-    func add(menuList: [Menu]) {
-        self.menus = menuList
+    func add(menuList: [Menu], section:MainDiffableDataSource.sectionTitle) {
+        switch section {
+        case .main:
+            self.mainMenus = menuList
+        case .soup:
+            self.soupMenus = menuList
+        case .side:
+            self.sideMenus = menuList
+        }
     }
     
-    func giveMenu() -> [Menu]? {
-        return self.menus
+    func giveMenu(section: MainDiffableDataSource.sectionTitle) -> [Menu]? {
+        switch section {
+        case .main:
+            return mainMenus
+        case .soup:
+            return soupMenus
+        case .side:
+            return sideMenus
+        }
     }
 }
 

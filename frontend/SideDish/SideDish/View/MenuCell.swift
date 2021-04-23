@@ -31,11 +31,11 @@ class MenuCell: UICollectionViewCell {
         self.launchingLabel.layer.cornerRadius = 5
     }
 
-    func configure(menu: Menu) {
+    func configure(menu: MenuViewModel) {
         self.titleLabel.text = menu.title
-        self.bodyLabel.text = menu.description
+        self.bodyLabel.text = menu.body
         self.currentPriceLabel.text = menu.s_price
-        self.pastPriceLabel.attributedText = menuCellValidater.validate(pastPrice: menu.n_price)
+        self.pastPriceLabel.attributedText = menu.n_price
     }
     
 }

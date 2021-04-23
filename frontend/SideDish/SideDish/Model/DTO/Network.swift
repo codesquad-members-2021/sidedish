@@ -17,14 +17,14 @@ class DataTaskManager {
         case side = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
     }
     
-    static func get(url: url ,completion: @escaping (Result<getMenu, Error>) -> Void) {
+    static func get(url: url ,completion: @escaping (Result<GetMenu, Error>) -> Void) {
         guard let url = URL(string: url.rawValue) else {
             print("The URL is inappropriate.")
             return
         }
         session.dataTask(with: url){ data, response, error in
             if let data = data {
-                guard let menuList = ParsingManager.decodeData(type: getMenu.self, data: data) else { return }
+                guard let menuList = ParsingManager.decodeData(type: GetMenu.self, data: data) else { return }
                 completion(.success(menuList))
             } else {
                 guard let error = error?.localizedDescription as? Error else { return }

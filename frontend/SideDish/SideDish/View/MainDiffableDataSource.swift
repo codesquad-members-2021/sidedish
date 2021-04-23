@@ -11,14 +11,13 @@ class MainDiffableDataSource {
     }
     
     
-    private var dataSource : UICollectionViewDiffableDataSource<sectionTitle, Menu>!
+    private var dataSource : UICollectionViewDiffableDataSource<sectionTitle, MenuViewModel>!
     
     func setupDataSource(collectionView: UICollectionView) {
-        self.dataSource = UICollectionViewDiffableDataSource<sectionTitle, Menu>(collectionView: collectionView) {
+        self.dataSource = UICollectionViewDiffableDataSource<sectionTitle, MenuViewModel>(collectionView: collectionView) {
             (collectionView, indexPath, menu) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as? MenuCell else { preconditionFailure() }
             
-//            menu.configure(cell: cell)
             cell.configure(menu: menu)
             return cell
         }
@@ -34,7 +33,7 @@ class MainDiffableDataSource {
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func applySnapshot(menu:[Menu], section: sectionTitle) {
+    func applySnapshot(menu:[MenuViewModel], section: sectionTitle) {
         var snapshot = self.dataSource.snapshot()
         snapshot.appendItems(menu, toSection: section)
         
