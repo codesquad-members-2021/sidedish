@@ -29,7 +29,6 @@ const CarouselSection = () => {
   };
 
   useEffect(() => {
-    console.log('rendered');
     setIsFolded(!isFolded);
   }, [categoryContents]);
 
