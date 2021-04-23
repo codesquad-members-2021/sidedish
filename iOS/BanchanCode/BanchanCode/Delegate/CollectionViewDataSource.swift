@@ -15,8 +15,18 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         super.init()
     }
     
+    convenience init(mainDishes: [Dish], soupDishes: [Dish], sideDishes: [Dish]) {
+        self.init(allDishes: [DishList(category: .main, dishes: mainDishes),
+                              DishList(category: .soup, dishes: soupDishes),
+                              DishList(category: .side, dishes: sideDishes)])
+    }
+    
     func load(dishes: DishList) {
-        allDishes.append(dishes)
+        allDishes.enumerated().forEach { (index, dishList) in
+            if dishList.category == dishes.category {
+                allDishes[index].dishes = dishes.dishes
+            }
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -12,11 +12,14 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dishCollectionView: UICollectionView!
     var mainDelegate: CollectionViewDelegate?
     var mainDataSource: CollectionViewDataSource?
+    var mainDishes: [Dish]?
+    var soupDishes: [Dish]?
+    var sideDishes: [Dish]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainDelegate = CollectionViewDelegate()
-        mainDataSource = CollectionViewDataSource(allDishes: [])
+        mainDataSource = CollectionViewDataSource(mainDishes: [], soupDishes: [], sideDishes: [])
         
         dishCollectionView.delegate = mainDelegate
         dishCollectionView.dataSource = mainDataSource

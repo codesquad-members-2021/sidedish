@@ -33,6 +33,6 @@ struct DishList {
             }
         }
     }
-    let category: Category
-    let dishes: [Dish]
+    var category: Category
+    var dishes: [Dish]
 }
