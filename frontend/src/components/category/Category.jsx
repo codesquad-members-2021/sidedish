@@ -23,20 +23,32 @@ const CategoryBtn = styled(Button)`
   font-weight: 700;
 `
 
-
-const handleClick = (setToggle) => {
-  setToggle((t)=>!t)
+const handleClick = setToggle => {
+  setToggle(t => !t)
 }
 
 // 질문 훅의 위치는 어디에?
 function Category () {
   const [toggle, setToggle] = useState(false)
+  const CategoryLists = toggle ? (
+    <>
+      <CategoryList title={'모두가 좋아하는 든든한 메인요리'} url={'main'} />{' '}
+      <CategoryList title={'모두가 좋아하는 든든한 메인요리'} url={'soup'} />
+      <CategoryList
+        title={'모두가 좋아하는 든든한 메인요리'}
+        url={'side'}
+      />{' '}
+    </>
+  ) : (
+    <CategoryList title={'모두가 좋아하는 든든한 메인요리'} url={'main'} />
+  )
   return (
     <>
       <CategoryDiv>
-        {/* fetch .map */}
-        <CategoryList title={'모두가 좋아하는 든든한 메인요리'} url={'main'} />
-        <CategoryBtn onClick={()=>handleClick(setToggle)}>{toggle? "카테고리 접기" : "모든 카테고리 보기"}</CategoryBtn>
+        {CategoryLists}
+        <CategoryBtn onClick={() => handleClick(setToggle)}>
+          {toggle ? '카테고리 접기' : '모든 카테고리 보기'}
+        </CategoryBtn>
       </CategoryDiv>
     </>
   )

@@ -2,23 +2,19 @@ import styled from 'styled-components'
 import ItemCard from '../ItemCard'
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
 import { AlignTextCenter } from '../Theme'
-
-import useFetch from '../useFetch'
-const CategoryWrapper = styled.div`
-  display: flex;
+const CatgoryWrapper = styled.div`
+  width: 1280px;
+  padding: 0px;
   overflow: hidden;
 `
 const CategoryColumn = styled.div`
-  width: 1280px;
   padding: 0px;
-  display: flex;
-  overflow: hidden;
-  div {
-    margin-left: 16px;
-    &:first-child {
-      margin-left: 0px;
-    }
-  }
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: ${props => {
+    const num = props.children.length
+    return `repeat(${num}, 1fr);`
+  }};
 `
 const CategorySlideBlock = styled.div`
   display: flex;
@@ -44,22 +40,34 @@ const LoadingWapper = styled(AlignTextCenter)`
 `
 
 function CategorySlide ({ data }) {
-  const ItemCards = Array.isArray(data) ? (
-    data.map((data, idx) => <ItemCard key={idx} data={data} size={'S'} />)
-  ) : (
-    <LoadingWapper>
-      <img src={"data.img"} alt={'loading'} />
-    </LoadingWapper>
-  )
+  let listNum
+
+  const ItemCards = data => {
+    let category
+    if (Array.isArray(data)) {
+      listNum = data.length
+      category = data.map((data, idx) => (
+        <ItemCard key={idx} data={data} size={'S'} />
+      ))
+    } else {
+      category = (
+        <LoadingWapper>
+          <img src={'./load.jpg'} alt={'loading'} />
+        </LoadingWapper>
+      )
+    }
+
+    return category
+  }
 
   return (
     <CategorySlideBlock>
       <ButtonLeft>
         <VscChevronLeft />
       </ButtonLeft>
-      <CategoryWrapper>
-        <CategoryColumn>{ItemCards}</CategoryColumn>
-      </CategoryWrapper>
+      <CatgoryWrapper>
+        <CategoryColumn>{ItemCards(data)}</CategoryColumn>
+      </CatgoryWrapper>
       <ButtonRight>
         <VscChevronRight />
       </ButtonRight>
