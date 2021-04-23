@@ -63,7 +63,7 @@ extension BanchanListViewController {
     
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BanchanCustomCellHeader.identifier, for: indexPath) as? BanchanCustomCellHeader else { return nil }
             
-            view.configure(title: section.rawValue, count: self.viewModel.count(section: section))
+            view.configure(title: section.description(), count: self.viewModel.count(section: section))
             return view
             
         }
