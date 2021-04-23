@@ -57,9 +57,7 @@ public class SampleDataFactory {
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
         try {
-            File file = new ClassPathResource(jsonFilePath).getFile();
-
-            return objectMapper.readValue(file, typeReference);
+            return objectMapper.readValue(new ClassPathResource(jsonFilePath).getInputStream(), typeReference);
         } catch (IOException e) {
             throw new IllegalStateException("경로가 올바르지 않습니다. 경로: " + jsonFilePath, e);
         }
