@@ -109,6 +109,7 @@ const Carousel = ({ MainTitle, Food, setFood, Ref }) => {
 const Box = styled.div`
   width: 1392px;
   height: 534px;
+  margin: auto;
 `;
 
 const CarouselTitle = styled.div`

@@ -6,6 +6,8 @@ const HeaderMain = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 1100px;
+  width: 1440px;
+  height: 122px;
 `;
 const MainNav = styled.ul`
   display: flex;
@@ -41,25 +43,29 @@ const Search = styled.div`
 const SearchBtn = styled.button`
   padding: 7px;
   border: 0;
+  outline: 0;
+  &:hover{
+    color: grey;
+  }
   `;
 const DropMenu1 = styled.ul`
   position: absolute;
   top: 70%;
-  left: -10%;
+  left: 10%;
   list-style: none;
   text-align: left;
   `;
 const DropMenu2 = styled.ul`
   position: absolute;
   top: 70%;
-  left: -10%;
+  left: 10%;
   list-style: none;
   text-align: left;
   `;
 const DropMenu3 = styled.ul`
   position: absolute;
   top: 70%;
-  left: -18%;
+  left: 10%;
   list-style: none;
   text-align: left;
   `;
