@@ -36,5 +36,9 @@ class TurnonAppUsecase : ManufactureDataforViewModel {
     func manufactureforMainViewSideDishes() -> AnyPublisher<[SideDish], Error> {
         return networkmanager.get(type: [SideDish].self, endPoint: .side)
     }
+    
+    func manufactureforMainViewSoup() -> AnyPublisher<[SideDish], Error> {
+        return networkmanager.get(type: [SideDish].self, endPoint: .soup)
+    }
 
 }

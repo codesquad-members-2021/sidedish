@@ -58,6 +58,17 @@ class MenuCellViewModel{
                     self.dishes[1].append(dishes[i])
                 }
             }).store(in: &subscriptions)
+        
+        turnonAppUsecase.manufactureforMainViewSoup()
+            .sink(receiveCompletion: { (result) in
+                if case .failure(let error) = result {
+                    self.errorMessage = error.localizedDescription
+                }
+            }, receiveValue: { (dishes) in
+                for i in 0..<dishes.count {
+                    self.dishes[2].append(dishes[i])
+                }
+            }).store(in: &subscriptions)
     }
     
     func sideCategoryCount() -> Int{
