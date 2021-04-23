@@ -3,18 +3,56 @@ import theme from '../utils/styles/theme.js';
 import Price from './Price';
 import Label from './Label';
 import { CenterContainer } from './styles/common.jsx';
+import { useRef, useState } from 'react';
 
 const mockImage =
   'https://recipe1.ezmember.co.kr/cache/recipe/2020/09/23/5e308abb30b00ecb9c1b9b398db5b4451.jpg';
 
 const Card = ({ product, cardSize, margin = 0, type }) => {
+  // const imgRef = useRef();
+  const [hoverState, setHoverState] = useState(false);
+
+  const handleMouseOver = () => {
+    // imgRef.current.style.backgroundColor =
+    //   'linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))';
+    console.log('hover!');
+    setHoverState(true);
+  };
+
+  const handleMouseOut = () => {
+    setHoverState(false);
+  };
+
   return (
     <StyledLi cardSize={cardSize} margin={margin}>
-      <StyledImg
-        cardSize={cardSize}
-        src={type === '베스트' ? mockImage : product.image}
-        alt="card-image"
-      />
+      <div
+        className="temp"
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        {hoverState ? (
+          <>
+            <StyledHoverLayer cardSize={cardSize} />
+            <StyledImg
+              cardSize={cardSize}
+              src={type === '베스트' ? mockImage : product.image}
+              alt="card-image"
+            />
+          </>
+        ) : (
+          <StyledImg
+            cardSize={cardSize}
+            src={type === '베스트' ? mockImage : product.image}
+            alt="card-image"
+          />
+        )}
+        {/* <StyledHoverLayer />
+        <StyledImg
+          cardSize={cardSize}
+          src={type === '베스트' ? mockImage : product.image}
+          alt="card-image"
+        /> */}
+      </div>
       <StyledTitle>{product.title}</StyledTitle>
       <StyledDescription>{product.description}</StyledDescription>
       <Price product={product} />
@@ -32,6 +70,9 @@ const LabelList = styled(CenterContainer)`
 const StyledLi = styled.li`
   width: ${(props) => props.cardSize};
   margin: 0 ${(props) => props.margin}px;
+  .temp {
+    position: relative;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -50,6 +91,17 @@ const StyledDescription = styled.div`
   font-size: ${theme.fontSizes.XS};
   color: ${theme.colors.gray};
   margin: 8px 0px;
+`;
+
+const StyledHoverLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${(props) => props.cardSize};
+  height: ${(props) => props.cardSize};
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  border-radius: ${theme.borders.radius};
+  z-index: 4;
 `;
 
 export default Card;
