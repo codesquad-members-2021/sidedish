@@ -2,6 +2,7 @@ package com.codesquad.sidedish.controller;
 
 import com.codesquad.sidedish.domain.Item;
 import com.codesquad.sidedish.domain.Order;
+import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,8 @@ public class ItemController {
     }
 
     @GetMapping
-    public Item getDetailItem(@PathVariable Long categoryId, @PathVariable String hash) {//ItemDTO로 수정
-        return categoryService.findItemByHash(categoryId, hash);
+    public DetailItemDto getDetailItem(@PathVariable Long categoryId, @PathVariable String hash) {//ItemDTO로 수정
+        return categoryService.findDetailItemDtoByHash(categoryId, hash);
     }
 
     @PostMapping

@@ -23,7 +23,6 @@ public class CategoryController {
         return categoryService.findAll();
     }
 
-
     @PostMapping
     public void createCategory(Category category) {
 

@@ -22,5 +22,4 @@ public class CategoryDto {
         this.items = items;
     }
 
-
 }
