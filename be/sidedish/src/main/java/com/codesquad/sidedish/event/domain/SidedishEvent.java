@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.event.domain;
 
+import com.codesquad.sidedish.category.domain.SidedishItem;
 import org.springframework.data.annotation.Id;
 
 import java.util.HashSet;
@@ -11,12 +12,18 @@ public class SidedishEvent {
     private Long id;
     private String eventName;
     private String eventColor;
+    private float eventSaleRate;
 
     private Set<SidedishEventItem> eventItems = new HashSet<>();
 
-    public SidedishEvent(String eventName, String eventColor) {
+    public SidedishEvent(String eventName, String eventColor, int eventSaleRate) {
         this.eventName = eventName;
         this.eventColor = eventColor;
+        this.eventSaleRate = eventSaleRate;
+    }
+
+    public int salePrice(SidedishItem item){
+        return (int) (item.getItemNormalPrice() * (eventSaleRate / 100));
     }
 
     public Long getId() {
@@ -35,12 +42,17 @@ public class SidedishEvent {
         return eventItems;
     }
 
+    public float getEventSaleRate() {
+        return eventSaleRate;
+    }
+
     @Override
     public String toString() {
         return "SidedishEvent{" +
                 "id=" + id +
                 ", eventName='" + eventName + '\'' +
                 ", eventColor='" + eventColor + '\'' +
+                ", eventSaleRate=" + eventSaleRate +
                 ", eventItems=" + eventItems +
                 '}';
     }

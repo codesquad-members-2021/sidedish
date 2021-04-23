@@ -16,13 +16,13 @@ public class SidedishItemPreviewDTO {
     private int salePrice;
     private Set<SidedishEventDTO> eventBadgeList;
 
-    public SidedishItemPreviewDTO(SidedishItem item, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
+    public SidedishItemPreviewDTO(SidedishItem item, int salePrice, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
         this.id = item.getId();
         this.thumbnailImage = thumbnailImageUrl.getImageUrl();
         this.name = item.getItemName();
         this.description = item.getItemDescription();
         this.normalPrice = item.getItemNormalPrice();
-        this.salePrice = item.getItemSalePrice();
+        this.salePrice = salePrice;
         this.eventBadgeList = eventBadgeList;
     }
 

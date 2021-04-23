@@ -1,5 +1,6 @@
-package com.codesquad.sidedish.category.domain;
+package com.codesquad.sidedish.category.domain.dto;
 
+import com.codesquad.sidedish.category.domain.SidedishItem;
 import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 
@@ -22,13 +23,13 @@ public class SidedishDetailItemDTO {
     private String DeliveryInfo;
     private String DeliveryFee;
 
-    public SidedishDetailItemDTO(SidedishItem sidedishItem, Set<SidedishEventDTO> eventBadgeList,
+    public SidedishDetailItemDTO(SidedishItem sidedishItem, int salePrice, Set<SidedishEventDTO> eventBadgeList,
                                  List<SidedishImage> detailImages, List<SidedishImage> descriptionImages) {
         this.id = sidedishItem.getId();
         this.name = sidedishItem.getItemName();
         this.description = sidedishItem.getItemDescription();
         this.normalPrice = sidedishItem.getItemNormalPrice();
-        this.salePrice = sidedishItem.getItemSalePrice();
+        this.salePrice = salePrice;
         this.PointRate = sidedishItem.getPointRate();
         this.DeliveryInfo = sidedishItem.getItemDeliveryInfo();
         this.DeliveryFee = sidedishItem.getItemDeliveryFee();

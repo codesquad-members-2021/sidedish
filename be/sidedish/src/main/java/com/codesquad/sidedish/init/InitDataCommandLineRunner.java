@@ -85,8 +85,8 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
                 }
         };
 
-        SidedishEvent event1 = createSidedishEvent("이벤트 특가", "#86C6FF");
-        SidedishEvent event2 = createSidedishEvent("할인 특가", "#82D32D");
+        SidedishEvent event1 = createSidedishEvent("이벤트 특가", "#86C6FF",30);
+        SidedishEvent event2 = createSidedishEvent("할인 특가", "#82D32D",10);
         SidedishEvent[][] events = {
                 {
                         event1,
@@ -99,9 +99,9 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
 
         };
 
-        items.add(createSidedishItem("[" + prefix + "] 규동 250g", "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥", 4000, 5000, 4, 1));
-        items.add(createSidedishItem("[" + prefix + "] 아삭 고소한 연근고기조림 250g", "매콤새콤달콤, 반찬으로도 안주로도 좋은", 5000, 6000, 2, 2));
-        items.add(createSidedishItem("[" + prefix + "] 골뱅이무침 195g", "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥", 7000, 6300, -1, 1));
+        items.add(createSidedishItem("[" + prefix + "] 규동 250g", "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥", 5000, 4, 1));
+        items.add(createSidedishItem("[" + prefix + "] 아삭 고소한 연근고기조림 250g", "매콤새콤달콤, 반찬으로도 안주로도 좋은", 6000, 2, 2));
+        items.add(createSidedishItem("[" + prefix + "] 골뱅이무침 195g", "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥", 6300, -1, 1));
 
         for (int i = 0; i < items.size(); i++) {
             SidedishItem sidedishItem = items.get(i);
@@ -113,8 +113,8 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
         }
     }
 
-    private SidedishItem createSidedishItem(String name, String desc, int salePrice, int normalPrice, int quantity, int pointRate) {
-        return new SidedishItem(name, desc, salePrice, normalPrice, quantity, pointRate,
+    private SidedishItem createSidedishItem(String name, String desc, int normalPrice, int quantity, int pointRate) {
+        return new SidedishItem(name, desc, normalPrice, quantity, pointRate,
                 "서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가)",
                 "2,500원 (40,000원 이상 구매 시 무료)");
     }
@@ -144,8 +144,8 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
         }
     }
 
-    private SidedishEvent createSidedishEvent(String eventName, String eventColor) {
-        return eventRepository.save(new SidedishEvent(eventName, eventColor));
+    private SidedishEvent createSidedishEvent(String eventName, String eventColor, int eventSaleRate) {
+        return eventRepository.save(new SidedishEvent(eventName, eventColor, eventSaleRate));
     }
 
     private SidedishImage createSidedishImage(String imageUrl) {

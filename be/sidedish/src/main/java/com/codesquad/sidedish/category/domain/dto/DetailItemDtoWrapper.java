@@ -1,7 +1,5 @@
 package com.codesquad.sidedish.category.domain.dto;
 
-import com.codesquad.sidedish.category.domain.SidedishDetailItemDTO;
-
 public class DetailItemDtoWrapper {
 
     private SidedishDetailItemDTO item;

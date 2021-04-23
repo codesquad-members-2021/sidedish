@@ -20,7 +20,6 @@ public class SidedishItem {
 
     private String itemName;
     private String itemDescription;
-    private int itemSalePrice;
     private int itemNormalPrice;
     private int itemQuantity;
     private int itemPointRate;
@@ -31,11 +30,10 @@ public class SidedishItem {
 
     private List<SidedishItemImage> sidedishItemImages = new ArrayList<>();
 
-    public SidedishItem(String itemName, String itemDescription, int itemSalePrice, int itemNormalPrice,
+    public SidedishItem(String itemName, String itemDescription, int itemNormalPrice,
                         int itemQuantity, int itemPointRate, String itemDeliveryInfo, String itemDeliveryFee) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
-        this.itemSalePrice = itemSalePrice;
         this.itemNormalPrice = itemNormalPrice;
         this.itemQuantity = itemQuantity;
         this.itemPointRate = itemPointRate;
@@ -44,6 +42,17 @@ public class SidedishItem {
     }
 
     protected SidedishItem() {
+    }
+
+    public int calculateSalePrice(Set<SidedishEvent> sidedishEvents) {
+        int salePrice = itemNormalPrice;
+        for (SidedishEvent currentEvent : sidedishEvents) {
+            salePrice -= currentEvent.salePrice(this);
+        }
+        if (salePrice < 0) {
+            salePrice = 0;
+        }
+        return salePrice;
     }
 
     public boolean isSameId(Long itemId) {
@@ -99,10 +108,6 @@ public class SidedishItem {
         return itemDescription;
     }
 
-    public int getItemSalePrice() {
-        return itemSalePrice;
-    }
-
     public int getItemNormalPrice() {
         return itemNormalPrice;
     }
@@ -141,7 +146,6 @@ public class SidedishItem {
                 "id=" + id +
                 ", itemName='" + itemName + '\n' +
                 ", itemDescription='" + itemDescription + '\n' +
-                ", itemSalePrice=" + itemSalePrice +
                 ", itemNormalPrice=" + itemNormalPrice +
                 ", itemQuantity=" + itemQuantity +
                 ", itemPointRate=" + itemPointRate +
