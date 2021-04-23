@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - Dishes
-struct Dishes: Codable {
+struct Dishes: Codable, Hashable {
     private let category: String
     private(set) var name: String
     private(set) var dishes: [Dish]
 }
 
 // MARK: - Dish
-struct Dish: Codable {
+struct Dish: Codable, Hashable {
     private let dishId: String
     private(set) var image: String
     private let alt: String
@@ -23,6 +23,6 @@ struct Dish: Codable {
     private(set) var title: String
     private(set) var description: String
     private(set) var normalPrice: String
-    private(set) var sellingPrice: String?
-    private(set) var badge: String?
+    private(set) var sellingPrice: String
+    private(set) var badge: String
 }
