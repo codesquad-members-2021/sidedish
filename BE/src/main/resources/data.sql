@@ -96,12 +96,11 @@ insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, men
 -- -----------------------------------------------------
 -- badge
 -- -----------------------------------------------------
-insert into badge(name) values ('이벤트 특가');
-insert into badge(name) values ('베스트');
-insert into badge(name) values ('론칭 특가');
+insert into badge(name) values ('이벤트특가');
+insert into badge(name) values ('론칭특가');
 
 -- -----------------------------------------------------
--- dish_badge_best
+-- dish_badge_2
 -- -----------------------------------------------------
 insert into dish_badge(dish_id, badge_id) values (1, 2);
 insert into dish_badge(dish_id, badge_id) values (2, 2);
@@ -133,19 +132,32 @@ insert into dish_badge(dish_id, badge_id) values (27, 2);
 insert into dish_badge(dish_id, badge_id) values (28, 2);
 
 -- -----------------------------------------------------
--- dish_badge_event_sale
+-- dish_badge_1
 -- -----------------------------------------------------
 insert into dish_badge(dish_id, badge_id) values (13, 1);
 insert into dish_badge(dish_id, badge_id) values (14, 1);
 insert into dish_badge(dish_id, badge_id) values (15, 1);
-insert into dish_badge(dish_id, badge_id) values (16, 3);
-insert into dish_badge(dish_id, badge_id) values (17, 3);
-insert into dish_badge(dish_id, badge_id) values (18, 3);
-insert into dish_badge(dish_id, badge_id) values (19, 3);
+insert into dish_badge(dish_id, badge_id) values (16, 1);
+insert into dish_badge(dish_id, badge_id) values (17, 1);
+insert into dish_badge(dish_id, badge_id) values (18, 1);
+insert into dish_badge(dish_id, badge_id) values (19, 1);
 insert into dish_badge(dish_id, badge_id) values (20, 1);
-insert into dish_badge(dish_id, badge_id) values (21, 3);
+insert into dish_badge(dish_id, badge_id) values (21, 1);
 insert into dish_badge(dish_id, badge_id) values (22, 1);
-insert into dish_badge(dish_id, badge_id) values (23, 3);
+insert into dish_badge(dish_id, badge_id) values (23, 1);
+
+
+insert into dish_badge(dish_id, badge_id) values (30, 1);
+insert into dish_badge(dish_id, badge_id) values (31, 1);
+insert into dish_badge(dish_id, badge_id) values (32, 1);
+insert into dish_badge(dish_id, badge_id) values (33, 1);
+insert into dish_badge(dish_id, badge_id) values (34, 1);
+insert into dish_badge(dish_id, badge_id) values (35, 1);
+insert into dish_badge(dish_id, badge_id) values (36, 1);
+insert into dish_badge(dish_id, badge_id) values (37, 1);
+insert into dish_badge(dish_id, badge_id) values (38, 1);
+insert into dish_badge(dish_id, badge_id) values (39, 1);
+insert into dish_badge(dish_id, badge_id) values (40, 1);
 
 -- -----------------------------------------------------
 -- image for best
