@@ -1,28 +1,35 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 
-const Carousel = ({ children, itemWidth, maxItem, skipItem }) => {
+const Carousel = ({ children, itemWidth, maxItem, skipItem, animationTime }) => {
   const [locationX, setLocationX] = useState(0);
   const [currIdx, setCurrIdx] = useState(0);
+  const [leftItem, setLeftItem] = useState();
 
   const handleClickPrev = () => {
     const possibleMove = currIdx >= skipItem ? skipItem : currIdx;
-
     setLocationX(locationX + itemWidth * possibleMove);
     setCurrIdx(currIdx - possibleMove);
+    setLeftItem(leftItem + possibleMove);
   };
-  const handleClickNext = () => {
-    const lastIdx = children.length - 1;
-    const leftItem = lastIdx - (currIdx + maxItem - 1);
-    const possibleMove = leftItem >= skipItem ? skipItem : leftItem;
 
+  const handleClickNext = () => {
+    const totalItemCount = children.length;
+    const newLeftItem = totalItemCount - (currIdx + maxItem);
+    const possibleMove = newLeftItem >= skipItem ? skipItem : newLeftItem;
     setLocationX(locationX - itemWidth * possibleMove);
-    setCurrIdx((currIdx) => currIdx + possibleMove);
+    setCurrIdx(currIdx + possibleMove);
+    setLeftItem(newLeftItem - possibleMove);
   };
 
   return (
-    <StyledCarousel locationX={locationX} currIdx={currIdx}>
+    <StyledCarousel
+      locationX={locationX}
+      animationTime={animationTime}
+      currIdx={currIdx}
+      leftItem={leftItem}
+    >
       <IoChevronBackSharp onClick={handleClickPrev} className="leftArrow arrow" />
       <div className="carouselWrapper">
         <div className="carouselList">{children}</div>
@@ -42,21 +49,26 @@ const StyledCarousel = styled.div`
   }
   .carouselList {
     display: flex;
-    transition: all 0.5s;
+    transition: ${({ animationTime }) => `transform ${animationTime}s`};
     transform: ${({ locationX }) => `translateX(${locationX}px)`};
   }
-  .leftArrow {
+  .arrow {
     position: absolute;
-    top: 50%;
-    left: -40px;
-    opacity: ${({ currIdx }) => (currIdx === 0 ? '0.5' : '1')};
+    font-size: 2rem;
+    top: 40%;
+  }
+  .leftArrow {
+    left: -50px;
+    opacity: ${({ currIdx }) => (currIdx === 0 ? '0.3' : '1')};
+  }
+  .leftArrow:hover {
+    color: ${({ currIdx }) => currIdx !== 0 && 'red'};
   }
   .rightArrow {
-    position: absolute;
-    top: 50%;
-    right: -40px;
+    right: -50px;
+    opacity: ${({ leftItem }) => (leftItem === 0 ? '0.3' : '1')};
   }
-  .arrow:hover {
-    color: red;
+  .rightArrow :hover {
+    color: ${({ leftItem }) => leftItem !== 0 && 'red'};
   }
 `;

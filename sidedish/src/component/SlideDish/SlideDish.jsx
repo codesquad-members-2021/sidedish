@@ -16,7 +16,13 @@ const SlideDish = ({ category }) => {
   ) : (
     <SlideContainer>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
-      <Carousel itemWidth={324} maxItem={4} skipItem={2} className="carouselWrapper">
+      <Carousel
+        itemWidth={324}
+        maxItem={4}
+        skipItem={3}
+        animationTime={0.5}
+        lassName="carouselWrapper"
+      >
         {slideCategory}
       </Carousel>
     </SlideContainer>
