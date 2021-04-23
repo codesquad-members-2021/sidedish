@@ -17,6 +17,6 @@ class ItemRepositoryTest {
     @Test
     void getItem() {
         Item item = itemRepository.findById(1L).orElseThrow(RuntimeException::new);
-        assertThat(item).hasFieldOrPropertyWithValue("stock", 3);
+        assertThat(item).hasFieldOrPropertyWithValue("stock", 5);
     }
 }
