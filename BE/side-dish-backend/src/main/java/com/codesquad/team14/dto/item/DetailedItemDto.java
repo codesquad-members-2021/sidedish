@@ -43,4 +43,39 @@ public class DetailedItemDto {
         );
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTopImage() {
+        return topImage;
+    }
+
+    public List<String> getThumbImages() {
+        return thumbImages;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDeliveryInfo() {
+        return deliveryInfo;
+    }
+
+    public String getDeliveryFee() {
+        return deliveryFee;
+    }
+
+    public int getnPrice() {
+        return nPrice;
+    }
+
+    public int getsPrice() {
+        return sPrice;
+    }
+
+    public int getPoint() {
+        return point;
+    }
 }
