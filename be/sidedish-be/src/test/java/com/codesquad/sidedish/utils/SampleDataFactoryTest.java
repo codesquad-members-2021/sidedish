@@ -1,8 +1,8 @@
 package com.codesquad.sidedish.utils;
 
-import com.codesquad.sidedish.web.sidedish.ItemDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.ItemDTOTestResults;
-import com.codesquad.sidedish.web.sidedish.SidedishDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
 import com.codesquad.sidedish.web.sidedish.SidedishDTOTestResults;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

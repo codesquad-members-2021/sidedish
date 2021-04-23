@@ -1,7 +1,7 @@
 package com.codesquad.sidedish.utils;
 
-import com.codesquad.sidedish.web.sidedish.ItemDTO;
-import com.codesquad.sidedish.web.sidedish.SidedishDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;

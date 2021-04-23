@@ -1,12 +1,5 @@
-package com.codesquad.sidedish.web.sidedish;
+package com.codesquad.sidedish.web.sidedish.DTO;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class SidedishDTO {
