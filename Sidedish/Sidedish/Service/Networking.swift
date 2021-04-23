@@ -22,12 +22,15 @@ class Networking {
     }
     
     func downloadImage(from url: URL, completion: @escaping ((Data) -> ()) ) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print(error!.localizedDescription)
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                NSLog(error.localizedDescription)
                 return
             }
-            completion(data)
+            guard let imageData = data else {
+                return
+            }
+            completion(imageData)
         }.resume()
     }
     

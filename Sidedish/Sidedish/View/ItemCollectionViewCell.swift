@@ -42,8 +42,3 @@ class ItemCollectionViewCell: UICollectionViewCell {
         launchBadge.isHidden = true
     }
 }
-
-enum Badge: String {
-    case event = "이벤트특가"
-    case launch = "론칭특가"
-}

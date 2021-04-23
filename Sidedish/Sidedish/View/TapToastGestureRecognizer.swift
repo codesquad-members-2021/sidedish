@@ -16,4 +16,10 @@ class TapToastGestureRecognize: UITapGestureRecognizer {
         self.countText = ""
         super.init(target: target, action: action)
     }
+    
+    convenience init(target: Any?, action: Selector?, title: String, countText: String) {
+        self.init(target: target, action: action)
+        self.title = title
+        self.countText = countText
+    }
 }

@@ -20,8 +20,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
         self.itemViewModel = ItemViewModel()
         self.headerViewModel = HeaderViewModel()
@@ -81,11 +79,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
-        let tapRecognizer = TapToastGestureRecognize(target: self, action: #selector(makingHeaderToast(_:)))
-        tapRecognizer.title = headerViewModel.titles[indexPath.section]
-        tapRecognizer.countText = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
-        header.addGestureRecognizer(tapRecognizer)
         
+        let title = headerViewModel.titles[indexPath.section]
+        let countText = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
+        let tapRecognizer = TapToastGestureRecognize(target: self,
+                                                     action: #selector(makingHeaderToast(_:)),
+                                                     title: title,
+                                                     countText: countText)
+        
+        header.addGestureRecognizer(tapRecognizer)
         header.title.text = headerViewModel.titles[indexPath.section]
         header.countLabel.text = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
         return header
@@ -112,8 +114,8 @@ extension ViewController {
     func handleBadge(badge: [String]?) -> [Bool] {
         var isHiddenBadges = [true, true]
         if badge != nil {
-            isHiddenBadges[0] = badge!.contains("이벤트특가") ? false : true
-            isHiddenBadges[1] = badge!.contains("론칭특가") ? false : true
+            isHiddenBadges[0] = badge!.contains(Badge.event.description) ? false : true
+            isHiddenBadges[1] = badge!.contains(Badge.launch.description) ? false : true
         }
         return isHiddenBadges
     }
