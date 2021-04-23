@@ -11,30 +11,6 @@ import Combine
 class SidedishViewController: UIViewController {
     typealias FetchDataHandler = (String) -> ()
     
-    enum Section: Int, CaseIterable {
-        case main
-        case soup
-        case side
-        
-        var sectionHeader: String {
-            switch self {
-            case .main: return "모두가 좋아하는 든든한 메인요리"
-            case .soup: return "정성이 담긴 뜨끈뜨끈 국물요리"
-            case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
-            }
-        }
-    }
-    
-    enum DataItem: Hashable {
-        case main(Item)
-        case soup(Item)
-        case side(Item)
-    }
-    
-    enum SupplementaryElementKind {
-        static let sectionHeader = "supplementary-section-header"
-    }
-    
     private var cancellables: Set<AnyCancellable> = []
     private var sidedishViewModel: SidedishViewModelType!
     private var collectionView: UICollectionView!
@@ -143,4 +119,28 @@ class SidedishViewController: UIViewController {
         snapshot.appendItems(sidedishViewModel.getSideItems().map { DataItem.side($0) }, toSection: .side)
         self.dataSource.apply(snapshot)
     }
+}
+
+enum Section: Int, CaseIterable {
+    case main
+    case soup
+    case side
+    
+    var sectionHeader: String {
+        switch self {
+        case .main: return "모두가 좋아하는 든든한 메인요리"
+        case .soup: return "정성이 담긴 뜨끈뜨끈 국물요리"
+        case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
+        }
+    }
+}
+
+enum DataItem: Hashable {
+    case main(Item)
+    case soup(Item)
+    case side(Item)
+}
+
+enum SupplementaryElementKind {
+    static let sectionHeader = "supplementary-section-header"
 }
