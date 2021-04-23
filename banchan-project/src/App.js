@@ -11,8 +11,8 @@ const App = () => {
     <div className="App">
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Header></Header>
-        <BestItems></BestItems>
+        {/* <Header></Header>
+        <BestItems></BestItems> */}
         <MainItems />
         <DetailModal />
       </ThemeProvider>

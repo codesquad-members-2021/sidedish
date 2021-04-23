@@ -19,8 +19,9 @@ const TotalCategoryButton = styled.button`
 `;
 
 const MainItemsCardWrapper = styled.div`
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: auto;
 `;
 
@@ -29,7 +30,7 @@ const MainItemsCard = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  margin: 0px 16px;
+  margin: 16px;
 `;
 
 const MainItemsPriceWrapper = styled.div`
@@ -40,9 +41,23 @@ const MainItemsPriceWrapper = styled.div`
   margin: 16px 0px;
 `;
 
+const LeftButtonWrapper = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 0%;
+`;
+
+const RightButtonWrapper = styled.div`
+  position: absolute;
+  top: 40%;
+  right: 0%;
+`;
+
 export {
   TotalCategoryButton,
   MainItemsCardWrapper,
   MainItemsCard,
   MainItemsPriceWrapper,
+  LeftButtonWrapper,
+  RightButtonWrapper,
 };

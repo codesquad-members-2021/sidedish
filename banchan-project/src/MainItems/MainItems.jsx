@@ -26,15 +26,15 @@ const MainItems = () => {
     <>
       <MainItemsTitle />
       <S.MainItemsCardWrapper>
-        <div>
+        <S.LeftButtonWrapper>
           <CS.LeftButton />
-        </div>
+        </S.LeftButtonWrapper>
         {data.map((items, index) => (
           <MainItemsCard key={index} items={items} />
         ))}
-        <div>
+        <S.RightButtonWrapper>
           <CS.RightButton />
-        </div>
+        </S.RightButtonWrapper>
       </S.MainItemsCardWrapper>
       <TotalCategoryButton />
     </>
