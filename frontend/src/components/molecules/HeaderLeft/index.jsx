@@ -17,7 +17,7 @@ const Li = styled.li`
 const HeaderLeft = ({ children, ...props }) => {
   return (
     <WrapDiv>
-      <Span _logo _margin="0 56px 0 0">
+      <Span _logo _margin="14px 56px 0 0">
         BANCHAN
       </Span>
       <ul>

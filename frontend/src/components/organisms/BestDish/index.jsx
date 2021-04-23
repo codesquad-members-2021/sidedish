@@ -4,16 +4,29 @@ import styled from "styled-components";
 import Tab from "../../molecules/Tab";
 import LargeCard from "../../molecules/LargeCard";
 import useFetch from "../../../util/useFetch";
-
 const BestDish = ({ children, ...props }) => {
   const [bestDish, setBestDish] = useState([]);
-
-  console.log("🔥besedish🔥🔥🔥🔥🔥🔥🔥🔥", bestDish);
-  console.log("🔥besedish🔥🔥🔥🔥🔥🔥🔥🔥", typeof bestDish);
+  const tempImgUrl =
+    "http://public.codesquad.kr/jk/storeapp/data/f6817349118d4c671da8dca9065649a9.jpg";
 
   const WrapDiv = styled.div`
     display: flex;
-    /* flex-direction: row; */
+    flex-direction: column;
+  `;
+  const WrapTab = styled.div`
+    display: flex;
+    min-width: 986px;
+  `;
+  const WrapCard = styled.div`
+    display: flex;
+    padding: 40px;
+    width: 1280px;
+    height: 620px;
+
+    /* White Blue */
+
+    background: #eef4fa;
+    border-radius: 0px 5px 5px 5px;
   `;
 
   const { currentItem, changeItem } = useTabs(0, bestDish);
@@ -24,22 +37,24 @@ const BestDish = ({ children, ...props }) => {
   console.log(currentItem.items);
   return (
     <WrapDiv>
-      {bestDish.map((tabMenu, i) => (
-        <button onClick={() => currentItem}>
-          <Tab key={i} name={tabMenu.name}></Tab>
-        </button>
-      ))}
-      {currentItem.items.map((card, i) => (
-        <LargeCard
-          key={card.detail_hash}
-          _image={card.image}
-          _title={card.title}
-          _description={card.description}
-          _nPrice={card.n_price}
-          _sPrice={card.s_price}
-          _badge={card.badge}
-        ></LargeCard>
-      ))}
+      <WrapTab>
+        {bestDish.map((tabMenu, i) => (
+          <Tab onClick={() => changeItem(i)} key={i} name={tabMenu.name}></Tab>
+        ))}
+      </WrapTab>
+      <WrapCard>
+        {currentItem.items.map((card, i) => (
+          <LargeCard
+            key={card.detail_hash}
+            _image={tempImgUrl}
+            _title={card.title}
+            _description={card.description}
+            _nPrice={card.n_price}
+            _sPrice={card.s_price}
+            _badge={card.badge}
+          ></LargeCard>
+        ))}
+      </WrapCard>
     </WrapDiv>
   );
 };

@@ -7,14 +7,15 @@ import Tag from "../../atoms/Tag";
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  width: 308px;
-  height: 412px;
-  margin: 0px 16px;
+  width: 380px;
+  height: 540px;
+  margin: 0px 12px;
 `;
 
 const FlexDiv = styled.div`
   display: flex;
   justify-content: flex-start;
+  margin: 8px 0;
 `;
 
 const LargeCard = ({ children, ...props }) => {
@@ -26,7 +27,7 @@ const LargeCard = ({ children, ...props }) => {
   };
   return (
     <Div>
-      <Image src={props._image} />
+      <Image src={props._image} _width="384px" />
       <Span _title>{props._title}</Span>
       <Span _description>{props._description}</Span>
       <FlexDiv>

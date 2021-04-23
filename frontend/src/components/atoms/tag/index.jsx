@@ -1,21 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledTag = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 12px 0 0 0;
   padding: 4px 16px;
 
   border-radius: 5px;
 
-  ${props =>
+  ${(props) =>
     props._event &&
     `width: 97px;
     height: 28px;
     background: #82d32d;`}
 
-  ${props =>
+  ${(props) =>
     props._new &&
     `width: 84px;
     height: 28px;
@@ -33,8 +34,8 @@ const StyledTagSpan = styled.span`
   margin: 0px 10px;
 `;
 
-const Tag = props => {
-  const text = props._event ? '이벤트 특가' : '런칭특가';
+const Tag = (props) => {
+  const text = props._event ? "이벤트 특가" : "런칭특가";
   return (
     <StyledTag {...props}>
       <StyledTagSpan>{text}</StyledTagSpan>

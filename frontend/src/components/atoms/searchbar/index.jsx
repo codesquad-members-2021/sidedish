@@ -6,7 +6,7 @@ const WrapDiv = styled.div`
   position: relative;
 
   display: flex;
-  margin-right: 26px;
+  margin: 14px 26px 0 0;
 `;
 const Input = styled.input`
   background: #f5f5f7;
@@ -27,7 +27,8 @@ const SearchBar = ({ children, ...props }) => {
         _type="SearchIcon"
         _color="gray"
         _position="absolute"
-        _right="20px"
+        _right="9px"
+        _top="8px"
       ></Icon>
     </WrapDiv>
   );
