@@ -9,7 +9,8 @@ import Foundation
 
 class ItemViewModel {
     @Published var items: [SidedishItem]
-    @Published var images: [Data?]
+    var images: [Data?]
+    var imageReloadHandler: ((Int) -> ())?
     var errorHandler: ((String) -> ())?
     var sidedishProcessing: SidedishProcessing
     
@@ -27,19 +28,19 @@ class ItemViewModel {
                 self.items = sidedishItems
                 self.images = Array(repeating: nil, count: sidedishItems.count)
             case .failure(let error):
-                print(error)
+                #if DEBUG
+                NSLog(error.localizedDescription)
+                #endif
                 self.errorHandler?(error.localizedDescription)
             }
         }
     }
     
-    func fetchImage() {
-        for (index, item) in self.items.enumerated() {
-            guard let url = URL(string: item.image) else { return }
-            DispatchQueue.global().async {
-                self.sidedishProcessing.getImage(url: url) { (data) in
-                    self.images[index] = data
-                }
+    func fetchImage(index: Int, imageURL: String, completion: @escaping (() -> ())) {
+        guard let url = URL(string: imageURL) else { return }
+        DispatchQueue.global().async {
+            self.sidedishProcessing.getImage(url: url) { (data) in
+                self.images[index] = data
             }
         }
     }

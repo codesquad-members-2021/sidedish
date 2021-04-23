@@ -24,7 +24,9 @@ class Networking {
     func downloadImage(from url: URL, completion: @escaping ((Data) -> ()) ) {
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
+                #if DEBUG
                 NSLog(error.localizedDescription)
+                #endif
                 return
             }
             guard let imageData = data else {

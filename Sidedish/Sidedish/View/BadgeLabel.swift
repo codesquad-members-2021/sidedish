@@ -8,10 +8,16 @@
 import UIKit
 
 class BadgeLabel: UILabel {
-
-    override func layoutSubviews() {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
     }
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = 8
+        self.clipsToBounds = true
+    }
 }

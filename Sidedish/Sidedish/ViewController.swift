@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     var itemViewModel: ItemViewModel!
     var headerViewModel: HeaderViewModel!
     var fetchItemSubscription = Set<AnyCancellable>()
-    var fetchImageSubscription = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +26,19 @@ class ViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
-                self?.itemViewModel.fetchImage()
+                self?.itemViewModel.items.enumerated().forEach({ (index, sidedishItem) in
+                    self?.itemViewModel.fetchImage(index: index, imageURL: sidedishItem.image, completion: {
+                        self?.itemViewModel.imageReloadHandler?(index)
+                    })
+                })
             }.store(in: &fetchItemSubscription)
-        
-        self.itemViewModel.$images
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] (imageDatas) in
-                self?.collectionView.reloadSections(IndexSet(integer: 0))
-            }.store(in: &fetchImageSubscription)
         
         self.itemViewModel.errorHandler = { error in
             Toast(text: error).show()
+        }
+        
+        self.itemViewModel.imageReloadHandler = { index in
+            self.collectionView.reloadItems(at: [IndexPath(index: index)])
         }
         
         self.itemViewModel.fetchItems()
@@ -66,6 +67,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.configure(model: item, nPrice: priceString, badge: badge)
         
         guard let data = self.itemViewModel.images[indexPath.row] else { return cell }
+        
         cell.configure(data: data)
 
         return cell
@@ -105,9 +107,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: 130)
     }
-    
-    
-    
 }
 
 extension ViewController {
