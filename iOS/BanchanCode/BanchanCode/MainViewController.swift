@@ -12,36 +12,30 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dishCollectionView: UICollectionView!
     var mainDelegate: CollectionViewDelegate?
     var mainDataSource: CollectionViewDataSource?
-    var mainDishes: [Dish]?
-    var soupDishes: [Dish]?
-    var sideDishes: [Dish]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainDelegate = CollectionViewDelegate()
-        mainDataSource = CollectionViewDataSource(mainDishes: [], soupDishes: [], sideDishes: [])
+        mainDataSource = CollectionViewDataSource()
+        
+        let mainViewModel = DefaultDishesListViewModel()
+        let soupViewModel = DefaultDishesListViewModel()
+        let sideViewModel = DefaultDishesListViewModel()
+        mainViewModel.category.value = "main"
+        soupViewModel.category.value = "soup"
+        sideViewModel.category.value = "side"
+        mainViewModel.load()
+        soupViewModel.load()
+        sideViewModel.load()
+        
+        mainDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
         
         dishCollectionView.delegate = mainDelegate
         dishCollectionView.dataSource = mainDataSource
         
-        NetworkManager.performRequest(urlString: "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/main") { (mainDishes) in
-            self.mainDataSource?.load(dishes: mainDishes.toDomain())
-            DispatchQueue.main.async {
-                self.dishCollectionView.reloadData()
-            }
-        }
-        NetworkManager.performRequest(urlString: "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/soup") { (soupDishes) in
-            self.mainDataSource?.load(dishes: soupDishes.toDomain())
-            DispatchQueue.main.async {
-                self.dishCollectionView.reloadData()
-            }
-        }
-        NetworkManager.performRequest(urlString: "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/side") { (sideDishes) in
-            self.mainDataSource?.load(dishes: sideDishes.toDomain())
-            DispatchQueue.main.async {
-                self.dishCollectionView.reloadData()
-            }
-        }
+        bind(to: mainViewModel)
+        bind(to: soupViewModel)
+        bind(to: sideViewModel)
         
         registerXib()
     }
@@ -57,5 +51,14 @@ class MainViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
         dishCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    private func bind(to viewModel: DishesListViewModel) {
+        viewModel.category.observe(on: self) { [weak self] _ in self?.updateItems() }
+        viewModel.dishes.observe(on: self) { [weak self] _ in self?.updateItems() }
+    }
+    
+    private func updateItems() {
+        dishCollectionView.reloadData()
     }
 }
