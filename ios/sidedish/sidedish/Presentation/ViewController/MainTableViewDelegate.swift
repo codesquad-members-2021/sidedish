@@ -35,7 +35,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let count = indexPath.row
-        CustomToaster.show(count: count, messageType: .stock, isTop: false)
+        CustomToaster.popStockBubble(count: count)
         self.delegate?.pushNextView()
     }
     
@@ -49,7 +49,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     
     @objc func popupToast(sender : TableViewTapToasterGesture){
         guard let count = sender.count else { return }
-        CustomToaster.show(count: count, messageType: .category, isTop: true)
+        CustomToaster.popCategoryBubble(count: count)
     }
     
     enum ViewPosition : CGFloat {
