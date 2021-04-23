@@ -3,12 +3,14 @@ import CarouselSectionList from './CarouselSectionList';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { CenterContainer } from '../utils/styles/common';
+import Modal from './Modal';
 
 const MainPage = (props) => {
   const [modalState, setModalState] = useState(false);
-
+  const [modalData, setModalData] = useState({});
   const handleModal = (product) => {
     setModalState(true);
+    setModalData({ ...product });
   };
 
   return (
@@ -18,7 +20,7 @@ const MainPage = (props) => {
       {modalState && (
         <ModalBackground>
           <ModalContainer>
-            <Modal />
+            <Modal product={modalData} />
             <button onClick={() => setModalState(false)}>X</button>
           </ModalContainer>
         </ModalBackground>
@@ -40,12 +42,6 @@ const ModalBackground = styled(CenterContainer)`
 const ModalContainer = styled.div`
   display: flex;
   align-items: flex-start;
-`;
-
-const Modal = styled.div`
-  background: white;
-  width: 960px;
-  height: 1076px;
 `;
 
 export default MainPage;
