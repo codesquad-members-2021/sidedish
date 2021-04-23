@@ -30,7 +30,8 @@ public class Dish {
     }
 
     public boolean orderCheck(Dish dish) {
-        return (stock - dish.stock) >= 0;
+        int orderQuantity = dish.getStock();
+        return (orderQuantity >= 0) && (stock - orderQuantity >= 0);
     }
 
     public Long getId() {
