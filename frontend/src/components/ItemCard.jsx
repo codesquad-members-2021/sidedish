@@ -3,6 +3,7 @@ import { theme, AlignTextCenter } from "./Theme";
 import line from "./line.png";
 import { useState } from "react";
 import DetailPage from "./detail/DetailPage";
+
 const Card = styled.div`
   margin-top: 40px;
   width: ${(props) => {
@@ -89,7 +90,7 @@ const ClickArea = styled.div`
 function ItemCard({ data, size }) {
   const [ModalMode, setModalState] = useState(false);
   const handleClick = (hash) => {
-    setModalState(!ModalMode);
+    setModalState(!ModalMode); //작업중
   };
   return (
     <>

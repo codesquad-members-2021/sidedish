@@ -27,7 +27,6 @@ function Category() {
   return (
     <>
       <CategoryDiv>
-        {/* fetch .map */}
         <CategoryList title={"모두가 좋아하는 든든한 메인요리"} />
         <CategoryBtn onClick={handleClick}>모든 카테고리 보기</CategoryBtn>
       </CategoryDiv>
