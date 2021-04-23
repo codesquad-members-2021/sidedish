@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme, AlignTextCenter } from "./Theme";
-import line from "./line.png";
+
 const Card = styled.div`
   margin-top: 40px;
   width: ${(props) => {
@@ -81,7 +81,7 @@ function ItemCard({ data, size }) {
         <IMG size={size} image={data.image} alt={data.alt}>
           <DeliveryBlock>
             <div>새벽배송</div>
-            <img style={imgPosition} src={line} alt="line"></img>
+            <img style={imgPosition} src="./line.png" alt="line"></img>
             <div>전국택배</div>
           </DeliveryBlock>
         </IMG>
