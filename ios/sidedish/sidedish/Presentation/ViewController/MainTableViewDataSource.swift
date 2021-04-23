@@ -25,8 +25,23 @@ class MainTableViewDataSource : NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell : MenuCell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
-        cell.updateMenu(titleText: menuCellViewModel.dishes[indexPath.section][indexPath.row].title)
+        let dishProperty = menuCellViewModel.dishes[indexPath.section][indexPath.row]
+        cell.updateMenu(image: UIImage(),
+                        titleText: dishProperty.title,
+                        subTitle: dishProperty.description,
+                        price: dishProperty.price,
+                        reducedPrice: dishProperty.salePrice,
+                        badge: dishProperty.badges ?? ["",""])
         
+        DispatchQueue.global().async {
+            let url = URL(string: dishProperty.image)!
+            let data = try? Data(contentsOf: url)
+            DispatchQueue.main.async {
+                if let tempdata = data {
+                    cell.menuImage.image = UIImage(data: tempdata)
+                }
+            }
+        }
         return cell
     }
 }

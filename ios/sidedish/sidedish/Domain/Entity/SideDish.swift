@@ -12,8 +12,8 @@ struct SideDish: Decodable {
     let image: String //library/cache의 파일명
     let title: String //"[소중한식사] 골뱅이무침 195g"
     let description: String //"매콤새콤달콤, 반찬으로도 안주로도 좋은"
-    let price: Int? //7,000
-    let salePrice: Int? //6,300
+    let price: Int //7,000
+    let salePrice: Int //6,300
     let deliveryTypes: [String]? //["새벽배송","전국택배"]
     let badges: [String]? //["이벤트특가", "런칭특가"]
     
