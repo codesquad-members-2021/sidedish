@@ -49,6 +49,7 @@ const Carousel = (
             {Food.map(
               (
                 {
+                  detail_hash,
                   image,
                   alt,
                   delivery_type,
@@ -63,6 +64,7 @@ const Carousel = (
                 return (
                   <Content
                     key={index}
+                    detail_hash={detail_hash}
                     image={image}
                     alt={alt}
                     delivery_type={delivery_type}

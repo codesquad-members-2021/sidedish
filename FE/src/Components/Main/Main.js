@@ -26,7 +26,9 @@ const Main = ({ URL, modal, setModal }) => {
 
   return (
     <CarouselSlide>
-      {modal && <PopUpModal setModal={setModal} ModalData={ModalData} />}
+      {modal && (
+        <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
+      )}
       <CarouselButton Name={"Left"} Slide={slider} />
       <Carousel
         MainTitle={"모두가 좋아하는 든든한 메인요리"}
