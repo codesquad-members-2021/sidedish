@@ -9,26 +9,48 @@ import UIKit
 
 class MainTableViewDelegate : NSObject, UITableViewDelegate {
     private let viewModel : MenuCellViewModel
+    private var delegate : ViewChangable!
     
     init(viewModel : MenuCellViewModel) {
         self.viewModel = viewModel
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 32))
+        let headerWidth = tableView.frame.width
+        let headerHeight = ViewPosition.headerViewHeight.rawValue
+        let titleText = viewModel.dishes.getsidedish(section: section).name
+        let headerView = CustomTableHeaderView.makeCustomTableHeaderView(width: headerWidth,
+                                                                         height: headerHeight,
+                                                                         text: titleText)
         
-        let label = UILabel() 
-        label.frame = CGRect.init(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
-        label.text = viewModel.dishes.body[section].name
-        label.font = .boldSystemFont(ofSize: 22)
-        label.backgroundColor = .white
-        
-        headerView.addSubview(label)
+        let popupGesture : TableViewTapToasterGesture = TableViewTapToasterGesture(target: self, action: #selector(popupToast(sender:)))
+        popupGesture.count = viewModel.sideDishesCount(section: section)
+        headerView.addGestureRecognizer(popupGesture)
         
         return headerView
     }
+ 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let count = indexPath.row
+        CustomToaster.popStockBubble(count: count)
+        self.delegate?.pushNextView()
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 56 // headerView의 height(32) + figma에서 지정해 준 헤더와 셀 간의 간격!
+        return ViewPosition.headerViewHeight.rawValue + ViewPosition.GapHeaderViewAndCell.rawValue
+    }
+    
+    @objc func popupToast(sender : TableViewTapToasterGesture){
+        guard let count = sender.count else { return }
+        CustomToaster.popCategoryBubble(count: count)
+    }
+    
+    enum ViewPosition : CGFloat {
+        case headerViewHeight = 32,
+             GapHeaderViewAndCell = 24
+    }
+    
+    func set(delegate: ViewChangable){
+        self.delegate = delegate
     }
 }
