@@ -33,6 +33,9 @@ public class Item {
     public Item(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice,
          Integer salePrice, List<String> badge, String topImage, List<String> thumbImages, String productDescription, Integer point,
          String deliveryInfo, String deliveryFee, List<Integer> prices, List<String> detailSection, int stock) {
+        System.out.println("==========================================");
+        System.out.println("Item.Item");
+        System.out.println("==========================================");
         this.detailHash = detailHash;
         this.image = image;
         this.alt = alt;
@@ -61,6 +64,13 @@ public class Item {
         return stock;
     }
 
+    public boolean checkStock(int orderCount) {
+        if(this.stock < orderCount) {
+            return false;
+        }
+        return true;
+    }
+
     public static ItemDto createItemDto(Item item) {
         return new ItemDto(item.detailHash, item.image, item.alt, item.deliveryType, item.title,
                 item.description, item.normalPrice, item.salePrice, item.badge);
@@ -70,6 +80,15 @@ public class Item {
         return new DetailItemDto(item.detailHash, item.topImage, item.thumbImages, item.productDescription,
                 item.point, item.deliveryInfo, item.deliveryFee, item.prices, item.detailSection);
     }
+
+
+    public void purchase(int orderCount) {
+        if(!checkStock(orderCount)) {
+            //custom exception
+        }
+        this.stock -= orderCount;
+    }
+
 
 
 }

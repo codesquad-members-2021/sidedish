@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.controller;
 
-import com.codesquad.sidedish.domain.Item;
 import com.codesquad.sidedish.domain.Order;
 import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.service.CategoryService;
@@ -21,10 +20,12 @@ public class ItemController {
         return categoryService.findDetailItemDtoByHash(categoryId, hash);
     }
 
+
     @PostMapping
-    public String order(@PathVariable Long categoryId, @PathVariable String hash, Order order) {
-        categoryService.order(categoryId, hash, order);
-        return null;
+    public DetailItemDto order(@PathVariable Long categoryId, @PathVariable String hash, int orderCount) {
+        categoryService.order(categoryId, hash, orderCount);
+
+        return getDetailItem(categoryId, hash);
     }
 
 }

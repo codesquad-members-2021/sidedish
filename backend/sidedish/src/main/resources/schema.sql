@@ -1,5 +1,7 @@
 drop table if exists item;
 drop table if exists category;
+drop table if exists `order`;
+
 
 create table category (
     category_id bigint primary key,
@@ -28,4 +30,11 @@ create table item (
     detail_section varchar(500),
     stock int,
     constraint category_foreign_id foreign key (category) references category(category_id)
+);
+
+create table `order` (
+    order_id bigint auto_increment primary key ,
+    email varchar(500),
+    detail_hash varchar(50),
+    count int
 );

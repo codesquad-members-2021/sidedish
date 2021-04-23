@@ -6,6 +6,7 @@ import com.codesquad.sidedish.domain.Order;
 import com.codesquad.sidedish.dto.CategoryDto;
 import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.repository.CategoryRepository;
+import com.codesquad.sidedish.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +16,11 @@ import java.util.stream.Collectors;
 public class CategoryService {
 
     CategoryRepository categoryRepository;
+    OrderRepository orderRepository;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository, OrderRepository orderRepository) {
         this.categoryRepository = categoryRepository;
+        this.orderRepository = orderRepository;
     }
 
     public List<CategoryDto> findAll() {
@@ -29,16 +32,19 @@ public class CategoryService {
         return Item.createDetailItemDto(item);
     }
 
-    public String order(Long categoryId, String hash, Order order) {
-        Item item =  findItemByHash(categoryId, hash);
-        if(item.getStock() < order.getCount()) {
-            //error
-        }
-        return null;
-    }
+    public void order(Long categoryId, String hash, int orderCount) {
 
-    public Item findItemByHash(Long categoryId, String hash) {//제거
-        return categoryRepository.findById(categoryId).orElseThrow(IllegalAccessError::new).getItem(hash);
+        Category category = categoryRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
+        Item updateItem = category.getItem(hash);
+        updateItem.purchase(orderCount);
+
+        Order order = new Order(null, "hihi@naver.com", hash, orderCount);
+//        Order order = Order.of("hihi@nave.com", hash, orderCount);
+
+//        category.updateItemStock(updateItem);
+
+        categoryRepository.save(category);
+        orderRepository.save(order);
     }
 
 }
