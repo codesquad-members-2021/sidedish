@@ -59,7 +59,7 @@ class MenuListViewModel {
     
     func requestDishes() {
         fetchDishes(dish: "main")
-        //fetchDishes(dish: "soup")
-        //fetchDishes(dish: "side")
+        fetchDishes(dish: "soup")
+        fetchDishes(dish: "side")
     }
 }

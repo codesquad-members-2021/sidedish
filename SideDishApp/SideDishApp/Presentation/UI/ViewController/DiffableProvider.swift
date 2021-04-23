@@ -34,25 +34,22 @@ class DiffableProvider  {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCardCell.reuseIdentifier, for: indexPath) as? DishCardCell else {
             return UICollectionViewCell()
         }
-        for subview in cell.eventStackView.arrangedSubviews{
-            cell.eventStackView.removeArrangedSubview(subview)
-        }
         
         DispatchQueue.main.async {
+            cell.dishImage.layer.cornerRadius = 15
             cell.dishImage.image = self.createImage(url: dishData.image)
         }
-        
         cell.title.text = "\(dishData.title)"
         cell.body.text = "\(dishData.description)"
         
-        let badgeArray = dishData.badge.components(separatedBy: ",")
-        
-        for badgeText in badgeArray {
-            let label = self.createEventLabel(text: badgeText)
-            cell.eventStackView.addArrangedSubview(label)
-        }
-        
         cell.charge.attributedText = convertCharge(normal: dishData.normalPrice, selling: dishData.sellingPrice)
+        
+        removeResidualBadges(stackView: cell.eventStackView)
+        if let badgeArray = createBadges(badgeString: dishData.badge) {
+            for badge in badgeArray {
+                cell.eventStackView.addArrangedSubview(badge)
+            }
+        }
         
         return cell
     }
@@ -63,17 +60,15 @@ class DiffableProvider  {
         <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) {
             [unowned self] (headerView, elementKind, indexPath) in
             
-            // Obtain header item using index path
             let headerItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
-            // Configure header view content based on headerItem
             var configuration = headerView.defaultContentConfiguration()
             configuration.text = headerItem.name
             
-            // Customize header appearance to make it more eye-catching
-            configuration.textProperties.font = .boldSystemFont(ofSize: 16)
-            configuration.textProperties.color = .systemBlue
+            configuration.textProperties.font = .boldSystemFont(ofSize: 22)
+            configuration.textProperties.color = .black
             
+            headerView.backgroundColor = .white
             
             let tap = CustomTapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)), dishCount: headerItem.dishes.count)
             headerView.addGestureRecognizer(tap)
@@ -82,6 +77,28 @@ class DiffableProvider  {
             headerView.contentConfiguration = configuration
         }
         return headerRegistration
+    }
+    
+    private func removeResidualBadges(stackView : UIStackView) {
+        for subView in stackView.subviews {
+            stackView.removeArrangedSubview(subView)
+            subView.removeFromSuperview()
+        }
+    }
+    
+    private func createBadges(badgeString: String) -> [UILabel]? {
+        if badgeString == "" {
+            return nil
+        }
+        
+        let stringArray = badgeString.components(separatedBy: ",")
+        var returnLabels = [UILabel]()
+        
+        for string in stringArray {
+            returnLabels.append(self.createEventLabel(text: string))
+        }
+        
+        return returnLabels
     }
     
     private func createImage(url: String) -> UIImage {

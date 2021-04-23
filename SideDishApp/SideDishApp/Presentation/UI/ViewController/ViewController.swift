@@ -15,13 +15,14 @@ class ViewController: UIViewController {
     
     private let menuListViewModel = MenuListViewModel()
     private var subscriptions = Set<AnyCancellable>()
-    var dataSource : UICollectionViewDiffableDataSource<Dishes,Dish>!
     
+    let dishCollectionViewDelegate = DishCollectionViewDelegate()
+    var dataSource : UICollectionViewDiffableDataSource<Dishes,Dish>!
     var snapshot = NSDiffableDataSourceSnapshot<Dishes,Dish>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        dishCollectionView.delegate = dishCollectionViewDelegate
         dataSource = DiffableProvider().configureDataSource(collectionView: dishCollectionView)
         bind()
         menuListViewModel.requestDishes()
@@ -79,6 +80,4 @@ class ViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    
 }
-
