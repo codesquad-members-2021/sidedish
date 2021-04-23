@@ -10,7 +10,7 @@ import Toast_Swift
 
 class DiffableProvider  {
     
-    private let colorDictionary = ["이벤트특가" : UIColor.systemGreen, "론칭특가" : UIColor.systemBlue]
+    private let colorDictionary = ["이벤트특가" : UIColor.init(displayP3Red: 130/255, green: 211/255, blue: 45/255, alpha: 1), "론칭특가" : UIColor.init(displayP3Red: 134/255, green: 198/255, blue: 255/255, alpha: 1)]
     
     func configureDataSource(collectionView : UICollectionView) -> UICollectionViewDiffableDataSource<Dishes,Dish> {
         let dataSource = UICollectionViewDiffableDataSource<Dishes,Dish> (collectionView: collectionView, cellProvider: { collectionView, indexPath, dishData in
@@ -52,11 +52,7 @@ class DiffableProvider  {
             cell.eventStackView.addArrangedSubview(label)
         }
         
-        if dishData.sellingPrice != "" {
-            cell.charge.attributedText = (dishData.normalPrice + " " + dishData.sellingPrice).addStroke(target: dishData.normalPrice)
-        } else {
-            cell.charge.text = dishData.normalPrice
-        }
+        cell.charge.attributedText = convertCharge(normal: dishData.normalPrice, selling: dishData.sellingPrice)
         
         return cell
     }
@@ -115,6 +111,21 @@ class DiffableProvider  {
         return label
     }
     
+    private func convertCharge(normal: String, selling: String) -> NSMutableAttributedString {
+        let normalCharge = "\(String.insertComma(with: normal))원"
+        let sellingCharge = "\(String.insertComma(with: selling))원"
+        var attributedText : NSMutableAttributedString
+        
+        if selling != "" {
+            let wholeString = normalCharge + " " + sellingCharge
+            
+            attributedText = wholeString.styleAsCharge(with: normalCharge, with: sellingCharge)
+        } else {
+            attributedText = normalCharge.styleAsCharge(with: "", with: normalCharge)
+        }
+        return attributedText
+    }
+    
     @objc private func handleTapGesture(recognizer: CustomTapGestureRecognizer) {
         guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
             return
@@ -122,7 +133,6 @@ class DiffableProvider  {
         let message = "상품 \(recognizer.dishCount)개 있어요!"
         
         mainView.hideAllToasts()
-//        mainView.makeToast(message)
         mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
     }
     

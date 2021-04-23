@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         dataSource = DiffableProvider().configureDataSource(collectionView: dishCollectionView)
         bind()
         menuListViewModel.requestDishes()
