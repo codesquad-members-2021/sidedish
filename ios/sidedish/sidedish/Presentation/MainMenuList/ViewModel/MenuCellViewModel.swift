@@ -10,7 +10,7 @@ import Combine
 
 class MenuCellViewModel{
     
-    @Published var dishes : SideDishesCollection!
+    @Published var dishes : SideDishesManageable!
     @Published var errorMessage : String = ""
     
     private var subscriptions = Set<AnyCancellable>()
@@ -41,7 +41,7 @@ class MenuCellViewModel{
             return 0
         }
         else {
-            return dishes.body.count
+            return dishes.getCountdishesSection()
         }
     }
     
@@ -50,7 +50,7 @@ class MenuCellViewModel{
             return 0
         }
         else {
-            return dishes.body[section].items.count
+            return dishes.getCountdishes(section: section)
         }
     }
     

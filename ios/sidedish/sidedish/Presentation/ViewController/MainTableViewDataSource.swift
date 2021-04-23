@@ -25,7 +25,8 @@ class MainTableViewDataSource : NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell : MenuCell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
-        cell.updateMenu(titleText: menuCellViewModel.dishes.body[indexPath.section].sideDish(at: indexPath.row)!.title)
+        //cell.updateMenu(titleText: menuCellViewModel.dishes.body[indexPath.section].sideDish(at: indexPath.row)!.title)
+        cell.updateMenu(titleText: menuCellViewModel.dishes.getsidedish(section: indexPath.section).sideDish(at: indexPath.row)!.title)
         
         return cell
     }

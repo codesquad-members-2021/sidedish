@@ -16,11 +16,11 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 32))
+        let headerView = CustomTableHeaderView.makeCustomTableHeaderView(width: tableView.frame.width, height: ViewPosition.headerViewHeight.rawValue)
         
         let label = UILabel() 
         label.frame = CGRect.init(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
-        label.text = viewModel.dishes.body[section].name
+        label.text = viewModel.dishes.getsidedish(section: section).name
         label.font = .boldSystemFont(ofSize: 22)
         label.backgroundColor = .white
         
@@ -40,7 +40,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 56 // headerView의 height(32) + figma에서 지정해 준 헤더와 셀 간의 간격!
+        return ViewPosition.headerViewHeight.rawValue + ViewPosition.GapHeaderViewAndCell.rawValue // headerView의 height(32) + figma에서 지정해 준 헤더와 셀 간의 간격!
     }
     
     func set(delegate: ViewChangable){
@@ -50,5 +50,10 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     @objc func popupToast(sender : TableViewTapToasterGesture){
         guard let count = sender.count else { return }
         CustomToaster.show(count: count, messageType: .category, isTop: true)
+    }
+    
+    enum ViewPosition : CGFloat {
+        case headerViewHeight = 32,
+             GapHeaderViewAndCell = 24
     }
 }
