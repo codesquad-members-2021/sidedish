@@ -47,21 +47,21 @@ const SearchBtn = styled.button`
 const DropMenu1 = styled.ul`
   position: absolute;
   top: 70%;
-  left: -10%;
+  left: 10%;
   list-style: none;
   text-align: left;
 `;
 const DropMenu2 = styled.ul`
   position: absolute;
   top: 70%;
-  left: -10%;
+  left: 10%;
   list-style: none;
   text-align: left;
 `;
 const DropMenu3 = styled.ul`
   position: absolute;
   top: 70%;
-  left: -18%;
+  left: 10%;
   list-style: none;
   text-align: left;
 `;
