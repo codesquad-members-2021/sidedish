@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
@@ -32,7 +34,9 @@ class SidedishApplicationTests {
 	}
 
 	@Test
-	@DisplayName("Banchan에 있는 Badge랑 DeliveryType 잘가져오는지 확인")
-	void getBanchan() {
+	@DisplayName("반찬레포에서 카테고리에 따라서 잘 가져오는지 확인")
+	void getBanchanList() {
+		List<Banchan> banchanList = banchanRepository.findBanchansByCategory_id("17011200");
+		assertThat(banchanList).isNotNull();
 	}
 }

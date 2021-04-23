@@ -10,11 +10,6 @@ public class BanchanDetailDataDto {
     private String top_image;
     private Set<String> thumb_images;
 
-    public BanchanDetailDataDto(String top_image, Set<String> thumb_images) {
-        this.top_image = top_image;
-        this.thumb_images = thumb_images;
-    }
-
     public BanchanDetailDataDto(DataDtoBuilder dataDtoBuilder) {
         this.top_image = dataDtoBuilder.top_image;
         this.thumb_images = dataDtoBuilder.thumb_images;

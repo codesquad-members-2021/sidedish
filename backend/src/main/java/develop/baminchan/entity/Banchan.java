@@ -19,11 +19,12 @@ public class Banchan {
     private String badge;
 
     private String tag;
+    private String category_id;
 
     @Embedded.Nullable
     private BanchanDetail banchanDetail;
 
-    public Banchan(Long id, String detail_hash, String image, String alt, String delivery_type, String title, String description, String n_price, String s_price, String badge, String tag, BanchanDetail banchanDetail) {
+    public Banchan(Long id, String detail_hash, String image, String alt, String delivery_type, String title, String description, String n_price, String s_price, String badge, String tag, String category_id, BanchanDetail banchanDetail) {
         this.id = id;
         this.detail_hash = detail_hash;
         this.image = image;
@@ -35,6 +36,7 @@ public class Banchan {
         this.s_price = s_price;
         this.badge = badge;
         this.tag = tag;
+        this.category_id = category_id;
         this.banchanDetail = banchanDetail;
     }
 
@@ -82,25 +84,11 @@ public class Banchan {
         return tag;
     }
 
-    public BanchanDetail getBanchanDetail() {
-        return banchanDetail;
+    public String getCategory_id() {
+        return category_id;
     }
 
-    @Override
-    public String toString() {
-        return "Banchan{" +
-                "id=" + id +
-                ", detail_hash='" + detail_hash + '\'' +
-                ", image='" + image + '\'' +
-                ", alt='" + alt + '\'' +
-                ", delivery_type='" + delivery_type + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", n_price='" + n_price + '\'' +
-                ", s_price='" + s_price + '\'' +
-                ", badge='" + badge + '\'' +
-                ", tag='" + tag + '\'' +
-                ", banchanDetail=" + banchanDetail +
-                '}';
+    public BanchanDetail getBanchanDetail() {
+        return banchanDetail;
     }
 }

@@ -1,41 +1,40 @@
 package develop.baminchan.service;
 
+import develop.baminchan.dto.BanchanDto;
+import develop.baminchan.dto.CategoryDto;
 import develop.baminchan.entity.Banchan;
 import develop.baminchan.entity.Category;
+import develop.baminchan.repository.BanchanRepository;
 import develop.baminchan.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryService {
     private CategoryRepository categoryRepository;
+    private BanchanRepository banchanRepository;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository, BanchanRepository banchanRepository) {
         this.categoryRepository = categoryRepository;
+        this.banchanRepository = banchanRepository;
     }
 
-    public List<Optional<Category>> findAllBestCategories() {
-        List<Optional<Category>> allBestCategories = new ArrayList<>();
-        allBestCategories.add(categoryRepository.findById(17011200L));
-        allBestCategories.add(categoryRepository.findById(17011000L));
-        allBestCategories.add(categoryRepository.findById(17010200L));
-        allBestCategories.add(categoryRepository.findById(17010300L));
-        allBestCategories.add(categoryRepository.findById(17011400L));
-       return allBestCategories;
+    public CategoryDto findBestBanchansByCategory(String category_id) {
+        Category category = categoryRepository.findCategoryByCategory_id(category_id);
+        CategoryDto categoryDto = CategoryDto.of(category, findBanchanListByCategoryId(category_id));
+        return categoryDto;
     }
 
-//    public List<Banchan> findBestBanchans(Long category_id) {
-//    }
-//
-//    public List<Banchan> findMainBanchans() {
-//    }
-//
-//    public List<Banchan> findSoupBanchans() {
-//    }
-//
-//    public List<Banchan> findSideBanchans() {
-//    }
+    private List<BanchanDto> findBanchanListByCategoryId(String catrgory_id) {
+        List<BanchanDto> banchanDtoList = new ArrayList<>();
+        List<Banchan> banchanList = new ArrayList<>();
+
+        banchanList = banchanRepository.findBanchansByCategory_id(catrgory_id);
+        for (int i = 0; i < banchanList.size(); i++) {
+            banchanDtoList.add(BanchanDto.of(banchanList.get(i)));
+        }
+        return banchanDtoList;
+    }
 }

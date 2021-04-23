@@ -17,9 +17,22 @@ public class BanchanController {
 
     @GetMapping("/main/{detail_hash}")
     public BanchanDto findOneMain(@PathVariable String detail_hash) {
-       BanchanDto banchanDto = banchanService.findBanchanByDetailHash(detail_hash);
+        BanchanDto banchanDto = banchanService.findBanchanByDetailHash(detail_hash);
         return banchanDto;
     }
+
+    @GetMapping("/soup/{detail_hash}")
+    public BanchanDto findOneSoup(@PathVariable String detail_hash) {
+        BanchanDto banchanDto = banchanService.findBanchanByDetailHash(detail_hash);
+        return banchanDto;
+    }
+
+    @GetMapping("/side/{detail_hash}")
+    public BanchanDto findOneSide(@PathVariable String detail_hash) {
+        BanchanDto banchanDto = banchanService.findBanchanByDetailHash(detail_hash);
+        return banchanDto;
+    }
+
 
     @GetMapping("/detail/{detail_hash}")
     public BanchanDetailDto findOneDetail(@PathVariable String detail_hash) {
