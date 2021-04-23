@@ -10,6 +10,6 @@ import java.util.List;
 public class BestSidedishController {
     @GetMapping("/best")
     public List<SidedishDTO> readBestSidedishes() {
-        return SampleDataFactory.createBestMenus();
+        return SampleDataFactory.createBestSidedishes();
     }
 }

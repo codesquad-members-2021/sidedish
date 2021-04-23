@@ -23,28 +23,6 @@ public class SidedishDTO {
         this.items = items;
     }
 
-    public static List<SidedishDTO> listFrom(String jsonString) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-
-        return objectMapper.readValue(
-                jsonString,
-                new TypeReference<List<SidedishDTO>>() {
-                }
-        );
-    }
-
-    public static List<SidedishDTO> listFrom(File file) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-
-        return objectMapper.readValue(
-                file,
-                new TypeReference<List<SidedishDTO>>() {
-                }
-        );
-    }
-
     public long getCategoryId() {
         return categoryId;
     }
