@@ -12,9 +12,23 @@ const Content = ({
   s_price,
   badge,
   setModal,
+  setModalData,
 }) => {
   const openModal = () => {
-    return setModal(true);
+    setModalData([
+      image,
+      title,
+      detail_hash,
+      image,
+      alt,
+      delivery_type,
+      title,
+      description,
+      n_price,
+      s_price,
+      badge,
+    ]);
+    setModal(true);
   };
   return (
     <ContentMain>
@@ -82,7 +96,7 @@ const Image = styled.div`
       background-color: transparent;
       width: 82px;
       height: 0.1px;
-      border-top: 1px solid white;
+      border: 1px solid white;
       line-height: 50px;
       font-size: 22px;
       content: "전국택배";

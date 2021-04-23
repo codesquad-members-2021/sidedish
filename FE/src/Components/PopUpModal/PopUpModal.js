@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { BeforeX, AfterX } from "../../Svg/Button";
 
-const PopUpModal = ({ setModal }) => {
+const PopUpModal = ({ setModal, ModalData }) => {
   const [close, setClose] = useState(BeforeX);
-
+  console.log(ModalData);
   const MouseEnter = () => {
     setClose(AfterX);
   };
@@ -19,7 +19,16 @@ const PopUpModal = ({ setModal }) => {
     <ModalBackground>
       <ModalCard>
         <Card>
-          <Content></Content>
+          <Content>
+            <Image src={ModalData[0]} />
+            <div>
+              <Title>{ModalData[1]}</Title>
+              <Description>{ModalData[7]}</Description>
+              <Badge>{ModalData[10]}</Badge>
+              <Sprice>{ModalData[9]}</Sprice>
+              <Nprice>{ModalData[8]}</Nprice>
+            </div>
+          </Content>
           <Carousel></Carousel>
         </Card>
         <Button
@@ -33,6 +42,18 @@ const PopUpModal = ({ setModal }) => {
     </ModalBackground>
   );
 };
+
+const Badge = styled.span``;
+const Nprice = styled.span``;
+const Sprice = styled.span``;
+const Title = styled.div`
+  display: inline-block;
+`;
+const Description = styled.div``;
+const Image = styled.img`
+  width: 392px;
+  height: 392px;
+`;
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -62,6 +83,7 @@ const Card = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
   width: 960px;
   height: 680px;
   background-color: white;
@@ -74,7 +96,12 @@ const Carousel = styled.div`
 `;
 
 const Button = styled.button`
+  position: absolute;
+  height: 30px;
+  right: 4px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   align-items: top;
   &:active {
     transform: translateY(2px);
