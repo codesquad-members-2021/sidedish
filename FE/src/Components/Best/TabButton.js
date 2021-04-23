@@ -22,12 +22,12 @@ const TabBtn = styled(Btn)`
   position: relative;
   outline: none;
 `;
-const TabButton = ({toggleState, toggleTab}) => {
+const TabButton = ({Food, setFood, toggleState, toggleTab}) => {
     return (
       <TabsBlock>
-        {[...Array(5)].map( (_, idx) =>  {
+        {Food.map( (v, idx) =>  {
           return (<TabBtn toggleState={toggleState} active={toggleState === (idx + 1)} onClick={() => toggleTab(idx+1)}>
-          Tab {idx+1}
+          {v.name}
         </TabBtn>)
         })}
       </TabsBlock> 

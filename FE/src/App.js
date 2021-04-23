@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Best />
+      <Best URL={URL}/>
       <Main URL={URL} />
       <All URL={URL} />
     </>

@@ -1,8 +1,9 @@
-import React,{useState} from "react";
+import React,{ useState, useEffect, useRef }  from "react";
 import styled from 'styled-components';
 import TabContent from "./TabContent";
 import TabButton from "./TabButton";
-// import axios from "axios";
+import Content from "../Main/Content";
+import axios from "axios";
 
 const BestTitle = styled.h2`
   margin-top: 30px;
@@ -24,19 +25,33 @@ font-size: 18px;
 border: none;
 `;
 
-const Best = () => {
+const Best = ({ URL }) => {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
+  //fetch
+  const [Food, setFood] = useState([]);
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await axios(URL + "best").then((res) => res.data.body);
+      setFood(data);
+      let a = data.map(v => v.items);
+    };
+    fetchData();
+  }, []);
+
+
   return (
     <>
     <BestTitle>후기가 증명한 베스트 반찬</BestTitle>
     <TabCotainer>
-      <TabButton toggleTab={toggleTab} toggleState = {toggleState}/>
-      <TabContent toggleTab={toggleTab} toggleState = {toggleState}/>
+      <TabButton Food={Food} setFood = {setFood} toggleTab={toggleTab} toggleState = {toggleState}/>
+      <TabContent Food={Food} setFood={setFood} Ref={mainRef} toggleTab={toggleTab} toggleState = {toggleState}/>
     </TabCotainer>
     </>
   );
@@ -44,3 +59,6 @@ const Best = () => {
 };
 
 export default Best;
+
+
+
