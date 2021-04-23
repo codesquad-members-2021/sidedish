@@ -65,8 +65,8 @@ class SideDishViewController: UIViewController {
     }
     
     private func triggerAlert(by error : String) {
-        DispatchQueue.main.async {
-            self.present(Alert.create(title : error),animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(Alert.create(title : error),animated: true)
         }
     }
 }
@@ -85,13 +85,18 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         let tappedItemSection = indexPath.section
         let tappedItemRow = indexPath.row
         let path = Menu.allCases[tappedItemSection]
-        let itemDetailHash = sideDishViewModel.didFetchItemDatailHash(with: path, sequence: tappedItemRow)
+        guard let itemDetailHash = sideDishViewModel.didFetchItemDatailHash(with: path, sequence: tappedItemRow) else {
+            return
+        }
         
         guard let targetVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
             return
         }
+        
         targetVC.depend2(detailViewModel: DIContainer.createDI2())
-        targetVC.detailHash = itemDetailHash
+        targetVC.sideDishTitle = itemDetailHash.title
+        targetVC.badges = itemDetailHash.badge
+        targetVC.detailHash = itemDetailHash.detailHash
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
     

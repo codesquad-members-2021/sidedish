@@ -20,7 +20,6 @@ class DetailViewModel {
     init(sideDishUseCase: SideDishProtocol) {
         self.sideDishUseCase = sideDishUseCase
         self.sideDishManager = SideDishManager()
-//        request(with: "HDF73")
     }
     
     func request(with detailHash: String) {
@@ -28,10 +27,8 @@ class DetailViewModel {
             .sink { (complete) in
                 if case .failure(let error) = complete {
                     self.errorMessage = error.message
-                    print(error)
                 }
             } receiveValue: { (detail) in
-                print(detail)
                 self.itemDetails = detail.data
             }.store(in: &cancellable)
     }
@@ -39,7 +36,6 @@ class DetailViewModel {
     func didFetchDetails(completion: @escaping ((ItemData) -> ())) {
         $itemDetails
             .sink { (detail) in
-                // needs improvement
                 completion(detail)
             }.store(in: &cancellable)
     }

@@ -30,7 +30,7 @@ class SideDishManager {
         return sideDishesInfo[path]?.count ?? 0
     }
     
-    func getItemDetailHash(with path: Menu, sequence: Int) -> String {
-        return sideDishesInfo[path]?[sequence].detailHash ?? ""
+    func getItemDetailHash(with path: Menu, sequence: Int) -> Item? {
+        return sideDishesInfo[path]?[sequence]
     }
 }

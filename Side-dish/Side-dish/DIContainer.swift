@@ -19,7 +19,6 @@ class DIContainer {
         let networkManage = NetworkManager()
         let useCase = SideDishUseCase(networkManager: networkManage)
         let viewModel = DetailViewModel(sideDishUseCase: useCase)
-        print("viewModel has been created")
         return viewModel
     }
 }

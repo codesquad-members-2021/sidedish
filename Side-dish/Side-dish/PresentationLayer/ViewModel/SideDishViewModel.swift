@@ -49,7 +49,7 @@ class SideDishViewModel {
         return sideDishManager.getRowCount(path: path)
     }
     
-    func didFetchItemDatailHash(with path: Menu, sequence: Int) -> String {
+    func didFetchItemDatailHash(with path: Menu, sequence: Int) -> Item? {
         return sideDishManager.getItemDetailHash(with: path, sequence: sequence)
     }
     
