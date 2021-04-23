@@ -17,4 +17,16 @@ public class Image {
         this.url = url;
         this.itemId = itemId;
     }
+
+    public Long getImageId() {
+        return imageId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
 }

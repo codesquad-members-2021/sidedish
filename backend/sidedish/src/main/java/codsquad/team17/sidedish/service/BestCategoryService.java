@@ -1,4 +1,51 @@
 package codsquad.team17.sidedish.service;
 
+import codsquad.team17.sidedish.domain.BestCategory;
+import codsquad.team17.sidedish.domain.Item;
+import codsquad.team17.sidedish.dto.BestCategoryDto;
+import codsquad.team17.sidedish.dto.ItemDto;
+import codsquad.team17.sidedish.repository.BestCategoryRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
 public class BestCategoryService {
+    private final BestCategoryRepository bestCategoryRepository;
+
+    private final ItemService itemService;
+    private final ImageService imageService;
+
+    public BestCategoryService(BestCategoryRepository bestCategoryRepository,
+                               ItemService itemService, ImageService imageService) {
+        this.bestCategoryRepository = bestCategoryRepository;
+        this.itemService = itemService;
+        this.imageService = imageService;
+    }
+
+    public List<BestCategoryDto> getBestCategoryList() {
+        List<Item> distinctBestCategoryList = itemService.findDistinctByBestCategoryId();
+
+        return distinctBestCategoryList.stream()
+                .map(item -> getBestCategoryDto(item.getBestCategoryId()))
+                .collect(Collectors.toList());
+    }
+
+    public BestCategoryDto getBestCategoryDto(Long bestCategoryId) {
+        List<Item> items = itemService.findAllByBestCategoryId(bestCategoryId);
+
+        List<ItemDto> itemDtos = items.stream()
+                .map(item -> new ItemDto(item, imageService.findTopImageByItemId(item.getItemId())))
+                .collect(Collectors.toList());
+
+        BestCategory bestCategory = findBestCategoryId(bestCategoryId);
+
+        return new BestCategoryDto(bestCategory, itemDtos);
+    }
+
+    public BestCategory findBestCategoryId(Long bestCategoryId) {
+        return bestCategoryRepository.findById(bestCategoryId)
+                .orElseThrow(RuntimeException::new); //TODO exception handling 하기
+    }
 }
