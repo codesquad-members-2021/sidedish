@@ -666,7 +666,7 @@ INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (21, 'FRI');
 INSERT INTO `delivery_day`(item, `the_day_of_week`) VALUES (21, 'SAT');
 
 
-INSERT INTO `item`(id, section, category, image, alt, top_image, title, description, n_price, s_price, delivery_fee, stock) VALUES (22, 3, null, 'imageUrl', 'alt', 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/43c38eeffa556554c9b06301eb3e85b2.jpg', 'title', '아이반찬으로 최고 계란말이', 4300, 3900, 2500, 5);
+INSERT INTO `item`(id, section, category, image, alt, top_image, title, description, n_price, s_price, delivery_fee, stock) VALUES (22, 3, null, 'http://public.codesquad.kr/jk/storeapp/data/f6817349118d4c671da8dca9065649a9.jpg', '[마더앤찬] 명란치즈계란말이 230g"', 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/43c38eeffa556554c9b06301eb3e85b2.jpg', '[마더앤찬] 명란치즈계란말이 230g', '아이반찬으로 최고 계란말이', 4300, 3900, 2500, 5);
 INSERT INTO `detail_section`(item, item_key, url) VALUES (22, 0, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/341b8605fa224ec1808c4f169097d170.jpg');
 INSERT INTO `detail_section`(item, item_key, url) VALUES (22, 1, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/0228d4cb660a3cca06952917bd024dcb.jpg');
 INSERT INTO `detail_section`(item, item_key, url) VALUES (22, 2, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/e027227f61a93b6473e8c4bbd5c3de74.jpg');
