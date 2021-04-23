@@ -5,9 +5,7 @@ import com.codesquad.sidedish.category.domain.dto.PreviewListDTO;
 import com.codesquad.sidedish.category.service.SidedishItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SidedishCategoryController {
@@ -28,5 +26,10 @@ public class SidedishCategoryController {
     public ResponseEntity<DetailItemDTO> detailItem(@PathVariable String category, @PathVariable Long id) {
         DetailItemDTO detailDTO = itemService.showItem(category, id);
         return new ResponseEntity<>(detailDTO, HttpStatus.OK);
+    }
+
+    @PostMapping("/{category}/{id}")
+    public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
+        itemService.order(category, id, quantity);
     }
 }

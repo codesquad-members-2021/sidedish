@@ -29,14 +29,16 @@ public class SidedishItemService {
     private final SidedishEventRepository sidedishEventRepository;
     private final SidedishImageRepository sidedishImageRepository;
 
-    public SidedishItemService(SidedishCategoryRepository sidedishCategoryRepository, SidedishEventRepository sidedishEventRepository, SidedishImageRepository sidedishImageRepository) {
+    public SidedishItemService(SidedishCategoryRepository sidedishCategoryRepository,
+                               SidedishEventRepository sidedishEventRepository,
+                               SidedishImageRepository sidedishImageRepository) {
         this.sidedishCategoryRepository = sidedishCategoryRepository;
         this.sidedishEventRepository = sidedishEventRepository;
         this.sidedishImageRepository = sidedishImageRepository;
     }
 
     public PreviewListDTO showItemList(String categoryName) {
-        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName);
+        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
         List<SidedishItem> items = category.getSidedishItemList();
 
         List<SidedishItemPreviewDTO> itemDTOs = new ArrayList<>();
@@ -51,11 +53,8 @@ public class SidedishItemService {
     }
 
     public DetailItemDTO showItem(String categoryName, Long itemId) {
-        SidedishCategory sidedishCategory = sidedishCategoryRepository.findByCategoryName(categoryName);
-        SidedishItem sidedishItem = sidedishCategory.getSidedishItemList().stream()
-                .filter(item -> item.isSameId(itemId))
-                .findFirst()
-                .orElseThrow(EmptyItemException::new);
+        SidedishCategory sidedishCategory = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
+        SidedishItem sidedishItem = sidedishCategory.findItem(itemId);
 
         Set<SidedishEventDTO> eventSet = createEventDtoSet(sidedishItem);
         List<SidedishImage> detailImages = findImagesByType(sidedishItem, SidedishImageTypeEnum.DETAIL);
@@ -104,4 +103,9 @@ public class SidedishItemService {
         return eventDtoSet;
     }
 
+    public void order(String categoryName, Long id, Integer quantity) {
+        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
+        SidedishItem item = category.findItem(id);
+        item.order(quantity);
+    }
 }

@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.category.domain;
 
+import com.codesquad.sidedish.category.exception.EmptyItemException;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
@@ -33,6 +34,13 @@ public class SidedishCategory {
 
     public List<SidedishItem> getSidedishItemList() {
         return sidedishItemList;
+    }
+
+    public SidedishItem findItem(Long itemId){
+        return sidedishItemList.stream()
+                .filter(item -> item.isSameId(itemId))
+                .findFirst()
+                .orElseThrow(EmptyItemException::new);
     }
 
     @Override

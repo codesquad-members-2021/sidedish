@@ -1,5 +1,4 @@
-use
-    sidedish;
+use sidedish;
 
 drop table if exists SIDEDISH_ITEM;
 drop table if exists SIDEDISH_CATEGORY;
