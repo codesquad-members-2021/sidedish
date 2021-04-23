@@ -1,10 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const WrapMain = styled.div`
   display: flex;
 `;
 
 const WrapCard = styled.div`
+  display: flex;
+  justify-content: center;
   width: 1280px;
   height: 479px;
   overflow: hidden;
@@ -12,9 +14,10 @@ const WrapCard = styled.div`
 
 const CardStyle = styled.div`
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
   padding: 0px;
-
+  transition: all 1s;
+  // transform: translate(308px);
   width: 2576px;
   height: 479px;
 `;

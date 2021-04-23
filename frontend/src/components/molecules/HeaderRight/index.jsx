@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import SearchBar from "../../atoms/Searchbar";
-import Span from "../../atoms/Span";
+import React from 'react';
+import styled from 'styled-components';
+import SearchBar from '../../atoms/Searchbar';
+import Span from '../../atoms/Span';
 const WrapDiv = styled.div`
   display: flex;
   margin: 32px 100px 80px 80px;
