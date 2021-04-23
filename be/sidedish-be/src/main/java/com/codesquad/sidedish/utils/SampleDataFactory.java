@@ -37,6 +37,11 @@ public class SampleDataFactory {
         });
     }
 
+    public static List<ItemDTO> createSideSidedishes() {
+        return jsonToObject("sample-data/side-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
     private static <E> E jsonToObject(String jsonFilePath, TypeReference<E> typeReference) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
