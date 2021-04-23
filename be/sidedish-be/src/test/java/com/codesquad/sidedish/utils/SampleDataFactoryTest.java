@@ -48,6 +48,7 @@ class SampleDataFactoryTest {
                 .isEqualTo(ItemDTOTestResults.MAIN_MENU);
     }
 
+
     @Test
     void createCourseSidedishes() throws JsonProcessingException {
         if (!environment.acceptsProfiles(Profiles.of("dev"))) {
@@ -80,4 +81,5 @@ class SampleDataFactoryTest {
         assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
                 .isEqualTo(ItemDTOTestResults.SIDE_MENU);
     }
+
 }
