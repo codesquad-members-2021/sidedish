@@ -1,15 +1,19 @@
 package sidedish.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import sidedish.domain.Dish;
 import sidedish.service.ConvertUtils;
 
 import java.util.List;
 
+@JsonPropertyOrder({"id", "name","top_image", "description", "prices", "badges"})
 public class MainPageDishDTO {
 
     private Long id;
     private String name;
-    private String top_image;
+    @JsonProperty("top_image")
+    private String topImage;
     private String description;
     private List<Integer> prices;
     private List<String> badges;
@@ -17,7 +21,7 @@ public class MainPageDishDTO {
     public MainPageDishDTO(Dish dish) {
         this.id = dish.getId();
         this.name = dish.getName();
-        this.top_image = dish.getTopImage();
+        this.topImage = dish.getTopImage();
         this.description = dish.getDescription();
         this.prices = ConvertUtils.convertToIntegerList(dish.getPrices());
         this.badges = ConvertUtils.convertToStringList(dish.getBadges());
@@ -31,8 +35,8 @@ public class MainPageDishDTO {
         return name;
     }
 
-    public String getTop_image() {
-        return top_image;
+    public String getTopImage() {
+        return topImage;
     }
 
     public String getDescription() {
@@ -52,7 +56,7 @@ public class MainPageDishDTO {
         return "MainPageDishDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", top_image='" + top_image + '\'' +
+                ", top_image='" + topImage + '\'' +
                 ", description='" + description + '\'' +
                 ", prices=" + prices +
                 '}';

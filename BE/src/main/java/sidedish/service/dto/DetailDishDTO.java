@@ -1,38 +1,45 @@
 package sidedish.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import sidedish.domain.Dish;
 import sidedish.service.ConvertUtils;
 
 import java.util.List;
-
+@JsonPropertyOrder({"id", "name","top_image", "description", "prices", "badges",
+        "stock" , "point", "delivery_info", "thumb_images", "detail_images"})
 public class DetailDishDTO {
 
     private Long id;
     private String name;
-    private String top_image;
+    @JsonProperty("top_image")
+    private String topImage;
     private String description;
     private List<Integer> prices;
     private List<String> badges;
     private Long stock;
     private Integer point;
-    private String delivery_info;
-    private List<String> thumb_images;
-    private List<String> detail_images;
+    @JsonProperty("delivery_info")
+    private String deliveryInfo;
+    @JsonProperty("thumb_images")
+    private List<String> thumbImages;
+    @JsonProperty("detail_images")
+    private List<String> detailImages;
 
     public DetailDishDTO() {}
 
     public DetailDishDTO(Dish dish) {
         this.id = dish.getId();
         this.name = dish.getName();
-        this.top_image = dish.getTopImage();
+        this.topImage = dish.getTopImage();
         this.description = dish.getDescription();
         this.prices = ConvertUtils.convertToIntegerList(dish.getPrices());
         this.badges = ConvertUtils.convertToStringList(dish.getBadges());
         this.stock = dish.getStock();
         this.point = dish.getPoint();
-        this.delivery_info = dish.getDeliveryInfo();
-        this.thumb_images = ConvertUtils.convertToStringList(dish.getThumbImages());
-        this.detail_images = ConvertUtils.convertToStringList(dish.getDetailImages());
+        this.deliveryInfo = dish.getDeliveryInfo();
+        this.thumbImages = ConvertUtils.convertToStringList(dish.getThumbImages());
+        this.detailImages = ConvertUtils.convertToStringList(dish.getDetailImages());
     }
 
     public Long getId() {
@@ -43,8 +50,8 @@ public class DetailDishDTO {
         return name;
     }
 
-    public String getTop_image() {
-        return top_image;
+    public String getTopImage() {
+        return topImage;
     }
 
     public String getDescription() {
@@ -67,16 +74,16 @@ public class DetailDishDTO {
         return point;
     }
 
-    public String getDelivery_info() {
-        return delivery_info;
+    public String getDeliveryInfo() {
+        return deliveryInfo;
     }
 
-    public List<String> getThumb_images() {
-        return thumb_images;
+    public List<String> getThumbImages() {
+        return thumbImages;
     }
 
-    public List<String> getDetail_images() {
-        return detail_images;
+    public List<String> getDetailImages() {
+        return detailImages;
     }
 
     @Override
@@ -84,15 +91,15 @@ public class DetailDishDTO {
         return "DetailDishDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", top_image='" + top_image + '\'' +
+                ", top_image='" + topImage + '\'' +
                 ", description='" + description + '\'' +
                 ", prices=" + prices +
                 ", badges=" + badges +
                 ", stock=" + stock +
                 ", point=" + point +
-                ", delivery_info='" + delivery_info + '\'' +
-                ", thumb_images=" + thumb_images +
-                ", detail_images=" + detail_images +
+                ", delivery_info='" + deliveryInfo + '\'' +
+                ", thumb_images=" + thumbImages +
+                ", detail_images=" + detailImages +
                 '}';
     }
 }
