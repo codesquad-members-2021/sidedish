@@ -1,14 +1,19 @@
-import React from "react";
-import styled from "styled-components";
-import { ReactComponent as searchSVG } from "../../../images/search.svg";
-import { ReactComponent as closeSVG } from "../../../images/close.svg";
-import { ReactComponent as downSVG } from "../../../images/down.svg";
-import { ReactComponent as upSVG } from "../../../images/up.svg";
-import { ReactComponent as leftSVG } from "../../../images/left.svg";
-import { ReactComponent as rightSVG } from "../../../images/right.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as searchSVG } from '../../../images/search.svg';
+import { ReactComponent as closeSVG } from '../../../images/close.svg';
+import { ReactComponent as downSVG } from '../../../images/down.svg';
+import { ReactComponent as upSVG } from '../../../images/up.svg';
+import { ReactComponent as leftSVG } from '../../../images/left.svg';
+import { ReactComponent as rightSVG } from '../../../images/right.svg';
 
-const Icon = (props) => {
-  const defaultSetting = `
+const Icon = props => {
+  const IconWrapper = styled.div`
+    cursor: pointer;
+  `;
+
+  const IconSvg = () => {
+    const defaultSetting = `
   width: ${props._width};
   height: ${props._width};
   stroke: ${props._color};
@@ -16,46 +21,51 @@ const Icon = (props) => {
   right:${props._right};
   `;
 
-  const DownIcon = styled(downSVG)`
-    ${defaultSetting}
-  `;
+    switch (props._type) {
+      case 'DownIcon':
+        const DownIcon = styled(downSVG)`
+          ${defaultSetting}
+        `;
+        return <DownIcon />;
+      case 'UpIcon':
+        const UpIcon = styled(upSVG)`
+          ${defaultSetting}
+        `;
+        return <UpIcon />;
+      case 'CloseIcon':
+        const CloseIcon = styled(closeSVG)`
+          ${defaultSetting}
+        `;
+        return <CloseIcon />;
+      case 'SearchIcon':
+        const SearchIcon = styled(searchSVG)`
+          ${defaultSetting}
+        `;
+        return <SearchIcon />;
+      case 'RightIcon':
+        const RighthIcon = styled(rightSVG)`
+          ${defaultSetting}
+        `;
+        return <RighthIcon />;
+      case 'LeftIcon':
+        const LeftIcon = styled(leftSVG)`
+          ${defaultSetting}
+        `;
+        return <LeftIcon />;
+      default:
+        break;
+    }
+  };
 
-  const UpIcon = styled(upSVG)`
-    ${defaultSetting}
-  `;
-
-  const CloseIcon = styled(closeSVG)`
-    ${defaultSetting}
-  `;
-
-  const SearchIcon = styled(searchSVG)`
-    ${defaultSetting}
-  `;
-
-  const RighthIcon = styled(rightSVG)`
-    ${defaultSetting}
-  `;
-
-  const LeftIcon = styled(leftSVG)`
-    ${defaultSetting}
-  `;
-
-  switch (props._type) {
-    case "DownIcon":
-      return <DownIcon />;
-    case "UpIcon":
-      return <UpIcon />;
-    case "CloseIcon":
-      return <CloseIcon />;
-    case "SearchIcon":
-      return <SearchIcon />;
-    case "RighthIcon":
-      return <RighthIcon />;
-    case "LeftIcon":
-      return <LeftIcon />;
-    default:
-      break;
-  }
+  return (
+    <IconWrapper
+      onClick={() => {
+        props.moveSlide(props._type);
+      }}
+    >
+      <IconSvg />
+    </IconWrapper>
+  );
 };
 
 export default Icon;
