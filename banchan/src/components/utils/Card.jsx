@@ -7,9 +7,13 @@ import { CenterContainer } from './styles/common.jsx';
 const mockImage =
   'https://recipe1.ezmember.co.kr/cache/recipe/2020/09/23/5e308abb30b00ecb9c1b9b398db5b4451.jpg';
 
-const Card = ({ product, cardSize, margin = 0, type }) => {
+const Card = ({ product, cardSize, margin = 0, type, onModal }) => {
   return (
-    <StyledLi cardSize={cardSize} margin={margin}>
+    <StyledLi
+      cardSize={cardSize}
+      margin={margin}
+      onClick={() => onModal(product)}
+    >
       <StyledThumbnail>
         <StyledHoverLayer cardSize={cardSize}>
           <DeliveryTypeList>

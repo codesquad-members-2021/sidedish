@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import IconButton from '../utils/button/IconButton';
 import { CenterContainer } from '../utils/styles/common';
 
-const CarouselSection = ({ key, url, title }) => {
+const CarouselSection = ({ key, url, title, onModal }) => {
   const [products, setProducts] = useState([]);
   // const [products, setProducts] = useState(mockData);
   const [currentX, setX] = useState(0);
@@ -74,6 +74,7 @@ const CarouselSection = ({ key, url, title }) => {
                 product={product}
                 cardSize={(props) => props.theme.cardSizes.M}
                 margin={8}
+                onModal={onModal}
               />
             ))}
           </CardList>
