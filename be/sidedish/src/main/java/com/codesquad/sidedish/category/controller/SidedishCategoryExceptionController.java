@@ -20,6 +20,6 @@ public class SidedishCategoryExceptionController {
 
     @ExceptionHandler(OutOfStockException.class)
     public ResponseEntity<ErrorResponseDTO> handleOutOfStockException(OutOfStockException exception) {
-        ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponseDTO(exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponseDTO(exception.getMessage()));
     }
 }
