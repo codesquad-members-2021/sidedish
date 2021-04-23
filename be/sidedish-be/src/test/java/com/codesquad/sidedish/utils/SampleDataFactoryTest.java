@@ -25,7 +25,6 @@ class SampleDataFactoryTest {
 
     ObjectMapper objectMapper = new ObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
-
     @Test
     void createBestSidedishes() throws JsonProcessingException {
         if (!environment.acceptsProfiles(Profiles.of("dev"))) {
