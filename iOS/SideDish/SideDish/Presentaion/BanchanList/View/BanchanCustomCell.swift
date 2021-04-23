@@ -18,10 +18,6 @@ class BanchanCustomCell: UICollectionViewCell {
     
     static let identifer = "BanchanCustomCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     static var nib: UINib {
         return UINib(nibName: identifer, bundle: nil)
     }

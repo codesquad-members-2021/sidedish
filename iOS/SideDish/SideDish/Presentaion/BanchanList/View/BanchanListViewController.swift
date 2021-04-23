@@ -12,9 +12,9 @@ class BanchanListViewController: UIViewController {
     
     @IBOutlet weak var banchanCollectionView: BanchanCollectionView!
     
-    var viewModel = BanchanListViewModel()
-    lazy var dataSource = configureDataSource()
-    var subscriptions = Set<AnyCancellable>()
+    private var viewModel = BanchanListViewModel()
+    private lazy var dataSource = configureDataSource()
+    private var subscriptions = Set<AnyCancellable>()
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Banchan>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Banchan>

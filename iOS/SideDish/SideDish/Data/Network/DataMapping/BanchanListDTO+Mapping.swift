@@ -8,20 +8,20 @@
 import Foundation
 
 struct BanchanListDTO: Codable {
-    let body: [BanchanListItemDTO]
+    private let body: [BanchanListItemDTO]
 }
 
 extension BanchanListDTO {
     struct BanchanListItemDTO: Codable {
-        let detailHash: String
-        let image: String
-        let alt: String
-        let deliveryType: [String]
-        let description: String
-        let title: String
-        let nPrice: String?
-        let sPrice: String
-        let badge: [String]?
+        private let detailHash: String
+        private let image: String
+        private let alt: String
+        private let deliveryType: [String]
+        private let description: String
+        private let title: String
+        private let nPrice: String?
+        private let sPrice: String
+        private let badge: [String]?
         
         func toDomain() -> Banchan {
             return .init(detailHash: detailHash, image: image, alt: alt, title: title, description: description, nPrice: nPrice, sPrice: sPrice, badge: badge, deliveryType: deliveryType)
