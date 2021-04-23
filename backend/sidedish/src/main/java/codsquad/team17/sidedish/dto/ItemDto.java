@@ -18,8 +18,7 @@ public class ItemDto {
     private List<String> badge;
     private String image;
 
-    public ItemDto(){
-
+    public ItemDto() {
     }
 
     public ItemDto(Item entity, Image image) {
