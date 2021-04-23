@@ -5,7 +5,11 @@ const MainItemsCardNPrice = ({ nPrice }) => {
   nPrice === undefined
     ? (n_Price = "할인 된 가격이 없습니다 !")
     : (n_Price = nPrice + "원");
-  return <Card.CardNPrice>{n_Price}</Card.CardNPrice>;
+  return (
+    <Card.CardNPrice fontSize={14} lineHeight={20}>
+      {n_Price}
+    </Card.CardNPrice>
+  );
 };
 
 export default MainItemsCardNPrice;
