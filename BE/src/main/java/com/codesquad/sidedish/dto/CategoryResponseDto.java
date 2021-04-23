@@ -1,7 +1,7 @@
-package com.codesquad.sidedish.DTO;
+package com.codesquad.sidedish.dto;
 
-import com.codesquad.sidedish.entity.Category;
-import com.codesquad.sidedish.entity.Dish;
+import com.codesquad.sidedish.domain.Category;
+import com.codesquad.sidedish.domain.Dish;
 
 import java.util.HashSet;
 import java.util.Set;

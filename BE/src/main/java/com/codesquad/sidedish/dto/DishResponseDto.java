@@ -1,6 +1,6 @@
-package com.codesquad.sidedish.DTO;
+package com.codesquad.sidedish.dto;
 
-import com.codesquad.sidedish.entity.Dish;
+import com.codesquad.sidedish.domain.Dish;
 
 public class DishResponseDto {
     private final String id;
