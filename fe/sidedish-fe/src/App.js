@@ -1,19 +1,24 @@
 import "./App.css";
 import { Header } from "./components/Header/Header.jsx";
-import { BestMenu } from "./components/BestMenu/BestMenu.jsx";
-import { FlexRowContainer } from "./components/common/FlexRowContainer.jsx";
-// import {
-//   LargeCard,
-//   MiddleCard,
-//   SmallCard,
-// } from "./components/MenuCard/MenuCard.jsx";
+import { SmallCard } from "./components/MenuCard/SmallCard";
+import { MiddleCard } from "./components/MenuCard/MiddleCard";
 import { LargeCard } from "./components/MenuCard/LargeCard";
+import { BestMenu } from "./components/BestMenu/BestMenu.jsx";
+import { FlexRowContainer } from "./components/common/FlexContainer.jsx";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
       <BestMenu></BestMenu>
+      <FlexRowContainer>
+        <SmallCard />
+        <SmallCard />
+        <SmallCard />
+      </FlexRowContainer>
+      <FlexRowContainer>
+        <MiddleCard />
+      </FlexRowContainer>
       <FlexRowContainer>
         <LargeCard></LargeCard>
         <LargeCard></LargeCard>
