@@ -19,6 +19,8 @@ public class DetailDishDTO {
     private List<String> thumb_images;
     private List<String> detail_images;
 
+    public DetailDishDTO() {}
+
     public DetailDishDTO(Dish dish) {
         this.id = dish.getId();
         this.name = dish.getName();
