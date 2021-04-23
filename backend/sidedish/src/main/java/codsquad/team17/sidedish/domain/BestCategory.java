@@ -9,7 +9,6 @@ public class BestCategory {
     private String bestCategoryName;
 
     public BestCategory() {
-
     }
 
     public BestCategory(Long bestCategoryId, String bestCategoryName) {

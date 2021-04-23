@@ -10,7 +10,6 @@ public class BestCategoryDto {
     private List<ItemDto> items;
 
     private BestCategoryDto(){
-
     }
 
     public BestCategoryDto(BestCategory entity, List<ItemDto> items) {

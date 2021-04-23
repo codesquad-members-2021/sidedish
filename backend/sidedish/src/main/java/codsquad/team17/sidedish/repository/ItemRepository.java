@@ -8,8 +8,14 @@ import java.util.List;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
     List<Item> findAll();
+
     List<Item> findAllByBestCategoryId(Long bestCategoryId);
+
+    List<Item> findAllByDishCategoryId(Long dishtCategoryId);
 
     @Query("SELECT DISTINCT best_category_id FROM item")
     List<Item> findDistinctByBestCategoryId();
+
+    @Query("SELECT DISTINCT dish_category_id FROM item")
+    List<Item> findDistinctByDishCategoryId();
 }

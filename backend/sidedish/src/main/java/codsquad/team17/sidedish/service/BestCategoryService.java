@@ -34,18 +34,12 @@ public class BestCategoryService {
 
     public BestCategoryDto getBestCategoryDto(Long bestCategoryId) {
         List<Item> items = itemService.findAllByBestCategoryId(bestCategoryId);
-
-        List<ItemDto> itemDtos = items.stream()
-                .map(item -> new ItemDto(item, imageService.findTopImageByItemId(item.getItemId())))
-                .collect(Collectors.toList());
-
-        BestCategory bestCategory = findBestCategoryId(bestCategoryId);
-
-        return new BestCategoryDto(bestCategory, itemDtos);
+        List<ItemDto> itemDtos = itemService.getItemDtoList(items);
+        return new BestCategoryDto(findBestCategoryId(bestCategoryId), itemDtos);
     }
 
     public BestCategory findBestCategoryId(Long bestCategoryId) {
         return bestCategoryRepository.findById(bestCategoryId)
-                .orElseThrow(RuntimeException::new); //TODO exception handling 하기
+                .orElseThrow(RuntimeException::new);
     }
 }
