@@ -17,7 +17,7 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var badgeBackgroundView: UIView!
     @IBOutlet weak var badgeLabel: UILabel!
     
-    static let identifier = "DishCell"
+    static let reuseIdentifier = String(describing: DishCell.self)
     var viewModel: DishesListItemViewModel!
     
     override func awakeFromNib() {

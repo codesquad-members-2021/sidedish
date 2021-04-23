@@ -12,7 +12,7 @@ class SectionHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var sectionTitleLabel: UILabel!
     
-    static let identifier = "SectionHeaderView"
+    static let reuseIdentifier = String(describing: SectionHeaderView.self)
     var viewModel: DishesListViewModel!
     var countOfMenus: Int = 0
     

@@ -41,11 +41,11 @@ class MainViewController: UIViewController {
     }
     
     private func registerXib() {
-        let dishNib = UINib(nibName: DishCell.identifier, bundle: nil)
-        dishCollectionView.register(dishNib, forCellWithReuseIdentifier: DishCell.identifier)
+        let dishNib = UINib(nibName: DishCell.reuseIdentifier, bundle: nil)
+        dishCollectionView.register(dishNib, forCellWithReuseIdentifier: DishCell.reuseIdentifier)
         
-        let headerNib = UINib(nibName: SectionHeaderView.identifier, bundle: nil)
-        dishCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
+        let headerNib = UINib(nibName: SectionHeaderView.reuseIdentifier, bundle: nil)
+        dishCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
     }
     
     override func viewWillLayoutSubviews() {
