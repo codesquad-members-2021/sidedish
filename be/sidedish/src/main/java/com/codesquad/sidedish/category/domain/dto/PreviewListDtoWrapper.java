@@ -3,11 +3,11 @@ package com.codesquad.sidedish.category.domain.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PreviewListDTO {
+public class PreviewListDtoWrapper {
 
     private final List<SidedishItemPreviewDTO> items;
 
-    public PreviewListDTO(List<SidedishItemPreviewDTO> previewDTOs) {
+    public PreviewListDtoWrapper(List<SidedishItemPreviewDTO> previewDTOs) {
         this.items = new ArrayList<>();
         addDTO(previewDTOs);
     }

@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.category.domain;
 
-import com.codesquad.sidedish.category.exception.EmptyItemException;
+import com.codesquad.sidedish.category.exception.CategoryNotFoundException;
+import com.codesquad.sidedish.category.exception.ItemNotFoundException;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class SidedishCategory {
         return sidedishItemList.stream()
                 .filter(item -> item.isSameId(itemId))
                 .findFirst()
-                .orElseThrow(EmptyItemException::new);
+                .orElseThrow(ItemNotFoundException::new);
     }
 
     @Override

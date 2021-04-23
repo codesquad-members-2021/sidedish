@@ -3,12 +3,13 @@ package com.codesquad.sidedish.category.service;
 import com.codesquad.sidedish.category.domain.SidedishCategory;
 import com.codesquad.sidedish.category.domain.SidedishCategoryRepository;
 import com.codesquad.sidedish.category.domain.SidedishItem;
-import com.codesquad.sidedish.category.domain.SidedishItemDetailDTO;
-import com.codesquad.sidedish.category.domain.dto.DetailItemDTO;
+import com.codesquad.sidedish.category.domain.SidedishDetailItemDTO;
+import com.codesquad.sidedish.category.domain.dto.DetailItemDtoWrapper;
 import com.codesquad.sidedish.category.domain.dto.OrderDTO;
-import com.codesquad.sidedish.category.domain.dto.PreviewListDTO;
+import com.codesquad.sidedish.category.domain.dto.PreviewListDtoWrapper;
 import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
-import com.codesquad.sidedish.category.exception.EmptyItemException;
+import com.codesquad.sidedish.category.exception.CategoryNotFoundException;
+import com.codesquad.sidedish.event.exception.EventNotFoundException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventDTO;
 import com.codesquad.sidedish.event.domain.SidedishEventItem;
@@ -40,8 +41,8 @@ public class SidedishItemService {
         this.sidedishImageRepository = sidedishImageRepository;
     }
 
-    public PreviewListDTO showItemList(String categoryName) {
-        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
+    public PreviewListDtoWrapper showItemList(String categoryName) {
+        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(CategoryNotFoundException::new);
         List<SidedishItem> items = category.getSidedishItemList();
 
         List<SidedishItemPreviewDTO> itemDTOs = new ArrayList<>();
@@ -52,18 +53,18 @@ public class SidedishItemService {
             SidedishImage thumbnailImage = findThumbnailImage(item);
             itemDTOs.add(new SidedishItemPreviewDTO(item, eventSet, thumbnailImage));
         }
-        return new PreviewListDTO(itemDTOs);
+        return new PreviewListDtoWrapper(itemDTOs);
     }
 
-    public DetailItemDTO showItem(String categoryName, Long itemId) {
-        SidedishCategory sidedishCategory = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
+    public DetailItemDtoWrapper showItem(String categoryName, Long itemId) {
+        SidedishCategory sidedishCategory = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(CategoryNotFoundException::new);
         SidedishItem sidedishItem = sidedishCategory.findItem(itemId);
 
         Set<SidedishEventDTO> eventSet = createEventDtoSet(sidedishItem);
         List<SidedishImage> detailImages = findImagesByType(sidedishItem, SidedishImageTypeEnum.DETAIL);
         List<SidedishImage> descriptionImages = findImagesByType(sidedishItem, SidedishImageTypeEnum.DESCRIPTION);
-        SidedishItemDetailDTO sidedishItemDetailDTO = new SidedishItemDetailDTO(sidedishItem, eventSet, detailImages, descriptionImages);
-        return new DetailItemDTO(sidedishItemDetailDTO);
+        SidedishDetailItemDTO sidedishDetailItemDTO = new SidedishDetailItemDTO(sidedishItem, eventSet, detailImages, descriptionImages);
+        return new DetailItemDtoWrapper(sidedishDetailItemDTO);
     }
 
     private SidedishImage findThumbnailImage(SidedishItem item) {
@@ -87,7 +88,7 @@ public class SidedishItemService {
         for (SidedishEventItem eventItem : item.getEventItems()) {
             Long eventId = eventItem.getSidedishEvent();
             if (!eventMap.containsKey(eventId)) {
-                eventMap.put(eventId, sidedishEventRepository.findById(eventId).orElseThrow(EmptyItemException::new));
+                eventMap.put(eventId, sidedishEventRepository.findById(eventId).orElseThrow(EventNotFoundException::new));
             }
         }
         return item.getEventItems().stream()
@@ -100,7 +101,7 @@ public class SidedishItemService {
         Set<SidedishEventDTO> eventDtoSet = new HashSet<>();
         for (SidedishEventItem eventItem : item.getEventItems()) {
             Long eventId = eventItem.getSidedishEvent();
-            SidedishEvent sidedishEvent = sidedishEventRepository.findById(eventId).orElseThrow(EmptyItemException::new);
+            SidedishEvent sidedishEvent = sidedishEventRepository.findById(eventId).orElseThrow(EventNotFoundException::new);
             eventDtoSet.add(new SidedishEventDTO(sidedishEvent));
         }
         return eventDtoSet;
@@ -108,7 +109,7 @@ public class SidedishItemService {
 
     @Transactional
     public void order(String categoryName, Long id, OrderDTO orderDTO) {
-        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
+        SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(CategoryNotFoundException::new);
         SidedishItem item = category.findItem(id);
         item.order(orderDTO);
         sidedishCategoryRepository.save(category);

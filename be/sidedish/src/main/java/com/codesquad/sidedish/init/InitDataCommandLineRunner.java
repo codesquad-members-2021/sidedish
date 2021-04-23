@@ -3,7 +3,7 @@ package com.codesquad.sidedish.init;
 import com.codesquad.sidedish.category.domain.SidedishCategory;
 import com.codesquad.sidedish.category.domain.SidedishCategoryRepository;
 import com.codesquad.sidedish.category.domain.SidedishItem;
-import com.codesquad.sidedish.category.exception.EmptyItemException;
+import com.codesquad.sidedish.category.exception.CategoryNotFoundException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventRepository;
 import com.codesquad.sidedish.image.domain.SidedishImage;
@@ -31,9 +31,9 @@ public class InitDataCommandLineRunner implements CommandLineRunner {
     public void run(String... args) {
         List<SidedishCategory> categoryList = new ArrayList<>();
         String[] prefixArr = {"메인요리", "국물요리", "반찬요리"};
-        categoryList.add(sidedishCategoryRepository.findByCategoryName("main").orElseThrow(EmptyItemException::new));
-        categoryList.add(sidedishCategoryRepository.findByCategoryName("soup").orElseThrow(EmptyItemException::new));
-        categoryList.add(sidedishCategoryRepository.findByCategoryName("side").orElseThrow(EmptyItemException::new));
+        categoryList.add(sidedishCategoryRepository.findByCategoryName("main").orElseThrow(CategoryNotFoundException::new));
+        categoryList.add(sidedishCategoryRepository.findByCategoryName("soup").orElseThrow(CategoryNotFoundException::new));
+        categoryList.add(sidedishCategoryRepository.findByCategoryName("side").orElseThrow(CategoryNotFoundException::new));
 
         for (int i = 0; i < categoryList.size(); i++) {
             registerItems(categoryList.get(i), prefixArr[i]);

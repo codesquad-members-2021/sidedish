@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SidedishItemDetailDTO {
+public class SidedishDetailItemDTO {
 
     private Long id;
     private List<String> detailImages;
@@ -22,7 +22,7 @@ public class SidedishItemDetailDTO {
     private String DeliveryInfo;
     private String DeliveryFee;
 
-    public SidedishItemDetailDTO(SidedishItem sidedishItem, Set<SidedishEventDTO> eventBadgeList,
+    public SidedishDetailItemDTO(SidedishItem sidedishItem, Set<SidedishEventDTO> eventBadgeList,
                                  List<SidedishImage> detailImages, List<SidedishImage> descriptionImages) {
         this.id = sidedishItem.getId();
         this.name = sidedishItem.getItemName();
