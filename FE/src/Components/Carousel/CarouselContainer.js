@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useLayoutEffect } from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled, {css, keyframes} from 'styled-components';
 
 import CarouselItem from './CarouselItem.js';
 import CarouselButton from './CarouselButton.js';
@@ -102,14 +102,16 @@ const CarouselAreaWrapper = styled.div`
   overflow: hidden;
 `;
 
-// const carouselChange = (props) => keyframes`
-//   0% {
-//     transform: ${(props) => `translateX(${props.calculatedMovableRange.from}px)`};
-//   }
-//   100% {
-//     transform: ${(props) => `translateX(${props.calculatedMovableRange.to}px)`};
-//   }
-// `
+const carouselChange = ({ calculatedMovableRange }) => {
+  return keyframes`
+    from {
+      transform: ${`translateX(${calculatedMovableRange.from}px)`};
+    }
+    to {
+      transform: ${`translateX(${calculatedMovableRange.to}px)`};
+    }
+  `;
+}
 
 const CarouselArea = styled.div`
   width: 100%;
@@ -117,18 +119,19 @@ const CarouselArea = styled.div`
 
   &.carousel-animate {
     animation-duration: 1s;
-    animation-name: carousel-change;
+    
+    animation-name: ${carouselChange};
     animation-fill-mode: forwards;
   }
 
-  @keyframes carousel-change {
+  /* @keyframes carousel-change {
     0% {
       transform: ${(props) => `translateX(${props.calculatedMovableRange.from}px)`};
     }
     100% {
       transform: ${(props) => `translateX(${props.calculatedMovableRange.to}px)`};
     }
-  }
+  } */
 `;
 
 const CarouselButtonRelativeArea = styled.div`
