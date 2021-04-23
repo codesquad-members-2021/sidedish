@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.category.domain;
 
+import com.codesquad.sidedish.category.domain.dto.OrderDTO;
 import com.codesquad.sidedish.category.exception.OutOfStockException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventItem;
@@ -49,11 +50,11 @@ public class SidedishItem {
         return id.equals(itemId);
     }
 
-    public boolean order(int quantity) {
-        if (!isPurchasable(quantity)) {
+    public boolean order(OrderDTO orderDTO) {
+        if (!isPurchasable(orderDTO)) {
             throw new OutOfStockException();
         }
-        this.itemQuantity -= quantity;
+        this.itemQuantity -= orderDTO.getQuantity();
         return true;
     }
 
@@ -61,8 +62,8 @@ public class SidedishItem {
         return itemQuantity > 0;
     }
 
-    public boolean isPurchasable(int quantity) {
-        return itemQuantity - quantity > 0;
+    public boolean isPurchasable(OrderDTO orderDTO) {
+        return itemQuantity - orderDTO.getQuantity() >= 0;
     }
 
     public void addEvent(SidedishEvent sidedishEvent) {

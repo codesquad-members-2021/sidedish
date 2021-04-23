@@ -5,6 +5,7 @@ import com.codesquad.sidedish.category.domain.SidedishCategoryRepository;
 import com.codesquad.sidedish.category.domain.SidedishItem;
 import com.codesquad.sidedish.category.domain.SidedishItemDetailDTO;
 import com.codesquad.sidedish.category.domain.dto.DetailItemDTO;
+import com.codesquad.sidedish.category.domain.dto.OrderDTO;
 import com.codesquad.sidedish.category.domain.dto.PreviewListDTO;
 import com.codesquad.sidedish.category.domain.dto.SidedishItemPreviewDTO;
 import com.codesquad.sidedish.category.exception.EmptyItemException;
@@ -18,11 +19,13 @@ import com.codesquad.sidedish.image.domain.SidedishImageTypeEnum;
 import com.codesquad.sidedish.image.domain.SidedishItemImage;
 import com.codesquad.sidedish.image.exception.ImageNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional(readOnly = true)
 public class SidedishItemService {
 
     private final SidedishCategoryRepository sidedishCategoryRepository;
@@ -103,9 +106,11 @@ public class SidedishItemService {
         return eventDtoSet;
     }
 
-    public void order(String categoryName, Long id, Integer quantity) {
+    @Transactional
+    public void order(String categoryName, Long id, OrderDTO orderDTO) {
         SidedishCategory category = sidedishCategoryRepository.findByCategoryName(categoryName).orElseThrow(EmptyItemException::new);
         SidedishItem item = category.findItem(id);
-        item.order(quantity);
+        item.order(orderDTO);
+        sidedishCategoryRepository.save(category);
     }
 }

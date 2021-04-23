@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.category.controller;
 
 import com.codesquad.sidedish.category.domain.dto.DetailItemDTO;
+import com.codesquad.sidedish.category.domain.dto.OrderDTO;
 import com.codesquad.sidedish.category.domain.dto.PreviewListDTO;
 import com.codesquad.sidedish.category.service.SidedishItemService;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class SidedishCategoryController {
     }
 
     @PostMapping("/{category}/{id}")
-    public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestParam("quantity") Integer quantity) {
-        itemService.order(category, id, quantity);
+    public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestBody OrderDTO orderDTO) {
+        itemService.order(category, id, orderDTO);
     }
 }
