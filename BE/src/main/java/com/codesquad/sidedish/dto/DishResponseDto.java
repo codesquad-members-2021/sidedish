@@ -9,14 +9,14 @@ public class DishResponseDto {
     private final String deliveryType;
     private final String title;
     private final String description;
-    private final int normalPrice;
-    private final int sellingPrice;
+    private final String normalPrice;
+    private final String sellingPrice;
     private final String badge;
     private final Long categoryId;
 
 
     private DishResponseDto(String id, String mainImage, String alt, String deliveryType,
-                            String title, String description, int normalPrice, int sellingPrice,
+                            String title, String description, String normalPrice, String sellingPrice,
                             String badge, Long categoryId) {
         this.id = id;
         this.mainImage = mainImage;
@@ -54,11 +54,11 @@ public class DishResponseDto {
         return description;
     }
 
-    public int getNormalPrice() {
+    public String getNormalPrice() {
         return normalPrice;
     }
 
-    public int getSellingPrice() {
+    public String getSellingPrice() {
         return sellingPrice;
     }
 
