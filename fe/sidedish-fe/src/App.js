@@ -1,14 +1,24 @@
-import './App.css';
-import { Header } from "./components/Header/Header.jsx"
+import "./App.css";
+import { Header } from "./components/Header/Header.jsx";
+import { BestMenu } from "./components/BestMenu/BestMenu.jsx";
+import { FlexRowContainer } from "./components/common/FlexRowContainer.jsx";
+// import {
+//   LargeCard,
+//   MiddleCard,
+//   SmallCard,
+// } from "./components/MenuCard/MenuCard.jsx";
+import { LargeCard } from "./components/MenuCard/LargeCard";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <div className="BestMenu">
-        <h1>후기가 증명하는 베스트 반찬</h1>
-        <div></div>
-      </div>
+      <BestMenu></BestMenu>
+      <FlexRowContainer>
+        <LargeCard></LargeCard>
+        <LargeCard></LargeCard>
+        <LargeCard></LargeCard>
+      </FlexRowContainer>
       <div className="MenuSlider">
         <h1>모두가 좋아하는 든든한 메인요리</h1>
         <div></div>
