@@ -20,8 +20,8 @@ CREATE TABLE DISH
     STOCK         bigint(20),
     POINT         int,
     DELIVERY_INFO varchar(100),
-    THUMB_IMAGES  varchar (500),
-    DETAIL_IMAGES varchar (500),
+    THUMB_IMAGES  varchar (1000),
+    DETAIL_IMAGES varchar (1000),
     CATEGORY      bigint(20) references CATEGORY (ID),
     CATEGORY_KEY  int
 );
