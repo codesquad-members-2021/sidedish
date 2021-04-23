@@ -1,7 +1,7 @@
 package com.codesquad.sidedish.utils;
 
-import com.codesquad.sidedish.web.sidedish.ItemDTO;
-import com.codesquad.sidedish.web.sidedish.SidedishDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -24,6 +24,21 @@ public class SampleDataFactory {
 
     public static List<ItemDTO> createMainSidedishes() {
         return jsonToObject("sample-data/main-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
+    public static List<ItemDTO> createCourseSidedishes() {
+        return jsonToObject("sample-data/course-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
+    public static List<ItemDTO> createSoupSidedishes() {
+        return jsonToObject("sample-data/soup-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        });
+    }
+
+    public static List<ItemDTO> createSideSidedishes() {
+        return jsonToObject("sample-data/side-sidedishes.json", new TypeReference<List<ItemDTO>>() {
         });
     }
 

@@ -1,8 +1,8 @@
 package com.codesquad.sidedish.utils;
 
-import com.codesquad.sidedish.web.sidedish.ItemDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.ItemDTOTestResults;
-import com.codesquad.sidedish.web.sidedish.SidedishDTO;
+import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
 import com.codesquad.sidedish.web.sidedish.SidedishDTOTestResults;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,4 +47,39 @@ class SampleDataFactoryTest {
         assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOS))
                 .isEqualTo(ItemDTOTestResults.MAIN_MENU);
     }
+
+
+    @Test
+    void createCourseSidedishes() throws JsonProcessingException {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
+            return;
+        }
+        List<ItemDTO> itemDTOs = SampleDataFactory.createCourseSidedishes();
+
+        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
+                .isEqualTo(ItemDTOTestResults.COURSE_MENU);
+    }
+
+    @Test
+    void createSoupSidedishes() throws JsonProcessingException {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
+            return;
+        }
+        List<ItemDTO> itemDTOs = SampleDataFactory.createSoupSidedishes();
+
+        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
+                .isEqualTo(ItemDTOTestResults.SOUP_MENU);
+    }
+
+    @Test
+    void createSideSidedishes() throws JsonProcessingException {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
+            return;
+        }
+        List<ItemDTO> itemDTOs = SampleDataFactory.createSoupSidedishes();
+
+        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
+                .isEqualTo(ItemDTOTestResults.SIDE_MENU);
+    }
+
 }
