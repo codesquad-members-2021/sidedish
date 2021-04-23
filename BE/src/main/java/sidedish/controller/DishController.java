@@ -10,16 +10,18 @@ import sidedish.exception.CategoryNotFoundException;
 import sidedish.exception.DishNotFoundException;
 import sidedish.repository.CategoryRepository;
 import sidedish.repository.DishRepository;
+import sidedish.service.dto.CategoryDTO;
 import sidedish.service.dto.DetailDishDTO;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/banchan-code")
 public class DishController {
 
-    Logger logger = LoggerFactory.getLogger(DishController.class);
-
     private final DishRepository dishRepository;
     private final CategoryRepository categoryRepository;
+    Logger logger = LoggerFactory.getLogger(DishController.class);
 
     public DishController(DishRepository dishRepository, CategoryRepository categoryRepository) {
         this.dishRepository = dishRepository;
@@ -34,15 +36,14 @@ public class DishController {
     }
 
     @PostMapping("/dish")
-    public ResponseEntity<?> createDish(@RequestBody DetailDishDTO dishDTO) {
-
-        logger.info("dish: {}", dishDTO);
-        Dish dish = new Dish(dishDTO);
-        logger.info("dish: {}", dish);
+    public ResponseEntity<?> createDish(@RequestBody List<DetailDishDTO> dishDTOs) {
         Category category = categoryRepository.findCategoryByTitle("main").orElseThrow(CategoryNotFoundException::new);
-        category.addDish(dish);
-        categoryRepository.save(category);
-        dishRepository.save(dish);
-        return ResponseEntity.ok().build();
+        for (DetailDishDTO dishDTO : dishDTOs) {
+            Dish dish = new Dish(dishDTO);
+            category.addDish(dish);
+            categoryRepository.save(category);
+        }
+        category = categoryRepository.findCategoryByTitle("main").orElseThrow(CategoryNotFoundException::new);
+        return ResponseEntity.ok(new CategoryDTO(category));
     }
 }
