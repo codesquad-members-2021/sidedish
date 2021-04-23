@@ -13,6 +13,10 @@ import java.util.List;
 
 public class SampleDataFactory {
 
+    private SampleDataFactory() {
+
+    }
+
     public static List<SidedishDTO> createBestSidedishes() {
         return jsonToObject("sample-data/best-sidedishes.json", new TypeReference<List<SidedishDTO>>() {
         });
