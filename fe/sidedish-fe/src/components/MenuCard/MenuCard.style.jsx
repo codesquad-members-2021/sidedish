@@ -1,43 +1,50 @@
 import styled from "styled-components";
 
+const SmallCard = styled.div`
+    width:160px;
+    /* height:540px; */
+    /* margin-left:5%; */
+    text-align:left;
+`
+
 const LargeCard = styled.div`
     width:384px;
     height:540px;
     margin-left:5%;
     text-align:left;
 `
-
-const LargeImg = styled.img.attrs({
-    src: "https://lh3.googleusercontent.com/proxy/f5a7tQjvzAtHwGMeCKrr-uPr-dyfo5rvTvTzGSykCEHQNrZIiTOQpaBfVeWtGO3md9hwZqPWhQO0SYNTPg9uVngUUHshhQ8ux1erGG651zlFEW_Z0NxjWg3tHkm6bOTeGcWvPDoCp2Z-te5-0WA8SOqC-dnEzWhe9Sc686_U3Dw",
-    })`
-    background-color:beige;
-    width:384px;
-    height:384px;
-    margin-bottom: 16px;
-`
-const LargeImg2 = styled.img`
-    background-image: url(${props => props.url});
-    background-color:beige;
-    width:384px;
-    height:384px;
-    margin-bottom: 16px;
-
-    background-repeat: no-repeat;
+const Img = styled.img`
     background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(${props => props.url});
 `
 
+const SmallImg = styled(Img)`
+    width:160px;
+    height:160px;
+    margin-bottom: 8px;
+`
+const LargeImg = styled(Img)`
+    width:384px;
+    height:384px;
+    margin-bottom: 16px;
+`
 
-const LargeInfoTitle = styled.div`
-    width:100%;
+const InfoTitle = styled.div`
+    color: #333333;
     font-weight: normal;
+`
+
+const SmallInfoTitle = styled(InfoTitle)`
     font-size: 16px;
     line-height: 23px;
-
     margin-bottom: 8px;
-    /* Gray 1 */
+`
 
-    color: #333333;
-
+const LargeInfoTitle = styled(InfoTitle)`
+    font-size: 16px;
+    line-height: 23px;
+    margin-bottom: 8px;
 `
 
 const LargeInfoContents = styled.div`
@@ -55,6 +62,11 @@ const LargePrice = styled.div`
     margin-bottom: 16px;
     align-items: baseline;
     
+`
+const SmallPrice = styled.div`
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
 `
 
 
@@ -102,10 +114,14 @@ const FlexRowContainer = styled.div`
 `
 
 export {
+    SmallCard,
     LargeCard,
+    SmallImg,
     LargeImg,
+    SmallInfoTitle,
     LargeInfoTitle,
     LargeInfoContents,
+    SmallPrice,
     LargePrice,
     LargePriceBefore,
     LargePriceAfter,
@@ -113,5 +129,4 @@ export {
     LargeEventPrice,
     LargeLaunchingPrice,
     FlexRowContainer,
-    LargeImg2,
 }
