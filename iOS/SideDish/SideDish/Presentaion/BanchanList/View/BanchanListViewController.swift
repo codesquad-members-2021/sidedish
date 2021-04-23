@@ -101,6 +101,7 @@ extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
+// MARK: - UITapGestureRecongnizer Custom Class
 class CustomTapGestureRecognizer: UITapGestureRecognizer {
     private (set) var cellCount: Int
     

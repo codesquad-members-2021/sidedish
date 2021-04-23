@@ -13,13 +13,13 @@ struct BanchanListDTO: Decodable {
 
 extension BanchanListDTO {
     struct BanchanListItemDTO: Decodable {
-        private let detailHash: String
+        private let detailHash: Int
         private let image: String
         private let alt: String
         private let deliveryType: [String]
         private let description: String
         private let title: String
-        private let nPrice: String?
+        private var nPrice: String?
         private let sPrice: String
         private let badge: [String]?
         

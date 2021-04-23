@@ -14,7 +14,7 @@ class BadgeLabel: UILabel {
     private let leftInset: CGFloat = 8.0
     private let rightInset: CGFloat = 8.0
     
-    let badgeColors: [String:UIColor] = ["이벤트특가": UIColor(displayP3Red: 130/255, green: 211/255, blue: 45/255, alpha: 1), "론칭특가": UIColor(displayP3Red: 134/255, green: 198/255, blue: 255/255, alpha: 1)]
+    let badgeColors: [String:UIColor] = ["이벤트특가": UIColor(displayP3Red: 130/255, green: 211/255, blue: 45/255, alpha: 1), "런칭특가": UIColor(displayP3Red: 134/255, green: 198/255, blue: 255/255, alpha: 1)]
     
     override init(frame: CGRect) {
         super.init(frame: frame)

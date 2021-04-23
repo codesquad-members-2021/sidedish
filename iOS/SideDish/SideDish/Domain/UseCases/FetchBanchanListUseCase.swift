@@ -8,7 +8,7 @@
 import Foundation
 
 struct FetchBanchanListUseCase {
-    private static let baseURL: String = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/"
+    private static let baseURL: String = "http://ec2-54-180-115-20.ap-northeast-2.compute.amazonaws.com:8080/"
     
     static func fetchBanchanList(network: NetworkRequest,section: String, completion: @escaping ([Banchan]?) -> Void) {
         let url = baseURL+section

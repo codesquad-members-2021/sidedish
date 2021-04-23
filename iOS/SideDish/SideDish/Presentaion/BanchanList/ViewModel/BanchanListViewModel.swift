@@ -26,6 +26,7 @@ class BanchanListViewModel {
     }
     
     @Published var menu: Dictionary<Section, [Banchan]>
+    
     private var network = NetworkSerivce.shared
     
     init() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailBanchanViewController: UIViewController {
+class BanchanDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

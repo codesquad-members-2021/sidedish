@@ -54,7 +54,7 @@ class BanchanCustomCell: UICollectionViewCell {
         }
         let strikeThroughAttributeStyle = [NSAttributedString.Key.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue)]
        
-        nPriceLabel.attributedText = NSAttributedString(string: text+"원", attributes: strikeThroughAttributeStyle)
+        nPriceLabel.attributedText = NSAttributedString(string: text, attributes: strikeThroughAttributeStyle)
     }
     
     private func setBadges(badges: [String]?) {
