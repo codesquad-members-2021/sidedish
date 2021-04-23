@@ -5,11 +5,16 @@ import DishItem from 'component/DishItem/DishItem';
 import { URL } from 'util/data';
 
 const BestSidedishList = ({ focusedCategory }) => {
-  const { data, loading } = useFetch({ url: URL.best(focusedCategory), target: [focusedCategory] });
+  const { data, loading, error } = useFetch({
+    url: URL.best(focusedCategory),
+    target: [focusedCategory],
+  });
 
   const bestSidedishList = data
     ? data.items.map((item) => <DishItem key={item.detail_hash} item={item} size="L" />)
     : null;
+
+  if (error) throw Error(error);
   return loading ? (
     <div>Loading...</div>
   ) : (

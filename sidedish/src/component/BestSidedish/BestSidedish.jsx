@@ -15,13 +15,14 @@ const BestSidedish = () => {
     return parsedBestList;
   };
 
-  const { data: bestList, loading } = useFetch({ url: URL.best(), parse: parseBestList });
+  const { data: bestList, loading, error } = useFetch({ url: URL.best(), parse: parseBestList });
   const [focusedCategory, setFocusedCategory] = useState(null);
 
   const handleFocusedCategory = (categoryId) => {
     setFocusedCategory(categoryId);
   };
 
+  if (error) throw Error(error);
   return loading ? (
     <div>Loading...</div>
   ) : (
