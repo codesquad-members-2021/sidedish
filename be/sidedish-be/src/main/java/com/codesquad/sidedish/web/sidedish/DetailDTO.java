@@ -1,7 +1,5 @@
 package com.codesquad.sidedish.web.sidedish;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,16 +62,16 @@ public class DetailDTO {
         private String topImage;
         private List<String> thumbImages;
         private String productDescription;
-        private long point;
+        private Price point;
         private String deliveryInfo;
-        private long deliveryFee;
-        private List<Long> prices;
+        private Price deliveryFee;
+        private List<Price> prices;
         private List<String> detailSection;
 
         public Data() {
         }
 
-        public Data(String topImage, List<String> thumbImages, String productDescription, long point, String deliveryInfo, long deliveryFee, List<Long> prices, List<String> detailSection) {
+        public Data(String topImage, List<String> thumbImages, String productDescription, Price point, String deliveryInfo, Price deliveryFee, List<Price> prices, List<String> detailSection) {
             this.topImage = topImage;
             this.thumbImages = thumbImages;
             this.productDescription = productDescription;
@@ -109,11 +107,11 @@ public class DetailDTO {
         }
 
         public String getPoint() {
-            return NumberFormat.getInstance().format(point);
+            return point.getFormattedPrice();
         }
 
-        public void setPoint(String point) throws ParseException {
-            this.point = NumberFormat.getInstance().parse(point).longValue();
+        public void setPoint(Price point) {
+            this.point = point;
         }
 
         public String getDeliveryInfo() {
@@ -124,30 +122,22 @@ public class DetailDTO {
             this.deliveryInfo = deliveryInfo;
         }
 
-        public long getDeliveryFee() {
-            return deliveryFee;
+        public String getDeliveryFee() {
+            return deliveryFee.getFormattedPrice() + " (40,000원 이상 구매 시 무료)";
         }
 
-        public void setDeliveryFee(String deliveryFee) throws ParseException {
-            this.deliveryFee = NumberFormat.getInstance().parse(deliveryFee).longValue();
+        public void setDeliveryFee(Price deliveryFee) {
+            this.deliveryFee = deliveryFee;
         }
 
-        public List<Long> getPrices() {
-            return prices;
-        }
-
-        public void setPrices(List<String> prices) {
-            this.prices = prices.stream()
-                    .map(this::parsePrice)
+        public List<String> getPrices() {
+            return prices.stream()
+                    .map(Price::getFormattedPrice)
                     .collect(Collectors.toList());
         }
 
-        private long parsePrice(String price) {
-            try {
-                return NumberFormat.getInstance().parse(price).longValue();
-            } catch (ParseException e) {
-                throw new IllegalArgumentException("Error occured while parsing prices, price : " + price, e);
-            }
+        public void setPrices(List<Price> prices) {
+            this.prices = prices;
         }
 
         public List<String> getDetailSection() {
@@ -162,10 +152,10 @@ public class DetailDTO {
             private String topImage;
             private List<String> thumbImages;
             private String productDescription;
-            private long point;
+            private Price point;
             private String deliveryInfo;
-            private long deliveryFee;
-            private List<Long> prices;
+            private Price deliveryFee;
+            private List<Price> prices;
             private List<String> detailSection;
 
             private DataBuilder() {
@@ -190,7 +180,7 @@ public class DetailDTO {
                 return this;
             }
 
-            public DataBuilder point(long point) {
+            public DataBuilder point(Price point) {
                 this.point = point;
                 return this;
             }
@@ -200,12 +190,12 @@ public class DetailDTO {
                 return this;
             }
 
-            public DataBuilder deliveryFee(long deliveryFee) {
+            public DataBuilder deliveryFee(Price deliveryFee) {
                 this.deliveryFee = deliveryFee;
                 return this;
             }
 
-            public DataBuilder prices(List<Long> prices) {
+            public DataBuilder prices(List<Price> prices) {
                 this.prices = prices;
                 return this;
             }
