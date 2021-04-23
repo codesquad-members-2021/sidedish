@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 const ManuTabNav = styled.ul`
   display: none;
   flex-direction: column;
@@ -13,17 +13,18 @@ const ManuTabNav = styled.ul`
   backdrop-filter: blur(4px);
   position: absolute;
   left: -12px;
-`;
+  cursor: pointer;
+`
 
 const ManuList = styled.li`
   font-size: 16px;
   line-height: 28px;
   text-decoration-line: underline;
-`;
+`
 
-function MenuTab({ val }) {
-  const ManuLists = val.map((v) => <ManuList>{v}</ManuList>);
-  return <ManuTabNav>{ManuLists}</ManuTabNav>;
+function MenuTab ({ val }) {
+  const ManuLists = val.map(v => <ManuList>{v}</ManuList>)
+  return <ManuTabNav>{ManuLists}</ManuTabNav>
 }
 
-export default MenuTab;
+export default MenuTab
