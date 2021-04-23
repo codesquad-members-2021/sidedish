@@ -24,7 +24,8 @@ const Xstyle = {
   top: "-320px",
 };
 
-function DetailPage({ ModalMode, setModalState }) {
+function DetailPage({ detailData, ModalMode, setModalState }) {
+  console.log(detailData);
   const handleClick = () => {
     setModalState(!ModalMode);
   };

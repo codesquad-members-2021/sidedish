@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { theme, AlignTextCenter } from "./Theme";
-import line from "./line.png";
 import { useState } from "react";
 import DetailPage from "./detail/DetailPage";
+import useFetch from "./useFetch";
 
 const Card = styled.div`
   margin-top: 40px;
@@ -88,14 +88,21 @@ const ClickArea = styled.div`
 `;
 
 function ItemCard({ data, size }) {
+  const [detailFetchUrl, setDetailFetchUrl] = useState(null);
   const [ModalMode, setModalState] = useState(false);
   const handleClick = (hash) => {
     setModalState(!ModalMode); //작업중
+    setDetailFetchUrl(
+      "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/" +
+        hash
+    );
   };
+  const [detailData, loadingState] = useFetch(detailFetchUrl); //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가?
   return (
     <>
-      {ModalMode && (
+      {ModalMode && !loadingState && (
         <DetailPage
+          detailData={detailData.data}
           ModalMode={ModalMode}
           setModalState={setModalState}
         ></DetailPage>
@@ -105,7 +112,7 @@ function ItemCard({ data, size }) {
           <IMG size={size} image={data.image} alt={data.alt}>
             <DeliveryBlock>
               <div>새벽배송</div>
-              <img style={imgPosition} src={line} alt="line"></img>
+              <img style={imgPosition} src="./line.png" alt="line"></img>
               <div>전국택배</div>
             </DeliveryBlock>
           </IMG>
