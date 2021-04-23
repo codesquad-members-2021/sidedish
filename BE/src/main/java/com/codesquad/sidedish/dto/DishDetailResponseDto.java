@@ -59,7 +59,7 @@ public class DishDetailResponseDto {
 
     public static DishDetailResponseDto of(Dish dish) {
         return new DishDetailResponseDto(dish.getTopImage(), dish.getThumbImages(),
-                dish.getProductDescription(), dish.getDeliveryInfo(), dish.getDeliveryFee(),
+                dish.getDescription(), dish.getDeliveryInfo(), dish.getDeliveryFee(),
                 dish.getDetailSection(), dish.getStock(), dish.getPoint());
     }
 }
