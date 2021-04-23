@@ -29,5 +29,4 @@ const MainPageLayout = styled(FlexContainer)`
 const MainDishSection = styled(Container)`
 ` 
 
-
 export default MainPage;
