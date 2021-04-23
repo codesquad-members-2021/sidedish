@@ -10,11 +10,11 @@ public class DishDetailResponseDto {
     private final String deliveryFee;
     private final String detailSection;
     private final int stock;
-    private final int point;
+    private final String point;
 
     private DishDetailResponseDto(String topImage, String thumbImages, String productDescription,
                                   String deliveryInfo, String deliveryFee, String detailSection,
-                                  int stock, int point) {
+                                  int stock, String point) {
         this.topImage = topImage;
         this.thumbImages = thumbImages;
         this.productDescription = productDescription;
@@ -53,7 +53,7 @@ public class DishDetailResponseDto {
         return stock;
     }
 
-    public int getPoint() {
+    public String getPoint() {
         return point;
     }
 

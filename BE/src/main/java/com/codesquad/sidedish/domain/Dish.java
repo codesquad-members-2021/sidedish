@@ -8,42 +8,26 @@ public class Dish {
     private String id;
 
     private String mainImage;
-
     private String alt;
-
     private String deliveryType;
-
     private String title;
-
     private String description;
-
-    private int normalPrice;
-
-    private int sellingPrice;
-
+    private String normalPrice;
+    private String sellingPrice;
     private String badge;
-
     private Long categoryId;
-
     private String topImage;
-
     private String thumbImages;
-
     private String productDescription;
-
     private String deliveryInfo;
-
     private String deliveryFee;
-
     private String detailSection;
-
     private int stock;
-
-    private int point;
+    private String point;
 
     public Dish(String id, String mainImage, String alt, String deliveryType, String title, String description,
-                int normalPrice, int sellingPrice, String badge, Long categoryId, String topImage, String thumbImages,
-                String productDescription, String deliveryInfo, String deliveryFee, String detailSection, int stock, int point) {
+                String normalPrice, String sellingPrice, String badge, Long categoryId, String topImage, String thumbImages,
+                String productDescription, String deliveryInfo, String deliveryFee, String detailSection, int stock, String point) {
         this.id = id;
         this.mainImage = mainImage;
         this.alt = alt;
@@ -88,11 +72,11 @@ public class Dish {
         return description;
     }
 
-    public int getNormalPrice() {
+    public String getNormalPrice() {
         return normalPrice;
     }
 
-    public int getSellingPrice() {
+    public String getSellingPrice() {
         return sellingPrice;
     }
 
@@ -132,7 +116,7 @@ public class Dish {
         return stock;
     }
 
-    public int getPoint() {
+    public String getPoint() {
         return point;
     }
 }

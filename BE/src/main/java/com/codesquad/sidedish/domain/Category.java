@@ -14,10 +14,7 @@ public class Category {
 
     private Set<Dish> dishes = new HashSet<>();
 
-    private Category(Long id, String name, String type) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
+    private Category(){
     }
 
     public Category(String name, String type) {
