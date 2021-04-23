@@ -304,7 +304,7 @@
                                                     <constraint firstAttribute="height" constant="46" id="oMM-1u-T85"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGV-q8-Dd6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGV-q8-Dd6" customClass="OrderButton" customModule="Side_dish" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="804" width="382" height="58"/>
                                                 <color key="backgroundColor" name="EventColor"/>
                                                 <constraints>
@@ -401,7 +401,7 @@
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="DescriptionColor">
-            <color red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="EventColor">
             <color red="0.50999999046325684" green="0.82700002193450928" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

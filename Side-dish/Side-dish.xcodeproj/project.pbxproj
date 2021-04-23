@@ -37,6 +37,7 @@
 		BFDBECCB2632956300628672 /* SideDishAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */; };
 		BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */; };
 		BFDBECD526329C9000628672 /* AmountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD426329C9000628672 /* AmountState.swift */; };
+		BFDBECDA2632B1EA00628672 /* OrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD92632B1EA00628672 /* OrderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishAmountViewModel.swift; sourceTree = "<group>"; };
 		BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButtonViewModel.swift; sourceTree = "<group>"; };
 		BFDBECD426329C9000628672 /* AmountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountState.swift; sourceTree = "<group>"; };
+		BFDBECD92632B1EA00628672 /* OrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				8844B7C3262D6ED500FA49E9 /* FoodCardCell.xib */,
 				BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */,
 				BFAE1BBF26301CF300C0625E /* FoodCardHeaderView.xib */,
+				BFDBECD92632B1EA00628672 /* OrderButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */,
 				BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */,
 				8844B84F2631A94000FA49E9 /* ItemData.swift in Sources */,
+				BFDBECDA2632B1EA00628672 /* OrderButton.swift in Sources */,
 				BFCE4980262DC3F2006C0882 /* NetworkManager.swift in Sources */,
 				BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */,
 				8844B8552631AB0500FA49E9 /* DetailViewController.swift in Sources */,
