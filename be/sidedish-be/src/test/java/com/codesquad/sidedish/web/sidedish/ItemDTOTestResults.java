@@ -83,6 +83,7 @@ public class ItemDTOTestResults {
             "  \"s_price\" : \"5,000\"," + System.lineSeparator() +
             "  \"badge\" : null" + System.lineSeparator() +
             "} ]";
+
     public static final String COURSE_MENU = "[ {" + System.lineSeparator() +
             "  \"detail_hash\" : \"HBDEF\"," + System.lineSeparator() +
             "  \"image\" : \"https://cdn.bmf.kr/_data/product/HBDEF/4a2d8bbe9fb468b536861140a9beda61.jpg\"," + System.lineSeparator() +
@@ -173,5 +174,87 @@ public class ItemDTOTestResults {
             "  \"n_price\" : \"6,500\"," + System.lineSeparator() +
             "  \"s_price\" : \"5,200\"," + System.lineSeparator() +
             "  \"badge\" : [ \"이벤트특가\" ]" + System.lineSeparator() +
+            "} ]";
+
+    public static final String SOUP_MENU = "[ {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"H72C3\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/H72C3/d1fccf125f0a78113d0e06cb888f2e74.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[수하동] 특곰탕 850g\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[수하동] 특곰탕 850g\"," + System.lineSeparator() +
+            "  \"description\" : \"100% 한우양지로 끓여낸 70년전통의 서울식곰탕\"," + System.lineSeparator() +
+            "  \"n_price\" : \"15,000\"," + System.lineSeparator() +
+            "  \"s_price\" : \"14,200\"," + System.lineSeparator() +
+            "  \"badge\" : [ \"이벤트특가\" ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"HA6EE\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/HA6EE/c069bc32cb37727c59e1f0c2839311a0.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[빅마마의밥친구] 된장찌개 900g\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[빅마마의밥친구] 된장찌개 900g\"," + System.lineSeparator() +
+            "  \"description\" : \"항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개\"," + System.lineSeparator() +
+            "  \"n_price\" : \"0\"," + System.lineSeparator() +
+            "  \"s_price\" : \"10,000\"," + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"H8CD0\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/H8CD0/f31fc3f5828c27ff60e4cf89a862d31c.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[탐나는밥상] 동태탕 1000g\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[탐나는밥상] 동태탕 1000g\"," + System.lineSeparator() +
+            "  \"description\" : \"칼칼한 국물이 속 풀기에 딱 좋은 동태탕\"," + System.lineSeparator() +
+            "  \"n_price\" : \"0\"," + System.lineSeparator() +
+            "  \"s_price\" : \"14,000\"," + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"HE2E9\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/HE2E9/6edbb16da52708e8533b85fbf743f882.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[국물닷컴] 치즈부대찌개 600g\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[국물닷컴] 치즈부대찌개 600g\"," + System.lineSeparator() +
+            "  \"description\" : \"안주용 부대찌개와는 달라 밥말아먹기 딱 좋은\"," + System.lineSeparator() +
+            "  \"n_price\" : \"5,500\"," + System.lineSeparator() +
+            "  \"s_price\" : \"4,300\"," + System.lineSeparator() +
+            "  \"badge\" : [ \"이벤트특가\" ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"HAA47\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/HAA47/892f3e7f043bfa7dbbcd58f88eecac36.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[집밥의완성] 스키야키 1.5kg (2~3인분)\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[집밥의완성] 스키야키 1.5kg (2~3인분)\"," + System.lineSeparator() +
+            "  \"description\" : \"진한 풍미의 일본식 전골, 스키야키\"," + System.lineSeparator() +
+            "  \"n_price\" : \"19,800\"," + System.lineSeparator() +
+            "  \"s_price\" : \"10,000\"," + System.lineSeparator() +
+            "  \"badge\" : [ \"이벤트특가\" ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"H3254\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/H3254/ae571e13d18fd4f0f40d685d2c8fe8f1.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[새로미부산어묵] 프리미엄 어묵탕세트\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[새로미부산어묵] 프리미엄 어묵탕세트\"," + System.lineSeparator() +
+            "  \"description\" : \"밀가루 0% 프리미엄 어묵에 어묵스프까지 드려요!\"," + System.lineSeparator() +
+            "  \"n_price\" : \"18,000\"," + System.lineSeparator() +
+            "  \"s_price\" : \"14,400\"," + System.lineSeparator() +
+            "  \"badge\" : [ \"론칭특가\", \"이벤트특가\" ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"H26C7\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/H26C7/8fd330b5f5dbccbcbf4f5731e5e9e29b.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[모이세] 육개장 1팩(600g)\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[모이세] 육개장 1팩(600g)\"," + System.lineSeparator() +
+            "  \"description\" : \"제주3대해장국 맛집의 인기메뉴\"," + System.lineSeparator() +
+            "  \"n_price\" : \"5,900\"," + System.lineSeparator() +
+            "  \"s_price\" : \"4,400\"," + System.lineSeparator() +
+            "  \"badge\" : [ \"론칭특가\" ]" + System.lineSeparator() +
+            "}, {" + System.lineSeparator() +
+            "  \"detail_hash\" : \"HFFF9\"," + System.lineSeparator() +
+            "  \"image\" : \"https://cdn.bmf.kr/_data/product/HFFF9/2416b58044d49f0d3a24256f8e76163b.jpg\"," + System.lineSeparator() +
+            "  \"alt\" : \"[마더앤찬] 명란감자국  630ml\"," + System.lineSeparator() +
+            "  \"delivery_type\" : [ \"새벽배송\", \"전국택배\" ]," + System.lineSeparator() +
+            "  \"title\" : \"[마더앤찬] 명란감자국 630ml\"," + System.lineSeparator() +
+            "  \"description\" : \"간간한 저염명란과 고소한 감자가 조화로운 국이에요\"," + System.lineSeparator() +
+            "  \"n_price\" : \"7,000\"," + System.lineSeparator() +
+            "  \"s_price\" : \"6,300\"," + System.lineSeparator() +
+            "  \"badge\" : [ \"론칭특가\" ]" + System.lineSeparator() +
             "} ]";
 }

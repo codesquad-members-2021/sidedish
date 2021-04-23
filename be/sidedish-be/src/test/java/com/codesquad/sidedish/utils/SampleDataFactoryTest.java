@@ -50,12 +50,23 @@ class SampleDataFactoryTest {
 
     @Test
     void createCourseSidedishes() throws JsonProcessingException {
-        if(!environment.acceptsProfiles(Profiles.of("dev"))) {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
             return;
         }
         List<ItemDTO> itemDTOs = SampleDataFactory.createCourseSidedishes();
 
         assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
                 .isEqualTo(ItemDTOTestResults.COURSE_MENU);
+    }
+
+    @Test
+    void createSoupSidedishes() throws JsonProcessingException {
+        if (!environment.acceptsProfiles(Profiles.of("dev"))) {
+            return;
+        }
+        List<ItemDTO> itemDTOs = SampleDataFactory.createSoupSidedishes();
+
+        assertThat(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemDTOs))
+                .isEqualTo(ItemDTOTestResults.SOUP_MENU);
     }
 }
