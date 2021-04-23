@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useTabs from "../../../util/useTaps";
 import styled from "styled-components";
+import Span from "../../atoms/Span";
 import Tab from "../../molecules/Tab";
 import LargeCard from "../../molecules/LargeCard";
 import useFetch from "../../../util/useFetch";
@@ -12,10 +13,12 @@ const BestDish = ({ children, ...props }) => {
   const WrapDiv = styled.div`
     display: flex;
     flex-direction: column;
+    margin: 0 80px;
   `;
   const WrapTab = styled.div`
     display: flex;
-    min-width: 986px;
+    min-width: 1260px;
+    margin-top: 32px;
   `;
   const WrapCard = styled.div`
     display: flex;
@@ -37,6 +40,7 @@ const BestDish = ({ children, ...props }) => {
   console.log(currentItem.items);
   return (
     <WrapDiv>
+      <Span _innerTitle>후기가 증명하는 베스트 반찬</Span>
       <WrapTab>
         {bestDish.map((tabMenu, i) => (
           <Tab onClick={() => changeItem(i)} key={i} name={tabMenu.name}></Tab>

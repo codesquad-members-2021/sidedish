@@ -7,7 +7,7 @@ const Header = ({ children, ...props }) => {
   const WrapDiv = styled.div`
     display: flex;
     justify-content: space-between;
-    /* margin: 32px 0 80px 80px; */
+    padding: 0 80px;
   `;
   return (
     <WrapDiv>

@@ -1,9 +1,9 @@
-import './styles/style.scss';
-import React, { useState, useEffect } from 'react';
-import Header from './components/organisms/Header';
-import BestDish from './components/organisms/BestDish';
-import MainDish from './components/organisms/MainDish';
-import ViewMore from './components/organisms/ViewMore';
+import "./styles/style.scss";
+import React, { useState, useEffect } from "react";
+import Header from "./components/organisms/Header";
+import BestDish from "./components/organisms/BestDish";
+import MainDish from "./components/organisms/MainDish";
+import ViewMore from "./components/organisms/ViewMore";
 function App() {
   // const [bestDish, setBestDish] = useState([]);
 
@@ -12,10 +12,9 @@ function App() {
       <Header />
 
       <BestDish />
-      {/* <MainDish /> */}
-      <More />
+      <MainDish _dishType="mainDish" />
+      <ViewMore />
 
-      
       {/* <BestDish /> */}
 
       {/* {bestDish.map(({ category_id, name, items }) => {

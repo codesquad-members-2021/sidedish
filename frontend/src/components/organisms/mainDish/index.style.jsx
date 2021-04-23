@@ -1,6 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const WrapMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+`;
+
+const WrapCarousal = styled.div`
+  margin-bottom: 40px;
   display: flex;
 `;
 
@@ -22,4 +29,4 @@ const CardStyle = styled.div`
   height: 479px;
 `;
 
-export { CardStyle, WrapCard, WrapMain };
+export { CardStyle, WrapCard, WrapMain, WrapCarousal };
