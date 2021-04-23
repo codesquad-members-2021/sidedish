@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DishListItemViewModel {
+struct DishesListItemViewModel {
     let name: String
     let description: String
     let imageURL: String
@@ -15,7 +15,7 @@ struct DishListItemViewModel {
     let badges: [String]
 }
 
-extension DishListItemViewModel {
+extension DishesListItemViewModel {
     init(dish: Dish) {
         self.name = dish.name
         self.description = dish.description
