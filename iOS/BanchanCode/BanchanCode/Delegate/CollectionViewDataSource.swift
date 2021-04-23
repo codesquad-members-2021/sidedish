@@ -68,6 +68,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as! SectionHeaderView
         headerView.sectionTitleLabel.text = allDishes[indexPath.section].category.getSectionTitle()
+        headerView.countOfMenus = CollectionViewConstant.numberOfItems
         return headerView
     }
 }
