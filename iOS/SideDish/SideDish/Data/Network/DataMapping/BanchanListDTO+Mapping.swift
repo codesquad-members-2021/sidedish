@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct BanchanListDTO: Codable {
+struct BanchanListDTO: Decodable {
     private let body: [BanchanListItemDTO]
 }
 
 extension BanchanListDTO {
-    struct BanchanListItemDTO: Codable {
+    struct BanchanListItemDTO: Decodable {
         private let detailHash: String
         private let image: String
         private let alt: String
@@ -24,7 +24,7 @@ extension BanchanListDTO {
         private let badge: [String]?
         
         func toDomain() -> Banchan {
-            return .init(detailHash: detailHash, image: image, alt: alt, title: title, description: description, nPrice: nPrice, sPrice: sPrice, badge: badge, deliveryType: deliveryType)
+            return .init(detailHash: detailHash, image: image, alt: alt, title: title, description: description, nPrice: nPrice, sPrice: sPrice, badges: badge, deliveryType: deliveryType)
         }
     }
     

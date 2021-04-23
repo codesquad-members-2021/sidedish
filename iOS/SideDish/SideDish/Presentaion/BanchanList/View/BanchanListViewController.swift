@@ -65,7 +65,6 @@ extension BanchanListViewController {
             
             view.configure(title: section.description(), count: self.viewModel.count(section: section))
             return view
-            
         }
         return dataSource
     }

@@ -22,7 +22,7 @@
 		D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */; };
 		D4BFBB0B262E9A8200D68297 /* DetailBanchanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */; };
 		D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB29262EA93700D68297 /* Banchan.swift */; };
-		D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB2E262EAD1C00D68297 /* DetailBanchan.swift */; };
+		D4BFBB2F262EAD1C00D68297 /* BanchanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB2E262EAD1C00D68297 /* BanchanDetail.swift */; };
 		D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */; };
 		D4BFBB36262EB89800D68297 /* BanchanCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */; };
 		D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */; };
@@ -78,7 +78,7 @@
 		D4BFBB08262E9A8100D68297 /* DetailBanchanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBanchanViewController.swift; sourceTree = "<group>"; };
 		D4BFBB09262E9A8200D68297 /* DetailBanchanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBanchanViewController.xib; sourceTree = "<group>"; };
 		D4BFBB29262EA93700D68297 /* Banchan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banchan.swift; sourceTree = "<group>"; };
-		D4BFBB2E262EAD1C00D68297 /* DetailBanchan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBanchan.swift; sourceTree = "<group>"; };
+		D4BFBB2E262EAD1C00D68297 /* BanchanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanDetail.swift; sourceTree = "<group>"; };
 		D4BFBB33262EB89800D68297 /* BanchanCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCustomCell.swift; sourceTree = "<group>"; };
 		D4BFBB34262EB89800D68297 /* BanchanCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BanchanCustomCell.xib; sourceTree = "<group>"; };
 		D4BFBB3A262EC8DB00D68297 /* BanchanCustomCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanCustomCellHeader.swift; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				D4BFBB29262EA93700D68297 /* Banchan.swift */,
-				D4BFBB2E262EAD1C00D68297 /* DetailBanchan.swift */,
+				D4BFBB2E262EAD1C00D68297 /* BanchanDetail.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -588,7 +588,7 @@
 				D4BFBAD5262E989000D68297 /* SceneDelegate.swift in Sources */,
 				FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */,
 				D4BFBB0A262E9A8200D68297 /* DetailBanchanViewController.swift in Sources */,
-				D4BFBB2F262EAD1C00D68297 /* DetailBanchan.swift in Sources */,
+				D4BFBB2F262EAD1C00D68297 /* BanchanDetail.swift in Sources */,
 				FFEF71042631107200189376 /* FetchBanchanListUseCase.swift in Sources */,
 				FFEF70FF2631104B00189376 /* BanchanListDTO+Mapping.swift in Sources */,
 				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,

@@ -29,7 +29,7 @@ class BanchanCustomCell: UICollectionViewCell {
             descriptionLabel.text = banchan?.description
             setNPrice(text: banchan?.nPrice)
             sPriceLabel.text = banchan?.sPrice
-            setBadges(badges: banchan?.badge)
+            setBadges(badges: banchan?.badges)
         }
     }
     

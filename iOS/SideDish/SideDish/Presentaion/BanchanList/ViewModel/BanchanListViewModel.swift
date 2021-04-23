@@ -54,10 +54,6 @@ class BanchanListViewModel {
         })
     }
     
-    func sectionCount() -> Int {
-        return Section.allCases.count
-    }
-    
     func getBanchans(section: Section) -> [Banchan]? {
         return menu[section]
     }

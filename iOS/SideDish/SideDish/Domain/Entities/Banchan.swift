@@ -25,7 +25,7 @@ struct Banchan: Hashable {
     private (set) var description: String
     private (set) var nPrice: String?
     private (set) var sPrice: String
-    private (set) var badge: [String]?
+    private (set) var badges: [String]?
     private (set) var deliveryType: [String]
     
     func hash(into hasher: inout Hasher) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailBanchan {
+struct BanchanDetail {
     private var topImage: URL
     private var thumbImages: [URL]
     private var detailImage: [URL]
@@ -18,5 +18,5 @@ struct DetailBanchan {
     private var point: Int
     private var netPrice: Int
     private var salePrice: Int?
-    private var badge: [PriceType]
+    private var badges: [PriceType]
 }
