@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import closeImage from '../../images/close.svg';
 import LeftSide from './LeftSide/LeftSide';
@@ -6,8 +6,10 @@ import RightSide from './RightSide/RightSide';
 import BottomSide from './BottomSide/BottomSide';
 
 const DetailProductModal = () => {
+  const [isHide, setHide] = useState(false);
+
   return (
-    <Background>
+    <Background isHide={isHide}>
       <ModelWrapper>
         <div>
           <TopSide>
@@ -16,7 +18,7 @@ const DetailProductModal = () => {
           </TopSide>
           <BottomSide />
         </div>
-        <CloseButton src={closeImage} alt="" />
+        <CloseButton src={closeImage} onClick={() => setHide(!isHide)} alt="" />
       </ModelWrapper>
     </Background>
   );
@@ -24,7 +26,7 @@ const DetailProductModal = () => {
 
 const Background = styled.div`
   position: fixed;
-  display:flex;
+  display:${({ isHide }) => isHide ? 'none' : 'flex'};
   top: 0;
   right: 0;
   bottom: 0;

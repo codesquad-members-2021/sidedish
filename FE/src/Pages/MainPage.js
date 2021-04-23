@@ -8,9 +8,10 @@ import { FlexContainer, Container } from '../Components/commons/styledComponents
 import * as Carousel from '../Components/Carousel';
 
 const MainPage = () => {
+
   return (
     <MainPageLayout>
-      {/* <DetailProductModal /> */}
+      <DetailProductModal />
       <Header />
       <Tabs />
       메인페이지입니다.

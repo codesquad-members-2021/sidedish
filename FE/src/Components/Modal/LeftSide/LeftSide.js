@@ -4,10 +4,15 @@ import Thumbnail from './Thumbnail';
 import SmallThumbnail from './SmallThumbnail';
 
 const LeftSide = () => {
+
+  const handleChange = ({ src }) => {
+
+  }
+
   return (
     <LeftSideWrapper>
       <Thumbnail />
-      <SmallThumbnail />
+      <SmallThumbnail handleChange={handleChange} />
     </LeftSideWrapper>
   );
 };
