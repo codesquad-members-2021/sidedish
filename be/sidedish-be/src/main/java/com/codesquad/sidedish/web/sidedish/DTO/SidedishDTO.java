@@ -1,12 +1,5 @@
-package com.codesquad.sidedish.web.sidedish;
+package com.codesquad.sidedish.web.sidedish.DTO;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class SidedishDTO {
@@ -21,28 +14,6 @@ public class SidedishDTO {
         this.categoryId = categoryId;
         this.name = name;
         this.items = items;
-    }
-
-    public static List<SidedishDTO> listFrom(String jsonString) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-
-        return objectMapper.readValue(
-                jsonString,
-                new TypeReference<List<SidedishDTO>>() {
-                }
-        );
-    }
-
-    public static List<SidedishDTO> listFrom(File file) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-
-        return objectMapper.readValue(
-                file,
-                new TypeReference<List<SidedishDTO>>() {
-                }
-        );
     }
 
     public long getCategoryId() {

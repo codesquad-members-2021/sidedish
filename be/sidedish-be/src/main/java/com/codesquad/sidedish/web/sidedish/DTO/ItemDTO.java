@@ -1,7 +1,7 @@
-package com.codesquad.sidedish.web.sidedish;
+package com.codesquad.sidedish.web.sidedish.DTO;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
+import com.codesquad.sidedish.web.sidedish.Price;
+
 import java.util.List;
 
 public class ItemDTO {
@@ -11,14 +11,14 @@ public class ItemDTO {
     private List<String> deliveryType;
     private String title;
     private String description;
-    private long nPrice;
-    private long sPrice;
+    private Price nPrice;
+    private Price sPrice;
     private List<String> badge;
 
     public ItemDTO() {
     }
 
-    public ItemDTO(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, long nPrice, long sPrice, List<String> badge) {
+    public ItemDTO(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Price nPrice, Price sPrice, List<String> badge) {
         this.detailHash = detailHash;
         this.image = image;
         this.alt = alt;
@@ -79,19 +79,19 @@ public class ItemDTO {
     }
 
     public String getnPrice() {
-        return NumberFormat.getInstance().format(nPrice);
+        return nPrice != null ? nPrice.getFormattedPrice() : "";
     }
 
-    public void setnPrice(String nPrice) throws ParseException {
-        this.nPrice = NumberFormat.getInstance().parse(nPrice).longValue();
+    public void setnPrice(Price nPrice) {
+        this.nPrice = nPrice;
     }
 
     public String getsPrice() {
-        return NumberFormat.getInstance().format(sPrice);
+        return sPrice != null ? sPrice.getFormattedPrice() : "";
     }
 
-    public void setsPrice(String sPrice) throws ParseException {
-        this.sPrice = NumberFormat.getInstance().parse(sPrice).longValue();
+    public void setsPrice(Price sPrice) {
+        this.sPrice = sPrice;
     }
 
     public List<String> getBadge() {
@@ -109,8 +109,8 @@ public class ItemDTO {
         private List<String> deliveryType;
         private String title;
         private String description;
-        private long nPrice;
-        private long sPrice;
+        private Price nPrice;
+        private Price sPrice;
         private List<String> badge;
 
         private ItemDTOBuilder() {
@@ -150,12 +150,12 @@ public class ItemDTO {
             return this;
         }
 
-        public ItemDTOBuilder nPrice(long nPrice) {
+        public ItemDTOBuilder nPrice(Price nPrice) {
             this.nPrice = nPrice;
             return this;
         }
 
-        public ItemDTOBuilder sPrice(long sPrice) {
+        public ItemDTOBuilder sPrice(Price sPrice) {
             this.sPrice = sPrice;
             return this;
         }
