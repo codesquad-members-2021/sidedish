@@ -15,7 +15,7 @@ const CarouselSection = ({ key, url, title }) => {
   const slides = useRef();
   const slideCount = 4;
   const slideWidth = 320;
-  const totalWidth = 320 * slideCount + 16;
+  const totalWidth = 320 * slideCount + 16 + 8; /* 원래 8 없음 */
 
   useEffect(() => {
     (async () => {
@@ -103,7 +103,7 @@ const SectionContent = styled.div`
   position: relative;
   display: flex;
   margin: 20px 0;
-  width: 1280px;
+  width: 1288px; /* 원래 1280 */
   height: 500px;
   /*border: 1px solid black;*/
   overflow: hidden;
