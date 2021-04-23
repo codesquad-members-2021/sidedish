@@ -20,8 +20,8 @@ class TurnonAppUsecase : ManufactureDataforViewModel {
         self.networkmanager = networkmanager
     }
     
-    convenience init(){
-        let networkmanager = NetworkManager(baseAddress: "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com")
+    convenience init(baseUrl: String = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com"){
+        let networkmanager = NetworkManager(baseAddress: baseUrl)
         self.init(networkmanager : networkmanager)
     }
     

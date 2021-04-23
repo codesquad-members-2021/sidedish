@@ -11,11 +11,9 @@ import Combine
 class NetworkManager : NetworkProtocol {
     
     private let requestManager: RequestManager
-    private let urlSession: URLSession
     
     init(baseAddress: String){
         self.requestManager = RequestManager(baseAddress: baseAddress)
-        self.urlSession = URLSession(configuration: .default)
     }
     
     func get<T>(type: T.Type, endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable {

@@ -8,18 +8,30 @@
 import Foundation
 
 struct SideDish: Decodable {
-    let detail_hash : String
-    let image : String //library/cache의 파일명
-    let alt : String
+    let id: String
+    let image: String //library/cache의 파일명
+    let alt: String
     let title: String //"[소중한식사] 골뱅이무침 195g"
     let description: String //"매콤새콤달콤, 반찬으로도 안주로도 좋은"
-    let n_price: String? //7,000
-    let s_price: String? //6,300
-    let delivery_type : [String]? //["새벽배송","전국택배"]
-    let badge : [String]? //["이벤트특가", "런칭특가"]
+    let price: String? //7,000
+    let salePrice: String? //6,300
+    let deliveryTypes: [String]? //["새벽배송","전국택배"]
+    let badges: [String]? //["이벤트특가", "런칭특가"]
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "detail_hash"
+        case image
+        case alt
+        case title
+        case description
+        case price = "n_price"
+        case salePrice = "s_price"
+        case deliveryTypes = "delivery_type"
+        case badges = "badge"
+    }
 }
 
-class Detail: Codable {
+class Detail: Decodable {
     let thumbImages: [String] //library/cache의 파일명들
     let point: String //"63원"
     let deliveryInfo: String //"서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [화 수 목 금 토] 수령 가능한 상품입니다"
