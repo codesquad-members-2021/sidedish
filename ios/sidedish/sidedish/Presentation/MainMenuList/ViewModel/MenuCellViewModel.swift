@@ -12,19 +12,18 @@ class MenuCellViewModel{
     
     @Published var dishesCategory : [SideDishesCategory]!
     @Published var dishes : [[SideDish]]!
-    @Published var errorMessage : String = ""
+    @Published var errorMessage : String!
     
     private var subscriptions = Set<AnyCancellable>()
-    private var turnonAppUsecase : TurnonAppUsecase
+    private var turnonAppUsecase: ManufactureDataforViewModel
     
-    init(turnonAppUsecase : TurnonAppUsecase) {
+    init(turnonAppUsecase: ManufactureDataforViewModel) {
         self.turnonAppUsecase = turnonAppUsecase
     }
     
     convenience init() {
         let turnonAppUsecase = TurnonAppUsecase()
-        self.init(turnonAppUsecase : turnonAppUsecase)
-        self.dishes = [[],[],[]]
+        self.init(turnonAppUsecase: turnonAppUsecase)
     }
     
     func configureMainmenuBoard(){
@@ -35,40 +34,29 @@ class MenuCellViewModel{
                 }
             }, receiveValue: { (category) in
                 self.dishesCategory = category
+                self.updateEndpoint(from: category)
+                self.loadSideDishes(count: category.count)
             }).store(in: &subscriptions)
-        
-        turnonAppUsecase.manufactureforMainViewMainDishes()
-            .sink(receiveCompletion: { (result) in
-                if case .failure(let error) = result {
-                    self.errorMessage = error.localizedDescription
-                }
-            }, receiveValue: { (dishes) in
-                for i in 0..<dishes.count {
-                    self.dishes[0].append(dishes[i])
-                }
-            }).store(in: &subscriptions)
-        
-        turnonAppUsecase.manufactureforMainViewSideDishes()
-            .sink(receiveCompletion: { (result) in
-                if case .failure(let error) = result {
-                    self.errorMessage = error.localizedDescription
-                }
-            }, receiveValue: { (dishes) in
-                for i in 0..<dishes.count {
-                    self.dishes[1].append(dishes[i])
-                }
-            }).store(in: &subscriptions)
-        
-        turnonAppUsecase.manufactureforMainViewSoup()
-            .sink(receiveCompletion: { (result) in
-                if case .failure(let error) = result {
-                    self.errorMessage = error.localizedDescription
-                }
-            }, receiveValue: { (dishes) in
-                for i in 0..<dishes.count {
-                    self.dishes[2].append(dishes[i])
-                }
-            }).store(in: &subscriptions)
+    }
+    
+    private func updateEndpoint(from categories: [SideDishesCategory]) {
+        categories.forEach { (category) in
+            EndPoint.sideDishes.append(category.endPoint)
+        }
+    }
+    
+    private func loadSideDishes(count: Int) {
+        self.dishes = Array(repeating: [], count: count)
+        for i in 0..<count {
+            turnonAppUsecase.manufactureForMainViewSideDishes(endPoint: EndPoint.sideDishes[i])
+                .sink { (result) in
+                    if case .failure(let error) = result {
+                        self.errorMessage = error.localizedDescription
+                    }
+                } receiveValue: { (sideDish) in
+                    self.dishes[i] = sideDish
+                }.store(in: &subscriptions)
+        }
     }
     
     func sideCategoryCount() -> Int{
@@ -76,12 +64,12 @@ class MenuCellViewModel{
             return 0
         }
         else {
-            return dishes.count
+            return dishesCategory.count
         }
     }
     
-    func sideDishesCount(section : Int) -> Int{
-        if dishes.isEmpty {
+    func sideDishesCount(section: Int) -> Int{
+        if dishes == nil {
             return 0
         }
         else {
@@ -89,11 +77,11 @@ class MenuCellViewModel{
         }
     }
     
-    func configureAlertMessage(completion : @escaping ((String)->())){
-        $errorMessage
-            .dropFirst()
-            .sink { (message) in
-                completion(message)
-            }.store(in: &subscriptions)
-    }
+//    func configureAlertMessage() {
+//        $errorMessage
+//            .dropFirst()
+//            .sink { (message) in
+//                self.errorMessage = message
+//            }.store(in: &subscriptions)
+//    }
 }

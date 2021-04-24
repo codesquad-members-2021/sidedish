@@ -9,14 +9,18 @@ import Foundation
 import Combine
 
 protocol ManufactureDataforViewModel {
+    
     func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], Error>
+    
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], Error>
+    
 }
 
-class TurnonAppUsecase : ManufactureDataforViewModel {
+class TurnonAppUsecase: ManufactureDataforViewModel {
 
-    private let networkmanager : NetworkProtocol
+    private let networkmanager: NetworkProtocol
     
-    init(networkmanager : NetworkProtocol) {
+    init(networkmanager: NetworkProtocol) {
         self.networkmanager = networkmanager
     }
     
@@ -26,19 +30,10 @@ class TurnonAppUsecase : ManufactureDataforViewModel {
     }
     
     func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], Error> {
-        return networkmanager.get(type: [SideDishesCategory].self, endPoint: .categories)
+        return networkmanager.get(type: [SideDishesCategory].self, endPoint: EndPoint.categories)
     }
     
-    func manufactureforMainViewMainDishes() -> AnyPublisher<[SideDish], Error> {
-        return networkmanager.get(type: [SideDish].self, endPoint: .main)
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], Error> {
+        return networkmanager.get(type: [SideDish].self, endPoint: endPoint)
     }
-    
-    func manufactureforMainViewSideDishes() -> AnyPublisher<[SideDish], Error> {
-        return networkmanager.get(type: [SideDish].self, endPoint: .side)
-    }
-    
-    func manufactureforMainViewSoup() -> AnyPublisher<[SideDish], Error> {
-        return networkmanager.get(type: [SideDish].self, endPoint: .soup)
-    }
-
 }

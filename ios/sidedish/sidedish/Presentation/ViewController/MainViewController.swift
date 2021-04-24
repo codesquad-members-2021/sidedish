@@ -51,12 +51,19 @@ class MainViewController: UIViewController, ViewChangable {
             .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.menuTableView.reloadData() })
             .store(in: &self.subscription)
         
-        mainMenuViewModel.configureAlertMessage { (error) in
-            self.showAlert(message: error)
-        }
+        mainMenuViewModel.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] error in self?.showAlert(message: error) })
+            .store(in: &self.subscription)
+        
+//        mainMenuViewModel.configureAlertMessage { (error) in
+//            self.showAlert(message: error)
+//        }
     }
     
-    private func showAlert(message : String){
+    private func showAlert(message: String?){
+        guard let message = message else { return }
+        
         DispatchQueue.main.async {
             self.present(AlertMessageController.makeAlertController(error: message), animated: true)
         }

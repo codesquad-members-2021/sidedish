@@ -16,7 +16,7 @@ class NetworkManager : NetworkProtocol {
         self.requestManager = RequestManager(baseAddress: baseAddress)
     }
     
-    func get<T>(type: T.Type, endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable {
+    func get<T>(type: T.Type, endPoint: String) -> AnyPublisher<T, Error> where T: Decodable {
         let urlRequest = requestManager.create(endPoint: endPoint, body: nil, requestType: .get)
         
         return URLSession.shared.dataTaskPublisher(for: urlRequest)

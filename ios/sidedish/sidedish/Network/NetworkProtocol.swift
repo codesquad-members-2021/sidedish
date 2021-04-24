@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol NetworkProtocol {
-    func get<T>(type: T.Type, endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable
+    func get<T>(type: T.Type, endPoint: String) -> AnyPublisher<T, Error> where T: Decodable
 }
