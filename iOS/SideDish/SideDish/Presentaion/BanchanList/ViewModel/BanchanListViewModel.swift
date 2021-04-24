@@ -26,6 +26,7 @@ class BanchanListViewModel {
     }
     
     @Published var menu: Dictionary<Section, [Banchan]>
+    private let baseURL = "http://ec2-54-180-115-20.ap-northeast-2.compute.amazonaws.com:8080/"
     
     private var network = NetworkSerivce.shared
     
@@ -39,17 +40,17 @@ class BanchanListViewModel {
     }
     
     func fetchMenu() {
-        FetchBanchanListUseCase.fetchBanchanList(network: network, section: "main", completion: { banchans in
+        FetchBanchanListUseCase.fetchBanchanList(network: network, baseURL: baseURL, section: "main", completion: { banchans in
             guard let banchans = banchans else { return }
             self.menu[.main] = banchans
         })
         
-        FetchBanchanListUseCase.fetchBanchanList(network: network, section: "soup", completion: { banchans in
+        FetchBanchanListUseCase.fetchBanchanList(network: network, baseURL: baseURL, section: "soup", completion: { banchans in
             guard let banchans = banchans else { return }
             self.menu[.soup] = banchans
         })
         
-        FetchBanchanListUseCase.fetchBanchanList(network: network, section: "side", completion: { banchans in
+        FetchBanchanListUseCase.fetchBanchanList(network: network, baseURL: baseURL, section: "side", completion: { banchans in
             guard let banchans = banchans else { return }
             self.menu[.side] = banchans
         })
