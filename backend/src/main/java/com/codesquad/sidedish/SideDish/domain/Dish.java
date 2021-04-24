@@ -1,5 +1,7 @@
 package com.codesquad.sidedish.SideDish.domain;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Dish {
@@ -20,6 +22,9 @@ public class Dish {
 
     private final long categoryId;
     private final int quantity;
+
+    // FIXME: 하드 코딩되었지만, AuditingEntityListener 로 자동화해야함
+    private final LocalDateTime modifiedDateTime = LocalDateTime.of(2021, 4, 24, 21, 57);
 
     private Dish(Builder builder) {
         this.detailHash = builder.detailHash;
@@ -201,5 +206,13 @@ public class Dish {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public boolean refreshable(long lastUpdated) {
+        LocalDateTime parsedDateTime = LocalDateTime.parse(
+                String.format("20%d", lastUpdated),
+                DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+        );
+        return modifiedDateTime.isAfter(parsedDateTime);
     }
 }

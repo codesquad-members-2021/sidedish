@@ -27,9 +27,8 @@ public class DishService {
     }
 
     public RefreshDto getDetailRefreshable(String detailHash, long lastUpdated) {
-        // NOTE: 프론트 요구사항 귀찮다. 그냥 하드코딩으로 땜빵하자;
-        // NOTE: 자료형식은 yyMMddhhmm
-        boolean refreshable = 2104220639 > lastUpdated;
+        Dish dish = dishRepository.findByDetailHash(detailHash);
+        boolean refreshable = dish.refreshable(lastUpdated);
         return new RefreshDto(refreshable);
     }
 
