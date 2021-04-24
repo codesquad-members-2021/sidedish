@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 struct FetchBanchanListUseCase {
-    private static var subscriptions = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     
-    static func fetchBanchanList(network: NetworkRequest, baseURL: String, section: String, completion: @escaping ([Banchan]?) -> Void) {
+    mutating func fetchBanchanList(network: NetworkRequest, baseURL: String, section: String, completion: @escaping ([Banchan]?) -> Void) {
         let url = baseURL+section
 
         network.request(with: url, dataType: BanchanListDTO.self, httpMethod: .get)
