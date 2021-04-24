@@ -24,26 +24,12 @@ class BanchanCustomCell: UICollectionViewCell {
     
     var banchan: Banchan? {
         didSet{
-            loadImages(imgURL: banchan?.image ?? "")
+            imageView.load(url: banchan?.image)
             titleLabel.text = banchan?.title
             descriptionLabel.text = banchan?.description
             setNPrice(text: banchan?.nPrice)
             sPriceLabel.text = banchan?.sPrice
             setBadges(badges: banchan?.badges)
-        }
-    }
-    
-    private func loadImages(imgURL: String) {
-        DispatchQueue.global().async {
-            FetchImageUseCase.fetch(network: NetworkSerivce.shared,
-                                    imgURL: self.banchan?.image ?? "") { (data) in
-                guard let data = data else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data)
-                }
-            }
         }
     }
     
@@ -72,6 +58,5 @@ class BanchanCustomCell: UICollectionViewCell {
             badgeLabel.configure(text: badge)
             badgeStackView.addArrangedSubview(badgeLabel)
         }
-        
     }
 }
