@@ -29,8 +29,8 @@ function Slider({ itemCntOnView, items, defaultBtn = true, pageable = false }, r
   const [positionLeft, setPositionLeft] = useState(0);
   const [totalWidth, setTotalWidth] = useState();
   const [betweenMargin, setBetweenMargin] = useState();
-  // const [currPage, setCurrPage] = useState(1);
-  // const [totalPage] = useState(Math.ceil(items.length / itemCntOnView));
+  const [currPage, setCurrPage] = useState(1);
+  const [totalPage] = useState(Math.ceil(items.length / itemCntOnView));
   const styledRef = useRef();
   const itemRef = useRef();
 
@@ -51,8 +51,10 @@ function Slider({ itemCntOnView, items, defaultBtn = true, pageable = false }, r
   useImperativeHandle(ref, () => ({
     slideToLeft,
     slideToRight,
-    // getCurrPage: () => currPage,
-    // getTotalPage: () => totalPage,
+    slidableToLeft,
+    slidableToRight,
+    getCurrPage: () => currPage,
+    getTotalPage: () => totalPage,
   }));
 
   const _calcPositionLeft = (currIdx, betweenMargin) => {
@@ -68,20 +70,34 @@ function Slider({ itemCntOnView, items, defaultBtn = true, pageable = false }, r
     return (itemRef.current.offsetWidth + betweenMargin) * items.length - betweenMargin;
   }
 
-  const getNextIdx = () => {
-    // TODO: implement using 'pageable'
-  }
-
-  const getPrevIdx = () => {
-    // TODO: implement using 'pageable'
-  }
-
   const slideToLeft = () => {
-    setCurrIdx(currIdx - itemCntOnView);
+    if (!slidableToLeft())
+      return;
+
+    setCurrPage(currPage - 1);
+
+    (!pageable && currIdx % itemCntOnView) ?
+      setCurrIdx(currIdx - currIdx % itemCntOnView) :
+      setCurrIdx(currIdx - itemCntOnView);
   }
 
   const slideToRight = () => {
-    setCurrIdx(currIdx + itemCntOnView);
+    if (!slidableToRight())
+      return;
+
+    setCurrPage(currPage + 1);
+
+    (!pageable && currIdx === items.length - itemCntOnView - items.length % itemCntOnView) ?
+      setCurrIdx(currIdx + items.length % itemCntOnView) :
+      setCurrIdx(currIdx + itemCntOnView);
+  }
+
+  const slidableToLeft = () => {
+    return currIdx !== 0;
+  }
+
+  const slidableToRight = () => {
+    return currIdx < items.length - itemCntOnView;
   }
 
   const renderItems = () => {
