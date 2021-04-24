@@ -22,9 +22,22 @@ const SliderListItem = styled.li`
   
 `;
 
+const _calcBetweenMargin = ({ itemWidth, sliderWidth, itemCntOnView }) => {
+  const totalItemWidthOnView = itemCntOnView * itemWidth;
+  return (sliderWidth - totalItemWidthOnView) / (itemCntOnView - 1);
+}
+
+const _calcTotalWidth = ({ itemWidth, itemLength, betweenMargin }) => {
+  return (itemWidth + betweenMargin) * itemLength - betweenMargin;
+}
+
+const _calcPositionLeft = ({ itemWidth, currIdx, betweenMargin }) => {
+  return (itemWidth + betweenMargin) * currIdx * -1;
+}
+
 // TODO: default slide buttons, disable slide button
 
-function Slider({ itemCntOnView, items, defaultBtn = true, pageable = false }, ref) {
+function Slider({ itemCntOnView, items, onSlide, defaultBtn = true, pageable = false }, ref) {
   const [currIdx, setCurrIdx] = useState(0);
   const [positionLeft, setPositionLeft] = useState(0);
   const [totalWidth, setTotalWidth] = useState();
@@ -35,17 +48,32 @@ function Slider({ itemCntOnView, items, defaultBtn = true, pageable = false }, r
   const itemRef = useRef();
 
   useEffect(() => {
-    const newBetweenMargin = _calcBetweenMargin();
+    const newBetweenMargin = _calcBetweenMargin({
+      itemWidth: itemRef.current.offsetWidth,
+      sliderWidth: styledRef.current.offsetWidth,
+      itemCntOnView
+    });
+    const newTotalWidth = _calcTotalWidth({
+      itemWidth: itemRef.current.offsetWidth,
+      itemLength: items.length,
+      betweenMargin: newBetweenMargin
+    });
+
     setBetweenMargin(newBetweenMargin);
-    setTotalWidth(_calcTotalWidth(newBetweenMargin));
-  }, [itemRef]);
+    setTotalWidth(newTotalWidth);
+  }, []);
 
   useEffect(() => {
     if (currIdx === undefined || betweenMargin === undefined)
       return;
     
-    const newPositionLeft = _calcPositionLeft(currIdx, betweenMargin);
+    const newPositionLeft = _calcPositionLeft({
+      itemWidth: itemRef.current.offsetWidth,
+      currIdx,
+      betweenMargin
+    });
     setPositionLeft(newPositionLeft);
+    onSlide();
   }, [currIdx, betweenMargin]);
 
   useImperativeHandle(ref, () => ({
@@ -56,19 +84,6 @@ function Slider({ itemCntOnView, items, defaultBtn = true, pageable = false }, r
     getCurrPage: () => currPage,
     getTotalPage: () => totalPage,
   }));
-
-  const _calcPositionLeft = (currIdx, betweenMargin) => {
-    return (itemRef.current.offsetWidth + betweenMargin) * currIdx * -1;
-  }
-
-  const _calcBetweenMargin = () => {
-    const totalItemWidthOnView = itemCntOnView * itemRef.current.offsetWidth;
-    return (styledRef.current.offsetWidth - totalItemWidthOnView) / (itemCntOnView - 1);
-  }
-  
-  const _calcTotalWidth = (betweenMargin) => {
-    return (itemRef.current.offsetWidth + betweenMargin) * items.length - betweenMargin;
-  }
 
   const slideToLeft = () => {
     if (!slidableToLeft())
