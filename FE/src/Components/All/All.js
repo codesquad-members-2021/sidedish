@@ -5,10 +5,9 @@ import Carousel from "../Main/Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
 import CarouselButton from "../Main/CarouselButton";
 
-const All = ({ URL, modal, setModal }) => {
+const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const [soup, setSoup] = useState([]);
   const [side, setSide] = useState([]);
-  const [ModalData, setModalData] = useState([]);
   const [rander, setRander] = useState(false);
   const soupImageRef = useRef();
   const sideImageRef = useRef();
@@ -31,7 +30,6 @@ const All = ({ URL, modal, setModal }) => {
 
   const soupSlide = (e) => {
     soupRef.current.Slider(e);
-    // sideRef.current.Slider(e);
   };
 
   const sideSlide = (e) => {
@@ -42,7 +40,9 @@ const All = ({ URL, modal, setModal }) => {
     <div>
       {rander && (
         <div>
-          {modal && <PopUpModal setModal={setModal} ModalData={ModalData} />}
+          {modal && (
+            <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
+          )}
           <CarouselSlide>
             <CarouselButton Name={"Left"} Slide={soupSlide} />
             <Carousel

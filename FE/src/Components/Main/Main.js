@@ -5,9 +5,8 @@ import Carousel from "./Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
 import CarouselButton from "./CarouselButton";
 
-const Main = ({ URL, modal, setModal }) => {
+const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const [Food, setFood] = useState([]);
-  const [ModalData, setModalData] = useState([]);
   const mainRef = useRef(null);
   const foodRef = useRef();
 
