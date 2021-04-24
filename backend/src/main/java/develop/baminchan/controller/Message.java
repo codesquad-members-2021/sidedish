@@ -9,8 +9,8 @@ public class Message {
     private int status;
     private Object data;
 
-    public Message(int statusEnum, Object data) {
-        this.status = statusEnum;
+    public Message(int status, Object data) {
+        this.status = status;
         this.data = data;
     }
 
