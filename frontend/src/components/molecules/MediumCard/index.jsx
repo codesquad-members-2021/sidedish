@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Image from "../../atoms/Image";
-import Span from "../../atoms/Span";
-import Tag from "../../atoms/Tag";
+import React from 'react';
+import styled from 'styled-components';
+import Image from '../../atoms/Image';
+import Span from '../../atoms/Span';
+import Tag from '../../atoms/Tag';
 
 const Div = styled.div`
   display: flex;
@@ -20,11 +20,19 @@ const FlexDiv = styled.div`
 
 const MediumCard = ({ children, ...props }) => {
   const TagType = () => {
-    if (props._badge) {
-      return props.badge === '["론칭특가"]' ? <Tag _new /> : <Tag _event />;
+    if (!props._badge) return <></>;
+    if (props._badge.length === 1) {
+      return props._badge[0] === '론칭특가' ? <Tag _new /> : <Tag _event />;
+    } else if (props._badge.length === 2) {
+      return (
+        <>
+          <Tag _new />
+          <Tag _event />
+        </>
+      );
     }
-    return <></>;
   };
+
   return (
     <Div>
       <Image src={props._image} />
@@ -34,7 +42,9 @@ const MediumCard = ({ children, ...props }) => {
         <Span _sPrice>{props._sPrice}</Span>
         <Span _nPrice>{props._nPrice}</Span>
       </FlexDiv>
-      <TagType />
+      <FlexDiv>
+        <TagType />
+      </FlexDiv>
     </Div>
   );
 };
