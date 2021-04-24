@@ -22,10 +22,10 @@ INSERT INTO delivery(id, is_monday, dish_hash) VALUES (5, 0, 'HF778');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (6, 1, 'H7F20');
 
 
-INSERT INTO best(category_id, name, dish_hash) VALUES (17011200, '할인특가 세트상품', 'H9881');
-INSERT INTO best(category_id, name, dish_hash) VALUES (17011200, '할인특가 세트상품', 'HDF4C');
-INSERT INTO best(category_id, name, dish_hash) VALUES (17011200, '할인특가 세트상품', 'H7F20');
+INSERT INTO best(category_id, name) VALUES (17011200, '할인특가 세트상품');
+INSERT INTO best(category_id, name) VALUES (17011000, '풍성한 고기반');
 
--- INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H9881', 17011200);
--- INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('HDF4C', 17_011_200);
--- INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H7F20', 17011200);
+INSERT INTO dish_best(dish_hash, category_id) VALUES ('H9881', 17011200);
+INSERT INTO dish_best(dish_hash, category_id) VALUES ('HDF4C', 17011200);
+INSERT INTO dish_best(dish_hash, category_id) VALUES ('HDF73', 17011000);
+INSERT INTO dish_best(dish_hash, category_id) VALUES ('HF778', 17011000);

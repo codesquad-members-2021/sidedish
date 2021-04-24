@@ -101,13 +101,28 @@ CREATE TABLE IF NOT EXISTS `sidedish`.`event` (
 DROP TABLE IF EXISTS `sidedish`.`best` ;
 
 CREATE TABLE IF NOT EXISTS `sidedish`.`best` (
-                                                 `id` INT NOT NULL AUTO_INCREMENT,
                                                  `category_id` INT NOT NULL,
                                                  `name` VARCHAR(255) NOT NULL,
-    `dish_hash` CHAR(5) NOT NULL,
-    PRIMARY KEY (`id`),
-    INDEX `fk_best_dish1_idx` (`dish_hash` ASC) VISIBLE,
-    CONSTRAINT `fk_best_dish1`
+    PRIMARY KEY (`category_id`))
+    ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sidedish`.`dish_best`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sidedish`.`dish_best` ;
+
+CREATE TABLE IF NOT EXISTS `sidedish`.`dish_best` (
+                                                      `category_id` INT NOT NULL,
+                                                      `dish_hash` CHAR(5) NOT NULL,
+    INDEX `fk_dish_best_best1_idx` (`category_id` ASC) VISIBLE,
+    INDEX `fk_dish_best_dish1_idx` (`dish_hash` ASC) VISIBLE,
+    CONSTRAINT `fk_dish_best_best1`
+    FOREIGN KEY (`category_id`)
+    REFERENCES `sidedish`.`best` (`category_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT `fk_dish_best_dish1`
     FOREIGN KEY (`dish_hash`)
     REFERENCES `sidedish`.`dish` (`hash`)
     ON DELETE NO ACTION
