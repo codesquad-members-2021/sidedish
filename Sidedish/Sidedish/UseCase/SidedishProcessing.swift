@@ -8,10 +8,15 @@
 import Foundation
 import Alamofire
 
-class SidedishProcessing {
-    let sideDishNetworkCenter: SidedishNetworkCenter
-    init() {
-        self.sideDishNetworkCenter = SidedishNetworkCenter()
+protocol SidedishProcessable {
+    func getItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ())
+    func getImage(url: URL, completion: @escaping ((Data) -> ()))
+}
+
+class SidedishProcessing: SidedishProcessable {
+    let sideDishNetworkCenter: Networkable
+    init(networkable: Networkable) {
+        self.sideDishNetworkCenter = networkable
     }
     
     func getItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ()) {
@@ -26,7 +31,7 @@ class SidedishProcessing {
     }
     
     func getImage(url: URL, completion: @escaping ((Data) -> ())) {
-        self.sideDishNetworkCenter.fetchImage(url: url) { (data) in
+        self.sideDishNetworkCenter.downloadImage(from: url) { (data) in
             completion(data)
         }
     }

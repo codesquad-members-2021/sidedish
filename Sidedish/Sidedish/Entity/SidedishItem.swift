@@ -10,6 +10,7 @@ import Foundation
 struct SidedishItem: Codable {
     var detailHash: String
     var image: String
+    var imageData: Data?
     var alt: String
     var deliveryType: [String]?
     var title: String

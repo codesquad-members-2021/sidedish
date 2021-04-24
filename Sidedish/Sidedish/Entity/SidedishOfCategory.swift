@@ -8,6 +8,5 @@
 import Foundation
 
 struct SidedishOfCategory: Codable {
-    var statusCode: Int
     var body: [SidedishItem]
 }

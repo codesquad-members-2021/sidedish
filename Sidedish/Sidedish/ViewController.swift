@@ -16,22 +16,17 @@ class ViewController: UIViewController {
     var itemViewModel: ItemViewModel!
     var headerViewModel: HeaderViewModel!
     var fetchItemSubscription = Set<AnyCancellable>()
+    var headerViewActionHander: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.itemViewModel = ItemViewModel()
+        let networking = SidedishNetworkCenter()
+        let sidedishProcessing = SidedishProcessing(networkable: networking)
+        
+        self.itemViewModel = ItemViewModel(sidedishProcessable: sidedishProcessing)
         self.headerViewModel = HeaderViewModel()
-        self.itemViewModel.$items
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.collectionView.reloadSections(IndexSet(integer: 0))
-                self?.itemViewModel.items.enumerated().forEach({ (index, sidedishItem) in
-                    self?.itemViewModel.fetchImage(index: index, imageURL: sidedishItem.image, completion: {
-                        self?.itemViewModel.imageReloadHandler?(index)
-                    })
-                })
-            }.store(in: &fetchItemSubscription)
+        self.bind()
         
         self.itemViewModel.errorHandler = { error in
             Toast(text: error).show()
@@ -41,12 +36,27 @@ class ViewController: UIViewController {
             self.collectionView.reloadItems(at: [IndexPath(index: index)])
         }
         
+        self.headerViewActionHander = {
+            let title = self.headerViewModel.titles[0]
+            let countText = "\(self.itemViewModel.items.count)개 상품이 등록되어 있습니다."
+            let attributedQuote = "\(title)\n\(countText)".attributedStringOfFontSize(of: 16)
+            Toast(attributedText: attributedQuote).show()
+        }
+        
         self.itemViewModel.fetchItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func bind() {
+        self.itemViewModel.$items
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
+            }.store(in: &fetchItemSubscription)
     }
 }
 
@@ -60,14 +70,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             return ItemCollectionViewCell()
         }
         let item = self.itemViewModel.items[indexPath.row]
-        
         let priceString = item.nPrice == nil ? "" : "\(item.nPrice ?? "")원"
-
         let badge = handleBadge(badge: item.badge)
         cell.configure(model: item, nPrice: priceString, badge: badge)
-        
-        guard let data = self.itemViewModel.images[indexPath.row] else { return cell }
-        
+        guard let data = self.itemViewModel.items[indexPath.row].imageData else { return cell }
         cell.configure(data: data)
 
         return cell
@@ -96,10 +102,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     @objc func makingHeaderToast(_ sender: TapToastGestureRecognize) {
-        let font = UIFont.systemFont(ofSize: 16)
-        let attributes: [NSAttributedString.Key: Any] = [.font: font]
-        let attributedQuote = NSAttributedString(string: "\(sender.title)\n\(sender.countText)", attributes: attributes)
-        Toast(attributedText: attributedQuote).show()
+        self.headerViewActionHander?()
     }
 }
 
