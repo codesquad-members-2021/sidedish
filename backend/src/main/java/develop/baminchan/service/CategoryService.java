@@ -23,16 +23,16 @@ public class CategoryService {
         this.banchanRepository = banchanRepository;
     }
 
-    public List<CategoryDto> findAllBestBanchansByCategory() {
+    public List<CategoryDto> findAllBestBanchansByCategories() {
         Iterable<Category> categoryList = categoryRepository.findAll();
-        Set<String> setCategoryId = new HashSet<>();
+        Set<String> setOfCategoryIds = new HashSet<>();
         for (Category category : categoryList) {
-            setCategoryId.add(category.getCategory_id());
+            setOfCategoryIds.add(category.getCategory_id());
         }
-        System.out.println(setCategoryId); //테스트 // null도 들어가나?
+        System.out.println(setOfCategoryIds); //테스트 // null도 들어가나?
 
         List<CategoryDto> categoryDtoList = new ArrayList<>();
-        for (String category_id: setCategoryId) {
+        for (String category_id : setOfCategoryIds) {
             categoryDtoList.add(findBestBanchansByCategory(category_id));
         }
         return categoryDtoList;
