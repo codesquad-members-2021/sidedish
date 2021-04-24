@@ -19,7 +19,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping(value = "/best", produces = "application/json")
+    @GetMapping("/best")
     public ResponseEntity<Message> getBest() {
         List<CategoryDto> categoryDtoList = categoryService.findAllBestBanchansByCategories();
         Message message = new Message(Message.OK, categoryDtoList);
