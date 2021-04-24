@@ -10,14 +10,12 @@ public class Best {
     @Id
     private Integer categoryId;
     private String name;
-    private Set<Dish> dishes = new HashSet<>();
 
     public Best() { }
 
-    public Best(int categoryId, String name, Set<Dish> dishes) {
+    public Best(int categoryId, String name) {
         this.categoryId = categoryId;
         this.name = name;
-        this.dishes = dishes;
     }
 
     public int getCategoryId() {
@@ -27,17 +25,4 @@ public class Best {
     public String getName() {
         return name;
     }
-
-    public Set<Dish> getDishes() {
-        return dishes;
-    }
-
-    public void addDish(Dish dish) {
-        dishes.add(dish);
-    }
-
-    public void clearDish(){
-        dishes.clear();
-    }
-
 }

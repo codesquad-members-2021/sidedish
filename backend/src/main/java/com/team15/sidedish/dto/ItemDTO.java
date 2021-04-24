@@ -1,14 +1,24 @@
 package com.team15.sidedish.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Arrays;
+
 public class ItemDTO {
 
+    @JsonProperty("detail_hash")
     private String detailHash;
     private String image;
     private String alt;
+
+    @JsonProperty("delivery_type")
     private String deliveryType;
     private String title;
     private String description;
+
+    @JsonProperty("n_price")
     private Integer nPrice;
+    @JsonProperty("s_price")
     private Integer sPrice;
     private String[] badge;
 
@@ -60,4 +70,18 @@ public class ItemDTO {
         return badge;
     }
 
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "detailHash='" + detailHash + '\'' +
+                ", image='" + image + '\'' +
+                ", alt='" + alt + '\'' +
+                ", deliveryType='" + deliveryType + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", nPrice=" + nPrice +
+                ", sPrice=" + sPrice +
+                ", badge=" + Arrays.toString(badge) +
+                '}';
+    }
 }

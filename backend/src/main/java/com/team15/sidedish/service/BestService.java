@@ -2,24 +2,40 @@ package com.team15.sidedish.service;
 
 import com.team15.sidedish.domain.Best;
 import com.team15.sidedish.domain.BestRepository;
+import com.team15.sidedish.dto.BestDTO;
+import com.team15.sidedish.dto.ItemDTO;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BestService {
 
     private BestRepository bestRepository;
+    private ItemService itemService;
 
-    public BestService(BestRepository bestRepository) {
+    public BestService(BestRepository bestRepository, ItemService itemService) {
         this.bestRepository = bestRepository;
+        this.itemService = itemService;
     }
 
-    public Set<Best> showAllBestDishes() {
-        return bestRepository.findAll();
+    public List<BestDTO> showAllBestDishes() {
+        return bestRepository.findAll()
+                .stream()
+                .map(best -> showSingleBestDish(best.getCategoryId()))
+                .collect(Collectors.toList());
     }
 
-    public Best showSingleBestDish(Integer categoryId) {
-        return bestRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
+    public BestDTO showSingleBestDish(Integer categoryId) {
+        List<String> bestDish = bestRepository.findByCategoryId(categoryId);
+        Best best = bestRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
+
+        List<ItemDTO> items = bestDish
+                .stream()
+                .map(hash -> itemService.showSingleDish(hash))
+                .collect(Collectors.toList());
+
+        return BestDTO.of(best, items);
     }
 }

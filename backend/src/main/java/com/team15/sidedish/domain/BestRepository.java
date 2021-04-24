@@ -1,12 +1,16 @@
 package com.team15.sidedish.domain;
 
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.Set;
+import java.util.List;
 
 public interface BestRepository extends CrudRepository<Best, Integer> {
 
     @Override
-    Set<Best> findAll();
+    List<Best> findAll();
+
+    @Query("select dish_hash from dish_best where category_id = :categoryId")
+    List<String> findByCategoryId(Integer categoryId);
 
 }
