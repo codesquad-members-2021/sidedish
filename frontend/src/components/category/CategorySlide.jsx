@@ -1,23 +1,20 @@
 import styled from "styled-components";
 import ItemCard from "../ItemCard";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
-import useFetch from "../useFetch";
-import { Button } from "../Theme";
-const CategoryWrapper = styled.div`
-  display: flex;
+import { AlignTextCenter } from "../Theme";
+const CatgoryWrapper = styled.div`
+  width: 1280px;
+  padding: 0px;
   overflow: hidden;
 `;
 const CategoryColumn = styled.div`
-  width: 1280px;
   padding: 0px;
-  display: flex;
-  overflow: hidden;
-  div {
-    margin-left: 16px;
-    &:first-child {
-      margin-left: 0px;
-    }
-  }
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: ${(props) => {
+    const num = props.children.length;
+    return `repeat(${num}, 1fr);`;
+  }};
 `;
 const CategorySlideBlock = styled.div`
   display: flex;
@@ -25,28 +22,52 @@ const CategorySlideBlock = styled.div`
   justify-content: space-between;
   margin-bottom: 80px;
 `;
+const Button = styled.button`
+  font-size: 36px;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
+`;
+
 const ButtonLeft = styled(Button)``;
 const ButtonRight = styled(Button)``;
+const LoadingWapper = styled(AlignTextCenter)`
+  width: 1280px;
+  height: 384px;
+`;
 
-function CategorySlide() {
-  const [initData, loadingState] = useFetch(
-    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
-  );
-  const resData = initData.body;
+function CategorySlide({ data }) {
+  let listNum;
+
+  const ItemCards = (data) => {
+    let category;
+    if (Array.isArray(data)) {
+      listNum = data.length;
+      category = data.map((data, idx) => (
+        <ItemCard key={idx} data={data} size={"S"} />
+      ));
+    } else {
+      category = (
+        <LoadingWapper>
+          <img src={"./load.jpg"} alt={"loading"} />
+        </LoadingWapper>
+      );
+    }
+
+    return category;
+  };
 
   return (
     <CategorySlideBlock>
       <ButtonLeft>
         <VscChevronLeft />
       </ButtonLeft>
-      <CategoryWrapper>
-        <CategoryColumn>
-          {!loadingState &&
-            resData.map((data, idx) => (
-              <ItemCard key={idx} data={data} size={"S"} />
-            ))}
-        </CategoryColumn>
-      </CategoryWrapper>
+      <CatgoryWrapper>
+        <CategoryColumn>{ItemCards(data)}</CategoryColumn>
+      </CatgoryWrapper>
       <ButtonRight>
         <VscChevronRight />
       </ButtonRight>

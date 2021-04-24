@@ -34,7 +34,6 @@ const ItemDesc = styled.div`
   }
 `;
 const IMG = styled(AlignTextCenter)`
-  position: relative;
   width: ${(props) => {
     return props.size === "L" ? "384px" : "308px";
   }};
@@ -54,6 +53,7 @@ const IMG = styled(AlignTextCenter)`
 `;
 
 const DeliveryBlock = styled.div`
+  position: relative;
   color: ${theme.colors.white};
   font-size: ${theme.fontSize.larger};
   font-weight: ${theme.fontWeight.bold};
