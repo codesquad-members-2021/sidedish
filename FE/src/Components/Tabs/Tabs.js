@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { Container } from '../commons/base.js';
 import Card from '../commons/Card';
 
 const Tabs = () => {
+  const [tabTitles, setTabTitles] = useState([]);
+  useEffect(() => {
+    const getTitles = async () => {
+      const a = await fetch('/develop/baminchan/best');
+      const b = await a.json();
+      setTabTitles(b.body);
+    }
+    getTitles();
+  }, []);
 
   return (
     <TabsWrapper>
       <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
       <div>
-        <label>
-          <RadioButton type="radio" name="best_dish" />
-          <LabelBelongSpan>할인특가 세트상품</LabelBelongSpan>
-        </label>
-        <label>
-          <RadioButton type="radio" name="best_dish" />
-          <LabelBelongSpan>풍성한 고기반찬</LabelBelongSpan>
-        </label>
-        <label>
-          <RadioButton type="radio" name="best_dish" />
-          <LabelBelongSpan>편리한 반찬세트</LabelBelongSpan>
-        </label>
-        <label>
-          <RadioButton type="radio" name="best_dish" />
-          <LabelBelongSpan>간편한 덮밥요리</LabelBelongSpan>
-        </label>
-        <label>
-          <RadioButton type="radio" name="best_dish" />
-          <LabelBelongSpan>우리아이 영양반찬</LabelBelongSpan>
-        </label>
+        {tabTitles.map(({ name }, idx) => {
+          return (
+            <label key={idx}>
+              <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} />
+              <LabelBelongSpan>{name}</LabelBelongSpan>
+            </label>
+          );
+        })}
       </div>
       <CardListWrapper>
         <Card></Card>
