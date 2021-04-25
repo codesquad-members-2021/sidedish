@@ -10,8 +10,8 @@ import Combine
 
 class MenuCellViewModel {
     
-    @Published var dishesCategory: [SideDishesCategory]!
-    @Published var dishes: [[SideDish]]!
+    @Published var dishesCategory: [SideDishesCategoryManageable]!
+    @Published var dishes: [[SideDishManageable]]!
     @Published var errorMessage: String!
     
     private var subscriptions = Set<AnyCancellable>()

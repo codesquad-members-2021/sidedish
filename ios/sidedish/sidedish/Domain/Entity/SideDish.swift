@@ -7,7 +7,46 @@
 
 import Foundation
 
-struct SideDish: Decodable {
+protocol SideDishManageable {
+    func getTitle() -> String
+    func getimage() -> String
+    func getdescription() -> String
+    func getPrice() -> Int
+    func getSalePrice() -> Int
+    func getDeliveryTypes() -> [String]?
+    func getbadge() -> [String]?
+}
+
+
+struct SideDish: Decodable, SideDishManageable {
+    func getTitle() -> String {
+        return self.title
+    }
+    
+    func getimage() -> String {
+        return self.image
+    }
+    
+    func getdescription() -> String {
+        return self.description
+    }
+    
+    func getPrice() -> Int {
+        return self.price
+    }
+    
+    func getSalePrice() -> Int {
+        return self.salePrice
+    }
+    
+    func getDeliveryTypes() -> [String]? {
+        return self.deliveryTypes
+    }
+    
+    func getbadge() -> [String]? {
+        return self.badges
+    }
+    
     let id: String
     let image: String //library/cache의 파일명
     let title: String //"[소중한식사] 골뱅이무침 195g"

@@ -15,6 +15,7 @@
 		821A75F226306F1F0083026F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A75F126306F1F0083026F /* NetworkProtocol.swift */; };
 		8268E35726301419002F518C /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35626301419002F518C /* MenuCellViewModel.swift */; };
 		8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35E26301B00002F518C /* TurnonAppUsecase.swift */; };
+		829BF3F926353BF1003CE411 /* DishRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829BF3F826353BF1003CE411 /* DishRepository.swift */; };
 		82A971D426323CC3005E419A /* AlertMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971D326323CC3005E419A /* AlertMessageController.swift */; };
 		82A971D72632478E005E419A /* CustomTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971D62632478E005E419A /* CustomTableHeaderView.swift */; };
 		82A971DB263252A1005E419A /* SideDishesManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971DA263252A1005E419A /* SideDishesManageable.swift */; };
@@ -46,6 +47,7 @@
 		821A75F126306F1F0083026F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		8268E35626301419002F518C /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		8268E35E26301B00002F518C /* TurnonAppUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnonAppUsecase.swift; sourceTree = "<group>"; };
+		829BF3F826353BF1003CE411 /* DishRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishRepository.swift; sourceTree = "<group>"; };
 		82A971D326323CC3005E419A /* AlertMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageController.swift; sourceTree = "<group>"; };
 		82A971D62632478E005E419A /* CustomTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableHeaderView.swift; sourceTree = "<group>"; };
 		82A971DA263252A1005E419A /* SideDishesManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishesManageable.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 				8268E35E26301B00002F518C /* TurnonAppUsecase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		829BF3F726353BC9003CE411 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				829BF3F826353BF1003CE411 /* DishRepository.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		82A3F139262F1FE200FD86BE /* Application */ = {
@@ -220,6 +230,7 @@
 		82FDB9C5262DCFD8009E3EB7 /* sidedish */ = {
 			isa = PBXGroup;
 			children = (
+				829BF3F726353BC9003CE411 /* Data */,
 				82A3F13E262F243300FD86BE /* Presentation */,
 				82A3F13C262F202A00FD86BE /* Domain */,
 				E41EC961263010030043CC44 /* Network */,
@@ -388,6 +399,7 @@
 				82A971D426323CC3005E419A /* AlertMessageController.swift in Sources */,
 				8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */,
 				E41EC963263013220043CC44 /* RequestManager.swift in Sources */,
+				829BF3F926353BF1003CE411 /* DishRepository.swift in Sources */,
 				8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */,
 				82FDB9C9262DCFD8009E3EB7 /* SceneDelegate.swift in Sources */,
 				82BBBBB72630067B008F89CB /* SideDishFindable.swift in Sources */,
