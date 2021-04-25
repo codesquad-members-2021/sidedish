@@ -6,12 +6,12 @@ const Arrow = ({ size, direction, onClick }) => {
   const SMALL = '1rem';
   return {
     RIGHT: (
-      <RightArrow onClick={onClick}>
+      <RightArrow onClick={onClick} direction={direction}>
         <FaAngleRight size={size === 'L' ? LARGE : SMALL} />
       </RightArrow>
     ),
     LEFT: (
-      <LeftArrow onClick={onClick}>
+      <LeftArrow onClick={onClick} direction={direction}>
         <FaAngleLeft size={size === 'L' ? LARGE : SMALL} />
       </LeftArrow>
     ),
