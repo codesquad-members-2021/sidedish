@@ -78,10 +78,12 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   );
 };
 const CarouselSlide = styled.div`
+  /* padding: 0 20px */
   display: flex;
 `;
 
 const PlusButton = styled.button`
+  margin-top: 120px;
   width: 1440px;
   height: 100px;
   background-color: #f5f5f7;

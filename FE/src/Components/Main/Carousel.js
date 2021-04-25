@@ -87,16 +87,17 @@ const Carousel = (
 };
 
 const Box = styled.div`
-  width: 1392px;
+  width: 1280px;
   height: 534px;
   margin: auto;
+  
 `;
 
 const CarouselTitle = styled.div`
   width: 350px;
   height: 35px;
-  margin: 0 36px;
-
+  margin-top: 80px;
+  margin-bottom: 40px;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
@@ -114,6 +115,7 @@ const Image = styled.div`
   transform: ${({ xtransform }) => `translateX(${xtransform}px)`};
   z-index: 0;
   display: flex;
+  margin-left: 66px;
 `;
 
 export default forwardRef(Carousel);

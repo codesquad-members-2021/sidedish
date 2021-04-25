@@ -6,7 +6,8 @@ const HeaderMain = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 1100px;
-  width: 1440px;
+  width: 1280px;
+  margin: 0 auto;
   height: 122px;
 `;
 const MainNav = styled.ul`
