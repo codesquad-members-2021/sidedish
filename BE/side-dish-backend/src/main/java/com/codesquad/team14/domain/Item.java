@@ -15,121 +15,90 @@ public class Item {
 
     private String title;
     private String description;
-    private int nPrice;
-    private int sPrice;
-    //private List<Badge> badges;
+    private int normalPrice;
+    private int salePrice;
     private String badges;
-    //private List<DeliveryType> deliveryTypes;
     private String deliveryTypes;
     private String images;
-    private Category category;
+    private String category;
 
-    public Item(String title, String description, int nPrice, int sPrice, Category category) {
+    public Item(String title, String description, int normalPrice, int salePrice, String category) {
         this.title = title;
         this.description = description;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
+        this.normalPrice = normalPrice;
+        this.salePrice = salePrice;
         this.category = category;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getNPrice() {
-        return nPrice;
-    }
-
-    public int getSPrice() {
-        return sPrice;
-    }
-
-    //public List<Badge> getBadges() {
-    //    return badges;
-    //}
-
-    //public List<DeliveryType> getDeliveryTypes() {
-    //    return deliveryTypes;
-    //}
-
-    public String getImages() {
-        return images;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    /*
-    public String getDeliveryInfo() {
-        StringBuilder deliverInfo = new StringBuilder();
-        for (int i = 0; i < deliveryTypes.size(); i++) {
-            deliverInfo.append(deliveryTypes.get(i).getDetail());
-            if (i != deliveryTypes.size() - 1) {
-                deliverInfo.append(" / ");
-            }
-        }
-        return deliverInfo.toString();
-    }*/
-
-    public String getDeliveryFeePolicy() {
-        return DELIVERY_FEE_POLICY;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setnPrice(int nPrice) {
-        this.nPrice = nPrice;
+    public int getNormalPrice() {
+        return normalPrice;
     }
 
-    public void setsPrice(int sPrice) {
-        this.sPrice = sPrice;
+    public void setNormalPrice(int normalPrice) {
+        this.normalPrice = normalPrice;
     }
 
-    //public void setBadges(List<Badge> badges) {
-    //    this.badges = badges;
-    //}
+    public int getSalePrice() {
+        return salePrice;
+    }
 
-    //public void setDeliveryTypes(List<DeliveryType> deliveryTypes) {
-    //    this.deliveryTypes = deliveryTypes;
-    //}
+    public void setSalePrice(int salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public String getBadges() {
+        return badges;
+    }
+
+    public void setBadges(String badges) {
+        this.badges = badges;
+    }
+
+    public String getDeliveryTypes() {
+        return deliveryTypes;
+    }
+
+    public void setDeliveryTypes(String deliveryTypes) {
+        this.deliveryTypes = deliveryTypes;
+    }
+
+    public String getImages() {
+        return images;
+    }
 
     public void setImages(String images) {
         this.images = images;
     }
 
-    public void setCategory(Category category) {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
         this.category = category;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return Objects.equals(id, item.id) && Objects.equals(category, item.category);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, category);
     }
 }
