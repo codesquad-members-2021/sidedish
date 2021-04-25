@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Thumbnail = () => {
+const Thumbnail = ({ thumbnailSource, imgSources }) => {
   return (
     <ThumbnailWrapper>
-      <ThumbnailImage />
+      <ThumbnailImage src={thumbnailSource ? thumbnailSource : imgSources[0]} />
     </ThumbnailWrapper>
   );
 };
