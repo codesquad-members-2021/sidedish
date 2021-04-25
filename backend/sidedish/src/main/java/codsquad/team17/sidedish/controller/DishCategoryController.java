@@ -13,13 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class DishCategoryController {
 
     private final DishCategoryService dishCategoryService;
-    private final ItemService itemService;
-    private final ImageService imageService;
 
-    public DishCategoryController(DishCategoryService dishCategoryService, ItemService itemService, ImageService imageService) {
+    public DishCategoryController(DishCategoryService dishCategoryService) {
         this.dishCategoryService = dishCategoryService;
-        this.itemService = itemService;
-        this.imageService = imageService;
     }
 
     @GetMapping("/main")
