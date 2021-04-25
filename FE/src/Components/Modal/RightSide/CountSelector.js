@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import TopArrowButton from '../../../images/TopArrowButtonDeactive.svg';
 import BottomArrowButton from '../../../images/BottomArrowButtonDeactive.svg';
 
-const CountSelector = () => {
-  const [count, setCount] = useState(0);
-
+const CountSelector = ({ count, setCount }) => {
   const countChangeHandler = (calculatorName) => {
     const isPlus = calculatorName === 'plus';
     if (!isPlus && count === 0) return;

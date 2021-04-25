@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Sum = () => {
+const Sum = ({ sumPrice }) => {
   return (
     <SumWrapper>
       <Description>총 주문금액</Description>
-      <Price>5200</Price>
+      <Price>{sumPrice.toLocaleString()}</Price>
     </SumWrapper>
   );
 };

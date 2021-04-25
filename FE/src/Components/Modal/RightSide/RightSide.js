@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SpecialLabelTag from '../../commons/SpecialLabelTag';
 import CountSelector from './CountSelector';
@@ -6,13 +6,20 @@ import Sum from './Sum';
 import OrderButton from './OrderButton';
 
 const RightSide = () => {
+  const [price, setPrice] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setPrice(5200);
+  }, []);
+
   return (
     <RightSideWrapper>
       <TitleDiv>[미노리키친] 규동 250g</TitleDiv>
       <DescriptionDiv>일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥</DescriptionDiv>
       <PriceWrapper>
         <SpecialLabelTag event />
-        <SalePriceSpan>5200</SalePriceSpan>
+        <SalePriceSpan>{price.toLocaleString()}</SalePriceSpan>
         <NetPriceSpan>6500</NetPriceSpan>
       </PriceWrapper>
 
@@ -20,7 +27,7 @@ const RightSide = () => {
 
       <AdditionalInfoWrapper>
         <AdditionalInfo fontColor="#828282" rightMargin="16">적립금</AdditionalInfo>
-        <AdditionalInfo fontColor="#4F4F4F">52원</AdditionalInfo>
+        <AdditionalInfo fontColor="#4F4F4F">{price / 100}원</AdditionalInfo>
       </AdditionalInfoWrapper>
 
       <AdditionalInfoWrapper>
@@ -39,11 +46,11 @@ const RightSide = () => {
 
       <AdditionalInfoWrapper align="center" justify="space-between">
         <AdditionalInfo fontColor="#828282">수량</AdditionalInfo>
-        <CountSelector />
+        <CountSelector {...{ count, setCount }} />
       </AdditionalInfoWrapper>
 
       <DivisionHr topMargin="24" />
-      <Sum />
+      <Sum sumPrice={price * count} />
       <OrderButton />
 
     </RightSideWrapper>

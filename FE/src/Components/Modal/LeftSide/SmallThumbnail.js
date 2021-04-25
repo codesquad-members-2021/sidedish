@@ -1,34 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const SmallThumbnail = ({ handleChange }) => {
-  const [imgSources, setImgSources] = useState();
-
-  useEffect(() => {
-    // API
-    const imgs = [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBoMjfF0Gz8A7H-B7xVID5XypyTO0g8AA22yWaX2MQpF6TPNlz6YdLhoe9kXbX8T9Qbeg&usqp=CAU",
-      "https://codesquad.kr/img/company/joblist/lezhin.png",
-      "http://image.kmib.co.kr/online_image/2020/0101/611414110014085644_1.jpg",
-      "",
-      ""
-    ]
-
-    setImgSources([...imgs])
-  }, []);
-
-
+const SmallThumbnail = ({ imgSources, handleChange }) => {
   return (
     <SmallThumbnailWrapper >
       {imgSources && imgSources.map((img, idx) => {
         return (
-          <label>
-            <RadioButton type="radio" name="small-thumbnail" disabled={false} />
-            <SmallThumbnailImage src={img} onChange={() => { handleChange({ src: img }) }} />
+          <label key={idx}>
+            <RadioButton
+              type="radio"
+              name="small-thumbnail"
+              onChange={() => { handleChange({ src: img }) }}
+              disabled={!img}
+              defaultChecked={idx === 0}
+            />
+            <SmallThumbnailImage src={img} />
           </label>
         )
       })}
-
     </SmallThumbnailWrapper >
   );
 };
