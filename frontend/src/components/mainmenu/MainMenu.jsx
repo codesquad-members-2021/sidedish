@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { theme, Title } from "../Theme";
+import { theme, AlignTextCenter } from "../Theme";
 import ItemCard from "../ItemCard";
-import { AlignTextCenter } from "../Theme";
 import useFetch from "../useFetch";
+import Title from "../atomic/Title";
 import { useState } from "react";
 
 const MainWrapper = styled.div`
@@ -44,7 +44,7 @@ function MainMenu() {
 
   //5개: 탭 전체 데이터 요청
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
-  const [clickedID, setClickedID] = useState("1");
+  const [clickedID, setClickedID] = useState(1);
   //초기 베스트메뉴 url 설정
   const [fetchData, setFetchData] = useState(basicUrl + clickedID);
 

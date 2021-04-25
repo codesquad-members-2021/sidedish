@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Title } from "../Theme";
+import Title from "../atomic/Title";
 import CategorySlide from "./CategorySlide";
 import useFetch from "../useFetch";
 const TitleWrapper = styled.div`

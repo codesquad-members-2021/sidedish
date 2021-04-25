@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import {
-  theme,
-  AlignTextCenter,
-  ItemPrice,
-  ItemPriceNormal,
-  BadgeWrapper,
-  Badge,
-} from "./Theme";
 import { useState } from "react";
+import { theme, AlignTextCenter } from "./Theme";
+import ItemPrice from "./atomic/ItemPrice";
+import Badge from "./atomic/Badge";
 import DetailPage from "./detail/DetailPage";
 import useFetch from "./useFetch";
 
@@ -100,17 +95,9 @@ function ItemCard({ data, size }) {
           <ItemTitle>{data.alt}</ItemTitle>
           <ItemDesc>{data.description}</ItemDesc>
         </ClickArea>
-        <ItemPrice>{data.sPrice ? data.sPrice + "원" : data.nPrice}</ItemPrice>
-        {data.sPrice && <ItemPriceNormal>{data.nPrice}원</ItemPriceNormal>}
+        <ItemPrice sPrice={data.sPrice} nPrice={data.nPrice}></ItemPrice>
 
-        <BadgeWrapper>
-          {data.badges &&
-            data.badges.map((el, idx) => (
-              <Badge key={idx} val={el}>
-                {el}
-              </Badge>
-            ))}
-        </BadgeWrapper>
+        <Badge data={data.badges}></Badge>
       </Card>
     </>
   );

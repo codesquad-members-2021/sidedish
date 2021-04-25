@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import {
-  theme,
-  Button,
-  ItemPrice,
-  ItemPriceNormal,
-  BadgeWrapper,
-  Badge,
-} from "../Theme";
+import { theme, Button } from "../Theme";
 import { BiX } from "react-icons/bi";
+import ItemPrice from "../atomic/ItemPrice";
+import Badge from "../atomic/Badge";
 const DarkBackground = styled.div`
   position: fixed;
   left: 0;
@@ -22,7 +17,7 @@ const DarkBackground = styled.div`
 `;
 const Modal = styled.div`
   width: 960px;
-  height: 680px;
+  height: auto;
   background-color: ${theme.colors.white};
 `;
 const RepresentativeBlock = styled.div`
@@ -97,6 +92,14 @@ const OrderBtn = styled(Button)`
   backdrop-filter: blur(4px);
   border-radius: 5px;
 `;
+
+const ItemDetailCards = styled.div``;
+const DetailCard = styled.div`
+  width: 900px;
+  height: 100%;
+  background-image: url(${(props) => props.card});
+`;
+
 function DetailPage({ detailData, ModalMode, setModalState, item, badges }) {
   const handleClick = () => {
     setModalState(!ModalMode);
@@ -118,23 +121,12 @@ function DetailPage({ detailData, ModalMode, setModalState, item, badges }) {
             <ItemTitleDetails>{item}</ItemTitleDetails>
             <ItemDescDetails>{detailData.productDescription}</ItemDescDetails>
             <FlexBox>
-              <BadgeWrapper>
-                {badges &&
-                  badges.map((el, idx) => (
-                    <Badge key={idx} val={el}>
-                      {el}
-                    </Badge>
-                  ))}
-              </BadgeWrapper>
-
-              <ItemPrice>
-                {detailData.sPrice
-                  ? detailData.sPrice + "원"
-                  : detailData.nPrice}
-              </ItemPrice>
-              {detailData.sPrice && (
-                <ItemPriceNormal>{detailData.nPrice}원</ItemPriceNormal>
-              )}
+              <Badge data={badges}></Badge>
+              <ItemPrice
+                sPrice={detailData.sPrice}
+                nPrice={detailData.nPrice}
+              ></ItemPrice>
+              }
             </FlexBox>
             <img src="./longUnderLine.png" alt="underline"></img>
             <PointDeliveryInfoBlock>
@@ -154,6 +146,11 @@ function DetailPage({ detailData, ModalMode, setModalState, item, badges }) {
             <OrderBtn onClick={handleClick}>주문하기</OrderBtn>
           </ItemDetailInfo>
         </RepresentativeBlock>
+        <ItemDetailCards>
+          {detailData.detailSection.map((card, idx) => (
+            <DetailCard card={card} key={idx}></DetailCard>
+          ))}
+        </ItemDetailCards>
       </Modal>
       <Button onClick={handleClick}>
         <BiX style={Xstyle} />
