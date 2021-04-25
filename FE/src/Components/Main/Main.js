@@ -5,9 +5,8 @@ import Carousel from "./Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
 import CarouselButton from "./CarouselButton";
 
-const Main = ({ URL, modal, setModal }) => {
+const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const [Food, setFood] = useState([]);
-  const [ModalData, setModalData] = useState([]);
   const mainRef = useRef(null);
   const foodRef = useRef();
 
@@ -26,7 +25,9 @@ const Main = ({ URL, modal, setModal }) => {
 
   return (
     <CarouselSlide>
-      {modal && <PopUpModal setModal={setModal} ModalData={ModalData} />}
+      {modal && (
+        <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
+      )}
       <CarouselButton Name={"Left"} Slide={slider} />
       <Carousel
         MainTitle={"모두가 좋아하는 든든한 메인요리"}

@@ -1,6 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import styled from "styled-components";
-import Content from "./CarouselCard";
+import CarouselCard from "./CarouselCard";
 
 const Carousel = (
   { MainTitle, Food, setFood, Ref, setModal, setModalData },
@@ -49,6 +49,7 @@ const Carousel = (
             {Food.map(
               (
                 {
+                  detail_hash,
                   image,
                   alt,
                   delivery_type,
@@ -61,8 +62,9 @@ const Carousel = (
                 index
               ) => {
                 return (
-                  <Content
+                  <CarouselCard
                     key={index}
+                    detail_hash={detail_hash}
                     image={image}
                     alt={alt}
                     delivery_type={delivery_type}

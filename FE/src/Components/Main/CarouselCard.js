@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Content = ({
+const CarouselCard = ({
   detail_hash,
   image,
   alt,
@@ -15,19 +15,7 @@ const Content = ({
   setModalData,
 }) => {
   const openModal = () => {
-    setModalData([
-      image,
-      title,
-      detail_hash,
-      image,
-      alt,
-      delivery_type,
-      title,
-      description,
-      n_price,
-      s_price,
-      badge,
-    ]);
+    setModalData([detail_hash, title, badge]);
     setModal(true);
   };
   return (
@@ -38,11 +26,11 @@ const Content = ({
 
       {n_price !== undefined ? (
         <div>
-          <NPrice>{n_price}</NPrice>
           <SPrice>{s_price}</SPrice>
+          <NPrice>{n_price}</NPrice>
         </div>
       ) : (
-        <NPrice false>{s_price}</NPrice>
+        <SPrice false>{s_price}</SPrice>
       )}
 
       {badge !== undefined &&
@@ -124,19 +112,7 @@ const Description = styled.div`
   line-height: 20px;
 `;
 const NPrice = styled.span`
-  width: 73px;
-
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 29px;
-  margin: 0 8px 0 0;
-`;
-
-const SPrice = styled.span`
   width: 48px;
-
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
@@ -147,14 +123,24 @@ const SPrice = styled.span`
   margin: 0 8px;
 `;
 
+const SPrice = styled.span`
+  width: 73px;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  margin: 0 8px 0 0;
+`;
+
 const Badge = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   padding: 4px 16px;
-  width: 62px;
-  height: 18px;
+  width: 100px;
+  height: 25px;
   background-color: ${({ badge }) =>
     badge == "이벤트특가" ? "#82d32d" : "#86C6FF"};
   border-radius: 5px;
@@ -162,8 +148,9 @@ const Badge = styled.span`
   font-size: 14px;
   line-height: 20px;
   margin-right: 10px;
+  font-weight: bold;
 `;
 const BadgeBox = styled.div`
   display: flex;
 `;
-export default Content;
+export default CarouselCard;
