@@ -64,13 +64,15 @@ const ClickArea = styled.div`
 `;
 
 function ItemCard({ data, size }) {
-  const [detailFetchUrl, setDetailFetchUrl] = useState(null);
+  const DetailUrl = process.env.REACT_APP_API_URL + "detail/"
+  const [detailFetchUrl, setDetailFetchUrl] = useState(DetailUrl + "HBDEF31");
   const [ModalMode, setModalState] = useState(false);
+
   const handleClick = (hash) => {
     setModalState(!ModalMode); //작업중
-    setDetailFetchUrl("http://15.164.68.136:8080/detail/" + hash);
+    setDetailFetchUrl(DetailUrl + hash);
   };
-  const [detailData, loadingState] = useFetch(detailFetchUrl); //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가?
+  const [detailData, loadingState] = useFetch(detailFetchUrl); //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가? 
   return (
     <>
       {ModalMode && !loadingState && (
