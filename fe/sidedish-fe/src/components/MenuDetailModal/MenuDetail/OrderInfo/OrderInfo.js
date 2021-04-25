@@ -7,12 +7,10 @@ import Counter from './Counter.js';
 const StyledOrderInfo = styled.div`
   flex: 0 0 53%;
   box-sizing: border-box;
-  padding-right: 16px;
   text-align: left;
-  font-family: "Noto Sans KR";
 
-  & > * {
-    margin: 16px 0px;
+  & > :not(.title, .order-btn) {
+    margin: 16px auto;
   }
 
   .title {
@@ -87,7 +85,7 @@ const StyledOrderInfo = styled.div`
 const OrderBtn = styled.button`
   width: 90%;
   height: 50px;
-  margin-left: 5%;
+  margin: 16px 0 16px 5%;
   line-height: 26px;
   font-size: 18px;
   font-weight: 800;
@@ -97,7 +95,7 @@ const OrderBtn = styled.button`
   background-color: #82D32D;
 `;
 
-function OrderInfo({ title, data }) {
+function OrderInfo({ data }) {
   const priceRef = useRef(data.prices[1].match(/[0-9]*/g).join(''));
   const [totalPrice, setTotalPrice] = useState(data.prices[1]);
 
@@ -116,7 +114,7 @@ function OrderInfo({ title, data }) {
   
   return (
     <StyledOrderInfo>
-      <div className="title">{title}</div>
+      <div className="title">{data.title}</div>
       <div className="product-desc">{data.product_description}</div>
       <div className="price-cont">
         <EventSpecialBadge/>

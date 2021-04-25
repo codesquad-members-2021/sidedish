@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledPreview = styled.div`
   flex: 0 0 47%;
@@ -7,7 +7,7 @@ const StyledPreview = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding: 16px;
+  padding-right: 20px;
 `;
 
 const SelectedImg = styled.img`
@@ -35,6 +35,8 @@ const ImgListItem = styled.li`
     height: 100%;
     box-sizing: border-box;
     border-radius: inherit;
+    pointer-events: none;
+    /* z-index: -1; */
   }
 
   &.no-img {
@@ -50,47 +52,40 @@ const ImgListItem = styled.li`
   }
 `;
 
-function Preview({ imgs, defaultListSize = 5 }) {
+function Preview({ imgUrls, defaultListSize = 5 }) {
   const [selectedImgIdx, setSelectedImgIdx] = useState(0);
-  const [imgListData, setImgListData] = useState([]);
-
-  useEffect(() => {
-    // TODO: fetch img dat1a;
-    const res = imgs;
-    setImgListData(res);
-  }, []);
   
-  const handleClickImg = (newSelectedImgIdx) => {
-    // FIXME: fix not to use 'idx' when the 'id' is enable.
-    if (selectedImgIdx === newSelectedImgIdx)
+  const handleClickImg = ({ target }) => {
+    console.log(selectedImgIdx, target.dataset.idx);
+    if (!target.dataset.idx || selectedImgIdx === Number(target.dataset.idx))
       return;
 
-    setSelectedImgIdx(newSelectedImgIdx);
+    setSelectedImgIdx(Number(target.dataset.idx));
   };
 
   const renderImgs = () => {
     // FIXME: modify 'key' not to be 'idx'
-    const list = imgListData.map((img, idx) =>
+    const imgs = imgUrls.map((url, idx) =>
       <ImgListItem
         key={idx}
-        className={idx === selectedImgIdx ? "select" : ""}
-        onClick={() => handleClickImg(idx)}>
-        <img src={img}/>
+        data-idx={idx}
+        className={idx === selectedImgIdx ? 'select' : ''}>
+        <img src={url}/>
       </ImgListItem>
     );
 
-    let nextIdx = list.length;
+    let nextIdx = imgs.length;
 
-    while (list.length < defaultListSize)
-      list.push(<ImgListItem key={nextIdx++} className="no-img"/>)
+    while (imgs.length < defaultListSize)
+      imgs.push(<ImgListItem key={nextIdx++} className='no-img'/>)
 
-    return list;
+    return imgs;
   };
 
   return (
     <StyledPreview>
-      <SelectedImg src={imgListData[selectedImgIdx]}/>
-      <ImgList onClickCapture={() => handleClickImg}>
+      <SelectedImg src={imgUrls[selectedImgIdx]}/>
+      <ImgList onClickCapture={handleClickImg}>
         {renderImgs()}
       </ImgList>
     </StyledPreview>

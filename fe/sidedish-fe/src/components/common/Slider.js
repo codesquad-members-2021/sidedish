@@ -4,14 +4,13 @@ import styled from 'styled-components';
 const StyledSlider = styled.div`
   display: inline-block;
   width: 100%;
-  position: relative;
 `;
 
 const SliderList = styled.ul`
   width: ${props => props.width + "px"};
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  position: relative;
   top: 0;
   left: ${props => props.positionLeft + "px"};
   transition: left 300ms linear;
