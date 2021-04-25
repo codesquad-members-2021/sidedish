@@ -21,7 +21,7 @@ public class ItemController {
 
     @GetMapping("/main")
     public List<Item> allFromMain() {
-        return itemRepository.findAll();
+        return itemRepository.findByCategory("MAIN");
         //@ Todo : 서비스로 바꿔주세여 ㅠㅜ
     }
 
@@ -30,4 +30,28 @@ public class ItemController {
         return itemRepository.findById(itemId).get();
         //@ Todo : 옵셔널 커스텀 익셉션으로 널처리 해주세요 ㅠㅠ
     }
+
+    @GetMapping("/soup")
+    public List<Item> allFromSoup() {
+        return itemRepository.findByCategory("SOUP");
+    }
+
+
+    @GetMapping("/soup/{itemId}")
+    public Item singleSoup(@PathVariable Long itemId) {
+        return itemRepository.findById(itemId).get();
+    }
+
+    // @Todo : side 관련 아이템리스트, 아이템 정보 출력 완성해주세요 ㅠㅠ
+    //
+    @GetMapping("/side")
+    public List<Item> allFromSide() {
+        return new ArrayList<>();
+    }
+
+    @GetMapping("/side/{itemId}")
+    public Item singleSide(@PathVariable Long itemId) {
+        return new Item("1","1",1,1,"1");
+    }
+    // @ todo : 요고들도 다 서비스로 바꿔주세여
 }
