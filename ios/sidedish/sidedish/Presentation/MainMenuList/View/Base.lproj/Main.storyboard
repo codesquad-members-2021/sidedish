@@ -33,7 +33,6 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Phq-gM-0YS">
                                                     <rect key="frame" x="4" y="4" width="122" height="122"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="Aqf-aM-ie8"/>
                                                         <constraint firstAttribute="width" secondItem="Phq-gM-0YS" secondAttribute="height" multiplier="1:1" id="axK-yz-QDe"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
