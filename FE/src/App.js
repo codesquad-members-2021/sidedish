@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import Main from "./Components/Main/Main";
 import Header from "./Components/Header/Header";
 import All from "./Components/All/All";
