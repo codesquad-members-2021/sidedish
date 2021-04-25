@@ -1,27 +1,27 @@
-import styled from 'styled-components'
-import ItemCard from '../ItemCard'
-import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
-import { AlignTextCenter } from '../Theme'
+import styled from "styled-components";
+import ItemCard from "../ItemCard";
+import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import { AlignTextCenter } from "../Theme";
 const CatgoryWrapper = styled.div`
   width: 1280px;
   padding: 0px;
   overflow: hidden;
-`
+`;
 const CategoryColumn = styled.div`
   padding: 0px;
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: ${props => {
-    const num = props.children.length
-    return `repeat(${num}, 1fr);`
+  grid-template-columns: ${(props) => {
+    const num = props.children.length;
+    return `repeat(${num}, 1fr);`;
   }};
-`
+`;
 const CategorySlideBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 80px;
-`
+`;
 const Button = styled.button`
   font-size: 36px;
   border: none;
@@ -30,35 +30,35 @@ const Button = styled.button`
     outline: none;
   }
   cursor: pointer;
-`
+`;
 
-const ButtonLeft = styled(Button)``
-const ButtonRight = styled(Button)``
+const ButtonLeft = styled(Button)``;
+const ButtonRight = styled(Button)``;
 const LoadingWapper = styled(AlignTextCenter)`
   width: 1280px;
   height: 384px;
-`
+`;
 
-function CategorySlide ({ data }) {
-  let listNum
+function CategorySlide({ data }) {
+  let listNum;
 
-  const ItemCards = data => {
-    let category
+  const ItemCards = (data) => {
+    let category;
     if (Array.isArray(data)) {
-      listNum = data.length
+      listNum = data.length;
       category = data.map((data, idx) => (
-        <ItemCard key={idx} data={data} size={'S'} />
-      ))
+        <ItemCard key={idx} data={data} size={"S"} />
+      ));
     } else {
       category = (
         <LoadingWapper>
-          <img src={'./load.jpg'} alt={'loading'} />
+          <img src={"./load.jpg"} alt={"loading"} />
         </LoadingWapper>
-      )
+      );
     }
 
-    return category
-  }
+    return category;
+  };
 
   return (
     <CategorySlideBlock>
@@ -72,7 +72,7 @@ function CategorySlide ({ data }) {
         <VscChevronRight />
       </ButtonRight>
     </CategorySlideBlock>
-  )
+  );
 }
 
-export default CategorySlide
+export default CategorySlide;

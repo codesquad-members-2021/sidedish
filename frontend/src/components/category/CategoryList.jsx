@@ -1,15 +1,17 @@
-import styled from 'styled-components'
-import { Title } from '../Theme'
-import CategorySlide from './CategorySlide'
-import useFetch from '../useFetch'
+import styled from "styled-components";
+import Title from "../atomic/Title";
+import CategorySlide from "./CategorySlide";
+import useFetch from "../useFetch";
 const TitleWrapper = styled.div`
   margin: 0 40px;
-`
-const loadingData = { img: './load.jpg' }
+`;
+const loadingData = { img: "./load.jpg" };
 
-function CategoryList ({ title, url }) {
-  const [initData, loadingState] = useFetch(process.env.REACT_APP_API_URL + url)
-  let data = loadingState ? loadingData : initData.body
+function CategoryList({ title, url }) {
+  const [initData, loadingState] = useFetch(
+    process.env.REACT_APP_API_URL + url
+  );
+  let data = loadingState ? loadingData : initData.body;
   return (
     <>
       <TitleWrapper>
@@ -17,7 +19,7 @@ function CategoryList ({ title, url }) {
       </TitleWrapper>
       <CategorySlide data={data} />
     </>
-  )
+  );
 }
 
-export default CategoryList
+export default CategoryList;

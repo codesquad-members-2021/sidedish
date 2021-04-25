@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { theme, Title } from "../Theme";
+import { theme, AlignTextCenter } from "../Theme";
 import ItemCard from "../ItemCard";
-import { AlignTextCenter } from "../Theme";
 import useFetch from "../useFetch";
+import Title from "../atomic/Title";
 import { useState } from "react";
 
 const MainWrapper = styled.div`
@@ -28,7 +28,6 @@ const Tab = styled(AlignTextCenter)`
   font-size: ${theme.fontSize.large};
   cursor: pointer;
 `;
-
 const MainColumn = styled.div`
   width: 1280px;
   height: 620px;
@@ -41,16 +40,14 @@ const MainColumn = styled.div`
 
 function MainMenu() {
   let mokData;
-  const basicUrl =
-    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best/";
+  const basicUrl = "http://15.164.68.136:8080/best/";
 
   //5개: 탭 전체 데이터 요청
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
-  const bestDishData = bestDishMenu.body;
-  const [clickedID, setClickedID] = useState("17011200");
-
+  const [clickedID, setClickedID] = useState(1);
   //초기 베스트메뉴 url 설정
   const [fetchData, setFetchData] = useState(basicUrl + clickedID);
+
   //3개: 초기 베스트메뉴 데이터 요청
   const [initData, loadingState] = useFetch(fetchData);
   mokData = initData.items;
@@ -66,11 +63,11 @@ function MainMenu() {
       <Title>후기가 증명하는 베스트 반찬</Title>
       <TabWrapper>
         {!bestDishLoading &&
-          bestDishData.map((data, idx) => (
+          bestDishMenu.map((data, idx) => (
             <Tab
-              onClick={({ target }) => handleClick(target, data.category_id)}
+              onClick={({ target }) => handleClick(target, data.bestCategoryId)}
               clickedID={clickedID}
-              id={data.category_id}
+              id={data.bestCategoryId}
               key={idx}
             >
               {data.name}

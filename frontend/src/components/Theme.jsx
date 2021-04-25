@@ -6,6 +6,7 @@ export const theme = {
     skyblue_badge: "#86C6FF",
     grey_css: "#F5F5F7",
     grey_text: "#828282",
+    deep_grey_text: "#4F4F4F",
     green: "#82D32D",
     white: "#FFFFFF",
     black: "#3333333",
@@ -31,14 +32,12 @@ export const AlignTextCenter = styled.div`
   justify-content: center;
 `;
 
-const TitleBlock = styled.div`
-  font-size: 24px;
-  font-weight: 800;
-  lineheight: 34.75px;
-  padding-bottom: 32px;
-  box-sizing: border-box;
+export const Button = styled.button`
+  font-size: 36px;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
 `;
-
-export function Title({ children }) {
-  return <TitleBlock>{children}</TitleBlock>;
-}
