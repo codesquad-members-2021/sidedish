@@ -5,8 +5,8 @@ import SpecialLabelTag from './SpecialLabelTag';
 
 import ResponsiveCard from './Cards/ResponsiveCard.js';
 
-const Card = ({type = "default", number }) => {
-  
+const Card = ({ type = "default", number }) => {
+
   switch (type) {
     case "responsive":
       return <ResponsiveCard number={number} loadingImage={loadingImage} SpecialLabelTag />

@@ -35,5 +35,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com"
 }
