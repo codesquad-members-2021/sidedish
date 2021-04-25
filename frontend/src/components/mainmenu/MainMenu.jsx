@@ -40,7 +40,7 @@ const MainColumn = styled.div`
 
 function MainMenu() {
   let mokData;
-  const basicUrl = "http://15.164.68.136:8080/best/";
+  const basicUrl = process.env.REACT_APP_API_URL + "best/";
 
   //5개: 탭 전체 데이터 요청
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
