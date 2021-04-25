@@ -15,13 +15,11 @@ public class BestCategoryService {
     private final BestCategoryRepository bestCategoryRepository;
 
     private final ItemService itemService;
-    private final ImageService imageService;
 
     public BestCategoryService(BestCategoryRepository bestCategoryRepository,
-                               ItemService itemService, ImageService imageService) {
+                               ItemService itemService) {
         this.bestCategoryRepository = bestCategoryRepository;
         this.itemService = itemService;
-        this.imageService = imageService;
     }
 
     public List<BestCategoryDto> getBestCategoryList() {
