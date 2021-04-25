@@ -1,7 +1,7 @@
-import { Card } from "../../Styles/commonStyles";
+import * as CS from "../../Styles/commonStyles";
 
 const DetailMainImage = ({ props }) => {
-  return <Card.CardImage width={392} height={392} src={props.top_image} />;
+  return <CS.Image.DETAIL_MAIN src={props.top_image} />;
 };
 
 export default DetailMainImage;

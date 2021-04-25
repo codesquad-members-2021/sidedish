@@ -1,10 +1,11 @@
-import { Card } from "../../Styles/commonStyles";
+import * as S from "../MainItemsStyles";
+import * as CS from "../../Styles/commonStyles";
 
 const MainItemsCardSPrice = ({ sPrice }) => {
   return (
-    <Card.CardSPrice fontSize={20} lineHeight={29}>
-      {sPrice}
-    </Card.CardSPrice>
+    <S.MainItemsCardSPriceWrapper>
+      <CS.ColorFont.BLACK_L_BOLD>{sPrice}</CS.ColorFont.BLACK_L_BOLD>
+    </S.MainItemsCardSPriceWrapper>
   );
 };
 

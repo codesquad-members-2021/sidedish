@@ -11,9 +11,9 @@ const ThumbNails = ({ props }) => {
   }
 
   return (
-    <CS.flexBox display={"flex"}>
+    <CS.Box.FLEX_ROW_BOX>
       <ThumbNailsImage thumbNailsImage={thumbNailsImage} />
-    </CS.flexBox>
+    </CS.Box.FLEX_ROW_BOX>
   );
 };
 

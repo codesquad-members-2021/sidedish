@@ -13,13 +13,16 @@ const RecommendedItems = () => {
   );
   return (
     <S.RecommendedItems>
-      <RecommendedItemsTitle />
-      <S.RecommendedItemsCard>
-        <RecommendedItemsCard images={images} />
-      </S.RecommendedItemsCard>
-      <CS.LeftButton onClick={() => setPage(page - 1)} />
-      <RecommendedItemsPagination page={page} />
-      <CS.RightButton onClick={() => setPage(page + 1)} />
+      <S.RecommendedItemsHeaderWrapper>
+        <RecommendedItemsTitle />
+        <CS.Box.FLEX_ROW_BOX>
+          <CS.Button.LEFT_BUTTON onClick={() => setPage(page - 1)} />
+          <RecommendedItemsPagination page={page} />
+          <CS.Button.RIGHT_BUTTON onClick={() => setPage(page + 1)} />
+        </CS.Box.FLEX_ROW_BOX>
+      </S.RecommendedItemsHeaderWrapper>
+
+      <RecommendedItemsCard images={images} />
     </S.RecommendedItems>
   );
 };

@@ -1,22 +1,13 @@
-import { useState } from "react";
 import CountTitle from "./CountTitle";
-import CountNumber from "./CountNumber";
-import * as CS from "../../../Styles/commonStyles";
+import Counter from "./Counter";
+import * as S from "../../DetailModalStyles";
 
 const Count = () => {
-  const [count, setCount] = useState(0);
-
-  const test = () => {
-    console.log("clicked!");
-  };
-
   return (
-    <>
+    <S.CountWrapper>
       <CountTitle />
-      <CS.upButton onClick={() => setCount(count + 1)} />
-      <CS.downButton onClick={() => setCount(count - 1)} />
-      <CountNumber count={count} />
-    </>
+      <Counter />
+    </S.CountWrapper>
   );
 };
 

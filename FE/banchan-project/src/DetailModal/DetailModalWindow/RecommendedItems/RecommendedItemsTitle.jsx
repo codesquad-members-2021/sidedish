@@ -1,8 +1,10 @@
-import * as S from "../../DetailModalStyles";
+import * as CS from "../../../Styles/commonStyles";
 
 const RecommendedItemsTitle = () => {
   return (
-    <S.RecommendedItemsTitle>함께하면 더욱 맛있는 상품</S.RecommendedItemsTitle>
+    <CS.ColorFont.GRAY1_M_BOLD>
+      함께하면 더욱 맛있는 상품
+    </CS.ColorFont.GRAY1_M_BOLD>
   );
 };
 
