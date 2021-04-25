@@ -2,6 +2,7 @@ package codsquad.team17.sidedish.service;
 
 import codsquad.team17.sidedish.domain.Item;
 import codsquad.team17.sidedish.dto.ItemDto;
+import codsquad.team17.sidedish.repository.ImageRepository;
 import codsquad.team17.sidedish.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +12,11 @@ import java.util.stream.Collectors;
 @Service
 public class ItemService {
     private final ItemRepository itemRepository;
-    private final ImageService imageService;
+    private final ImageRepository imageRepository;
 
-    public ItemService(ItemRepository itemRepository, ImageService imageService) {
+    public ItemService(ItemRepository itemRepository, ImageRepository imageRepository) {
         this.itemRepository = itemRepository;
-        this.imageService = imageService;
+        this.imageRepository = imageRepository;
     }
 
     public List<Item> findAllByBestCategoryId(Long bestCategoryId) {
@@ -32,9 +33,10 @@ public class ItemService {
 
     public List<ItemDto> getItemDtoList(List<Item> items) {
         return items.stream()
-                .map(item -> new ItemDto(item, imageService.findTopImageByItemId(item.getItemId())))
+                .map(item -> new ItemDto(item, imageRepository
+                        .findTopImageByItemId(item.getItemId())
+                        .orElseThrow(RuntimeException::new)))
                 .collect(Collectors.toList());
-
     }
 }
 

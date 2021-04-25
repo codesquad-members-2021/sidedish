@@ -2,8 +2,6 @@ package codsquad.team17.sidedish.controller;
 
 import codsquad.team17.sidedish.dto.DishCategoryDto;
 import codsquad.team17.sidedish.service.DishCategoryService;
-import codsquad.team17.sidedish.service.ImageService;
-import codsquad.team17.sidedish.service.ItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
