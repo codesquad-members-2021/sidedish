@@ -16,14 +16,15 @@ class MenuCell : UITableViewCell {
     @IBOutlet weak var menuSubTitle: UILabel!
     @IBOutlet weak var reducedPrice: UILabel!
     @IBOutlet weak var menuPrice: UILabel!
-    @IBOutlet weak var specialPrice: UILabel!
+    @IBOutlet weak var eventBadge: UILabel!
+    @IBOutlet weak var launchingBadge: UILabel!
     
     func updateMenu(titleText: String, subTitle: String, reducedPrice: String, price: String, isSpecialPrice: Bool){
         self.menuTitle.text = titleText
         self.menuSubTitle.text = subTitle
         self.reducedPrice.text = reducedPrice
         self.menuPrice.text = price
-        self.specialPrice.isHidden = isSpecialPrice
+        self.launchingBadge.isHidden = isSpecialPrice
         
         if isSpecialPrice {
             menuPrice.isHidden = true
@@ -36,12 +37,7 @@ class MenuCell : UITableViewCell {
         self.menuSubTitle.text = subTitle
         self.menuPrice.text = "\(price)원"
         self.reducedPrice.text = "\(reducedPrice)원"
-        self.specialPrice.text = "\(badge[0])"
-        
-        setCornerRadius()
-    }
-    
-    private func setCornerRadius() {
-        self.menuImage.layer.cornerRadius = bounds.height * 0.08
+        self.eventBadge.isHidden = badge.contains("이벤트특가") ? false : true
+        self.launchingBadge.isHidden = badge.contains("론칭특가") ? false : true
     }
 }

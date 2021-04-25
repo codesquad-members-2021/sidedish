@@ -36,6 +36,12 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="Aqf-aM-ie8"/>
                                                         <constraint firstAttribute="width" secondItem="Phq-gM-0YS" secondAttribute="height" multiplier="1:1" id="axK-yz-QDe"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcr-uh-8FH">
                                                     <rect key="frame" x="130" y="0.0" width="223" height="130"/>
@@ -59,7 +65,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,500원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZz-9i-Zzs">
-                                                            <rect key="frame" x="65.666666666666657" y="75.333333333333329" width="50" height="20"/>
+                                                            <rect key="frame" x="65.333333333333343" y="75.333333333333329" width="50" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="XKA-Ff-8gc"/>
                                                             </constraints>
@@ -67,25 +73,8 @@
                                                             <color key="textColor" red="0.74118667839999997" green="0.74115830660000004" blue="0.74117749929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8T-Vx-nAY">
-                                                            <rect key="frame" x="8" y="100.33333333333333" width="72" height="25"/>
-                                                            <color key="backgroundColor" red="0.5827482343" green="0.81842011209999999" blue="0.30182066559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="CqV-Nb-qaF"/>
-                                                                <constraint firstAttribute="height" constant="25" id="e7I-8N-bcg"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="5"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,200원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1I-wH-UN6">
-                                                            <rect key="frame" x="7.9999999999999964" y="75.333333333333329" width="53.666666666666657" height="20"/>
+                                                            <rect key="frame" x="8.0000000000000036" y="75.333333333333329" width="53.333333333333343" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="51" id="6pn-XN-snR"/>
                                                                 <constraint firstAttribute="height" constant="20" id="i9H-G6-oQe"/>
@@ -94,17 +83,55 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yOn-P2-uu6">
+                                                            <rect key="frame" x="8" y="100.33333333333333" width="137" height="25"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-aC-v39">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="25"/>
+                                                                    <color key="backgroundColor" red="0.5827482343" green="0.81842011209999999" blue="0.30182066559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="5N6-t4-uuh"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="sl5-r5-AwB"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="런칭특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8T-Vx-nAY">
+                                                                    <rect key="frame" x="76" y="0.0" width="61" height="25"/>
+                                                                    <color key="backgroundColor" red="0.52549019607843139" green="0.77647058823529413" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="CqV-Nb-qaF"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="e7I-8N-bcg"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="AFy-Qg-94P" secondAttribute="trailing" constant="3" id="4fw-S5-fep"/>
                                                         <constraint firstItem="Adn-xA-Y07" firstAttribute="top" secondItem="AFy-Qg-94P" secondAttribute="bottom" constant="4" id="5Cm-mc-hnM"/>
-                                                        <constraint firstItem="k8T-Vx-nAY" firstAttribute="leading" secondItem="Zcr-uh-8FH" secondAttribute="leading" constant="8" id="6AG-mN-DFk"/>
-                                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="k8T-Vx-nAY" secondAttribute="trailing" constant="146" id="6iY-ii-hJf"/>
                                                         <constraint firstItem="SZz-9i-Zzs" firstAttribute="leading" secondItem="G1I-wH-UN6" secondAttribute="trailing" constant="4" id="CJ2-YO-zzp"/>
                                                         <constraint firstItem="SZz-9i-Zzs" firstAttribute="top" secondItem="Adn-xA-Y07" secondAttribute="bottom" constant="8" id="Ghn-OG-flt"/>
-                                                        <constraint firstItem="k8T-Vx-nAY" firstAttribute="top" secondItem="G1I-wH-UN6" secondAttribute="bottom" constant="5" id="TNG-IY-DEE"/>
+                                                        <constraint firstItem="yOn-P2-uu6" firstAttribute="leading" secondItem="Zcr-uh-8FH" secondAttribute="leading" constant="8" id="XHd-fm-aQy"/>
                                                         <constraint firstAttribute="trailing" secondItem="Adn-xA-Y07" secondAttribute="trailing" constant="3" id="Y0A-64-4Wa"/>
+                                                        <constraint firstItem="yOn-P2-uu6" firstAttribute="top" secondItem="SZz-9i-Zzs" secondAttribute="bottom" constant="5" id="YgO-FI-aAb"/>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="130" id="YhX-hH-tF3"/>
                                                         <constraint firstItem="G1I-wH-UN6" firstAttribute="top" secondItem="Adn-xA-Y07" secondAttribute="bottom" constant="8" id="bHC-DX-ocv"/>
                                                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="SZz-9i-Zzs" secondAttribute="trailing" constant="112" id="cLV-wU-h1B"/>
@@ -127,12 +154,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="eventBadge" destination="ggl-aC-v39" id="zo1-js-QyZ"/>
+                                            <outlet property="launchingBadge" destination="k8T-Vx-nAY" id="qT9-LR-7yy"/>
                                             <outlet property="menuImage" destination="Phq-gM-0YS" id="0GJ-bx-rrJ"/>
                                             <outlet property="menuPrice" destination="SZz-9i-Zzs" id="CYI-JH-9Na"/>
                                             <outlet property="menuSubTitle" destination="Adn-xA-Y07" id="I7w-RK-Rjf"/>
                                             <outlet property="menuTitle" destination="AFy-Qg-94P" id="Hxy-mQ-dAN"/>
                                             <outlet property="reducedPrice" destination="G1I-wH-UN6" id="dDJ-Wm-pEY"/>
-                                            <outlet property="specialPrice" destination="k8T-Vx-nAY" id="qT9-LR-7yy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
