@@ -7,20 +7,21 @@
 
 import Foundation
 import Combine
+import Alamofire
 
 protocol ManufactureDataforViewModel {
     
-    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], Error>
+    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], AFError>
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], Error>
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], AFError>
     
 }
 
 class TurnonAppUsecase: ManufactureDataforViewModel {
 
-    private let networkmanager: NetworkProtocol
+    private let networkmanager: AFNetworkManagable
     
-    init(networkmanager: NetworkProtocol) {
+    init(networkmanager: AFNetworkManagable) {
         self.networkmanager = networkmanager
     }
     
@@ -29,11 +30,11 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
         self.init(networkmanager : networkmanager)
     }
     
-    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], Error> {
-        return networkmanager.get(type: [SideDishesCategory].self, endPoint: EndPoint.categories)
+    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], AFError> {
+        return networkmanager.get(decodingType: [SideDishesCategory].self, endPoint: EndPoint.categories)
     }
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], Error> {
-        return networkmanager.get(type: [SideDish].self, endPoint: endPoint)
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], AFError> {
+        return networkmanager.get(decodingType: [SideDish].self, endPoint: endPoint)
     }
 }
