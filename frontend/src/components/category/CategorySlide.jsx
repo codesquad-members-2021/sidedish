@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import ItemCard from '../ItemCard'
+import Loading from '../Loading'
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
-import { AlignTextCenter } from '../Theme'
 const CatgoryWrapper = styled.div`
   width: 1280px;
   padding: 0px;
@@ -34,36 +34,20 @@ const Button = styled.button`
 
 const ButtonLeft = styled(Button)``
 const ButtonRight = styled(Button)``
-const LoadingWapper = styled(AlignTextCenter)`
-  width: 1280px;
-  height: 384px;
-`
 
 function CategorySlide ({ data }) {
-  const ItemCards = data => {
-    let category
-    if (Array.isArray(data)) {
-      category = data.map((data, idx) => (
-        <ItemCard key={idx} data={data} size={'S'} />
-      ))
-    } else {
-      category = (
-        <LoadingWapper>
-          <img src={'./load.jpg'} alt={'loading'} />
-        </LoadingWapper>
-      )
-    }
-
-    return category
-  }
-
+  const itemLists = Array.isArray(data) ? (
+    data.map((data, idx) => <ItemCard key={idx} data={data} size={'S'} />)
+  ) : (
+    <Loading width='1280px' height='384px' />
+  )
   return (
     <CategorySlideBlock>
       <ButtonLeft>
         <VscChevronLeft />
       </ButtonLeft>
       <CatgoryWrapper>
-        <CategoryColumn>{ItemCards(data)}</CategoryColumn>
+        <CategoryColumn>{itemLists}</CategoryColumn>
       </CatgoryWrapper>
       <ButtonRight>
         <VscChevronRight />
