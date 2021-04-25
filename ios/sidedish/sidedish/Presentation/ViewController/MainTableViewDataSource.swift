@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MainTableViewDataSource : NSObject, UITableViewDataSource {
+class MainTableViewDataSource: NSObject, UITableViewDataSource {
     
-    private let menuCellViewModel : MenuCellViewModel
+    private let menuCellViewModel: MenuCellViewModel
     
-    init(menucellViewModel : MenuCellViewModel) {
+    init(menucellViewModel: MenuCellViewModel) {
         self.menuCellViewModel = menucellViewModel
     }
     
@@ -24,10 +24,27 @@ class MainTableViewDataSource : NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell : MenuCell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
-        //cell.updateMenu(titleText: menuCellViewModel.dishes.body[indexPath.section].sideDish(at: indexPath.row)!.title)
-        cell.updateMenu(titleText: menuCellViewModel.dishes.getsidedish(section: indexPath.section).sideDish(at: indexPath.row)!.title)
         
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
+        
+        let dishProperty = menuCellViewModel.dishes[indexPath.section][indexPath.row]
+        
+        cell.updateMenu(image: UIImage(),
+                        titleText: dishProperty.title,
+                        subTitle: dishProperty.description,
+                        price: dishProperty.price,
+                        reducedPrice: dishProperty.salePrice,
+                        badge: dishProperty.badges ?? ["",""])
+        
+        DispatchQueue.global().async {
+            let url = URL(string: dishProperty.image)!
+            let data = try? Data(contentsOf: url)
+            DispatchQueue.main.async {
+                if let tempdata = data {
+                    cell.menuImage.image = UIImage(data: tempdata)
+                }
+            }
+        }
         return cell
     }
 }

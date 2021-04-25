@@ -9,23 +9,31 @@ import Foundation
 import Combine
 
 protocol ManufactureDataforViewModel {
-    func manufactureForMainView() -> AnyPublisher<SideDishesCollection, Error>
+    
+    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], Error>
+    
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], Error>
+    
 }
 
-class TurnonAppUsecase : ManufactureDataforViewModel {
+class TurnonAppUsecase: ManufactureDataforViewModel {
 
-    private let networkmanager : NetworkProtocol
+    private let networkmanager: NetworkProtocol
     
-    init(networkmanager : NetworkProtocol) {
+    init(networkmanager: NetworkProtocol) {
         self.networkmanager = networkmanager
     }
     
-    convenience init(baseUrl: String = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com"){
+    convenience init(baseUrl: String = "http://3.37.26.82:8080"){
         let networkmanager = NetworkManager(baseAddress: baseUrl)
         self.init(networkmanager : networkmanager)
     }
     
-    func manufactureForMainView() -> AnyPublisher<SideDishesCollection, Error> {
-        return networkmanager.get(type: SideDishesCollection.self, endPoint: .best)
+    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], Error> {
+        return networkmanager.get(type: [SideDishesCategory].self, endPoint: EndPoint.categories)
+    }
+    
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], Error> {
+        return networkmanager.get(type: [SideDish].self, endPoint: endPoint)
     }
 }

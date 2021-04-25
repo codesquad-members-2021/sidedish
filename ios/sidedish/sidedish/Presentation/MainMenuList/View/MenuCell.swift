@@ -8,10 +8,10 @@
 import UIKit
 
 class MenuCell : UITableViewCell {
-    internal static let identifier : String = "MenuCell"
+    
+    static let identifier: String = "MenuCell"
     
     @IBOutlet weak var menuImage: UIImageView!
-    
     @IBOutlet weak var menuTitle: UILabel!
     @IBOutlet weak var menuSubTitle: UILabel!
     @IBOutlet weak var reducedPrice: UILabel!
@@ -30,8 +30,12 @@ class MenuCell : UITableViewCell {
         }
     }
     
-    func updateMenu(titleText: String){
+    func updateMenu(image: UIImage, titleText: String, subTitle: String, price: Int, reducedPrice: Int, badge: [String]){
+        selectionStyle = .none
         self.menuTitle.text = titleText
-        selectionStyle = .none //나중에 옮기자
+        self.menuSubTitle.text = subTitle
+        self.menuPrice.text = "\(price)원"
+        self.reducedPrice.text = "\(reducedPrice)원"
+        self.specialPrice.text = "\(badge[0])"
     }
 }

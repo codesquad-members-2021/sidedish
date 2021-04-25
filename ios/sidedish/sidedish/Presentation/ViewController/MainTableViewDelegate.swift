@@ -7,23 +7,23 @@
 
 import UIKit
 
-class MainTableViewDelegate : NSObject, UITableViewDelegate {
-    private let viewModel : MenuCellViewModel
-    private var delegate : ViewChangable!
+class MainTableViewDelegate: NSObject, UITableViewDelegate {
+    private let viewModel: MenuCellViewModel
+    private var delegate: ViewChangable!
     
-    init(viewModel : MenuCellViewModel) {
+    init(viewModel: MenuCellViewModel) {
         self.viewModel = viewModel
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerWidth = tableView.frame.width
         let headerHeight = ViewPosition.headerViewHeight.rawValue
-        let titleText = viewModel.dishes.getsidedish(section: section).name
-        let headerView = CustomTableHeaderView.makeCustomTableHeaderView(width: headerWidth,
+        let titleText = viewModel.dishesCategory[section].categoryName
+        let headerView = CustomTableHeaderView.make(width: headerWidth,
                                                                          height: headerHeight,
                                                                          text: titleText)
         
-        let popupGesture : TableViewTapToasterGesture = TableViewTapToasterGesture(target: self, action: #selector(popupToast(sender:)))
+        let popupGesture = TableViewTapToasterGesture(target: self, action: #selector(popupToast(sender:)))
         popupGesture.count = viewModel.sideDishesCount(section: section)
         headerView.addGestureRecognizer(popupGesture)
         
@@ -37,7 +37,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return ViewPosition.headerViewHeight.rawValue + ViewPosition.GapHeaderViewAndCell.rawValue
+        return ViewPosition.headerViewHeight.rawValue + ViewPosition.gapHeaderViewAndCell.rawValue
     }
     
     @objc func popupToast(sender : TableViewTapToasterGesture){
@@ -47,7 +47,7 @@ class MainTableViewDelegate : NSObject, UITableViewDelegate {
     
     enum ViewPosition : CGFloat {
         case headerViewHeight = 32,
-             GapHeaderViewAndCell = 24
+             gapHeaderViewAndCell = 24
     }
     
     func set(delegate: ViewChangable){

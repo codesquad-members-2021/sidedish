@@ -7,11 +7,7 @@
 
 import Foundation
 
-enum EndPoint: String {
-    case best = "/develop/baminchan/best"
-    
-    var path: String {
-        return rawValue
-    }
+enum EndPoint {
+    static let categories = "/categories"
+    static var sideDishes = [String]()
 }
-

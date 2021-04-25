@@ -15,8 +15,8 @@ class RequestManager {
         self.baseAddress = baseAddress
     }
     
-    func create(endPoint: EndPoint, body: Data?, requestType: RequestType) -> URLRequest {
-        guard let url = URL(string: self.baseAddress + endPoint.path) else {
+    func create(endPoint: String, body: Data?, requestType: RequestType) -> URLRequest {
+        guard let url = URL(string: self.baseAddress + endPoint) else {
             return URLRequest(url: URL(string: baseAddress)!)
         }
         

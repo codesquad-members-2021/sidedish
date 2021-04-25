@@ -8,15 +8,15 @@
 import Foundation
 import Combine
 
-class NetworkManager : NetworkProtocol {
+class NetworkManager: NetworkProtocol {
     
     private let requestManager: RequestManager
     
-    init(baseAddress: String){
+    init(baseAddress: String) {
         self.requestManager = RequestManager(baseAddress: baseAddress)
     }
     
-    func get<T>(type: T.Type, endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable {
+    func get<T: Decodable>(type: T.Type, endPoint: String) -> AnyPublisher<T, Error> {
         let urlRequest = requestManager.create(endPoint: endPoint, body: nil, requestType: .get)
         
         return URLSession.shared.dataTaskPublisher(for: urlRequest)

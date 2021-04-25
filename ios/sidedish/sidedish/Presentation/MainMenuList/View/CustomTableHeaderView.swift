@@ -9,7 +9,7 @@ import UIKit
 
 class CustomTableHeaderView : UIView {
     
-    static func makeCustomTableHeaderView(width : CGFloat, height: CGFloat, text: String) -> UIView {
+    static func make(width : CGFloat, height: CGFloat, text: String) -> UIView {
         let headerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         let label = UILabel()

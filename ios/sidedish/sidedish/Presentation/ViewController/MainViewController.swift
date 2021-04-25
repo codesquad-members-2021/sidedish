@@ -20,9 +20,9 @@ class MainViewController: UIViewController, ViewChangable {
     
     @IBOutlet weak var menuTableView: UITableView!
     
-    private let tableViewDataSource : MainTableViewDataSource
-    private let tableViewDelegate : MainTableViewDelegate
-    private let mainMenuViewModel : MenuCellViewModel
+    private let tableViewDataSource: MainTableViewDataSource
+    private let tableViewDelegate: MainTableViewDelegate
+    private let mainMenuViewModel: MenuCellViewModel
     
     private var subscription = Set<AnyCancellable>()
 
@@ -40,18 +40,26 @@ class MainViewController: UIViewController, ViewChangable {
         super.init(coder: coder)
     }
     
-    private func bind() {
+    private func bind() {        
+        mainMenuViewModel.$dishesCategory
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.menuTableView.reloadData() })
+            .store(in: &self.subscription)
+        
         mainMenuViewModel.$dishes
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] _ in self?.menuTableView.reloadData() })
             .store(in: &self.subscription)
         
-        mainMenuViewModel.configureAlertMessage { (error) in
-            self.showAlert(message: error)
-        }
+        mainMenuViewModel.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in}, receiveValue:{ [weak self] error in self?.showAlert(message: error) })
+            .store(in: &self.subscription)
     }
     
-    private func showAlert(message : String){
+    private func showAlert(message: String?){
+        guard let message = message else { return }
+        
         DispatchQueue.main.async {
             self.present(AlertMessageController.makeAlertController(error: message), animated: true)
         }
