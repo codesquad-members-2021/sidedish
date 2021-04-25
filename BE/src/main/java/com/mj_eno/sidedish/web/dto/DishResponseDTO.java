@@ -6,15 +6,15 @@ import java.util.List;
 
 public class DishResponseDTO {
 
-    String detailHash;
-    String image;
-    String alt;
-    String deliveryType;
-    String title;
-    String description;
-    int nPrice;
-    int sPrice;
-    List<String> badges;
+    private final String detailHash;
+    private final String image;
+    private final String alt;
+    private final String deliveryType;
+    private final String title;
+    private final String description;
+    private final int nPrice;
+    private final int sPrice;
+    private final List<String> badges;
 
     public DishResponseDTO(Dish dish, String image, List<String> badges) {
         this.detailHash = dish.getHash();

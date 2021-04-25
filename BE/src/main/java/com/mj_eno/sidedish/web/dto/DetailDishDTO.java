@@ -6,16 +6,16 @@ import java.util.List;
 
 public class DetailDishDTO {
 
-    String topImage;
-    List<String> thumbImages;
-    String productDescription;
-    int point;
-    String deliveryInfo;
-    String deliveryFee;
-    int nPrice;
-    int sPrice;
-    int stock;
-    List<String> detailSection;
+    private final String topImage;
+    private final List<String> thumbImages;
+    private final String productDescription;
+    private final int point;
+    private final String deliveryInfo;
+    private final String deliveryFee;
+    private final int nPrice;
+    private final int sPrice;
+    private final int stock;
+    private final List<String> detailSection;
 
     public DetailDishDTO(Dish dish, String topImage, List<String> thumbImages, List<String> detailSection) {
         this.topImage = topImage;

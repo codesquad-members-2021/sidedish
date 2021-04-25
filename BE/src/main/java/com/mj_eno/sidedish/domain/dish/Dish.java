@@ -5,20 +5,20 @@ import org.springframework.data.annotation.Id;
 public class Dish {
 
     @Id
-    Long id;
-    String hash;
-    String alt;
-    String title;
-    String description;
-    int nPrice;
-    int sPrice;
-    int point;
-    int stock;
-    String deliveryType;
-    String deliveryInfo;
-    String deliveryFee;
-    int menuCategoryId;
-    Integer bestMenuCategoryId;
+    private Long id;
+    private String hash;
+    private String alt;
+    private String title;
+    private String description;
+    private int nPrice;
+    private int sPrice;
+    private int point;
+    private int stock;
+    private String deliveryType;
+    private String deliveryInfo;
+    private String deliveryFee;
+    private int menuCategoryId;
+    private Integer bestMenuCategoryId;
 
     public Dish(String hash, int stock) {
         this.hash = hash;

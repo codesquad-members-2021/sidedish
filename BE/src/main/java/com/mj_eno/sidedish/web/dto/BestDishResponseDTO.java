@@ -6,9 +6,9 @@ import java.util.List;
 
 public class BestDishResponseDTO {
 
-    Long bestCategoryId;
-    String name;
-    List<DishResponseDTO> items;
+    private final Long bestCategoryId;
+    private final String name;
+    private final List<DishResponseDTO> items;
 
     public BestDishResponseDTO(BestMenuCategory bestMenuCategory, List<DishResponseDTO> dishResponseDTOList) {
         this.bestCategoryId = bestMenuCategory.getId();

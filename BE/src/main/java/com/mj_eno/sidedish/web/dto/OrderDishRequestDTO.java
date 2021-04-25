@@ -6,8 +6,8 @@ import com.mj_eno.sidedish.exception.OrderFailedException;
 
 public class OrderDishRequestDTO {
 
-    String hash;
-    int order;
+    private String hash;
+    private int order;
 
     public Dish toEntity() {
         if (hash == null || order == 0) {

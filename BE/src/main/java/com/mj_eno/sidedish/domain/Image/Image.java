@@ -5,10 +5,10 @@ import org.springframework.data.annotation.Id;
 public class Image {
 
     @Id
-    Long id;
-    String url;
-    boolean top;
-    int dishId;
+    private Long id;
+    private String url;
+    private boolean top;
+    private int dishId;
 
     public Long getId() {
         return id;

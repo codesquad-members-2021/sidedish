@@ -5,8 +5,8 @@ import org.springframework.data.annotation.Id;
 public class Badge {
 
     @Id
-    Long id;
-    String name;
+    private Long id;
+    private String name;
 
     public Long getId() {
         return id;

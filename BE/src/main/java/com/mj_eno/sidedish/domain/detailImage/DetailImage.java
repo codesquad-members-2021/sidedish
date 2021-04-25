@@ -5,9 +5,9 @@ import org.springframework.data.annotation.Id;
 public class DetailImage {
 
     @Id
-    Long id;
-    String url;
-    int dishId;
+    private Long id;
+    private String url;
+    private int dishId;
 
     public Long getId() {
         return id;

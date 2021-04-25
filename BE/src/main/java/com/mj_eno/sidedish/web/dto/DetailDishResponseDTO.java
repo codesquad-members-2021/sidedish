@@ -1,11 +1,9 @@
 package com.mj_eno.sidedish.web.dto;
 
-import java.util.List;
-
 public class DetailDishResponseDTO {
 
-    String hash;
-    DetailDishDTO data;
+    private final String hash;
+    private final DetailDishDTO data;
 
     public DetailDishResponseDTO(String hash, DetailDishDTO data) {
         this.hash = hash;
