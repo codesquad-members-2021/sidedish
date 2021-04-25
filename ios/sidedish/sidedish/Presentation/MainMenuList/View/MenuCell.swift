@@ -8,10 +8,10 @@
 import UIKit
 
 class MenuCell : UITableViewCell {
-    internal static let identifier : String = "MenuCell"
+    
+    static let identifier: String = "MenuCell"
     
     @IBOutlet weak var menuImage: UIImageView!
-    
     @IBOutlet weak var menuTitle: UILabel!
     @IBOutlet weak var menuSubTitle: UILabel!
     @IBOutlet weak var reducedPrice: UILabel!

@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-class MenuCellViewModel{
+class MenuCellViewModel {
     
-    @Published var dishesCategory : [SideDishesCategory]!
-    @Published var dishes : [[SideDish]]!
-    @Published var errorMessage : String!
+    @Published var dishesCategory: [SideDishesCategory]!
+    @Published var dishes: [[SideDish]]!
+    @Published var errorMessage: String!
     
     private var subscriptions = Set<AnyCancellable>()
     private var turnonAppUsecase: ManufactureDataforViewModel
@@ -26,16 +26,16 @@ class MenuCellViewModel{
         self.init(turnonAppUsecase: turnonAppUsecase)
     }
     
-    func configureMainmenuBoard(){
+    func configureMainmenuBoard() {
         turnonAppUsecase.manufactureForMainViewCategory()
             .sink(receiveCompletion: { (result) in
                 if case .failure(let error) = result {
                     self.errorMessage = error.localizedDescription
                 }
-            }, receiveValue: { (category) in
-                self.dishesCategory = category
-                self.updateEndpoint(from: category)
-                self.loadSideDishes(count: category.count)
+            }, receiveValue: { (categories) in
+                self.dishesCategory = categories
+                self.updateEndpoint(from: categories)
+                self.loadSideDishes(count: categories.count)
             }).store(in: &subscriptions)
     }
     
@@ -59,7 +59,7 @@ class MenuCellViewModel{
         }
     }
     
-    func sideCategoryCount() -> Int{
+    func sideCategoryCount() -> Int {
         if dishesCategory == nil {
             return 0
         }
@@ -68,7 +68,7 @@ class MenuCellViewModel{
         }
     }
     
-    func sideDishesCount(section: Int) -> Int{
+    func sideDishesCount(section: Int) -> Int {
         if dishes == nil {
             return 0
         }
@@ -76,12 +76,4 @@ class MenuCellViewModel{
             return dishes[section].count
         }
     }
-    
-//    func configureAlertMessage() {
-//        $errorMessage
-//            .dropFirst()
-//            .sink { (message) in
-//                self.errorMessage = message
-//            }.store(in: &subscriptions)
-//    }
 }

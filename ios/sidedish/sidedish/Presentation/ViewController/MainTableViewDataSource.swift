@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MainTableViewDataSource : NSObject, UITableViewDataSource {
+class MainTableViewDataSource: NSObject, UITableViewDataSource {
     
-    private let menuCellViewModel : MenuCellViewModel
+    private let menuCellViewModel: MenuCellViewModel
     
-    init(menucellViewModel : MenuCellViewModel) {
+    init(menucellViewModel: MenuCellViewModel) {
         self.menuCellViewModel = menucellViewModel
     }
     
@@ -24,8 +24,11 @@ class MainTableViewDataSource : NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell : MenuCell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
+        
         let dishProperty = menuCellViewModel.dishes[indexPath.section][indexPath.row]
+        
         cell.updateMenu(image: UIImage(),
                         titleText: dishProperty.title,
                         subTitle: dishProperty.description,
