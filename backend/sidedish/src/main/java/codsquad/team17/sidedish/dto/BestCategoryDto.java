@@ -1,16 +1,18 @@
 package codsquad.team17.sidedish.dto;
 
 import codsquad.team17.sidedish.domain.BestCategory;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class BestCategoryDto {
-    private Long bestCategoryId;
-    private String bestCategoryName;
-    private List<ItemDto> items;
+    @JsonProperty("best_category_id")
+    private final Long bestCategoryId;
 
-    private BestCategoryDto(){
-    }
+    @JsonProperty("best_category_name")
+    private final String bestCategoryName;
+
+    private final List<ItemDto> items;
 
     public BestCategoryDto(BestCategory entity, List<ItemDto> items) {
         this.bestCategoryId = entity.getBestCategoryId();

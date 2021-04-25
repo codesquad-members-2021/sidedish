@@ -2,31 +2,32 @@ package codsquad.team17.sidedish.dto;
 
 import codsquad.team17.sidedish.domain.Image;
 import codsquad.team17.sidedish.domain.Item;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 public class ItemDto {
-    private Long item_id;
-    private String title;
-    private String description;
+    private final Long item_id;
+    private final String title;
+    private final String description;
 
-    private BigDecimal n_price;
-    private BigDecimal s_price;
+    @JsonProperty("n_price")
+    private final BigDecimal normalPrice;
 
-    private List<String> badge;
-    private String image;
+    @JsonProperty("s_price")
+    private final BigDecimal salePrice;
 
-    public ItemDto() {
-    }
-
+    private final List<String> badge;
+    private final String image;
+    
     public ItemDto(Item entity, Image image) {
         this.item_id = entity.getItemId();
         this.title = entity.getTitle();
         this.description = entity.getDescription();
-        this.n_price = entity.getnPrice();
-        this.s_price = entity.getsPrice();
+        this.normalPrice = entity.getnPrice();
+        this.salePrice = entity.getsPrice();
         this.badge = parseBadge(entity.getBadge());
         this.image = image.getUrl();
     }
@@ -47,12 +48,12 @@ public class ItemDto {
         return description;
     }
 
-    public BigDecimal getN_price() {
-        return n_price;
+    public BigDecimal getNormalPrice() {
+        return normalPrice;
     }
 
-    public BigDecimal getS_price() {
-        return s_price;
+    public BigDecimal getSalePrice() {
+        return salePrice;
     }
 
     public List<String> getBadge() {
