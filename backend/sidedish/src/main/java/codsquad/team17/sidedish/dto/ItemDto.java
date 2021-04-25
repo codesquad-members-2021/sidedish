@@ -21,7 +21,7 @@ public class ItemDto {
 
     private final List<String> badge;
     private final String image;
-    
+
     public ItemDto(Item entity, Image image) {
         this.item_id = entity.getItemId();
         this.title = entity.getTitle();
