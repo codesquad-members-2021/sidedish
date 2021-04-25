@@ -37,5 +37,11 @@ class MenuCell : UITableViewCell {
         self.menuPrice.text = "\(price)원"
         self.reducedPrice.text = "\(reducedPrice)원"
         self.specialPrice.text = "\(badge[0])"
+        
+        setCornerRadius()
+    }
+    
+    private func setCornerRadius() {
+        self.menuImage.layer.cornerRadius = bounds.height * 0.08
     }
 }
