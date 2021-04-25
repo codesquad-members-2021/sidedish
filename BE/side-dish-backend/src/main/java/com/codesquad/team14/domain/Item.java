@@ -17,8 +17,10 @@ public class Item {
     private String description;
     private int nPrice;
     private int sPrice;
-    private List<Badge> badges;
-    private List<DeliveryType> deliveryTypes;
+    //private List<Badge> badges;
+    private String badges;
+    //private List<DeliveryType> deliveryTypes;
+    private String deliveryTypes;
     private String images;
     private Category category;
 
@@ -28,6 +30,10 @@ public class Item {
         this.nPrice = nPrice;
         this.sPrice = sPrice;
         this.category = category;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -50,13 +56,13 @@ public class Item {
         return sPrice;
     }
 
-    public List<Badge> getBadges() {
-        return badges;
-    }
+    //public List<Badge> getBadges() {
+    //    return badges;
+    //}
 
-    public List<DeliveryType> getDeliveryTypes() {
-        return deliveryTypes;
-    }
+    //public List<DeliveryType> getDeliveryTypes() {
+    //    return deliveryTypes;
+    //}
 
     public String getImages() {
         return images;
@@ -66,6 +72,7 @@ public class Item {
         return category;
     }
 
+    /*
     public String getDeliveryInfo() {
         StringBuilder deliverInfo = new StringBuilder();
         for (int i = 0; i < deliveryTypes.size(); i++) {
@@ -75,7 +82,7 @@ public class Item {
             }
         }
         return deliverInfo.toString();
-    }
+    }*/
 
     public String getDeliveryFeePolicy() {
         return DELIVERY_FEE_POLICY;
@@ -97,13 +104,13 @@ public class Item {
         this.sPrice = sPrice;
     }
 
-    public void setBadges(List<Badge> badges) {
-        this.badges = badges;
-    }
+    //public void setBadges(List<Badge> badges) {
+    //    this.badges = badges;
+    //}
 
-    public void setDeliveryTypes(List<DeliveryType> deliveryTypes) {
-        this.deliveryTypes = deliveryTypes;
-    }
+    //public void setDeliveryTypes(List<DeliveryType> deliveryTypes) {
+    //    this.deliveryTypes = deliveryTypes;
+    //}
 
     public void setImages(String images) {
         this.images = images;

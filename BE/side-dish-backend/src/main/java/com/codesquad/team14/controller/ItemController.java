@@ -13,6 +13,7 @@ public class ItemController {
 
     private final ItemRepository itemRepository;
 
+
     public ItemController(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
@@ -24,6 +25,6 @@ public class ItemController {
 
     @GetMapping("/main/{itemId}")
     public Item singleItem(@PathVariable Long itemId) {
-        return itemRepository.findById(itemId);
+        return itemRepository.findById(itemId).get();
     }
 }
