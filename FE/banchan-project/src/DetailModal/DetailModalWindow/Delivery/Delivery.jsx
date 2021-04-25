@@ -1,23 +1,26 @@
 import DeliveryTitle from "./DeliveryTitle";
 import DeliveryContents from "./DeliveryContents";
+import * as S from "../../DetailModalStyles";
 import * as CS from "../../../Styles/commonStyles";
 
 const Delivery = ({ props }) => {
   return (
-    <>
-      <CS.flexBox display={"flex"}>
+    <S.DeliveryWrapper>
+      <CS.Box.FLEX_ROW_BOX>
         <DeliveryTitle title={"적립금"} />
         <DeliveryContents contents={props.point} />
-      </CS.flexBox>
-      <CS.flexBox display={"flex"}>
+      </CS.Box.FLEX_ROW_BOX>
+
+      <CS.Box.FLEX_ROW_BOX>
         <DeliveryTitle title={"배송정보"} />
         <DeliveryContents contents={props.delivery_info} />
-      </CS.flexBox>
-      <CS.flexBox display={"flex"}>
+      </CS.Box.FLEX_ROW_BOX>
+
+      <CS.Box.FLEX_ROW_BOX>
         <DeliveryTitle title={"배송비"} />
         <DeliveryContents contents={props.delivery_fee} />
-      </CS.flexBox>
-    </>
+      </CS.Box.FLEX_ROW_BOX>
+    </S.DeliveryWrapper>
   );
 };
 

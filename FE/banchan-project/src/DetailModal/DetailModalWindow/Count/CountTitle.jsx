@@ -1,11 +1,7 @@
-import { Card } from "../../../Styles/commonStyles";
+import * as CS from "../../../Styles/commonStyles";
 
 const CountTitle = () => {
-  return (
-    <Card.CardDescription fontSize={16} lineHeight={23}>
-      수량
-    </Card.CardDescription>
-  );
+  return <CS.ColorFont.GRAY3_S_NORMAL>수량</CS.ColorFont.GRAY3_S_NORMAL>;
 };
 
 export default CountTitle;

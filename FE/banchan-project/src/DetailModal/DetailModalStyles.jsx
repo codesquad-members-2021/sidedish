@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { Card } from "../Styles/commonStyles";
+import * as CS from "../Styles/commonStyles";
+import theme from "../Styles/theme";
 
-const DetailModalWindow = styled.div`
+const DetailModalWindow = styled(CS.Box.FLEX_COLUMN_BOX)`
   position: absolute;
   width: 960px;
   height: 680px;
@@ -11,9 +12,7 @@ const DetailModalWindow = styled.div`
   background: #fff;
   border-radius: 5px 5px 0px 0px;
 
-  padding: 48px;
-
-  z-index: 999;
+  z-index: 1;
 `;
 
 const DetailModalBackground = styled.div`
@@ -26,32 +25,89 @@ const DetailModalBackground = styled.div`
   opacity: 0.4;
 `;
 
-const ImagesWrapper = styled.div`
-  display: inline-block;
+const CloseButtonWrapper = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 76%;
+  z-index: 1;
 `;
 
-const ThumbNailsImage = styled(Card.CardImage)`
-  margin: 16px 8px 16px 0px;
+const DetailWrapper = styled(CS.Box.FLEX_ROW_BOX)`
+  padding: 48px;
 `;
 
-const ThumbNailsEmptyImage = styled.div`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-  background: #f5f5f7;
-  border-radius: 5px;
-  margin: 16px 8px 16px 0px;
+const DetailModalPropWrapper = styled.div`
+  margin-right: 32px;
 `;
 
-const TotalPriceDescription = styled(Card.CardDescription)`
-  font-weight: bold;
+const CountWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
+  justify-content: space-between;
+  padding: 24px 0px;
+  border-bottom: 1px solid ${theme.boxColors.GRAY5};
 `;
 
-const TotalPrice = styled(Card.CardTitle)`
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 46px;
+const CountNumber = styled.div`
+  margin: 0px 10px;
+`;
 
-  margin: 0px 24px;
+const CountNumberWrapper = styled(CS.Box.FLEX_ROW_BOX)`
+  padding: 8px 24px;
+  border: 1px solid ${theme.boxColors.GRAY5};
+`;
+
+const CountButtonWrapper = styled(CS.Box.FLEX_ROW_BOX)`
+  height: 21px;
+  padding: 4px 8px;
+  align-items: center;
+  border: 1px solid ${theme.boxColors.GRAY5};
+`;
+
+const DeliveryWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
+  padding: 24px 0px;
+  border-bottom: 1px solid ${theme.boxColors.GRAY5};
+`;
+
+const DeliveryTitleWrapper = styled.div`
+  width: 20%;
+  margin: 0px 16px 16px 0px;
+`;
+
+const DeliveryContentsWrapper = styled.div`
+  width: 100%;
+  margin: 0px 16px 16px 0px;
+`;
+
+const ItemInfoWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
+  padding-bottom: 24px;
+  border-bottom: 1px solid ${theme.boxColors.GRAY5};
+`;
+
+const DetailLineWrapper = styled.div`
+  margin-bottom: 16px;
+`;
+
+const DetailNPriceWrapper = styled.div`
+  color: ${theme.fontColors.GRAY3};
+  text-decoration-line: line-through;
+  margin: 0px 8px;
+`;
+
+const DetailSPriceWrapper = styled.div`
+  margin: 0px 8px;
+`;
+
+const SubmitWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
+  align-items: flex-end;
+  padding-top: 24px;
+`;
+
+const PricesWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
+  justify-content: flex-end;
+  margin: 24px 0px;
+`;
+
+const TotalPricePropWrapper = styled.div`
+  margin-right: 24px;
 `;
 
 const SubmitButton = styled.button`
@@ -62,99 +118,86 @@ const SubmitButton = styled.button`
   width: 440px;
   height: 58px;
 
-  background: #82d32d;
+  background: ${theme.boxColors.GREEN};
 
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
     0px 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
 
   border-radius: 5px;
-
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 26px;
-
-  text-align: center;
-
-  color: #ffffff;
 `;
 
-const DeliveryContents = styled(Card.CardDescription)`
-  font-size: 16px;
-  line-height: 23px;
-  color: #4f4f4f;
-  margin: 8px 16px;
+const ThumbNailsImageWrapper = styled.div`
+  margin: 8px 8px 0px 0px;
 `;
 
-const RecommendedItems = styled.div`
-  position: absolute;
-  width: 960px;
-  height: 396px;
-  left: 25%;
-  top: 79.7%;
-  padding: 48px;
+const ThumbNailsEmptyImage = styled.div`
+  width: 72px;
+  height: 72px;
 
-  background: #f5f5f7;
-  border-radius: 0px 0px 5px 5px;
-
-  z-index: 999;
+  background: ${theme.boxColors.GRAY6};
+  border-radius: 5px;
 `;
 
-const RecommendedItemsCard = styled.div`
-  display: flex;
-  margin: 32px 0px;
+const RecommendedItems = styled.div`\
+width: 960px;
+height: 396px;
+
+padding:48px;
+
+background: ${theme.boxColors.GRAY6};
+
+border-radius: 0px 0px 5px 5px;
+`;
+
+const RecommendedItemsHeaderWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
+  justify-content: space-between;
+  margin-bottom: 32px;
+`;
+
+const RecommendedItemsCardWrapper = styled(CS.Box.FLEX_ROW_BOX)`
   overflow: auto;
 `;
 
-const RecommendedItemsTitle = styled.div`
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 26px;
-  color: #333;
-`;
-
-const RecommendedItemsCardTitle = styled.div`
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 23px;
-  color: #333;
-  margin: 8px 0px;
-`;
-
-const RecommendedItemsCardPrice = styled.div`
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 20px;
-  color: #333;
-  margin: 8px 0px;
-`;
-
-const RecommendedItemsCardImage = styled(Card.CardImage)`
+const RecommendedItemsCardImageWrapper = styled.div`
   margin-right: 16px;
+`;
+
+const RecommendedItemsCardTitleWrapper = styled.div`
+  margin: 8px 0px;
+`;
+
+const RecommendedItemsPaginationWrapper = styled.div`
+  margin: 0px 17px;
 `;
 
 export {
   DetailModalWindow,
   DetailModalBackground,
-  ImagesWrapper,
-  ThumbNailsImage,
-  ThumbNailsEmptyImage,
-  TotalPriceDescription,
-  TotalPrice,
+  CloseButtonWrapper,
+  DetailWrapper,
+  DetailModalPropWrapper,
+  CountWrapper,
+  CountNumber,
+  CountNumberWrapper,
+  CountButtonWrapper,
+  DeliveryWrapper,
+  DeliveryTitleWrapper,
+  DeliveryContentsWrapper,
+  ItemInfoWrapper,
+  DetailLineWrapper,
+  DetailNPriceWrapper,
+  DetailSPriceWrapper,
+  SubmitWrapper,
+  PricesWrapper,
+  TotalPricePropWrapper,
   SubmitButton,
-  DeliveryContents,
+  ThumbNailsImageWrapper,
+  ThumbNailsEmptyImage,
   RecommendedItems,
-  RecommendedItemsCard,
-  RecommendedItemsTitle,
-  RecommendedItemsCardTitle,
-  RecommendedItemsCardPrice,
-  RecommendedItemsCardImage,
+  RecommendedItemsHeaderWrapper,
+  RecommendedItemsCardWrapper,
+  RecommendedItemsCardImageWrapper,
+  RecommendedItemsCardTitleWrapper,
+  RecommendedItemsPaginationWrapper,
 };

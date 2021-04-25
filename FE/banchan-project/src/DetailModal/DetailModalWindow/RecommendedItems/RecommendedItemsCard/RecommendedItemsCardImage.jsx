@@ -1,7 +1,12 @@
 import * as S from "../../../DetailModalStyles";
+import * as CS from "../../../../Styles/commonStyles";
 
 const RecommendedItemsCardImage = ({ image }) => {
-  return <S.RecommendedItemsCardImage width={160} height={160} src={image} />;
+  return (
+    <S.RecommendedItemsCardImageWrapper>
+      <CS.Image.RECOMMENDED src={image} />
+    </S.RecommendedItemsCardImageWrapper>
+  );
 };
 
 export default RecommendedItemsCardImage;
