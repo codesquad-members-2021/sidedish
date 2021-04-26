@@ -14,12 +14,13 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 
 const DetailInfo = ({ title, badge, prices, product_description }) => {
-  let normal = prices[1];
+  let normal = prices[0];
   let discount = null;
   if (prices.length === 2) {
     discount = prices[0];
+    normal = prices[1];
   }
-  console.log(badge);
+  console.log(normal, discount);
   return (
     <DetailInfoBox>
       <Info name={title} body={product_description} type={DETAIL} />
