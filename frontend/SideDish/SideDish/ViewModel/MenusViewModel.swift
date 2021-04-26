@@ -2,9 +2,9 @@
 import Foundation
 
 class MenusViewModel {
-    private var mainViewModel: [MenuViewModel]
-    private var soupViewModel: [MenuViewModel]
-    private var sideViewModel: [MenuViewModel]
+    private(set) var mainViewModel: [MenuViewModel]
+    private(set) var soupViewModel: [MenuViewModel]
+    private(set) var sideViewModel: [MenuViewModel]
     private var fetchMenuUseCase: FetchMenuUseCase
     
     init() {
@@ -36,7 +36,6 @@ class MenusViewModel {
         case .side:
             self.sideViewModel = viewModelList
         }
-        
         NotificationCenter.default.post(name: MenusViewModel.changeMenu, object: self)
     }
     
@@ -69,6 +68,7 @@ class MenusViewModel {
             return NSMutableAttributedString(string: "")
         }
     }
+    
 }
 
 extension MenusViewModel {
