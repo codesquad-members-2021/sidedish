@@ -1,37 +1,15 @@
 import styled from 'styled-components'
 import { theme, Button } from '../Theme'
-import { BiX } from 'react-icons/bi'
 import ItemPrice from '../atomic/ItemPrice'
 import Badge from '../atomic/Badge'
 import Loading from '../Loading'
+import Modal from '../Modal'
 
-
-const DarkBackground = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-`
-const Modal = styled.div`
-  width: 960px;
-  height: auto;
-  background-color: ${theme.colors.white};
-`
 const RepresentativeBlock = styled.div`
   display: flex;
   margin: 48px;
 `
-const Xstyle = {
-  color: theme.colors.white,
-  position: 'relative',
-  top: '-320px'
-}
+
 const ImageBlock = styled.div`
   margin-right: 32px;
 `
@@ -116,64 +94,56 @@ function DetailPage ({
   }
 
   return (
-    <DarkBackground>  
-      <Modal>
-        {loadingState ? (
-          <Loading width='960px' height='568px' />
-        ) : (
-          <>
-            <RepresentativeBlock>
-              <ImageBlock>
-                <MainIMG image={detailData.topImage} size='L' />
-                <DetailBlock>
-                  {detailData.thumbImages.map((el, idx) => (
-                    <DetailIMG key={idx} image={el}></DetailIMG>
-                  ))}
-                </DetailBlock>
-              </ImageBlock>
-              <ItemDetailInfo>
-                <ItemTitleDetails>{item}</ItemTitleDetails>
-                <ItemDescDetails>
-                  {detailData.productDescription}
-                </ItemDescDetails>
-                <FlexBox>
-                  <Badge data={badges}></Badge>
-                  <ItemPrice
-                    sPrice={detailData.sPrice}
-                    nPrice={detailData.nPrice}
-                  ></ItemPrice>
-                </FlexBox>
-                <img src='./longUnderLine.png' alt='underline'></img>
-                <PointDeliveryInfoBlock>
-                  <ItemDescDetails>적립</ItemDescDetails>
-                  <DetailText>{detailData.point}</DetailText>
-                  <ItemDescDetails>배송정보</ItemDescDetails>
-                  <DetailText>{detailData.deliveryInfo}</DetailText>
-                  <ItemDescDetails>배송비</ItemDescDetails>
-                  <DetailText>{detailData.deliveryFee}</DetailText>
-                </PointDeliveryInfoBlock>
-                <img src='./longUnderLine.png' alt='underline'></img>
-                <ItemDescDetails>수량</ItemDescDetails>
-                <input type='number' min='1' max={detailData.stock}></input>
-                <img src='./longUnderLine.png' alt='underline'></img>
-                <DetailText>총 주문금액</DetailText>
-                <ItemPrice>{detailData.nPrice}</ItemPrice>
-                <OrderBtn onClick={handleClick}>주문하기</OrderBtn>
-              </ItemDetailInfo>
-            </RepresentativeBlock>
-            <ItemDetailCards>
-              {detailData.detailSection.map((card, idx) => (
-                <DetailCard card={card} key={idx}></DetailCard>
-              ))}
-            </ItemDetailCards>
-          </>
-        )}
-
-       </Modal>
-       <Button onClick={handleClick}>
-         <BiX style={Xstyle} />
-       </Button>
-     </DarkBackground>
+    <Modal {...{ modalMode, setModalState }}>
+      {loadingState ? (
+        <Loading width='960px' height='568px' />
+      ) : (
+        <>
+          <RepresentativeBlock>
+            <ImageBlock>
+              <MainIMG image={detailData.topImage} size='L' />
+              <DetailBlock>
+                {detailData.thumbImages.map((el, idx) => (
+                  <DetailIMG key={idx} image={el}></DetailIMG>
+                ))}
+              </DetailBlock>
+            </ImageBlock>
+            <ItemDetailInfo>
+              <ItemTitleDetails>{item}</ItemTitleDetails>
+              <ItemDescDetails>{detailData.productDescription}</ItemDescDetails>
+              <FlexBox>
+                <Badge data={badges}></Badge>
+                <ItemPrice
+                  sPrice={detailData.sPrice}
+                  nPrice={detailData.nPrice}
+                ></ItemPrice>
+              </FlexBox>
+              <img src='./longUnderLine.png' alt='underline'></img>
+              <PointDeliveryInfoBlock>
+                <ItemDescDetails>적립</ItemDescDetails>
+                <DetailText>{detailData.point}</DetailText>
+                <ItemDescDetails>배송정보</ItemDescDetails>
+                <DetailText>{detailData.deliveryInfo}</DetailText>
+                <ItemDescDetails>배송비</ItemDescDetails>
+                <DetailText>{detailData.deliveryFee}</DetailText>
+              </PointDeliveryInfoBlock>
+              <img src='./longUnderLine.png' alt='underline'></img>
+              <ItemDescDetails>수량</ItemDescDetails>
+              <input type='number' min='1' max={detailData.stock}></input>
+              <img src='./longUnderLine.png' alt='underline'></img>
+              <DetailText>총 주문금액</DetailText>
+              <ItemPrice>{detailData.nPrice}</ItemPrice>
+              <OrderBtn onClick={handleClick}>주문하기</OrderBtn>
+            </ItemDetailInfo>
+          </RepresentativeBlock>
+          <ItemDetailCards>
+            {detailData.detailSection.map((card, idx) => (
+              <DetailCard card={card} key={idx}></DetailCard>
+            ))}
+          </ItemDetailCards>
+        </>
+      )}
+    </Modal>
   )
 }
 

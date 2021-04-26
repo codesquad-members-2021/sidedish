@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { BiX } from 'react-icons/bi'
-import { theme, Button } from '../Theme'
+import { theme, Button } from './Theme'
 
 const DarkBackground = styled.div`
   position: fixed;
@@ -14,12 +14,12 @@ const DarkBackground = styled.div`
   background: rgba(0, 0, 0, 0.8);
   z-index: 9999;
 `
-const StyledModal = styled.div`
-  width: 960px;
+const StyledModal = styled.div` 
+  width: 960px; 
   height: auto;
   background-color: ${theme.colors.white};
 `
-
+ 
 const Xstyle = {
   color: theme.colors.white,
   position: 'relative',

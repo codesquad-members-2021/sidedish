@@ -66,10 +66,10 @@ const ClickArea = styled.div`
 function ItemCard ({ data, size }) {
   const DetailUrl = process.env.REACT_APP_API_URL + 'detail/'
   const [detailFetchUrl, setDetailFetchUrl] = useState(null)
-  const [ModalMode, setModalState] = useState(false)
+  const [modalMode, setModalState] = useState(false)
 
   const handleClick = hash => {
-    setModalState(!ModalMode) //작업중
+    setModalState(!modalMode) //작업중
     setDetailFetchUrl(DetailUrl + hash)
   }
 
@@ -77,9 +77,9 @@ function ItemCard ({ data, size }) {
   //커스텀 훅을 고쳐서 error 퇴치했습니다.
   return (
     <>
-      {ModalMode && (
+      {modalMode && (
         <DetailPage
-          {...{ loadingState, ModalMode, setModalState }}
+          {...{ loadingState, modalMode, setModalState }}
           detailData={detailData.data}
           item={data.alt}
           badges={data.badges}
