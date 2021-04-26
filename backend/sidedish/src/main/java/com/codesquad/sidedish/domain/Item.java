@@ -2,8 +2,11 @@ package com.codesquad.sidedish.domain;
 
 import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.dto.ItemDto;
+import com.codesquad.sidedish.util.DataTypeUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
+
+import java.util.List;
 
 public class Item {
 
@@ -65,8 +68,8 @@ public class Item {
     }
 
     public static ItemDto createItemDto(Item item) {
-        return new ItemDto(item.detailHash, item.image, item.alt, item.deliveryType, item.title,
-                item.description, item.normalPrice, item.salePrice, item.badge);
+        return new ItemDto(item.detailHash, item.image, item.alt, DataTypeUtils.toList(item.deliveryType), item.title,
+                item.description, item.normalPrice, item.salePrice, DataTypeUtils.toList(item.badge));
     }
 
     public static DetailItemDto createDetailItemDto(Item item) {
@@ -79,5 +82,6 @@ public class Item {
         }
         this.stock -= orderCount;
     }
+
 
 }
