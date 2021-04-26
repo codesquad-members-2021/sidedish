@@ -18,6 +18,9 @@ public class ConvertUtils {
     }
 
     public static List<String> convertToStringList(String string) {
+        if(string.isEmpty()) {
+            return new ArrayList<>();
+        }
         String[] strArr = string.split(",");
         List<String> StringList = new ArrayList<>();
         for (String s : strArr) {
@@ -26,10 +29,10 @@ public class ConvertUtils {
         return StringList;
     }
 
-    public static String convertToString(List prices) {
+    public static String convertToString(List list) {
         StringJoiner stringJoiner = new StringJoiner(", ");
-        for (Object price : prices) {
-            stringJoiner.add(price + "");
+        for (Object object : list) {
+            stringJoiner.add(object + "");
         }
         return stringJoiner.toString();
     }
