@@ -3,22 +3,22 @@ package sidedish.service.dto;
 import sidedish.domain.Category;
 import sidedish.domain.Dish;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryDTO {
 
     private String title;
-    private Set<MainPageDishDTO> dishes;
+    private List<MainPageDishDTO> dishes;
 
     public CategoryDTO(Category category) {
         this.title = category.getTitle();
         this.dishes = convertToMainPageDishDTO(category);
     }
 
-    private Set<MainPageDishDTO> convertToMainPageDishDTO(Category category) {
-        Set<Dish> dishes = category.getDishes();
-        Set<MainPageDishDTO> mainPageDishDTOs = new HashSet<>();
+    private List<MainPageDishDTO> convertToMainPageDishDTO(Category category) {
+        List<Dish> dishes = category.getDishes();
+        List<MainPageDishDTO> mainPageDishDTOs = new ArrayList<>();
         for (Dish dish : dishes) {
             mainPageDishDTOs.add(new MainPageDishDTO(dish));
         }
@@ -29,7 +29,7 @@ public class CategoryDTO {
         return title;
     }
 
-    public Set<MainPageDishDTO> getDishes() {
+    public List<MainPageDishDTO> getDishes() {
         return dishes;
     }
 
