@@ -4,6 +4,7 @@ import { BiX } from 'react-icons/bi'
 import ItemPrice from '../atomic/ItemPrice'
 import Badge from '../atomic/Badge'
 import Loading from '../Loading'
+import Modal from '../Modal'
 const DarkBackground = styled.div`
   position: fixed;
   left: 0;
@@ -30,7 +31,7 @@ const Xstyle = {
   position: 'relative',
   top: '-320px'
 }
-const ImageWrapper = styled.div`
+const ImageBlock = styled.div`
   margin-right: 32px;
 `
 const MainIMG = styled.div`
@@ -44,7 +45,7 @@ const MainIMG = styled.div`
   background-size: cover;
   margin-bottom: 8px;
 `
-const DetailWrapper = styled.div`
+const DetailBlock = styled.div`
   width: 392px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -114,21 +115,22 @@ function DetailPage ({
   }
 
   return (
-    <DarkBackground>  
-      <Modal>
+    // <DarkBackground>  
+    //   <Modal>
+    <Modal {...{setModalState,ModalMode}}>
         {loadingState ? (
           <Loading width='960px' height='568px' />
         ) : (
           <>
             <RepresentativeBlock>
-              <ImageWrapper>
+              <ImageBlock>
                 <MainIMG image={detailData.topImage} size='L' />
-                <DetailWrapper>
+                <DetailBlock>
                   {detailData.thumbImages.map((el, idx) => (
                     <DetailIMG key={idx} image={el}></DetailIMG>
                   ))}
-                </DetailWrapper>
-              </ImageWrapper>
+                </DetailBlock>
+              </ImageBlock>
               <ItemDetailInfo>
                 <ItemTitleDetails>{item}</ItemTitleDetails>
                 <ItemDescDetails>
@@ -166,11 +168,12 @@ function DetailPage ({
             </ItemDetailCards>
           </>
         )}
-      </Modal>
-      <Button onClick={handleClick}>
-        <BiX style={Xstyle} />
-      </Button>
-    </DarkBackground>
+        </Modal>
+    //   </Modal>
+    //   <Button onClick={handleClick}>
+    //     <BiX style={Xstyle} />
+    //   </Button>
+    // </DarkBackground>
   )
 }
 

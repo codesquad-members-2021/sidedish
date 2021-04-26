@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CategoryList from "./CategoryList";
 import { useState } from "react";
 
-const CategoryDiv = styled.div`
+const CategoryBlock = styled.div`
   margin: 80px 0;
   width: 100%;
 `;
@@ -41,12 +41,12 @@ function Category() {
   );
   return (
     <>
-      <CategoryDiv>
+      <CategoryBlock>
         {CategoryLists}
         <CategoryBtn onClick={() => handleClick(setToggle)}>
           {toggle ? "카테고리 접기" : "모든 카테고리 보기"}
         </CategoryBtn>
-      </CategoryDiv>
+      </CategoryBlock>
     </>
   );
 }

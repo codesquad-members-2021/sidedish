@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import ItemCard from '../ItemCard'
 import Loading from '../Loading'
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
-const CatgoryWrapper = styled.div`
+const CategoryBlock = styled.div`
   width: 1280px;
   padding: 0px;
   overflow: hidden;
@@ -31,7 +31,7 @@ const Button = styled.button`
   }
   cursor: pointer;
 `
-
+const StyledButton = styled.div``
 const ButtonLeft = styled(Button)``
 const ButtonRight = styled(Button)``
 
@@ -52,16 +52,22 @@ function CategorySlide ({ categoryData, loadingState }) {
   )
   return (
     <CategorySlideBlock>
+      <CategoryBlock>
+        <CategoryColumn>{itemLists}</CategoryColumn>
+      </CategoryBlock>
+
+      <StyledButton>
       <ButtonLeft>
         <VscChevronLeft />
       </ButtonLeft>
-      <CatgoryWrapper>
-        <CategoryColumn>{itemLists}</CategoryColumn>
-      </CatgoryWrapper>
+
       <ButtonRight>
         <VscChevronRight />
       </ButtonRight>
+      </StyledButton>
+
     </CategorySlideBlock>
+    
   )
 }
 

@@ -5,13 +5,13 @@ import useFetch from "../useFetch";
 import Title from "../atomic/Title";
 import { useState } from "react";
 
-const MainWrapper = styled.div`
+const MainBlock = styled.div`
   margin-top: 40px;
   width: 100%;
   padding: ${theme.padding.globalPadding};
   box-sizing: border-box;
 `;
-const TabWrapper = styled.div`
+const TabBlock = styled.div`
   display: flex;
 `;
 
@@ -59,9 +59,9 @@ function MainMenu() {
   };
 
   return (
-    <MainWrapper>
+    <MainBlock>
       <Title>후기가 증명하는 베스트 반찬</Title>
-      <TabWrapper>
+      <TabBlock>
         {!bestDishLoading &&
           bestDishMenu.map((data, idx) => (
             <Tab
@@ -73,7 +73,7 @@ function MainMenu() {
               {data.name}
             </Tab>
           ))}
-      </TabWrapper>
+      </TabBlock>
 
       <MainColumn>
         {!loadingState &&
@@ -81,7 +81,7 @@ function MainMenu() {
             <ItemCard key={idx} data={data} size={"L"}></ItemCard>
           ))}
       </MainColumn>
-    </MainWrapper>
+    </MainBlock>
   );
 }
 
