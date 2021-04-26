@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
+class MainPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     var viewModels: [DishesListViewModel]!
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -7,16 +7,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainPageViewController: UIViewController {
     
     @IBOutlet weak var dishCollectionView: UICollectionView!
-    private var mainDelegate: CollectionViewDelegate?
-    private var mainDataSource: CollectionViewDataSource?
+    private var mainPageDelegate: MainPageCollectionViewDelegate?
+    private var mainPageDataSource: MainPageCollectionViewDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainDelegate = CollectionViewDelegate()
-        mainDataSource = CollectionViewDataSource()
+        mainPageDelegate = MainPageCollectionViewDelegate()
+        mainPageDataSource = MainPageCollectionViewDataSource()
         
         let mainViewModel = makeDishesListViewModel()
         let soupViewModel = makeDishesListViewModel()
@@ -26,10 +26,10 @@ class MainViewController: UIViewController {
         soupViewModel.showDishList(category: SoupCategory())
         sideViewModel.showDishList(category: SideCategory())
         
-        mainDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
+        mainPageDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
         
-        dishCollectionView.delegate = mainDelegate
-        dishCollectionView.dataSource = mainDataSource
+        dishCollectionView.delegate = mainPageDelegate
+        dishCollectionView.dataSource = mainPageDataSource
         
         bind(to: mainViewModel)
         bind(to: soupViewModel)
