@@ -27,9 +27,7 @@ export default function SlideContainer() {
       <h2>후기가 증명하는 베스트 반찬</h2>
       <SlideItems/>
       <SliderArrowBtnsStyle>
-        <SliderArrowBtn text={<FaChevronLeft />}>
-          <FaChevronLeft />
-        </SliderArrowBtn>
+        <SliderArrowBtn><FaChevronLeft /></SliderArrowBtn>
         <SliderArrowBtn><FaChevronRight /></SliderArrowBtn>
       </SliderArrowBtnsStyle>
     </SlideContainerStyle>
