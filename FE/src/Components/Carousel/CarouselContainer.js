@@ -1,94 +1,24 @@
-import { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import CarouselItem from './CarouselItem.js';
-import CarouselButton from './CarouselButton.js';
 import CarouselEventModal from './CarouselEventModal.js';
+import * as CarouselNavigator from './CarouselNavigator';
 
-const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
-  const [carouselButtonAreaSize, setCarouselButtonAreaSize] = useState({width: 0, height: 0});
-  const [itemWidth, setItemWidth] = useState(0);
-  const [calculatedMovableRange, setCalculatedMovableRange] = useState({from: 0, to: 0});
-  const [slideCount, setSlideCount] = useState(unit);
-  const [eventMessage, setEventMessage] = useState({isActive:false, msg:""});
+import useCarousel from './hooks/useCarousel';
+
+const CarouselContainer = ({navigator="default", unit=1, ...props}) => {
   
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
   
-  useEffect(() => {
-    $CarouselArea.current.classList.add("carousel-start")
-    return () => { $CarouselArea.current.classList.remove("carousel-start"); }
-  }, [slideCount]);
-
-  useLayoutEffect(()=> {
-    handleResize();
-    // 향후 쓰로틀로 변경
-    window.addEventListener("resize", handleResize);
-    
-    // cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, [window.innerWidth])
+  const { 
+    useNavigator, useEventModal,
+    calculatedMovableRange, itemWidth
+  } = useCarousel({ $CarouselAreaWrapper, $CarouselArea, unit, itemLength: props.children.length })
   
-  const handleResize = () => {
-    setCarouselButtonAreaSize({ 
-      width: $CarouselAreaWrapper.current.clientWidth, 
-      height: $CarouselAreaWrapper.current.clientHeight 
-    });
-    setItemWidth($CarouselAreaWrapper.current.clientWidth / unit);
-  }
-
-  const isNotAbleToSlide = () => {
-    if (eventMessage.isActive) return true;
-    
-    if (slideCount === unit) {
-      setEventMessage({ isActive: true, msg: "처음입니다" });
-      return true;
-    } else if (slideCount === props.children.length) {
-      setEventMessage({ isActive: true, msg: "마지막입니다" });
-      return true;
-    }
-
-    return false;
-  }
-  
-  const slideLeft = () => {
-    if (isNotAbleToSlide()) return;
-    
-    let calculatedXValue = calculatedMovableRange.to;
-    // let ItemWidth = $CarouselArea.current.offsetWidth/unit;
-    if (slideCount - unit < unit) {
-      let remainItemsCount = slideCount%unit;
-      calculatedXValue += itemWidth*remainItemsCount;
-      setSlideCount(unit);
-    } else {
-      calculatedXValue += $CarouselArea.current.offsetWidth;
-      setSlideCount(slideCount - unit);
-    }
-    setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
-  }
-
-  const slideRight = () => {
-    if (isNotAbleToSlide()) return;
-
-    let calculatedXValue = calculatedMovableRange.to;
-    if (slideCount + unit > props.children.length) {
-      let remainItemsCount = props.children.length - slideCount;
-      calculatedXValue -= itemWidth*remainItemsCount;
-      setSlideCount(props.children.length);
-    } else {
-      calculatedXValue -= $CarouselArea.current.offsetWidth;
-      setSlideCount(slideCount + unit);
-      
-    }
-    setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
-  }
-  
-  const renderEventModal = () => {
-    return <CarouselEventModal carouselEvent={eventMessage} setEventMessage={setEventMessage}/>;
-  }
-
   return (
-    <CarouselLayout>
+    <CarouselLayout navigator={navigator}>
       <CarouselAreaWrapper ref={$CarouselAreaWrapper}>
         <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange}>
           {[...props.children].map((child, i) => {
@@ -96,21 +26,19 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
           })}
         </CarouselArea>
       </CarouselAreaWrapper>
-      <CarouselButtonArea size={carouselButtonAreaSize}>
-        <CarouselButtonRelativeArea>
-          <CarouselButton type={"left"} onClick={slideLeft} />
-          <CarouselButton type={"right"} onClick={slideRight} />
-        </CarouselButtonRelativeArea>
-      </CarouselButtonArea>
-      <CarouselEventModalArea>
-        {renderEventModal()}
-      </CarouselEventModalArea>
+      {
+        navigator === "default" 
+        ? <CarouselNavigator.Default useNavigator={useNavigator} /> 
+        : <CarouselNavigator.Upper useNavigator={useNavigator}/>
+      }
+      <CarouselEventModal useEventModal={useEventModal} />
     </CarouselLayout>
   )
 }
 
 const CarouselLayout = styled.div`
   display: flex;
+  justify-content: ${props => props.navigator === "default" ? "center" : "flex-end"};
 `;
 
 const CarouselAreaWrapper = styled.div`
@@ -130,30 +58,8 @@ const CarouselArea = styled.div`
   }
 `;
 
-const CarouselEventModalArea = styled.div`
-  position: absolute;
-  width: 100%;
-  left: 0;
-  
-  display: flex;
-  justify-content: center;
-`;
 
-const CarouselButtonRelativeArea = styled.div`
-  width: 100%;
-  left: -20px;
-  position: absolute;
-  
-  display: flex;
-  justify-content: space-between;
-`
-const CarouselButtonArea = styled.div`
-  width: ${(props) => `${props.size.width+40}px`};
-  height: ${(props) => `${props.size.height}px`};
-  position: absolute;
 
-  display: flex;
-  align-items: center;
-`;
+
 
 export default CarouselContainer;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import LeftArrowButtonActive from '../commons/Buttons/LeftArrowButtonActive.js';
-import RightArrowButtonActive from '../commons/Buttons/RightArrowButtonActive.js';
+import LeftArrowButtonActive from '../../commons/Buttons/LeftArrowButtonActive.js';
+import RightArrowButtonActive from '../../commons/Buttons/RightArrowButtonActive.js';
 
 const CarouselButton = ({ type, onClick }) => {
   
