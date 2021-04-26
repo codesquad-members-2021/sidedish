@@ -17,23 +17,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwj-25-kek">
                     <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfq-Nd-3Me">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모두가 좋아하는 든든한 메인요리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c43-aN-6rn">
                             <rect key="frame" x="16" y="0.0" width="318" height="50"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                            <state key="normal" title="모두가 좋아하는 든든한 메인요리">
-                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="buttonPressed:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="OSc-iq-LqO"/>
-                            </connections>
-                        </button>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="gfq-Nd-3Me" secondAttribute="bottom" id="UmW-8f-6e2"/>
-                        <constraint firstItem="gfq-Nd-3Me" firstAttribute="leading" secondItem="rwj-25-kek" secondAttribute="leading" constant="16" id="VPc-Hh-Hhd"/>
-                        <constraint firstItem="gfq-Nd-3Me" firstAttribute="top" secondItem="rwj-25-kek" secondAttribute="top" id="mn1-X3-nSY"/>
-                        <constraint firstAttribute="trailing" secondItem="gfq-Nd-3Me" secondAttribute="trailing" constant="16" id="xMI-Bd-Oyc"/>
+                        <constraint firstAttribute="trailing" secondItem="c43-aN-6rn" secondAttribute="trailing" constant="16" id="2NI-P7-Hpx"/>
+                        <constraint firstItem="c43-aN-6rn" firstAttribute="leading" secondItem="rwj-25-kek" secondAttribute="leading" constant="16" id="40q-uS-pjx"/>
+                        <constraint firstItem="c43-aN-6rn" firstAttribute="top" secondItem="rwj-25-kek" secondAttribute="top" id="CT6-f4-GI4"/>
+                        <constraint firstAttribute="bottom" secondItem="c43-aN-6rn" secondAttribute="bottom" id="aun-9f-gkb"/>
                     </constraints>
                 </view>
             </subviews>
@@ -45,7 +41,7 @@
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="rwj-25-kek" secondAttribute="trailing" id="ox2-Xh-zql"/>
             </constraints>
             <connections>
-                <outlet property="headerButton" destination="gfq-Nd-3Me" id="qNp-Jv-4vL"/>
+                <outlet property="headerLabel" destination="c43-aN-6rn" id="SaV-13-uxt"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="56.919642857142854"/>
         </collectionReusableView>
