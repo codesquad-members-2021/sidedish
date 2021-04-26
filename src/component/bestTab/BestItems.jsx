@@ -9,7 +9,7 @@ const BestItemsStyle = styled.div`
   padding: 2.5rem;
 `;
 
-export default function BestItems({ childs }) {
+export default function BestItems({ childs, onFetchDetailData }) {
 
   const getRandom = (n, max) => {
     const set = new Set();
@@ -28,13 +28,16 @@ export default function BestItems({ childs }) {
       {
         getRandom(3, childs.length).map(idx => (
           <ItemCard
-            src={childs[idx].img}
+            src={childs[idx].main_image}
             title={childs[idx].title}
             description={childs[idx].description}
             salePrice={getSalePrice(childs[idx].price, childs[idx].discount)}
             normalPrice={childs[idx].price}
             labels={childs[idx].label}
-            key={idx}/>
+            key={idx}
+            id={childs[idx]._id}
+            onFetchDetailData={onFetchDetailData}
+            />
         ))
       }
     </BestItemsStyle>

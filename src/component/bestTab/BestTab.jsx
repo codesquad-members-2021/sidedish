@@ -11,7 +11,7 @@ const BestTabStyle = styled.div`
   margin-bottom: 5rem;
 `;
 
-export default function BestTab() {
+export default function BestTab({onFetchDetailData}) {
   const [active, setActive] = useState(0);
   const [bestItems, setBestItems] = useState(null);
 
@@ -31,7 +31,7 @@ export default function BestTab() {
     <BestTabStyle>
       <h2>후기가 증명하는 베스트 반찬</h2>
       <BestTabNavigator bestItems={bestItems} active={active} setActive={setActive}/>
-      <BestTabContainer bestItem={bestItems[active]}/>
+      <BestTabContainer bestItem={bestItems[active]} onFetchDetailData={onFetchDetailData}/>
     </BestTabStyle>
   )
 }

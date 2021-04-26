@@ -133,35 +133,36 @@ const PopUpItemOrderBtn = styled.button`
     }
 `;
 
-export default function PopUpInformations() {
+export default function PopUpInformations({ detailData }) {
+    const { title, description, price, discount, stock, point, delivery_fee, delivery_info } = detailData;
 
     return (
         <PopUpInformationsStyle>
-            <PopUpItemTitle>[헬로]안녕하세요</PopUpItemTitle>
-            <PopUpItemDescription>맛있는 일본인의 소울푸드!</PopUpItemDescription>
+            <PopUpItemTitle>{title}</PopUpItemTitle>
+            <PopUpItemDescription>{description}</PopUpItemDescription>
             <PopUpItemPriceContainer>
                 <Label text="이벤트특가"/>
-                <SalePriceStyle>5,200원</SalePriceStyle>
-                <NormalPriceStyle>6,000원</NormalPriceStyle>
+                <SalePriceStyle>{Math.floor(price - (price * (discount / 100)))}원</SalePriceStyle>
+                <NormalPriceStyle>{price}원</NormalPriceStyle>
             </PopUpItemPriceContainer>
             <PopUpItemBuyingInformations>
                 <PopUpItemBuyingInformation>
                     <PopUpItemBuyingInformationTitle>적립금</PopUpItemBuyingInformationTitle>
-                    <PopUpItemBuyingInformationContent>52원</PopUpItemBuyingInformationContent>
+                    <PopUpItemBuyingInformationContent>{point}원</PopUpItemBuyingInformationContent>
                 </PopUpItemBuyingInformation>
                 <PopUpItemBuyingInformation>
                     <PopUpItemBuyingInformationTitle>배송정보</PopUpItemBuyingInformationTitle>
-                    <PopUpItemBuyingInformationContent>서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다</PopUpItemBuyingInformationContent>
+                    <PopUpItemBuyingInformationContent>{delivery_info}</PopUpItemBuyingInformationContent>
                 </PopUpItemBuyingInformation>
                 <PopUpItemBuyingInformation>
                     <PopUpItemBuyingInformationTitle>배송비</PopUpItemBuyingInformationTitle>
-                    <PopUpItemBuyingInformationContent>2,500원 <b>(40,000원 이상 구매 시 무료)</b></PopUpItemBuyingInformationContent>
+                    <PopUpItemBuyingInformationContent>{delivery_fee}</PopUpItemBuyingInformationContent>
                 </PopUpItemBuyingInformation>
             </PopUpItemBuyingInformations>
             <PopUpItemCountContainer>
                 <PopUpItemCountTitle>수량</PopUpItemCountTitle>
                 <div>
-                    <PopUpItemCount value="1"></PopUpItemCount>
+                    <PopUpItemCount></PopUpItemCount>
                     <PopUpItemCountBtns>
                         <PopUpItemCountBtn><FaAngleUp/></PopUpItemCountBtn>
                         <PopUpItemCountBtn><FaAngleDown/></PopUpItemCountBtn>
@@ -170,7 +171,7 @@ export default function PopUpInformations() {
             </PopUpItemCountContainer>
             <PopUpItemTotalPriceContainer>
                 <PopUpItemTotalPriceTitle>총 주문금액</PopUpItemTotalPriceTitle>
-                <PopUpTotalPrice>5,200원</PopUpTotalPrice>
+                <PopUpTotalPrice>{price}</PopUpTotalPrice>
             </PopUpItemTotalPriceContainer>
             <PopUpItemOrderBtn>주문하기</PopUpItemOrderBtn>
         </PopUpInformationsStyle>
