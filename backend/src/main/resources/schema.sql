@@ -34,12 +34,12 @@ CREATE TABLE IF NOT EXISTS `sidedish`.`delivery` (
 -- -----------------------------------------------------
 -- Table `sidedish`.`menu`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `sidedish`.`menu` ;
+DROP TABLE IF EXISTS `sidedish`.`category` ;
 
-CREATE TABLE IF NOT EXISTS `sidedish`.`menu` (
-    `id` INT(11) NOT NULL,
-    `name` VARCHAR(45) NOT NULL,
-    `endpoint` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sidedish`.`category` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `category_name` VARCHAR(45) NOT NULL,
+    `end_point` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;

@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.SideDish.service;
 
-import com.codesquad.sidedish.SideDish.domain.CategoryMockRepository;
 import com.codesquad.sidedish.SideDish.domain.CategoryRepository;
 import com.codesquad.sidedish.SideDish.dto.CategoryDto;
 import org.springframework.stereotype.Service;
@@ -14,10 +13,6 @@ public class CategoryService {
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
-    }
-
-    public CategoryService() {
-        this(new CategoryMockRepository());
     }
 
     public List<CategoryDto> getList() {
