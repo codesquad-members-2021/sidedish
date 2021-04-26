@@ -8,12 +8,12 @@ public class Delivery {
 
     private boolean isMonday;
     private String deliveryType;
-    private String deliveryFee;
-    private String deliveryCondition;
+    private Integer deliveryFee;
+    private Integer deliveryCondition;
 
     private String dishHash;
 
-    public Delivery(Long id, boolean isMonday, String deliveryType, String deliveryFee, String deliveryCondition, String dishHash) {
+    public Delivery(Long id, boolean isMonday, String deliveryType, Integer deliveryFee, Integer deliveryCondition, String dishHash) {
         this.id = id;
         this.isMonday = isMonday;
         this.deliveryType = deliveryType;
@@ -34,11 +34,11 @@ public class Delivery {
         return deliveryType;
     }
 
-    public String getDeliveryFee() {
+    public Integer getDeliveryFee() {
         return deliveryFee;
     }
 
-    public String getDeliveryCondition() {
+    public Integer getDeliveryCondition() {
         return deliveryCondition;
     }
 
