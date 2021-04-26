@@ -33,7 +33,7 @@ const Carousel = ({ path, ITEM_NUMBER }) => {
     if (cardsNumber < ITEM_NUMBER) {
       return setPosition(position - (outBoxWidth / ITEM_NUMBER) * cardsNumber);
     }
-    setCardsNumber(cardsNumber - ITEM_NUMBER);
+    setCardsNumber((cardCount) => cardCount - ITEM_NUMBER);
     setPosition(position - outBoxWidth);
   };
 
@@ -45,7 +45,7 @@ const Carousel = ({ path, ITEM_NUMBER }) => {
         position + (outBoxWidth / ITEM_NUMBER) * (ITEM_NUMBER - itemToMove)
       );
     }
-    setCardsNumber(cardsNumber + ITEM_NUMBER);
+    setCardsNumber((cardCount) => cardCount + ITEM_NUMBER);
     setPosition(position + outBoxWidth);
   };
 

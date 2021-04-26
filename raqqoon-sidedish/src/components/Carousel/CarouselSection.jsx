@@ -8,9 +8,8 @@ import CategoryButton from 'components/carousel/CategoryBtn';
 const CarouselSection = () => {
   const paths = ['main', 'soup', 'side'];
   const firstPath = paths[0];
-  const ITEM_NUMBER = 4;
   const firstCarousel = (
-    <Carousel key={uuidv4()} path={firstPath} ITEM_NUMBER={ITEM_NUMBER} />
+    <Carousel key={uuidv4()} path={firstPath} ITEM_NUMBER={4} />
   );
   const [categoryContents, setCategoryContents] = useState([firstCarousel]);
   const [isFolded, setIsFolded] = useState(false);
@@ -23,9 +22,7 @@ const CarouselSection = () => {
   const updateCarouselList = () => {
     const allCategories = paths
       .filter((_, idx) => idx !== 0)
-      .map((path) => (
-        <Carousel key={uuidv4()} path={path} ITEM_NUMBER={ITEM_NUMBER} />
-      ));
+      .map((path) => <Carousel key={uuidv4()} path={path} ITEM_NUMBER={4} />);
     setCategoryContents([...categoryContents, ...allCategories]);
   };
 
