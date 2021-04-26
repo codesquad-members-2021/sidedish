@@ -1,14 +1,15 @@
 import * as style from "./MenuCard.style.jsx"
-
-const LargeCard = () => {
+// n_price: "26,000"
+// s_price: "18,200원"
+const LargeCard = ({data}) => {
     return (
         <style.LargeCard>
-            { LargeImg("https://lh3.googleusercontent.com/proxy/f5a7tQjvzAtHwGMeCKrr-uPr-dyfo5rvTvTzGSykCEHQNrZIiTOQpaBfVeWtGO3md9hwZqPWhQO0SYNTPg9uVngUUHshhQ8ux1erGG651zlFEW_Z0NxjWg3tHkm6bOTeGcWvPDoCp2Z-te5-0WA8SOqC-dnEzWhe9Sc686_U3Dw")}
-            { InfoTitle("[소중한 식사] 경상도 한상차림")}
-            { InfoContents("경상도 명물요리 세 가지를 한상에!")}
+            { LargeImg(data.img)}
+            { InfoTitle(data.title) }
+            { InfoContents(data.contents)}
             <style.FlexRowContainer>
-                { PriceAfter("31,200원") }
-                { PriceBefore("39,000원") }
+                { PriceAfter(data.n_price) }
+                { PriceBefore(data.s_price) }
             </style.FlexRowContainer>
             <style.FlexRowContainer>
                 { EventPrice()}
@@ -34,7 +35,7 @@ const InfoContents = (text) => {
 }
 const LargeImg = (url) => {
     return (
-        <style.LargeImg2 url={url}/>
+        <style.LargeImg url={url}/>
     )    
 }
 
