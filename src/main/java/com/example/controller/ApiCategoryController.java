@@ -5,14 +5,12 @@ import com.example.domain.Item;
 import com.example.dto.Category.ResponseDTO;
 import com.example.dto.Detail.RequestHashDto;
 import com.example.dto.Food.ItemDto;
+import com.example.dto.SideDishInfoDto;
 import com.example.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -121,10 +119,20 @@ public class ApiCategoryController {
         return ResponseEntity.ok().body(categoryService.responseDtoFindById(1L));
     }
 
+    @GetMapping("main/{detailHash}")
+    public ResponseEntity<SideDishInfoDto> getMainFood(@PathVariable String detailHash) {
+        return ResponseEntity.ok().body(SideDishInfoDto.of(categoryService.findById(1L).getItems().get(detailHash)));
+    }
+
     @GetMapping("soup")
     public ResponseEntity<ResponseDTO> getSoupList() {
         logger.debug("soup 푸드 리스트를 출력합니다.");
         return ResponseEntity.ok().body(categoryService.responseDtoFindById(2L));
+    }
+
+    @GetMapping("soup/{detailHash}")
+    public ResponseEntity<SideDishInfoDto> getSoupFood(@PathVariable String detailHash) {
+        return ResponseEntity.ok().body(SideDishInfoDto.of(categoryService.findById(2L).getItems().get(detailHash)));
     }
 
     @GetMapping("side")
@@ -133,6 +141,9 @@ public class ApiCategoryController {
         return ResponseEntity.ok().body(categoryService.responseDtoFindById(3L));
     }
 
-
+    @GetMapping("side/{detailHash}")
+    public ResponseEntity<SideDishInfoDto> getSideFood(@PathVariable String detailHash) {
+        return ResponseEntity.ok().body(SideDishInfoDto.of(categoryService.findById(3L).getItems().get(detailHash)));
+    }
 
 }
