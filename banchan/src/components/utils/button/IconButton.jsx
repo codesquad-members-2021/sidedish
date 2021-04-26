@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { BUTTON_TYPE } from "../variables.js";
 import { Button } from "../styles/common";
+import { BUTTON_TYPE } from "../../../utils/variables";
 
 const IconButton = ({ type, fn, disabled = false }) => {
   return (

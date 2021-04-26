@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-// import { mockData, temp } from "../utils/mockData.js";
-import Card from '../utils/Card';
-import styled from 'styled-components';
-import IconButton from '../utils/button/IconButton';
-import { CenterContainer } from '../utils/styles/common';
+import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import IconButton from "../../utils/button/IconButton";
+import Card from "../../utils/Card";
+import { CenterContainer } from "../../utils/styles/common";
 
 const CarouselSection = ({ key, url, title, onModal }) => {
   const [products, setProducts] = useState([]);
@@ -34,14 +33,8 @@ const CarouselSection = ({ key, url, title, onModal }) => {
 
   const moveRight = () => {
     const remainSlideCount = products.length - currentIndex;
-    const distance =
-      remainSlideCount >= slideCount
-        ? currentX - totalWidth
-        : currentX - slideWidth * remainSlideCount;
-    const nextIndex =
-      remainSlideCount >= slideCount
-        ? currentIndex + slideCount
-        : currentIndex + remainSlideCount;
+    const distance = remainSlideCount >= slideCount ? currentX - totalWidth : currentX - slideWidth * remainSlideCount;
+    const nextIndex = remainSlideCount >= slideCount ? currentIndex + slideCount : currentIndex + remainSlideCount;
     moveSlide(300, distance, nextIndex);
     distance && setRightDisabled(false);
     nextIndex >= products.length && setLeftDisabled(true);
@@ -49,14 +42,8 @@ const CarouselSection = ({ key, url, title, onModal }) => {
 
   const moveLeft = () => {
     const remainSlideCount = currentIndex - slideCount;
-    const distance =
-      remainSlideCount >= slideCount
-        ? currentX + totalWidth
-        : currentX + slideWidth * remainSlideCount;
-    const nextIndex =
-      remainSlideCount >= slideCount
-        ? currentIndex - slideCount
-        : currentIndex - remainSlideCount;
+    const distance = remainSlideCount >= slideCount ? currentX + totalWidth : currentX + slideWidth * remainSlideCount;
+    const nextIndex = remainSlideCount >= slideCount ? currentIndex - slideCount : currentIndex - remainSlideCount;
     moveSlide(300, distance, nextIndex);
     !distance && setRightDisabled(true);
     nextIndex < products.length && setLeftDisabled(false);

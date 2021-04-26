@@ -1,16 +1,12 @@
-import styled from 'styled-components';
-import Price from '../utils/Price';
-import TextButton from '../utils/button/TextButton';
-import {
-  LabelList,
-  StyledDescription,
-  StyledTitle,
-} from '../utils/styles/common';
+import React from "react";
+import styled from "styled-components";
+import Price from "../../utils/Price";
+import { LabelList, StyledDescription, StyledTitle } from "../../utils/styles/common";
+import TextButton from "../../utils/button/TextButton";
 
-const Modal = ({ product }) => {
-  console.log(product);
+const ModalCard = ({ product }) => {
   return (
-    <ModalCard>
+    <CardContent>
       <ProductImage>
         <img src={product.top_image} alt="product-thumbnail" />
         <ThumbnailUL>
@@ -36,16 +32,21 @@ const Modal = ({ product }) => {
           <div>배송비 : {product.delivery_fee}</div>
         </ProductBuyInfo>
         <ProductCount></ProductCount>
-        <ProductPrice>
-          여기는 총 주문 금액이 들어갈 예정입니다. 카운트를 같이 계산해서..
-        </ProductPrice>
+        <ProductPrice>여기는 총 주문 금액이 들어갈 예정입니다. 카운트를 같이 계산해서..</ProductPrice>
         <TextButton type="ORDER"></TextButton>
       </Information>
-    </ModalCard>
+    </CardContent>
   );
 };
 
-const ModalCard = styled.div`
+export default ModalCard;
+
+const CardContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+  transform: translate3d(-50%, -50%, 0);
   background: white;
   width: 960px;
   height: 1076px;
@@ -73,5 +74,3 @@ const ProductBuyInfo = styled.div``;
 const ProductCount = styled.div``;
 
 const ProductPrice = styled.div``;
-
-export default Modal;

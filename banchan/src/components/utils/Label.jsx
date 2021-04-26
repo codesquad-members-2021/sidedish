@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { LABEL_TYPE } from "../../utils/variables.js";
 import theme from "./styles/theme.js";
-import { LABEL_TYPE } from "./variables.js";
 
 const Label = ({ badgeName }) => <StyledLabel type={LABEL_TYPE[badgeName]}>{badgeName}</StyledLabel>;
 
