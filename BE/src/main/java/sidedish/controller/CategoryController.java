@@ -5,26 +5,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sidedish.domain.Category;
-import sidedish.exception.CategoryNotFoundException;
-import sidedish.repository.CategoryRepository;
+import sidedish.service.CategoryService;
 import sidedish.service.dto.CategoryDTO;
 
 @RestController
 @RequestMapping("/banchan-code")
 public class CategoryController {
 
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
-    public CategoryController(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/{title}")
     public ResponseEntity<CategoryDTO> mainPage(@PathVariable String title) {
-        Category category = categoryRepository.findCategoryByTitle(title).orElseThrow(CategoryNotFoundException::new);
-        CategoryDTO categoryDTO = new CategoryDTO(category);
+        CategoryDTO categoryDTO = categoryService.convertToCategoryDTO(title);
         return ResponseEntity.ok(categoryDTO);
     }
-
 }
