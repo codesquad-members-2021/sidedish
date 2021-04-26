@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Header from "./Header";
-import BestList from "./bestList/BestList";
+import Header from "./Header/Header";
+import BestList from "./BestList/BestList";
 import Modal from "./Modal/Modal";
 
 const Wrapper = styled.div`
@@ -11,19 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const Main = () => {
-	const test = {
-		data: {
-			top_image: "",
-			thumb_images: [""],
-			product_description: "",
-			point: "",
-			delivery_info: "",
-			delivery_fee: "",
-			prices: ["원"],
-			detail_section: [],
-		},
-	};
-	const [modalData, setModalData] = useState(test);
+	const [modalData, setModalData] = useState();
 	const [isModalOn, setModalOn] = useState(false);
 	return (
 		<>
@@ -31,7 +19,7 @@ const Main = () => {
 				<Header />
 				<BestList setModalData={setModalData} setModalOn={setModalOn} />
 			</Wrapper>
-			<Modal data={modalData.data} isModalOn={isModalOn} setModalOn={setModalOn} />
+			<Modal data={modalData} isModalOn={isModalOn} setModalOn={setModalOn} />
 		</>
 	);
 };
