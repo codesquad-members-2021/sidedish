@@ -19,7 +19,7 @@ const MainDish = () => {
   
   return (
     <CarouselLayout>
-      <Carousel.Container type={"default"} unit={3}>
+      <Carousel.Container navigator={"default"} unit={3}>
         {/* for test */}
         {[...new Array(8).keys()].map((_,i) => {
           return <Card key={`test-${i}`} number={i} type={"responsive"} />;
@@ -31,13 +31,5 @@ const MainDish = () => {
 }
 
 const CarouselLayout = styled.div``;
-
-// const Mocking = styled.div`
-//   min-width: 200px;
-//   height: 200px;
-//   background-color: blue;
-// `
-// const Card = styled(Mocking)`
-// `
 
 export default MainDish;
