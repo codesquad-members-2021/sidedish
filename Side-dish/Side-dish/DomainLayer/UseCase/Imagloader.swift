@@ -8,13 +8,13 @@
 import Foundation
 import Combine
 
-class ImageUseCase {
+class ImageLoader {
     
     private var cancellable = Set<AnyCancellable>()
     private let fileManager = FileManager.default
     private let cachesDirectory = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first
     
-    func loadImage(imageURL: String, handler: @escaping (String) -> Void) {
+    func load(imageURL: String, handler: @escaping (String) -> Void) {
         let cacheURL = makeCacheImagePath(url: imageURL)
         fileExists(url: cacheURL.path) ? handler(cacheURL.path) :
             saveImage(imageURL: imageURL, savePath: cacheURL, complete: { (cachePath) in

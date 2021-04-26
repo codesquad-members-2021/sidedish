@@ -18,7 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        viewController.depend(sideDishViewModel: DIContainer.createDI())
         window = UIWindow(frame: screen.coordinateSpace.bounds)
         window?.windowScene = screen
         window?.rootViewController = UINavigationController(rootViewController: viewController)

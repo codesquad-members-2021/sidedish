@@ -11,10 +11,11 @@ import Combine
 class SideDishViewController: UIViewController {
     
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
+    @Dependency private var sideDishViewModel: SideDishViewModel
+    @Dependency var dvm : DetailViewModel
     private var cancellable = Set<AnyCancellable>()
-    private var sideDishViewModel: SideDishViewModel!
     private var dataSource : UICollectionViewDiffableDataSource<Menu, Item>!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         sideDishCollectionView.delegate = self
@@ -32,13 +33,9 @@ class SideDishViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    func depend(sideDishViewModel: SideDishViewModel) {
-        self.sideDishViewModel = sideDishViewModel
-    }
-    
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item>.init(cellNib: FoodCardCell.nib) { (cell, indexPath, item) in
-            ImageUseCase().loadImage(imageURL: item.image) { (imageURL) in
+            ImageLoader().load(imageURL: item.image) { (imageURL) in
                 cell.setImage(itemURL: imageURL)
             }
             cell.configure(with: item)
@@ -70,6 +67,13 @@ class SideDishViewController: UIViewController {
         sideDishViewModel.except { [weak self] (error) in
             self?.triggerAlert(by: error)
         }
+        
+        sideDishViewModel.didFetch().sink { item in
+        }.store(in: &cancellable)
+        
+        sideDishViewModel.except2().sink { (error) in
+            self.triggerAlert(by: error)
+        }.store(in: &cancellable)
     }
     
     private func triggerAlert(by error : String) {
@@ -92,7 +96,7 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         let tappedItemSection = indexPath.section
         let tappedItemRow = indexPath.row
         let menu = Menu.allCases[tappedItemSection]
-        guard let itemDetailHash = sideDishViewModel.didFetchItemDatailHash(with: menu, sequence: tappedItemRow) else {
+        guard let itemDetail = sideDishViewModel.didFetchItemDatailHash(with: menu, sequence: tappedItemRow) else {
             return
         }
         
@@ -101,11 +105,12 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         }
         
         targetVC.depend2(detailViewModel: DIContainer.createDI2())
-        targetVC.sideDishTitle = itemDetailHash.title
-        targetVC.badges = itemDetailHash.badge
-        targetVC.detailHash = itemDetailHash.detailHash
-        targetVC.nPrice = itemDetailHash.nPrice
-        targetVC.sPrice = itemDetailHash.sPrice
+        targetVC.setItemInfo(from: itemDetail)
+        targetVC.sideDishTitle = itemDetail.title
+        targetVC.badges = itemDetail.badge
+        targetVC.detailHash = itemDetail.detailHash
+        targetVC.nPrice = itemDetail.nPrice
+        targetVC.sPrice = itemDetail.sPrice
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
     

@@ -20,7 +20,8 @@
 		BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB926301B8000C0625E /* AlertFactory.swift */; };
 		BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */; };
 		BFAE1BC126301CF300C0625E /* FoodCardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFAE1BBF26301CF300C0625E /* FoodCardHeaderView.xib */; };
-		BFAE1BC426302DB600C0625E /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BC326302DB600C0625E /* ImageUseCase.swift */; };
+		BFAE1BC426302DB600C0625E /* Imagloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BC326302DB600C0625E /* Imagloader.swift */; };
+		BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F97F2635BBFA006C9DCA /* Dependency.swift */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
 		BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* SideDishViewController.swift */; };
@@ -54,7 +55,8 @@
 		BFAE1BB926301B8000C0625E /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardHeaderView.swift; sourceTree = "<group>"; };
 		BFAE1BBF26301CF300C0625E /* FoodCardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCardHeaderView.xib; sourceTree = "<group>"; };
-		BFAE1BC326302DB600C0625E /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
+		BFAE1BC326302DB600C0625E /* Imagloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagloader.swift; sourceTree = "<group>"; };
+		BFC2F97F2635BBFA006C9DCA /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				BFCE4952262D4891006C0882 /* AppDelegate.swift */,
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
 				BFCE49C1262E8918006C0882 /* DIContainer.swift */,
+				BFC2F97F2635BBFA006C9DCA /* Dependency.swift */,
 				8844B7CD262DB62C00FA49E9 /* DataLayer */,
 				BFCE49B4262E74FF006C0882 /* DomainLayer */,
 				BFCE49BB262E7742006C0882 /* PresentationLayer */,
@@ -207,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */,
-				BFAE1BC326302DB600C0625E /* ImageUseCase.swift */,
+				BFAE1BC326302DB600C0625E /* Imagloader.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -314,9 +317,10 @@
 				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
 				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
+				BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */,
 				BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */,
 				BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */,
-				BFAE1BC426302DB600C0625E /* ImageUseCase.swift in Sources */,
+				BFAE1BC426302DB600C0625E /* Imagloader.swift in Sources */,
 				8844B8522631A97300FA49E9 /* ItemDetails.swift in Sources */,
 				8844B7D9262E723300FA49E9 /* BadgeLabel.swift in Sources */,
 				8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */,

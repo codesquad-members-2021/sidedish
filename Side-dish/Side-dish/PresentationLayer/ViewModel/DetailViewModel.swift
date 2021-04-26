@@ -11,15 +11,14 @@ import Combine
 class DetailViewModel {
     
     private let sideDishUseCase: SideDishProtocol
-    private var sideDishManager: SideDishManager
     private var cancellable = Set<AnyCancellable>()
     
-    @Published var itemDetails: ItemData = ItemData()
+    @Published var itemDetails: ItemData?
+        //= ItemData()
     @Published var errorMessage = ""
     
     init(sideDishUseCase: SideDishProtocol) {
         self.sideDishUseCase = sideDishUseCase
-        self.sideDishManager = SideDishManager()
     }
     
     func request(with detailHash: String) {
@@ -36,6 +35,9 @@ class DetailViewModel {
     func didFetchDetails(completion: @escaping ((ItemData) -> ())) {
         $itemDetails
             .sink { (detail) in
+                guard let detail = detail else {
+                    return
+                }
                 completion(detail)
             }.store(in: &cancellable)
     }

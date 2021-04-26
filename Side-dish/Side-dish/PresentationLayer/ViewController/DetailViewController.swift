@@ -9,13 +9,16 @@ import UIKit
 import Combine
 
 class DetailViewController: UIViewController {
-    var detailHash: String?
+    var detailHash: String!
     var sideDishTitle : String!
     var badges : [Badge]?
     var nPrice : String?
     var sPrice : String!
+    
+    private var detailInfo : Item!
     private var cancellable = Set<AnyCancellable>()
     private var detailViewModel: DetailViewModel!
+//    @Dependency var detailViewModel: DetailViewModel
     @IBOutlet weak var amountButtomViewModel: AmountButtonViewModel!
     private let sideDishAmountViewModel = SideDishAmountViewModel()
     
@@ -36,11 +39,12 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.title = sideDishTitle
         
-        if let safeDetailViewModel = detailViewModel {
-            self.detailViewModel.request(with: detailHash ?? "")
-        } else {
-            print("No Detail View Model in DeailViewController")
-        }
+//        if let safeDetailViewModel = detailViewModel {
+        self.detailViewModel.request(with: self.detailInfo.detailHash)
+//        } else {
+//            print("No Detail View Model in DeailViewController")
+//        }
+        
         sideDishTitleLabel.text = sideDishTitle
         configureBadges(badges: badges)
         configurePrices()
@@ -120,8 +124,8 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func imageLoad(urlString: String, handler: @escaping (UIImage) -> ()) {
-        ImageUseCase().loadImage(imageURL: urlString) { (data) in
+    private func imageLoad(urlString: String, handler: @escaping (UIImage) -> ()) {
+        ImageLoader().load(imageURL: urlString) { (data) in
             handler(UIImage(contentsOfFile: data) ?? UIImage())
         }
     }
@@ -158,9 +162,12 @@ class DetailViewController: UIViewController {
             self?.present(Alert.create(title : error),animated: true)
         }
     }
-        
+    
     func depend2(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
     }
     
+    func setItemInfo(from item: Item) {
+        self.detailInfo = item
+    }
 }
