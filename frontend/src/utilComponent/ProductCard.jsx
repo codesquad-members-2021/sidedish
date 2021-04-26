@@ -8,7 +8,7 @@ const ProductCard = ({size, item}) => {
     const handleMouseLeave = () => cardHover.current.classList.add('inactive')
     const handleErrorImg = ({target}) => {
         // 임시로 일단 넣어놓음!!!
-        target.src = "https://lh3.googleusercontent.com/proxy/CwzkOI8yxysQSV_hUBti1oFzBMWC0L--WlWMuQTmGVD6vXxcreDtzf_KSRK9S3AZULzJeqXtuIY8q9C7CgqCCYbNP5DDJWTJW1RSEQsUrXQ3HEFqCw7rmDejN3AyktOa_29tPxodPpD6Z4a2ZugJEgLCqgvemqMubdg9T2gebw1baKmqRD-_sMW2a7Xdqd4tUPcvF1-YS7IH8HiHW6O8zgMZn8KwLF6W-HlX8pxe1gtc1cdZ23txv0EdZGJLsZLnN7XKhNKTdWMWgDf8dqVaRNCVoBz7_CeX53VvERa2JonqyITxC8Mipoybiw"
+        target.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSefQj0CENwJ7hWH0i8XD9jsGOBFuPTcfuzWQEqqnX9sRcohlTwwyKc2Wsng7XI3q-jfns&usqp=CAU"
     }
     return (
             <StyledCard size={size}>
@@ -32,7 +32,10 @@ const ProductCard = ({size, item}) => {
 const StyledCard = styled.div`
     width: ${({size}) => size === 'large' ? '384px' : '308px'};
     position: relative;
-
+    
+    img {
+        border-radius: 5px;
+    }
     img,
     .card__hover {
         width: ${({size}) => size === 'large' ? '384px' : '308px'};
@@ -79,6 +82,7 @@ const StyledCard = styled.div`
         top: 0;
         left: 0;
         background:  rgba(0, 0, 0, 0.6);
+        border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
