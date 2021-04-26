@@ -8,14 +8,31 @@ const LargeCard = ({data}) => {
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}
             <style.FlexRowContainer>
-                { PriceAfter(data.n_price) }
-                { PriceBefore(data.s_price) }
+                { NpriceCheck(data) }
             </style.FlexRowContainer>
             <style.FlexRowContainer>
                 { EventPrice()}
             </style.FlexRowContainer>
         </style.LargeCard>
     )
+}
+
+const NpriceCheck = (data) => {
+    if(data.n_price){
+        return (
+            <style.FlexRowContainer>
+                { PriceAfter(data.n_price) }
+                { PriceBefore(data.s_price) }
+            </style.FlexRowContainer>
+        )
+    } else {
+        return (
+            <style.FlexRowContainer>
+                { PriceAfter(data.s_price) }
+            </style.FlexRowContainer>
+        )
+    }
+
 }
 
 const InfoTitle = (text) => {
