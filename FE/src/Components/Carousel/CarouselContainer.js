@@ -15,14 +15,6 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
   
-  const handleResize = () => {
-    setCarouselButtonAreaSize({ 
-      width: $CarouselAreaWrapper.current.clientWidth, 
-      height: $CarouselAreaWrapper.current.clientHeight 
-    });
-    setItemWidth($CarouselAreaWrapper.current.clientWidth / unit);
-  }
-
   useEffect(() => {
     $CarouselArea.current.classList.add("carousel-start")
     return () => { $CarouselArea.current.classList.remove("carousel-start"); }
@@ -37,8 +29,12 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [window.innerWidth])
   
-  const handleTransitionEnd = () => {
-    console.log("handleTransitionEnd", calculatedMovableRange);
+  const handleResize = () => {
+    setCarouselButtonAreaSize({ 
+      width: $CarouselAreaWrapper.current.clientWidth, 
+      height: $CarouselAreaWrapper.current.clientHeight 
+    });
+    setItemWidth($CarouselAreaWrapper.current.clientWidth / unit);
   }
 
   const isNotAbleToSlide = () => {
@@ -94,7 +90,7 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
   return (
     <CarouselLayout>
       <CarouselAreaWrapper ref={$CarouselAreaWrapper}>
-        <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange} onTransitionEnd={handleTransitionEnd}>
+        <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange}>
           {[...props.children].map((child, i) => {
             return <CarouselItem key={`Carousel-Item-${i}`} width={itemWidth} children={child} />
           })}
