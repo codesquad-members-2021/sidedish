@@ -6,12 +6,10 @@ const Tab = ({ item: { title, subMenu } }) => {
 
   const handleMouseEnter = () => {
     setIsHover(true);
-    console.log('mouse enter');
   };
 
   const handleMouseLeave = () => {
     setIsHover(false);
-    console.log('mouse leave');
   };
 
   const subMenuList = subMenu.map((item, i) => (
