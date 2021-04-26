@@ -65,9 +65,9 @@ public class SampleDataFactory {
         try (InputStream is = new ClassPathResource(jsonFilePath).getInputStream()) {
             return objectMapper.readValue(is, typeReference);
         } catch (JsonParseException e) {
-            throw new IllegalStateException("Json파일 파싱 중 에러 발생. jsonFilePath: " + jsonFilePath, e);
+            throw new NotParsingJsonFileException(jsonFilePath, e);
         } catch (IOException e) {
-            throw new IllegalStateException("파일 읽는 중 에러 발생. jsonFilePath: " + jsonFilePath, e);
+            throw new NotReadJsonFileException(jsonFilePath, e);
         }
     }
 }
