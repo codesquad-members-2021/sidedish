@@ -23,9 +23,10 @@ const ButtonWrapper = styled.button`
 	line-height: 26px;
 	color: ${(props) => (props.isAble ? "#fff" : "#BDBDBD")};
 `;
-const Button = ({ isAble, onClick }) => (
-	<ButtonWrapper isAble={isAble} onClick={!isAble || onClick}>
+const Button = ({ isAble, clickHandler }) => (
+	<ButtonWrapper isAble={isAble} onClick={isAble ? clickHandler : null}>
 		{isAble ? "주문하기" : "일시품절"}
 	</ButtonWrapper>
 );
+
 export default Button;

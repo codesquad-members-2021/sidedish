@@ -1,20 +1,48 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import ThumbNail from "./ModalThumbNail";
-import Content from "./ModalContent";
-import Price from "./ModalPrice";
-import Sum from "./ModalSum";
+import ThumbNail from "./ThumbNail";
+import Badge from "../common/Badge";
 import Button from "../common/Button";
-import UpButton from "./Button/UpButton";
-import DownButton from "./Button/DownButton";
-import CloseButton from "./Button/CloseButton";
+
+const ContentWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	font-family: Noto Sans KR;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 23px;
+	margin: 16px 0px;
+`;
+const ContentTitle = styled.div`
+	width: 76px;
+	color: #828282;
+`;
+const ContentBody = styled.div`
+	width: 364px;
+	color: #4f4f4f;
+`;
+const Content = ({ title, body }) => {
+	const free = "(40,000원 이상 구매 시 무료)";
+	return (
+		<ContentWrapper>
+			<ContentTitle>{title}</ContentTitle>
+			<ContentBody>
+				{body.replace(free, "")}
+				<b>{body.includes(free) ? free : ""}</b>
+			</ContentBody>
+		</ContentWrapper>
+	);
+};
 
 const ModalWrapper = styled.div`
 	visibility: ${(props) => (props.isOn ? "visible" : "hidden")};
 	position: absolute;
-	left: 50%;
-	top: ${(props) => `${props.yLocation}px`};
-	transform: translate(-50%, 0);
+	width: 1000px;
+	height: 1076px;
+	left: 220px;
+	top: 170px;
 	font-family: Noto Sans KR;
 	font-style: normal;
 	font-weight: normal;
@@ -48,6 +76,28 @@ const ProductDescription = styled.div`
 	color: #828282;
 	margin-bottom: 16px;
 `;
+
+const ProductPrice = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	padding: 0px;
+	height: 35px;
+	margin-bottom: 24px;
+`;
+
+const ProductPrice1 = styled.div`
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 35px;
+	margin-right: 8px;
+`;
+const ProductPrice2 = styled.div`
+	font-size: 16px;
+	line-height: 23px;
+	text-decoration-line: line-through;
+	color: #828282;
+`;
 const Line = styled.div`
 	width: 440px;
 	height: 1px;
@@ -80,27 +130,89 @@ const NumberInput = styled.div`
 	left: 354px;
 	border: 1px solid #e0e0e0;
 `;
+const NumberUpButton = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: 28px;
+	height: 20px;
+	left: 412px;
+	top: 0px;
+	border: 1px solid #e0e0e0;
+`;
+const NumberDownButton = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: 28px;
+	height: 20px;
+	left: 412px;
+	top: 21px;
+	border: 1px solid #e0e0e0;
+`;
+const TotalPrice = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+
+	position: absolute;
+	width: 360px;
+	height: 46px;
+	left: 552px;
+	top: 496px;
+`;
+const TotalPriceLabel = styled.div`
+	height: 26px;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 26px;
+	text-align: right;
+	color: #828282;
+`;
+const TotalPriceContent = styled.div`
+	height: 46px;
+	font-weight: bold;
+	font-size: 32px;
+	line-height: 46px;
+	text-align: right;
+	color: #010101;
+	margin-left: 24px;
+`;
+const CloseButton = styled.div`
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 968px;
+	top: 0px;
+	svg {
+		position: absolute;
+	}
+`;
 const ButtonWrapper = styled.div`
 	position: absolute;
-	top: 574px;
-	left: 472px;
+	top:574px;
+	left:472px;
 `;
 
 const Modal = ({ data, isModalOn, setModalOn }) => {
 	const [count, setCount] = useState(1);
-	const [isButtonAvailable, setButtonAvailable] = useState(true);
-	useEffect(() => {
-		setCount(1);
-		setButtonAvailable(true);
-	}, [data]);
-	return data ? (
-		<ModalWrapper isOn={isModalOn} yLocation={data.y}>
+	const price = parseInt((data.prices[1] ? data.prices[1] : data.prices[0]).replace("원", "").replace(",", ""));
+	return (
+		<ModalWrapper isOn={isModalOn}>
 			<Box>
 				<ThumbNail {...data} />
 				<ProductInfo>
 					<ProductName>{data.name}</ProductName>
 					<ProductDescription>{data.product_description}</ProductDescription>
-					<Price data={data} />
+					<ProductPrice>
+						{data.badge ? <Badge badge={data.badge} /> : ""}
+						<ProductPrice1>{data.prices[1] ? data.prices[1] : data.prices[0]}</ProductPrice1>
+						<ProductPrice2>{data.prices[1] ? data.prices[0] : ""}</ProductPrice2>
+					</ProductPrice>
 					<Line />
 					<Content title="적립금" body={data.point} />
 					<Content title="배송정보" body={data.delivery_info} />
@@ -109,21 +221,36 @@ const Modal = ({ data, isModalOn, setModalOn }) => {
 					<Number>
 						<NumberLabel>수량</NumberLabel>
 						<NumberInput>{count}</NumberInput>
-						<UpButton onClick={() => setCount((count) => ++count)} />
-						<DownButton onClick={() => setCount((count) => (count > 0 ? --count : 0))} />
+						<NumberUpButton onClick={() => setCount((count) => ++count)}>
+							<svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7 4.5L4 1.5L1 4.5" stroke="#333333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+							</svg>
+						</NumberUpButton>
+						<NumberDownButton onClick={() => setCount((count) => (count > 0 ? --count : 0))}>
+							<svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M12 9.5L15 12.5L18 9.5" stroke="#333333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+								<rect x="0.5" y="0.5" width="29" height="21" stroke="#E0E0E0" />
+							</svg>
+						</NumberDownButton>
 					</Number>
 					<Line />
 				</ProductInfo>
-				<Sum count={count} data={data} />
+				<TotalPrice>
+					<TotalPriceLabel>총 주문금액</TotalPriceLabel>
+					<TotalPriceContent>{(price * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</TotalPriceContent>
+				</TotalPrice>
 			</Box>
 			<ButtonWrapper>
-				<Button isAble={isButtonAvailable} onClick={() => setButtonAvailable(false)} />
+				<Button isAble={true} clickHandler={() => console.log("공사중")} />
 			</ButtonWrapper>
-			<CloseButton onClick={() => setModalOn(false)} />
-		</ModalWrapper>
-	) : (
-		<ModalWrapper isOn={isModalOn} yLocation={0}>
-			loading...
+			<CloseButton onClick={() => setModalOn(() => false)}>
+				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1 1L17 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+				</svg>
+				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M17 1L1 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+				</svg>
+			</CloseButton>
 		</ModalWrapper>
 	);
 };
