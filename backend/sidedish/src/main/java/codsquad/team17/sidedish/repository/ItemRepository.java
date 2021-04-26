@@ -16,6 +16,4 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     @Query("SELECT DISTINCT best_category_id FROM item")
     List<Item> findDistinctByBestCategoryId();
 
-    @Query("SELECT DISTINCT dish_category_id FROM item")
-    List<Item> findDistinctByDishCategoryId();
 }

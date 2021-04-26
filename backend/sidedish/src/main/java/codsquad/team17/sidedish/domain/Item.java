@@ -13,9 +13,9 @@ public class Item {
     private String description;
 
     private String badge;
-    private BigDecimal nPrice;
 
-    private BigDecimal sPrice;
+    private BigDecimal normalPrice;
+    private BigDecimal salePrice;
     private int stock;
 
     private Long dishCategoryId;
@@ -25,13 +25,13 @@ public class Item {
     public Item() {
     }
 
-    public Item(Long itemId, String title, String description, String badge, BigDecimal nPrice, BigDecimal sPrice, int stock, Long dishCategoryId, Long bestCategoryId) {
+    public Item(Long itemId, String title, String description, String badge, BigDecimal normalPrice, BigDecimal salePrice, int stock, Long dishCategoryId, Long bestCategoryId) {
         this.itemId = itemId;
         this.title = title;
         this.description = description;
         this.badge = badge;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
+        this.normalPrice = normalPrice;
+        this.salePrice = salePrice;
         this.stock = stock;
         this.dishCategoryId = dishCategoryId;
         this.bestCategoryId = bestCategoryId;
@@ -53,12 +53,12 @@ public class Item {
         return badge;
     }
 
-    public BigDecimal getnPrice() {
-        return nPrice;
+    public BigDecimal getNormalPrice() {
+        return normalPrice;
     }
 
-    public BigDecimal getsPrice() {
-        return sPrice;
+    public BigDecimal getSalePrice() {
+        return salePrice;
     }
 
     public int getStock() {

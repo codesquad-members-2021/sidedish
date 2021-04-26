@@ -1,26 +1,33 @@
 package codsquad.team17.sidedish.dto;
 
 import codsquad.team17.sidedish.domain.DishCategory;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
 
+@JsonPropertyOrder({"dish_category_id", "dish_category_name", "items"})
 public class DishCategoryDto {
-    private Long dish_category_id;
-    private String dish_category_name;
-    private List<ItemDto> items;
+    @JsonProperty("dish_category_id")
+    private final Long dishCategoryId;
+
+    @JsonProperty("dish_category_name")
+    private final String dishCategoryName;
+
+    private final List<ItemDto> items;
 
     public DishCategoryDto(DishCategory entity, List<ItemDto> items) {
-        this.dish_category_id = entity.getDishCategoryId();
-        this.dish_category_name = entity.getDishCategoryName();
+        this.dishCategoryId = entity.getDishCategoryId();
+        this.dishCategoryName = entity.getDishCategoryName();
         this.items = items;
     }
 
-    public Long getDish_category_id() {
-        return dish_category_id;
+    public Long getDishCategoryId() {
+        return dishCategoryId;
     }
 
-    public String getDish_category_name() {
-        return dish_category_name;
+    public String getDishCategoryName() {
+        return dishCategoryName;
     }
 
     public List<ItemDto> getItems() {

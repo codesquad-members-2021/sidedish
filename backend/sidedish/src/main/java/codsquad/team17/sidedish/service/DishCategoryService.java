@@ -12,13 +12,12 @@ import java.util.List;
 @Service
 public class DishCategoryService {
     private final DishCategoryRepository dishCategoryRepository;
-    private final ItemService itemService;
-    private final ImageService imageService;
 
-    public DishCategoryService(DishCategoryRepository dishCategoryRepository, ItemService itemService, ImageService imageService) {
+    private final ItemService itemService;
+
+    public DishCategoryService(DishCategoryRepository dishCategoryRepository, ItemService itemService) {
         this.dishCategoryRepository = dishCategoryRepository;
         this.itemService = itemService;
-        this.imageService = imageService;
     }
 
     public DishCategory findDishCategoryId(Long dishCategoryId) {
