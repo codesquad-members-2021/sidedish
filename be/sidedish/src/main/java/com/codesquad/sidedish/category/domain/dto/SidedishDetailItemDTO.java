@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.category.domain.dto;
 
 import com.codesquad.sidedish.category.domain.SidedishItem;
+import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 
@@ -23,22 +24,22 @@ public class SidedishDetailItemDTO {
     private String DeliveryInfo;
     private String DeliveryFee;
 
-    public SidedishDetailItemDTO(SidedishItem sidedishItem, int salePrice, Set<SidedishEventDTO> eventBadgeList,
+    public SidedishDetailItemDTO(SidedishItem item, Set<SidedishEvent> eventBadgeList,
                                  List<SidedishImage> detailImages, List<SidedishImage> descriptionImages) {
-        this.id = sidedishItem.getId();
-        this.name = sidedishItem.getItemName();
-        this.description = sidedishItem.getItemDescription();
-        this.normalPrice = sidedishItem.getItemNormalPrice();
-        this.salePrice = salePrice;
-        this.PointRate = sidedishItem.getPointRate();
-        this.DeliveryInfo = sidedishItem.getItemDeliveryInfo();
-        this.DeliveryFee = sidedishItem.getItemDeliveryFee();
+        this.id = item.getId();
+        this.name = item.getItemName();
+        this.description = item.getItemDescription();
+        this.normalPrice = item.getItemNormalPrice();
+        this.salePrice = item.calculateSalePrice(eventBadgeList);
+        this.PointRate = item.getPointRate();
+        this.DeliveryInfo = item.getItemDeliveryInfo();
+        this.DeliveryFee = item.getItemDeliveryFee();
 
         this.detailImages = detailImages.stream().map(SidedishImage::getImageUrl).collect(Collectors.toList());
         this.descriptionImages = descriptionImages.stream().map(SidedishImage::getImageUrl).collect(Collectors.toList());
 
-        this.isPurchasable = sidedishItem.isPurchasable();
-        this.eventBadgeList = eventBadgeList;
+        this.isPurchasable = item.isPurchasable();
+        this.eventBadgeList = SidedishEventDTO.eventSetToDtoSet(eventBadgeList);
     }
 
     @Override

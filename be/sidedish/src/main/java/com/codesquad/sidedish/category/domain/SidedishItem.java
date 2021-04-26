@@ -7,12 +7,14 @@ import com.codesquad.sidedish.event.domain.SidedishEventItem;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 import com.codesquad.sidedish.image.domain.SidedishImageTypeEnum;
 import com.codesquad.sidedish.image.domain.SidedishItemImage;
+import com.codesquad.sidedish.image.exception.ImageItemNotFoundException;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SidedishItem {
     @Id
@@ -39,9 +41,6 @@ public class SidedishItem {
         this.itemPointRate = itemPointRate;
         this.itemDeliveryInfo = itemDeliveryInfo;
         this.itemDeliveryFee = itemDeliveryFee;
-    }
-
-    protected SidedishItem() {
     }
 
     public int calculateSalePrice(Set<SidedishEvent> sidedishEvents) {
@@ -94,6 +93,20 @@ public class SidedishItem {
 
     private void addImage(SidedishImage sidedishImage, SidedishImageTypeEnum imageTypeEnum) {
         sidedishItemImages.add(new SidedishItemImage(sidedishImage.getId(), id, imageTypeEnum));
+    }
+
+    public SidedishItemImage findThumbnailImage() throws ImageItemNotFoundException {
+        return sidedishItemImages.stream()
+                .filter(SidedishItemImage::isThumbnailImage)
+                .findFirst()
+                .orElseThrow(ImageItemNotFoundException::new);
+    }
+
+    public List<Long> findImagesIdByType(SidedishImageTypeEnum imageTypeEnum) {
+        return sidedishItemImages.stream()
+                .filter(image -> image.isSameType(imageTypeEnum))
+                .map(SidedishItemImage::getSidedishImage)
+                .collect(Collectors.toList());
     }
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.category.domain.dto;
 
 import com.codesquad.sidedish.category.domain.SidedishItem;
+import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
 import com.codesquad.sidedish.image.domain.SidedishImage;
 
@@ -16,14 +17,14 @@ public class SidedishItemPreviewDTO {
     private int salePrice;
     private Set<SidedishEventDTO> eventBadgeList;
 
-    public SidedishItemPreviewDTO(SidedishItem item, int salePrice, Set<SidedishEventDTO> eventBadgeList, SidedishImage thumbnailImageUrl) {
+    public SidedishItemPreviewDTO(SidedishItem item, Set<SidedishEvent> eventBadgeList, SidedishImage thumbnailImageUrl) {
         this.id = item.getId();
         this.thumbnailImage = thumbnailImageUrl.getImageUrl();
         this.name = item.getItemName();
         this.description = item.getItemDescription();
         this.normalPrice = item.getItemNormalPrice();
-        this.salePrice = salePrice;
-        this.eventBadgeList = eventBadgeList;
+        this.salePrice = item.calculateSalePrice(eventBadgeList);
+        this.eventBadgeList = SidedishEventDTO.eventSetToDtoSet(eventBadgeList);
     }
 
     @Override
