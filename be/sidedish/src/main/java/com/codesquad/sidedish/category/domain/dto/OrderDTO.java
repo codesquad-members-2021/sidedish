@@ -3,11 +3,11 @@ package com.codesquad.sidedish.category.domain.dto;
 public class OrderDTO {
     private int quantity;
 
-    public OrderDTO(int quantity) {
-        this.quantity = quantity;
+    protected OrderDTO() {
     }
 
-    protected OrderDTO() {
+    public OrderDTO(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getQuantity() {
