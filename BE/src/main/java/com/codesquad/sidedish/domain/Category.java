@@ -1,9 +1,10 @@
 package com.codesquad.sidedish.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Category {
 
@@ -12,9 +13,10 @@ public class Category {
     private String name;
     private String type;
 
-    private Set<Dish> dishes = new HashSet<>();
+    @MappedCollection(idColumn = "category", keyColumn = "id")
+    private Map<String, Dish> dishes = new HashMap<>();
 
-    private Category(){
+    private Category() {
     }
 
     public Category(String name, String type) {
@@ -22,8 +24,8 @@ public class Category {
         this.type = type;
     }
 
-    public void addDish(Dish dish){
-        dishes.add(dish);
+    public void addDish(Dish dish) {
+        dishes.put(dish.getId(), dish);
     }
 
     public Long getId() {
@@ -38,7 +40,7 @@ public class Category {
         return type;
     }
 
-    public Set<Dish> getDishes() {
+    public Map<String, Dish> getDishes() {
         return dishes;
     }
 }

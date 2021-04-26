@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
@@ -28,12 +27,12 @@ public class Dish {
     private int stock;
     private String point;
 
-    private Dish(){
+    private Dish() {
     }
 
     public Dish(String id, String mainImage, String alt, String deliveryType, String title, String description,
                 String normalPrice, String sellingPrice, String badge, Long categoryId, String topImage, String thumbImages,
-                 String deliveryInfo, String deliveryFee, String detailSection, int stock, String point) {
+                String deliveryInfo, String deliveryFee, String detailSection, int stock, String point) {
         this.id = id;
         this.mainImage = mainImage;
         this.alt = alt;
