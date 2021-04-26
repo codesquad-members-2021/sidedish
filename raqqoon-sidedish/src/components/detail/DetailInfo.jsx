@@ -20,7 +20,7 @@ const DetailInfo = ({ title, badge, prices, product_description }) => {
     discount = prices[0];
     normal = prices[1];
   }
-  console.log(normal, discount);
+
   return (
     <DetailInfoBox>
       <Info name={title} body={product_description} type={DETAIL} />

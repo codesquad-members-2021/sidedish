@@ -24,12 +24,17 @@ export default DetailDelivery;
 const DetailDeliveryDiv = styled.div``;
 
 const TextBox = styled.div`
-  display: grid;
-  grid-template-columns: 17% 83%;
-  align-items: center;
+  display: flex;
+  
+  align-items: baseline;
+}
+  & + div {
+    margin-top: 8px;
+  }
 `;
 
 const LabelBox = styled.div`
+  width: 100px;
   margin: 8px 0;
   font-size: 16px;
   line-height: 23px;
@@ -37,6 +42,7 @@ const LabelBox = styled.div`
 `;
 
 const InfoBox = styled.div`
+  width: 100%;
   font-size: 16px;
   line-height: 23px;
   color: #4f4f4f;
