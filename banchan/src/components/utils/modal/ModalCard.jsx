@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Price from "../../utils/Price";
-import { LabelList, StyledDescription, StyledTitle } from "../../utils/styles/common";
-import TextButton from "../../utils/button/TextButton";
+import Price from "../Price";
+import { LabelList, StyledDescription, StyledTitle } from "../styles/common";
+import TextButton from "../button/TextButton";
 
 const ModalCard = ({ product }) => {
+  const [count, setCount] = useState(1);
+
   return (
     <CardContent>
       <ProductImage>
         <img src={product.top_image} alt="product-thumbnail" />
         <ThumbnailUL>
-          {product.thumb_images.map((i) => (
+          {product.thumb_images.map((imageUrl) => (
             <li>
-              <Thumbnail src={i} />
+              <Thumbnail src={imageUrl} />
             </li>
           ))}
         </ThumbnailUL>
@@ -42,11 +44,6 @@ const ModalCard = ({ product }) => {
 export default ModalCard;
 
 const CardContent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 6;
-  transform: translate3d(-50%, -50%, 0);
   background: white;
   width: 960px;
   height: 1076px;
@@ -66,8 +63,6 @@ const ProductImage = styled.div``;
 const Information = styled.div``;
 
 const ProductMainInfo = styled.div``;
-
-// const LabelList = styled.div``;
 
 const ProductBuyInfo = styled.div``;
 

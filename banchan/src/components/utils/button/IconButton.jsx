@@ -14,7 +14,11 @@ const IconButton = ({ type, fn, disabled = false }) => {
 const StyledIconButton = styled(Button)`
   cursor: pointer;
   color: ${(props) =>
-    props.disabled || props.type === "SEARCH" ? props.theme.colors.lightGray : props.theme.colors.darkGray};
+    props.disabled || props.type === "SEARCH"
+      ? props.theme.colors.lightGray
+      : props.type === "CLOSE"
+      ? props.theme.colors.white
+      : props.theme.colors.darkGray};
   font-size: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.fontSizes.M : "30px")};
 `;
 

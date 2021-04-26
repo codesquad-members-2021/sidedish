@@ -18,7 +18,7 @@ const CarouselSectionList = (props) => {
           key={section.id}
           url={URLS.base.concat(section.kind)}
           title={section.title}
-          onModal={props.onModal}
+          // onModal={props.onModal}
         />
       ))}
     </CarouselContainer>

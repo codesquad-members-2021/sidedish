@@ -61,7 +61,7 @@ const CarouselSection = ({ key, url, title, onModal }) => {
                 product={product}
                 cardSize={(props) => props.theme.cardSizes.M}
                 margin={8}
-                onModal={onModal}
+                // onModal={onModal}
               />
             ))}
           </CardList>
