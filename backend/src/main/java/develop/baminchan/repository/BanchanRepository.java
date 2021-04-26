@@ -12,4 +12,7 @@ public interface BanchanRepository extends CrudRepository<Banchan, Long> {
 
     @Query("select * from banchan where category_id = :category_id")
     List<Banchan> findBanchansByCategory_id(String category_id);
+
+    @Query("select * from banchan where tag = :tag")
+    List<Banchan> findBanchansbyTag(String tag);
 }

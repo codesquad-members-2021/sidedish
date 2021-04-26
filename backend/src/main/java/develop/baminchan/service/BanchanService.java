@@ -7,6 +7,9 @@ import develop.baminchan.repository.BanchanRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class BanchanService {
 
@@ -32,5 +35,15 @@ public class BanchanService {
         System.out.println(banchan);
         BanchanDetailDto banchanDetailDto = new BanchanDetailDto(banchan.getBanchanDetail());
         return banchanDetailDto;
+    }
+
+    public List<BanchanDto> findBanchansByTag(String tag) {
+        List<Banchan> banchanList = banchanRepository.findBanchansbyTag(tag);
+
+        List<BanchanDto> banchanDtoList = new ArrayList<>();
+        for (int i = 0; i < banchanList.size(); i++) {
+           banchanDtoList.add(BanchanDto.of(banchanList.get(i)));
+        }
+        return banchanDtoList;
     }
 }
