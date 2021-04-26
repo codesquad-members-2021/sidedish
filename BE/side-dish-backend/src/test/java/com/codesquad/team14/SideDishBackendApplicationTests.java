@@ -1,6 +1,5 @@
 package com.codesquad.team14;
 
-import com.codesquad.team14.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

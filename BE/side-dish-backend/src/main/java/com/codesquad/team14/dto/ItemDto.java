@@ -1,9 +1,6 @@
-package com.codesquad.team14.dto.item;
+package com.codesquad.team14.dto;
 
 import com.codesquad.team14.domain.Item;
-import com.codesquad.team14.utils.Badge;
-
-import java.util.List;
 
 public class ItemDto {
     private Long id;
@@ -13,10 +10,11 @@ public class ItemDto {
     private String description;
     private int nPrice;
     private int sPrice;
-    private List<Badge> badges;
+    //private List<Badge> badges;
+    private String badges;
 
     private ItemDto(Long id, String image, String deliveryTypes, String title,
-                    String description, int nPrice, int sPrice, List<Badge> badges) {
+                    String description, int nPrice, int sPrice, String badges) {
         this.id = id;
         this.topImage = image;
         this.deliveryTypes = deliveryTypes;
@@ -34,8 +32,8 @@ public class ItemDto {
                 item.getDeliveryTypes().toString(),
                 item.getTitle(),
                 item.getDescription(),
-                item.getNPrice(),
-                item.getSPrice(),
+                item.getNormalPrice(),
+                item.getSalePrice(),
                 item.getBadges()
         );
     }
@@ -68,8 +66,11 @@ public class ItemDto {
         return sPrice;
     }
 
-    public List<Badge> getBadges() {
+    public String getBadges() {
         return badges;
     }
 
+    public void setBadges(String badges) {
+        this.badges = badges;
+    }
 }

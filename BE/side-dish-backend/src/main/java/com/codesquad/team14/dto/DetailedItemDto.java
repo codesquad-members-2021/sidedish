@@ -1,4 +1,4 @@
-package com.codesquad.team14.dto.item;
+package com.codesquad.team14.dto;
 
 import com.codesquad.team14.domain.Item;
 
@@ -29,6 +29,7 @@ public class DetailedItemDto {
         this.point = point;
     }
 
+    /*
     public static DetailedItemDto from(Item item) {
         return new DetailedItemDto(
                 item.getId(),
@@ -41,7 +42,7 @@ public class DetailedItemDto {
                 item.getSPrice(),
                 item.getSPrice() / 100
         );
-    }
+    }*/
 
     public Long getId() {
         return id;
