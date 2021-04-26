@@ -9,7 +9,9 @@ import develop.baminchan.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CategoryService {
@@ -19,6 +21,21 @@ public class CategoryService {
     public CategoryService(CategoryRepository categoryRepository, BanchanRepository banchanRepository) {
         this.categoryRepository = categoryRepository;
         this.banchanRepository = banchanRepository;
+    }
+
+    public List<CategoryDto> findAllBestBanchansByCategories() {
+        Iterable<Category> categoryList = categoryRepository.findAll();
+        Set<String> setOfCategoryIds = new HashSet<>();
+        for (Category category : categoryList) {
+            setOfCategoryIds.add(category.getCategory_id());
+        }
+        System.out.println(setOfCategoryIds); //테스트 // null도 들어가나?
+
+        List<CategoryDto> categoryDtoList = new ArrayList<>();
+        for (String category_id : setOfCategoryIds) {
+            categoryDtoList.add(findBestBanchansByCategory(category_id));
+        }
+        return categoryDtoList;
     }
 
     public CategoryDto findBestBanchansByCategory(String category_id) {
