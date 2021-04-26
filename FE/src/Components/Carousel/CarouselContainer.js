@@ -8,7 +8,7 @@ import * as CarouselNavigator from './CarouselNavigator';
 import useCarousel from './hooks/useCarousel';
 
 const CarouselContainer = ({navigator="default", unit=1, ...props}) => {
-  
+
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
   

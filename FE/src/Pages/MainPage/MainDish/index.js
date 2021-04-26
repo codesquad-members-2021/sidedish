@@ -7,20 +7,23 @@ import Card from '../../../Components/commons/Card.js';
 import API from '../../../util/API.js';
 
 const MainDish = () => {
-  const [mainDishes, setMainDishes] = useState([]);
+  const [mainDishes, setMainDishes] = useState();
   useEffect(() => {
     const fetchMainDish = async () => {
       setMainDishes(await API.get.maindish());
-      console.log("fetchMainDish!")
+      console.log("fetchMainDish!", mainDishes)
     }
     fetchMainDish();
   }, [])
+  
+  if (!mainDishes) 
+    return <></>;
   
   return (
     <CarouselLayout>
       <Carousel.Container navigator={"default"} unit={3}>
         {/* for test */}
-        {[...new Array(8).keys()].map((_,i) => {
+        {mainDishes.body.map((_,i) => {
           return <Card key={`test-${i}`} number={i} type={"responsive"} />;
         })}  
         

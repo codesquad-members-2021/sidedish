@@ -10,20 +10,24 @@ const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) =>
 
   const timeoutFunc = useRef();
 
-  useEffect(() => {
-    const $CarouselAreaDOM = $CarouselArea.current; // 리액트에서 내주는 warning에 대한 가이드 반영
-    $CarouselAreaDOM.classList.add("carousel-start")
-    return () => { $CarouselAreaDOM.classList.remove("carousel-start"); }
-  });
-
-  useLayoutEffect(() => {
-    handleResize();
+  useLayoutEffect(() => {  
     window.addEventListener('resize', debounced(handleResize));
     return () => { // cleanup 
       window.removeEventListener('resize', debounced(handleResize));
     }
   }, [])
+
+  useEffect(() => {
     
+    const $CarouselAreaDOM = $CarouselArea.current; // 리액트에서 내주는 warning에 대한 가이드 반영
+    $CarouselAreaDOM.classList.add("carousel-start")
+    return () => { $CarouselAreaDOM.classList.remove("carousel-start"); }
+  });
+
+  useEffect(() => {
+    handleResize();  
+  }, [itemWidth])
+
   const debounced = (handleResize) => {
     return () => {
       if (timeoutFunc.current) clearTimeout(timeoutFunc.current);
@@ -32,12 +36,11 @@ const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) =>
   }
   
   const handleResize = () => {
-    console.log($CarouselAreaWrapper)
+    setItemWidth($CarouselAreaWrapper.current.offsetWidth / unit);
     setCarouselNavigatorAreaSize({ 
-      width: $CarouselAreaWrapper.current.clientWidth, 
-      height: $CarouselAreaWrapper.current.clientHeight 
+      width: $CarouselAreaWrapper.current.offsetWidth, 
+      height: $CarouselAreaWrapper.current.offsetHeight 
     });
-    setItemWidth($CarouselAreaWrapper.current.clientWidth / unit);
   }
 
   const isNotAbleToSlide = ({type}) => {
