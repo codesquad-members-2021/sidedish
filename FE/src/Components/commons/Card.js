@@ -1,45 +1,57 @@
 import styled from 'styled-components';
-
-import loadingImage from '../../images/loading.gif';
+import preparingImage from '../../images/preparingImage.jpg';
 import SpecialLabelTag from './SpecialLabelTag';
-
 import ResponsiveCard from './Cards/ResponsiveCard.js';
+import API from '../../util/API';
+import { formatPriceAsNumber } from '../../util/serviceUtils';
 
-const Card = ({ type = "default", number, item, handleToggleModal }) => {
+const Card = ({ type = "default", number, item, setModalState }) => {
   switch (type) {
     case "responsive":
-      return <ResponsiveCard number={number} loadingImage={loadingImage} SpecialLabelTag />
+      return <ResponsiveCard number={number} loadingImage={preparingImage} SpecialLabelTag />
     case "default":
       break; // 수정예정
     default:
       break;
   }
+
+  const { detail_hash, delivery_type, title,
+    description, n_price, s_price, badge } = item;
+
+  const fetchModalState = ({ hash }) => async () => {
+    try {
+      const { data } = await API.get.detail({ hash });
+      setModalState({ status: 'success', title, badge, ...data });
+    } catch ({ status }) {
+      setModalState({ status });
+    }
+  };
+
   return (
     <CardWrapper>
-      <ImageWrapper onClick={handleToggleModal({ hash: item.detail_hash })}>
-        <Image src={loadingImage} alt="" />
+      <ImageWrapper onClick={fetchModalState({ hash: detail_hash })}>
+        <Image src={preparingImage} alt="" />
         <Overlay>
           <OverlayText>
-            <div>{item.delivery_type[0]}</div>
+            <div>{delivery_type[0]}</div>
             <hr />
-            <div>{item.delivery_type[1]}</div>
+            <div>{delivery_type[1]}</div>
           </OverlayText>
         </Overlay>
       </ImageWrapper>
-      <TitleDiv>{item.title}</TitleDiv>
-      <DescriptionDiv>{item.description}</DescriptionDiv>
+      <TitleDiv>{title}</TitleDiv>
+      <DescriptionDiv>{description}</DescriptionDiv>
 
       <PriceWrapper>
-        {item.n_price ?
-          (<><SalePriceSpan>{item.n_price}</SalePriceSpan>
-            <NetPriceSpan>{item.s_price}</NetPriceSpan></>) :
-          (<SalePriceSpan>{item.s_price}</SalePriceSpan>)}
+        {n_price ?
+          <><SalePriceSpan>{formatPriceAsNumber(s_price)}</SalePriceSpan>
+            <NetPriceSpan>{formatPriceAsNumber(n_price)}</NetPriceSpan></> :
+          <SalePriceSpan>{formatPriceAsNumber(s_price)}</SalePriceSpan>}
       </PriceWrapper>
 
-      {item.badge && item.badge.map((badge, idx) => {
+      {badge?.map((badge, idx) => {
         return (<SpecialLabelTag key={idx} badge={badge} />);
       })}
-
     </CardWrapper>
   )
 }
