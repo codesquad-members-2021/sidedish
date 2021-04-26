@@ -1,13 +1,32 @@
 import styled from 'styled-components';
 
-const DetailPrice = ({ prices }) => {
+const DetailPrice = ({ orderCount, prices }) => {
   if (prices.length === 2) {
     prices = prices[1];
   }
+
+  const priceList = prices[0].split('원');
+  const price = +priceList[0].split(',').join('');
+  const calPrice = price * orderCount;
+
+  const moneyComma = (num) => {
+    const arr = num.toString().split('');
+    const comma = arr.reduce((acc, cur, idx) => {
+      if (idx % 3 === arr.length % 3) {
+        cur = `,${cur}`;
+      }
+      acc += cur;
+      return acc;
+    });
+    return comma;
+  };
+
+  const displayMoney = moneyComma(calPrice);
+
   return (
     <DetailPriceBox>
       <DetailPriceTextSpan>총 주문금액</DetailPriceTextSpan>
-      <DetailPriceSpan>{prices}</DetailPriceSpan>
+      <DetailPriceSpan>{displayMoney}원</DetailPriceSpan>
     </DetailPriceBox>
   );
 };

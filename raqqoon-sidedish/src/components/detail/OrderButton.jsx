@@ -23,4 +23,13 @@ const OrderButtonBox = styled.div`
   text-align: center;
   color: #fff;
   margin: 16px 0;
+  cursor: pointer;
+  &:hover {
+    background: #9ad857;
+    transition: 0.4s;
+  }
+  &:active {
+    background: #82d32d;
+    transition: 0.4s;
+    
 `;

@@ -5,6 +5,7 @@ import DetailDelivery from 'components/detail/DetailDelivery';
 import DetailOrder from 'components/detail/DetailOrder';
 import DetailPrice from 'components/detail/DetailPrice';
 import OrderButton from 'components/detail/OrderButton';
+import { useState } from 'react';
 
 const LongLine = () => {
   return <LongLineBox />;
@@ -21,6 +22,16 @@ const DetailModal = ({ title, badge, currentData }) => {
     top_image,
   } = currentData;
 
+  const [orderCount, setOrderCount] = useState(1);
+
+  const plusCount = () => {
+    setOrderCount(orderCount + 1);
+  };
+  const minusCount = () => {
+    if (orderCount <= 0) return;
+    setOrderCount(orderCount - 1);
+  };
+
   return (
     <DetailModalBox>
       <ImageBox>
@@ -31,9 +42,9 @@ const DetailModal = ({ title, badge, currentData }) => {
         <LongLine />
         <DetailDelivery {...{ point, delivery_info, delivery_fee }} />
         <LongLine />
-        <DetailOrder />
+        <DetailOrder {...{ orderCount, plusCount, minusCount }} />
         <LongLine />
-        <DetailPrice {...{ prices }} />
+        <DetailPrice {...{ orderCount, prices }} />
         <OrderButton />
       </InfoBox>
     </DetailModalBox>
