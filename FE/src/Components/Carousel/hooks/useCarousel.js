@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 
 const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) => {
   
@@ -8,21 +8,31 @@ const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) =>
   const [slideCount, setSlideCount] = useState(unit);
   const [carouselEvent, setCarouselEvent] = useState({isActive:false, msg:""});
 
-  useEffect(() => {
-    $CarouselArea.current.classList.add("carousel-start")
-    return () => { $CarouselArea.current?.classList.remove("carousel-start"); }
-  }, [slideCount]);
+  const throttleResize = useRef();
 
-  useLayoutEffect(()=> {
+  useEffect(() => {
+    const $CarouselAreaDOM = $CarouselArea.current; // 리액트에서 내주는 warning에 대한 가이드 반영
+    $CarouselAreaDOM.classList.add("carousel-start")
+    return () => { $CarouselAreaDOM.classList.remove("carousel-start"); }
+  });
+
+  useLayoutEffect(() => {
     handleResize();
-    // 향후 쓰로틀로 변경
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', debounced(handleResize));
+    return () => { // cleanup 
+      window.removeEventListener('resize', debounced(handleResize));
+    }
+  }, [])
     
-    // cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, [window.innerWidth])
+  const debounced = (handleResize) => {
+    return () => {
+      if (throttleResize.current) clearTimeout(throttleResize.current);
+      throttleResize.current = setTimeout(handleResize, 500);
+    };
+  }
   
   const handleResize = () => {
+    console.log($CarouselAreaWrapper)
     setCarouselNavigatorAreaSize({ 
       width: $CarouselAreaWrapper.current.clientWidth, 
       height: $CarouselAreaWrapper.current.clientHeight 
