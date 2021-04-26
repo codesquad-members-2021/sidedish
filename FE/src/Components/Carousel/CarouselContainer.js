@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import CarouselItem from './CarouselItem.js';

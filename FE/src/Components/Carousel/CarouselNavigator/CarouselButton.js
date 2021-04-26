@@ -11,6 +11,8 @@ const CarouselButton = ({ type, onClick }) => {
         return <RightArrowButtonActive />;
       case "left":
         return <LeftArrowButtonActive />;
+      default:
+        return <></>;
     }
   }
   
