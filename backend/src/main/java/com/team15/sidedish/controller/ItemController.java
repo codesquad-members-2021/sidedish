@@ -23,7 +23,6 @@ public class ItemController {
 
     @GetMapping("/dish/{hash}")
     public ItemDTO showSingleDish(@PathVariable String hash) {
-        logger.info("Show single dish by hash");
         return itemService.showSingleDish(hash);
 
     }
