@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class DishController {
 
     public final DishService dishService;
