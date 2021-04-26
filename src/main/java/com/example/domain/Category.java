@@ -6,9 +6,7 @@ import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Table(value = "CATEGORY")
 public class Category {
@@ -37,8 +35,18 @@ public class Category {
         }
     }
 
+    public Item findItem(String id){
+        for(Item item : items){
+            if(item.getId().equals(id)){
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void removeItem(Item item) {
-        this.items.remove(item);
+        System.err.println(this.items.remove(item));
+        System.err.println(item.getId());
     }
 
     public Long getId() {
@@ -51,6 +59,10 @@ public class Category {
 
     public List<Item> getItems() {
         return items;
+    }
+
+    public void update(List<Item> newitemList){
+        this.items = newitemList;
     }
 
 }

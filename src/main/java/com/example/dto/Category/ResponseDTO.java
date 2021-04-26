@@ -4,6 +4,7 @@ import com.example.domain.Category;
 import com.example.domain.Item;
 import com.example.dto.ItemInfoDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,37 +12,30 @@ import java.util.stream.Collectors;
 
 public class ResponseDTO {
 
-    @JsonProperty("category_id")
-    private Long id;
+    @JsonProperty("statusCode")
+    private HttpStatus statusCode;
 
-    @JsonProperty("name")
-    private String name;
 
-    @JsonProperty("items")
+    @JsonProperty("body")
     private List<ItemInfoDto> items = new ArrayList<>();
 
-    public ResponseDTO(Long id, String name, List<ItemInfoDto> items) {
-        this.id = id;
-        this.name = name;
+    public ResponseDTO(HttpStatus statusCode, List<ItemInfoDto> items) {
+        this.statusCode = statusCode;
         this.items = items;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public List<ItemInfoDto> getItems() {
         return items;
     }
 
+    public HttpStatus getStatusCode() {
+        return statusCode;
+    }
+
     public static ResponseDTO of(Category category){
         List<Item> items = category.getItems();
         List<ItemInfoDto> itemInfoDtos = items.stream().map(ItemInfoDto::of).collect(Collectors.toList());
 
-        return new ResponseDTO(category.getId(),category.getName(),itemInfoDtos);
+        return new ResponseDTO(HttpStatus.ACCEPTED,itemInfoDtos);
     }
 }
