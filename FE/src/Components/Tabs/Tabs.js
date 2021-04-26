@@ -4,34 +4,46 @@ import styled from 'styled-components';
 import { Container } from '../commons/base.js';
 import Card from '../commons/Card';
 
-const Tabs = () => {
-  const [tabTitles, setTabTitles] = useState([]);
+const Tabs = ({ handleToggleModal }) => {
+  const [tabItemList, setTabItemList] = useState([]);
+  const [currentTabItems, setCurrentTabItems] = useState([]);
+
+  const handleChangeTabs = ({ idx }) => () => {
+    setCurrentTabItems(tabItemList[idx].items);
+  };
+
   useEffect(() => {
-    const getTitles = async () => {
-      const a = await fetch('/develop/baminchan/best');
-      const b = await a.json();
-      setTabTitles(b.body);
-    }
-    getTitles();
+    const fetchItemList = async () => {
+      const tabItems = await (await fetch('/develop/baminchan/best')).json();
+      setTabItemList(tabItems.body);
+    };
+
+    fetchItemList();
   }, []);
+
+  useEffect(() => {
+    if (tabItemList[0]) {
+      setCurrentTabItems(tabItemList[0].items);
+    }
+  }, [tabItemList]);
 
   return (
     <TabsWrapper>
       <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
       <div>
-        {tabTitles.map(({ name }, idx) => {
+        {tabItemList.map(({ name }, idx) => {
           return (
             <label key={idx}>
-              <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} />
+              <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
               <LabelBelongSpan>{name}</LabelBelongSpan>
             </label>
           );
         })}
       </div>
       <CardListWrapper>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        {currentTabItems.map((item, idx) => {
+          return (<Card key={idx} item={item} handleToggleModal={handleToggleModal} />);
+        })}
       </CardListWrapper>
     </TabsWrapper>
   );

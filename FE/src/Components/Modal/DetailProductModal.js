@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import closeImage from '../../images/close.svg';
 import LeftSide from './LeftSide/LeftSide';
 import RightSide from './RightSide/RightSide';
 import BottomSide from './BottomSide/BottomSide';
 
-const DetailProductModal = () => {
-  const [isHide, setHide] = useState(false);
-
+const DetailProductModal = ({ isHide, handleToggleModal, modalItems }) => {
   return (
     <Background isHide={isHide}>
       <ModelWrapper>
         <div>
           <TopSide>
-            <LeftSide />
-            <RightSide />
+            {modalItems && (
+              <><LeftSide {...modalItems} />
+                <RightSide {...modalItems} /></>
+            )}
           </TopSide>
           <BottomSide />
         </div>
-        <CloseButton src={closeImage} onClick={() => setHide(!isHide)} alt="" />
+        <CloseButton src={closeImage} onClick={handleToggleModal()} alt="" />
       </ModelWrapper>
     </Background>
   );
