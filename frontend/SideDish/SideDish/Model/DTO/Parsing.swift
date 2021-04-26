@@ -9,21 +9,22 @@ import Foundation
 
 class ParsingManager {
     
-    static func encodeData<T: Codable>(data: T) -> Data? {
+    static func encodeData<T: Encodable>(data: T) -> Data? {
         let encoder = JSONEncoder()
         do {
             return try encoder.encode(data)
-        }catch{
+        } catch {
             print("Encode error")
             return nil
         }
     }
     
-    static func decodeData<T: Codable>(type: T.Type, data: Data) -> T? {
+    static func decodeData<T: Decodable>(type: T.Type, data: Data) -> T? {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
             return try decoder.decode(type, from: data)
-        }catch{
+        } catch {
             print("Decode error")
             return nil
         }

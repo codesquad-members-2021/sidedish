@@ -1,5 +1,4 @@
 
-import Foundation
 import UIKit
 
 class MainDiffableDataSource {
@@ -11,7 +10,7 @@ class MainDiffableDataSource {
     }
     
     
-    private var dataSource : UICollectionViewDiffableDataSource<sectionTitle, MenuViewModel>!
+    private var dataSource: UICollectionViewDiffableDataSource<sectionTitle, MenuViewModel>!
     
     func setupDataSource(collectionView: UICollectionView) {
         self.dataSource = UICollectionViewDiffableDataSource<sectionTitle, MenuViewModel>(collectionView: collectionView) {
@@ -41,10 +40,10 @@ class MainDiffableDataSource {
     }
     
     func setupHeader(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as! HeaderView
+        let menuHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuHeaderView", for: indexPath) as! MenuHeaderView
         
         let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-        header.configureButtonName(text: section.rawValue)
-        return header
+        menuHeader.configureButtonName(text: section.rawValue)
+        return menuHeader
     }
 }

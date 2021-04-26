@@ -28,14 +28,14 @@ class ViewController: UIViewController {
         let nibName = UINib(nibName: "MenuCell", bundle: .none)
         sideDishCollectionView.register(nibName, forCellWithReuseIdentifier: "menuCell")
         
-        let nibHeaderName = UINib(nibName: "HeaderView", bundle: .none)
-        sideDishCollectionView.register(nibHeaderName, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
+        let nibHeaderName = UINib(nibName: "MenuHeaderView", bundle: .none)
+        sideDishCollectionView.register(nibHeaderName, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "menuHeaderView")
         
         self.dataSource.setupDataSource(collectionView: self.sideDishCollectionView)
     }
     
     private func loadMain() {
-        DataTaskManager.get(url: .main, completion: { (result) in
+        DataTaskManager.sendRequest(url: .main, completion: { (result) in
             switch result {
             case .success(let data):
                 self.menus.add(menuList: data.body, section: .main)
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     private func loadSoup() {
-        DataTaskManager.get(url: .soup, completion: { (result) in
+        DataTaskManager.sendRequest(url: .soup, completion: { (result) in
             switch result {
             case .success(let data):
                 self.menus.add(menuList: data.body, section: .soup)
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     }
     
     private func loadSide() {
-        DataTaskManager.get(url: .side, completion: { (result) in
+        DataTaskManager.sendRequest(url: .side, completion: { (result) in
             switch result {
             case .success(let data):
                 self.menus.add(menuList: data.body, section: .side)

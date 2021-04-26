@@ -2,17 +2,17 @@
 import Foundation
 
 class MenusViewModel {
-    private var mainViewModel: [MenuViewModel]?
-    private var soupViewModel: [MenuViewModel]?
-    private var sideViewModel: [MenuViewModel]?
+    private var mainViewModel: [MenuViewModel]
+    private var soupViewModel: [MenuViewModel]
+    private var sideViewModel: [MenuViewModel]
     
     init() {
-        self.mainViewModel = nil
-        self.soupViewModel = nil
-        self.sideViewModel = nil
+        self.mainViewModel = []
+        self.soupViewModel = []
+        self.sideViewModel = []
     }
     
-    func add(menuList: [Menu]?, section:MainDiffableDataSource.sectionTitle) {
+    func add(menuList: [Menu], section:MainDiffableDataSource.sectionTitle) {
         let viewModelList = matchingViewModel(menuList: menuList)
         switch section {
         case .main:
@@ -35,19 +35,17 @@ class MenusViewModel {
         }
     }
     
-    func matchingViewModel(menuList: [Menu]?) -> [MenuViewModel] {
-        guard let menuList = menuList else { return [] }
+    func matchingViewModel(menuList: [Menu]) -> [MenuViewModel] {
         let viewModelList: [MenuViewModel] = menuList.map() { menu in
-            let viewModel = MenuViewModel()
-            let n_price = setPrice(menu.n_price)
+            let nPrice = stringToAttributedString(menu.nPrice)
             let badges = setBadges(menu.badge)
-            viewModel.configure(image: menu.image, title: menu.title, body: menu.description, s_price: menu.s_price, n_price: n_price, badges: badges)
+            let viewModel = MenuViewModel(image: menu.image, title: menu.title, body: menu.description, sPrice: menu.sPrice, nPrice: nPrice, badges: badges)
             return viewModel
         }
         return viewModelList
     }
     
-    func setPrice(_ price: String?) -> NSAttributedString {
+    func stringToAttributedString(_ price: String?) -> NSAttributedString {
         if let pastPrice = price {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(pastPrice)원")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
@@ -57,16 +55,7 @@ class MenusViewModel {
         }
     }
     
-    func validate(pastPrice: String?) -> NSMutableAttributedString {
-        if let pastPrice = pastPrice {
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(pastPrice)원")
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            return attributeString
-        } else {
-            return NSMutableAttributedString(string: "")
-        }
-    }
-    
+    // badge 설정할 때, 메소드 이름 바꾸기!
     func setBadges(_ badges: [String]?) -> [String] {
         if let badges = badges {
             return badges

@@ -9,17 +9,17 @@ import Foundation
 
 class Menus {
     
-    private var mainMenus: [Menu]?
-    private var soupMenus: [Menu]?
-    private var sideMenus: [Menu]?
+    private var mainMenus: [Menu]
+    private var soupMenus: [Menu]
+    private var sideMenus: [Menu]
     
     init() {
-        self.mainMenus = nil
-        self.soupMenus = nil
-        self.sideMenus = nil
+        self.mainMenus = []
+        self.soupMenus = []
+        self.sideMenus = []
     }
     
-    func add(menuList: [Menu], section:MainDiffableDataSource.sectionTitle) {
+    func add(menuList: [Menu], section: MainDiffableDataSource.sectionTitle) {
         switch section {
         case .main:
             self.mainMenus = menuList
@@ -30,7 +30,7 @@ class Menus {
         }
     }
     
-    func giveMenu(section: MainDiffableDataSource.sectionTitle) -> [Menu]? {
+    func giveMenu(section: MainDiffableDataSource.sectionTitle) -> [Menu] {
         switch section {
         case .main:
             return mainMenus
