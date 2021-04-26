@@ -64,6 +64,7 @@ const Image = styled.div`
     transform: translateY(1px);
   }
   &:hover {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +76,7 @@ const Image = styled.div`
     color: white;
     &::before {
       position: absolute;
-      top: ${({size}) => (size === "L" ? "227px" : "117px")};
+      top: ${({size}) => (size === "L" ? "155px" : "117px")};
       font-size: 22px;
       font-weight: normal;
       content: "새벽배송";
@@ -135,7 +136,6 @@ const SPrice = styled.span`
   line-height: 29px;
   margin: 0 8px 0 0;
   margin: 30px 0;
-  border: 1px solid red;
 `;
 
 const Badge = styled.span`
