@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,7 @@
 		CE8E2E4526313B48007EEEBB /* MainDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */; };
 		CE8E2E4B26313C19007EEEBB /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E2E4926313C19007EEEBB /* MenuHeaderView.swift */; };
 		CE8E2E4C26313C19007EEEBB /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E2E4A26313C19007EEEBB /* MenuHeaderView.xib */; };
+		CEAE6F302636AAFD00720625 /* FetchDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE6F2F2636AAFD00720625 /* FetchDataUseCase.swift */; };
 		D913214002A3F533F01AF848 /* Pods_SideDishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA6E291323BD92D963428EF /* Pods_SideDishTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		CE8E2E4426313B48007EEEBB /* MainDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDiffableDataSource.swift; sourceTree = "<group>"; };
 		CE8E2E4926313C19007EEEBB /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		CE8E2E4A26313C19007EEEBB /* MenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
+		CEAE6F2F2636AAFD00720625 /* FetchDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataUseCase.swift; sourceTree = "<group>"; };
 		F27206AA084B5CBF57CB7CC7 /* Pods-SideDishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishTests.debug.xcconfig"; path = "Target Support Files/Pods-SideDishTests/Pods-SideDishTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,25 +235,12 @@
 			path = SideDishUITests;
 			sourceTree = "<group>";
 		};
-		C47942AE6054F8A507A45C1E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7170100C838AA642224E5DCE /* Pods-SideDish.debug.xcconfig */,
-				7FF21EAAD09AD50BD023F72C /* Pods-SideDish.release.xcconfig */,
-				FD74F0D1D82A2F83DAB7E818 /* Pods-SideDish-SideDishUITests.debug.xcconfig */,
-				C3F90F1D121C49A909B1B179 /* Pods-SideDish-SideDishUITests.release.xcconfig */,
-				B171412F1D324870D55DF000 /* Pods-SideDishTests.debug.xcconfig */,
-				E91D83273D3CC72A6884B988 /* Pods-SideDishTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		CE5905FC26327DD40085F570 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				CE5905FD26327DFE0085F570 /* MenuViewModel.swift */,
 				CE29EB422632A0B700221658 /* MenusViewModel.swift */,
+				CEAE6F2F2636AAFD00720625 /* FetchDataUseCase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -266,7 +255,6 @@
 				F27206AA084B5CBF57CB7CC7 /* Pods-SideDishTests.debug.xcconfig */,
 				9D4386F5E85715EE23862BF7 /* Pods-SideDishTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -515,6 +503,7 @@
 				BD930B5C262D6F5800906633 /* ViewController.swift in Sources */,
 				BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */,
 				BD090658262E9B450094421D /* MenuCell.swift in Sources */,
+				CEAE6F302636AAFD00720625 /* FetchDataUseCase.swift in Sources */,
 				CE29EB432632A0B700221658 /* MenusViewModel.swift in Sources */,
 				CE8E2E4026313B3C007EEEBB /* JSONModel.swift in Sources */,
 				CE8E2E4B26313C19007EEEBB /* MenuHeaderView.swift in Sources */,

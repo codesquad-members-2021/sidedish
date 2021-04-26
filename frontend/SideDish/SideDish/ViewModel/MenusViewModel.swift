@@ -5,11 +5,25 @@ class MenusViewModel {
     private var mainViewModel: [MenuViewModel]
     private var soupViewModel: [MenuViewModel]
     private var sideViewModel: [MenuViewModel]
+    private var fetchMenuUseCase: FetchMenuUseCase
     
     init() {
         self.mainViewModel = []
         self.soupViewModel = []
         self.sideViewModel = []
+        self.fetchMenuUseCase = FetchDataUseCase()
+    }
+    
+    func fetchData() {
+        self.fetchMenuUseCase.loadMenu(of: .main) { menuList in
+            self.add(menuList: menuList, section: .main)
+        }
+        self.fetchMenuUseCase.loadMenu(of: .soup) { menuList in
+            self.add(menuList: menuList, section: .soup)
+        }
+        self.fetchMenuUseCase.loadMenu(of: .side) { menuList in
+            self.add(menuList: menuList, section: .side)
+        }
     }
     
     func add(menuList: [Menu], section:MainDiffableDataSource.sectionTitle) {
@@ -22,9 +36,11 @@ class MenusViewModel {
         case .side:
             self.sideViewModel = viewModelList
         }
+        
+        NotificationCenter.default.post(name: MenusViewModel.changeMenu, object: self)
     }
     
-    func giveMenus(section: MainDiffableDataSource.sectionTitle) -> [MenuViewModel]? {
+    func giveMenus(section: MainDiffableDataSource.sectionTitle) -> [MenuViewModel] {
         switch section {
         case .main:
             return mainViewModel
@@ -53,4 +69,8 @@ class MenusViewModel {
             return NSMutableAttributedString(string: "")
         }
     }
+}
+
+extension MenusViewModel {
+    static let changeMenu = Notification.Name("changeMenu")
 }

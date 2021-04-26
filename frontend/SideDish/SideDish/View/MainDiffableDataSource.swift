@@ -32,10 +32,11 @@ class MainDiffableDataSource {
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func applySnapshot(menu:[MenuViewModel], section: sectionTitle) {
+    func applySnapshot(main: [MenuViewModel], soup: [MenuViewModel], side: [MenuViewModel]) {
         var snapshot = self.dataSource.snapshot()
-        snapshot.appendItems(menu, toSection: section)
-        
+        snapshot.appendItems(main, toSection: .main)
+        snapshot.appendItems(soup, toSection: .soup)
+        snapshot.appendItems(side, toSection: .side)
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
     
