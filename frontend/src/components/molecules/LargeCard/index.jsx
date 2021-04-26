@@ -42,13 +42,13 @@ const LargeCard = ({ children, ...props }) => {
       <Image
         src={props._image}
         _width="384px"
-        onMouseOver={() => setIsHover(true)}
+        onMouseEnter={() => setIsHover(true)}
       />
       <HoverCard
         _width="384px"
         _height="384px"
         isHover={isHover}
-        onMouseOut={() => setIsHover(false)}
+        onMouseLeave={() => setIsHover(false)}
       />
       <Span _title>{props._title}</Span>
       <Span _description>{props._description}</Span>
