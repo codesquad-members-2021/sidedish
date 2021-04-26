@@ -31,6 +31,10 @@ public class ItemDTO {
         this.badge = badge;
     }
 
+    public static ItemDTOBuilder builder() {
+        return ItemDTOBuilder.create();
+    }
+
     public String getDetailHash() {
         return detailHash;
     }

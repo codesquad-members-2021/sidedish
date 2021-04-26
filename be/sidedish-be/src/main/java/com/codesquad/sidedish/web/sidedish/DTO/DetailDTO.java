@@ -12,6 +12,10 @@ public class DetailDTO {
         this.data = data;
     }
 
+    public static DetailDTOBuilder builder() {
+        return DetailDTOBuilder.create();
+    }
+
     public String getHash() {
         return hash;
     }
@@ -26,5 +30,32 @@ public class DetailDTO {
 
     public void setData(DetailDataDTO data) {
         this.data = data;
+    }
+
+
+    public static final class DetailDTOBuilder {
+        private String hash;
+        private DetailDataDTO data;
+
+        private DetailDTOBuilder() {
+        }
+
+        public static DetailDTOBuilder create() {
+            return new DetailDTOBuilder();
+        }
+
+        public DetailDTOBuilder hash(String hash) {
+            this.hash = hash;
+            return this;
+        }
+
+        public DetailDTOBuilder data(DetailDataDTO data) {
+            this.data = data;
+            return this;
+        }
+
+        public DetailDTO build() {
+            return new DetailDTO(hash, data);
+        }
     }
 }

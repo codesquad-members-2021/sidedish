@@ -30,6 +30,10 @@ public class DetailDataDTO {
         this.detailSection = detailSection;
     }
 
+    public static DetailDataDTOBuilder builder() {
+        return DetailDataDTOBuilder.create();
+    }
+
     public String getTopImage() {
         return topImage;
     }

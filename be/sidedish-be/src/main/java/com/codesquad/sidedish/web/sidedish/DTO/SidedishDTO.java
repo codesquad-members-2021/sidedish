@@ -17,6 +17,10 @@ public class SidedishDTO {
         this.items = items;
     }
 
+    public static SidedishDTOBuilder builder() {
+        return SidedishDTOBuilder.create();
+    }
+
     public long getCategoryId() {
         return categoryId;
     }
