@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
 }
 
 //MARK: -Setup && Cofiguration
-extension MainViewController {
+private extension MainViewController {
     
     private func setupMainCollectionView() {
         mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -47,12 +47,10 @@ extension MainViewController {
 //MARK: -CollectionView DataSource && Delegate
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    //Cell Count for Each Section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5 // test code
     }
     
-    //Cell Information
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.foodCell, for: indexPath) as! FoodCell
         //Start TestCode
@@ -68,22 +66,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    //Cell Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 343, height: 130)
     }
     
-    //Cell Edge Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 15, bottom: 30, right: 15)
     }
     
-    //Number of Sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
     
-    //Header Info
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var header:CollectionViewHeader?
         
@@ -107,7 +101,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return header!
     }
     
-    //Header Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: 343, height: 50)
     }
