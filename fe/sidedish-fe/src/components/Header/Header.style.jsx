@@ -21,13 +21,11 @@ const HeaderLeftStyle = styled(CenterContainer)`
     display:flex;
     flex-direction: row;
     width:55%;
-    margin-left: 5%;
 `;
 
 const HeaderRightStyle = styled.div`
     display:flex;
     flex-direction: row;
-    margin-right: 5%;
     width: 528px;
 `;
 

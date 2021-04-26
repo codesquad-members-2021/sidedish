@@ -32,7 +32,7 @@ const BestMenu = () => {
   }
 
   return (
-    <div style = {{ margin : "0 5%" }}>
+    <div>
       <style.BestMenuTitle>{BestMenuStatic.Title}</style.BestMenuTitle>
       <FlexRowContainer >
         { response && renderTabTitles() }
