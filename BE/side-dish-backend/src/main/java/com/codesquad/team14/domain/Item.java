@@ -1,14 +1,14 @@
 package com.codesquad.team14.domain;
 
-import com.codesquad.team14.utils.Badge;
-import com.codesquad.team14.utils.DeliveryType;
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Item {
     private static final String DELIVERY_FEE_POLICY = "2,500원 (40,000원 이상 구매 시 무료)";
+    private static final String SEPARATOR = ", ";
 
     @Id
     private Long id;
@@ -86,10 +86,6 @@ public class Item {
         this.deliveryTypes = deliveryTypes;
     }
 
-    public String getImages() {
-        return images;
-    }
-
     public void setImages(String images) {
         this.images = images;
     }
@@ -100,5 +96,23 @@ public class Item {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public static String getDeliveryFeePolicy() {
+        return DELIVERY_FEE_POLICY;
+    }
+
+    public String getTopImage() {
+        if (this.images == null) {
+            return "";
+        }
+        return this.images.split(SEPARATOR)[0];
+    }
+
+    public List<String> getImages() {
+        if (this.images == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(this.images.split(SEPARATOR));
     }
 }

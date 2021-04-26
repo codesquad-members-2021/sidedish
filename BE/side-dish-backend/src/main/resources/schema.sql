@@ -70,4 +70,4 @@ SELECT * from item;
 
 -- //@ Todo : 빰빰 의견 -> utf8 로 이모지 지원 안되니까, 이모지 지원되는 캐릭터셋으로 해줘
 
-ALTER TABLE sidedish CONVERT TO character SET utf8;
+ALTER TABLE item CONVERT TO character SET utf8;

@@ -1,57 +1,30 @@
 package com.codesquad.team14.controller;
 
-import com.codesquad.team14.domain.Item;
-import com.codesquad.team14.repository.ItemRepository;
+import com.codesquad.team14.dto.DetailedItemDto;
+import com.codesquad.team14.dto.ItemDto;
+import com.codesquad.team14.service.ItemService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class ItemController {
 
-    private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
-
-    public ItemController(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
-    @GetMapping("/main")
-    public List<Item> allFromMain() {
-        return itemRepository.findByCategory("MAIN");
-        //@ Todo : 서비스로 바꿔주세여 ㅠㅜ
+    @GetMapping("/{category}")
+    public List<ItemDto> itemList(@PathVariable String category) {
+        return itemService.readAllByCategory(category);
     }
 
-    @GetMapping("/main/{itemId}")
-    public Item singleItem(@PathVariable Long itemId) {
-        return itemRepository.findById(itemId).get();
-        //@ Todo : 옵셔널 커스텀 익셉션으로 널처리 해주세요 ㅠㅠ
+    @GetMapping("/{category}/{itemId}")
+    public DetailedItemDto detailedItem(@PathVariable String category, @PathVariable Long itemId) {
+        return itemService.readDetailedItem(category, itemId);
     }
-
-    @GetMapping("/soup")
-    public List<Item> allFromSoup() {
-        return itemRepository.findByCategory("SOUP");
-    }
-
-
-    @GetMapping("/soup/{itemId}")
-    public Item singleSoup(@PathVariable Long itemId) {
-        return itemRepository.findById(itemId).get();
-    }
-
-    // @Todo : side 관련 아이템리스트, 아이템 정보 출력 완성해주세요 ㅠㅠ
-    //
-    @GetMapping("/side")
-    public List<Item> allFromSide() {
-        return new ArrayList<>();
-    }
-
-    @GetMapping("/side/{itemId}")
-    public Item singleSide(@PathVariable Long itemId) {
-        return new Item("1","1",1,1,"1");
-    }
-    // @ todo : 요고들도 다 서비스로 바꿔주세여
 }

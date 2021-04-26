@@ -8,28 +8,27 @@ public class ItemDto {
     private String deliveryTypes;
     private String title;
     private String description;
-    private int nPrice;
-    private int sPrice;
-    //private List<Badge> badges;
+    private int normalPrice;
+    private int salePrice;
     private String badges;
 
     private ItemDto(Long id, String image, String deliveryTypes, String title,
-                    String description, int nPrice, int sPrice, String badges) {
+                    String description, int normalPrice, int salePrice, String badges) {
         this.id = id;
         this.topImage = image;
         this.deliveryTypes = deliveryTypes;
         this.title = title;
         this.description = description;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
+        this.normalPrice = normalPrice;
+        this.salePrice = salePrice;
         this.badges = badges;
     }
 
     public static ItemDto from(Item item) {
         return new ItemDto(
                 item.getId(),
-                item.getImages().split(", ")[0],
-                item.getDeliveryTypes().toString(),
+                item.getTopImage(),
+                item.getDeliveryTypes(),
                 item.getTitle(),
                 item.getDescription(),
                 item.getNormalPrice(),
@@ -58,12 +57,12 @@ public class ItemDto {
         return description;
     }
 
-    public int getnPrice() {
-        return nPrice;
+    public int getNormalPrice() {
+        return normalPrice;
     }
 
-    public int getsPrice() {
-        return sPrice;
+    public int getSalePrice() {
+        return salePrice;
     }
 
     public String getBadges() {
