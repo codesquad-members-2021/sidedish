@@ -13,14 +13,12 @@ const StyledSpan = styled.span`
     `font-size:16px;
     font-weight:400;
     color:#333;
-
     margin:16px 0 0 0;`}
   ${(props) =>
     props._description &&
     `font-size:14px;
     font-weight:400;
     color:#828282;
-
     margin:8px 0;`}
   ${(props) =>
     props._sPrice &&
@@ -46,7 +44,6 @@ const StyledSpan = styled.span`
     `font-size:18px;
     font-weight:400;
     color:#828282;
-
     `}
      ${(props) =>
     props._tabAct &&

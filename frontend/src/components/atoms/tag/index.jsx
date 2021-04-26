@@ -14,12 +14,14 @@ const StyledTag = styled.button`
     props._event &&
     `width: 97px;
     height: 28px;
+    margin-right: 10px;
     background: #82d32d;`}
 
   ${(props) =>
     props._new &&
     `width: 84px;
     height: 28px;
+    margin-right: 10px;
     background: #86C6FF;`}
 `;
 

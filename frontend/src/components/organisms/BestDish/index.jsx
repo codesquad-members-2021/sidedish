@@ -37,14 +37,32 @@ const BestDish = ({ children, ...props }) => {
   useFetch(setBestDish, "bestDish");
 
   if (!currentItem) return null;
-  console.log(currentItem.items);
+
   return (
     <WrapDiv>
       <Span _innerTitle>후기가 증명하는 베스트 반찬</Span>
       <WrapTab>
-        {bestDish.map((tabMenu, i) => (
-          <Tab onClick={() => changeItem(i)} key={i} name={tabMenu.name}></Tab>
-        ))}
+        {bestDish.map((tabMenu, i) => {
+          if (tabMenu.category_id === currentItem.category_id) {
+            return (
+              <Tab
+                onClick={() => changeItem(i)}
+                isTabAct={"_tabAct"}
+                key={tabMenu.category_id}
+                name={tabMenu.name}
+              ></Tab>
+            );
+          } else {
+            return (
+              <Tab
+                onClick={() => changeItem(i)}
+                isTabAct={"_tabDeact"}
+                key={tabMenu.category_id}
+                name={tabMenu.name}
+              ></Tab>
+            );
+          }
+        })}
       </WrapTab>
       <WrapCard>
         {currentItem.items.map((card, i) => (
