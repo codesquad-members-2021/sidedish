@@ -19,7 +19,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventBadge: UILabel!
     @IBOutlet weak var launchBadge: UILabel!
     
-    func configure(model: SidedishItem, nPrice: String, badge: [Bool]) {
+    func configure(model: SidedishItem, nPrice: String?, badge: [Bool]) {
+        guard let nPrice = nPrice else { return }
         dishName.text = model.title
         dishDescription.text = model.description
         sellingPrice.text = model.sPrice

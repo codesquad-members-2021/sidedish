@@ -9,7 +9,7 @@ import Foundation
 
 struct SidedishItem: Codable {
     var detailHash: String
-    var image: String
+    var imageURL: String
     var imageData: Data?
     var alt: String
     var deliveryType: [String]?
@@ -21,7 +21,7 @@ struct SidedishItem: Codable {
     
     enum CodingKeys: String, CodingKey {
         case detailHash = "detail_hash"
-        case image
+        case imageURL
         case alt
         case deliveryType = "delivery_type"
         case title

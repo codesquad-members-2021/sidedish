@@ -7,11 +7,16 @@
 
 import Foundation
 
-enum Badge: String, CustomStringConvertible {
-    case event = "이벤트특가"
-    case launch = "론칭특가"
+enum Badge: CustomStringConvertible {
+    case event
+    case launch
     
     var description: String {
-        return self.rawValue
+        switch self {
+        case .event:
+            return "이벤트특가"
+        case .launch:
+            return "론칭특가"
+        }
     }
 }

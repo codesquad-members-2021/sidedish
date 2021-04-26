@@ -70,9 +70,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             return ItemCollectionViewCell()
         }
         let item = self.itemViewModel.items[indexPath.row]
-        let priceString = item.nPrice == nil ? "" : "\(item.nPrice ?? "")원"
         let badge = handleBadge(badge: item.badge)
-        cell.configure(model: item, nPrice: priceString, badge: badge)
+        cell.configure(model: item, nPrice: item.nPrice, badge: badge)
         guard let data = self.itemViewModel.items[indexPath.row].imageData else { return cell }
         cell.configure(data: data)
 
@@ -88,20 +87,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
         
-        let title = headerViewModel.titles[indexPath.section]
-        let countText = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
-        let tapRecognizer = TapToastGestureRecognize(target: self,
-                                                     action: #selector(makingHeaderToast(_:)),
-                                                     title: title,
-                                                     countText: countText)
+        let tapRecognizer = UITapGestureRecognizer(target: self,
+                                                     action: #selector(makingHeaderToast(_:)))
         
         header.addGestureRecognizer(tapRecognizer)
-        header.title.text = headerViewModel.titles[indexPath.section]
-        header.countLabel.text = "\(itemViewModel.items.count)개 상품이 등록되어 있습니다."
         return header
     }
     
-    @objc func makingHeaderToast(_ sender: TapToastGestureRecognize) {
+    @objc func makingHeaderToast(_ sender: UITapGestureRecognizer) {
         self.headerViewActionHander?()
     }
 }

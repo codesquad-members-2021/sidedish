@@ -20,7 +20,6 @@
 		22418771262D6A5A00AC14C7 /* SidedishItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418770262D6A5A00AC14C7 /* SidedishItem.swift */; };
 		22418774262D6B3400AC14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22418773262D6B3400AC14C7 /* Category.swift */; };
 		2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */; };
-		22548347262E7A3800AC8582 /* TapToastGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */; };
 		2260DDDA262D960E002DF3E7 /* SidedishProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */; };
 		2291A1A926326FD6007A1B72 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2291A1A826326FD6007A1B72 /* Badge.swift */; };
 		22BBE64E262D9FCC001D06D5 /* SidedishOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBE64D262D9FCC001D06D5 /* SidedishOfCategory.swift */; };
@@ -45,7 +44,6 @@
 		22418770262D6A5A00AC14C7 /* SidedishItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishItem.swift; sourceTree = "<group>"; };
 		22418773262D6B3400AC14C7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2245D88D262D929600E0B637 /* SidedishNetworkCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishNetworkCenter.swift; sourceTree = "<group>"; };
-		22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToastGestureRecognizer.swift; sourceTree = "<group>"; };
 		2260DDD9262D960E002DF3E7 /* SidedishProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishProcessing.swift; sourceTree = "<group>"; };
 		2291A1A826326FD6007A1B72 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		22BBE64D262D9FCC001D06D5 /* SidedishOfCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishOfCategory.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				22418747262D4D8300AC14C7 /* Main.storyboard */,
-				22548346262E7A3800AC8582 /* TapToastGestureRecognizer.swift */,
 				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
 				D06C739526310CD3002404A3 /* BadgeLabel.swift */,
@@ -308,7 +305,6 @@
 				2245D88E262D929600E0B637 /* SidedishNetworkCenter.swift in Sources */,
 				22418744262D4D8300AC14C7 /* SceneDelegate.swift in Sources */,
 				22418774262D6B3400AC14C7 /* Category.swift in Sources */,
-				22548347262E7A3800AC8582 /* TapToastGestureRecognizer.swift in Sources */,
 				2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */,
 				22BBE64E262D9FCC001D06D5 /* SidedishOfCategory.swift in Sources */,
 				2260DDDA262D960E002DF3E7 /* SidedishProcessing.swift in Sources */,

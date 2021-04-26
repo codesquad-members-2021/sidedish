@@ -15,7 +15,6 @@ protocol Networkable {
 
 class SidedishNetworkCenter: Networkable {
     func fetchItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ()) {
-        //MARK: - cache가 없으면
         AF.request(url).validate().responseDecodable(of: SidedishOfCategory.self) { (response) in
             switch response.result {
             case .success(let sidedishOfCategory):
@@ -31,7 +30,7 @@ class SidedishNetworkCenter: Networkable {
     private func fetchImage(sidedishOfCategory: SidedishOfCategory, completion: @escaping (SidedishOfCategory) -> ()) {
         var originalSidedishs = sidedishOfCategory
         for (index, item) in sidedishOfCategory.body.enumerated() {
-            guard let url = URL(string: item.image) else { return }
+            guard let url = URL(string: item.imageURL) else { return }
             self.downloadImage(from: url) { (data) in
                 originalSidedishs.body[index].imageData = data
                 completion(originalSidedishs)
