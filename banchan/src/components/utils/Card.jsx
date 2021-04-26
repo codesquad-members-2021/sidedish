@@ -22,6 +22,9 @@ const Card = ({ product, cardSize, margin = 0, type, onModal }) => {
     setModalState(true);
   };
 
+  // useEffect를 안쓰고 fetch를 해도 괜찮은걸까...? 아돈노우..
+  // 동작은 된다만...
+
   return (
     <>
       <StyledLi cardSize={cardSize} margin={margin} onClick={requestProductDetailInfo}>
@@ -45,16 +48,16 @@ const Card = ({ product, cardSize, margin = 0, type, onModal }) => {
         <Price product={product} />
         <LabelList>{product.badge && product.badge.map((e) => <Label badgeName={e} />)}</LabelList>
       </StyledLi>
-      {modalState && (
-        <Modal>
+      <Modal>
+        {modalState && (
           <ModalBackground>
             <ModalContainer>
               <ModalCard product={{ ...product, ...detail }} />
               <IconButton type="CLOSE" fn={() => setModalState(false)} />
             </ModalContainer>
           </ModalBackground>
-        </Modal>
-      )}
+        )}
+      </Modal>
     </>
   );
 };
