@@ -78,26 +78,27 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var header:CollectionViewHeader?
+        
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellIdentifier.foodHeader, for: indexPath) as? CollectionViewHeader else {
+            return UICollectionReusableView()
+        }
         
         if kind == UICollectionView.elementKindSectionHeader
         {
-            header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellIdentifier.foodHeader, for: indexPath) as? CollectionViewHeader
-            
             if indexPath.section == 0
             {
-                header?.headerLabel.text = HeaderInfo.main
+                header.headerLabel.text = HeaderInfo.main
             }
             else if indexPath.section == 1
             {
-                header?.headerLabel.text = HeaderInfo.soup
+                header.headerLabel.text = HeaderInfo.soup
             }
             else
             {
-                header?.headerLabel.text = HeaderInfo.side
+                header.headerLabel.text = HeaderInfo.side
             }
         }
-        return header!
+        return header
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
