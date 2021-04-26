@@ -2,27 +2,38 @@ package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Dish;
 
+@JsonRootName("dishDetail")
 public class DishDetailResponseDto {
-    private final String topImage;
-    private final String thumbImages;
-    private final String productDescription;
-    private final String deliveryInfo;
-    private final String deliveryFee;
-    private final String detailSection;
-    private final int stock;
-    private final String point;
+    private String dishId;
+    private String topImage;
+    private String thumbImages;
+    private String productDescription;
+    private String point;
+    private String deliveryInfo;
+    private String deliveryFee;
+    private String normalPrice;
+    private String sellingPrice;
+    private String detailSection;
+    private int stock;
 
-    private DishDetailResponseDto(String topImage, String thumbImages, String productDescription,
-                                  String deliveryInfo, String deliveryFee, String detailSection,
-                                  int stock, String point) {
+    private DishDetailResponseDto(String dishId, String topImage, String thumbImages, String productDescription,
+                                 String point, String deliveryInfo, String deliveryFee, String normalPrice,
+                                 String sellingPrice, String detailSection, int stock) {
+        this.dishId = dishId;
         this.topImage = topImage;
         this.thumbImages = thumbImages;
         this.productDescription = productDescription;
+        this.point = point;
         this.deliveryInfo = deliveryInfo;
         this.deliveryFee = deliveryFee;
+        this.normalPrice = normalPrice;
+        this.sellingPrice = sellingPrice;
         this.detailSection = detailSection;
         this.stock = stock;
-        this.point = point;
+    }
+
+    public String getDishId() {
+        return dishId;
     }
 
     public String getTopImage() {
@@ -37,12 +48,24 @@ public class DishDetailResponseDto {
         return productDescription;
     }
 
+    public String getPoint() {
+        return point;
+    }
+
     public String getDeliveryInfo() {
         return deliveryInfo;
     }
 
     public String getDeliveryFee() {
         return deliveryFee;
+    }
+
+    public String getNormalPrice() {
+        return normalPrice;
+    }
+
+    public String getSellingPrice() {
+        return sellingPrice;
     }
 
     public String getDetailSection() {
@@ -53,14 +76,10 @@ public class DishDetailResponseDto {
         return stock;
     }
 
-    public String getPoint() {
-        return point;
-    }
-
     public static DishDetailResponseDto of(Dish dish) {
-        return new DishDetailResponseDto(dish.getTopImage(), dish.getThumbImages(),
-                dish.getDescription(), dish.getDeliveryInfo(), dish.getDeliveryFee(),
-                dish.getDetailSection(), dish.getStock(), dish.getPoint());
+        return new DishDetailResponseDto(dish.getId(), dish.getTopImage(), dish.getThumbImages(),
+                dish.getDescription(), dish.getPoint(),dish.getDeliveryInfo(), dish.getDeliveryFee(),
+                dish.getNormalPrice(), dish.getSellingPrice(), dish.getDetailSection(), dish.getStock());
     }
 }
 

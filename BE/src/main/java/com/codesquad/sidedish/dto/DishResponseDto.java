@@ -3,16 +3,16 @@ package com.codesquad.sidedish.dto;
 import com.codesquad.sidedish.domain.Dish;
 
 public class DishResponseDto {
-    private final String id;
-    private final String mainImage;
-    private final String alt;
-    private final String deliveryType;
-    private final String title;
-    private final String description;
-    private final String normalPrice;
-    private final String sellingPrice;
-    private final String badge;
-    private final Long categoryId;
+    private String id;
+    private String mainImage;
+    private String alt;
+    private String deliveryType;
+    private String title;
+    private String description;
+    private String normalPrice;
+    private String sellingPrice;
+    private String badge;
+    private Long categoryId;
 
 
     private DishResponseDto(String id, String mainImage, String alt, String deliveryType,

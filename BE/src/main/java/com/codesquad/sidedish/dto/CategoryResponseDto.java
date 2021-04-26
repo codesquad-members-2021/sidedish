@@ -1,18 +1,22 @@
 package com.codesquad.sidedish.dto;
 
+import com.codesquad.sidedish.CategoryType;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class CategoryResponseDto {
     private final Long id;
-    private final String name;
-    private final String type;
-    private final Map<String, DishResponseDto> dishes;
 
-    private CategoryResponseDto(Long id, String name, String type, Map<String, DishResponseDto> dishes) {
+    @JsonProperty("category")
+    private CategoryType type;
+    private String name;
+    private List<DishResponseDto> dishes;
+
+    private CategoryResponseDto(Long id, String name, CategoryType type, List<DishResponseDto> dishes) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -27,23 +31,23 @@ public class CategoryResponseDto {
         return name;
     }
 
-    public String getType() {
+    public CategoryType getType() {
         return type;
     }
 
-    public Map<String, DishResponseDto> getDishes() {
+    public List<DishResponseDto> getDishes() {
         return dishes;
     }
 
     public static CategoryResponseDto of(Category category) {
-        return new CategoryResponseDto(category.getId(), category.getName(), category.getType(), dishToDishResponseDto(category.getDishes()));
+        return new CategoryResponseDto(category.getId(), category.getName(), category.getType(), dishesMapToDishResponseDtoList(category.getDishes()));
     }
 
-    private static Map<String, DishResponseDto> dishToDishResponseDto(Map<String, Dish> dishes) {
-        Map<String, DishResponseDto> dishResponseDtoMap = new HashMap<>();
+    private static List<DishResponseDto> dishesMapToDishResponseDtoList(Map<String, Dish> dishes) {
+        List<DishResponseDto> dishResponseDto = new ArrayList<>();
         for (String key : dishes.keySet()) {
             dishResponseDtoMap.put(key, DishResponseDto.of(dishes.get(key)));
         }
-        return dishResponseDtoMap;
+        return dishResponseDto;
     }
 }
