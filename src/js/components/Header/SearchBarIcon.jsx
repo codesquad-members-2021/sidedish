@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SearchBarIconWrapper = styled.div`
 	position: absolute;
 	top: 50px;
-	left: 1116px;
+	left: 1096px;
 `;
 
 const SearchBarIcon = () => (

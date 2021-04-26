@@ -19,10 +19,10 @@ const theme = {
 };
 
 const CardWrapper = styled.li`
-  position: relative;
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: normal;
+	position: relative;
+	font-family: Noto Sans KR;
+	font-style: normal;
+	font-weight: normal;
 `;
 
 const CardImage = styled.img`
@@ -43,17 +43,17 @@ const CardInfo = styled.div`
 	margin-bottom: 8px;
 `;
 const CardName = styled.div`
-  position: static;
-  font-size: 16px;
-  line-height: 23px;
-  color: #333;
-  margin-bottom: 8px;
+	position: static;
+	font-size: 16px;
+	line-height: 23px;
+	color: #333;
+	margin-bottom: 8px;
 `;
 const CardBody = styled.div`
-  position: static;
-  font-size: 14px;
-  line-height: 20px;
-  color: #828282;
+	position: static;
+	font-size: 14px;
+	line-height: 20px;
+	color: #828282;
 `;
 const CardHover = styled.ul`
 	position: absolute;
@@ -75,13 +75,15 @@ const Card = ({ data, size, setModalOn, setModalData }) => {
 	const { detail_hash, image, title, description, n_price, s_price, badge, delivery_type } = data;
 	const [isHover, setHover] = useState(false);
 	const [src, setSrc] = useState(image);
-	const clickImage = () => {
+	const clickImage = (e) => {
 		fetch(`https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/${detail_hash}`)
 			.then((response) => response.json())
 			.then((json) => {
-				if (!json.hash) return console.log("error!! :", json);
+				if (!json.hash) return console.log("error!! : card click - ", json);
 				json.data.name = title;
 				json.data.badge = badge;
+				const modalHeight = 680;
+				json.data.y = Math.round(e.pageY - e.clientY + (window.innerHeight - modalHeight) / 2);
 				setModalData(() => json.data);
 				setModalOn(true);
 			})
