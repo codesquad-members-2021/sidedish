@@ -2,18 +2,19 @@ package com.codesquad.sidedish.web.sidedish.DTO;
 
 import com.codesquad.sidedish.web.sidedish.Price;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DetailDataDTO {
     private String topImage;
-    private List<String> thumbImages;
+    private List<String> thumbImages = Collections.emptyList();
     private String productDescription;
     private Price point;
     private String deliveryInfo;
     private Price deliveryFee;
-    private List<Price> prices;
-    private List<String> detailSection;
+    private List<Price> prices = Collections.emptyList();
+    private List<String> detailSection = Collections.emptyList();
 
     public DetailDataDTO() {
     }

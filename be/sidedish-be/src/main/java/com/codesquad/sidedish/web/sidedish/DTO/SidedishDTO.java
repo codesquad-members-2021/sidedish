@@ -1,11 +1,12 @@
 package com.codesquad.sidedish.web.sidedish.DTO;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SidedishDTO {
     private long categoryId;
     private String name;
-    private List<ItemDTO> items;
+    private List<ItemDTO> items = Collections.emptyList();
 
     public SidedishDTO() {
     }

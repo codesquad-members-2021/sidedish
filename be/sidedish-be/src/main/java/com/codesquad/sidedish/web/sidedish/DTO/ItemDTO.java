@@ -2,18 +2,19 @@ package com.codesquad.sidedish.web.sidedish.DTO;
 
 import com.codesquad.sidedish.web.sidedish.Price;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ItemDTO {
     private String detailHash;
     private String image;
     private String alt;
-    private List<String> deliveryType;
+    private List<String> deliveryType = Collections.emptyList();
     private String title;
     private String description;
     private Price nPrice;
     private Price sPrice;
-    private List<String> badge;
+    private List<String> badge = Collections.emptyList();
 
     public ItemDTO() {
     }
