@@ -6,19 +6,26 @@
 //
 
 import Foundation
+import Combine
 
 struct FetchBanchanListUseCase {
-    private static let baseURL: String = "http://ec2-54-180-115-20.ap-northeast-2.compute.amazonaws.com:8080/"
+    private var subscriptions = Set<AnyCancellable>()
     
-    static func fetchBanchanList(network: NetworkRequest,section: String, completion: @escaping ([Banchan]?) -> Void) {
+    mutating func fetchBanchanList(network: NetworkRequest, baseURL: String, section: String, completion: @escaping ([Banchan]?) -> Void) {
         let url = baseURL+section
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        network.request(url: url, httpMethod: .get) { dataDummy in
-            guard let data = dataDummy.data else { return }
-            
-            guard let banchans = try? decoder.decode(BanchanListDTO.self, from: data) else { return }
-            completion(banchans.toDomain())
-        }
+
+        network.request(with: url, dataType: BanchanListDTO.self, httpMethod: .get)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            }, receiveValue: { banchanListDTO in
+                completion(banchanListDTO.toDomain())
+            })
+            .store(in: &subscriptions)
     }
 }

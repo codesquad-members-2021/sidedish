@@ -8,10 +8,10 @@
 import Foundation
 
 struct FetchImageUseCase {
-    static func fetch(network: NetworkRequest, imgURL: String, completion: @escaping (Data?) -> Void) {
-        network.request(url: imgURL, httpMethod: .get) { dataDummy in
-            let data = dataDummy.data
-            completion(data)
-        }
-    }
+//    static func fetch(network: NetworkRequest, imgURL: String, completion: @escaping (Data?) -> Void) {
+//        network.request(url: imgURL, httpMethod: .get) { dataDummy in
+//            let data = dataDummy.data
+//            completion(data)
+//        }
+//    }
 }
