@@ -2,7 +2,14 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    private var mainCollectionView: UICollectionView!
+    private lazy var mainCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.dataSource = self
+        view.delegate = self
+        return view
+    }()
+    
     private var headerOfCollectionView: CollectionViewHeader!
     
     override func viewDidLoad() {
@@ -15,11 +22,11 @@ class MainViewController: UIViewController {
 private extension MainViewController {
     
     private func setupMainCollectionView() {
-        mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
+        
         view.addSubview(mainCollectionView)
         configureMainCollectionView()
-        mainCollectionView.dataSource = self
-        mainCollectionView.delegate = self
+//        mainCollectionView.dataSource = self
+//        mainCollectionView.delegate = self
         mainCollectionView.register(FoodCell.self, forCellWithReuseIdentifier: CellIdentifier.foodCell)
         mainCollectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellIdentifier.foodHeader)
         setupHeaderView()
@@ -27,9 +34,9 @@ private extension MainViewController {
     
     private func configureMainCollectionView() {
         mainCollectionView.backgroundColor = UIColor.clear
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        mainCollectionView.setCollectionViewLayout(layout, animated: false)
+        
+//        layout.scrollDirection = .vertical
+//        mainCollectionView.setCollectionViewLayout(layout, animated: false)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
         mainCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
