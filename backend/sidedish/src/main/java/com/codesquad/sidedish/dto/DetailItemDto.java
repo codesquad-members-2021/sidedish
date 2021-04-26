@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DetailItemDto {
 
     @JsonProperty
-    private Long detailHash;
+    private String detailHash;
 
     @JsonProperty
     private String topImage;
@@ -31,7 +31,7 @@ public class DetailItemDto {
     @JsonProperty
     private String detailSection;//list
 
-    public DetailItemDto(Long detailHash, String topImage, String thumbImages, String productDescription, Integer point, String deliveryInfo, String deliveryFee, String prices, String detailSection) {
+    public DetailItemDto(String detailHash, String topImage, String thumbImages, String productDescription, Integer point, String deliveryInfo, String deliveryFee, String prices, String detailSection) {
         this.detailHash = detailHash;
         this.topImage = topImage;
         this.thumbImages = thumbImages;

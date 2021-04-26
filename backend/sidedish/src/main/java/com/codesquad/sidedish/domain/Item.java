@@ -5,12 +5,10 @@ import com.codesquad.sidedish.dto.ItemDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 
-import java.util.List;
-
 public class Item {
 
     @Id
-    private Long detailHash;
+    private String detailHash;
 
     private String image;
     private String alt;
@@ -32,7 +30,7 @@ public class Item {
     private int stock;
 
     @PersistenceConstructor
-    public Item(Long detailHash, String image, String alt, String deliveryType, String title, String description, Integer normalPrice,
+    public Item(String detailHash, String image, String alt, String deliveryType, String title, String description, Integer normalPrice,
                 Integer salePrice, String badge, String topImage, String thumbImages, String productDescription, Integer point,
                 String deliveryInfo, String deliveryFee, String prices, String detailSection, int stock) {
         this.detailHash = detailHash;
@@ -55,7 +53,7 @@ public class Item {
         this.stock = stock;
     }
 
-    public Long getDetailHash() {
+    public String getDetailHash() {
         return detailHash;
     }
 
@@ -76,20 +74,10 @@ public class Item {
                 item.point, item.deliveryInfo, item.deliveryFee, item.prices, item.detailSection);
     }
 
-
     public void purchase(int orderCount) {
         if(!checkStock(orderCount)) {
-            //custom exception
         }
         this.stock -= orderCount;
     }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "stock=" + stock +
-                '}';
-    }
-
 
 }

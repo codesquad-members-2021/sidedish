@@ -4,13 +4,13 @@ drop table if exists `order`;
 
 
 create table category (
-    category_id bigint auto_increment primary key,
+    category_id bigint primary key,
     name varchar(50)
 );
 
 create table item (
-    category bigint,
-    detail_hash bigint auto_increment primary key ,
+    category  bigint,
+    detail_hash varchar(50) primary key ,
     image varchar(500),
     alt varchar(50),
     delivery_type varchar(50),

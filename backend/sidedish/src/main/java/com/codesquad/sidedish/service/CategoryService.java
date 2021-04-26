@@ -26,25 +26,15 @@ public class CategoryService {
          return categoryRepository.findAll().stream().map(category -> Category.createCategoryDto(category)).collect(Collectors.toList());
     }
 
-    public DetailItemDto findDetailItemDtoByHash(Long categoryId, Long hash) {
+    public DetailItemDto findDetailItemDtoByHash(Long categoryId, String hash) {
         Item item = categoryRepository.findById(categoryId).orElseThrow(IllegalAccessError::new).findItem(hash);
         return Item.createDetailItemDto(item);
     }
 
-    public void order(Long categoryId, Long hash, int orderCount) {
-
-        System.out.println("categoryId = " + categoryId);
-        System.out.println("hash = " + hash);
-        System.out.println("orderCount = " + orderCount);
-        System.out.println("=======================================");
+    public void order(Long categoryId, String hash, int orderCount) {
         Category category = categoryRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
-
         Item item = category.findItem(hash);
-
         item.purchase(orderCount);
-
-        System.out.println("category = " + category);
-
         categoryRepository.save(category);
     }
 
