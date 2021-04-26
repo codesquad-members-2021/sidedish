@@ -67,3 +67,7 @@ INSERT INTO item(title, description, normal_price, sale_price,badges,delivery_ty
 -- //@ Todo : 의논해볼 사항 : 하다보니까, 이미지도 낫널로 만들어줘야할꺼같다가도.. 이미지없음 대체이미지 쓰도록 유도해도좋을꺼같고.. 토론해보시정
 -- //@ 추가로, 이미지 구분자에 \n(개행문자) 들어가지않게 하려고하는데 뭔지모르겠어요 ㅠㅠ....
 SELECT * from item;
+
+-- //@ Todo : 빰빰 의견 -> utf8 로 이모지 지원 안되니까, 이모지 지원되는 캐릭터셋으로 해줘
+
+ALTER TABLE sidedish CONVERT TO character SET utf8;
