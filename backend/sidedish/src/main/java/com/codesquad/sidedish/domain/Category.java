@@ -26,7 +26,12 @@ public class Category {
     }
 
     public static CategoryDto createCategoryDto(Category category) {
-        Set<ItemDto> itemDtos = category.items.entrySet().stream().map(Map.Entry::getValue).map(item -> Item.createItemDto(item)).collect(Collectors.toSet());
+        Set<ItemDto> itemDtos = category.items
+                .entrySet()
+                .stream()
+                .map(Map.Entry::getValue)
+                .map(item -> Item.createItemDto(item))
+                .collect(Collectors.toSet());
         return new CategoryDto(category.categoryId, category.name, itemDtos);
     }
 

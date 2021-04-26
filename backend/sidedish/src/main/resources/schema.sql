@@ -2,7 +2,6 @@ drop table if exists item;
 drop table if exists category;
 drop table if exists `order`;
 
-
 create table category (
     category_id bigint primary key,
     name varchar(50)
@@ -27,7 +26,7 @@ create table item (
     delivery_info varchar(500),
     delivery_fee varchar(500),
     prices int,
-    detail_section varchar(500),
+    detail_section varchar(5000),
     stock int,
     constraint category_foreign_id foreign key (category) references category(category_id)
 );

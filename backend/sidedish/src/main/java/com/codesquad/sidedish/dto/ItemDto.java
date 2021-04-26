@@ -16,7 +16,7 @@ public class ItemDto {
     private String alt;
 
     @JsonProperty
-    private List<String> deliveryType;//list
+    private List<String> deliveryType;
 
     @JsonProperty
     private String title;
@@ -31,7 +31,7 @@ public class ItemDto {
     private Integer salePrice;
 
     @JsonProperty
-    private List<String> badge;//list
+    private List<String> badge;
 
     public ItemDto(String detailHash, String image, String alt, List<String> deliveryType, String title, String description, Integer normalPrice, Integer salePrice, List<String> badge) {
         this.detailHash = detailHash;
@@ -45,18 +45,4 @@ public class ItemDto {
         this.badge = badge;
     }
 
-    @Override
-    public String toString() {
-        return "ItemDto{" +
-                "detailHash='" + detailHash + '\'' +
-                ", image='" + image + '\'' +
-                ", alt='" + alt + '\'' +
-                ", deliveryType=" + deliveryType +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", normalPrice=" + normalPrice +
-                ", salePrice=" + salePrice +
-                ", badge=" + badge +
-                '}';
-    }
 }

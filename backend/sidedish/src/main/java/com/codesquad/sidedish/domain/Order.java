@@ -1,7 +1,6 @@
 package com.codesquad.sidedish.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
 public class Order {
 
@@ -23,26 +22,6 @@ public class Order {
         this.email = email;
         this.detailHash = detailHash;
         this.count = count;
-    }
-
-    public Order setOrderId(Long orderId) {
-        this.orderId = orderId;
-        return this;
-    }
-
-    public Order setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public Order setDetailHash(String detailHash) {
-        this.detailHash = detailHash;
-        return this;
-    }
-
-    public Order setCount(int count) {
-        this.count = count;
-        return this;
     }
 
     public static Order of(String email, String detailHash, int count) {

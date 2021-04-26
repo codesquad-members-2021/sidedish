@@ -15,11 +15,9 @@ import java.util.stream.Collectors;
 public class CategoryService {
 
     CategoryRepository categoryRepository;
-    OrderRepository orderRepository;
 
-    public CategoryService(CategoryRepository categoryRepository, OrderRepository orderRepository) {
+    public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
-        this.orderRepository = orderRepository;
     }
 
     public List<CategoryDto> findAll() {

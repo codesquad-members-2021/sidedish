@@ -5,7 +5,7 @@ import com.codesquad.sidedish.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/detail/{categoryId}/{hash}")//카테고리 아이디
+@RequestMapping("/detail/{categoryId}/{hash}")
 public class ItemController {
 
     private final CategoryService categoryService;
@@ -18,7 +18,6 @@ public class ItemController {
     public DetailItemDto getDetailItem(@PathVariable Long categoryId, @PathVariable String hash) {//ItemDTO로 수정
         return categoryService.findDetailItemDtoByHash(categoryId, hash);
     }
-
 
     @PostMapping
     public DetailItemDto order(@PathVariable Long categoryId, @PathVariable String hash, int orderCount) {
