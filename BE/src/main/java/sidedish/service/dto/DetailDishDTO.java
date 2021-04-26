@@ -12,17 +12,22 @@ public class DetailDishDTO {
 
     private Long id;
     private String name;
+
     @JsonProperty("top_image")
     private String topImage;
+
     private String description;
     private List<Integer> prices;
     private List<String> badges;
     private Long stock;
     private Integer point;
+
     @JsonProperty("delivery_info")
     private String deliveryInfo;
+
     @JsonProperty("thumb_images")
     private List<String> thumbImages;
+
     @JsonProperty("detail_images")
     private List<String> detailImages;
 

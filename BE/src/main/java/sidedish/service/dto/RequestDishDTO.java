@@ -13,8 +13,10 @@ public class RequestDishDTO {
 
     private Long id;
     private String name;
+
     @JsonProperty("top_image")
     private String topImage;
+
     private String description;
     private List<Integer> prices;
     private List<String> badges;
