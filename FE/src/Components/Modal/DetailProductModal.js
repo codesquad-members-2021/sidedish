@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import closeImage from '../../images/close.svg';
 import LeftSide from './LeftSide/LeftSide';
 import RightSide from './RightSide/RightSide';
 import BottomSide from './BottomSide/BottomSide';
+import useToggle from '../../util/hooks/useToggle';
+import preparingProduct from '../../images/preparingProduct.png';
 
-const DetailProductModal = ({ isHide, handleToggleModal, modalItems }) => {
+const DetailProductModal = ({ modalState }) => {
+  const [isHide, setHide] = useToggle(true);
+
+  useEffect(() => {
+    if (modalState) {
+      setHide.toggle();
+    }
+  }, [modalState]);
+
   return (
     <Background isHide={isHide}>
       <ModelWrapper>
-        <div>
-          <TopSide>
-            {modalItems && (
-              <><LeftSide {...modalItems} />
-                <RightSide {...modalItems} /></>
-            )}
-          </TopSide>
-          <BottomSide />
-        </div>
-        <CloseButton src={closeImage} onClick={handleToggleModal()} alt="" />
+        {modalState?.status === 'success' &&
+          <div>
+            <TopSide>
+              {modalState && (
+                <><LeftSide {...modalState} />
+                  <RightSide {...modalState} /></>
+              )}
+            </TopSide>
+            <BottomSide />
+          </div>
+        }
+
+        {modalState?.status === 'fail' &&
+          <ErrorImgWrapper>
+            <img src={preparingProduct} alt="" width='100%' />
+          </ErrorImgWrapper>
+        }
+        <CloseButton src={closeImage} onClick={setHide.toggle} alt="" />
       </ModelWrapper>
-    </Background>
+    </Background >
   );
 };
 
@@ -61,4 +79,10 @@ const CloseButton = styled.img`
   }
 `;
 
+const ErrorImgWrapper = styled.div`
+  height: inherit;
+  width: 960px;
+  background: #fff;
+  border-radius: 5px;
+`;
 export default DetailProductModal;

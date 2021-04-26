@@ -4,8 +4,9 @@ import SpecialLabelTag from '../../commons/SpecialLabelTag';
 import CountSelector from './CountSelector';
 import Sum from './Sum';
 import OrderButton from './OrderButton';
+import { formatPriceAsNumber } from '../../../util/serviceUtils';
 
-const RightSide = ({ prices, product_description, point, delivery_info, delivery_fee }) => {
+const RightSide = ({ prices, product_description, point, delivery_info, delivery_fee, title, badge }) => {
   const [count, setCount] = useState(0);
   const handleChangeCount = (number) => () => {
     setCount(count + number);
@@ -17,15 +18,19 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
 
   return (
     <RightSideWrapper>
-      <TitleDiv>[미노리키친] 규동 250g</TitleDiv>
+      <TitleDiv>{title}</TitleDiv>
       <DescriptionDiv>{product_description}</DescriptionDiv>
       <PriceWrapper>
-        <SpecialLabelTag event />
-        {prices && prices.length === 1 ? (
-          <SalePriceSpan>{prices[0]}</SalePriceSpan>
-        ) : (
-          <><SalePriceSpan>{prices[0]}</SalePriceSpan> <NetPriceSpan>{prices[1]}</NetPriceSpan></>
-        )}
+        {badge?.map((badge, idx) => {
+          return (<SpecialLabelTag key={idx} badge={badge} />);
+        })}
+        {prices?.length === 1 &&
+          <SalePriceSpan>{formatPriceAsNumber(prices[0])}</SalePriceSpan>
+        }
+        {prices?.length === 2 &&
+          <><SalePriceSpan>{formatPriceAsNumber(prices[1])}</SalePriceSpan>
+            <NetPriceSpan>{formatPriceAsNumber(prices[0])}</NetPriceSpan></>
+        }
       </PriceWrapper>
 
       <DivisionHr />
@@ -33,8 +38,7 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
       <AdditionalInfoWrapper>
         <AdditionalInfoTitle >적립금</AdditionalInfoTitle>
         <AdditionalInfoDesc >
-          {(Number(point.match(/\d/g).join('')) * count)}
-          {point.match(/\D/)}
+          {formatPriceAsNumber(point, count)}원
         </AdditionalInfoDesc>
       </AdditionalInfoWrapper>
 
@@ -56,7 +60,9 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
       </AdditionalInfoWrapper>
 
       <DivisionHr topMargin="24" />
-      <Sum sumPrice={prices[0].match(/\d/g).join('') * count} />
+      <Sum sumPrice={prices[1]
+        ? formatPriceAsNumber(prices[1], count)
+        : formatPriceAsNumber(prices[0], count)} />
       <OrderButton />
 
     </RightSideWrapper>
@@ -88,18 +94,18 @@ const SalePriceSpan = styled.span`
   font-size: 24px;
   font-weight: 700;
   line-height: 35px;
-  /* &::after{
+  &::after{
     content:"원";
-  } */
+  }
 `;
 
 const NetPriceSpan = styled.span`
   color: #828282;
   text-decoration: line-through;
   line-height: 23px;
-  /* &::after{
+  &::after{
     content:"원";
-  } */
+  }
 `;
 
 const PriceWrapper = styled.div`

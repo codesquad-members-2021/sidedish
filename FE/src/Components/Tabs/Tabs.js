@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Container } from '../commons/base.js';
 import Card from '../commons/Card';
 
-const Tabs = ({ handleToggleModal }) => {
+const Tabs = ({ setModalState }) => {
   const [tabItemList, setTabItemList] = useState([]);
   const [currentTabItems, setCurrentTabItems] = useState([]);
 
@@ -42,7 +42,7 @@ const Tabs = ({ handleToggleModal }) => {
       </div>
       <CardListWrapper>
         {currentTabItems.map((item, idx) => {
-          return (<Card key={idx} item={item} handleToggleModal={handleToggleModal} />);
+          return (<Card key={idx} item={item} setModalState={setModalState} />);
         })}
       </CardListWrapper>
     </TabsWrapper>
