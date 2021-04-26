@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 
-public class ItemDTO {
+public class DishDTO {
 
     @JsonProperty("detail_hash")
     private String detailHash;
@@ -21,7 +21,7 @@ public class ItemDTO {
     private Integer specialPrice;
     private String[] badge;
 
-    public ItemDTO(String detailHash, String image, String deliveryType, String title, String description, Integer normalPrice, Integer specialPrice, String[] badge) {
+    public DishDTO(String detailHash, String image, String deliveryType, String title, String description, Integer normalPrice, Integer specialPrice, String[] badge) {
         this.detailHash = detailHash;
         this.image = image;
         this.deliveryType = deliveryType;
@@ -66,7 +66,7 @@ public class ItemDTO {
 
     @Override
     public String toString() {
-        return "ItemDTO{" +
+        return "DishDTO{" +
                 "detailHash='" + detailHash + '\'' +
                 ", image='" + image + '\'' +
                 ", deliveryType='" + deliveryType + '\'' +
