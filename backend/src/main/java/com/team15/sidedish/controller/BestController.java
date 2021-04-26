@@ -29,7 +29,7 @@ public class BestController {
     }
 
     @GetMapping("/{categoryId}")
-    public BestDTO showSingleBestDish(@PathVariable Integer categoryId) {
+    public BestDTO showSingleBestDish(@PathVariable Long categoryId) {
         return bestService.showSingleBestDish(categoryId);
     }
 }

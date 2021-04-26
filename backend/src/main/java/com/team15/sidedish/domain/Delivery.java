@@ -13,8 +13,6 @@ public class Delivery {
 
     private String dishHash;
 
-    public Delivery(){ }
-
     public Delivery(Long id, boolean isMonday, String deliveryType, String deliveryFee, String deliveryCondition, String dishHash) {
         this.id = id;
         this.isMonday = isMonday;
@@ -47,11 +45,5 @@ public class Delivery {
     public String getDishHash() {
         return dishHash;
     }
-
-    //    private List<DeliveryType> parsingDeliveryType(String delivery) {
-//        return Arrays.stream(delivery.split(“,”))
-//                .map(DeliveryType::valueOf)
-//                .collect(Collectors.toList());
-//    }
 
 }

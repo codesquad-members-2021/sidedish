@@ -7,11 +7,11 @@ import java.util.List;
 
 public class BestDTO {
     @JsonProperty("category_id")
-    private Integer categoryId;
+    private Long categoryId;
     private String name;
     private List<ItemDTO> items;
 
-    private BestDTO(Integer categoryId, String name, List<ItemDTO> items) {
+    private BestDTO(Long categoryId, String name, List<ItemDTO> items) {
         this.categoryId = categoryId;
         this.name = name;
         this.items = items;
@@ -21,7 +21,7 @@ public class BestDTO {
         return new BestDTO(best.getCategoryId(), best.getName(), items);
     }
 
-    public Integer getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 

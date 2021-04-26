@@ -27,7 +27,7 @@ public class BestService {
                 .collect(Collectors.toList());
     }
 
-    public BestDTO showSingleBestDish(Integer categoryId) {
+    public BestDTO showSingleBestDish(Long categoryId) {
         List<String> bestDish = bestRepository.findByCategoryId(categoryId);
         Best best = bestRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
 
