@@ -49,7 +49,7 @@ const BestList = (props) => {
 		fetch("https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best")
 			.then((response) => response.json())
 			.then((json) => setBestList(() => json.body))
-			.catch((response) => console.log("error!! :", response));
+			.catch((response) => console.log("error!! : bestlist - ", response));
 	}, []);
 
 	const clickTab = ({ target }) => setIndex(() => bestList.findIndex(({ name }) => name === target.innerHTML));

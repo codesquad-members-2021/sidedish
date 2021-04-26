@@ -5,7 +5,7 @@ import SearchBarIcon from "./SearchBarIcon"
 
 const HeaderWrapper = styled.div`
 	position: relative;
-	width: 1440px;
+	width: 1280px;
 	height: 122px;
 
 	font-family: Noto Sans KR;
@@ -42,7 +42,7 @@ const SearchBar = styled.input`
 	width: 248px;
 	height: 40px;
 	top: 41px;
-	left: 898px;
+	left: 878px;
 	border-radius: 5px;
 	border: none;
 	background: #f5f5f7;
@@ -50,7 +50,7 @@ const SearchBar = styled.input`
 const Login = styled.div`
 	position: absolute;
 	top: 50px;
-	left: 1172px;
+	left: 1152px;
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 23px;
@@ -62,7 +62,7 @@ const Login = styled.div`
 const Basket = styled.div`
 	position: absolute;
 	top: 50px;
-	left: 1241px;
+	left: 1221px;
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 23px;
