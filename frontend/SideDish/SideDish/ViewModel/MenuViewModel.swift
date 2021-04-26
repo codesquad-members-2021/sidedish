@@ -17,6 +17,21 @@ class MenuViewModel {
         self.nPrice = nPrice
         self.badges = badges
     }
+    
+    func verifyBadges(badges: [String]) -> [Bool] {
+        switch badges {
+        case ["이벤트특가"]:
+            return [true, false]
+        case ["론칭특가"]:
+            return [false, true]
+        case ["이벤트특가","론칭특가"]:
+            return [true, true]
+        case ["론칭특가","이벤트특가"]:
+            return [true, true]
+        default:
+            return [false, false]
+        }
+    }
 }
 
 extension MenuViewModel: Hashable, Equatable {

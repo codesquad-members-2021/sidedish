@@ -38,8 +38,7 @@ class MenusViewModel {
     func matchingViewModel(menuList: [Menu]) -> [MenuViewModel] {
         let viewModelList: [MenuViewModel] = menuList.map() { menu in
             let nPrice = stringToAttributedString(menu.nPrice)
-            let badges = setBadges(menu.badge)
-            let viewModel = MenuViewModel(image: menu.image, title: menu.title, body: menu.description, sPrice: menu.sPrice, nPrice: nPrice, badges: badges)
+            let viewModel = MenuViewModel(image: menu.image, title: menu.title, body: menu.description, sPrice: menu.sPrice, nPrice: nPrice, badges: menu.badge ?? [])
             return viewModel
         }
         return viewModelList
@@ -52,15 +51,6 @@ class MenusViewModel {
             return attributeString
         } else {
             return NSMutableAttributedString(string: "")
-        }
-    }
-    
-    // badge 설정할 때, 메소드 이름 바꾸기!
-    func setBadges(_ badges: [String]?) -> [String] {
-        if let badges = badges {
-            return badges
-        } else {
-            return []
         }
     }
 }

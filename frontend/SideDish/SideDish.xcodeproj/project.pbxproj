@@ -233,6 +233,20 @@
 			path = SideDishUITests;
 			sourceTree = "<group>";
 		};
+		C47942AE6054F8A507A45C1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7170100C838AA642224E5DCE /* Pods-SideDish.debug.xcconfig */,
+				7FF21EAAD09AD50BD023F72C /* Pods-SideDish.release.xcconfig */,
+				FD74F0D1D82A2F83DAB7E818 /* Pods-SideDish-SideDishUITests.debug.xcconfig */,
+				C3F90F1D121C49A909B1B179 /* Pods-SideDish-SideDishUITests.release.xcconfig */,
+				B171412F1D324870D55DF000 /* Pods-SideDishTests.debug.xcconfig */,
+				E91D83273D3CC72A6884B988 /* Pods-SideDishTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CE5905FC26327DD40085F570 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
