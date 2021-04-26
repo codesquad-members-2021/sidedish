@@ -13,7 +13,7 @@ public class StringConvertor {
             return null;
         }
         Set<String> set = new HashSet<>();
-        String[] arr = column.split(",");
+        String[] arr = column.split(", ");
         set.addAll(Arrays.asList(arr));
         return set;
     }
