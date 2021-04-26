@@ -33,27 +33,35 @@ class DiffableProvider  {
     }
     
     private func configureCell(collectionView: UICollectionView, indexPath: IndexPath, dishData: Dish) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCardCell.reuseIdentifier, for: indexPath) as? DishCardCell else {
-            return UICollectionViewCell()
-        }
-        
-        DispatchQueue.main.async {
-            cell.dishImage.layer.cornerRadius = 15
-            cell.dishImage.image = self.createImage(url: dishData.image)
-        }
-        cell.title.text = "\(dishData.title)"
-        cell.body.text = "\(dishData.description)"
-        
-        cell.charge.attributedText = convertCharge(normal: dishData.normalPrice, selling: dishData.sellingPrice)
-        
-        removeResidualBadges(stackView: cell.eventStackView)
-        if let badgeArray = createBadges(badgeString: dishData.badge) {
-            for badge in badgeArray {
-                cell.eventStackView.addArrangedSubview(badge)
-            }
-        }
+        let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration(), for: indexPath, item: dishData)
         
         return cell
+    }
+    
+    func cellRegistration() -> UICollectionView.CellRegistration<DishCell, Dish> {
+        let cellRegistration = UICollectionView.CellRegistration<DishCell,Dish>.init(cellNib: UINib.init(nibName: DishCell.reuseIdentifier, bundle: nil), handler: { cell, indexPath, dishData in
+            
+            DispatchQueue.main.async {
+                cell.dishImage.layer.cornerRadius = 15
+                cell.dishImage.image = self.createImage(url: dishData.image)
+            }
+            DispatchQueue.main.async {
+                cell.title.text = "\(dishData.title)"
+                cell.body.text = "\(dishData.description)"
+                
+                cell.charge.attributedText = self.convertCharge(normal: dishData.normalPrice, selling: dishData.sellingPrice)
+                
+                self.removeResidualBadges(stackView: cell.eventStackView)
+                if let badgeArray = self.createBadges(badgeString: dishData.badge) {
+                    for badge in badgeArray {
+                        cell.eventStackView.addArrangedSubview(badge)
+                    }
+                }
+            }
+            
+        })
+        
+        return cellRegistration
     }
     
     private func configureHeader(dataSource: UICollectionViewDiffableDataSource<Dishes,Dish>) -> UICollectionView.SupplementaryRegistration
