@@ -58,8 +58,4 @@ const CarouselArea = styled.div`
   }
 `;
 
-
-
-
-
 export default CarouselContainer;
