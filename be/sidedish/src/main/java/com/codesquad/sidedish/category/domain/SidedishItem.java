@@ -45,6 +45,11 @@ public class SidedishItem {
 
     public int calculateSalePrice(Set<SidedishEvent> sidedishEvents) {
         int salePrice = itemNormalPrice;
+
+        if (sidedishEvents.size() == 0) {
+            return SidedishEvent.NOT_ON_SALE;
+        }
+
         for (SidedishEvent currentEvent : sidedishEvents) {
             salePrice -= currentEvent.discount(this);
         }

@@ -8,8 +8,11 @@ import java.util.Set;
 
 public class SidedishEvent {
 
+    public static final int NOT_ON_SALE = -1;
+
     @Id
     private Long id;
+
     private String eventName;
     private String eventColor;
     private float eventSaleRate;
