@@ -18,9 +18,12 @@ class SideDishViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .red
+        print("asdf")
         sideDishCollectionView.delegate = self
         configureDataSource()
         bind()
+        print("sdf")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,5 +116,4 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         targetVC.sPrice = itemDetail.sPrice
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
-    
 }
