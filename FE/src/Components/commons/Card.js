@@ -5,8 +5,7 @@ import SpecialLabelTag from './SpecialLabelTag';
 
 import ResponsiveCard from './Cards/ResponsiveCard.js';
 
-const Card = ({ type = "default", number }) => {
-
+const Card = ({ type = "default", number, item, handleToggleModal }) => {
   switch (type) {
     case "responsive":
       return <ResponsiveCard number={number} loadingImage={loadingImage} SpecialLabelTag />
@@ -15,26 +14,32 @@ const Card = ({ type = "default", number }) => {
     default:
       break;
   }
-
   return (
     <CardWrapper>
-      <ImageWrapper>
+      <ImageWrapper onClick={handleToggleModal({ hash: item.detail_hash })}>
         <Image src={loadingImage} alt="" />
         <Overlay>
           <OverlayText>
-            <div>새벽배송</div>
+            <div>{item.delivery_type[0]}</div>
             <hr />
-            <div>전국택배</div>
+            <div>{item.delivery_type[1]}</div>
           </OverlayText>
         </Overlay>
       </ImageWrapper>
-      <TitleDiv>[소중한 식사] 경상도 한상차림</TitleDiv>
-      <DescriptionDiv>경상도 명물 요리 세가지를 한상에!</DescriptionDiv>
+      <TitleDiv>{item.title}</TitleDiv>
+      <DescriptionDiv>{item.description}</DescriptionDiv>
+
       <PriceWrapper>
-        <SalePriceSpan>31200</SalePriceSpan>
-        <NetPriceSpan>39000</NetPriceSpan>
+        {item.n_price ?
+          (<><SalePriceSpan>{item.n_price}</SalePriceSpan>
+            <NetPriceSpan>{item.s_price}</NetPriceSpan></>) :
+          (<SalePriceSpan>{item.s_price}</SalePriceSpan>)}
       </PriceWrapper>
-      <SpecialLabelTag event scene />
+
+      {item.badge && item.badge.map((badge, idx) => {
+        return (<SpecialLabelTag key={idx} badge={badge} />);
+      })}
+
     </CardWrapper>
   )
 }

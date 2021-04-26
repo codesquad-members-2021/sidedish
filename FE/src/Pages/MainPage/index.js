@@ -7,17 +7,28 @@ import Tabs from '../../Components/Tabs/Tabs';
 import DetailProductModal from '../../Components/Modal/DetailProductModal';
 
 import MainDish from './MainDish';
+import { useState } from 'react';
 
 const MainPage = () => {
+  const [isHide, setHide] = useState(true);
+  const [modalItems, setModalItems] = useState(null);
+
+  const handleToggleModal = (item) => async () => {
+    setHide(!isHide);
+    if (!item) return;
+    const responseData = await (await fetch(`/develop/baminchan/detail/${item.hash}`)).json();
+    setModalItems(responseData.data);
+  };
+
   return (
     <MainPageLayout>
-      <DetailProductModal />
+      <DetailProductModal {...{ isHide, handleToggleModal, modalItems }} />
       <Header />
-      <Tabs />
+      <Tabs handleToggleModal={handleToggleModal} />
       <MainDishSection>
         <MainDish />
       </MainDishSection>
-      
+
     </MainPageLayout>
   )
 }
@@ -27,6 +38,6 @@ const MainPageLayout = styled(FlexContainer)`
 `;
 
 const MainDishSection = styled(Container)`
-` 
+`
 
 export default MainPage;

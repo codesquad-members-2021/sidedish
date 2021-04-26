@@ -5,52 +5,58 @@ import CountSelector from './CountSelector';
 import Sum from './Sum';
 import OrderButton from './OrderButton';
 
-const RightSide = () => {
-  const [price, setPrice] = useState(0);
+const RightSide = ({ prices, product_description, point, delivery_info, delivery_fee }) => {
   const [count, setCount] = useState(0);
+  const handleChangeCount = (number) => () => {
+    setCount(count + number);
+  };
 
   useEffect(() => {
-    setPrice(5200);
-  }, []);
+    setCount(0); // 모달 새로 띄우면 카운트 0으로 초기화
+  }, [prices])
 
   return (
     <RightSideWrapper>
       <TitleDiv>[미노리키친] 규동 250g</TitleDiv>
-      <DescriptionDiv>일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥</DescriptionDiv>
+      <DescriptionDiv>{product_description}</DescriptionDiv>
       <PriceWrapper>
         <SpecialLabelTag event />
-        <SalePriceSpan>{price.toLocaleString()}</SalePriceSpan>
-        <NetPriceSpan>6500</NetPriceSpan>
+        {prices && prices.length === 1 ? (
+          <SalePriceSpan>{prices[0]}</SalePriceSpan>
+        ) : (
+          <><SalePriceSpan>{prices[0]}</SalePriceSpan> <NetPriceSpan>{prices[1]}</NetPriceSpan></>
+        )}
       </PriceWrapper>
 
       <DivisionHr />
 
       <AdditionalInfoWrapper>
-        <AdditionalInfo fontColor="#828282" rightMargin="16">적립금</AdditionalInfo>
-        <AdditionalInfo fontColor="#4F4F4F">{price / 100}원</AdditionalInfo>
+        <AdditionalInfoTitle >적립금</AdditionalInfoTitle>
+        <AdditionalInfoDesc >
+          {(Number(point.match(/\d/g).join('')) * count)}
+          {point.match(/\D/)}
+        </AdditionalInfoDesc>
       </AdditionalInfoWrapper>
 
       <AdditionalInfoWrapper>
-        <AdditionalInfo fontColor="#828282" rightMargin="16">배송정보</AdditionalInfo>
-        <AdditionalInfo fontColor="#4F4F4F">서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가)
-        [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다</AdditionalInfo>
+        <AdditionalInfoTitle>배송정보</AdditionalInfoTitle>
+        <AdditionalInfoDesc >{delivery_info}</AdditionalInfoDesc>
       </AdditionalInfoWrapper>
 
       <AdditionalInfoWrapper>
-        <AdditionalInfo fontColor="#828282" rightMargin="16">배송비</AdditionalInfo>
-        <AdditionalInfo fontColor="#4F4F4F">2500원</AdditionalInfo>
-        <AdditionalInfo fontColor="#4F4F4F" weight="700" >(40,000원 이상 구매 시 무료)</AdditionalInfo>
+        <AdditionalInfoTitle>배송비</AdditionalInfoTitle>
+        <AdditionalInfoDesc >{delivery_fee}</AdditionalInfoDesc>
       </AdditionalInfoWrapper>
 
       <DivisionHr topMargin="8" />
 
       <AdditionalInfoWrapper align="center" justify="space-between">
         <AdditionalInfo fontColor="#828282">수량</AdditionalInfo>
-        <CountSelector {...{ count, setCount }} />
+        <CountSelector {...{ count, handleChangeCount }} />
       </AdditionalInfoWrapper>
 
       <DivisionHr topMargin="24" />
-      <Sum sumPrice={price * count} />
+      <Sum sumPrice={prices[0].match(/\d/g).join('') * count} />
       <OrderButton />
 
     </RightSideWrapper>
@@ -82,18 +88,18 @@ const SalePriceSpan = styled.span`
   font-size: 24px;
   font-weight: 700;
   line-height: 35px;
-  &::after{
+  /* &::after{
     content:"원";
-  }
+  } */
 `;
 
 const NetPriceSpan = styled.span`
   color: #828282;
   text-decoration: line-through;
   line-height: 23px;
-  &::after{
+  /* &::after{
     content:"원";
-  }
+  } */
 `;
 
 const PriceWrapper = styled.div`
@@ -120,5 +126,15 @@ const AdditionalInfo = styled.div`
   min-width: 59px;
   font-weight: ${({ weight }) => weight};
 `;
+
+const AdditionalInfoTitle = styled(AdditionalInfo)`
+  margin-right: 16px;
+  color:#828282;
+`;
+
+const AdditionalInfoDesc = styled(AdditionalInfo)`
+  color:#4F4F4F;
+`;
+
 
 export default RightSide;

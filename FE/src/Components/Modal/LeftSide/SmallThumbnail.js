@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import defaultImage from '../../../images/default.png';
 
-const SmallThumbnail = ({ imgSources, handleChange }) => {
+const SmallThumbnail = ({ imgSources, handleChangeImageSource }) => {
   return (
     <SmallThumbnailWrapper >
       {imgSources && imgSources.map((img, idx) => {
@@ -10,11 +11,11 @@ const SmallThumbnail = ({ imgSources, handleChange }) => {
             <RadioButton
               type="radio"
               name="small-thumbnail"
-              onChange={() => { handleChange({ src: img }) }}
+              onChange={handleChangeImageSource({ idx })}
               disabled={!img}
               defaultChecked={idx === 0}
             />
-            <SmallThumbnailImage src={img} />
+            <SmallThumbnailImage src={img} onError={(e) => e.target.src = defaultImage} />
           </label>
         )
       })}

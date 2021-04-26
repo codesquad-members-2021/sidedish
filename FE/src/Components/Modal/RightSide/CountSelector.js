@@ -1,32 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import TopArrowButton from '../../../images/TopArrowButtonDeactive.svg';
 import BottomArrowButton from '../../../images/BottomArrowButtonDeactive.svg';
+import DisabledBottomArrowButton from '../../../images/DisabledBottomArrowButtonDeactive.svg';
 
-const CountSelector = ({ count, setCount }) => {
-  const countChangeHandler = (calculatorName) => {
-    const isPlus = calculatorName === 'plus';
-    if (!isPlus && count === 0) return;
-    const calculator = isPlus ? 1 : -1;
-    setCount(count + calculator);
-  }
-
+const CountSelector = ({ count, handleChangeCount }) => {
   return (
     <CountSelectWrapper>
       <Count>{count}</Count>
       <SelectBox>
-        <SelectButton up onClick={() => countChangeHandler('plus')} />
-        <SelectButton down onClick={() => countChangeHandler('minus')} />
+        <SelectButton up onClick={handleChangeCount(1)} />
+        <SelectButton down onClick={handleChangeCount(-1)} disabled={count === 0} />
       </SelectBox>
     </CountSelectWrapper>
   );
 };
 
-
 const CountSelectWrapper = styled.div`
   display:flex;
   width: 110px;
-  `;
+`;
 
 const Count = styled.div`
   width:88px;
@@ -48,13 +41,9 @@ const SelectButton = styled.button`
   height: 25px;
   border:1px solid #E0E0E0;
   background: #fff;
-  background-image: url(${({ up }) => up ? TopArrowButton : BottomArrowButton});
-  &:focus{
-    outline:1px solid #E0E0E0;
-  }
+  background-image: url(${({ up, disabled }) => up ? TopArrowButton : !disabled ? BottomArrowButton : DisabledBottomArrowButton});
   &:hover{
-    background: #f1f1f1;
-    background-image: url(${({ up }) => up ? TopArrowButton : BottomArrowButton});
+    background-color: ${({ disabled }) => !disabled && '#f1f1f1'};
     cursor: pointer;
   }
 `;
