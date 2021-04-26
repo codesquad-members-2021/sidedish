@@ -1,16 +1,20 @@
 PODS:
+  - Alamofire (5.4.3)
   - Toaster (2.3.0)
 
 DEPENDENCIES:
+  - Alamofire
   - Toaster
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Toaster
 
 SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
 
-PODFILE CHECKSUM: 6091b6450d4fbc3b91c69e324781111a3e39d762
+PODFILE CHECKSUM: db8ff5c0ff0934256f76b8f0b23c5aa489af1de2
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
