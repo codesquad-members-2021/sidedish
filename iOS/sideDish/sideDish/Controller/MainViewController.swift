@@ -10,7 +10,10 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    private var headerOfCollectionView: CollectionViewHeader!
+    private var headerOfCollectionView: CollectionViewHeader = {
+        let header = CollectionViewHeader(frame: .zero)
+        return header
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +28,18 @@ private extension MainViewController {
         
         view.addSubview(mainCollectionView)
         configureMainCollectionView()
-//        mainCollectionView.dataSource = self
-//        mainCollectionView.delegate = self
         mainCollectionView.register(FoodCell.self, forCellWithReuseIdentifier: CellIdentifier.foodCell)
         mainCollectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellIdentifier.foodHeader)
-        setupHeaderView()
+        mainCollectionView.addSubview(headerOfCollectionView)
     }
     
     private func configureMainCollectionView() {
         mainCollectionView.backgroundColor = UIColor.clear
-        
-//        layout.scrollDirection = .vertical
-//        mainCollectionView.setCollectionViewLayout(layout, animated: false)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
         mainCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    }
-    
-    private func setupHeaderView() {
-        headerOfCollectionView = CollectionViewHeader(frame: .zero)
-        headerOfCollectionView.backgroundColor = UIColor.green
-        mainCollectionView.addSubview(headerOfCollectionView)
     }
 }
 
