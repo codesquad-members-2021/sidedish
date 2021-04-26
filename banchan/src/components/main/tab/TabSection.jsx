@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import Card from "../../utils/Card";
-import { CenterContainer } from "../../utils/styles/common";
-import { Button, SectionTitle, CardList } from "../../utils/styles/common";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Card from '../../utils/Card';
+import { CenterContainer } from '../../utils/styles/common';
+import { Button, SectionTitle, CardList } from '../../utils/styles/common';
 
 const tempUrl =
-  "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best";
+  'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best';
 
 const TabSection = (props) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -48,6 +48,7 @@ const TabSection = (props) => {
                   product={item}
                   cardSize={(props) => props.theme.cardSizes.L}
                   margin={12}
+                  onModal={props.onModal}
                 />
               ))}
           </CardList>
@@ -66,7 +67,7 @@ const TabButton = styled(Button)`
       : props.theme.colors.lightGrayBG};
   color: ${(props) =>
     props.activated ? props.theme.colors.darkGray : props.theme.colors.gray};
-  font-weight: ${(props) => props.activated && "bold"};
+  font-weight: ${(props) => props.activated && 'bold'};
   width: 201px;
   height: 58px;
   margin-right: 8px;
