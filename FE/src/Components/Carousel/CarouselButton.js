@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LeftArrowButtonActive from '../commons/Buttons/LeftArrowButtonActive.js';
 import RightArrowButtonActive from '../commons/Buttons/RightArrowButtonActive.js';
 
-const CarouselButton = ({ type, onDispatch }) => {
+const CarouselButton = ({ type, onClick }) => {
   
   const selectButton = () => {
     switch (type) {
@@ -15,7 +15,7 @@ const CarouselButton = ({ type, onDispatch }) => {
   }
   
   return (
-    <ButtonBox onClick={() => onDispatch({ action: type })}>
+    <ButtonBox onClick={onClick}>
       {selectButton()}
     </ButtonBox>
   )

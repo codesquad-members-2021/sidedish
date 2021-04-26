@@ -41,7 +41,23 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     console.log("handleTransitionEnd", calculatedMovableRange);
   }
 
+  const isNotAbleToSlide = () => {
+    if (eventMessage.isActive) return true;
+    
+    if (slideCount === unit) {
+      setEventMessage({ isActive: true, msg: "처음입니다" });
+      return true;
+    } else if (slideCount === props.children.length) {
+      setEventMessage({ isActive: true, msg: "마지막입니다" });
+      return true;
+    }
+
+    return false;
+  }
+  
   const slideLeft = () => {
+    if (isNotAbleToSlide()) return;
+    
     let calculatedXValue = calculatedMovableRange.to;
     // let ItemWidth = $CarouselArea.current.offsetWidth/unit;
     if (slideCount - unit < unit) {
@@ -56,6 +72,8 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
   }
 
   const slideRight = () => {
+    if (isNotAbleToSlide()) return;
+
     let calculatedXValue = calculatedMovableRange.to;
     if (slideCount + unit > props.children.length) {
       let remainItemsCount = props.children.length - slideCount;
@@ -69,24 +87,6 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
   }
   
-  const handleDispatch = ({ action }) => {
-    if (eventMessage.isActive) return;
-    
-    if (action === "left") {
-      if (slideCount === unit) {
-        setEventMessage({ isActive: true, msg: "처음입니다" });
-        return;
-      }
-      slideLeft();
-    } else if (action === "right") {
-      if (slideCount === props.children.length) {
-        setEventMessage({ isActive: true, msg: "마지막입니다" });
-        return;
-      }
-      slideRight();
-    }
-  }
-
   const renderEventModal = () => {
     return <CarouselEventModal carouselEvent={eventMessage} setEventMessage={setEventMessage}/>;
   }
@@ -102,8 +102,8 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
       </CarouselAreaWrapper>
       <CarouselButtonArea size={carouselButtonAreaSize}>
         <CarouselButtonRelativeArea>
-          <CarouselButton type={"left"} onDispatch={handleDispatch} />
-          <CarouselButton type={"right"} onDispatch={handleDispatch} />
+          <CarouselButton type={"left"} onClick={slideLeft} />
+          <CarouselButton type={"right"} onClick={slideRight} />
         </CarouselButtonRelativeArea>
       </CarouselButtonArea>
       <CarouselEventModalArea>
