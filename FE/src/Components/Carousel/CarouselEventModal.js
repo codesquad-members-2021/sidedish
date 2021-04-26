@@ -32,20 +32,23 @@ const CarouselEventModalLayout = styled.div`
   color: white;
   border-radius: 10px;
   
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   
-  bottom: -70px;
+  bottom: -15%;
   transform: translateY(0px);
+  opacity: 1;
   
   &.event-modal-active {
-    transition-property: bottom, transform;
-    transition-duration: 0.5s, 0.5s;
-    transition-delay: 0s, 1.5s;
+    transition-property: bottom, opacity, transform;
+    transition-duration: 0.5s, 0.5s, 0.5s;
+    transition-delay: 0s, 1.5s, 1.5s;
     
     bottom: 20px;
-    transform: translateY(90px);
+    transform: translateY(20px);
+    opacity: 0;
+    
   }
 `;
 
@@ -56,6 +59,7 @@ const CarouselEventModalArea = styled.div`
   
   display: flex;
   justify-content: center;
+  z-index: 1;
 `;
 
 export default CarouselEventModal;
