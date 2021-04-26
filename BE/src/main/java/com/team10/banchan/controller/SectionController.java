@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/{sectionName:^.*(?!detail)}")
+@RequestMapping("/{sectionName:main|soup|side}")
 public class SectionController {
 
     private final SectionService sectionService;
@@ -30,5 +30,4 @@ public class SectionController {
                                    @PathVariable("itemId") Long itemId) {
         return sectionService.itemSummary(sectionName, itemId);
     }
-
 }
