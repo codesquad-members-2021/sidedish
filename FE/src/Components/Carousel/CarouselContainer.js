@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 import CarouselItem from './CarouselItem.js';
 import CarouselButton from './CarouselButton.js';
+import CarouselEventModal from './CarouselEventModal.js';
 
 const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
   const [carouselButtonAreaSize, setCarouselButtonAreaSize] = useState({width: 0, height: 0});
   const [itemWidth, setItemWidth] = useState(0);
   const [calculatedMovableRange, setCalculatedMovableRange] = useState({from: 0, to: 0});
   const [slideCount, setSlideCount] = useState(unit);
+  const [eventMessage, setEventMessage] = useState({isActive:false, msg:""});
   
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
@@ -18,17 +20,16 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
       width: $CarouselAreaWrapper.current.clientWidth, 
       height: $CarouselAreaWrapper.current.clientHeight 
     });
-    setItemWidth($CarouselAreaWrapper.current.clientWidth/unit);
+    setItemWidth($CarouselAreaWrapper.current.clientWidth / unit);
   }
 
   useEffect(() => {
     $CarouselArea.current.classList.add("carousel-start")
     return () => { $CarouselArea.current.classList.remove("carousel-start"); }
-  });
+  }, [slideCount]);
 
   useLayoutEffect(()=> {
     handleResize();
-    // console.log("itemWidth", itemWidth, "$CarouselArea.current.offsetWidth/unit", $CarouselArea.current.offsetWidth/unit)
     // 향후 쓰로틀로 변경
     window.addEventListener("resize", handleResize);
     
@@ -36,24 +37,11 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [window.innerWidth])
   
-  const isSlidable = () => {
-  
-  }
-  const handleSlideLeft = () => {
-
-  }
-
-  const handleSlideRight = () => {
-
-  }
-
   const handleTransitionEnd = () => {
     console.log("handleTransitionEnd", calculatedMovableRange);
-    // $CarouselArea.current.style.left = `${calculatedMovableRange.to}px`;
-    
   }
 
-  const calculateLeftXValue = () => {
+  const slideLeft = () => {
     let calculatedXValue = calculatedMovableRange.to;
     // let ItemWidth = $CarouselArea.current.offsetWidth/unit;
     if (slideCount - unit < unit) {
@@ -67,7 +55,7 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
   }
 
-  const calculateRightXValue = () => {
+  const slideRight = () => {
     let calculatedXValue = calculatedMovableRange.to;
     if (slideCount + unit > props.children.length) {
       let remainItemsCount = props.children.length - slideCount;
@@ -80,26 +68,27 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     }
     setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
   }
-  const handleDispatch = ({action}) => {
-    switch(action) {
-      case "left":
-        if (slideCount === unit) {
-          console.log("처음입니다.");
-          break;
-        }
-        calculateLeftXValue();
-        break;
-      case "right":
-        // if (slideCount.current === props.children.length) {
-        if (slideCount === props.children.length) {
-          console.log("마지막입니다.");
-          break;
-        }
-        calculateRightXValue();
-        break;
-      default:
-        break;
+  
+  const handleDispatch = ({ action }) => {
+    if (eventMessage.isActive) return;
+    
+    if (action === "left") {
+      if (slideCount === unit) {
+        setEventMessage({ isActive: true, msg: "처음입니다" });
+        return;
+      }
+      slideLeft();
+    } else if (action === "right") {
+      if (slideCount === props.children.length) {
+        setEventMessage({ isActive: true, msg: "마지막입니다" });
+        return;
+      }
+      slideRight();
     }
+  }
+
+  const renderEventModal = () => {
+    return <CarouselEventModal carouselEvent={eventMessage} setEventMessage={setEventMessage}/>;
   }
 
   return (
@@ -117,6 +106,9 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
           <CarouselButton type={"right"} onDispatch={handleDispatch} />
         </CarouselButtonRelativeArea>
       </CarouselButtonArea>
+      <CarouselEventModalArea>
+        {renderEventModal()}
+      </CarouselEventModalArea>
     </CarouselLayout>
   )
 }
@@ -140,6 +132,15 @@ const CarouselArea = styled.div`
     transition: left 0.5s;
     left: ${props => `${props.calculatedMovableRange.to}px`};
   }
+`;
+
+const CarouselEventModalArea = styled.div`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  
+  display: flex;
+  justify-content: center;
 `;
 
 const CarouselButtonRelativeArea = styled.div`
