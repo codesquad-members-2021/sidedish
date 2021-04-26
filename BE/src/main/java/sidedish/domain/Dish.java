@@ -38,15 +38,15 @@ public class Dish {
 
     public Dish(DetailDishDTO dto) {
         this.name = dto.getName();
-        this.topImage = dto.getTop_image();
+        this.topImage = dto.getTopImage();
         this.description = dto.getDescription();
         this.prices = ConvertUtils.convertToString(dto.getPrices());
         this.badges = ConvertUtils.convertToString(dto.getBadges());
         this.stock = dto.getStock();
         this.point = dto.getPoint();
-        this.deliveryInfo = dto.getDelivery_info();
-        this.thumbImages = ConvertUtils.convertToString(dto.getThumb_images());
-        this.detailImages = ConvertUtils.convertToString(dto.getDetail_images());
+        this.deliveryInfo = dto.getDeliveryInfo();
+        this.thumbImages = ConvertUtils.convertToString(dto.getThumbImages());
+        this.detailImages = ConvertUtils.convertToString(dto.getDetailImages());
     }
 
     private Integer createPoint(String prices) {

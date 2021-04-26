@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
     Optional<Category> findCategoryByTitle(String title);
+
+    Optional<Category> findById(Long id);
 }

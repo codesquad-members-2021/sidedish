@@ -10,8 +10,8 @@ import sidedish.exception.CategoryNotFoundException;
 import sidedish.exception.DishNotFoundException;
 import sidedish.repository.CategoryRepository;
 import sidedish.repository.DishRepository;
-import sidedish.service.dto.CategoryDTO;
 import sidedish.service.dto.DetailDishDTO;
+import sidedish.service.dto.RequestDishDTO;
 
 import java.util.List;
 
@@ -36,14 +36,12 @@ public class DishController {
     }
 
     @PostMapping("/dish")
-    public ResponseEntity<?> createDish(@RequestBody List<DetailDishDTO> dishDTOs) {
-        Category category = categoryRepository.findCategoryByTitle("main").orElseThrow(CategoryNotFoundException::new);
-        for (DetailDishDTO dishDTO : dishDTOs) {
-            Dish dish = new Dish(dishDTO);
+    public void createDish(@RequestBody List<RequestDishDTO> dishDTOs) {
+        for (RequestDishDTO dishDTO : dishDTOs) {
+            Category category = categoryRepository.findById(dishDTO.getCategoryId()).orElseThrow(CategoryNotFoundException::new);
+            Dish dish = dishDTO.createDish();
             category.addDish(dish);
             categoryRepository.save(category);
         }
-        category = categoryRepository.findCategoryByTitle("main").orElseThrow(CategoryNotFoundException::new);
-        return ResponseEntity.ok(new CategoryDTO(category));
     }
 }
