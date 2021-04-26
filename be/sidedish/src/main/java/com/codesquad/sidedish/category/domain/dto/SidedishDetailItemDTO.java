@@ -3,11 +3,9 @@ package com.codesquad.sidedish.category.domain.dto;
 import com.codesquad.sidedish.category.domain.SidedishItem;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.dto.SidedishEventDTO;
-import com.codesquad.sidedish.image.domain.SidedishImage;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class SidedishDetailItemDTO {
 
@@ -25,7 +23,7 @@ public class SidedishDetailItemDTO {
     private String DeliveryFee;
 
     public SidedishDetailItemDTO(SidedishItem item, Set<SidedishEvent> eventBadgeList,
-                                 List<SidedishImage> detailImages, List<SidedishImage> descriptionImages) {
+                                 List<String> detailImages, List<String> descriptionImages) {
         this.id = item.getId();
         this.name = item.getItemName();
         this.description = item.getItemDescription();
@@ -35,12 +33,13 @@ public class SidedishDetailItemDTO {
         this.DeliveryInfo = item.getItemDeliveryInfo();
         this.DeliveryFee = item.getItemDeliveryFee();
 
-        this.detailImages = detailImages.stream().map(SidedishImage::getImageUrl).collect(Collectors.toList());
-        this.descriptionImages = descriptionImages.stream().map(SidedishImage::getImageUrl).collect(Collectors.toList());
+        this.detailImages = detailImages;
+        this.descriptionImages = descriptionImages;
 
         this.isPurchasable = item.isPurchasable();
         this.eventBadgeList = SidedishEventDTO.eventSetToDtoSet(eventBadgeList);
     }
+
 
     public Long getId() {
         return id;

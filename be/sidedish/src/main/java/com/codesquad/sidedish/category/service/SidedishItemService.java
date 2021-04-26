@@ -51,10 +51,14 @@ public class SidedishItemService {
         SidedishItem sidedishItem = sidedishCategory.findItem(itemId);
 
         Set<SidedishEvent> eventSet = eventFinder.findEvents(sidedishItem);
+
         List<SidedishImage> detailImages = imageFinder.findImagesByType(sidedishItem, SidedishImageTypeEnum.DETAIL);
         List<SidedishImage> descriptionImages = imageFinder.findImagesByType(sidedishItem, SidedishImageTypeEnum.DESCRIPTION);
 
-        SidedishDetailItemDTO sidedishDetailItemDTO = new SidedishDetailItemDTO(sidedishItem, eventSet, detailImages, descriptionImages);
+        List<String> detailImageUrls = SidedishImage.imageListToImageUrlList(detailImages);
+        List<String> descriptionImageUrls = SidedishImage.imageListToImageUrlList(descriptionImages);
+
+        SidedishDetailItemDTO sidedishDetailItemDTO = new SidedishDetailItemDTO(sidedishItem, eventSet, detailImageUrls, descriptionImageUrls);
         return new DetailItemDtoWrapper(sidedishDetailItemDTO);
     }
 
