@@ -113,7 +113,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.54379613520000003" green="1" blue="0.70715666870000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="8jw-OS-S5Z"/>
                                 </constraints>
@@ -141,7 +141,10 @@
             </constraints>
             <size key="customSize" width="289" height="122"/>
             <connections>
+                <outlet property="badgeView" destination="reM-yI-0EF" id="nWc-bu-Sg2"/>
                 <outlet property="bodyLabel" destination="QUC-8f-VDD" id="nRA-cu-6Nb"/>
+                <outlet property="cellView" destination="CHO-ZM-hy1" id="JEX-Ki-eX9"/>
+                <outlet property="contentStackView" destination="9jA-re-mCh" id="TJz-4x-2Pk"/>
                 <outlet property="currentPriceLabel" destination="9nT-TS-EgJ" id="1HB-Jf-9PG"/>
                 <outlet property="eventLabel" destination="xbN-zw-VuX" id="8St-GU-Lrf"/>
                 <outlet property="launchingLabel" destination="1u4-0I-sBE" id="Q8J-cf-hLr"/>
