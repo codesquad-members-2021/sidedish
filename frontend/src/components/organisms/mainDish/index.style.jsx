@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const WrapMain = styled.div`
   display: flex;
@@ -8,7 +8,6 @@ const WrapMain = styled.div`
 
 const WrapCarousal = styled.div`
   margin-top: 40px;
-
   display: flex;
 `;
 

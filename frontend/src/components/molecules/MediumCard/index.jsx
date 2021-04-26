@@ -31,6 +31,7 @@ const MediumCard = ({ children, ...props }) => {
         </>
       );
     }
+    return <></>;
   };
 
   return (

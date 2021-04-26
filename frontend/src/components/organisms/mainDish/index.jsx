@@ -37,13 +37,11 @@ const MainDish = props => {
   const render = type => {
     if (type === 'RightIcon') {
       setData(data.slice(4).concat(data.slice(0, 4)));
-      directionRef.current.style.transform = 'translate(0)';
-      directionRef.current.style.transition = 'none';
     } else {
       setData(data.slice(-4).concat(data.slice(0, -4)));
-      directionRef.current.style.transform = 'translate(0)';
-      directionRef.current.style.transition = 'none';
     }
+    directionRef.current.style.transform = 'translate(0)';
+    directionRef.current.style.transition = 'none';
   };
 
   return (
