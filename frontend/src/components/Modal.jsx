@@ -27,8 +27,8 @@ const Xstyle = {
 }
 
 
-function Modal ({ children, ModalMode, setModalState }) {
-    const handleClick = () => setModalState(!ModalMode)
+function Modal ({ children, modalMode, setModalState }) {
+    const handleClick = () => setModalState(!modalMode)
 
   return (
     <DarkBackground>  

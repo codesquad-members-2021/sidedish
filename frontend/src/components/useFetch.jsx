@@ -5,8 +5,9 @@ function useFetch (url) {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   async function fetchUrl () {
-    if (!url) return
+    if (!url || url === undefined) return
     try {
+      console.log(url)
       const res = await axios.get(url)
       setData(res.data)
     } catch (error) {

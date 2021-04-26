@@ -4,7 +4,8 @@ import { BiX } from 'react-icons/bi'
 import ItemPrice from '../atomic/ItemPrice'
 import Badge from '../atomic/Badge'
 import Loading from '../Loading'
-import Modal from '../Modal'
+
+
 const DarkBackground = styled.div`
   position: fixed;
   left: 0;
@@ -105,19 +106,18 @@ const DetailCard = styled.div`
 function DetailPage ({
   loadingState,
   detailData,
-  ModalMode,
+  modalMode,
   setModalState,
   item,
   badges
 }) {
   const handleClick = () => {
-    setModalState(!ModalMode)
+    setModalState(!modalMode)
   }
 
   return (
-    // <DarkBackground>  
-    //   <Modal>
-    <Modal {...{setModalState,ModalMode}}>
+    <DarkBackground>  
+      <Modal>
         {loadingState ? (
           <Loading width='960px' height='568px' />
         ) : (
@@ -168,12 +168,12 @@ function DetailPage ({
             </ItemDetailCards>
           </>
         )}
-        </Modal>
-    //   </Modal>
-    //   <Button onClick={handleClick}>
-    //     <BiX style={Xstyle} />
-    //   </Button>
-    // </DarkBackground>
+
+       </Modal>
+       <Button onClick={handleClick}>
+         <BiX style={Xstyle} />
+       </Button>
+     </DarkBackground>
   )
 }
 
