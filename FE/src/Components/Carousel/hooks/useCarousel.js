@@ -10,7 +10,7 @@ const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) =>
 
   useEffect(() => {
     $CarouselArea.current.classList.add("carousel-start")
-    return () => { $CarouselArea.current.classList.remove("carousel-start"); }
+    return () => { $CarouselArea.current?.classList.remove("carousel-start"); }
   }, [slideCount]);
 
   useLayoutEffect(()=> {
