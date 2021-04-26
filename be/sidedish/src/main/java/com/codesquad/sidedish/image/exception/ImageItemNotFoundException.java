@@ -1,6 +1,10 @@
 package com.codesquad.sidedish.image.exception;
 
-public class ImageItemNotFoundException extends Exception {
-    public ImageItemNotFoundException() {
+import com.codesquad.sidedish.global.exception.NotFoundException;
+
+public class ImageItemNotFoundException extends NotFoundException {
+
+    public ImageItemNotFoundException(String message) {
+        super(message);
     }
 }

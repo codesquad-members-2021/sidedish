@@ -1,6 +1,8 @@
 package com.codesquad.sidedish.category.exception;
 
-public class ItemNotFoundException extends RuntimeException {
+import com.codesquad.sidedish.global.exception.NotFoundException;
+
+public class ItemNotFoundException extends NotFoundException {
     private static final String ERROR_REASON = "존재하지 않는 아이템 입니다";
 
     public ItemNotFoundException() {
