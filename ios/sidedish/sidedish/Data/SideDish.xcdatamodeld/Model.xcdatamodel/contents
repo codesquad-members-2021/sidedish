@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SaveSideDish" representedClassName="SaveSideDish" syncable="YES" codeGenerationType="class">
+        <attribute name="badges" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="deliveryTypes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="image" attributeType="String"/>
+        <attribute name="price" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="saleprice" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subtitle" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="SaveSideDishes" representedClassName="SaveSideDishes" syncable="YES" codeGenerationType="class">
+        <attribute name="sideDish" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="SaveSideDish"/>
+    </entity>
+    <elements>
+        <element name="SaveSideDish" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="SaveSideDishes" positionX="-63" positionY="45" width="128" height="44"/>
+    </elements>
+</model>
