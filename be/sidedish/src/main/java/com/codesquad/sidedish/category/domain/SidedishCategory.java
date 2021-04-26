@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.category.domain;
 
-import com.codesquad.sidedish.category.exception.CategoryNotFoundException;
 import com.codesquad.sidedish.category.exception.ItemNotFoundException;
 import org.springframework.data.annotation.Id;
 
@@ -14,12 +13,13 @@ public class SidedishCategory {
     private String categoryName;
     private List<SidedishItem> sidedishItemList = new ArrayList<>();
 
+    protected SidedishCategory() {
+    }
+    
     public SidedishCategory(String categoryName) {
         this.categoryName = categoryName;
     }
 
-    protected SidedishCategory() {
-    }
 
     public void addSidedishItem(SidedishItem sidedishItem) {
         sidedishItemList.add(sidedishItem);
@@ -37,7 +37,7 @@ public class SidedishCategory {
         return sidedishItemList;
     }
 
-    public SidedishItem findItem(Long itemId){
+    public SidedishItem findItem(Long itemId) {
         return sidedishItemList.stream()
                 .filter(item -> item.isSameId(itemId))
                 .findFirst()
