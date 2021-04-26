@@ -35,10 +35,19 @@ const Button = styled.button`
 const ButtonLeft = styled(Button)``
 const ButtonRight = styled(Button)``
 
-function CategorySlide ({ data }) {
-  const itemLists = Array.isArray(data) ? (
-    data.map((data, idx) => <ItemCard key={idx} data={data} size={'S'} />)
-  ) : (
+function CategorySlide ({ categoryData, loadingState }) {
+  // const itemLists = Array.isArray(data) ? (
+
+    const category = (data) => {
+      if(data === "400Error") return (<div>400error</div>)
+      else {
+        return data.map((data, idx) => (<ItemCard key={idx} data={data} size={'S'} />))
+      }
+    } 
+
+    const itemLists = !loadingState ? 
+    category(categoryData)
+   : (
     <Loading width='1280px' height='384px' />
   )
   return (

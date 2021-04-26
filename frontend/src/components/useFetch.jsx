@@ -5,22 +5,27 @@ function useFetch (url) {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   async function fetchUrl () {
-    if(!url) return;
-    await axios.get(url).then(response => {
-      return setData(response.data)
-    })
-    // const res = await fetch(url)
-    // const json = await res.json()
-    // setData(json)
-    setLoading(false)
+    if (!url) return
+    try {
+      const res = await axios.get(url)
+      setData(res.data)
+    } catch (error) {
+      if (error.response.status === 400){
+      setData("400Error")
+      console.error("요청주소에 문제가 있어요 ㅠ.ㅠ", error.response.status)
+      }
+    } finally {
+      setLoading(false)
+    }
+
   }
   useEffect(() => {
     fetchUrl()
     return () => {
-      setData([]);
-      setLoading(true);
+      setData([])
+      setLoading(true)
     } // eslint-disable-next-line
-  }, [url]) 
+  }, [url])
 
   return [data, loading]
 }
