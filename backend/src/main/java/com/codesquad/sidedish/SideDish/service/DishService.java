@@ -1,7 +1,6 @@
 package com.codesquad.sidedish.SideDish.service;
 
 import com.codesquad.sidedish.SideDish.domain.Dish;
-import com.codesquad.sidedish.SideDish.domain.DishMockRepository;
 import com.codesquad.sidedish.SideDish.domain.DishRepository;
 import com.codesquad.sidedish.SideDish.dto.DishDetailDto;
 import com.codesquad.sidedish.SideDish.dto.DishDto;
@@ -20,10 +19,6 @@ public class DishService {
 
     public DishService(DishRepository dishRepository) {
         this.dishRepository = dishRepository;
-    }
-
-    public DishService() {
-        this(new DishMockRepository());
     }
 
     public RefreshDto getDetailRefreshable(String detailHash, long lastUpdated) {
