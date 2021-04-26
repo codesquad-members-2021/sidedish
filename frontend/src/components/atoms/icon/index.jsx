@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { ReactComponent as searchSVG } from "../../../images/search.svg";
-import { ReactComponent as closeSVG } from "../../../images/close.svg";
-import { ReactComponent as downSVG } from "../../../images/down.svg";
-import { ReactComponent as upSVG } from "../../../images/up.svg";
-import { ReactComponent as leftSVG } from "../../../images/left.svg";
-import { ReactComponent as rightSVG } from "../../../images/right.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as searchSVG } from '../../../images/search.svg';
+import { ReactComponent as closeSVG } from '../../../images/close.svg';
+import { ReactComponent as downSVG } from '../../../images/down.svg';
+import { ReactComponent as upSVG } from '../../../images/up.svg';
+import { ReactComponent as leftSVG } from '../../../images/left.svg';
+import { ReactComponent as rightSVG } from '../../../images/right.svg';
 
-const Icon = (props) => {
+const Icon = props => {
   const IconWrapper = styled.div`
     cursor: pointer;
   `;
@@ -24,32 +24,32 @@ const Icon = (props) => {
   `;
 
     switch (props._type) {
-      case "DownIcon":
+      case 'DownIcon':
         const DownIcon = styled(downSVG)`
           ${defaultSetting}
         `;
         return <DownIcon />;
-      case "UpIcon":
+      case 'UpIcon':
         const UpIcon = styled(upSVG)`
           ${defaultSetting}
         `;
         return <UpIcon />;
-      case "CloseIcon":
+      case 'CloseIcon':
         const CloseIcon = styled(closeSVG)`
           ${defaultSetting}
         `;
         return <CloseIcon />;
-      case "SearchIcon":
+      case 'SearchIcon':
         const SearchIcon = styled(searchSVG)`
           ${defaultSetting}
         `;
         return <SearchIcon />;
-      case "RightIcon":
+      case 'RightIcon':
         const RighthIcon = styled(rightSVG)`
           ${defaultSetting}
         `;
         return <RighthIcon />;
-      case "LeftIcon":
+      case 'LeftIcon':
         const LeftIcon = styled(leftSVG)`
           ${defaultSetting}
         `;
@@ -62,7 +62,9 @@ const Icon = (props) => {
   return (
     <IconWrapper
       onClick={() => {
-        props.moveSlide(props._type);
+        if (props.moveSlide && (props._type === 'LeftIcon' || 'RightIcon')) {
+          props.moveSlide(props._type);
+        }
       }}
     >
       <IconSvg />
