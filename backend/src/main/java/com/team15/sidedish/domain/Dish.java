@@ -8,20 +8,18 @@ public class Dish {
     private String topImage;
     private String title;
     private String description;
-    private int nPrice;
-    private int sPrice;
+    private Integer normalPrice;
+    private Integer specialPrice;
     private String sectionName;
-    private int stock;
+    private Integer stock;
 
-    public Dish(){ }
-
-    public Dish(String hash, String topImage, String title, String description, int nPrice, int sPrice, String sectionName, int stock) {
+    public Dish(String hash, String topImage, String title, String description, Integer normalPrice, Integer specialPrice, String sectionName, Integer stock) {
         this.hash = hash;
         this.topImage = topImage;
         this.title = title;
         this.description = description;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
+        this.normalPrice = normalPrice;
+        this.specialPrice = specialPrice;
         this.sectionName = sectionName;
         this.stock = stock;
     }
@@ -42,19 +40,19 @@ public class Dish {
         return description;
     }
 
-    public int getnPrice() {
-        return nPrice;
+    public Integer getNormalPrice() {
+        return normalPrice;
     }
 
-    public int getsPrice() {
-        return sPrice;
+    public Integer getSpecialPrice() {
+        return specialPrice;
     }
 
     public String getSectionName() {
         return sectionName;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
@@ -65,8 +63,8 @@ public class Dish {
                 ", topImage='" + topImage + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", nPrice=" + nPrice +
-                ", sPrice=" + sPrice +
+                ", normalPrice=" + normalPrice +
+                ", specialPrice=" + specialPrice +
                 ", sectionName='" + sectionName + '\'' +
                 ", stock=" + stock +
                 '}';

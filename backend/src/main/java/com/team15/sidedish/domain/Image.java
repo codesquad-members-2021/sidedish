@@ -15,7 +15,4 @@ public class Image {
         this.dishHash = dishHash;
     }
 
-
-
-
 }
