@@ -28,14 +28,16 @@ public class ResponseDTO {
         return items;
     }
 
-    public HttpStatus getStatusCode() {
-        return statusCode;
+    public int getStatusCode() {
+        return statusCode.value();
     }
+
 
     public static ResponseDTO of(Category category){
-        List<Item> items = category.getItems();
+        List<Item> items = new ArrayList<>(category.getItems().values());
         List<ItemInfoDto> itemInfoDtos = items.stream().map(ItemInfoDto::of).collect(Collectors.toList());
 
-        return new ResponseDTO(HttpStatus.ACCEPTED,itemInfoDtos);
+        return new ResponseDTO(HttpStatus.ACCEPTED, itemInfoDtos);
     }
+
 }

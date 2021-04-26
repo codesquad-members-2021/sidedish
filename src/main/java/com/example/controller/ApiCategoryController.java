@@ -9,17 +9,22 @@ import com.example.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 
 @RestController
 public class ApiCategoryController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final CategoryService categoryService;
+
+    public ApiCategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     private static String convertArrayToString(String[] arr) {
         if (arr == null) {
@@ -30,7 +35,7 @@ public class ApiCategoryController {
         return detail.substring(1, detail.length() - 1);
     }
 
-    public static int convertStrPriceToInt(String str) {
+    private static int convertStrPriceToInt(String str) {
         if (str.contains("원")) {
             str = str.replaceAll("원", "");
         }
@@ -41,18 +46,39 @@ public class ApiCategoryController {
         return Integer.parseInt(str);
     }
 
-    public ApiCategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
-
+    //INFO 더미 데이터 추가
     @PostMapping("main")
     public void addMainItems(@RequestBody List<ItemDto> itemDtoList) {
-        Category category = Category.of("든든한반찬");
+        Category category = categoryService.findById(1L);
+        insertItem(category,itemDtoList);
+    }
+
+    @PostMapping("soup")
+    public void addSoupItems(@RequestBody List<ItemDto> itemDtoList) {
+        Category category = categoryService.findById(2L);
+        insertItem(category,itemDtoList);
+    }
+
+    @PostMapping("side")
+    public void addSideItems(@RequestBody List<ItemDto> itemDtoList) {
+        Category category = categoryService.findById(3L);
+        insertItem(category,itemDtoList);
+    }
+
+    @PostMapping("detail")
+    public void addDetail(@RequestBody List<RequestHashDto> requestList) {
+        for(Long i=1L ; i<4L; i++) {
+            Category category = categoryService.findById(i);
+            insertDetailOfItem(requestList, category);
+        }
+    }
+
+    private void insertItem(Category category, List<ItemDto> itemDtoList){
         for (ItemDto itemDto : itemDtoList) {
             category.addItem(Item.of(itemDto.getDetail_hash(),
                     itemDto.getTitle(),
                     itemDto.getDescription(),
-                    convertStrPriceToInt(itemDto.getS_price()),  //INFO. n_price, s_price 두개가 있는데, api 문서에 s_price만 있을 경우가 있어서 s_price를 넣었음.
+                    convertStrPriceToInt(itemDto.getS_price()),  //INFO n_price, s_price 두개가 있는데, api 문서에 s_price만 있을 경우가 있어서 s_price를 넣었음.
                     convertArrayToString(itemDto.getBadge()),
                     convertArrayToString(itemDto.getDelivery_type()),
                     "", // Detail에서 업데이트 됨
@@ -63,61 +89,50 @@ public class ApiCategoryController {
         categoryService.save(category);
     }
 
-    @PostMapping("main/detail")
-    public void addDetails(@RequestBody List<RequestHashDto> requestList) {
-        Category category = categoryService.findById(1L);
-        Stack<Item> stackOfItem = new Stack<>();
-        for (Item item : category.getItems()) {
-            stackOfItem.push(item);
-        }
-        List<Item> newItemList = new ArrayList<>();
+    private void insertDetailOfItem(List<RequestHashDto> requestList, Category category) {
+        for (RequestHashDto dto : requestList) {
+            Item findItem = category.getItems().get(dto.hash);
 
-        while (!stackOfItem.isEmpty()) {
-            Item item = stackOfItem.pop();
-            for (RequestHashDto dto : requestList) {
-                String UpdateItemId = dto.hash;
-
-                if (item.getId().equals(UpdateItemId)) {
-
-                    newItemList.add(Item.of(dto.hash,
-                            item.getTitle(),
-                            item.getDescription(),
-                            item.getPrice(),
-                            item.getBadges(),
-                            item.getDeliveryTypes(),
-                            convertArrayToString(dto.data.thumb_images),
-                            item.getStock(),
-                            convertArrayToString(dto.data.getDetail_section())
-                    ));
-                }
+            if(findItem == null){
+                continue;
             }
 
+            if(findItem.getId().equals(dto.hash)) {  //m 아이템의 hash가 일치할 때 업데이트
+                category.update(Item.of(dto.hash,
+                        findItem.getTitle(),
+                        findItem.getDescription(),
+                        findItem.getPrice(),
+                        findItem.getBadges(),
+                        findItem.getDeliveryTypes(),
+                        convertArrayToString(dto.data.thumb_images),
+                        findItem.getStock(),
+                        convertArrayToString(dto.data.getDetail_section())
+                ));
+            }
         }
-        category.update(newItemList);
+
         categoryService.save(category);
-
-    }
-
-    @PostMapping("soup")
-    public List<ItemDto> addSoupItems(@RequestBody List<ItemDto> itemDto) {
-        return itemDto;
-    }
-
-    @PostMapping("side")
-    public List<ItemDto> addSideItems(@RequestBody List<ItemDto> itemDto) {
-        return itemDto;
     }
 
 
     @GetMapping("main")
-    public ResponseEntity<List<ResponseDTO>> getBestFoodList() {
+    public ResponseEntity<ResponseDTO> getMainFoodList() {
         logger.debug("main 푸드 리스트를 출력합니다.");
-        return ResponseEntity.ok().body(categoryService.findAll());
+        return ResponseEntity.ok().body(categoryService.responseDtoFindById(1L));
     }
 
-    @GetMapping("best/{detailHash}")
-    public ResponseEntity getBestFoodOfCategory(@PathVariable Long detailHash) {
-        logger.debug("{} 카테고리의 main 푸드 리스트를 출력합니다.", detailHash);
-        return ResponseEntity.ok().body(categoryService.responseDtoFindById(detailHash));
+    @GetMapping("soup")
+    public ResponseEntity<ResponseDTO> getSoupList() {
+        logger.debug("soup 푸드 리스트를 출력합니다.");
+        return ResponseEntity.ok().body(categoryService.responseDtoFindById(2L));
     }
+
+    @GetMapping("side")
+    public ResponseEntity<ResponseDTO> getSideList() {
+        logger.debug("Side 푸드 리스트를 출력합니다.");
+        return ResponseEntity.ok().body(categoryService.responseDtoFindById(3L));
+    }
+
+
+
 }
