@@ -6,19 +6,19 @@ public class Message {
     public static final int NOT_FOUND = 404;
     public static final int INTERNAL_SERVER_ERROR = 500;
 
-    private int status;
-    private Object data;
+    private int statusCode;
+    private Object body;
 
-    public Message(int status, Object data) {
-        this.status = status;
-        this.data = data;
+    public Message(int statusCode, Object body) {
+        this.statusCode = statusCode;
+        this.body = body;
     }
 
-    public int getStatus() {
-        return status;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public Object getData() {
-        return data;
+    public Object getBody() {
+        return body;
     }
 }
