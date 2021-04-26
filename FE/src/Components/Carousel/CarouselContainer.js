@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useLayoutEffect } from 'react';
-import styled, {css, keyframes} from 'styled-components';
+import styled from 'styled-components';
 
 import CarouselItem from './CarouselItem.js';
 import CarouselButton from './CarouselButton.js';
@@ -8,28 +8,27 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
   const [carouselButtonAreaSize, setCarouselButtonAreaSize] = useState({width: 0, height: 0});
   const [itemWidth, setItemWidth] = useState(0);
   const [calculatedMovableRange, setCalculatedMovableRange] = useState({from: 0, to: 0});
-  const slideCount = useRef(unit);
+  const [slideCount, setSlideCount] = useState(unit);
   
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
   
   const handleResize = () => {
-    setCarouselButtonAreaSize({ width: $CarouselAreaWrapper.current.clientWidth, height: $CarouselAreaWrapper.current.clientHeight });
+    setCarouselButtonAreaSize({ 
+      width: $CarouselAreaWrapper.current.clientWidth, 
+      height: $CarouselAreaWrapper.current.clientHeight 
+    });
     setItemWidth($CarouselAreaWrapper.current.clientWidth/unit);
   }
 
   useEffect(() => {
-    $CarouselArea.current.classList.add("carousel-animate")
-    console.log(calculatedMovableRange)
-
-    return () => {
-      $CarouselArea.current.classList.remove("carousel-animate")
-    }
+    $CarouselArea.current.classList.add("carousel-start")
+    return () => { $CarouselArea.current.classList.remove("carousel-start"); }
   });
 
   useLayoutEffect(()=> {
     handleResize();
-    
+    // console.log("itemWidth", itemWidth, "$CarouselArea.current.offsetWidth/unit", $CarouselArea.current.offsetWidth/unit)
     // 향후 쓰로틀로 변경
     window.addEventListener("resize", handleResize);
     
@@ -37,37 +36,66 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [window.innerWidth])
   
-  const handleDispatch = ({action}) => {
-    // let beforeTransition = $CarouselArea.current.style.transform.match(/(-?[0-9\.]+)/g);
-    // beforeTransition = !beforeTransition ? [0,0] : beforeTransition.map(each => Number(each));
+  const isSlidable = () => {
+  
+  }
+  const handleSlideLeft = () => {
+
+  }
+
+  const handleSlideRight = () => {
+
+  }
+
+  const handleTransitionEnd = () => {
+    console.log("handleTransitionEnd", calculatedMovableRange);
+    // $CarouselArea.current.style.left = `${calculatedMovableRange.to}px`;
     
-    let calculatedXValue;
+  }
+
+  const calculateLeftXValue = () => {
+    let calculatedXValue = calculatedMovableRange.to;
+    // let ItemWidth = $CarouselArea.current.offsetWidth/unit;
+    if (slideCount - unit < unit) {
+      let remainItemsCount = slideCount%unit;
+      calculatedXValue += itemWidth*remainItemsCount;
+      setSlideCount(unit);
+    } else {
+      calculatedXValue += $CarouselArea.current.offsetWidth;
+      setSlideCount(slideCount - unit);
+    }
+    setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
+  }
+
+  const calculateRightXValue = () => {
+    let calculatedXValue = calculatedMovableRange.to;
+    if (slideCount + unit > props.children.length) {
+      let remainItemsCount = props.children.length - slideCount;
+      calculatedXValue -= itemWidth*remainItemsCount;
+      setSlideCount(props.children.length);
+    } else {
+      calculatedXValue -= $CarouselArea.current.offsetWidth;
+      setSlideCount(slideCount + unit);
+      
+    }
+    setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
+  }
+  const handleDispatch = ({action}) => {
     switch(action) {
       case "left":
-        if (slideCount.current === unit) {
+        if (slideCount === unit) {
           console.log("처음입니다.");
           break;
-        } else if (slideCount.current - unit < unit) {
-          calculatedXValue = calculatedMovableRange.to + $CarouselArea.current.offsetWidth/unit*(slideCount.current%unit);
-          slideCount.current = unit;
-        } else {
-          calculatedXValue = calculatedMovableRange.to + $CarouselArea.current.offsetWidth;
-          slideCount.current -= unit;
         }
-        setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
+        calculateLeftXValue();
         break;
       case "right":
-        if (slideCount.current === props.children.length) {
+        // if (slideCount.current === props.children.length) {
+        if (slideCount === props.children.length) {
           console.log("마지막입니다.");
           break;
-        } else if (slideCount.current + unit > props.children.length) {
-          calculatedXValue = calculatedMovableRange.to - $CarouselArea.current.offsetWidth/unit*(props.children.length-slideCount.current);
-          slideCount.current = props.children.length;
-        } else {
-          calculatedXValue = calculatedMovableRange.to - $CarouselArea.current.offsetWidth;
-          slideCount.current += unit;
         }
-        setCalculatedMovableRange({from: calculatedMovableRange.to, to: Number(calculatedXValue.toFixed(3))});
+        calculateRightXValue();
         break;
       default:
         break;
@@ -77,7 +105,7 @@ const CarouselContainer = ({type = "default", items, unit=1, ...props}) => {
   return (
     <CarouselLayout>
       <CarouselAreaWrapper ref={$CarouselAreaWrapper}>
-        <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange}>
+        <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange} onTransitionEnd={handleTransitionEnd}>
           {[...props.children].map((child, i) => {
             return <CarouselItem key={`Carousel-Item-${i}`} width={itemWidth} children={child} />
           })}
@@ -102,36 +130,16 @@ const CarouselAreaWrapper = styled.div`
   overflow: hidden;
 `;
 
-const carouselChange = ({ calculatedMovableRange }) => {
-  return keyframes`
-    from {
-      transform: ${`translateX(${calculatedMovableRange.from}px)`};
-    }
-    to {
-      transform: ${`translateX(${calculatedMovableRange.to}px)`};
-    }
-  `;
-}
-
 const CarouselArea = styled.div`
   width: 100%;
   display: flex;
-
-  &.carousel-animate {
-    animation-duration: 1s;
-    
-    animation-name: ${carouselChange};
-    animation-fill-mode: forwards;
+  position: relative;
+  left: ${props => `${props.calculatedMovableRange.from}px`};
+  
+  &.carousel-start {
+    transition: left 0.5s;
+    left: ${props => `${props.calculatedMovableRange.to}px`};
   }
-
-  /* @keyframes carousel-change {
-    0% {
-      transform: ${(props) => `translateX(${props.calculatedMovableRange.from}px)`};
-    }
-    100% {
-      transform: ${(props) => `translateX(${props.calculatedMovableRange.to}px)`};
-    }
-  } */
 `;
 
 const CarouselButtonRelativeArea = styled.div`
