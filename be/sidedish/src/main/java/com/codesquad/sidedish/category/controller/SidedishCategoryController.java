@@ -31,6 +31,7 @@ public class SidedishCategoryController {
     }
 
     @PostMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
     public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestBody OrderDTO orderDTO) {
         itemService.order(category, id, orderDTO);
     }
