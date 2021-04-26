@@ -78,7 +78,8 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   );
 };
 const CarouselSlide = styled.div`
-  /* padding: 0 20px */
+  margin-top: 77px;
+  padding: 0 35px;
   display: flex;
 `;
 

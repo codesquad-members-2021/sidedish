@@ -14,7 +14,13 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Best URL={URL} />
+      <Best 
+        URL={URL}
+        modal={modal}
+        setModal={setModal}
+        ModalData={ModalData}
+        setModalData={setModalData}
+        />
       <Main
         URL={URL}
         modal={modal}

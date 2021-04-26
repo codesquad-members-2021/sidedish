@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import TabContent from "./TabContent";
 import TabButton from "./TabButton";
-import CarouselCard from "../Main/CarouselCard";
 import axios from "axios";
 
 const BestTitle = styled.h2`
@@ -29,7 +28,7 @@ const Box = styled.div`
 width: 1280px;
 margin: 0 auto;
 `;
-const Best = ({ URL }) => {
+const Best = ({URL, modal, setModal, ModalData, setModalData }) => {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -44,7 +43,6 @@ const Best = ({ URL }) => {
     const fetchData = async () => {
       const data = await axios(URL + "best").then((res) => res.data.body);
       setFood(data);
-      let a = data.map((v) => v.items);
     };
     fetchData();
   }, []);
@@ -60,6 +58,11 @@ const Best = ({ URL }) => {
           toggleState={toggleState}
         />
         <TabContent
+          modal={modal}
+          setModal={setModal}
+          ModalData={ModalData}
+          setModalData={setModalData}
+
           Food={Food}
           setFood={setFood}
           Ref={mainRef}
