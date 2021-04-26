@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import ItemCard from '../ItemCard'
 import Loading from '../Loading'
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc'
+import Error from '../Error'
+import Modal from '../Modal'
+import { useState } from 'react'
+
 const CategoryBlock = styled.div`
   width: 1280px;
   padding: 0px;
@@ -37,17 +41,29 @@ const ButtonRight = styled(Button)``
 
 function CategorySlide ({ categoryData, loadingState }) {
   // const itemLists = Array.isArray(data) ? (
+  const [modalMode, setModalState] = useState(true)
+  const category = data => {
+    if (data === '400Error') {
+      return (
+        <Modal {...{ modalMode, setModalState }}>
+          <Error
+            style={{
+              width: '960px',
+              height: '480px'
+            }}
+          />
+        </Modal>
+      )
+    } else {
+      return data.map((data, idx) => (
+        <ItemCard key={idx} data={data} size={'S'} />
+      ))
+    }
+  }
 
-    const category = (data) => {
-      if(data === "400Error") return (<div>400error</div>)
-      else {
-        return data.map((data, idx) => (<ItemCard key={idx} data={data} size={'S'} />))
-      }
-    } 
-
-    const itemLists = !loadingState ? 
+  const itemLists = !loadingState ? (
     category(categoryData)
-   : (
+  ) : (
     <Loading width='1280px' height='384px' />
   )
   return (
@@ -57,17 +73,15 @@ function CategorySlide ({ categoryData, loadingState }) {
       </CategoryBlock>
 
       <StyledButton>
-      <ButtonLeft>
-        <VscChevronLeft />
-      </ButtonLeft>
+        <ButtonLeft>
+          <VscChevronLeft />
+        </ButtonLeft>
 
-      <ButtonRight>
-        <VscChevronRight />
-      </ButtonRight>
+        <ButtonRight>
+          <VscChevronRight />
+        </ButtonRight>
       </StyledButton>
-
     </CategorySlideBlock>
-    
   )
 }
 
