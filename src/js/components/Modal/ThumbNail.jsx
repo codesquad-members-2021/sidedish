@@ -8,6 +8,7 @@ const ThumbNailWrapper = styled.div`
 	left: 48px;
 	top: 48px;
 `;
+
 const TopImage = styled.img`
 	width: 392px;
 	height: 392px;
@@ -30,17 +31,22 @@ const ThumbImage = styled.li`
 	border-radius: 5px;
 `;
 const ThumbNail = (props) => {
-	const [topImage, setTopImage] = useState(props.top_image);
-	const clickThumbNail = ({ target }) => setTopImage(() => target.currentSrc);
-	useEffect(() => setTopImage(props.top_image), [props]);
+	const { top_image, thumb_images } = props;
+	const [topImage, setTopImage] = useState();
+	const [thumbImages, setThumbImages] = useState([]);
+	const clickHandler = ({target}) => setTopImage(()=>target.currentSrc)
+	useEffect(() => {
+		setTopImage(() => top_image);
+		setThumbImages(() => {
+			const foo = [...thumb_images];
+			while (foo.length < 5) foo.push("");
+			return foo.map((e, i) => <ThumbImage key={top_image + i}>{e ? <img src={e} alt={i} onClick={clickHandler} /> : ""}</ThumbImage>);
+		});
+	}, [top_image, thumb_images]);
 	return (
 		<ThumbNailWrapper>
 			<TopImage src={topImage} />
-			<ThumbImages>
-				{[...props.thumb_images, "", "", "", "", ""].slice(0, 5).map((e, i) => (
-					<ThumbImage key={props.top_image + i}>{!e || <img src={e} alt={i} onClick={clickThumbNail} />}</ThumbImage>
-				))}
-			</ThumbImages>
+			<ThumbImages>{thumbImages}</ThumbImages>
 		</ThumbNailWrapper>
 	);
 };
