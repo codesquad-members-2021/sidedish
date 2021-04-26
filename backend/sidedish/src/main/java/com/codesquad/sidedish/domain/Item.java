@@ -2,34 +2,31 @@ package com.codesquad.sidedish.domain;
 
 import com.codesquad.sidedish.dto.DetailItemDto;
 import com.codesquad.sidedish.dto.ItemDto;
-import com.codesquad.sidedish.util.DataTypeUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 
-import java.util.List;
+import static com.codesquad.sidedish.util.DataTypeUtils.*;
 
 public class Item {
 
     @Id
     private String detailHash;
-
     private String image;
     private String alt;
-    private String deliveryType;// = new ArrayList<>();
+    private String deliveryType;
     private String title;
     private String description;
     private Integer normalPrice;
     private Integer salePrice;
-    private String badge;// = new ArrayList<>();
-
-    private String topImage;//x
-    private String thumbImages;// = new ArrayList<>();
+    private String badge;
+    private String topImage;
+    private String thumbImages;
     private String productDescription;
     private Integer point;
     private String deliveryInfo;
     private String deliveryFee;
-    private String prices;// = new ArrayList<>();
-    private String detailSection;// = new ArrayList<>();
+    private String prices;
+    private String detailSection;
     private int stock;
 
     @PersistenceConstructor
@@ -68,17 +65,18 @@ public class Item {
     }
 
     public static ItemDto createItemDto(Item item) {
-        return new ItemDto(item.detailHash, item.image, item.alt, DataTypeUtils.toList(item.deliveryType), item.title,
-                item.description, item.normalPrice, item.salePrice, DataTypeUtils.toList(item.badge));
+        return new ItemDto(item.detailHash, item.image, item.alt, toList(item.deliveryType), item.title,
+                item.description, item.normalPrice, item.salePrice, toList(item.badge));
     }
 
     public static DetailItemDto createDetailItemDto(Item item) {
-        return new DetailItemDto(item.detailHash, item.topImage, item.thumbImages, item.productDescription,
-                item.point, item.deliveryInfo, item.deliveryFee, item.prices, item.detailSection);
+        return new DetailItemDto(item.detailHash, item.topImage, toList(item.thumbImages), item.productDescription,
+                item.point, item.deliveryInfo, item.deliveryFee, toList(item.prices), toList(item.detailSection));
     }
 
     public void purchase(int orderCount) {
         if(!checkStock(orderCount)) {
+            //custom exception 추가 예정
         }
         this.stock -= orderCount;
     }
