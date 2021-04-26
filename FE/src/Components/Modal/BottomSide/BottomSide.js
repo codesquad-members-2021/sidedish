@@ -1,17 +1,30 @@
-import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
-const BottomSide = () => {
+import * as Carousel from '../../../Components/Carousel';
+import Card from '../../../Components/commons/Card.js';
+
+const BottomSide = ({isHide}) => {
+
+  useEffect(() => {
+    console.log(isHide)
+  }, [isHide])
+
   return (
     <BottomSideWrapper>
-
+      <Carousel.Container navigator={"upper"} unit={5}>
+        {/* for test */}
+        {[...new Array(22).keys()].map((_,i) => {
+          return <Card key={`test-${i}`} number={i} type={"responsive"} />;
+        })}  
+        
+      </Carousel.Container>
     </BottomSideWrapper>
   );
 };
 
 const BottomSideWrapper = styled.div`
   width: 960px;
-  height: 396px;
   padding: 48px;
   box-sizing: border-box;
   background: #F5F5F7;

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import closeImage from '../../images/close.svg';
 import LeftSide from './LeftSide/LeftSide';
@@ -16,7 +16,7 @@ const DetailProductModal = ({ isHide, handleToggleModal, modalItems }) => {
                 <RightSide {...modalItems} /></>
             )}
           </TopSide>
-          <BottomSide />
+          {!isHide && <BottomSide /> }
         </div>
         <CloseButton src={closeImage} onClick={handleToggleModal()} alt="" />
       </ModelWrapper>
