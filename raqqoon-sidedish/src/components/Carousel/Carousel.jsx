@@ -14,7 +14,6 @@ const Carousel = ({ path, ITEM_NUMBER }) => {
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
   const [cardsNumber, setCardsNumber] = useState(null);
-
   const dishList =
     dishData &&
     dishData.map((item) => (

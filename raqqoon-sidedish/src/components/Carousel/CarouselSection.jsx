@@ -33,7 +33,6 @@ const CarouselSection = () => {
   useEffect(() => {
     setIsFolded((foldStatus) => !foldStatus);
   }, [categoryContents]);
-
   return (
     <CarouselWrapper>
       <h2>모두가 좋아하는 든든한 메인요리</h2>
