@@ -4,12 +4,11 @@ import BestItemsTitle from "./BestItemsTitle";
 import BestItemsTab from "./BestItemsUI/BestItemsTab/BestItemsTab";
 import BestItemsCardWrapper from "./BestItemsUI/BestItemsCardWrapper";
 
-const URL =
-  "https://c022c734-76a1-4d17-a2e6-5373a7e43886.mock.pstmn.io/dish/best"; //백엔드 데이터
+const URL = "/dish/best"; //백엔드 데이터
 const BestItems = () => {
   const [titleList, setTitleList] = useState([]);
-  const [initialTabData, setInitialTabData] = useState({});
-
+  const [bestItemsData, setBestItemsData] = useState({});
+  // 스윙 util로 적용
   const getTitleListData = async () => {
     const rawData = await fetch(URL).then(res => res.json());
 
@@ -19,8 +18,9 @@ const BestItems = () => {
     }, []);
   };
 
-  const getInitialTabData = async () => {
-    const rawData = await fetch(`${URL}/1`).then(res => res.json());
+  // 스윙 util로 적용
+  const getBestItemsData = async id => {
+    const rawData = await fetch(`${URL}/${id}`).then(res => res.json());
     return rawData;
   };
 
@@ -31,18 +31,18 @@ const BestItems = () => {
   }, []);
 
   useEffect(() => {
-    getInitialTabData().then(res => {
-      setInitialTabData(res);
+    getBestItemsData(1).then(res => {
+      setBestItemsData(res);
     });
   }, []);
 
-  // if (!initialTabData) return null;
+  // if (!bestItemsData) return null;
 
   return (
     <S.BestItems>
       <BestItemsTitle></BestItemsTitle>
-      <BestItemsTab {...{ titleList }}></BestItemsTab>
-      <BestItemsCardWrapper {...{ initialTabData }}></BestItemsCardWrapper>
+      <BestItemsTab {...{ titleList, setBestItemsData }}></BestItemsTab>
+      <BestItemsCardWrapper {...{ bestItemsData }}></BestItemsCardWrapper>
     </S.BestItems>
   );
 };

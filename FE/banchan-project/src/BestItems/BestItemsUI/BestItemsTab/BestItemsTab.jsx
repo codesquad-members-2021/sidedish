@@ -1,9 +1,11 @@
 import BestItemsTabTitle from "../BestItemsTab/BestItemsTabTitle";
 
-const BestItemsTab = ({ titleList }) => {
+const BestItemsTab = ({ titleList, setBestItemsData }) => {
   return (
     <>
-      <BestItemsTabTitle {...{ titleList }}></BestItemsTabTitle>
+      <BestItemsTabTitle
+        {...{ titleList, setBestItemsData }}
+      ></BestItemsTabTitle>
     </>
   );
 };

@@ -1,11 +1,21 @@
 import { useState } from "react";
 import * as S from "../../BestItemsStyles";
 
-const BestItemsTabTitle = ({ titleList }) => {
+const URL = "/dish/best";
+const getBestItemsData = async id => {
+  const rawData = await fetch(`${URL}/${id}`).then(res => res.json());
+  return rawData;
+};
+
+const BestItemsTabTitle = ({ titleList, setBestItemsData }) => {
   const [activeTabId, setActivateTabId] = useState(1);
+
   const onClick = e => {
-    setActivateTabId(+e.target.id); //id숫자로 바꾸기
-    //fetch 해야함
+    const targetId = +e.target.id;
+    setActivateTabId(targetId); //id숫자로 바꾸기
+    getBestItemsData(targetId).then(res => {
+      setBestItemsData(res);
+    });
   };
 
   const isActive = tabId => {

@@ -47,7 +47,7 @@ const BestItemsCardTitle = styled.div`
 `;
 
 const BestItemsTabTitle = styled.ul`
-  width: 1005px;
+  width: 1100px;
   height: 58px;
   display: flex;
   justify-content: space-between;
