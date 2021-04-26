@@ -1,7 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Header from "./header/Header";
 import MainPage from "./main/MainPage";
-import Test from "./Test";
+// import Test from "./Test";
 
 const StateProvider = () => {
   // const [loginState, setLoginState] = useState(false);
@@ -11,7 +11,7 @@ const StateProvider = () => {
     <>
       <Header />
       <MainPage />
-      <Test />
+      {/* <Test /> */}
     </>
   );
 };

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "./theme.js";
+import styled from 'styled-components';
+import theme from './theme.js';
 
 const Button = styled.button`
   all: unset;
@@ -24,4 +24,27 @@ const CardList = styled.ul`
   justify-content: center;
 `;
 
-export { Button, CenterContainer, SectionTitle, CardList };
+const StyledTitle = styled.div`
+  font-size: ${theme.fontSizes.S};
+  color: ${theme.colors.darkGray};
+`;
+
+const StyledDescription = styled.div`
+  font-size: ${theme.fontSizes.XS};
+  color: ${theme.colors.gray};
+  margin: 8px 0px;
+`;
+
+const LabelList = styled(CenterContainer)`
+  justify-content: start;
+`;
+
+export {
+  Button,
+  CenterContainer,
+  SectionTitle,
+  CardList,
+  StyledTitle,
+  StyledDescription,
+  LabelList,
+};
