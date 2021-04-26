@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing:border-box;
   }
   .App{
+    
     display:flex;
     flex-direction:column;
     align-items:center;

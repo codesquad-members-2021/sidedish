@@ -2,23 +2,24 @@ import { useState, useEffect } from "react";
 import MainItemsTitle from "./MainItemsTitle";
 import MainItemsCard from "./MainItemsCard/MainItemsCard";
 import TotalCategoryButton from "./TotalCategoryButton";
+// import getData from "../utils/getData";
 import * as S from "./MainItemsStyles";
 import * as CS from "../Styles/commonStyles";
 
 const MainItems = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
-  const [test, setTest] = useState(null);
 
   const getData = () => {
     const url =
       "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main";
+
     try {
       fetch(url)
         .then((res) => res.json())
         .then((json) => {
-          if (json && json.body) {
-            setData(json.body);
+          if (json) {
+            setData(json);
           }
         });
     } catch (err) {
@@ -27,18 +28,11 @@ const MainItems = () => {
     }
   };
 
-  const tests = () => {
-    const url =
-      "/api/thumbnails/remote/492x492ex/image/vendor_inventory/0db2/50bda73ed88a032cc47338eb982a6af50eca8394b9f20a83fc05e516bbcf.jpg";
-    fetch(url).then((res) => console.log(res.url));
-  };
-
   useEffect(() => {
     getData();
-    tests();
   }, []);
 
-  if (!data || !data.length) return null;
+  if (!data) return null;
   if (error) return null;
 
   return (
@@ -49,7 +43,7 @@ const MainItems = () => {
           <CS.Button.LEFT_BUTTON />
         </S.LeftButtonWrapper>
 
-        {data.map((items, index) => (
+        {data.body.map((items, index) => (
           <MainItemsCard key={index} items={items} />
         ))}
 

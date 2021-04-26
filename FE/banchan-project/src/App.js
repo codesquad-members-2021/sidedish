@@ -12,7 +12,7 @@ const App = () => {
         {/* <Header></Header>
         <BestItems></BestItems> */}
         <MainItems />
-        {/* <DetailModal /> */}
+        <DetailModal />
       </div>
     </div>
   );

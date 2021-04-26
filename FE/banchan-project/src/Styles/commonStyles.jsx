@@ -22,6 +22,10 @@ const Image = {
   THUMB_NAILS: styled(ImageBox)`
     width: ${theme.imgSizes.THUMB_NAILS};
     height: ${theme.imgSizes.THUMB_NAILS};
+    border: ${(props) =>
+      props.selectedFlag === true
+        ? `2px solid ${theme.boxColors.GREEN}`
+        : "none"};
   `,
   RECOMMENDED: styled(ImageBox)`
     width: ${theme.imgSizes.RECOMMENDED};
@@ -145,6 +149,9 @@ const ColorFont = {
   `,
 
   GRAY4_XS_NORMAL: styled(Font.XS_NORMAL)`
+    color: ${theme.fontColors.GRAY4};
+  `,
+  GRAY4_M_BOLD: styled(Font.M_BOLD)`
     color: ${theme.fontColors.GRAY4};
   `,
 

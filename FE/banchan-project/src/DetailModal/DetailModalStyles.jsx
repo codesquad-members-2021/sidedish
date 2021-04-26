@@ -6,8 +6,8 @@ const DetailModalWindow = styled(CS.Box.FLEX_COLUMN_BOX)`
   position: absolute;
   width: 960px;
   height: 680px;
-  left: 25%;
-  top: 10%;
+  left: 17%;
+  top: 5%;
 
   background: #fff;
   border-radius: 5px 5px 0px 0px;
@@ -27,8 +27,8 @@ const DetailModalBackground = styled.div`
 
 const CloseButtonWrapper = styled.div`
   position: absolute;
-  top: 10%;
-  left: 76%;
+  top: 5%;
+  left: 85%;
   z-index: 1;
 `;
 
@@ -102,7 +102,7 @@ const SubmitWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
 `;
 
 const PricesWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
-  justify-content: flex-end;
+  justify-content: space-between;
   margin: 24px 0px;
 `;
 
@@ -118,7 +118,10 @@ const SubmitButton = styled.button`
   width: 440px;
   height: 58px;
 
-  background: ${theme.boxColors.GREEN};
+  background: ${(props) =>
+    props.stockOverFlag !== true
+      ? `${theme.boxColors.GREEN}`
+      : `${theme.boxColors.GRAY5}`};
 
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
     0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -139,15 +142,15 @@ const ThumbNailsEmptyImage = styled.div`
   border-radius: 5px;
 `;
 
-const RecommendedItems = styled.div`\
-width: 960px;
-height: 396px;
+const RecommendedItems = styled.div`
+  width: 960px;
+  height: 396px;
 
-padding:48px;
+  padding: 48px;
 
-background: ${theme.boxColors.GRAY6};
+  background: ${theme.boxColors.GRAY6};
 
-border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 5px 5px;
 `;
 
 const RecommendedItemsHeaderWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`

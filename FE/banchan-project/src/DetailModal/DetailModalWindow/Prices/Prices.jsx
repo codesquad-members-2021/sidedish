@@ -3,14 +3,14 @@ import TotalPriceDescription from "./TotalPriceDescription";
 import SubmitButton from "./SubmitButton";
 import * as S from "../../DetailModalStyles";
 
-const Prices = () => {
+const Prices = (props) => {
   return (
     <>
       <S.PricesWrapper>
         <TotalPriceDescription />
-        <TotalPrice price={"5,200원"} />
+        <TotalPrice count={props.count} price={props.price} />
       </S.PricesWrapper>
-      <SubmitButton />
+      <SubmitButton stockOverFlag={props.stockOverFlag} />
     </>
   );
 };
