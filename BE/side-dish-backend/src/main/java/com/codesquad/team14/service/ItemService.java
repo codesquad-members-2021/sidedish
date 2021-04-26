@@ -3,7 +3,8 @@ package com.codesquad.team14.service;
 import com.codesquad.team14.domain.Item;
 import com.codesquad.team14.dto.DetailedItemDto;
 import com.codesquad.team14.dto.ItemDto;
-import com.codesquad.team14.exception.ElementNotFoundException;
+import com.codesquad.team14.exception.CategoryNotFoundException;
+import com.codesquad.team14.exception.ItemNotFoundException;
 import com.codesquad.team14.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class ItemService {
     }
 
     public DetailedItemDto readDetailedItem(String category, Long itemId) {
-        Item item = itemRepository.findById(itemId).orElseThrow(ElementNotFoundException::new);
+        Item item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
         return DetailedItemDto.from(item);
     }
 
@@ -46,6 +47,6 @@ public class ItemService {
             }
         }
 
-        throw new ElementNotFoundException();
+        throw new CategoryNotFoundException();
     }
 }
