@@ -2,9 +2,11 @@ package codsquad.team17.sidedish.dto;
 
 import codsquad.team17.sidedish.domain.BestCategory;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
 
+@JsonPropertyOrder({"best_category_id", "best_category_name", "items"})
 public class BestCategoryDto {
     @JsonProperty("best_category_id")
     private final Long bestCategoryId;

@@ -3,41 +3,45 @@ package codsquad.team17.sidedish.dto;
 import codsquad.team17.sidedish.domain.Image;
 import codsquad.team17.sidedish.domain.Item;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price", "badge", "image", "delivery_type"})
 public class ItemDto {
-    private final Long item_id;
+    @JsonProperty("item_id")
+    private final Long itemId;
     private final String title;
     private final String description;
 
     @JsonProperty("n_price")
-    private final BigDecimal normalPrice;
+    private final int normalPrice;
 
     @JsonProperty("s_price")
-    private final BigDecimal salePrice;
+    private final int salePrice;
 
-    private final List<String> badge;
-    private final String image;
+    @JsonProperty("delivery_type")
+    private List<String> deliveryType = Arrays.asList(new String[] {"전국택배, 새벽배송"});
 
-    public ItemDto(Item entity, Image image) {
-        this.item_id = entity.getItemId();
-        this.title = entity.getTitle();
-        this.description = entity.getDescription();
-        this.normalPrice = entity.getnPrice();
-        this.salePrice = entity.getsPrice();
-        this.badge = parseBadge(entity.getBadge());
+    @JsonProperty("badge")
+    private List<String> badges;
+
+    private String image;
+
+    public ItemDto(Item item, Image image) {
+        this.itemId = item.getItemId();
+        this.title = item.getTitle();
+        this.description = item.getDescription();
+        this.normalPrice = item.getNormalPrice().intValue();
+        this.salePrice = item.getSalePrice().intValue();
+        this.badges = parseBadge(item.getBadge());
         this.image = image.getUrl();
     }
 
-    private List<String> parseBadge(String badge) {
-        return Arrays.asList(badge.split(", "));
-    }
-
-    public Long getItem_id() {
-        return item_id;
+    public Long getItemId() {
+        return itemId;
     }
 
     public String getTitle() {
@@ -48,19 +52,31 @@ public class ItemDto {
         return description;
     }
 
-    public BigDecimal getNormalPrice() {
+    public int getNormalPrice() {
         return normalPrice;
     }
 
-    public BigDecimal getSalePrice() {
+    public int getSalePrice() {
         return salePrice;
     }
 
-    public List<String> getBadge() {
-        return badge;
+    public List<String> getDeliveryType() {
+        return deliveryType;
+    }
+
+    public List<String> getBadges() {
+        return badges;
     }
 
     public String getImage() {
         return image;
+    }
+
+    private List<String> parseBadge(String badge) {
+        if(badge.equals("")) {
+            return new ArrayList<>();
+        }
+
+        return Arrays.asList(badge.split(", "));
     }
 }
