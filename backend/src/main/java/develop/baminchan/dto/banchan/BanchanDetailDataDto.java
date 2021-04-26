@@ -14,7 +14,6 @@ public class BanchanDetailDataDto {
     private String delivery_info;
     private String delivery_fee;
     private Set<String> prices;
-    private Set<String> detail_section;
 
     public BanchanDetailDataDto(DataDtoBuilder dataDtoBuilder) {
         this.top_image = dataDtoBuilder.top_image;
@@ -24,7 +23,6 @@ public class BanchanDetailDataDto {
         this.delivery_info = dataDtoBuilder.delivery_info;
         this.delivery_fee = dataDtoBuilder.delivery_fee;
         this.prices = dataDtoBuilder.prices;
-        this.detail_section = dataDtoBuilder.detail_section;
     }
 
     public String getTop_image() {
@@ -55,10 +53,6 @@ public class BanchanDetailDataDto {
         return prices;
     }
 
-    public Set<String> getDetail_section() {
-        return detail_section;
-    }
-
     public static class DataDtoBuilder {
 
         private String top_image;
@@ -68,7 +62,6 @@ public class BanchanDetailDataDto {
         private String delivery_info;
         private String delivery_fee;
         private Set<String> prices;
-        private Set<String> detail_section;
 
         DataDtoBuilder() {
 
@@ -106,11 +99,6 @@ public class BanchanDetailDataDto {
 
         public DataDtoBuilder setPrices(Set<String> prices) {
             this.prices = prices;
-            return this;
-        }
-
-        public DataDtoBuilder setDetail_section(Set<String> detail_section) {
-            this.detail_section = detail_section;
             return this;
         }
 

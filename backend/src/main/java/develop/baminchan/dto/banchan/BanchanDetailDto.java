@@ -18,7 +18,6 @@ public class BanchanDetailDto {
                 .setDelivery_info(banchanDetail.getData().getDelivery_info())
                 .setDelivery_fee(banchanDetail.getData().getDelivery_fee())
                 .setPrices(convertToSet(banchanDetail.getData().getPrices()))
-                .setDetail_section(convertToSet(banchanDetail.getData().getDetail_section()))
                 .build();
     }
 

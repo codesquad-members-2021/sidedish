@@ -12,9 +12,8 @@ public class BanchanDetailData {
     private String delivery_info;
     private String delivery_fee;
     private String prices;
-    private String detail_section;
 
-    public BanchanDetailData(String top_image, String thumb_images, String product_description, String point, String delivery_info, String delivery_fee, String prices, String detail_section) {
+    public BanchanDetailData(String top_image, String thumb_images, String product_description, String point, String delivery_info, String delivery_fee, String prices) {
         this.top_image = top_image;
         this.thumb_images = thumb_images;
         this.product_description = product_description;
@@ -22,7 +21,6 @@ public class BanchanDetailData {
         this.delivery_info = delivery_info;
         this.delivery_fee = delivery_fee;
         this.prices = prices;
-        this.detail_section = detail_section;
     }
 
     public String getTop_image() {
@@ -53,10 +51,6 @@ public class BanchanDetailData {
         return prices;
     }
 
-    public String getDetail_section() {
-        return detail_section;
-    }
-
     @Override
     public String toString() {
         return "BanchanDetailData{" +
@@ -67,7 +61,6 @@ public class BanchanDetailData {
                 ", delivery_info='" + delivery_info + '\'' +
                 ", delivery_fee='" + delivery_fee + '\'' +
                 ", prices='" + prices + '\'' +
-                ", detail_section='" + detail_section + '\'' +
                 '}';
     }
 }
