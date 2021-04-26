@@ -46,7 +46,7 @@ public class SidedishItem {
     public int calculateSalePrice(Set<SidedishEvent> sidedishEvents) {
         int salePrice = itemNormalPrice;
         for (SidedishEvent currentEvent : sidedishEvents) {
-            salePrice -= currentEvent.salePrice(this);
+            salePrice -= currentEvent.discount(this);
         }
         if (salePrice < 0) {
             salePrice = 0;

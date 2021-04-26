@@ -22,7 +22,7 @@ public class SidedishEvent {
         this.eventSaleRate = eventSaleRate;
     }
 
-    public int salePrice(SidedishItem item){
+    public int discount(SidedishItem item) {
         return (int) (item.getItemNormalPrice() * (eventSaleRate / 100));
     }
 

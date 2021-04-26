@@ -25,6 +25,13 @@ public class SidedishCategory {
         sidedishItemList.add(sidedishItem);
     }
 
+    public SidedishItem findItem(Long itemId) {
+        return sidedishItemList.stream()
+                .filter(item -> item.isSameId(itemId))
+                .findFirst()
+                .orElseThrow(ItemNotFoundException::new);
+    }
+
     public Long getId() {
         return id;
     }
@@ -35,13 +42,6 @@ public class SidedishCategory {
 
     public List<SidedishItem> getSidedishItemList() {
         return sidedishItemList;
-    }
-
-    public SidedishItem findItem(Long itemId) {
-        return sidedishItemList.stream()
-                .filter(item -> item.isSameId(itemId))
-                .findFirst()
-                .orElseThrow(ItemNotFoundException::new);
     }
 
     @Override
