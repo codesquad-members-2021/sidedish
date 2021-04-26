@@ -42,24 +42,6 @@ public class SidedishDetailItemDTO {
         this.eventBadgeList = SidedishEventDTO.eventSetToDtoSet(eventBadgeList);
     }
 
-    @Override
-    public String toString() {
-        return "SidedishItemDetailDTO{" +
-                "id=" + id +
-                ", detailImages=" + detailImages + '\n' +
-                ", descriptionImages=" + descriptionImages + '\n' +
-                ", name='" + name + '\n' +
-                ", description='" + description + '\n' +
-                ", normalPrice=" + normalPrice +
-                ", salePrice=" + salePrice +
-                ", eventBadgeList=" + eventBadgeList +
-                ", PointRate=" + PointRate +
-                ", isPurchasable=" + isPurchasable +
-                ", DeliveryInfo='" + DeliveryInfo + '\n' +
-                ", DeliveryFee='" + DeliveryFee + '\n' +
-                '}';
-    }
-
     public Long getId() {
         return id;
     }
@@ -106,5 +88,23 @@ public class SidedishDetailItemDTO {
 
     public String getDeliveryFee() {
         return DeliveryFee;
+    }
+
+    @Override
+    public String toString() {
+        return "SidedishItemDetailDTO{" +
+                "id=" + id +
+                ", detailImages=" + detailImages + '\n' +
+                ", descriptionImages=" + descriptionImages + '\n' +
+                ", name='" + name + '\n' +
+                ", description='" + description + '\n' +
+                ", normalPrice=" + normalPrice +
+                ", salePrice=" + salePrice +
+                ", eventBadgeList=" + eventBadgeList +
+                ", PointRate=" + PointRate +
+                ", isPurchasable=" + isPurchasable +
+                ", DeliveryInfo='" + DeliveryInfo + '\n' +
+                ", DeliveryFee='" + DeliveryFee + '\n' +
+                '}';
     }
 }

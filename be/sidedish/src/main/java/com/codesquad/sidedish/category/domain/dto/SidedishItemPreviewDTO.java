@@ -27,19 +27,6 @@ public class SidedishItemPreviewDTO {
         this.eventBadgeList = SidedishEventDTO.eventSetToDtoSet(eventBadgeList);
     }
 
-    @Override
-    public String toString() {
-        return "SidedishItemPreviewDTO{" +
-                "id=" + id +
-                ", thumbnailImage='" + thumbnailImage + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", normalPrice=" + normalPrice +
-                ", salePrice=" + salePrice +
-                ", eventBadgeList=" + eventBadgeList +
-                '}';
-    }
-
     public Long getId() {
         return id;
     }
@@ -66,5 +53,18 @@ public class SidedishItemPreviewDTO {
 
     public Set<SidedishEventDTO> getEventBadgeList() {
         return eventBadgeList;
+    }
+
+    @Override
+    public String toString() {
+        return "SidedishItemPreviewDTO{" +
+                "id=" + id +
+                ", thumbnailImage='" + thumbnailImage + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", normalPrice=" + normalPrice +
+                ", salePrice=" + salePrice +
+                ", eventBadgeList=" + eventBadgeList +
+                '}';
     }
 }
