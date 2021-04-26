@@ -12,8 +12,8 @@ create table dish (
     delivery_type varchar(45) not null,
     title varchar(45) not null,
     description varchar(45) not null,
-    normal_price int not null,
-    selling_price int,
+    normal_price varchar not null,
+    selling_price varchar,
     badge varchar(45),
     category_id int not null,
     top_image varchar(200) not null,
@@ -23,7 +23,7 @@ create table dish (
     delivery_fee varchar(45) not null,
     detail_section varchar(1000) not null,
     stock int not null,
-    point int not null,
+    point varchar(5) not null,
     primary key (id),
     foreign key (category_id) references category (id)
 );
