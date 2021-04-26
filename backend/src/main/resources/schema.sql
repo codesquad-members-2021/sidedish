@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS `sidedish`.`dish` (
     `alt` VARCHAR(255) NULL,
     `title` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NULL,
-    `n_price` DECIMAL(6,0) NOT NULL,
-    `s_price` DECIMAL(6,0) NULL,
+    `n_price` DECIMAL(6,0) NULL,
+    `s_price` DECIMAL(6,0) NOT NULL,
     `section_name` VARCHAR(255) NULL,
     `stock` INT NOT NULL,
     `badge` VARCHAR(255) NULL,
@@ -40,9 +40,9 @@ CREATE TABLE IF NOT EXISTS `sidedish`.`dish` (
 DROP TABLE IF EXISTS `sidedish`.`delivery` ;
 
 CREATE TABLE IF NOT EXISTS `sidedish`.`delivery` (
-                                                     `id` INT NOT NULL AUTO_INCREMENT,
-                                                     `is_monday` TINYINT NOT NULL,
-                                                     `delivery_type` VARCHAR(255) NOT NULL DEFAULT '새벽배송, 택배배송',
+ `id` INT NOT NULL AUTO_INCREMENT,
+ `is_monday` TINYINT NOT NULL,
+ `delivery_type` VARCHAR(255) NOT NULL DEFAULT '새벽배송, 택배배송',
     `delivery_fee` DECIMAL(4,0) NOT NULL DEFAULT 2500,
     `delivert_condition` DECIMAL(5,0) NOT NULL DEFAULT 40000,
     `dish_hash` CHAR(5) NOT NULL,
