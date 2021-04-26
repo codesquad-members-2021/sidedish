@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class MenuListViewModel {
     private let menuListUseCase: MenuListUseCasePort
@@ -14,6 +15,7 @@ class MenuListViewModel {
     @Published var main: [Dishes] = []
     @Published var soup: [Dishes] = []
     @Published var side: [Dishes] = []
+    //MARK: - 수정
     private let cache = CoreDataMenuResponseStorage()
     
     init(menuListUseCase: MenuListUseCasePort) {
@@ -55,6 +57,9 @@ class MenuListViewModel {
                         break
                     }
                     self.cache.save(data)
+                    self.cache.loadSaveDataInCoreData()
+                    let request: NSFetchRequest<DishesEntity> = DishesEntity.fetchRequest()
+                    self.cache.deleteAll(request: request)
                     self.cache.loadSaveDataInCoreData()
                   })
             .store(in: &subscriptions)

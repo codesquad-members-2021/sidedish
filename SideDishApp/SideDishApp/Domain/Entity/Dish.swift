@@ -15,7 +15,7 @@ struct Dishes: Codable, Hashable {
 }
 
 // MARK: - Dish
-public class Dish: NSObject, Codable, NSSecureCoding,NSCoding {
+public class Dish: NSObject, Codable, NSSecureCoding, NSCoding {
     public static var supportsSecureCoding: Bool = true
     
     public func encode(with coder: NSCoder) {

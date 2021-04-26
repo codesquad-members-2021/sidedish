@@ -13,6 +13,8 @@
 		1E1DBAD9262DDDFC0050FE6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */; };
 		1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */; };
 		1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADC262DDDFD0050FE6C /* LaunchScreen.storyboard */; };
+		1E5053C82636F504005615F5 /* DishesEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */; };
+		1E5053C92636F504005615F5 /* DishesEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */; };
 		1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F61262F256000DC56C0 /* Endpoint.swift */; };
 		1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */; };
 		1ECD5F6A262F3B6500DC56C0 /* DishNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */; };
@@ -39,6 +41,8 @@
 		1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E1DBADD262DDDFD0050FE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E1DBADF262DDDFD0050FE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DishesEntity+CoreDataClass.swift"; path = "/Users/ohking/Desktop/masters_codesquad/sidedish/SideDishApp/SideDishApp/Data/Persistence/DishesEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DishesEntity+CoreDataProperties.swift"; path = "/Users/ohking/Desktop/masters_codesquad/sidedish/SideDishApp/SideDishApp/Data/Persistence/DishesEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1ECD5F61262F256000DC56C0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishNetworkManager.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		1E1DBAE6262DDE040050FE6C /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */,
+				1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */,
 				1ECF2EBE2635DE65006982BE /* CoreData.xcdatamodeld */,
 				1ECF2EC22635E2EC006982BE /* CoreDataMenuResponseStorage.swift */,
 			);
@@ -375,6 +381,7 @@
 				1E1DBAD6262DDDFC0050FE6C /* ViewController.swift in Sources */,
 				1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */,
 				1ECD5F6A262F3B6500DC56C0 /* DishNetworkManager.swift in Sources */,
+				1E5053C82636F504005615F5 /* DishesEntity+CoreDataProperties.swift in Sources */,
 				1E1DBAD2262DDDFC0050FE6C /* AppDelegate.swift in Sources */,
 				1ECF2EC32635E2EC006982BE /* CoreDataMenuResponseStorage.swift in Sources */,
 				1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */,
@@ -383,6 +390,7 @@
 				B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
 				1ECF2E842632A862006982BE /* LoadingView.swift in Sources */,
+				1E5053C92636F504005615F5 /* DishesEntity+CoreDataClass.swift in Sources */,
 				1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
