@@ -4,6 +4,7 @@ import ItemCard from "../ItemCard";
 import useFetch from "../useFetch";
 import Title from "../atomic/Title";
 import { useState } from "react";
+import Loading from "../Loading"
 
 const MainBlock = styled.div`
   margin-top: 40px;
@@ -46,15 +47,15 @@ function MainMenu() {
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
   const [clickedID, setClickedID] = useState(1);
   //초기 베스트메뉴 url 설정
-  const [fetchData, setFetchData] = useState(basicUrl + clickedID);
+  const [fetchData, setFetchData] = useState(basicUrl + 1);
 
   //3개: 초기 베스트메뉴 데이터 요청
-  const [initData, loadingState] = useFetch(fetchData);
-  mokData = initData.items;
+  const [bestData, loadingState] = useFetch(fetchData);
+  
 
   //클릭한 후 해당 탭 데이터 요청
   const handleClick = (target, id) => {
-    setClickedID(id);
+    // setClickedID(id);
     setFetchData(basicUrl + id);
   };
 
@@ -76,8 +77,8 @@ function MainMenu() {
       </TabBlock>
 
       <MainColumn>
-        {!loadingState &&
-          mokData.map((data, idx) => (
+        {loadingState? <Loading width='1280px' height='620px' />
+           : bestData.items.map((data, idx) => (
             <ItemCard key={idx} data={data} size={"L"}></ItemCard>
           ))}
       </MainColumn>
