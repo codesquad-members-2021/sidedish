@@ -14,7 +14,7 @@ class SidedishViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var sidedishViewModel: SidedishViewModelType!
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Section, DataItem>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
     private let mainPath = "main"
     private let soupPath = "soup"
     private let sidePath = "side"
@@ -40,22 +40,16 @@ class SidedishViewController: UIViewController {
         self.collectionView.backgroundColor = .systemBackground
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        let mainCellRegistration = UICollectionView.CellRegistration<SidedishCell, DataItem> { cell, indexPath, item in
-            if case .main(let item) = item {
-                cell.configureCell(item: item)
-            }
+        let mainCellRegistration = UICollectionView.CellRegistration<SidedishCell, Item> { cell, indexPath, item in
+            cell.configureCell(item: item)
         }
         
-        let soupCellRegistration = UICollectionView.CellRegistration<SidedishCell, DataItem> { cell, indexPath, item in
-            if case .soup(let item) = item {
-                cell.configureCell(item: item)
-            }
+        let soupCellRegistration = UICollectionView.CellRegistration<SidedishCell, Item> { cell, indexPath, item in
+            cell.configureCell(item: item)
         }
         
-        let sideCellRegistration = UICollectionView.CellRegistration<SidedishCell, DataItem> { cell, indexPath, item in
-            if case .side(let item) = item {
-                cell.configureCell(item: item)
-            }
+        let sideCellRegistration = UICollectionView.CellRegistration<SidedishCell, Item> { cell, indexPath, item in
+            cell.configureCell(item: item)
         }
         
         self.dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
@@ -88,18 +82,18 @@ class SidedishViewController: UIViewController {
     }
     
     private func fetchMainData(path: String) {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchMainData, path: path)
+        self.fetchData(handler: self.sidedishViewModel.fetchMainData, path: path)
     }
     
     private func fetchSoupData(path: String) {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchSoupData, path: path)
+        self.fetchData(handler: self.sidedishViewModel.fetchSoupData, path: path)
     }
-    
+
     private func fetchSideData(path: String) {
-        self.fetchData(fetchData: self.sidedishViewModel.fetchSideData, path: path)
+        self.fetchData(handler: self.sidedishViewModel.fetchSideData, path: path)
     }
     
-    private func fetchData(fetchData handler: FetchDataHandler, path: String) {
+    private func fetchData(handler: FetchDataHandler, path: String) {
         self.sidedishViewModel.dataChanged
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -111,12 +105,12 @@ class SidedishViewController: UIViewController {
     }
     
     private func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, DataItem>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections(Section.allCases)
 
-        snapshot.appendItems(sidedishViewModel.getMainItems().map { DataItem.main($0) }, toSection: .main)
-        snapshot.appendItems(sidedishViewModel.getSoupItems().map { DataItem.soup($0) }, toSection: .soup)
-        snapshot.appendItems(sidedishViewModel.getSideItems().map { DataItem.side($0) }, toSection: .side)
+        snapshot.appendItems(sidedishViewModel.getMainItems(), toSection: .main)
+        snapshot.appendItems(sidedishViewModel.getSoupItems(), toSection: .soup)
+        snapshot.appendItems(sidedishViewModel.getSideItems(), toSection: .side)
         self.dataSource.apply(snapshot)
     }
 }
@@ -133,12 +127,6 @@ enum Section: Int, CaseIterable {
         case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
         }
     }
-}
-
-enum DataItem: Hashable {
-    case main(Item)
-    case soup(Item)
-    case side(Item)
 }
 
 enum SupplementaryElementKind {
