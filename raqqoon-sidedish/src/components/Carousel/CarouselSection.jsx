@@ -6,10 +6,10 @@ import CarouselContainer from 'components/carousel/CarouselContainer';
 import CategoryButton from 'components/carousel/CategoryBtn';
 
 const CarouselSection = () => {
-  const paths = ['main', 'soup', 'side'];
-  const firstPath = paths[0];
+  const categories = ['main', 'soup', 'side'];
+  const firstCategory = categories[0];
   const firstCarousel = (
-    <Carousel key={uuidv4()} path={firstPath} ITEM_NUMBER={4} />
+    <Carousel key={uuidv4()} path={firstCategory} panelCount={4} />
   );
   const [categoryContents, setCategoryContents] = useState([firstCarousel]);
   const [isFolded, setIsFolded] = useState(false);
@@ -20,9 +20,9 @@ const CarouselSection = () => {
   };
 
   const updateCarouselList = () => {
-    const allCategories = paths
+    const allCategories = categories
       .filter((_, idx) => idx !== 0)
-      .map((path) => <Carousel key={uuidv4()} path={path} ITEM_NUMBER={4} />);
+      .map((path) => <Carousel key={uuidv4()} path={path} panelCount={4} />);
     setCategoryContents([...categoryContents, ...allCategories]);
   };
 
