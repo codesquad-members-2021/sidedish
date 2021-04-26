@@ -95,7 +95,7 @@
                 <outlet property="badgeBackgroundView" destination="zyF-jG-JsS" id="qIM-z2-nAE"/>
                 <outlet property="badgeLabel" destination="Y5f-SS-BtN" id="ltu-F0-SVp"/>
                 <outlet property="descriptionLabel" destination="u2C-ZI-SDw" id="LAF-Sy-sa6"/>
-                <outlet property="discountPriceLabel" destination="BOI-Fv-3kb" id="b41-of-9Bk"/>
+                <outlet property="lastPriceLabel" destination="BOI-Fv-3kb" id="b41-of-9Bk"/>
                 <outlet property="nameLabel" destination="jZ6-ez-y79" id="BEj-1X-p3F"/>
                 <outlet property="originalPriceLabel" destination="0gq-YR-BVe" id="EOs-vr-pHg"/>
                 <outlet property="thumbnailImageView" destination="UVr-8m-rNI" id="YWp-Fa-pYt"/>

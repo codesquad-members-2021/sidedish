@@ -13,7 +13,7 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var discountPriceLabel: UILabel!
+    @IBOutlet weak var lastPriceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
     @IBOutlet weak var badgeBackgroundView: UIView!
     @IBOutlet weak var badgeLabel: UILabel!
@@ -44,11 +44,11 @@ class DishCell: UICollectionViewCell {
         let prices = viewModel.prices
         let originalPrice = prices[0]
         if prices.count > 1 {
-            let discountPrice = prices[1]
+            let lastPrice = prices[1]
             originalPriceLabel.attributedText = "\(originalPrice)원".strikethrough()
-            discountPriceLabel.text = "\(discountPrice)원"
+            lastPriceLabel.text = "\(lastPrice)원"
         } else {
-            discountPriceLabel.text = "\(originalPrice)원"
+            lastPriceLabel.text = "\(originalPrice)원"
             originalPriceLabel.text = ""
         }
         let badges = viewModel.badges
