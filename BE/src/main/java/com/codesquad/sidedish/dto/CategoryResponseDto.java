@@ -3,6 +3,7 @@ package com.codesquad.sidedish.dto;
 import com.codesquad.sidedish.CategoryType;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class CategoryResponseDto {
     private static List<DishResponseDto> dishesMapToDishResponseDtoList(Map<String, Dish> dishes) {
         List<DishResponseDto> dishResponseDto = new ArrayList<>();
         for (String key : dishes.keySet()) {
-            dishResponseDtoMap.put(key, DishResponseDto.of(dishes.get(key)));
+            dishResponseDto.add(DishResponseDto.of(dishes.get(key)));
         }
         return dishResponseDto;
     }

@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Dish;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName("dishDetail")
 public class DishDetailResponseDto {
