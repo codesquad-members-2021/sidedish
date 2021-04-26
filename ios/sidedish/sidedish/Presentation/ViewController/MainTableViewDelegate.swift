@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTableViewDelegate: NSObject, UITableViewDelegate {
+    
     private let viewModel: MenuCellViewModel
     private var delegate: ViewChangable!
     
@@ -29,6 +30,13 @@ class MainTableViewDelegate: NSObject, UITableViewDelegate {
         
         return headerView
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerWidth = tableView.frame.width
+        let footerHeight = ViewPosition.footerHeight
+        let footerView = CustomTableFooterView.make(width: footerWidth, height: footerHeight.rawValue)
+        return footerView
+    }
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let count = indexPath.row
@@ -47,7 +55,8 @@ class MainTableViewDelegate: NSObject, UITableViewDelegate {
     
     enum ViewPosition : CGFloat {
         case headerViewHeight = 32,
-             gapHeaderViewAndCell = 24
+             gapHeaderViewAndCell = 24,
+             footerHeight = 8
     }
     
     func set(delegate: ViewChangable){

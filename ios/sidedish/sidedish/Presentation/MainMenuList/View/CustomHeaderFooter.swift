@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CustomTableHeaderView : UIView {
+class CustomTableHeaderView: UIView {
     
-    static func make(width : CGFloat, height: CGFloat, text: String) -> UIView {
-        let headerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+    static func make(width: CGFloat, height: CGFloat, text: String) -> UIView {
+        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
@@ -24,5 +24,12 @@ class CustomTableHeaderView : UIView {
     
 }
 
-
+class CustomTableFooterView: UIView {
+    
+    static func make(width: CGFloat, height: CGFloat) -> UIView {
+        let footerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        return footerView
+    }
+    
+}
  
