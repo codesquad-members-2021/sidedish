@@ -10,8 +10,10 @@ const SmallCard = styled.div`
 const LargeCard = styled.div`
     width:384px;
     height:540px;
-    margin-left:5%;
     text-align:left;
+    &.LargeCard {
+        margin:2.5% 24px;
+    }
 `
 const Img = styled.img`
     background-size: 100% 100%;
@@ -101,6 +103,10 @@ const LargeEventPrice = styled(LargeSpeicalPrice)`
     background-color : #82D32D;
     width: 97px;
     height: 28px;
+
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
 `
 const LargeLaunchingPrice = styled(LargeSpeicalPrice)`
     background-color : #86C6FF;;

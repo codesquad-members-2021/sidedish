@@ -38,7 +38,7 @@ const BestMenu = () => {
         { response && renderTabTitles() }
       </FlexRowContainer>
       <style.BestMenuTabInfo>
-        <FlexRowContainer>  
+        <FlexRowContainer style = {{ justifyContent : "space-between" }}>  
           { response && renderLargeCard() }
         </FlexRowContainer>
       </style.BestMenuTabInfo>

@@ -1,9 +1,8 @@
 import * as style from "./MenuCard.style.jsx"
-// n_price: "26,000"
-// s_price: "18,200원"
+
 const LargeCard = ({data}) => {
     return (
-        <style.LargeCard>
+        <style.LargeCard className="LargeCard">
             { LargeImg(data.img)}
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}
