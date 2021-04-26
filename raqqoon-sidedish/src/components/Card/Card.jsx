@@ -13,12 +13,64 @@ import {
 } from 'const';
 import { v4 as uuidv4 } from 'uuid';
 
-const Card = ({ cardSize, item, setModalState }) => {
+const Card = ({
+  cardSize,
+  item,
+  setModalState,
+  modalData,
+  setModalData,
+  detail_hash,
+}) => {
   const { title, description, n_price, s_price, badge, image } = item;
+
+  if (item.data) {
+    const { detail_section, prices, product_description } = item.data;
+
+    return (
+      <CardBoxDiv>
+        <Img
+          cardSize={cardSize}
+          image={detail_section[0]}
+          setModalState={setModalState}
+          modalData={modalData}
+          setModalData={setModalData}
+          detail_hash={detail_hash}
+          title={title}
+        />
+        <Info name={title} body={description} />
+        <Price normal={s_price} discount={n_price} />
+        {badge && (
+          <TagBoxDiv>
+            {badge.map((badge) => {
+              switch (badge) {
+                case TAG_EVENT:
+                  return <Tag type={EVENT} key={uuidv4()} />;
+                case TAG_LAUNCHING:
+                  return <Tag type={LAUNCHING} key={uuidv4()} />;
+                case TAG_BEST:
+                  return <Tag type={BEST} key={uuidv4()} />;
+                default:
+                  break;
+              }
+              return badge;
+            })}
+          </TagBoxDiv>
+        )}
+      </CardBoxDiv>
+    );
+  }
 
   return (
     <CardBoxDiv>
-      <Img cardSize={cardSize} image={image} setModalState={setModalState} />
+      <Img
+        cardSize={cardSize}
+        image={image}
+        setModalState={setModalState}
+        modalData={modalData}
+        setModalData={setModalData}
+        detail_hash={item.detail_hash}
+        title={title}
+      />
       <Info name={title} body={description} />
       <Price normal={s_price} discount={n_price} />
       {badge && (

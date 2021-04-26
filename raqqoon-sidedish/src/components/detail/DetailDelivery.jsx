@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
-const DetailDelivery = () => {
+const DetailDelivery = ({ point, delivery_info, delivery_fee }) => {
   return (
     <DetailDeliveryDiv>
       <TextBox>
         <LabelBox>적립금</LabelBox>
-        <InfoBox>52원</InfoBox>
+        <InfoBox>{point}</InfoBox>
       </TextBox>
       <TextBox>
         <LabelBox>배송정보</LabelBox>
-        <InfoBox>52원</InfoBox>
+        <InfoBox>{delivery_info}</InfoBox>
       </TextBox>
       <TextBox>
         <LabelBox>배송비</LabelBox>
-        <InfoBox>52원</InfoBox>
+        <InfoBox>{delivery_fee}</InfoBox>
       </TextBox>
     </DetailDeliveryDiv>
   );

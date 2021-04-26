@@ -1,31 +1,48 @@
 import styled from 'styled-components';
 
-const TopImg = () => {
-  return <TopImgDiv>Big Img</TopImgDiv>;
+const TopImg = ({ img }) => {
+  return (
+    <TopImgDiv>
+      <img src={img} alt={img} />
+    </TopImgDiv>
+  );
 };
-const ThumbImg = () => {
-  return <ThumbImgDiv>Small Img</ThumbImgDiv>;
+const ThumbImg = ({ img }) => {
+  return (
+    <ThumbImgDiv>
+      <img src={img} alt={img} />
+    </ThumbImgDiv>
+  );
 };
 
-const DetailImg = ({ location }) => {
+const DetailImg = ({ location, img }) => {
   return {
-    top: <TopImg />,
-    thumb: <ThumbImg />,
+    top: <TopImg {...{ img }} />,
+    thumb: <ThumbImg {...{ img }} />,
   }[location];
 };
 
 export default DetailImg;
 
 const TopImgDiv = styled.div`
-  border: 1px solid red;
   width: 392px;
   height: 392px;
   border-radius: 5px;
+  img {
+    width: 392px;
+    height: 392px;
+    border-radius: 5px;
+  }
 `;
 
 const ThumbImgDiv = styled.div`
-  border: 1px solid blue;
   width: 72px;
   height: 72px;
   border-radius: 5px;
+
+  img {
+    width: 72px;
+    height: 72px;
+    border-radius: 5px;
+  }
 `;

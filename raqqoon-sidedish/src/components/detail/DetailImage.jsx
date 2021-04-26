@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 import ImageData from 'components/detail/ImageData';
 import { LOCATION_TOP, LOCATION_THUMB } from 'const';
+import { v4 as uuidv4 } from 'uuid';
 
-const DetailImage = () => {
+const DetailImage = ({ top_image, thumb_images }) => {
   return (
     <DetailImgBox>
       <LargeImgBoxDiv>
-        <ImageData location={LOCATION_TOP} />
+        <ImageData location={LOCATION_TOP} img={top_image} />
       </LargeImgBoxDiv>
       <SmallImgBoxDiv>
-        <ImageData location={LOCATION_THUMB} />
-        <ImageData location={LOCATION_THUMB} />
-        <ImageData location={LOCATION_THUMB} />
-        <ImageData location={LOCATION_THUMB} />
-        <ImageData location={LOCATION_THUMB} />
+        {thumb_images.map((img) => (
+          <ImageData location={LOCATION_THUMB} img={img} key={uuidv4()} />
+        ))}
       </SmallImgBoxDiv>
     </DetailImgBox>
   );
@@ -22,7 +21,6 @@ const DetailImage = () => {
 export default DetailImage;
 
 const DetailImgBox = styled.div`
-  border: 1px solid green;
   width: fit-content;
 `;
 

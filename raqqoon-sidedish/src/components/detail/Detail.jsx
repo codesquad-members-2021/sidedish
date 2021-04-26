@@ -2,13 +2,28 @@ import styled from 'styled-components';
 import DetailModal from 'components/detail/DetailModal';
 import DetailCarousel from 'components/detail/DetailCarousel';
 import DetailCloseButton from 'components/detail/DetailCloseButton';
+import useFetch from 'customHooks/useFetch';
 
-const Detail = ({ modalState, setModalState }) => {
+const Detail = ({ modalData, modalState, setModalState }) => {
+  const detailData = useFetch(
+    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/`,
+    []
+  );
+  const { hash, title } = modalData;
+  let currentData;
+  detailData.forEach((data) => {
+    if (data.hash === hash) {
+      currentData = data.data;
+    }
+  });
+
+  if (!currentData) return null;
+
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
         <DetailCloseButton {...{ setModalState }} />
-        <DetailModal />
+        <DetailModal {...{ title, currentData }} />
         <DetailCarousel />
       </ModalWrapper>
     </DetailBoxDiv>

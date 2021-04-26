@@ -1,7 +1,12 @@
+import Carousel from 'components/carousel/Carousel';
 import styled from 'styled-components';
 
 const DetailCarousel = () => {
-  return <DetailCarouselDiv>DetailCarousel</DetailCarouselDiv>;
+  return (
+    <DetailCarouselDiv>
+      <Carousel path="detail" ITEM_NUMBER={3} />
+    </DetailCarouselDiv>
+  );
 };
 
 export default DetailCarousel;

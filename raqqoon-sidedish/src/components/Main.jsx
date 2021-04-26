@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import CarouselSection from 'components/carousel/CarouselSection';
 import TabUI from 'components/tabUI/TabUI';
 
-const Main = ({ setModalState }) => {
+const Main = ({ setModalState, modalData, setModalData }) => {
   return (
     <MainBoxDiv>
-      <TabUI {...{ setModalState }} />
+      <TabUI {...{ setModalState, modalData, setModalData }} />
       <CarouselSection />
     </MainBoxDiv>
   );

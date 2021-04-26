@@ -4,7 +4,7 @@ import useTab from 'customHooks/useTab';
 import TabList from 'components/tabUI/TabList';
 import TabMain from 'components/tabUI/TabMain';
 
-const TabBody = ({ setModalState }) => {
+const TabBody = ({ setModalState, modalData, setModalData }) => {
   const bestData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best`,
     []
@@ -19,7 +19,7 @@ const TabBody = ({ setModalState }) => {
         setTabIndex={setTabIndex}
         tabIndex={tabIndex}
       />
-      <TabMain {...{ tabItemList, setModalState }} />
+      <TabMain {...{ tabItemList, setModalState, modalData, setModalData }} />
     </TabBodyBoxDiv>
   );
 };

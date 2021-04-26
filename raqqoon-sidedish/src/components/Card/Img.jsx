@@ -3,7 +3,16 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { BLOCK } from 'const';
 
-const Img = ({ cardSize, image, alt, setModalState }) => {
+const Img = ({
+  cardSize,
+  image,
+  alt,
+  setModalState,
+  title,
+  detail_hash,
+  modalData,
+  setModalData,
+}) => {
   const url = image;
   const [opacitiy, setOpacity] = useState(0);
   const onToggleOpacity = (opacitiy) => {
@@ -17,6 +26,10 @@ const Img = ({ cardSize, image, alt, setModalState }) => {
 
   const handleClickCard = () => {
     setModalState(BLOCK);
+    setModalData({
+      hash: detail_hash,
+      title: title,
+    });
   };
   return (
     <ImgDiv

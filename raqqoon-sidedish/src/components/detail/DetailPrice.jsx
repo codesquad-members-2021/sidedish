@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-const DetailPrice = () => {
+const DetailPrice = ({ prices }) => {
+  if (prices.length === 2) {
+    prices = prices[0];
+  }
   return (
     <DetailPriceBox>
       <DetailPriceTextSpan>총 주문금액</DetailPriceTextSpan>
-      <DetailPriceSpan>5,200원</DetailPriceSpan>
+      <DetailPriceSpan>{prices}</DetailPriceSpan>
     </DetailPriceBox>
   );
 };
