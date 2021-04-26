@@ -9,28 +9,26 @@ public class ItemDTO {
     @JsonProperty("detail_hash")
     private String detailHash;
     private String image;
-    private String alt;
 
     @JsonProperty("delivery_type")
     private String deliveryType;
     private String title;
     private String description;
 
-    @JsonProperty("n_price")
-    private Integer nPrice;
-    @JsonProperty("s_price")
-    private Integer sPrice;
+    @JsonProperty("normal_price")
+    private Integer normalPrice;
+    @JsonProperty("special_price")
+    private Integer specialPrice;
     private String[] badge;
 
-    public ItemDTO(String detailHash, String image, String deliveryType, String title, String description, Integer nPrice, Integer sPrice, String[] badge) {
+    public ItemDTO(String detailHash, String image, String deliveryType, String title, String description, Integer normalPrice, Integer specialPrice, String[] badge) {
         this.detailHash = detailHash;
         this.image = image;
-        this.alt = title;
         this.deliveryType = deliveryType;
         this.title = title;
         this.description = description;
-        this.nPrice = nPrice;
-        this.sPrice = sPrice;
+        this.normalPrice = normalPrice;
+        this.specialPrice = specialPrice;
         this.badge = badge;
     }
 
@@ -40,10 +38,6 @@ public class ItemDTO {
 
     public String getImage() {
         return image;
-    }
-
-    public String getAlt() {
-        return alt;
     }
 
     public String getDeliveryType() {
@@ -58,12 +52,12 @@ public class ItemDTO {
         return description;
     }
 
-    public Integer getnPrice() {
-        return nPrice;
+    public Integer getNormalPrice() {
+        return normalPrice;
     }
 
-    public Integer getsPrice() {
-        return sPrice;
+    public Integer getSpecialPrice() {
+        return specialPrice;
     }
 
     public String[] getBadge() {
@@ -75,12 +69,11 @@ public class ItemDTO {
         return "ItemDTO{" +
                 "detailHash='" + detailHash + '\'' +
                 ", image='" + image + '\'' +
-                ", alt='" + alt + '\'' +
                 ", deliveryType='" + deliveryType + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", nPrice=" + nPrice +
-                ", sPrice=" + sPrice +
+                ", normalPrice=" + normalPrice +
+                ", specialPrice=" + specialPrice +
                 ", badge=" + Arrays.toString(badge) +
                 '}';
     }
