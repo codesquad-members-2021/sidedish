@@ -14,7 +14,7 @@ const SubContentsSection = ({ data, type }) => {
     arrowOption: {
       leftIcon: <MdKeyboardArrowLeft/>,
       rightIcon: <MdKeyboardArrowRight />,
-      arrowLocation: 'top',
+      // arrowLocation: 'top',
       btnSize: '30px',
     },
   };

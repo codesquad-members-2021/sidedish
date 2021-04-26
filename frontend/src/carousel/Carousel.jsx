@@ -4,15 +4,22 @@ import styled from "styled-components";
 import CarouselArrowBtn from "./CarouselArrowBtn";
 
 const Carousel = ({
-  itemsPerCnt,
-  carouselWrapStyle,
-  transitionProperty,
-  transitionDuration,
+  itemsPerCnt = 4,
+  carouselWrapStyle = null,
+  transitionProperty = "all",
+  transitionDuration = "0.4s",
   arrowOption: {
-    leftIcon,
-    rightIcon,
+    // arrowOption을 정의했지만 일부분을 안했을 때 이 안에 있는 값이 적용됨
+    leftIcon = "◀",
+    rightIcon = "▶",
     arrowLocation = "normal",
     btnSize = "32px",
+  } = {
+    // 아예 arrowOption을 정의 안했을 때
+    leftIcon: "◀",
+    rightIcon: "▶",
+    arrowLocation: "normal",
+    btnSize: "32px",
   },
   children: items,
 }) => {
