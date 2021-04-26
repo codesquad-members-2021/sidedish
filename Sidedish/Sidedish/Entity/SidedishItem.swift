@@ -21,7 +21,7 @@ struct SidedishItem: Codable {
     
     enum CodingKeys: String, CodingKey {
         case detailHash = "detail_hash"
-        case imageURL
+        case imageURL = "image"
         case alt
         case deliveryType = "delivery_type"
         case title
