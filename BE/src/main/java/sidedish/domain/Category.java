@@ -2,7 +2,7 @@ package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Set;
+import java.util.List;
 
 public class Category {
 
@@ -10,7 +10,7 @@ public class Category {
     private Long id;
 
     private String title;
-    private Set<Dish> dishes;
+    private List<Dish> dishes;
 
     public Category(String title) {
         this.title = title;
@@ -28,8 +28,11 @@ public class Category {
         return title;
     }
 
-    public Set<Dish> getDishes() {
+    public List<Dish> getDishes() {
         return dishes;
     }
 
+    public boolean hasDish(Dish dish) {
+        return dishes.contains(dish);
+    }
 }
