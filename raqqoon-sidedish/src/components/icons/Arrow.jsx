@@ -1,17 +1,17 @@
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import styled from 'styled-components';
 
-const Arrow = ({ size, direction }) => {
+const Arrow = ({ size, direction, onClick }) => {
   const LARGE = '2.5rem';
   const SMALL = '1rem';
   return {
     RIGHT: (
-      <RightArrow>
+      <RightArrow onClick={onClick} direction={direction}>
         <FaAngleRight size={size === 'L' ? LARGE : SMALL} />
       </RightArrow>
     ),
     LEFT: (
-      <LeftArrow>
+      <LeftArrow onClick={onClick} direction={direction}>
         <FaAngleLeft size={size === 'L' ? LARGE : SMALL} />
       </LeftArrow>
     ),
