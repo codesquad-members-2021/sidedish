@@ -1,5 +1,6 @@
 package com.team15.sidedish.controller;
 
+import com.team15.sidedish.dto.BestDTO;
 import com.team15.sidedish.dto.ItemDTO;
 import com.team15.sidedish.service.ItemService;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -27,18 +29,24 @@ public class ItemController {
     }
 
     @GetMapping("/main")
-    public List<ItemDTO> showMainDishes(){
-        return itemService.showDishsBySection("main");
+    public HashMap<String, List<ItemDTO>> showMainDishes(){
+        HashMap<String, List<ItemDTO>> items = new HashMap<>();
+        items.put("main_items", itemService.showDishsBySection("main"));
+        return items;
     }
 
     @GetMapping("/soup")
-    public List<ItemDTO> showSoupDishes(){
-        return itemService.showDishsBySection("soup");
+    public HashMap<String, List<ItemDTO>> showSoupDishes(){
+        HashMap<String, List<ItemDTO>> items = new HashMap<>();
+        items.put("soup_items", itemService.showDishsBySection("soup"));
+        return items;
     }
 
     @GetMapping("/side")
-    public List<ItemDTO> showSideDishes(){
-        return itemService.showDishsBySection("side");
+    public HashMap<String, List<ItemDTO>> showSideDishes(){
+        HashMap<String, List<ItemDTO>> items = new HashMap<>();
+        items.put("side_items", itemService.showDishsBySection("side"));
+        return items;
     }
 
 }

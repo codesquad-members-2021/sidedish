@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/best")
@@ -20,8 +22,10 @@ public class BestController {
     }
 
     @GetMapping
-    public List<BestDTO> showAllBestDishes() {
-        return bestService.showAllBestDishes();
+    public Map<String, List<BestDTO>> showAllBestDishes() {
+        HashMap<String, List<BestDTO>> bestDishes = new HashMap<>();
+        bestDishes.put("best_dishes", bestService.showAllBestDishes());
+        return bestDishes;
     }
 
     @GetMapping("/{categoryId}")
