@@ -27,25 +27,25 @@ public class DishController {
 
     @GetMapping("/best/{categoryId}")
     public BestDishResponseDTO viewBestDishesByCategory(@PathVariable Long categoryId) {
-        logger.info(categoryId + "번 카테고리의 best 메뉴 요청");
+        logger.info("{}번 카테고리의 best 메뉴 요청", categoryId);
         return dishService.findAllBestDishByCategoryIdAndRandom(categoryId);
     }
 
     @GetMapping("/{category}")
     public List<DishResponseDTO> viewDishes(@PathVariable String category) {
-        logger.info("모든 " + category + " 메뉴 요청");
+        logger.info("모든 {} 메뉴 요청", category);
         return dishService.findAllDishByCategory(category);
     }
 
     @GetMapping("/detail/{hash}")
     public DetailDishResponseDTO viewDetailDish(@PathVariable String hash) {
-        logger.info(hash + " 값에 해당하는 메뉴의 상세 정보 요청");
+        logger.info("{} 값에 해당하는 메뉴의 상세 정보 요청", hash);
         return dishService.getDetailMenu(hash);
     }
 
     @GetMapping("/recommend/{limit}")
     public List<DishResponseDTO> viewRecommendDish(@PathVariable int limit) {
-        logger.info(limit + "개의 랜덤 메뉴 요청");
+        logger.info("{}개의 랜덤 메뉴 요청", limit);
         return dishService.findDishByRandomLimit(limit);
     }
 
