@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 
 import CarouselItem from './CarouselItem.js';
@@ -16,10 +16,10 @@ const CarouselContainer = ({navigator="default", unit=1, ...props}) => {
     useNavigator, useEventModal,
     calculatedMovableRange, itemWidth
   } = useCarousel({ $CarouselAreaWrapper, $CarouselArea, unit, itemLength: props.children.length })
-  
+
   return (
     <CarouselLayout navigator={navigator}>
-      <CarouselAreaWrapper ref={$CarouselAreaWrapper}>
+      <CarouselAreaWrapper className={"carousel-area-wrapper"} ref={$CarouselAreaWrapper}>
         <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange}>
           {[...props.children].map((child, i) => {
             return <CarouselItem key={`Carousel-Item-${i}`} width={itemWidth} children={child} />
@@ -39,6 +39,11 @@ const CarouselContainer = ({navigator="default", unit=1, ...props}) => {
 const CarouselLayout = styled.div`
   display: flex;
   justify-content: ${props => props.navigator === "default" ? "center" : "flex-end"};
+
+  & > .carousel-area-wrapper {
+    padding-top: 20px;
+  }
+
 `;
 
 const CarouselAreaWrapper = styled.div`
