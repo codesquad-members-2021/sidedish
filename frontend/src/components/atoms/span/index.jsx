@@ -62,6 +62,12 @@ const StyledSpan = styled.span`
     `font-size:24px;
     font-weight:700;;
     `};
+  ${(props) =>
+    props._hoverTitle &&
+    `font-size:24px;
+    font-weight:700;
+    color: #FFFFFF;
+    `};
 `;
 
 const Span = ({ children, ...props }) => (

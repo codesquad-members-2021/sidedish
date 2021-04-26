@@ -14,12 +14,6 @@ const Tab = ({ children, ...props }) => {
     border-radius: 5px 5px 0px 0px;
     padding: 0;
   `;
-  // return (
-  //   <TabButton {...props}>
-  //     <Span _doTab={props._doTab}>{props.name}</Span>
-  //   </TabButton>
-  // );
-
   {
     if (props.isTabAct === "_tabDeact") {
       return (
