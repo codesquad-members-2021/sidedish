@@ -12,9 +12,9 @@ public interface DishRepository extends CrudRepository<Dish, Long> {
 
     List<Dish> findAllByMenuCategoryId(Long menuCategoryId);
 
-    @Query("SELECT * FROM dish WHERE dish.best_menu_category_id = :bestMenuCategoryId ORDER BY rand() LIMIT 3;")
-    List<Dish> findByBestMenuCategoryIdAndRandomAndLimit(Long bestMenuCategoryId);
+    @Query("SELECT id FROM dish WHERE dish.best_menu_category_id = :bestMenuCategoryId")
+    List<Long> findIdAllByBestMenuCategoryId(Long bestMenuCategoryId);
 
-    @Query("SELECT * FROM dish ORDER BY rand() LIMIT :limit;")
-    List<Dish> findByRandomAndLimit(int limit);
+    @Query("SELECT id FROM dish")
+    List<Long> findIdAllByDish();
 }

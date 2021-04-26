@@ -8,6 +8,7 @@ import com.mj_eno.sidedish.exception.OrderFailedException;
 import com.mj_eno.sidedish.web.dto.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,7 +43,8 @@ public class DishService {
     }
 
     private List<DishResponseDTO> findByBestMenuCategoryIdAndRandomAndLimit(Long categoryId) {
-        return dishRepository.findByBestMenuCategoryIdAndRandomAndLimit(categoryId).stream()
+        return makeRandomId(dishRepository.findIdAllByBestMenuCategoryId(categoryId), 3).stream()
+                .map(this::findById)
                 .map(dish -> new DishResponseDTO(dish, imageService.getTopImageUrlByDish(dish), badgeService.getBadgesByDish(dish)))
                 .collect(Collectors.toList());
     }
@@ -70,7 +72,8 @@ public class DishService {
 
     // 모든 메뉴에 대해 limit 만큼 램덤 요청
     public List<DishResponseDTO> findDishByRandomLimit(int limit) {
-        return dishRepository.findByRandomAndLimit(limit).stream()
+        return makeRandomId(dishRepository.findIdAllByDish(), limit).stream()
+                .map(this::findById)
                 .map(dish -> new DishResponseDTO(dish, imageService.getTopImageUrlByDish(dish), badgeService.getBadgesByDish(dish)))
                 .collect(Collectors.toList());
     }
@@ -85,6 +88,17 @@ public class DishService {
         dish.order(orderDish);
         Dish saveDish = dishRepository.save(dish);
         return new OrderDishResponseDTO(saveDish);
+    }
+
+    private List<Long> makeRandomId(List<Long> dishIdList, int to) {
+        Collections.shuffle(dishIdList);
+        return dishIdList.subList(0, to);
+    }
+
+    private Dish findById(Long id) {
+        return dishRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
+        );
     }
 
     private Dish findDishByHash(String hash) {
