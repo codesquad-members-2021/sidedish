@@ -6,14 +6,14 @@ import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = ({ path, ITEM_NUMBER }) => {
+const Carousel = ({ path, panelCount }) => {
   const dishData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
   );
 
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
-  const [cardsNumber, setCardsNumber] = useState(null);
+  const [restCardCount, setRestCardCount] = useState(null);
   const dishList =
     dishData &&
     dishData.map((item) => (
@@ -28,30 +28,30 @@ const Carousel = ({ path, ITEM_NUMBER }) => {
   };
 
   const moveRight = (outBoxWidth) => {
-    if (cardsNumber === 0) return;
-    if (cardsNumber < ITEM_NUMBER) {
-      return setPosition(position - (outBoxWidth / ITEM_NUMBER) * cardsNumber);
+    if (restCardCount === 0) return;
+    if (restCardCount < panelCount) {
+      return setPosition(position - (outBoxWidth / panelCount) * restCardCount);
     }
-    setCardsNumber((cardCount) => cardCount - ITEM_NUMBER);
+    setRestCardCount((cardCount) => cardCount - panelCount);
     setPosition(position - outBoxWidth);
   };
 
   const moveLeft = (outBoxWidth) => {
     if (position === 0) return;
-    if (cardsNumber > dishList.length) {
-      const itemToMove = cardsNumber - dishList.length;
+    if (restCardCount > dishList.length) {
+      const itemToMove = restCardCount - dishList.length;
       return setPosition(
-        position + (outBoxWidth / ITEM_NUMBER) * (ITEM_NUMBER - itemToMove)
+        position + (outBoxWidth / panelCount) * (panelCount - itemToMove)
       );
     }
-    setCardsNumber((cardCount) => cardCount + ITEM_NUMBER);
+    setRestCardCount((cardCount) => cardCount + panelCount);
     setPosition(position + outBoxWidth);
   };
 
   useEffect(() => {
-    if (cardsNumber !== null) return;
-    dishList && setCardsNumber(dishList.length - ITEM_NUMBER);
-  }, [dishList, ITEM_NUMBER, cardsNumber]);
+    if (restCardCount !== null) return;
+    dishList && setRestCardCount(dishList.length - panelCount);
+  }, [dishList, panelCount, restCardCount]);
 
   return dishList ? (
     <CarouselStyled>
