@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MenuCell: UICollectionViewCell {
 
@@ -36,6 +37,8 @@ class MenuCell: UICollectionViewCell {
         self.bodyLabel.text = menu.body
         self.currentPriceLabel.text = menu.sPrice
         self.pastPriceLabel.attributedText = menu.nPrice
+        guard let url = URL(string: menu.image) else { return }
+        self.thumbnailImage.kf.setImage(with: url)
     }
     
 }
