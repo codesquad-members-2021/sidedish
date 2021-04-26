@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DishCell: UICollectionViewCell {
     
@@ -33,7 +34,11 @@ class DishCell: UICollectionViewCell {
     func fill(with viewModel: DishesListItemViewModel) {
         self.viewModel = viewModel
         
-        updateThumbImage()
+        updateThumbImage { imageData in
+            DispatchQueue.main.async {
+                self.thumbnailImageView.image = UIImage(data: imageData)
+            }
+        }
         nameLabel.text = viewModel.name
         descriptionLabel.text = viewModel.description
         let prices = viewModel.prices
@@ -52,12 +57,19 @@ class DishCell: UICollectionViewCell {
         }
     }
     
-    func updateThumbImage() {
+    func updateThumbImage(completion: @escaping (Data) -> Void) {
         thumbnailImageView.image = nil
         
-        guard let dishImageUrl = URL(string: viewModel.imageURL) else { return }
-        guard let dishImageData = try? Data(contentsOf: dishImageUrl) else { return }
-        let dishImage = UIImage(data: dishImageData)
-        thumbnailImageView.image = dishImage
+        AF.request(viewModel.imageURL, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    completion(data)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    break
+                }
+            }
     }
 }
