@@ -1,6 +1,7 @@
 package com.codesquad.team14.controller;
 
-import com.codesquad.team14.domain.Item;
+import com.codesquad.team14.dto.DetailedItemDto;
+import com.codesquad.team14.dto.ItemDto;
 import com.codesquad.team14.service.ItemService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +19,12 @@ public class ItemController {
     }
 
     @GetMapping("/{category}")
-    public List<Item> itemList(@PathVariable String category) {
+    public List<ItemDto> itemList(@PathVariable String category) {
         return itemService.readAllByCategory(category);
     }
 
     @GetMapping("/{category}/{itemId}")
-    public Item detailedItem(@PathVariable String category, @PathVariable Long itemId) {
+    public DetailedItemDto detailedItem(@PathVariable String category, @PathVariable Long itemId) {
         return itemService.readDetailedItem(category, itemId);
     }
 }
