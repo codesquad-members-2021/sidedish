@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import sidedish.service.ConvertUtils;
 import sidedish.service.dto.DetailDishDTO;
 
+import java.util.Objects;
+
 public class Dish {
 
     @Id
@@ -96,6 +98,19 @@ public class Dish {
 
     public String getDetailImages() {
         return detailImages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dish dish = (Dish) o;
+        return id.equals(dish.id) && name.equals(dish.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
