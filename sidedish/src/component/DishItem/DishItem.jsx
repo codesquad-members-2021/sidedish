@@ -12,12 +12,11 @@ const DishItem = ({
       'https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
   };
 
-  const handleMouseEnter = () => {
-    setIsHover(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHover(false);
-  };
+  const handleMouseEnter = () => setIsHover(true);
+
+  const handleMouseLeave = () => setIsHover(false);
+
+  const getImgSize = (size) => (size === 'L' ? '384px' : '308px');
 
   return (
     <StyledDishItem size={size} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -26,8 +25,8 @@ const DishItem = ({
         <img
           src={image}
           alt={alt}
-          width={size === 'L' ? '384px' : '308px'}
-          height={size === 'L' ? '384px' : '308px'}
+          width={getImgSize(size)}
+          height={getImgSize(size)}
           onError={handleErrorImg}
         />
       </div>
@@ -53,6 +52,7 @@ const StyledDishItem = styled.div`
   width: ${({ size }) => (size === 'L' ? '384px' : '308px')};
   height: ${({ size }) => (size === 'L' ? '540px' : '456px')};
   margin-right: ${({ size }) => size === 'M' && '16px'};
+  z-index: 100;
   .imgContainer {
     position: relative;
   }

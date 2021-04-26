@@ -1,17 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const TabList = styled.ul`
-  width: 400px;
-  padding: 0px;
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-`;
+const Tab = ({ item: { title, subMenu } }) => {
+  const [isHover, setIsHover] = useState(false);
 
-const Tab = ({ tabList }) => {
-  const categories = tabList.map((item, idx) => <li key={idx}>{item}</li>);
-  return <TabList>{categories}</TabList>;
+  const handleMouseEnter = () => {
+    setIsHover(true);
+    console.log('mouse enter');
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+    console.log('mouse leave');
+  };
+
+  const subMenuList = subMenu.map((item, i) => (
+    <div className="subMenuItem" key={i}>
+      {item}
+    </div>
+  ));
+  return (
+    <TabStyle onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div>{title}</div>
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={isHover ? 'subMenu' : 'subMenu hidden'}
+      >
+        {subMenuList}
+      </div>
+    </TabStyle>
+  );
 };
 
 export default Tab;
+
+const TabStyle = styled.li`
+  .subMenu {
+    width: auto;
+    padding: 1rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    /* top: 5rem; */
+    margin-top: 1rem;
+  }
+
+  .subMenuItem {
+    margin-bottom: 0.5rem;
+  }
+  .subMenuItem:last-child {
+    margin-bottom: 0;
+  }
+
+  .subMenuItem:hover {
+    text-decoration: underline;
+  }
+
+  .hidden {
+    display: none;
+  }
+`;

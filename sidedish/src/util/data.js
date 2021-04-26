@@ -2,19 +2,19 @@ export const URL = {
   default() {
     return 'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/';
   },
-  best() {
-    return `${this.default()}best`;
+  best(id) {
+    return `${this.default()}best/${id ? id : ''}`;
   },
-  main() {
-    return `${this.default()}main`;
+  main(id) {
+    return `${this.default()}main/${id ? id : ''}`;
   },
-  soup() {
-    return `${this.default()}soup`;
+  soup(id) {
+    return `${this.default()}soup/${id ? id : ''}`;
   },
-  side() {
-    return `${this.default()}side`;
+  side(id) {
+    return `${this.default()}side/${id ? id : ''}`;
   },
-  detail() {
-    return `${this.default()}detail`;
+  detail(id) {
+    return `${this.default()}detail/${id ? id : ''}`;
   },
 };
