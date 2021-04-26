@@ -1,15 +1,23 @@
 package com.codesquad.team14.exception;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class CustomExceptionHandler {
 
-    @ExceptionHandler(ElementNotFoundException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public void handleElementNotFoundException() {
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleElementNotFoundException(ItemNotFoundException e) {
+        return ResponseEntity
+                .status(e.getErrorCode().getHttpStatus())
+                .body(ErrorResponse.from(e.getErrorCode()));
+    }
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCategoryNotFoundException(CategoryNotFoundException e) {
+        return ResponseEntity
+                .status(e.getErrorCode().getHttpStatus())
+                .body(ErrorResponse.from(e.getErrorCode()));
     }
 }
