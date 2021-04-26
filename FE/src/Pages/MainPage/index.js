@@ -17,6 +17,9 @@ const MainPage = () => {
       <MainDishSection>
         <MainDish />
       </MainDishSection>
+      <MainDishSection>
+        <MainDish />
+      </MainDishSection>
 
     </MainPageLayout>
   )

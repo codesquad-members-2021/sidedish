@@ -28,13 +28,11 @@ const ResponsiveCard = ({number, loadingImage, SpecialLabelTag}) => {
 
 const CardWrapper = styled.div`
   width: 100%;
-  height: 540px;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 384px;
   margin: 0 0 16px 0;
   &:hover{
     cursor:pointer;

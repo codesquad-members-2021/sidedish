@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import styled from 'styled-components';
 import closeImage from '../../images/close.svg';
 import LeftSide from './LeftSide/LeftSide';
@@ -27,7 +28,7 @@ const DetailProductModal = ({ modalState }) => {
                   <RightSide {...modalState} /></>
               )}
             </TopSide>
-            <BottomSide />
+            {!isHide && <BottomSide /> }
           </div>
         }
 
