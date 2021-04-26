@@ -14,6 +14,7 @@ class MenuListViewModel {
     @Published var main: [Dishes] = []
     @Published var soup: [Dishes] = []
     @Published var side: [Dishes] = []
+    private let cache = CoreDataMenuResponseStorage()
     
     init(menuListUseCase: MenuListUseCasePort) {
         self.menuListUseCase = menuListUseCase
@@ -53,13 +54,15 @@ class MenuListViewModel {
                     default:
                         break
                     }
+                    self.cache.save(data)
+                    self.cache.loadSaveDataInCoreData()
                   })
             .store(in: &subscriptions)
     }
     
     func requestDishes() {
         fetchDishes(dish: "main")
-//        fetchDishes(dish: "soup")
-//        fetchDishes(dish: "side")
+        fetchDishes(dish: "soup")
+        fetchDishes(dish: "side")
     }
 }

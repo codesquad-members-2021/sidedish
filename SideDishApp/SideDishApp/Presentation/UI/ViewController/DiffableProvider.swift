@@ -43,7 +43,7 @@ class DiffableProvider  {
         }
         
         cell.title.text = "\(dishData.title)"
-        cell.body.text = "\(dishData.description)"
+        cell.body.text = "\(dishData.dishDescription)"
         
         let badgeArray = dishData.badge.components(separatedBy: ",")
         
