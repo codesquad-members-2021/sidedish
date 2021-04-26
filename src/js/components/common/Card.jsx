@@ -19,13 +19,12 @@ const theme = {
 };
 
 const CardWrapper = styled.li`
-	position: relative;
-	font-family: Noto Sans KR;
-	font-style: normal;
-	font-weight: normal;
+  position: relative;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
 `;
 
-//스타일 컴포넌트의 네이밍은 피그마를 참고했습니다
 const CardImage = styled.img`
 	position: relative;
 	width: ${({ theme: { sizes }, size }) => sizes[size]};
@@ -44,17 +43,17 @@ const CardInfo = styled.div`
 	margin-bottom: 8px;
 `;
 const CardName = styled.div`
-	position: static;
-	font-size: 16px;
-	line-height: 23px;
-	color: #333;
-	margin-bottom: 8px;
+  position: static;
+  font-size: 16px;
+  line-height: 23px;
+  color: #333;
+  margin-bottom: 8px;
 `;
 const CardBody = styled.div`
-	position: static;
-	font-size: 14px;
-	line-height: 20px;
-	color: #828282;
+  position: static;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
 `;
 const CardHover = styled.ul`
 	position: absolute;
