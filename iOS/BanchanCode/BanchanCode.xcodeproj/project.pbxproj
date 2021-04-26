@@ -17,6 +17,7 @@
 		E4D5D7F7263276120077DF97 /* DishesListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D7F6263276120077DF97 /* DishesListItemViewModel.swift */; };
 		E4D5D8342632ECFF0077DF97 /* DishesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D8332632ECFF0077DF97 /* DishesListViewModel.swift */; };
 		E4D5D83C2632ED5C0077DF97 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D83B2632ED5C0077DF97 /* Observable.swift */; };
+		E4E3BF4B26354F6E0041BA5B /* FetchDishesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E3BF4A26354F6E0041BA5B /* FetchDishesUseCase.swift */; };
 		E4FC9C79262E9E5800BEAAE4 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */; };
 		E4FC9C7F262E9ED800BEAAE4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */; };
 		E4FC9C87262EA1DC00BEAAE4 /* CollectionViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */; };
@@ -69,6 +70,7 @@
 		E4D5D7F6263276120077DF97 /* DishesListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListItemViewModel.swift; sourceTree = "<group>"; };
 		E4D5D8332632ECFF0077DF97 /* DishesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListViewModel.swift; sourceTree = "<group>"; };
 		E4D5D83B2632ED5C0077DF97 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		E4E3BF4A26354F6E0041BA5B /* FetchDishesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDishesUseCase.swift; sourceTree = "<group>"; };
 		E4FC9C78262E9E5800BEAAE4 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		E4FC9C7E262E9ED800BEAAE4 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E4FC9C86262EA1DC00BEAAE4 /* CollectionViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewConstant.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				E4FC9CB926300D4E00BEAAE4 /* Entities */,
+				E4E3BF4A26354F6E0041BA5B /* FetchDishesUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 			files = (
 				E4D5D83C2632ED5C0077DF97 /* Observable.swift in Sources */,
 				E4FC9C7F262E9ED800BEAAE4 /* CollectionViewDataSource.swift in Sources */,
+				E4E3BF4B26354F6E0041BA5B /* FetchDishesUseCase.swift in Sources */,
 				E4D5D7F7263276120077DF97 /* DishesListItemViewModel.swift in Sources */,
 				FA88E9E3262E7F50001C3E53 /* MainViewController.swift in Sources */,
 				E463431E263155C00001D87A /* NetworkManager.swift in Sources */,

@@ -10,23 +10,21 @@ import UIKit
 class MainViewController: UIViewController {
     
     @IBOutlet weak var dishCollectionView: UICollectionView!
-    var mainDelegate: CollectionViewDelegate?
-    var mainDataSource: CollectionViewDataSource?
+    private var mainDelegate: CollectionViewDelegate?
+    private var mainDataSource: CollectionViewDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainDelegate = CollectionViewDelegate()
         mainDataSource = CollectionViewDataSource()
         
-        let mainViewModel = DefaultDishesListViewModel()
-        let soupViewModel = DefaultDishesListViewModel()
-        let sideViewModel = DefaultDishesListViewModel()
-        mainViewModel.category.value = "main"
-        soupViewModel.category.value = "soup"
-        sideViewModel.category.value = "side"
-        mainViewModel.load()
-        soupViewModel.load()
-        sideViewModel.load()
+        let mainViewModel = makeDishesListViewModel()
+        let soupViewModel = makeDishesListViewModel()
+        let sideViewModel = makeDishesListViewModel()
+        
+        mainViewModel.showDishList(category: MainCategory())
+        soupViewModel.showDishList(category: SoupCategory())
+        sideViewModel.showDishList(category: SideCategory())
         
         mainDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
         
@@ -38,6 +36,14 @@ class MainViewController: UIViewController {
         bind(to: sideViewModel)
         
         registerXib()
+    }
+    
+    func makeFetchDishesUseCase() -> FetchDishesUseCase {
+        return DefaultFetchDishesUseCase()
+    }
+    
+    func makeDishesListViewModel() -> DishesListViewModel {
+        return DefaultDishesListViewModel(fetchDishesUseCase: makeFetchDishesUseCase())
     }
     
     private func registerXib() {
@@ -55,7 +61,7 @@ class MainViewController: UIViewController {
     
     private func bind(to viewModel: DishesListViewModel) {
         viewModel.category.observe(on: self) { [weak self] _ in self?.updateItems() }
-        viewModel.dishes.observe(on: self) { [weak self] _ in self?.updateItems() }
+        viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
     }
     
     private func updateItems() {
