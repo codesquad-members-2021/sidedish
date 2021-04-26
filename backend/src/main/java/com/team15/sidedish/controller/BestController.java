@@ -4,11 +4,13 @@ import com.team15.sidedish.dto.BestDTO;
 import com.team15.sidedish.service.BestService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/best")
 public class BestController {
 
     private BestService bestService;
@@ -17,12 +19,12 @@ public class BestController {
         this.bestService = bestService;
     }
 
-    @GetMapping("/best")
+    @GetMapping
     public List<BestDTO> showAllBestDishes() {
         return bestService.showAllBestDishes();
     }
 
-    @GetMapping("/best/{categoryId}")
+    @GetMapping("/{categoryId}")
     public BestDTO showSingleBestDish(@PathVariable Integer categoryId) {
         return bestService.showSingleBestDish(categoryId);
     }
