@@ -1,11 +1,6 @@
 package com.codesquad.team14.domain;
 
-import com.codesquad.team14.utils.Badge;
-import com.codesquad.team14.utils.DeliveryType;
 import org.springframework.data.annotation.Id;
-
-import java.util.List;
-import java.util.Objects;
 
 public class Item {
     private static final String DELIVERY_FEE_POLICY = "2,500원 (40,000원 이상 구매 시 무료)";

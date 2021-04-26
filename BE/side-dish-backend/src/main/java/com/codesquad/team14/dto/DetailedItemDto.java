@@ -1,8 +1,5 @@
 package com.codesquad.team14.dto;
 
-import com.codesquad.team14.domain.Item;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class DetailedItemDto {
