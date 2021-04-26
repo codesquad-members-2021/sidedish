@@ -36,7 +36,7 @@ const BestMenuTabTitle =styled.div`
 
 const BestMenuTabInfo = styled.div`
     background-color: #EEF4FA;
-    width: 1280px;
+    width: 100%;
     height: 620px;
 `
 export {

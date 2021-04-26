@@ -14,7 +14,6 @@ const BestMenu = () => {
   const renderTabTitles = () => { 
     return response.body.map((v, idx) => {
         if (index === idx) {
-          console.log("SAME")
           return <style.BestMenuTabTitle className="select" key={idx}  data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
         }
         else return <style.BestMenuTabTitle  key={idx} data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
@@ -33,13 +32,13 @@ const BestMenu = () => {
   }
 
   return (
-    <div style = {{ marginLeft : "5%" }}>
+    <div style = {{ margin : "0 5%" }}>
       <style.BestMenuTitle>{BestMenuStatic.Title}</style.BestMenuTitle>
       <FlexRowContainer >
         { response && renderTabTitles() }
       </FlexRowContainer>
       <style.BestMenuTabInfo>
-        <FlexRowContainer>  
+        <FlexRowContainer style = {{ justifyContent : "space-between" }}>  
           { response && renderLargeCard() }
         </FlexRowContainer>
       </style.BestMenuTabInfo>
