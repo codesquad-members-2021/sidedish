@@ -10,7 +10,7 @@ const Img = ({
   setModalState,
   title,
   detail_hash,
-  modalData,
+  badge,
   setModalData,
 }) => {
   const url = image;
@@ -29,6 +29,7 @@ const Img = ({
     setModalData({
       hash: detail_hash,
       title: title,
+      badge: badge,
     });
   };
   return (

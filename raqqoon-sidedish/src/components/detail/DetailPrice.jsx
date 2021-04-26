@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const DetailPrice = ({ prices }) => {
   if (prices.length === 2) {
-    prices = prices[0];
+    prices = prices[1];
   }
   return (
     <DetailPriceBox>

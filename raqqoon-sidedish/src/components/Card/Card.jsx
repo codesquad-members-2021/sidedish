@@ -63,13 +63,16 @@ const Card = ({
   return (
     <CardBoxDiv>
       <Img
-        cardSize={cardSize}
-        image={image}
-        setModalState={setModalState}
-        modalData={modalData}
-        setModalData={setModalData}
-        detail_hash={item.detail_hash}
-        title={title}
+        {...{
+          cardSize,
+          image,
+          setModalData,
+          setModalState,
+          modalData,
+          detail_hash,
+          title,
+          badge,
+        }}
       />
       <Info name={title} body={description} />
       <Price normal={s_price} discount={n_price} />

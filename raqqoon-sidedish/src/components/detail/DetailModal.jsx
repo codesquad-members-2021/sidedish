@@ -10,7 +10,7 @@ const LongLine = () => {
   return <LongLineBox />;
 };
 
-const DetailModal = ({ title, currentData }) => {
+const DetailModal = ({ title, badge, currentData }) => {
   const {
     delivery_fee,
     delivery_info,
@@ -27,7 +27,7 @@ const DetailModal = ({ title, currentData }) => {
         <DetailImage {...{ top_image, thumb_images }} />
       </ImageBox>
       <InfoBox>
-        <DetailInfo {...{ title, prices, product_description }} />
+        <DetailInfo {...{ title, badge, prices, product_description }} />
         <LongLine />
         <DetailDelivery {...{ point, delivery_info, delivery_fee }} />
         <LongLine />

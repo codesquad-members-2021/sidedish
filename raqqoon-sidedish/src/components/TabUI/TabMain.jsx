@@ -26,8 +26,8 @@ const TabMain = ({ tabItemList, setModalState, modalData, setModalData }) => {
       {tabItemList.items.map((item, idx) => {
         return (
           <Card
-            type={SIZE_LARGE}
             item={item}
+            type={SIZE_LARGE}
             detail_hash={item.detail_hash}
             key={item.detail_hash}
             imgUrl={item.image}

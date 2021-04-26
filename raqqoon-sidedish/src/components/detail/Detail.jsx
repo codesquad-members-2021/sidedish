@@ -9,7 +9,7 @@ const Detail = ({ modalData, modalState, setModalState }) => {
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/`,
     []
   );
-  const { hash, title } = modalData;
+  const { hash, title, badge } = modalData;
   let currentData;
   detailData.forEach((data) => {
     if (data.hash === hash) {
@@ -23,7 +23,7 @@ const Detail = ({ modalData, modalState, setModalState }) => {
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
         <DetailCloseButton {...{ setModalState }} />
-        <DetailModal {...{ title, currentData }} />
+        <DetailModal {...{ title, badge, currentData }} />
         <DetailCarousel />
       </ModalWrapper>
     </DetailBoxDiv>
