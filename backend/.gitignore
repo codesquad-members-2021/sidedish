@@ -196,19 +196,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### react ###
-.DS_*
-logs
-**/*.backup.*
-**/*.back.*
-
-node_modules
-bower_components
-
-*.sublime*
-
-psd
-thumb
-sketch
-
 # End of https://www.toptal.com/developers/gitignore/api/java,react,intellij,macos
