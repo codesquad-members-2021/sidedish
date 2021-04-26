@@ -1,6 +1,7 @@
 package com.mj_eno.sidedish.domain.dish;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Embedded;
 
 public class Dish {
 
@@ -10,13 +11,11 @@ public class Dish {
     private String alt;
     private String title;
     private String description;
-    private int nPrice;
-    private int sPrice;
-    private int point;
+    @Embedded.Nullable
+    private Price price;
     private int stock;
-    private String deliveryType;
-    private String deliveryInfo;
-    private String deliveryFee;
+    @Embedded.Nullable
+    private Delivery delivery;
     private int menuCategoryId;
     private Integer bestMenuCategoryId;
 
@@ -54,32 +53,40 @@ public class Dish {
         return description;
     }
 
+    public Price getPrice() {
+        return price;
+    }
+
     public int getnPrice() {
-        return nPrice;
+        return price.getnPrice();
     }
 
     public int getsPrice() {
-        return sPrice;
+        return price.getsPrice();
     }
 
     public int getPoint() {
-        return point;
+        return price.getPoint();
     }
 
     public int getStock() {
         return stock;
     }
 
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
     public String getDeliveryType() {
-        return deliveryType;
+        return delivery.getDeliveryType();
     }
 
     public String getDeliveryInfo() {
-        return deliveryInfo;
+        return delivery.getDeliveryInfo();
     }
 
     public String getDeliveryFee() {
-        return deliveryFee;
+        return delivery.getDeliveryFee();
     }
 
     public int getMenuCategoryId() {
