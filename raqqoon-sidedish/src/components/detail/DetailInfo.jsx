@@ -1,26 +1,26 @@
 import styled from 'styled-components';
-import Img from 'components/card/Img';
 import Info from 'components/card/Info';
 import Price from 'components/card/Price';
 import Tag from 'components/card/Tag';
 import {
-  BEST,
+  COLOR_GREEN,
+  COLOR_LIGHTBLUE,
+  COLOR_LIGHTRED,
   EVENT,
-  LAUNCHING,
-  TAG_BEST,
   TAG_EVENT,
+  TAG_BEST,
   TAG_LAUNCHING,
+  LAUNCHING,
+  BEST,
 } from 'const';
 import { v4 as uuidv4 } from 'uuid';
 
-const Card = ({ cardSize, item, setModalState }) => {
-  const { title, description, n_price, s_price, badge, image } = item;
-
+const DetailInfo = () => {
+  const badge = [TAG_EVENT];
   return (
-    <CardBoxDiv>
-      <Img cardSize={cardSize} image={image} setModalState={setModalState} />
-      <Info name={title} body={description} />
-      <Price normal={s_price} discount={n_price} />
+    <DetailInfoBox>
+      <Info name="test" body="test" />
+      <Price normal="test" discount="test" />
       {badge && (
         <TagBoxDiv>
           {badge.map((badge) => {
@@ -38,23 +38,15 @@ const Card = ({ cardSize, item, setModalState }) => {
           })}
         </TagBoxDiv>
       )}
-    </CardBoxDiv>
+    </DetailInfoBox>
   );
 };
 
-export default Card;
+export default DetailInfo;
 
-const CardBoxDiv = styled.div`
-  width: fit-content;
-  margin: 10px 5px;
-
-  &:first-child {
-    margin-left: 10px;
-  }
-
-  &:last-child {
-    margin-right: 10px;
-  }
+const DetailInfoBox = styled.div`
+  border: 1px solid tomato;
+  width: 440px;
 `;
 
 const TagBoxDiv = styled.div`

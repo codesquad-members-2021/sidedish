@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import TabBody from 'components/tabUI/TabBody';
 import TabHeader from 'components/tabUI/TabHeader';
 
-const TabUI = () => {
+const TabUI = ({ setModalState }) => {
   return (
     <TabUIBoxSection>
       <TabHeader />
-      <TabBody />
+      <TabBody {...{ setModalState }} />
     </TabUIBoxSection>
   );
 };
