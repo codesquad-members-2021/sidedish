@@ -13,6 +13,11 @@ public class BanchanDetailDto {
         data = new BanchanDetailDataDto.DataDtoBuilder()
                 .setTop_image(banchanDetail.getData().getTop_image())
                 .setThumb_images(convertToSet(banchanDetail.getData().getThumb_images()))
+                .setProduct_description(banchanDetail.getData().getProduct_description())
+                .setPoint(banchanDetail.getData().getPoint())
+                .setDelivery_info(banchanDetail.getData().getDelivery_info())
+                .setDelivery_fee(banchanDetail.getData().getDelivery_fee())
+                .setPrices(convertToSet(banchanDetail.getData().getPrices()))
                 .build();
     }
 
