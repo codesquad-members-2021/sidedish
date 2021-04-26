@@ -13,7 +13,7 @@ const Ariticle = ({ ariticle, setModalData, setModalOn }) => {
               setModalOn={setModalOn}
               key={el.detail_hash}
               size="MEDIUM"
-              {...el}
+              data={el}
             />
           ))}
         </Carousel>
