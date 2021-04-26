@@ -8,12 +8,13 @@ public class SidedishImage {
 
     private String imageUrl;
 
+    protected SidedishImage() {
+    }
+
     public SidedishImage(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    protected SidedishImage() {
-    }
 
     public Long getId() {
         return id;

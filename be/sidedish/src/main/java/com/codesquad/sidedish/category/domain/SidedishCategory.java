@@ -15,7 +15,7 @@ public class SidedishCategory {
 
     protected SidedishCategory() {
     }
-    
+
     public SidedishCategory(String categoryName) {
         this.categoryName = categoryName;
     }
