@@ -8,7 +8,7 @@ const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) =>
   const [slideCount, setSlideCount] = useState(unit);
   const [carouselEvent, setCarouselEvent] = useState({isActive:false, msg:""});
 
-  const throttleResize = useRef();
+  const timeoutFunc = useRef();
 
   useEffect(() => {
     const $CarouselAreaDOM = $CarouselArea.current; // 리액트에서 내주는 warning에 대한 가이드 반영
@@ -26,8 +26,8 @@ const useCarousel = ({$CarouselAreaWrapper, $CarouselArea, itemLength, unit}) =>
     
   const debounced = (handleResize) => {
     return () => {
-      if (throttleResize.current) clearTimeout(throttleResize.current);
-      throttleResize.current = setTimeout(handleResize, 500);
+      if (timeoutFunc.current) clearTimeout(timeoutFunc.current);
+      timeoutFunc.current = setTimeout(handleResize, 500);
     };
   }
   
