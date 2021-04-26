@@ -71,7 +71,7 @@ public class SidedishItem {
     }
 
     public boolean isPurchasable(OrderDTO orderDTO) {
-        return itemQuantity - orderDTO.getQuantity() >= 0;
+        return itemQuantity >= orderDTO.getQuantity();
     }
 
     public void addEvent(SidedishEvent sidedishEvent) {
