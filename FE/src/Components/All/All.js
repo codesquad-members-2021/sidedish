@@ -77,15 +77,14 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   );
 };
 
-const AllBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+const AllBox = styled.div``;
 const CarouselSlide = styled.div`
   margin-top: 77px;
   padding: 0 35px;
   display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const PlusButton = styled.button`

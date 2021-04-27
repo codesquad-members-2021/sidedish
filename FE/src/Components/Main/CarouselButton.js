@@ -34,10 +34,13 @@ const CarouselButton = ({ Name, Slide }) => {
 };
 
 const Button = styled.button`
+  margin-top: ${({ className }) =>
+    className === "Right" || "Left" ? `170px` : `0px`};
   z-index: 1;
   background-color: white;
   border: none;
   outline: none;
+  height: 50px;
   &:active {
     transform: translateY(2px);
   }

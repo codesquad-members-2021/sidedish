@@ -44,7 +44,7 @@ const CarouselCard = ({
   );
 };
 const ContentMain = styled.div`
-  margin: 0 18px;
+  margin: 0 10px;
 `;
 
 const Image = styled.div`
@@ -52,7 +52,7 @@ const Image = styled.div`
   background-image: ${({ image }) => `url(${image})`};
   background-size: cover;
   background-repeat: no-repeat;
-  height: 308px;
+  height: 305px;
   border-radius: 5px;
   &:active {
     transform: translateY(1px);
@@ -87,7 +87,7 @@ const Image = styled.div`
 `;
 
 const Title = styled.div`
-  width: 308px;
+  width: 305px;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
@@ -97,7 +97,7 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
-  width: 308px;
+  width: 305px;
   color: #828282;
   font-family: Noto Sans KR;
   font-style: normal;

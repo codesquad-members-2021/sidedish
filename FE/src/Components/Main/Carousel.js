@@ -12,7 +12,7 @@ const Carousel = (
 ) => {
   const virtualImage = Food.slice(Food.length - 4, Food.length); // 마지막부분 4개의 사진을 복사하여 0~4번 이미지를 만들어준다.
   const transitionDefault = `all 0.5s ease-in-out`;
-  const panelWidth = 335;
+  const panelWidth = 325;
   const panelCount = 4;
   const [X, setX] = useState(0);
   const [moving, setMoving] = useState(false);
@@ -95,15 +95,12 @@ const Carousel = (
 
 const Box = styled.div`
   width: 1280px;
-  height: 534px;
-  margin: auto;
-  
+  margin: 80px auto 0;
 `;
 
 const CarouselTitle = styled.div`
   width: 350px;
   height: 35px;
-  margin-top: 80px;
   margin-bottom: 40px;
   font-family: Noto Sans KR;
   font-style: normal;
@@ -123,7 +120,6 @@ const Image = styled.div`
   transition: ${({ transitionValue }) => transitionValue};
   z-index: 0;
   display: flex;
-  margin-left: 66px;
 `;
 
 export default forwardRef(Carousel);
