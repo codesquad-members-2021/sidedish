@@ -23,6 +23,21 @@ class MenuRepository {
     }
     
     func fetchMenuList(path: String) -> AnyPublisher<[Dishes], NetworkError> {
-        dishNetworkManager.getDishes(path: path)
+        
+        dishNetworkManager.getDishes(path: path) { data in
+            switch data {
+            case .success(let data):
+                guard let dishes = try? JSONDecoder().decode([Dishes].self, from: data) else {
+                    return
+                }
+                self.cache.deleteCategory(path)
+                self.cache.save(dishes)
+            case .failure(let error):
+                assertionFailure(error.localizedDescription)
+                break
+            }
+        }
+     
+        return cache.loadSaveDataInCoreData(category: path).mapError { _ in NetworkError.unknown }.eraseToAnyPublisher()
     }
 }

@@ -8,10 +8,10 @@
 import Foundation
 import CoreData
 import UIKit
+import Combine
 
 class CoreDataMenuResponseStorage {
-    
-    //private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     private var context : NSManagedObjectContext! = nil
     private var entity : NSEntityDescription! = nil
     
@@ -38,12 +38,12 @@ class CoreDataMenuResponseStorage {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                assertionFailure("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
     
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+    private func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
             let fetchResult = try self.context.fetch(request)
             return fetchResult
@@ -73,36 +73,65 @@ class CoreDataMenuResponseStorage {
         }
     }
     
-    func loadSaveDataInCoreData() {
+    func loadSaveDataInCoreData(category: String) -> AnyPublisher<[Dishes], CoreDataError> {
+        var result: [Dishes] = []
+        var resultOut: Future<[Dishes], CoreDataError>!
+        
         do {
             self.context = persistentContainer.viewContext
-            let contact = try context.fetch(DishesEntity.fetchRequest())
+            let request: NSFetchRequest = DishesEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "category = %@", "\(category)")
+            let contact = try context.fetch(request)
 
-            contact.forEach { a in
-                guard let test = a as? DishesEntity,
-                      let category = test.category,
-                      let dishes = test.dishes else {
+            contact.forEach { dishesEntity in
+                guard let dishes = dishesEntity as? DishesEntity,
+                      let category = dishes.category,
+                      let name = dishes.name,
+                      let dishesArray = dishes.dishes else {
                     return
                 }
-                print(dishes.last?.badge, "쑤이쑤이쑤이")
+                result = [Dishes(category: category, name: name, dishes: dishesArray)]
+                resultOut = Future<[Dishes], CoreDataError> { promise in
+                    promise(.success(result))
+                }
             }
         } catch {
-            assertionFailure(error.localizedDescription)
+            resultOut = Future<[Dishes], CoreDataError> { promise in
+                promise(.failure(.someError))
+                assertionFailure(error.localizedDescription)
+            }
         }
+        return resultOut.eraseToAnyPublisher()
     }
     
-    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>){
         let request: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         
         do {
             try self.context.execute(delete)
-            return true
         }
         catch {
             assertionFailure(error.localizedDescription)
-            return false
-            
+        }
+    }
+    
+    func deleteCategory(_ category: String) {
+        let request: NSFetchRequest<NSFetchRequestResult> = DishesEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "category = %@", "\(category)")
+        let delete = NSBatchDeleteRequest(fetchRequest: request)
+        
+        do {
+            try self.context.execute(delete)
+        }
+        catch {
+            assertionFailure(error.localizedDescription)
+
         }
     }
 }
+
+enum CoreDataError: Error {
+    case someError
+}
+
