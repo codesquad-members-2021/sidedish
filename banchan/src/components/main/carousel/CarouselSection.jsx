@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import Card from "../../utils/card/Card";
-import { CenterContainer } from "../../utils/styles/common";
+import { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import Card from '../../componentUtils/card/Card';
+import { CenterContainer } from '../../componentUtils/styles/common';
 // import { mockData } from "../../../utils/mockData";
-import JennyCarousel from "reallyawesome-jennyrousel/dist/JennyCarousel";
+import JennyCarousel from 'reallyawesome-jennyrousel/dist/JennyCarousel';
 // import theme from "../../utils/styles/theme";
 
 const CarouselSection = ({ url, title }) => {

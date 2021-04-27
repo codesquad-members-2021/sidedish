@@ -1,7 +1,7 @@
-import React from "react";
-import IconButton from "../../../utils/button/IconButton";
-import styled from "styled-components";
-import { CenterContainer, ProductBuyInfoTitle } from "../../styles/common";
+import React from 'react';
+import IconButton from '../../../componentUtils/button/IconButton';
+import styled from 'styled-components';
+import { CenterContainer, ProductBuyInfoTitle } from '../../styles/common';
 
 const ProductCount = ({ count, increaseCount, decreaseCount }) => {
   return (

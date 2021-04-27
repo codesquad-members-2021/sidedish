@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import Card from "../../utils/card/Card";
-import { CenterContainer } from "../../utils/styles/common";
-import { Button, SectionTitle, CardList } from "../../utils/styles/common";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Card from '../../componentUtils/card/Card';
+import { CenterContainer } from '../../componentUtils/styles/common';
+import {
+  Button,
+  SectionTitle,
+  CardList,
+} from '../../componentUtils/styles/common';
 
-const tempUrl = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best";
+const tempUrl =
+  'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best';
 
 const TabSection = (props) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -30,7 +35,10 @@ const TabSection = (props) => {
         <TabList>
           {bestSidedishes.length &&
             bestSidedishes.map((item, i) => (
-              <TabButton onClick={() => handleTab(i)} activated={i === activeTab}>
+              <TabButton
+                onClick={() => handleTab(i)}
+                activated={i === activeTab}
+              >
                 {item.name}
               </TabButton>
             ))}
@@ -57,9 +65,13 @@ const TabSection = (props) => {
 const TabContainer = styled.div``;
 
 const TabButton = styled(Button)`
-  background: ${(props) => (props.activated ? props.theme.colors.whiteBlue : props.theme.colors.lightGrayBG)};
-  color: ${(props) => (props.activated ? props.theme.colors.darkGray : props.theme.colors.gray)};
-  font-weight: ${(props) => props.activated && "bold"};
+  background: ${(props) =>
+    props.activated
+      ? props.theme.colors.whiteBlue
+      : props.theme.colors.lightGrayBG};
+  color: ${(props) =>
+    props.activated ? props.theme.colors.darkGray : props.theme.colors.gray};
+  font-weight: ${(props) => props.activated && 'bold'};
   width: 201px;
   height: 58px;
   margin-right: 8px;
