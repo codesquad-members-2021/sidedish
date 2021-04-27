@@ -3,6 +3,7 @@ package com.codesquad.sidedish.dto;
 import com.codesquad.sidedish.domain.Dish;
 
 public class DishDetailResponseDto {
+
     private String dishId;
     private String topImage;
     private String thumbImages;
