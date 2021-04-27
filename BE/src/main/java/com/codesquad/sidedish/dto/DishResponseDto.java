@@ -12,12 +12,11 @@ public class DishResponseDto {
     private String normalPrice;
     private String sellingPrice;
     private String badge;
-    private Long categoryId;
 
 
     private DishResponseDto(String id, String mainImage, String alt, String deliveryType,
                             String title, String description, String normalPrice, String sellingPrice,
-                            String badge, Long categoryId) {
+                            String badge) {
         this.id = id;
         this.mainImage = mainImage;
         this.alt = alt;
@@ -27,7 +26,6 @@ public class DishResponseDto {
         this.normalPrice = normalPrice;
         this.sellingPrice = sellingPrice;
         this.badge = badge;
-        this.categoryId = categoryId;
     }
 
     public String getId() {
@@ -66,14 +64,25 @@ public class DishResponseDto {
         return badge;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
 
     public static DishResponseDto of(Dish dish) {
         return new DishResponseDto(dish.getId(), dish.getMainImage(), dish.getAlt(),
                 dish.getDeliveryType(), dish.getTitle(), dish.getDescription(),
-                dish.getNormalPrice(), dish.getSellingPrice(), dish.getBadge(),
-                dish.getCategoryId());
+                dish.getNormalPrice(), dish.getSellingPrice(), dish.getBadge());
+    }
+
+    @Override
+    public String toString() {
+        return "DishResponseDto{" +
+                "id='" + id + '\'' +
+                ", mainImage='" + mainImage + '\'' +
+                ", alt='" + alt + '\'' +
+                ", deliveryType='" + deliveryType + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", normalPrice='" + normalPrice + '\'' +
+                ", sellingPrice='" + sellingPrice + '\'' +
+                ", badge='" + badge + '\'' +
+                '}';
     }
 }
