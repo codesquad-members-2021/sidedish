@@ -5,7 +5,7 @@ import DetailTopInfo from "./DetailTopInfo";
 const DetailTop = () => {
   return (
     <StyledDetailTop>
-      <DetailTopGallery items={[...Array(6)]} />
+      <DetailTopGallery items={[...Array(5)]} />
       <DetailTopInfo />
     </StyledDetailTop>
   );
@@ -15,7 +15,7 @@ export default DetailTop;
 
 // --- Styled Components ---
 const StyledDetailTop = styled.div`
-  padding: 48px;
+  padding: 48px 48px 0;
   border-radius: 5px 5px 0 0;
   background-color: ${({ theme }) => theme.colors.white || "#FFF"};
 
