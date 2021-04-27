@@ -12,11 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-public class ItemController {
-    private final Logger logger = LoggerFactory.getLogger(ItemController.class);
+public class DishController {
+    private final Logger logger = LoggerFactory.getLogger(DishController.class);
     private final DishService dishService;
 
-    public ItemController(DishService dishService) {
+    public DishController(DishService dishService) {
         this.dishService = dishService;
     }
 
