@@ -20,7 +20,7 @@ public class BestController {
 
     @GetMapping
     public BestDishesDTO showAllBestDishes() {
-        return new BestDishesDTO(bestService.showAllBestDishes());
+        return BestDishesDTO.of(bestService.showAllBestDishes());
     }
 
     @GetMapping("/{categoryId}")
