@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.service;
 
-import com.codesquad.sidedish.CategoryType;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
 import com.codesquad.sidedish.dto.CategoryResponseDto;
@@ -27,5 +26,11 @@ public class CategoryService {
     public DishDetailResponseDto readDishByCategoryTypeAndDishId(CategoryType categoryType, String dishId) {
         Dish tempDish = categoryRepository.findDishByCategoryTypeAndDishId(categoryType.getTypeNum(), dishId);
         return DishDetailResponseDto.of(tempDish);
+    }
+
+    public void addDish(String categoryType, Dish dish) {
+        Category category = categoryRepository.findCategoryByType(categoryType);
+        category.addDish(dish);
+        categoryRepository.save(category);
     }
 }
