@@ -1,12 +1,19 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { SIZE_MEDIUM } from 'const';
+import { DEFAULT, SIZE_MEDIUM } from 'const';
 import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = ({ path, ITEM_NUMBER }) => {
+const Carousel = ({
+  path,
+  ITEM_NUMBER,
+  modalData,
+  modalState,
+  setModalState,
+  setModalData,
+}) => {
   const dishData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
   );
@@ -17,7 +24,13 @@ const Carousel = ({ path, ITEM_NUMBER }) => {
   const dishList =
     dishData &&
     dishData.map((item) => (
-      <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
+      <Card
+        key={uuidv4()}
+        item={item}
+        cardSize={SIZE_MEDIUM}
+        cardType={DEFAULT}
+        {...{ modalData, modalState, setModalState, setModalData }}
+      />
     ));
 
   const handleClickArrowBtn = ({ currentTarget }) => {

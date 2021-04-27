@@ -1,12 +1,13 @@
-// import Carousel from 'components/carousel/Carousel';
-import TempCarousel from 'components/carousel/TempCarousel';
+import Carousel from 'components/carousel/Carousel';
+import { DETAIL } from 'const';
+// import TempCarousel from 'component/s/carousel/TempCarousel';
 import styled from 'styled-components';
 
 const DetailCarousel = ({ detailSection }) => {
   // console.log(detailSection);
   return (
     <DetailCarouselDiv>
-      <TempCarousel detailSection={detailSection} ITEM_NUMBER={5} />
+      <Carousel path={'side'} ITEM_NUMBER={3} />
     </DetailCarouselDiv>
   );
 };

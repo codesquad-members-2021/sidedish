@@ -17,7 +17,7 @@ const App = () => {
     <AppContainer className="App">
       <Header />
       <Main {...{ modalData, setModalState, setModalData }} />
-      <Detail {...{ modalData, modalState, setModalState }} />
+      <Detail {...{ modalData, modalState, setModalState, setModalData }} />
     </AppContainer>
   );
 };

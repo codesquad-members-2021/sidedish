@@ -31,6 +31,7 @@ const Img = ({
       title: title,
       badge: badge,
     });
+    console.log(title);
   };
   return (
     <ImgDiv

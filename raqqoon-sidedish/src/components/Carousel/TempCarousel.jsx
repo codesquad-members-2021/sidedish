@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { SIZE_MEDIUM } from 'const';
-import useFetch from 'customHooks/useFetch';
+import { CAROUSEL, SIZE_MEDIUM } from 'const';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
@@ -13,7 +12,12 @@ const TempCarousel = ({ detailSection, ITEM_NUMBER }) => {
   const dishList =
     detailSection &&
     detailSection.map((item) => (
-      <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
+      <Card
+        key={uuidv4()}
+        item={item}
+        cardSize={SIZE_MEDIUM}
+        cardType={CAROUSEL}
+      />
     ));
 
   const handleClickArrowBtn = ({ currentTarget }) => {

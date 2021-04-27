@@ -5,11 +5,21 @@ import Carousel from 'components/carousel/Carousel';
 import CarouselContainer from 'components/carousel/CarouselContainer';
 import CategoryButton from 'components/carousel/CategoryBtn';
 
-const CarouselSection = () => {
+const CarouselSection = ({
+  modalData,
+  modalState,
+  setModalState,
+  setModalData,
+}) => {
   const paths = ['main', 'soup', 'side'];
   const firstPath = paths[0];
   const firstCarousel = (
-    <Carousel key={uuidv4()} path={firstPath} ITEM_NUMBER={4} />
+    <Carousel
+      key={uuidv4()}
+      path={firstPath}
+      ITEM_NUMBER={4}
+      {...{ modalData, modalState, setModalState, setModalData }}
+    />
   );
   const [categoryContents, setCategoryContents] = useState([firstCarousel]);
   const [isFolded, setIsFolded] = useState(false);

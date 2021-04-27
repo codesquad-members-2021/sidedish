@@ -34,3 +34,5 @@ export const BLOCK = 'block';
 
 // Type
 export const DETAIL = 'detail';
+export const DEFAULT = 'default';
+export const CAROUSEL = 'carousel';

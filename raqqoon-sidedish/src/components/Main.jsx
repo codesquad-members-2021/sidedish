@@ -6,7 +6,7 @@ const Main = ({ setModalState, modalData, setModalData }) => {
   return (
     <MainBoxDiv>
       <TabUI {...{ setModalState, modalData, setModalData }} />
-      <CarouselSection />
+      <CarouselSection {...{ setModalState, modalData, setModalData }} />
     </MainBoxDiv>
   );
 };
