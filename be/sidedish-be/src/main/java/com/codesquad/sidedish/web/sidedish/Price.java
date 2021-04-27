@@ -6,7 +6,7 @@ import java.text.ParseException;
 public class Price {
     private static final String POSTFIX = "원";
 
-    private long price;
+    private final long price;
 
     public Price(String price) {
         this.price = parsePrice(price);

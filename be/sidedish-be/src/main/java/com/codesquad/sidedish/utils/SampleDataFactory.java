@@ -1,7 +1,5 @@
 package com.codesquad.sidedish.utils;
 
-import com.codesquad.sidedish.NotReadJsonFileException;
-import com.codesquad.sidedish.NotParsingJsonFileException;
 import com.codesquad.sidedish.web.sidedish.DTO.DetailDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;

@@ -11,7 +11,7 @@ public class ItemDTOTestResults {
             "  \"description\" : \"윤식당 불고기메뉴의 가장 기본인 불고기라이스! (마더소스 포함)\"," + System.lineSeparator() +
             "  \"n_price\" : \"\"," + System.lineSeparator() +
             "  \"s_price\" : \"7,000원\"," + System.lineSeparator() +
-            "  \"badge\" : null" + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
             "}, {" + System.lineSeparator() +
             "  \"detail_hash\" : \"HDF73\"," + System.lineSeparator() +
             "  \"image\" : \"https://cdn.bmf.kr/_data/product/HDF73/7674311a02ba7c88675f3186ddaeef9e.jpg\"," + System.lineSeparator() +
@@ -21,7 +21,7 @@ public class ItemDTOTestResults {
             "  \"description\" : \"편식하는 아이도 좋아하는 건강한 연근조림\"," + System.lineSeparator() +
             "  \"n_price\" : \"\"," + System.lineSeparator() +
             "  \"s_price\" : \"5,500원\"," + System.lineSeparator() +
-            "  \"badge\" : null" + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
             "}, {" + System.lineSeparator() +
             "  \"detail_hash\" : \"HF778\"," + System.lineSeparator() +
             "  \"image\" : \"https://cdn.bmf.kr/_data/product/HF778/cad8eee316cf7151e07638aa57b32a9d.jpg\"," + System.lineSeparator() +
@@ -41,7 +41,7 @@ public class ItemDTOTestResults {
             "  \"description\" : \"생강 향이 산뜻한\"," + System.lineSeparator() +
             "  \"n_price\" : \"\"," + System.lineSeparator() +
             "  \"s_price\" : \"5,800원\"," + System.lineSeparator() +
-            "  \"badge\" : null" + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
             "}, {" + System.lineSeparator() +
             "  \"detail_hash\" : \"H077F\"," + System.lineSeparator() +
             "  \"image\" : \"https://cdn.bmf.kr/_data/product/H077F/0221110ead70dfd455e40703bbdd6252.jpg\"," + System.lineSeparator() +
@@ -61,7 +61,7 @@ public class ItemDTOTestResults {
             "  \"description\" : \"씹을수록 감칠맛나는 문어살의 쫄깃함\"," + System.lineSeparator() +
             "  \"n_price\" : \"\"," + System.lineSeparator() +
             "  \"s_price\" : \"4,600원\"," + System.lineSeparator() +
-            "  \"badge\" : null" + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
             "}, {" + System.lineSeparator() +
             "  \"detail_hash\" : \"H1AA9\"," + System.lineSeparator() +
             "  \"image\" : \"https://cdn.bmf.kr/_data/product/H1AA9/2455226945d52f5aefd51f35d663bb16.jpg\"," + System.lineSeparator() +
@@ -81,7 +81,7 @@ public class ItemDTOTestResults {
             "  \"description\" : \"달콤한 신야초발효액이 포인트!\"," + System.lineSeparator() +
             "  \"n_price\" : \"\"," + System.lineSeparator() +
             "  \"s_price\" : \"5,000원\"," + System.lineSeparator() +
-            "  \"badge\" : null" + System.lineSeparator() +
+            "  \"badge\" : [ ]" + System.lineSeparator() +
             "} ]";
 
     public static final String COURSE_MENU = "[ {" + System.lineSeparator() +
