@@ -30,7 +30,7 @@ public class UserService {
     public User login(UserDto userDto) {
         User user = userRepository.findByEmail(userDto.getEmail()).orElseThrow(LoginValidException::new);
         String password = user.getPassword();
-        if(!password.equals(userDto.getPassword())) {
+        if(!user.isMatchedPassword(userDto.getPassword())) {
             throw new LoginValidException();
         }
         return user;

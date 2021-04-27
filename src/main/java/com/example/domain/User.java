@@ -52,6 +52,10 @@ public class User {
         orders.add(order);
     }
 
+    public boolean isMatchedPassword(String password) {
+        return this.password.equals(password);
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
