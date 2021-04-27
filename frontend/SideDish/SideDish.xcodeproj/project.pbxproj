@@ -13,6 +13,10 @@
 		BD090659262E9B450094421D /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD090657262E9B450094421D /* MenuCell.xib */; };
 		BD09065E262EBD310094421D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD09065D262EBD310094421D /* Menu.swift */; };
 		BD09066D262EC5120094421D /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD09066C262EC5120094421D /* Menus.swift */; };
+		BD26B1092637D8B100DEA046 /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD26B1082637D8B100DEA046 /* DetailMenuViewController.swift */; };
+		BD26B1222637E3D400DEA046 /* DetailMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD26B1212637E3D400DEA046 /* DetailMenu.swift */; };
+		BD26B1272637F0A600DEA046 /* DetailMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD26B1262637F0A600DEA046 /* DetailMenuViewModel.swift */; };
+		BD26B12C2638293C00DEA046 /* DetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD26B12B2638293C00DEA046 /* DetailScrollView.swift */; };
 		BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B57262D6F5800906633 /* AppDelegate.swift */; };
 		BD930B5A262D6F5800906633 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B59262D6F5800906633 /* SceneDelegate.swift */; };
 		BD930B5C262D6F5800906633 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B5B262D6F5800906633 /* ViewController.swift */; };
@@ -63,6 +67,10 @@
 		BD090657262E9B450094421D /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		BD09065D262EBD310094421D /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		BD09066C262EC5120094421D /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
+		BD26B1082637D8B100DEA046 /* DetailMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
+		BD26B1212637E3D400DEA046 /* DetailMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenu.swift; sourceTree = "<group>"; };
+		BD26B1262637F0A600DEA046 /* DetailMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuViewModel.swift; sourceTree = "<group>"; };
+		BD26B12B2638293C00DEA046 /* DetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScrollView.swift; sourceTree = "<group>"; };
 		BD930B54262D6F5800906633 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD930B57262D6F5800906633 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD930B59262D6F5800906633 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +144,7 @@
 				BD09065D262EBD310094421D /* Menu.swift */,
 				BD09066C262EC5120094421D /* Menus.swift */,
 				CE5905F726319C580085F570 /* MenuCellValidater.swift */,
+				BD26B1212637E3D400DEA046 /* DetailMenu.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +152,8 @@
 		BD090666262EBD7A0094421D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BD930B5B262D6F5800906633 /* ViewController.swift */,
+				BD26B1082637D8B100DEA046 /* DetailMenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -155,6 +166,7 @@
 				BD090657262E9B450094421D /* MenuCell.xib */,
 				CE8E2E4926313C19007EEEBB /* MenuHeaderView.swift */,
 				CE8E2E4A26313C19007EEEBB /* MenuHeaderView.xib */,
+				BD26B12B2638293C00DEA046 /* DetailScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,7 +220,6 @@
 				BD090667262EBD820094421D /* View */,
 				BD090666262EBD7A0094421D /* Controller */,
 				BD090662262EBD350094421D /* Model */,
-				BD930B5B262D6F5800906633 /* ViewController.swift */,
 				BD930B5D262D6F5800906633 /* Main.storyboard */,
 				BD930B62262D6F5900906633 /* LaunchScreen.storyboard */,
 				BD930B60262D6F5900906633 /* Assets.xcassets */,
@@ -241,6 +252,7 @@
 				CE5905FD26327DFE0085F570 /* MenuViewModel.swift */,
 				CE29EB422632A0B700221658 /* MenusViewModel.swift */,
 				CEAE6F2F2636AAFD00720625 /* FetchDataUseCase.swift */,
+				BD26B1262637F0A600DEA046 /* DetailMenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -498,6 +510,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD26B1272637F0A600DEA046 /* DetailMenuViewModel.swift in Sources */,
+				BD26B1222637E3D400DEA046 /* DetailMenu.swift in Sources */,
+				BD26B1092637D8B100DEA046 /* DetailMenuViewController.swift in Sources */,
 				CE8E2E4526313B48007EEEBB /* MainDiffableDataSource.swift in Sources */,
 				BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */,
 				BD930B5C262D6F5800906633 /* ViewController.swift in Sources */,
@@ -510,6 +525,7 @@
 				BDFABAA0262FFA1C00803154 /* Network.swift in Sources */,
 				BD930B5A262D6F5800906633 /* SceneDelegate.swift in Sources */,
 				BD09066D262EC5120094421D /* Menus.swift in Sources */,
+				BD26B12C2638293C00DEA046 /* DetailScrollView.swift in Sources */,
 				CE5905FE26327DFE0085F570 /* MenuViewModel.swift in Sources */,
 				BD09065E262EBD310094421D /* Menu.swift in Sources */,
 				CE5905F826319C580085F570 /* MenuCellValidater.swift in Sources */,

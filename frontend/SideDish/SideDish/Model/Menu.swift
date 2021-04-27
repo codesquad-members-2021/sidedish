@@ -9,7 +9,7 @@ import Foundation
 
 class Menu: Decodable {
 
-    private var detailHash: String
+    private(set) var detailHash: String
     private(set) var image: String
     private var alt: String
     private var deliveryType: [String]

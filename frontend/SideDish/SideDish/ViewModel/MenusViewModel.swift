@@ -53,7 +53,7 @@ class MenusViewModel {
     func matchingViewModel(menuList: [Menu]) -> [MenuViewModel] {
         let viewModelList: [MenuViewModel] = menuList.map() { menu in
             let nPrice = stringToAttributedString(menu.nPrice)
-            let viewModel = MenuViewModel(image: menu.image, title: menu.title, body: menu.description, sPrice: menu.sPrice, nPrice: nPrice, badges: menu.badge ?? [])
+            let viewModel = MenuViewModel(hash: menu.detailHash, image: menu.image, title: menu.title, body: menu.description, sPrice: menu.sPrice, nPrice: nPrice, badges: menu.badge ?? [])
             return viewModel
         }
         return viewModelList
@@ -66,6 +66,19 @@ class MenusViewModel {
             return attributeString
         } else {
             return NSMutableAttributedString(string: "")
+        }
+    }
+    
+    func returnHash(indexPath: IndexPath) -> String? {
+        switch indexPath.section {
+        case 0:
+            return mainViewModel[indexPath.row].hash
+        case 1:
+            return soupViewModel[indexPath.row].hash
+        case 2:
+            return sideViewModel[indexPath.row].hash
+        default:
+            return nil
         }
     }
     

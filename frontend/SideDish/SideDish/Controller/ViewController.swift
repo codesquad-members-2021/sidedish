@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
     
-    private var dataSource = MainDiffableDataSource()
+    private var sideDishDataSource = MainDiffableDataSource()
     private var menusViewModel = MenusViewModel()
     
     override func viewDidLoad() {
@@ -27,11 +27,21 @@ class ViewController: UIViewController {
         
         let nibHeaderName = UINib(nibName: "MenuHeaderView", bundle: .none)
         sideDishCollectionView.register(nibHeaderName, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "menuHeaderView")
-        
-        self.dataSource.setupDataSource(collectionView: self.sideDishCollectionView)
+        self.sideDishCollectionView.delegate = self
+        self.sideDishDataSource.setupDataSource(collectionView: self.sideDishCollectionView)
     }
     
     @objc private func sendMenuList() {
-        self.dataSource.applySnapshot(main: menusViewModel.giveMenus(section: .main), soup: menusViewModel.giveMenus(section: .soup), side: menusViewModel.giveMenus(section: .side))
+        self.sideDishDataSource.applySnapshot(main: menusViewModel.giveMenus(section: .main), soup: menusViewModel.giveMenus(section: .soup), side: menusViewModel.giveMenus(section: .side))
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let detailViewController = self.storyboard?.instantiateViewController(identifier: "detailMenuViewController") as? DetailMenuViewController, let detailHash = menusViewModel.returnHash(indexPath: indexPath)  else { return }
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.pushViewController(detailViewController, animated: true)
+
+        detailViewController.receive(detailHash: detailHash)
     }
 }
