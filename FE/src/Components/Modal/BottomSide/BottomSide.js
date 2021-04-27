@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import * as Carousel from 'Components/Carousel';
-import Card from 'Components/commons/Card.js';
+import Card from 'Components/commons/Cards';
 
 const BottomSide = ({ isHide }) => {
 
