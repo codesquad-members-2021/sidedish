@@ -22,11 +22,11 @@ const TabBtn = styled(Btn)`
   position: relative;
   outline: none;
 `;
-const TabButton = ({Food, setFood, toggleState, toggleTab}) => {
+const TabButton = ({Food, toggleState, toggleTab}) => {
     return (
       <TabsBlock>
         {Food.map( (v, idx) =>  {
-          return (<TabBtn toggleState={toggleState} active={toggleState === (idx + 1)} onClick={() => toggleTab(idx+1)}>
+          return (<TabBtn key={idx} toggleState={toggleState} active={toggleState === (idx + 1)} onClick={() => toggleTab(idx+1)}>
           {v.name}
         </TabBtn>)
         })}

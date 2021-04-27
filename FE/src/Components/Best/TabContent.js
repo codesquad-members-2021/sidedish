@@ -28,12 +28,13 @@ const TabContent = ({ Food, toggleState, URL, modal, setModal, ModalData, setMod
       {Food.map((_, idx) => {
         return (
           <ContentWrapper
+            key={idx}
             toggleState={toggleState}
             active={toggleState === idx + 1}
           >
             <CardBlock>
-              {Food[idx].items.map((v) => {
-                return <CarouselCard {...v} setModal={setModal} setModalData={setModalData} size='L' />
+              {Food[idx].items.map((v, idx) => {
+                return <CarouselCard {...v} key={idx} setModal={setModal} setModalData={setModalData} size='L' />
       })}
             </CardBlock>
           </ContentWrapper>

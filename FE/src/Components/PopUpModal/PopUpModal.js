@@ -47,13 +47,23 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
 
   const Calculate = () => {
     if (detail[0].prices.length === 1) {
-      return quantity * detail[0].prices[0].replace(/[^0-9]/g, "");
+      return numberWithCommas(quantity * detail[0].prices[0].replace(/[^0-9]/g, ""));
     }
     if (detail[0].prices.length === 2) {
-      return quantity * detail[0].prices[1].replace(/[^0-9]/g, "");
+      return numberWithCommas(quantity * detail[0].prices[1].replace(/[^0-9]/g, ""));
     }
   };
 
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+  const [toggleState, setToggleState] = useState();
+  const [imgState, setState] = useState(1);
+  
+  const toggleImg = (v) => {
+    setState(0);
+    setToggleState(v);
+  };
   return (
     <ModalBackground>
       <ModalCard>
@@ -62,10 +72,10 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
             {detail && (
               <>
                 <ImageBox>
-                  <Image src={detail[0].top_image} />
+                  <Image toggleImg={()=>toggleImg(detail[0].top_image)} src={imgState===1 ? detail[0].top_image : toggleState } />
                   <Mini>
-                    {detail[0].thumb_images.map((v) => (
-                      <MiniImage src={v} />
+                    {detail[0].thumb_images.map((v, idx) => (
+                      <MiniImage key={idx} src={v} onClick={() => toggleImg(v)}/>
                     ))}
                   </Mini>
                 </ImageBox>
