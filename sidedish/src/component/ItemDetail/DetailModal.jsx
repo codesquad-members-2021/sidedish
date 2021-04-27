@@ -4,6 +4,7 @@ import { StyledBadges } from 'component/DishItem/DishItem';
 import Counter from 'component/ItemDetail/Counter';
 
 const DetailModal = ({ detailData, loading, title, badge }) => {
+  const [count, setCount] = useState(1);
   const [topImg, setTopImg] = useState(detailData.top_image);
   const thumbImgList = detailData.thumb_images.map((img, i) => {
     return (
@@ -11,6 +12,14 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
     );
   });
 
+  const handleClickUp = () => {
+    setCount(count + 1);
+  };
+
+  const handleClickDown = () => {
+    if (count - 1 <= 0) return;
+    setCount(count - 1);
+  };
   const prices = detailData.prices.map((price, i, arr) => {
     let type = 'sale_price';
     if (arr.length > 1) {
@@ -22,6 +31,15 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
       </span>
     );
   });
+
+  const calculatePrice = (count, price) => {
+    const parsedPrice = parseInt(price.replace(/[^0-9]/g, ''));
+    const totalPrice = count * parsedPrice;
+    const parsedTotalPrice =
+      (totalPrice + '').replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',') + '원';
+    return parsedTotalPrice;
+  };
+
   if (loading) return <ModalStyle>Loading...</ModalStyle>;
   else if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
   return (
@@ -61,11 +79,13 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
           </div>
           <div className="info_count border">
             <span className="info_category">수량</span>
-            <Counter />
+            <Counter {...{ count, handleClickUp, handleClickDown }} />
           </div>
           <div className="info_total">
             <span className="info_total_fee">총 주문금액</span>
-            <span className="info_total_fee_data">5200원</span>
+            <span className="info_total_fee_data">
+              {calculatePrice(count, detailData.prices[detailData.prices.length - 1])}
+            </span>
           </div>
           <div className="info_order">
             <span>주문하기</span>

@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { IoChevronUp, IoChevronDown } from 'react-icons/io5';
 
-const Counter = ({ count, handleClick }) => {
+const Counter = ({ count, handleClickUp, handleClickDown }) => {
   return (
     <StyledCounter>
-      <div className="counter">1</div>
+      <div className="counter">{count}</div>
       <div className="arrow_container">
-        <IoChevronUp className="arrow"></IoChevronUp>
-        <IoChevronDown className="arrow"></IoChevronDown>
+        <IoChevronUp className="arrow" onClick={handleClickUp}></IoChevronUp>
+        <IoChevronDown className="arrow" onClick={handleClickDown}></IoChevronDown>
       </div>
     </StyledCounter>
   );
