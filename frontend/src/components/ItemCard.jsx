@@ -1,17 +1,17 @@
-import styled from "styled-components";
-import { useState } from "react";
-import { theme, AlignTextCenter } from "./Theme";
-import ItemPrice from "./atomic/ItemPrice";
-import Badge from "./atomic/Badge";
-import DetailPage from "./detail/DetailPage";
-import useFetch from "./useFetch";
+import styled from 'styled-components'
+import { useState } from 'react'
+import { theme, AlignTextCenter } from './Theme'
+import ItemPrice from './atomic/ItemPrice'
+import Badge from './atomic/Badge'
+import DetailPage from './detail/DetailPage'
+import useFetch from './useFetch'
 
 const Card = styled.div`
   margin-top: 40px;
-  width: ${(props) => {
-    return props.size === "L" ? "384px" : "308px";
+  width: ${props => {
+    return props.size === 'L' ? '384px' : '308px'
   }};
-`;
+`
 const ItemTitle = styled.div`
   font-size: ${theme.fontSize.medium};
   font-weight: Bold;
@@ -19,7 +19,7 @@ const ItemTitle = styled.div`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 const ItemDesc = styled.div`
   font-size: ${theme.fontSize.small};
   color: ${theme.colors.grey_text};
@@ -27,25 +27,25 @@ const ItemDesc = styled.div`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 const IMG = styled(AlignTextCenter)`
-  width: ${(props) => {
-    return props.size === "L" ? "384px" : "308px";
+  width: ${props => {
+    return props.size === 'L' ? '384px' : '308px'
   }};
-  height: ${(props) => {
-    return props.size === "L" ? "384px" : "308px";
+  height: ${props => {
+    return props.size === 'L' ? '384px' : '308px'
   }};
   margin-bottom: 32px;
-  background-image: url(${(props) => props.image});
+  background-image: url(${props => props.image});
   background-size: cover;
   &:hover {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url(${(props) => props.image});
+      url(${props => props.image});
     div {
       opacity: 1;
     }
   }
-`;
+`
 
 const DeliveryBlock = styled.div`
   position: relative;
@@ -53,31 +53,34 @@ const DeliveryBlock = styled.div`
   font-size: ${theme.fontSize.larger};
   font-weight: ${theme.fontWeight.bold};
   opacity: 0;
-`;
+`
 const imgPosition = {
-  position: "relative",
-  top: "-7px",
-  left: "2px",
-};
+  position: 'relative',
+  top: '-7px',
+  left: '2px'
+}
 const ClickArea = styled.div`
   cursor: pointer;
-`;
+`
 
-function ItemCard({ data, size }) {
-  const [detailFetchUrl, setDetailFetchUrl] = useState(null);
-  const [ModalMode, setModalState] = useState(false);
-  const handleClick = (hash) => {
-    setModalState(!ModalMode); //작업중
-    setDetailFetchUrl("http://15.164.68.136:8080/detail/" + hash);
-  };
-  const [detailData, loadingState] = useFetch(detailFetchUrl); //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가?
+function ItemCard ({ data, size }) {
+  const DetailUrl = process.env.REACT_APP_API_URL + 'detail/'
+  const [detailFetchUrl, setDetailFetchUrl] = useState(null)
+  const [modalMode, setModalState] = useState(false)
+
+  const handleClick = hash => {
+    setModalState(!modalMode) //작업중
+    setDetailFetchUrl(DetailUrl + hash)
+  }
+
+  const [detailData, loadingState] = useFetch(detailFetchUrl) //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가?
+  //커스텀 훅을 고쳐서 error 퇴치했습니다.
   return (
     <>
-      {ModalMode && !loadingState && (
+      {modalMode && (
         <DetailPage
+          {...{ loadingState, modalMode, setModalState }}
           detailData={detailData.data}
-          ModalMode={ModalMode}
-          setModalState={setModalState}
           item={data.alt}
           badges={data.badges}
         ></DetailPage>
@@ -87,7 +90,7 @@ function ItemCard({ data, size }) {
           <IMG size={size} image={data.image} alt={data.alt}>
             <DeliveryBlock>
               <div>새벽배송</div>
-              <img style={imgPosition} src="./line.png" alt="line"></img>
+              <img style={imgPosition} src='./line.png' alt='line'></img>
               <div>전국택배</div>
             </DeliveryBlock>
           </IMG>
@@ -100,7 +103,7 @@ function ItemCard({ data, size }) {
         <Badge data={data.badges}></Badge>
       </Card>
     </>
-  );
+  )
 }
 
-export default ItemCard;
+export default ItemCard

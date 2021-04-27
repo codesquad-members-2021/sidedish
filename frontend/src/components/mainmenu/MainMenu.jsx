@@ -4,14 +4,15 @@ import ItemCard from "../ItemCard";
 import useFetch from "../useFetch";
 import Title from "../atomic/Title";
 import { useState } from "react";
+import Loading from "../Loading"
 
-const MainWrapper = styled.div`
+const MainBlock = styled.div`
   margin-top: 40px;
   width: 100%;
   padding: ${theme.padding.globalPadding};
   box-sizing: border-box;
 `;
-const TabWrapper = styled.div`
+const TabBlock = styled.div`
   display: flex;
 `;
 
@@ -39,19 +40,14 @@ const MainColumn = styled.div`
 `;
 
 function MainMenu() {
-  let mokData;
-  const basicUrl = "http://15.164.68.136:8080/best/";
-
+  const basicUrl = process.env.REACT_APP_API_URL + "best/";
   //5개: 탭 전체 데이터 요청
   const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
   const [clickedID, setClickedID] = useState(1);
   //초기 베스트메뉴 url 설정
-  const [fetchData, setFetchData] = useState(basicUrl + clickedID);
-
+  const [fetchData, setFetchData] = useState(basicUrl + 1);
   //3개: 초기 베스트메뉴 데이터 요청
-  const [initData, loadingState] = useFetch(fetchData);
-  mokData = initData.items;
-
+  const [bestData, loadingState] = useFetch(fetchData);
   //클릭한 후 해당 탭 데이터 요청
   const handleClick = (target, id) => {
     setClickedID(id);
@@ -59,9 +55,9 @@ function MainMenu() {
   };
 
   return (
-    <MainWrapper>
+    <MainBlock>
       <Title>후기가 증명하는 베스트 반찬</Title>
-      <TabWrapper>
+      <TabBlock>
         {!bestDishLoading &&
           bestDishMenu.map((data, idx) => (
             <Tab
@@ -73,15 +69,15 @@ function MainMenu() {
               {data.name}
             </Tab>
           ))}
-      </TabWrapper>
+      </TabBlock>
 
       <MainColumn>
-        {!loadingState &&
-          mokData.map((data, idx) => (
+        {loadingState? <Loading width='1280px' height='620px' />
+           : bestData.items.map((data, idx) => (
             <ItemCard key={idx} data={data} size={"L"}></ItemCard>
           ))}
       </MainColumn>
-    </MainWrapper>
+    </MainBlock>
   );
 }
 
