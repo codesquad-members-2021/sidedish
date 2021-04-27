@@ -43,7 +43,6 @@ public class ItemService {
     private void validateCategory(String categoryFromUser) {
         for (String category : CATEGORIES) {
             if (category.equalsIgnoreCase(categoryFromUser)) {
-                System.out.println("gotcha");
                 return;
             }
         }
