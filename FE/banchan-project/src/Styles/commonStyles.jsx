@@ -22,7 +22,7 @@ const Image = {
   THUMB_NAILS: styled(ImageBox)`
     width: ${theme.imgSizes.THUMB_NAILS};
     height: ${theme.imgSizes.THUMB_NAILS};
-    border: ${(props) =>
+    border: ${props =>
       props.selectedFlag === true
         ? `2px solid ${theme.boxColors.GREEN}`
         : "none"};
@@ -174,41 +174,78 @@ const ColorFont = {
 };
 
 const BadgeBox = styled.div`
+  display: inline-block;
   width: 97px;
   height: 28px;
-  display: flex;
-  justify-content: center;
   padding: 4px 16px;
   margin-right: 8px;
   border-radius: 5px;
+  text-align: center;
 `;
 
 const Badges = {
   EventBadge: styled(BadgeBox)`
-    background: #82d32d;
+    background: ${theme.boxColors.GREEN};
   `,
 
   LaunchingBadge: styled(BadgeBox)`
-    background: #86c6ff;
+    background: ${theme.boxColors.LIGHT_BLUE};
   `,
 };
+
+const Hover = styled.div`
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    #f5f5f7;
+  border-radius: 5px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 16px 0px;
+`;
 
 const Box = {
   FLEX_ROW_BOX: styled.div`
     display: flex;
   `,
+
   FLEX_ROW_CENTER_BOX: styled.div`
     display: flex;
     align-items: center;
   `,
+
   FLEX_COLUMN_BOX: styled.div`
     display: flex;
     flex-direction: column;
   `,
+
   FLEX_COLUMN_CENTER_BOX: styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+  `,
+
+  HOVER_BOX_BEST: styled(Hover)`
+    position: absolute;
+    width: 384px;
+    height: 384px;
+  `,
+
+  HOVER_BOX_MAIN: styled(Hover)`
+    width: 308px;
+    height: 308px;
+  `,
+
+  HOVER_LINE: styled.div`
+    position: static;
+    width: 89px;
+    height: 1px;
+    left: 0px;
+    top: 51px;
+    background: #ffffff;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 16px 0px;
   `,
 };
 

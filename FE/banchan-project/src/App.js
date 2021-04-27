@@ -1,7 +1,7 @@
 import GlobalStyles from "./Styles/GlobalStyles";
 import MainItems from "./MainItems/MainItems.jsx";
-// import Header from "./Header/Header";
-// import BestItems from "./BestItems/BestItems";
+import Header from "./Header/Header";
+import BestItems from "./BestItems/BestItems";
 import DetailModal from "./DetailModal/DetailModal";
 
 const App = () => {
@@ -9,8 +9,8 @@ const App = () => {
     <div className="App">
       <div className="container">
         <GlobalStyles />
-        {/* <Header></Header>
-        <BestItems></BestItems> */}
+        <Header></Header>
+        <BestItems></BestItems>
         <MainItems />
         <DetailModal />
       </div>
