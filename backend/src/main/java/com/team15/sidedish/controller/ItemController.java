@@ -26,10 +26,10 @@ public class ItemController {
 
     }
 
-    @GetMapping("/main")
-    public HashMap<String, List<DishDTO>> showMainDishes(){
+    @GetMapping("/section/{sectionName}")
+    public HashMap<String, List<DishDTO>> showDishesBySectionName(@PathVariable String sectionName){
         HashMap<String, List<DishDTO>> items = new HashMap<>();
-        items.put("main_items", dishService.showDishsBySection("main"));
+        items.put("main_items", dishService.showDishsBySection(sectionName));
         return items;
     }
 
