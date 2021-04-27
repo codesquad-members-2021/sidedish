@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ItemCard from "../util/ItemCard";
+import ItemCard from "../../util/ItemCard";
 
 const SlideItemsStyle = styled.div`
   display: grid;
