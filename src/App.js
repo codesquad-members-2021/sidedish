@@ -4,16 +4,30 @@ import PopUpContainer from "./component/popUp/PopUpContainer.jsx";
 import ShowMoreBtn from "./component/ShowMoreBtn.jsx";
 import SlideContainer from "./component/slideContainer/SlideContainer.jsx";
 import GlobalStyle from "./style.js";
+import { useState } from "react";
+import api from "./api.js";
 
 function App() {
+  const [toggle, setToggle] = useState(false);
+  const [detailData, setDetailData] = useState(null);
+  const onPopUpToggle = () => setToggle(!toggle);
+
+  const onFetchDetailData = async (id) => {
+    const detailData = await api(`/detail/${id}`);
+    if(detailData) {
+      setDetailData(detailData);
+      onPopUpToggle();
+    }
+  }
+
   return (
     <>
       <GlobalStyle />
       <Header />
-      <BestTab />
-      <SlideContainer />
+      <BestTab onFetchDetailData={onFetchDetailData}/>
+      <SlideContainer onFetchDetailData={onFetchDetailData}/>
       <ShowMoreBtn />
-      <PopUpContainer/>
+      {toggle ? <PopUpContainer detailData={detailData} onPopUpToggle={onPopUpToggle}/> : null}
     </>
   );
 }

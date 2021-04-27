@@ -21,11 +21,11 @@ const SliderArrowBtnsStyle = styled.div`
   justify-content: space-between;
 `;
 
-export default function SlideContainer() {
+export default function SlideContainer({ onFetchDetailData }) {
   return (
     <SlideContainerStyle>
       <h2>후기가 증명하는 베스트 반찬</h2>
-      <SlideItems/>
+      <SlideItems onFetchDetailData={onFetchDetailData}/>
       <SliderArrowBtnsStyle>
         <SliderArrowBtn><FaChevronLeft /></SliderArrowBtn>
         <SliderArrowBtn><FaChevronRight /></SliderArrowBtn>

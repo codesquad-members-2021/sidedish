@@ -30,13 +30,14 @@ const PopUpDetailContainerStyle = styled.div`
     background-color: #fff;
     width: 60rem;
     margin: 6vh auto;
+    position: relative;
 `;
 
 const CloseBtnStyle = styled.button`
     color: #fff;
     opacity: 0.8;
     position: absolute;
-    right: -4rem;
+    right: -2.5rem;
     font-size: 1.25rem;
     cursor: pointer;
 
@@ -45,15 +46,15 @@ const CloseBtnStyle = styled.button`
     }
 `;
 
-export default function PopUpContainer () {
+export default function PopUpContainer ({ detailData, onPopUpToggle }) {
 
     return (
         <PopUpContainerStyle>
             <PopUpDetailContainerStyle>
-                <PopUpImages/>
-                <PopUpInformations/>
+                <CloseBtnStyle onClick={onPopUpToggle}><FaTimes></FaTimes></CloseBtnStyle>
+                <PopUpImages detailData={detailData} />
+                <PopUpInformations detailData={detailData}/>
             </PopUpDetailContainerStyle>
-            <CloseBtnStyle><FaTimes></FaTimes></CloseBtnStyle>
         </PopUpContainerStyle>
     )
 }

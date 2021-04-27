@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const PopUpImagesStyle = styled.div`
 
@@ -7,7 +8,7 @@ const PopUpImagesStyle = styled.div`
 const PopUpMainImageStyle = styled.div`
     width: 100%;
     height: 24.5rem;
-    background-image: url("https://cdn.pixabay.com/photo/2017/09/10/14/23/jjolmyeon-2735716__340.jpg");
+    background-image: ${props => `url(${props.src})`};
     background-size: cover;
     margin-bottom: 0.5rem;
     border-radius: 0.3125rem;
@@ -24,22 +25,26 @@ const PopUpThumbnailImageStyle = styled.img.attrs(props => ({
 }))`
     width: 100%;
     border-radius: 0.25rem;
-    border: 1px solid #fff;
+    cursor: pointer;
+    border: ${props => props.active ? '2px solid #82D32D' : '2px solid transparent'};
     height: 4.5rem;
 `;
 
-export default function PopUpImages () {
+export default function PopUpImages ({ detailData }) {
+    const { main_image, thumbnail_images } = detailData;
+    const images = [main_image, ...thumbnail_images];
+    const [ activeImage, setActiveImage ] = useState(images[0]);
+
+    const onChangeMainImage = (idx) => {
+        setActiveImage(images[idx]);
+    }
 
     return (
         <PopUpImagesStyle>
-            <PopUpMainImageStyle/>
+            <PopUpMainImageStyle src={activeImage}/>
             <PopUpThumbnailImagesStyle>
-                <PopUpThumbnailImageStyle src="https://cdn.pixabay.com/photo/2017/09/10/14/23/jjolmyeon-2735716__340.jpg"/>
-                <PopUpThumbnailImageStyle src="https://cdn.pixabay.com/photo/2017/09/10/14/23/jjolmyeon-2735716__340.jpg"/>
-                <PopUpThumbnailImageStyle src="https://cdn.pixabay.com/photo/2017/09/10/14/23/jjolmyeon-2735716__340.jpg"/>
-                <PopUpThumbnailImageStyle src="https://cdn.pixabay.com/photo/2017/09/10/14/23/jjolmyeon-2735716__340.jpg"/>
+                {images.map((URL, idx) => <PopUpThumbnailImageStyle active={activeImage === URL} src={URL} onClick={() => onChangeMainImage(idx)}/>)}
             </PopUpThumbnailImagesStyle>
         </PopUpImagesStyle>
-
     )
 }

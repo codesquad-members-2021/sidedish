@@ -74,9 +74,9 @@ const SalePriceStyle = styled.div`
   display: inline-block;
 `;
 
-export default function ItemCard({ src = "", title = "", description = "", salePrice, normalPrice, labels=[] }) {
+export default function ItemCard({id, onFetchDetailData, src = "", title = "", description = "", salePrice, normalPrice, labels=[] }) {
   return (
-    <ItemCardStyle>
+    <ItemCardStyle onClick={() => onFetchDetailData(id)}>
       <ImgContainerStyle>
         <ImgStyle src={src}/>
         <HoverStyle>
