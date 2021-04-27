@@ -5,10 +5,8 @@ import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 @Table(value = "CATEGORY")
 public class Category {
@@ -18,8 +16,8 @@ public class Category {
 
     private final String name;
 
-    @MappedCollection(idColumn = "CATEGORY_ID", keyColumn = "CATEGORY_KEY")
-    private List<Item> items = new ArrayList<>();
+    @MappedCollection(idColumn = "CATEGORY_ID", keyColumn = "ITEM_ID") // 명시적
+    private Map<String, Item> items = new HashMap<>();  //m 질문 Map의 Key 형태인 String은 Item을 구별하기 위한 식별자? 커스텀이아니고 명명규칙이 맞다면 keyColumn은 따로 안해줘도되는지?
 
     @PersistenceConstructor
     private Category(Long id, String name) {
@@ -32,9 +30,13 @@ public class Category {
     }
 
     public void addItem(Item item) {
-        if(!items.contains(item)) {
-            this.items.add(item);
+        if(!items.containsValue(item)) {
+            this.items.put(item.getId(),item);
         }
+    }
+
+    public Item findItem(Long id){
+       return items.get(id);
     }
 
     public void removeItem(Item item) {
@@ -49,8 +51,12 @@ public class Category {
         return name;
     }
 
-    public List<Item> getItems() {
+    public Map<String, Item> getItems() {
         return items;
+    }
+
+    public void update(Item item){
+        this.items.replace(item.getId(),item);
     }
 
 }

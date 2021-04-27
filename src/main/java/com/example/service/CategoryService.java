@@ -20,8 +20,15 @@ public class CategoryService {
     public List<ResponseDTO> findAll() {
         return categoryRepository.findAll().stream().map(ResponseDTO::of).collect(Collectors.toList());
     }
-    public ResponseDTO findById(Long id) {
+
+    public ResponseDTO responseDtoFindById(Long id) {
         Category category = categoryRepository.findById(id).orElseThrow(NoSuchFieldError::new);
         return ResponseDTO.of(category);
+    }
+    public Category findById(Long id){
+        return categoryRepository.findById(id).orElseThrow(NoSuchFieldError::new);
+    }
+    public Category save(Category category){
+        return categoryRepository.save(category);
     }
 }
