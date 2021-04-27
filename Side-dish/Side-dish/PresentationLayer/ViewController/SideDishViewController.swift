@@ -12,10 +12,12 @@ class SideDishViewController: UIViewController {
     
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
     @Dependency private var sideDishViewModel: SideDishViewModel
-    @Dependency var dvm : DetailViewModel
+    
     private var cancellable = Set<AnyCancellable>()
     private var dataSource : UICollectionViewDiffableDataSource<Menu, Item>!
-        
+    private var cellSize: CGFloat = 130
+    private var headerSize: CGFloat = 85
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideDishCollectionView.delegate = self
@@ -85,11 +87,11 @@ class SideDishViewController: UIViewController {
 
 extension SideDishViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 130)
+        return CGSize(width: collectionView.frame.width, height: cellSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 85)
+        return CGSize(width: collectionView.frame.width, height: headerSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -106,11 +108,7 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         
         targetVC.depend2(detailViewModel: DIContainer.createDI2())
         targetVC.setItemInfo(from: itemDetail)
-        targetVC.sideDishTitle = itemDetail.title
-        targetVC.badges = itemDetail.badge
-        targetVC.detailHash = itemDetail.detailHash
-        targetVC.nPrice = itemDetail.nPrice
-        targetVC.sPrice = itemDetail.sPrice
+
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
     

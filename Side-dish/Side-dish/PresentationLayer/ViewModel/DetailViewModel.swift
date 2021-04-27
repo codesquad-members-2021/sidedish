@@ -34,6 +34,7 @@ class DetailViewModel {
 
     func didFetchDetails(completion: @escaping ((ItemData) -> ())) {
         $itemDetails
+            .receive(on: RunLoop.main)
             .sink { (detail) in
                 guard let detail = detail else {
                     return

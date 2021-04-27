@@ -13,7 +13,7 @@ class FoodCardCell: UICollectionViewCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
     @IBOutlet weak var itemBodyLabel: UILabel!
     @IBOutlet weak var sPriceLabel: UILabel!
-    @IBOutlet weak var nPriceLabel: UILabel!
+    @IBOutlet weak var nPriceLabel: NPriceLabel!
     @IBOutlet weak var badgeStackView: UIStackView!
     
     private var cancellable = Set<AnyCancellable>()
@@ -34,7 +34,7 @@ class FoodCardCell: UICollectionViewCell {
         itemTitleLabel.text = item.title
         itemBodyLabel.text = item.description
         sPriceLabel.text = item.sPrice
-        setNPrice(nPrice: item.nPrice)
+        nPriceLabel.configure(price: item.nPrice)
         setBadge(badges: item.badge)
     }
     
@@ -42,17 +42,6 @@ class FoodCardCell: UICollectionViewCell {
         DispatchQueue.main.async { [weak self] in
             self?.itemImageView.image = UIImage(contentsOfFile: itemURL)
         }
-    }
-    
-    func setNPrice(nPrice: String?) {
-        guard let nPrice = nPrice else {
-            hideView(ui: nPriceLabel)
-            return
-        }
-        showView(ui: nPriceLabel)
-        let strokeEffect: [NSAttributedString.Key : Any] = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
-        let strokeString = NSAttributedString(string: "\(nPrice)원", attributes: strokeEffect)
-        self.nPriceLabel.attributedText = strokeString
     }
     
     func setBadge(badges: [Badge]?) {
