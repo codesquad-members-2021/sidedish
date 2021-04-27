@@ -14,6 +14,7 @@ const Title = ({type}) => {
 
 const StyledTitle = styled.h2`
     height: 35px;
+    margin-bottom: 32px;
     font-weight: bold;
     font-size: ${({ theme }) => theme.fontSize.XL};
     line-height: 35px;
