@@ -5,25 +5,43 @@ import DetailDelivery from 'components/detail/DetailDelivery';
 import DetailOrder from 'components/detail/DetailOrder';
 import DetailPrice from 'components/detail/DetailPrice';
 import OrderButton from 'components/detail/OrderButton';
+import { useState } from 'react';
 
 const LongLine = () => {
   return <LongLineBox />;
 };
 
-const DetailModal = () => {
+const DetailModal = ({
+  title,
+  badge,
+  currentData,
+  orderCount,
+  plusCount,
+  minusCount,
+}) => {
+  const {
+    delivery_fee,
+    delivery_info,
+    point,
+    prices,
+    product_description,
+    thumb_images,
+    top_image,
+  } = currentData;
+
   return (
     <DetailModalBox>
       <ImageBox>
-        <DetailImage />
+        <DetailImage {...{ top_image, thumb_images }} />
       </ImageBox>
       <InfoBox>
-        <DetailInfo />
+        <DetailInfo {...{ title, badge, prices, product_description }} />
         <LongLine />
-        <DetailDelivery />
+        <DetailDelivery {...{ point, delivery_info, delivery_fee }} />
         <LongLine />
-        <DetailOrder />
+        <DetailOrder {...{ orderCount, plusCount, minusCount }} />
         <LongLine />
-        <DetailPrice />
+        <DetailPrice {...{ orderCount, prices }} />
         <OrderButton />
       </InfoBox>
     </DetailModalBox>
@@ -40,7 +58,6 @@ const DetailModalBox = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 48px;
-  border: 1px solid yellowgreen;
 `;
 
 const LongLineBox = styled.div`

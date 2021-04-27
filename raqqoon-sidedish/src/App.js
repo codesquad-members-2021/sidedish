@@ -8,12 +8,16 @@ import { NONE } from './const';
 
 const App = () => {
   const [modalState, setModalState] = useState(NONE);
+  const [modalData, setModalData] = useState({
+    hash: ``,
+    title: ``,
+  });
 
   return (
     <AppContainer className="App">
       <Header />
-      <Main {...{ setModalState }} />
-      <Detail {...{ modalState, setModalState }} />
+      <Main {...{ modalData, setModalState, setModalData }} />
+      <Detail {...{ modalData, modalState, setModalState, setModalData }} />
     </AppContainer>
   );
 };

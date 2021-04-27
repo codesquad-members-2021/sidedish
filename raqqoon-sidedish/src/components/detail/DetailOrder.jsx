@@ -5,37 +5,35 @@ const LongLine = () => {
   return <LongLineBox />;
 };
 
-const Arrow = () => {
+const Arrow = ({ plusCount, minusCount }) => {
   return (
     <ArrowBox>
-      <ArrowButton>
+      <ArrowButton onClick={plusCount}>
         <RiArrowDropUpLine />
       </ArrowButton>
       <LongLine />
-      <ArrowButton>
+      <ArrowButton onClick={minusCount}>
         <RiArrowDropDownLine />
       </ArrowButton>
     </ArrowBox>
   );
 };
 
-const Number = () => {
+const Number = ({ orderCount, plusCount, minusCount }) => {
   return (
     <NumberBox>
-      <NumberInput />
-      <Arrow />
+      <NumberInput value={orderCount} />
+      <Arrow {...{ plusCount, minusCount }} />
     </NumberBox>
   );
 };
 
-const DetailOrder = () => {
+const DetailOrder = ({ orderCount, plusCount, minusCount }) => {
   return (
-    <div>
-      <TextBox>
-        <LabelBox>수량</LabelBox>
-        <Number>52원</Number>
-      </TextBox>
-    </div>
+    <TextBox>
+      <LabelBox>수량</LabelBox>
+      <Number {...{ orderCount, plusCount, minusCount }} />
+    </TextBox>
   );
 };
 
@@ -73,6 +71,7 @@ const ArrowBox = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #e0e0e0;
+  cursor: pointer;
 `;
 
 const ArrowButton = styled.div`
@@ -81,8 +80,15 @@ const ArrowButton = styled.div`
   align-items: center;
   width: 28px;
   height: 21px;
-
   color: #333;
+  &:hover {
+    background: #fffcdb;
+    transition: 0.4s;
+  }
+  &:active {
+    background: #fff7b2;
+    transition: 0.4s;
+  }
 `;
 
 const LongLineBox = styled.div`
