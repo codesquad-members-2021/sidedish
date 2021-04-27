@@ -3,25 +3,6 @@ import styled from 'styled-components';
 import Span from '../../atoms/Span';
 import Icon from '../../atoms/Icon';
 
-const InfosWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-
-  width: 440px;
-  height: 124px;
-`;
-
-const SingleInfoWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-
-  width: 440px;
-  height: 46px;
-  margin: 16px 0px;
-`;
-
 const Input = styled.input`
   display: flex;
   align-items: flex-start;
@@ -33,11 +14,26 @@ const Input = styled.input`
   border: 1px solid #e0e0e0;
 `;
 
+const IconWrapper = styled.input`
+  display: flex;
+  flex-direction: column;
+`;
+
+const QuantityWrapper = styled.div`
+  display: flex;
+`;
+
 const InfoQuantity = ({ children, ...props }) => {
   return (
     <>
-      <Span _detailLabel></Span>
-      <Input></Input>
+      <Span _detailLabel>수량</Span>
+      <QuantityWrapper>
+        <Input></Input>
+        <IconWrapper>
+          <Icon _width="28px" _heith="20px" _color="#E0E0E0" _type="UpIcon" />
+          <Icon _width="28px" _heith="20px" _color="#E0E0E0" _type="DownIcon" />
+        </IconWrapper>
+      </QuantityWrapper>
     </>
   );
 };

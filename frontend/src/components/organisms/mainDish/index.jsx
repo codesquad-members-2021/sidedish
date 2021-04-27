@@ -8,6 +8,11 @@ const MainDish = props => {
   const directionRef = useRef(false);
   const [data, setData] = useState([]);
 
+  const SLIDES = 4;
+  const LENGTH = (imageWidth, margin) => {
+    return imageWidth * SLIDES + margin * (SLIDES + 1);
+  };
+
   UseFetch(setData, props._dishType);
 
   const Cards = () => {
@@ -20,25 +25,29 @@ const MainDish = props => {
         _nPrice={card.n_price}
         _sPrice={card.s_price}
         _badge={card.badge}
+        _hash={card.detail_hash}
       ></MediumCard>
     ));
   };
 
+  const setStyle = (duration, move) => {
+    directionRef.current.style.transition = duration;
+    directionRef.current.style.transform = move;
+  };
+
   const moveSlide = type => {
     if (type === 'RightIcon') {
-      directionRef.current.style.transition = 'all 0.5s';
-      directionRef.current.style.transform = 'translate(-1312px)';
+      setStyle('all 0.5s', `translate(-${LENGTH(308, 16)}px)`);
     } else {
-      directionRef.current.style.transition = 'all 0.5s';
-      directionRef.current.style.transform = 'translate(1312px)';
+      setStyle('all 0.5s', `translate(${LENGTH(308, 16)}px)`);
     }
   };
 
-  const render = type => {
+  const onTransitionEnd = type => {
     if (type === 'RightIcon') {
-      setData(data.slice(4).concat(data.slice(0, 4)));
+      setData(data.slice(SLIDES).concat(data.slice(0, SLIDES)));
     } else {
-      setData(data.slice(-4).concat(data.slice(0, -4)));
+      setData(data.slice(-SLIDES).concat(data.slice(0, -SLIDES)));
     }
     directionRef.current.style.transform = 'translate(0)';
     directionRef.current.style.transition = 'none';
@@ -55,7 +64,7 @@ const MainDish = props => {
             _type="LeftIcon"
           />
           <WrapCard>
-            <CardStyle onTransitionEnd={render} ref={directionRef}>
+            <CardStyle onTransitionEnd={onTransitionEnd} ref={directionRef}>
               <Cards />
             </CardStyle>
           </WrapCard>
