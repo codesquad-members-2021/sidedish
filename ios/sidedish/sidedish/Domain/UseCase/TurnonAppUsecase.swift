@@ -19,10 +19,16 @@ protocol ManufactureDataforViewModel {
 
 class TurnonAppUsecase: ManufactureDataforViewModel {
 
+    private let repoprotocol: tempRepoProtocol
     private let networkmanager: AFNetworkManagable
     
     init(networkmanager: AFNetworkManagable) {
+        self.repoprotocol = DishRepository()
         self.networkmanager = networkmanager
+        //self.repoprotocol.getMainDishes()
+        //self.repoprotocol.deleteAllInCoreData()
+        //self.repoprotocol.helloLollo()
+//        self.repoprotocol.밥먹어요롤로()
     }
     
     convenience init(baseUrl: String = "http://3.37.26.82:8080"){

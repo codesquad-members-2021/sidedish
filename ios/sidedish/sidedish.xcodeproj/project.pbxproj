@@ -12,7 +12,6 @@
 		8214B70B262DE07A004467C2 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8214B70A262DE07A004467C2 /* MenuCell.swift */; };
 		8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8214B70D262DE253004467C2 /* MainTableViewDataSource.swift */; };
 		8214B711262DE4B4004467C2 /* MainTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8214B710262DE4B4004467C2 /* MainTableViewDelegate.swift */; };
-		821A75F226306F1F0083026F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A75F126306F1F0083026F /* NetworkProtocol.swift */; };
 		82680CC526354BC400009775 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82680CC426354BC400009775 /* CoreDataStorage.swift */; };
 		8268E35726301419002F518C /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35626301419002F518C /* MenuCellViewModel.swift */; };
 		8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E35E26301B00002F518C /* TurnonAppUsecase.swift */; };
@@ -22,6 +21,10 @@
 		82A971D72632478E005E419A /* CustomHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971D62632478E005E419A /* CustomHeaderFooter.swift */; };
 		82A971DB263252A1005E419A /* SideDishesManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971DA263252A1005E419A /* SideDishesManageable.swift */; };
 		82A971E126326CFB005E419A /* SideDishesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A971E026326CFB005E419A /* SideDishesCategory.swift */; };
+		82B8C9D52637A563008F1E32 /* SaveSideDish+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */; };
+		82B8C9D62637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */; };
+		82B8C9D72637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */; };
+		82B8C9D82637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */; };
 		82BBBBB72630067B008F89CB /* SideDishFindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBBB52630067B008F89CB /* SideDishFindable.swift */; };
 		82BBBBB82630067B008F89CB /* SideDishesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBBB62630067B008F89CB /* SideDishesCollection.swift */; };
 		82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FDB9C6262DCFD8009E3EB7 /* AppDelegate.swift */; };
@@ -47,7 +50,6 @@
 		8214B70A262DE07A004467C2 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		8214B70D262DE253004467C2 /* MainTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewDataSource.swift; sourceTree = "<group>"; };
 		8214B710262DE4B4004467C2 /* MainTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewDelegate.swift; sourceTree = "<group>"; };
-		821A75F126306F1F0083026F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		82680CC426354BC400009775 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		8268E35626301419002F518C /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		8268E35E26301B00002F518C /* TurnonAppUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnonAppUsecase.swift; sourceTree = "<group>"; };
@@ -57,6 +59,10 @@
 		82A971D62632478E005E419A /* CustomHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderFooter.swift; sourceTree = "<group>"; };
 		82A971DA263252A1005E419A /* SideDishesManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishesManageable.swift; sourceTree = "<group>"; };
 		82A971E026326CFB005E419A /* SideDishesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishesCategory.swift; sourceTree = "<group>"; };
+		82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDish+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDish+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDishes+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDishes+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		82BBBBB52630067B008F89CB /* SideDishFindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishFindable.swift; sourceTree = "<group>"; };
 		82BBBBB62630067B008F89CB /* SideDishesCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishesCollection.swift; sourceTree = "<group>"; };
 		82FDB9C3262DCFD8009E3EB7 /* sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +115,10 @@
 		829BF3F726353BC9003CE411 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */,
+				82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */,
+				82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */,
+				82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */,
 				829BF3F826353BF1003CE411 /* DishRepository.swift */,
 				829BF3FC26353DBB003CE411 /* SideDish.xcdatamodeld */,
 				82680CC426354BC400009775 /* CoreDataStorage.swift */,
@@ -396,19 +406,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82B8C9D72637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift in Sources */,
 				E41EC98B263172760043CC44 /* CustomToaster.swift in Sources */,
 				82BBBBB82630067B008F89CB /* SideDishesCollection.swift in Sources */,
 				E41EC954262EBA2E0043CC44 /* SideDishes.swift in Sources */,
 				8268E35726301419002F518C /* MenuCellViewModel.swift in Sources */,
+				82B8C9D52637A563008F1E32 /* SaveSideDish+CoreDataClass.swift in Sources */,
 				E4896DFF26353AB000AA4DD7 /* NetworkManager.swift in Sources */,
 				E41EC951262E6E9A0043CC44 /* SideDish.swift in Sources */,
+				82B8C9D62637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift in Sources */,
 				82FDB9CB262DCFD8009E3EB7 /* MainViewController.swift in Sources */,
 				E4896E092635420000AA4DD7 /* RequestManager.swift in Sources */,
+				82B8C9D82637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift in Sources */,
 				82FDB9C7262DCFD8009E3EB7 /* AppDelegate.swift in Sources */,
 				8214B70B262DE07A004467C2 /* MenuCell.swift in Sources */,
 				82A971D426323CC3005E419A /* AlertMessageController.swift in Sources */,
 				8214B70E262DE253004467C2 /* MainTableViewDataSource.swift in Sources */,
-				E41EC963263013220043CC44 /* RequestManager.swift in Sources */,
 				829BF3F926353BF1003CE411 /* DishRepository.swift in Sources */,
 				8268E35F26301B00002F518C /* TurnonAppUsecase.swift in Sources */,
 				82FDB9C9262DCFD8009E3EB7 /* SceneDelegate.swift in Sources */,
