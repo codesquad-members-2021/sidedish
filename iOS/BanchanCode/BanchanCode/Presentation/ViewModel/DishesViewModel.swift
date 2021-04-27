@@ -8,7 +8,7 @@
 import Foundation
 
 struct DishesListViewModelActions {
-    let showDishDetails: (Dish) -> Void
+    let goToDishDetail: (Dish) -> Void
 }
 
 protocol DishesViewModelInput {
@@ -53,7 +53,6 @@ extension DefaultDishesViewModel {
             switch result {
             
             case .success(let items):
-                //self.dishes = items.dishes
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
                 //이곳에서 DB에 add를 할것이다.
                 realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.value.name)
@@ -75,6 +74,6 @@ extension DefaultDishesViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.showDishDetails(items.value[index].dish)
+        actions?.goToDishDetail(items.value[index].dish)
     }
 }
