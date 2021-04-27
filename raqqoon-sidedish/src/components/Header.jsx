@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import MenuList from 'components/nav/MenuList';
+import Login from 'components/nav/Login';
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
         </NavLeft>
         <NavRight>
           <input type="text" placeholder="🔍" />
-          <span>로그인</span>
+          <Login />
           <span>장바구니</span>
         </NavRight>
       </Nav>
@@ -67,9 +68,6 @@ const NavRight = styled.div`
   span {
     padding-left: 1.5rem;
     font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
     font-size: 1rem;
-    line-height: 23px;
   }
 `;
