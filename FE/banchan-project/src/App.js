@@ -4,15 +4,20 @@ import Header from "./Header/Header";
 import BestItems from "./BestItems/BestItems";
 import DetailModal from "./DetailModal/DetailModal";
 
+import MainItemsCard from "./MainItems/MainItemsCard/MainItemsCard";
+import Slider from "./Slider/Slider";
 const App = () => {
   return (
     <div className="App">
       <div className="container">
         <GlobalStyles />
-        <Header></Header>
-        <BestItems></BestItems>
+        <Header />
+        <BestItems />
         <MainItems />
-        <DetailModal />
+        {/* <DetailModal /> */}
+        <Slider>
+          <MainItemsCard />
+        </Slider>
       </div>
     </div>
   );

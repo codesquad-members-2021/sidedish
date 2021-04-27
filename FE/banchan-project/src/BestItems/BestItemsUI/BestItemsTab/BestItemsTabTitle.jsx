@@ -19,7 +19,7 @@ const BestItemsTabTitle = ({ titleList, setBestItemsData }) => {
   };
 
   const isActive = tabId => {
-    return activeTabId === tabId;
+    return activeTabId === tabId + 1;
   };
 
   return (
@@ -27,7 +27,7 @@ const BestItemsTabTitle = ({ titleList, setBestItemsData }) => {
       {titleList.map((title, idx) => {
         return (
           <S.BestItemsTabTitleList
-            active={isActive(idx + 1)}
+            active={isActive(idx)}
             key={idx}
             id={idx + 1}
             onClick={onClick}

@@ -1,7 +1,7 @@
 import * as S from "./BestItemsStyles";
 import * as CS from "../Styles/commonStyles.jsx";
 
-const BestItemsTitle = ({ titleList }) => {
+const BestItemsTitle = () => {
   return (
     <S.BestItemsTitle>
       <CS.ColorFont.GRAY1_XL_BOLD>

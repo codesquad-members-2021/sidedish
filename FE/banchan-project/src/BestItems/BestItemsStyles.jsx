@@ -2,8 +2,10 @@ import styled from "styled-components";
 import theme from "../Styles/theme";
 
 const BestItems = styled.div`
-  height: 800px;
+  width: 1440px;
+  height: 782px;
   padding: 0px 80px;
+  margin-bottom: 80px;
 `;
 
 const BestItemsTitle = styled.div`
@@ -13,10 +15,7 @@ const BestItemsTitle = styled.div`
 const BestItemsCardWrapper = styled.div`
   display: flex;
   padding: 40px;
-  position: absolute;
   height: 620px;
-  left: 80px;
-  top: 295px;
   background: #eef4fa;
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 0px 5px 5px 5px;
@@ -48,7 +47,8 @@ const BestItemsCardTitle = styled.div`
 
 const BestItemsTabTitle = styled.ul`
   width: 1100px;
-  height: 58px;
+  padding: 0px;
+  margin: 0px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import * as CS from "../../../Styles/commonStyles";
-import BestItemsHover from "../BestItemsHover/BestItemsHover";
 import { BestItemsCardImageWrapper } from "../../BestItemsStyles";
+import BestItemsHover from "../BestItemsHover/BestItemsHover";
+import * as CS from "../../../Styles/commonStyles";
 
 const BestItemsCardImage = ({ image }) => {
   const [isMouseOver, setIsMouseOver] = useState(false);
+
   return (
     <BestItemsCardImageWrapper
       onMouseEnter={() => setIsMouseOver(true)}

@@ -16,8 +16,8 @@ const MainItems = () => {
 
     try {
       fetch(url)
-        .then((res) => res.json())
-        .then((json) => {
+        .then(res => res.json())
+        .then(json => {
           if (json) {
             setData(json);
           }
