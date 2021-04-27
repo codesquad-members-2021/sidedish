@@ -28,7 +28,7 @@ public class RecommandedItemDto {
         this.image = image.getUrl();
 
         this.price = entity.getNormalPrice().intValue();
-        this.detailUrl = URL + URL + "/dish" + "/detail" + "/" + itemId;
+        this.detailUrl = URL + "/dish" + "/detail" + "/" + itemId;
     }
 
     public static String getURL() {
