@@ -22,9 +22,9 @@ class MainPageViewController: UIViewController {
         let soupViewModel = makeDishesListViewModel()
         let sideViewModel = makeDishesListViewModel()
         
-        mainViewModel.showDishList(category: MainCategory())
-        soupViewModel.showDishList(category: SoupCategory())
-        sideViewModel.showDishList(category: SideCategory())
+        mainViewModel.load(category: MainCategory())
+        soupViewModel.load(category: SoupCategory())
+        sideViewModel.load(category: SideCategory())
         
         mainPageDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
         

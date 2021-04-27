@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DishesListViewModelInput {
-    func showDishList(category: Categorizable)
+    func load(category: Categorizable)
 }
 
 protocol DishesListViewModelOutput {
@@ -29,9 +29,11 @@ final class DefaultDishesListViewModel: DishesListViewModel {
     init(fetchDishesUseCase: FetchDishesUseCase) {
         self.fetchDishesUseCase = fetchDishesUseCase
     }
-    
-    //MARK: - Private
-    private func load(category: Categorizable) {
+}
+
+//MARK: - Input
+extension DefaultDishesListViewModel {
+    func load(category: Categorizable) {
         self.category.value = category
         
         fetchDishesUseCase.execute(requestValue: .init(category: category), completion: { (result) in
@@ -43,12 +45,5 @@ final class DefaultDishesListViewModel: DishesListViewModel {
                 break
             }
         })
-    }
-}
-
-//MARK: - Input
-extension DefaultDishesListViewModel {
-    func showDishList(category: Categorizable) {
-        load(category: category)
     }
 }
