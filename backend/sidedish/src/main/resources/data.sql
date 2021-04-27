@@ -116,7 +116,7 @@ INSERT INTO image(url, item_id) VALUES ('https://lh3.googleusercontent.com/proxy
 INSERT INTO image(url, item_id) VALUES ('https://m.yorivery.com/data/goods/19/07/30//1000000783/1000000783_detail_177.jpg',6);
 INSERT INTO image(url, item_id) VALUES ('https://cdn.lightning-ashe.com/wp-content/uploads/2017/10/DSC02028.jpg',6);
 INSERT INTO image(url, item_id) VALUES ('https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F99BE484D5C5FEA291891B7',6);
-INSERT INTO image(url, item_id) VALUES ('https://lh3.googleusercontent.com/proxy/HP-https://upload.wikimedia.org/wikipedia/commons/1/10/Banchan_2.jpg',7);
+INSERT INTO image(url, item_id) VALUES ('https://upload.wikimedia.org/wikipedia/commons/1/10/Banchan_2.jpg',7);
 INSERT INTO image(url, item_id) VALUES ('http://mydinner.co.kr/web/product/big/201809/f66fcfa2cc6c85f6ae486a29f5979b9b.jpg',7);
 INSERT INTO image(url, item_id) VALUES ('http://mydinner.co.kr/web/product/big/201809/24b0a19ca5b137d4d046701829a7d9c8.jpg',7);
 INSERT INTO image(url, item_id) VALUES ('https://recipe1.ezmember.co.kr/cache/recipe/2017/07/10/24502c34ab4f7fe1af89e7a0225a52dc1.jpg',7);
