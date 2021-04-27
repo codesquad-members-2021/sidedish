@@ -22,7 +22,7 @@ public class SampleDataFactory {
     private static final String JSON_PATH_PREFIX = "sample-data/";
     private static final String JSON_EXTENSION = ".json";
 
-    public static ObjectMapper objectMapper = new ObjectMapper()
+    public static final ObjectMapper objectMapper = new ObjectMapper()
             .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
     private SampleDataFactory() {
