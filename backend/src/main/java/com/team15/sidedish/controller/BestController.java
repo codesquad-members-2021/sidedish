@@ -22,10 +22,8 @@ public class BestController {
     }
 
     @GetMapping
-    public Map<String, List<BestDTO>> showAllBestDishes() {
-        HashMap<String, List<BestDTO>> bestDishes = new HashMap<>();
-        bestDishes.put("best_dishes", bestService.showAllBestDishes());
-        return bestDishes;
+    public BestDishesDTO showAllBestDishes() {
+        return new BestDishesDTO(bestService.showAllBestDishes());
     }
 
     @GetMapping("/{categoryId}")
