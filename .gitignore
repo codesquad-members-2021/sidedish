@@ -1,3 +1,4 @@
 # BE
 .idea
 logs/
+dbconfig.properties
