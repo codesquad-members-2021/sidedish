@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import Carousel from 'components/carousel/Carousel';
+import CarouselMain from 'components/carousel/CarouselMain';
 import CarouselContainer from 'components/carousel/CarouselContainer';
 import CategoryButton from 'components/carousel/CategoryBtn';
 
@@ -14,10 +14,9 @@ const CarouselSection = ({
   const categories = ['main', 'soup', 'side'];
   const firstCategory = categories[0];
   const firstCarousel = (
-    <Carousel
+    <CarouselMain
       key={uuidv4()}
       path={firstCategory}
-      panelCount={4}
       {...{ modalData, modalState, setModalState, setModalData }}
     />
   );
@@ -32,7 +31,13 @@ const CarouselSection = ({
   const updateCarouselList = () => {
     const allCategories = categories
       .filter((_, idx) => idx !== 0)
-      .map((path) => <Carousel key={uuidv4()} path={path} panelCount={4} />);
+      .map((path) => (
+        <CarouselMain
+          key={uuidv4()}
+          path={path}
+          {...{ modalData, modalState, setModalState, setModalData }}
+        />
+      ));
     setCategoryContents([...categoryContents, ...allCategories]);
   };
 
