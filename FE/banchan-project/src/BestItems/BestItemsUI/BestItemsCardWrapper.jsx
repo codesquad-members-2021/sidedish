@@ -4,7 +4,16 @@ import BestItemsCard from "./BestItemsCard/BestItemsCard";
 import BestItemsHover from "./BestItemsHover/BestItemsHover";
 
 const BestItemsCardWrapper = ({ initialTabData }) => {
-  const [isHover, setHover] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
+
+  const handleMouseEnter = e => {
+    setIsMouseOver(true);
+    console.log("over");
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseOver(false);
+  };
 
   return (
     <S.BestItemsCardWrapper>

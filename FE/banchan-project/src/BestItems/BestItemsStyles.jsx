@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../Styles/theme";
+
 const BestItems = styled.div`
   height: 800px;
   padding: 0px 80px;
@@ -8,6 +9,7 @@ const BestItems = styled.div`
 const BestItemsTitle = styled.div`
   padding: 48px 0px 32px 0px;
 `;
+
 const BestItemsCardWrapper = styled.div`
   display: flex;
   padding: 40px;
@@ -23,15 +25,18 @@ const BestItemsCardWrapper = styled.div`
 const BestItemsCard = styled.div`
   margin-right: 24px;
 `;
+
 const BestItemsCardBadge = styled.div`
   margin-top: 16px;
 `;
+
 const BestItemsCardNPrice = styled.div`
   display: inline-block;
   text-decoration-line: line-through;
   color: #bdbdbd;
   margin-left: 8px;
 `;
+
 const BestItemsCardSPrice = styled.div`
   display: inline-block;
   margin-top: 16px;
@@ -64,8 +69,32 @@ const BestItemsTabTitleList = styled.li`
   margin-right: 8px;
 `;
 
-const BestItemsHoverBox = styled.div`
+const BestItemsCardImageWrapper = styled.div`
   position: relative;
+`;
+
+const BestItemsHoverBox = styled.div`
+  position: absolute;
+  top: 0px;
+  cursor: pointer;
+`;
+
+const BestItemsHoverTopText = styled.div`
+  position: absolute;
+  top: 140px;
+  left: 147px;
+`;
+
+const BestItemsHoverBottomText = styled.div`
+  position: absolute;
+  top: 208px;
+  left: 147px;
+`;
+
+const BestItemsHoverLine = styled.div`
+  position: absolute;
+  top: 191px;
+  left: 147px;
 `;
 
 export {
@@ -79,5 +108,9 @@ export {
   BestItemsCardTitle,
   BestItemsTabTitleList,
   BestItemsTabTitle,
+  BestItemsCardImageWrapper,
   BestItemsHoverBox,
+  BestItemsHoverLine,
+  BestItemsHoverTopText,
+  BestItemsHoverBottomText,
 };

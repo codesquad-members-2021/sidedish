@@ -197,10 +197,7 @@ const Hover = styled.div`
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     #f5f5f7;
   border-radius: 5px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 16px 0px;
+  opacity: 60%;
 `;
 
 const Box = {
@@ -225,7 +222,6 @@ const Box = {
   `,
 
   HOVER_BOX_BEST: styled(Hover)`
-    position: absolute;
     width: 384px;
     height: 384px;
   `,
@@ -236,16 +232,11 @@ const Box = {
   `,
 
   HOVER_LINE: styled.div`
-    position: static;
     width: 89px;
     height: 1px;
     left: 0px;
     top: 51px;
-    background: #ffffff;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin: 16px 0px;
+    background: ${theme.fontColors.WHITE};
   `,
 };
 

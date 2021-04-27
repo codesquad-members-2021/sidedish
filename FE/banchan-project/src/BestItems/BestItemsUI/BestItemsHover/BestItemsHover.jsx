@@ -1,16 +1,15 @@
-import * as S from "../../BestItemsStyles";
-import * as CS from "../../../Styles/commonStyles";
-
 import BestItemsHoverBox from "./BestItemsHoverBox";
 import BestItemsHoverText from "./BestItemsHoverText";
-
-const BestItemsHover = () => {
+import BestItemsHoverLine from "./BestItemsHoverLine";
+const BestItemsHover = ({ isMouseOver }) => {
   return (
-    <>
-      <BestItemsHoverBox>
+    isMouseOver && (
+      <>
+        <BestItemsHoverBox></BestItemsHoverBox>
         <BestItemsHoverText></BestItemsHoverText>
-      </BestItemsHoverBox>
-    </>
+        <BestItemsHoverLine></BestItemsHoverLine>
+      </>
+    )
   );
 };
 
