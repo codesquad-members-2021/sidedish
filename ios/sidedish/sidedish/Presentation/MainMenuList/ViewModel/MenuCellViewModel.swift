@@ -14,7 +14,7 @@ class MenuCellViewModel {
     @Published var dishes: [[SideDishManageable]]!
     @Published var errorMessage: String!
     
-    private var cancleBag = Set<AnyCancellable>()
+    private var cancelBag = Set<AnyCancellable>()
     private var turnonAppUsecase: ManufactureDataforViewModel
     
     init(turnonAppUsecase: ManufactureDataforViewModel) {
@@ -33,10 +33,13 @@ class MenuCellViewModel {
                     self.errorMessage = error.localizedDescription
                 }
             }, receiveValue: { (categories) in
-                self.dishesCategory = categories
-                self.updateEndpoint(from: categories)
-                self.loadSideDishes(count: categories.count)
-            }).store(in: &self.cancleBag)
+                let orderedCategories = categories.sorted { (first, second) -> Bool in
+                    first.getID() < second.getID()
+                }
+                self.dishesCategory = orderedCategories
+                self.updateEndpoint(from: orderedCategories)
+                self.loadSideDishes(count: orderedCategories.count)
+            }).store(in: &self.cancelBag)
         }
     }
     
@@ -56,7 +59,7 @@ class MenuCellViewModel {
                     }
                 } receiveValue: { (sideDish) in
                     self.dishes[i] = sideDish
-                }.store(in: &self.cancleBag)
+                }.store(in: &self.cancelBag)
             }
         }
     }

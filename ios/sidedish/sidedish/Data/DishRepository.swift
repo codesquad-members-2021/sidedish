@@ -49,9 +49,9 @@ final class DishRepository {
         categories.sink { (error) in
             print(error)
         } receiveValue: { categories in
-            if let entity = self.categoryEntity {
+            if let categoryEntity = self.categoryEntity {
                 categories.forEach {
-                    let sideDishCategory = NSManagedObject(entity: entity, insertInto: self.context)
+                    let sideDishCategory = NSManagedObject(entity: categoryEntity, insertInto: self.context)
                     sideDishCategory.setValue($0.id, forKey: "id")
                     sideDishCategory.setValue($0.categoryName, forKey: "categoryName")
                     sideDishCategory.setValue($0.endPoint, forKey: "endPoint")
@@ -86,7 +86,7 @@ final class DishRepository {
             if let sideDishEntity = self.sideDishEntity {
                 
                 var sideDishes = [NSManagedObject]()
-                
+
                 dishes.forEach {
                     let sideDish = NSManagedObject(entity: sideDishEntity, insertInto: self.context)
                     sideDish.setValue($0.id, forKey: "id")
@@ -99,17 +99,33 @@ final class DishRepository {
                     sideDish.setValue($0.badges, forKey: "badges")
                     sideDishes.append(sideDish)
                 }
-
+                
+                self.updateCategory(of: endPoint, with: sideDishes)
                 self.save()
-                completionHandler(self.loadSideDishes())
+                
+                completionHandler(self.loadSideDishes(of: endPoint))
             }
         }.store(in: &subscription)
     }
+    
+    private func updateCategory(of endPoint: String, with sideDishes: [NSManagedObject]) {
+        let fetchRequest = findCategoryForEndPoint(endPoint)
+        let objectToUpdate = try! self.context.fetch(fetchRequest).first!
+        objectToUpdate.setValue(sideDishes, forKey: "sideDish")
+    }
 
-    private func loadSideDishes() -> Just<[SideDishManageable]> {
-        let sideDishes = try! context.fetch(SaveSideDish.fetchRequest()) as! [SideDishManageable]
+    private func loadSideDishes(of endPoint: String) -> Just<[SideDishManageable]> {
+        let fetchRequest = findCategoryForEndPoint(endPoint)
+        let targetCategory = try! context.fetch(fetchRequest).first!
+        let sideDishes = targetCategory.sideDish! as [SideDishManageable]
         let publisher = Just(sideDishes)
         return publisher
+    }
+    
+    private func findCategoryForEndPoint(_ endPoint: String) -> NSFetchRequest<SaveSideDishes> {
+        let fetchRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "endPoint == %@", endPoint)
+        return fetchRequest
     }
 }
 

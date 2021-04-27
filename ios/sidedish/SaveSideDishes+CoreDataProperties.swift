@@ -11,6 +11,15 @@ import CoreData
 
 
 extension SaveSideDishes: SideDishesCategoryManageable {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<SaveSideDishes> {
+        return NSFetchRequest<SaveSideDishes>(entityName: "SaveSideDishes")
+    }
+    
+    @NSManaged public var categoryName: String
+    @NSManaged public var endPoint: String
+    @NSManaged public var id: Int16
+    @NSManaged public var sideDish: [SaveSideDish]?
     
     func getName() -> String {
         self.categoryName
@@ -20,16 +29,9 @@ extension SaveSideDishes: SideDishesCategoryManageable {
         self.endPoint
     }
     
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<SaveSideDishes> {
-        return NSFetchRequest<SaveSideDishes>(entityName: "SaveSideDishes")
+    func getID() -> Int {
+        Int(self.id)
     }
-    
-    @NSManaged public var categoryName: String
-    @NSManaged public var endPoint: String
-    @NSManaged public var id: Int16
-    @NSManaged public var sideDish: [SaveSideDish]
-
 }
 
 extension SaveSideDishes : Identifiable {

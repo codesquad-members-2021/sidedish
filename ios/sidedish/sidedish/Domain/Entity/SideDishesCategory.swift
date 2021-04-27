@@ -7,13 +7,14 @@
 
 import Foundation
 
-protocol SideDishesCategoryManageable{
+protocol SideDishesCategoryManageable {
     func getName() -> String
     func getEndpoint() -> String
+    func getID() -> Int
 }
 
 
-class SideDishesCategory : Decodable, SideDishesCategoryManageable {
+class SideDishesCategory: Decodable, SideDishesCategoryManageable {
     func getName() -> String {
         return self.categoryName
     }
@@ -21,6 +22,10 @@ class SideDishesCategory : Decodable, SideDishesCategoryManageable {
         return self.endPoint
     }
     
+    func getID() -> Int {
+        return Int(self.id)
+    }
+
     let id: Int16
     let categoryName: String
     let endPoint: String
