@@ -36,6 +36,8 @@ const BestItems = () => {
     });
   }, []);
 
+  if (!bestItemsData) return null;
+
   return (
     <S.BestItems>
       <BestItemsTitle />

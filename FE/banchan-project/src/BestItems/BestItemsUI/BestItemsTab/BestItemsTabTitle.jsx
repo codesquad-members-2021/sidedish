@@ -12,7 +12,7 @@ const BestItemsTabTitle = ({ titleList, setBestItemsData }) => {
 
   const onClick = e => {
     const targetId = +e.target.id;
-    setActivateTabId(targetId); //id숫자로 바꾸기
+    setActivateTabId(targetId);
     getBestItemsData(targetId).then(res => {
       setBestItemsData(res);
     });
