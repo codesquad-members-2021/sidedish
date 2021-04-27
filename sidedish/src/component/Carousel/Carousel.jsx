@@ -41,7 +41,7 @@ const Carousel = ({ children, itemWidth, maxItem, skipItem, animationTime }) => 
 
 export default Carousel;
 
-const StyledCarousel = styled.div`
+export const StyledCarousel = styled.div`
   position: relative;
 
   .carouselWrapper {
