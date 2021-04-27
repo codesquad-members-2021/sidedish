@@ -99,6 +99,21 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row, indexPath.section)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? ItemCollectionViewCell, let indexPath = self.collectionView.indexPath(for: cell) {
+            guard let category = Category(rawValue: indexPath.section) else { return }
+            guard let items = self.itemViewModel.items[category.description] else { return }
+            let detailHash = items[indexPath.row].detailHash
+            
+            self.itemViewModel.fetchDetail(hash: detailHash)
+            let vc = segue.destination as? DetailViewController
+            vc?.itemViewModel = self.itemViewModel
+        }
+        if segue.destination is DetailViewController {
+            
+        }
+    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {

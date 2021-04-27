@@ -10,6 +10,7 @@ import Alamofire
 
 protocol SidedishProcessable {
     func getItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ())
+    func getDetail(url: String, completion: @escaping (Result<DetailItem, AFError>) -> ())
     func getImage(url: URL, completion: @escaping ((Data) -> ()))
 }
 
@@ -24,6 +25,17 @@ class SidedishProcessing: SidedishProcessable {
             switch result {
             case .success(let sidedishItems):
                 completion(.success(sidedishItems))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getDetail(url: String, completion: @escaping (Result<DetailItem, AFError>) -> ()) {
+        self.sideDishNetworkCenter.fetchDetail(url: url) { (result) in
+            switch result {
+            case .success(let detail):
+                completion(.success(detail))
             case .failure(let error):
                 completion(.failure(error))
             }
