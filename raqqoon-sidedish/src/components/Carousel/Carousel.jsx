@@ -40,7 +40,7 @@ const Carousel = ({ dishList, options: { panelCount, time } }) => {
     dishList && setRestCardCount(dishList.length - panelCount);
   }, [dishList, panelCount, restCardCount]);
 
-  return dishList ? (
+  return (
     <CarouselStyled>
       <OutBox ref={outBoxRef}>
         <Items position={position} time={time}>
@@ -58,8 +58,6 @@ const Carousel = ({ dishList, options: { panelCount, time } }) => {
         onClick={(e) => handleClickArrowBtn(e)}
       />
     </CarouselStyled>
-  ) : (
-    <div>로딩중입니다!!!!!!!</div>
   );
 };
 
