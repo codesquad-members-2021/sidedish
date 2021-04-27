@@ -22,3 +22,11 @@ if [ ${AUTOINJECT_JAR} -eq 1 ];then
 fi
 
 
+echo ""
+echo "## tip!"
+echo ""
+echo "#how to run?"
+echo "nohup java -jar ${BINFILE} &"
+echo ""
+echo "#how to show log file?"
+echo "tail -F nohup.out"
