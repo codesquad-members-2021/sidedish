@@ -9,12 +9,12 @@ public class BestDTO {
     @JsonProperty("category_id")
     private Long categoryId;
     private String name;
-    private List<DishDTO> items;
+    private List<DishDTO> dishes;
 
-    private BestDTO(Long categoryId, String name, List<DishDTO> items) {
+    private BestDTO(Long categoryId, String name, List<DishDTO> dishes) {
         this.categoryId = categoryId;
         this.name = name;
-        this.items = items;
+        this.dishes = dishes;
     }
 
     public static BestDTO of(Best best, List<DishDTO> items){
@@ -29,8 +29,8 @@ public class BestDTO {
         return name;
     }
 
-    public List<DishDTO> getItems() {
-        return items;
+    public List<DishDTO> getDishes() {
+        return dishes;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class BestDTO {
         return "BestDTO{" +
                 "categoryId=" + categoryId +
                 ", name='" + name + '\'' +
-                ", items=" + items +
+                ", dishes=" + dishes +
                 '}';
     }
 }
