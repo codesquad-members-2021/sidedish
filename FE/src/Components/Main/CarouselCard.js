@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 const CarouselCard = ({
   detail_hash,
   image,
@@ -23,7 +22,6 @@ const CarouselCard = ({
       <Image image={image} onClick={openModal} />
       <Title>{title}</Title>
       <Description>{description}</Description>
-
       {n_price !== undefined ? (
         <div>
           <SPrice>{s_price}</SPrice>
@@ -32,7 +30,6 @@ const CarouselCard = ({
       ) : (
         <SPrice false>{s_price}</SPrice>
       )}
-
       {badge !== undefined &&
         badge.length !== 0 &&
         (badge.length <= 1 ? (
@@ -46,7 +43,6 @@ const CarouselCard = ({
     </ContentMain>
   );
 };
-
 const ContentMain = styled.div`
   margin: 0 18px;
 `;
@@ -78,7 +74,6 @@ const Image = styled.div`
       font-weight: normal;
       content: "새벽배송";
     }
-
     &::after {
       background-color: transparent;
       width: 82px;

@@ -22,6 +22,7 @@ const TabBtn = styled(Btn)`
   position: relative;
   outline: none;
 `;
+
 const TabButton = ({ Food, setFood, toggleState, toggleTab }) => {
   return (
     <TabsBlock>
@@ -40,5 +41,6 @@ const TabButton = ({ Food, setFood, toggleState, toggleTab }) => {
     </TabsBlock>
   );
 };
+
 
 export default TabButton;

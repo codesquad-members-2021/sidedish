@@ -4,12 +4,10 @@ import axios from "axios";
 import Carousel from "./Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
 import CarouselButton from "./CarouselButton";
-
 const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const [Food, setFood] = useState([]);
   const mainRef = useRef(null);
   const foodRef = useRef();
-
   // 꼭 fetchData를 useEffect 안에 넣어놔야 하는가?
   useEffect(() => {
     const fetchData = async () => {
@@ -18,14 +16,12 @@ const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
     };
     fetchData();
   }, []); // eslint-disable-line
-
   const leftSlider = () => {
     foodRef.current.Slider(1);
   };
   const rightSlider = () => {
     foodRef.current.Slider(-1);
   };
-
   return (
     <CarouselSlide>
       {modal && (
@@ -45,6 +41,7 @@ const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
     </CarouselSlide>
   );
 };
+
 
 const CarouselSlide = styled.div`
   display: flex;

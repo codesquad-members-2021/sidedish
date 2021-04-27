@@ -6,27 +6,23 @@ import React, {
 } from "react";
 import styled from "styled-components";
 import CarouselCard from "./CarouselCard";
-
 const Carousel = (
   { MainTitle, Food, setFood, Ref, setModal, setModalData },
   ref
 ) => {
   const virtualImage = Food.slice(Food.length - 4, Food.length); // 마지막부분 4개의 사진을 복사하여 0~4번 이미지를 만들어준다.
   const transitionDefault = `all 0.5s ease-in-out`;
-  const panelWidth = 344;
+  const panelWidth = 335;
   const panelCount = 4;
   const [X, setX] = useState(0);
   const [moving, setMoving] = useState(false);
   const [transitionValue, setTransitionValue] = useState(transitionDefault);
-
   useImperativeHandle(ref, () => ({
     Slider,
   }));
-
   useEffect(() => {
     if (transitionValue === "none") setTransitionValue(transitionDefault);
   }, [X]);
-
   const Slider = (direction) => {
     if (moving) return;
     setX((prevX) =>
@@ -36,7 +32,6 @@ const Carousel = (
     );
     setMoving(true);
   };
-
   const onTransitionEnd = () => {
     setMoving(false);
     setTransitionValue("none");
@@ -45,7 +40,6 @@ const Carousel = (
     setFood(result);
     setX(0);
   };
-
   return (
     <Box>
       <CarouselTitle>{MainTitle}</CarouselTitle>
@@ -100,16 +94,17 @@ const Carousel = (
 };
 
 const Box = styled.div`
-  width: 1392px;
-  /* height: 534px; */
+  width: 1280px;
+  height: 534px;
   margin: auto;
+  
 `;
 
 const CarouselTitle = styled.div`
   width: 350px;
   height: 35px;
-  margin: 0 36px;
-
+  margin-top: 80px;
+  margin-bottom: 40px;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
@@ -128,6 +123,7 @@ const Image = styled.div`
   transition: ${({ transitionValue }) => transitionValue};
   z-index: 0;
   display: flex;
+  margin-left: 66px;
 `;
 
 export default forwardRef(Carousel);
