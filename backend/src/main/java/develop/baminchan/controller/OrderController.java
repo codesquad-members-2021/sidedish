@@ -2,9 +2,9 @@ package develop.baminchan.controller;
 
 import develop.baminchan.entity.Order;
 import develop.baminchan.service.OrderService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class OrderController {
@@ -13,6 +13,12 @@ public class OrderController {
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
+    }
+
+    @GetMapping("/order/{id}")
+    public Optional<Order> findOrder(@PathVariable Long id) {
+        Optional<Order> order = orderService.findById(id);
+        return order;
     }
 
     @PostMapping("/order")
