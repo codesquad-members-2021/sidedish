@@ -52,12 +52,14 @@ const DishItem = ({
         </div>
         {badge &&
           badge.map((item, i) => (
-            <StyledBadges key={i} className="badge" item={item}>
+            <StyledBadges key={i} item={item}>
               {item}
             </StyledBadges>
           ))}
       </StyledDishItem>
-      {showDetail && <ItemDetail id={detail_hash} toggleModal={toggleModal} />}
+      {showDetail && (
+        <ItemDetail id={detail_hash} toggleModal={toggleModal} title={title} badge={badge} />
+      )}
     </>
   );
 };
@@ -104,7 +106,7 @@ const StyledDishItem = styled.div`
   }
 `;
 
-const StyledBadges = styled.div`
+export const StyledBadges = styled.div`
   display: inline-block;
   border-radius: 5px;
   padding: 4px 16px 4px 16px;

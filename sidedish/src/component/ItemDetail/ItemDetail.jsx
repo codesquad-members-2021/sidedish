@@ -3,17 +3,28 @@ import styled from 'styled-components';
 import usePortal from 'hooks/usePortal';
 import { createPortal } from 'react-dom/cjs/react-dom.development';
 import useFetch from 'hooks/useFetch';
-import {URL} from 'util/data';
+import { URL } from 'util/data';
+import DetailModal from 'component/ItemDetail/DetailModal';
 
-const ItemDetail = ({ id, toggleModal }) => {
+const ItemDetail = ({ id, toggleModal, title, badge }) => {
   const portalElem = usePortal('root');
-  const [data, setData] = useFetch(URL.detail(id), null, id);
-  console.log(data);
 
+  const parseDetailData = (obj) => {
+    const parsedData = obj.data;
+    return parsedData;
+  };
+  const { data: detailData, loading, error } = useFetch({
+    url: URL.detail(id),
+    parse: parseDetailData,
+  });
+
+  if (error) throw Error(error);
   return createPortal(
     <StyleModal>
-      <div className="modalContainer"></div>
-      <div onClick={toggleModal}>❌</div>
+      <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
+      <div className="closeBtn" onClick={toggleModal}>
+        X
+      </div>
     </StyleModal>,
     portalElem
   );
@@ -22,7 +33,6 @@ const ItemDetail = ({ id, toggleModal }) => {
 export default ItemDetail;
 
 const StyleModal = styled.div`
-  z-index: 10;
   position: fixed;
   display: flex;
   align-items: center;
@@ -33,9 +43,11 @@ const StyleModal = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 
-  .modalContainer {
-    width: 50%;
-    height: 90%;
-    background-color: white;
+  .closeBtn {
+    position: fixed;
+    left: 86%;
+    font-size: 24px;
+    top: 36px;
+    color: white;
   }
 `;
