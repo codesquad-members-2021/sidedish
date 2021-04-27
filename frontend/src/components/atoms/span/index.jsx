@@ -10,16 +10,19 @@ const StyledSpan = styled.span`
   font-family: "Noto Sans KR";
   ${(props) =>
     props._title &&
-    `font-size:16px;
+    `margin:16px 0 0 0;
+    font-size:16px;
     font-weight:400;
     color:#333;
-    margin:16px 0 0 0;`}
+    `}
   ${(props) =>
     props._description &&
-    `font-size:14px;
+    `
+    margin:8px 0;
+    font-size:14px;
     font-weight:400;
     color:#828282;
-    margin:8px 0;`}
+    `}
   ${(props) =>
     props._sPrice &&
     `font-size:20px;
@@ -28,10 +31,11 @@ const StyledSpan = styled.span`
     `}
   ${(props) =>
     props._nPrice &&
-    `font-size:14px;
+    `margin:9px 0 0 8px
+    font-size:14px;
     font-weight:400;
     color:#BDBDBD;
-    margin:9px 0 0 8px;
+    ;
     text-decoration:line-through;`}
     ${(props) =>
     props._logo &&
@@ -67,6 +71,27 @@ const StyledSpan = styled.span`
     `font-size:24px;
     font-weight:700;
     color: #FFFFFF;
+    `};
+  ${(props) =>
+    props._headMenuDeact &&
+    `margin:16px 0 0 0;
+    font-size:16px;
+    font-weight:400;
+    color:#333;
+    `}
+  ${(props) =>
+    props._headMenuAct &&
+    `margin:16px 0 0 0;
+    font-size:16px;
+    font-weight:700;
+    color:#333;
+    `}
+  ${(props) =>
+    props._dropDeact &&
+    `margin-bottom:8px;
+    font-size:16px;
+    font-weight:400;
+    color: #828282;
     `};
 `;
 

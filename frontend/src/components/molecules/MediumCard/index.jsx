@@ -1,24 +1,14 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import { WrapDiv, WrapContent } from "./index.style";
+import HoverCard from "../../molecules/HoverCard";
+
 import Image from "../../atoms/Image";
 import Span from "../../atoms/Span";
 import Tag from "../../atoms/Tag";
 
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 308px;
-  height: 412px;
-  margin: 0px 16px;
-`;
-
-const FlexDiv = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-
 const MediumCard = ({ children, ...props }) => {
+  const [isHover, setIsHover] = useState(false);
+
   const TagType = () => {
     if (!props._badge) return <></>;
     if (props._badge.length === 1) {
@@ -34,16 +24,26 @@ const MediumCard = ({ children, ...props }) => {
     return <></>;
   };
   return (
-    <Div>
-      <Image src={props._image} />
+    <WrapDiv>
+      <Image
+        src={props._image}
+        _width="308px"
+        onMouseEnter={() => setIsHover(true)}
+      />
+      <HoverCard
+        _width="308px"
+        _height="308px"
+        isHover={isHover}
+        onMouseLeave={() => setIsHover(false)}
+      />
       <Span _title>{props._title}</Span>
       <Span _description>{props._description}</Span>
-      <FlexDiv>
+      <WrapContent>
         <Span _sPrice>{props._sPrice}</Span>
         <Span _nPrice>{props._nPrice}</Span>
-      </FlexDiv>
+      </WrapContent>
       <TagType />
-    </Div>
+    </WrapDiv>
   );
 };
 
