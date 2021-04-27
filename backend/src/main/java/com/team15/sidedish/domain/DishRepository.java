@@ -9,9 +9,10 @@ import java.util.Optional;
 
 public interface DishRepository extends CrudRepository<DishDTO, String> {
 
-    @Query("SELECT di.`hash` AS `detail_hash`, di.`top_image` AS `image`, de.`delivery_type`, di.`title`, di.`description`, di.`normal_price`, di.`special_price`, e.`badge`" +
-            "from dish di JOIN delivery de ON di.`hash` = de.`dish_hash` JOIN event e ON di.`hash` = e.`dish_hash` " +
-            "where di.`dish_hash`=:hash")
+    @Query("SELECT di.`hash` AS `detail_hash`, di.`top_image` AS `image`, de.`delivery_type`, di.`title`, di.`description`, di.`normal_price`, di.`special_price`, e.`badge`\n" +
+            "from dish di \n" +
+            "JOIN delivery de ON di.`hash` = de.`dish_hash` \n" +
+            "LEFT OUTER JOIN event e ON di.`hash` = e.`dish_hash` where di.`hash`=:hash;")
     @Override
     Optional<DishDTO> findById(String hash);
 
