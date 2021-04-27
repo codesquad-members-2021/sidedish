@@ -1,8 +1,8 @@
-import "./App.css";
-import MainMenu from "./components/mainmenu/MainMenu";
-import Category from "./components/category/Category";
-import Header from "./components/header/Header";
-import { createGlobalStyle } from "styled-components";
+import './App.css';
+import MainMenu from './components/mainmenu/MainMenu';
+import Category from './components/category/Category';
+import Header from './components/header/Header';
+import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 body{
   width: 1440px;
@@ -26,14 +26,14 @@ li{
 `;
 
 function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <Header />
-      <MainMenu />
-      <Category />
-    </>
-  );
+	return (
+		<>
+			<GlobalStyle />
+			<Header />
+			<MainMenu />
+			<Category />
+		</>
+	);
 }
 
 export default App;
