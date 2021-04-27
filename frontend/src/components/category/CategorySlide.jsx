@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import ItemCard from '../ItemCard';
-import Loading from '../Loading';
+import Loading from '../state/Loading';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
-import Error from '../Error';
+import Error from '../state/Error';
 import Modal from '../Modal';
 import { useState } from 'react';
 
@@ -45,6 +45,7 @@ function CategorySlide({ categoryData, loadingState }) {
 	const category = (data) => {
 		if (data === '400Error') {
 			return (
+				//수정해야할 곳
 				<Modal {...{ modalMode, setModalState }}>
 					<Error
 						style={{
