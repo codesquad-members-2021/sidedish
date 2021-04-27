@@ -13,6 +13,7 @@ const Tab = ({ children, ...props }) => {
     background-color: ${(props) => props._backgroundColor};
     border-radius: 5px 5px 0px 0px;
     padding: 0;
+    cursor: pointer;
   `;
   {
     if (props.isTabAct === "_tabDeact") {
