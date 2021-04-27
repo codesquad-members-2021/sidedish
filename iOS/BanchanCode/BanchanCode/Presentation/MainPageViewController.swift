@@ -54,7 +54,7 @@ class MainPageViewController: UIViewController {
     
     func makeDishesViewModel(category: Categorizable) -> DishesViewModel {
         let category = Observable(category)
-        let actions = DishesListViewModelActions(showDishDetails: showDishDetails)
+        let actions = DishesListViewModelActions(goToDishDetail: goToDishDetail)
         return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category, actions: actions)
     }
     
@@ -80,7 +80,7 @@ class MainPageViewController: UIViewController {
         dishCollectionView.reloadData()
     }
     
-    private func showDishDetails(dish: Dish) {
+    private func goToDishDetail(dish: Dish) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailPageVC = storyboard.instantiateViewController(identifier: "detailPageVC")
         navigationController?.pushViewController(detailPageVC, animated: true)

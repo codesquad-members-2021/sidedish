@@ -8,7 +8,7 @@
 import Foundation
 
 struct DishesListViewModelActions {
-    let showDishDetails: (Dish) -> Void
+    let goToDishDetail: (Dish) -> Void
 }
 
 protocol DishesViewModelInput {
@@ -48,7 +48,6 @@ extension DefaultDishesViewModel {
         fetchDishesUseCase.execute(requestValue: .init(category: category.value), completion: { (result) in
             switch result {
             case .success(let items):
-                //self.dishes = items.dishes
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -62,6 +61,6 @@ extension DefaultDishesViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.showDishDetails(items.value[index].dish)
+        actions?.goToDishDetail(items.value[index].dish)
     }
 }
