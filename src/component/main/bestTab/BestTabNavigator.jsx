@@ -8,10 +8,11 @@ const BestTabNavigatorStyle = styled.div`
 
 const BestTabNavigatorItemStyle = styled.div.attrs(props => ({
   weight: props.active ? 600 : 400,
-  color: props.active ? "#333" : "#828282"
+  color: props.active ? "#333" : "#828282",
+  bgColor: props.active ? "#EEF4FA" : "#F5F5F5"
 }))`
   font-size: 1.125rem;
-  background-color: #EEF4FA;
+  background-color: ${(props) => props.bgColor};
   padding: 1rem 2rem;
   text-align: center;
   font-weight: ${(props) => props.weight};

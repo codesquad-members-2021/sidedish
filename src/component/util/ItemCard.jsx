@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Label from "./Label";
+import { useOnFetchDetailDataContext } from "../Context";
 
 const ItemCardStyle = styled.div``;
 
@@ -12,10 +13,10 @@ const ImgContainerStyle = styled.div`
 `;
 
 const ImgStyle = styled.img.attrs((props) => ({
-  src: props.src
+  src: props.src,
 }))`
   width: 100%;
-  height: 18rem;
+  height: 25rem;
   &:hover + div {
     display: block;
   }
@@ -26,7 +27,7 @@ const HoverStyle = styled.div`
   text-align: center;
   font-weight: 600;
   color: #fff;
-  background-color: rgba(0,0,0,50%);
+  background-color: rgba(0, 0, 0, 50%);
   position: absolute;
   top: 0;
   width: 100%;
@@ -63,7 +64,7 @@ const PricesStyle = styled.div`
 const NormalPriceStyle = styled.div`
   text-decoration: line-through;
   font-size: 0.875rem;
-  color: #BDBDBD;
+  color: #bdbdbd;
   display: inline-block;
 `;
 
@@ -74,11 +75,23 @@ const SalePriceStyle = styled.div`
   display: inline-block;
 `;
 
-export default function ItemCard({id, onFetchDetailData, src = "", title = "", description = "", salePrice, normalPrice, labels=[] }) {
+export default function ItemCard({
+  id,
+  src = "",
+  title = "",
+  description = "",
+  salePrice,
+  normalPrice,
+  labels = [],
+}) {
+  const onFetchDetailData = useOnFetchDetailDataContext();
+  const onClick = () => {
+    onFetchDetailData(id);
+  };
   return (
-    <ItemCardStyle onClick={() => onFetchDetailData(id)}>
+    <ItemCardStyle onClick={onClick}>
       <ImgContainerStyle>
-        <ImgStyle src={src}/>
+        <ImgStyle src={src} />
         <HoverStyle>
           <div>새벽배송</div>
           <div>전국택배</div>
@@ -91,10 +104,10 @@ export default function ItemCard({id, onFetchDetailData, src = "", title = "", d
           <SalePriceStyle>{salePrice}원</SalePriceStyle>
           <NormalPriceStyle>{normalPrice}원</NormalPriceStyle>
         </PricesStyle>
-        {
-          labels.map((label, idx) => <Label text={label} key={idx}/>)
-        }
+        {labels.map((label, idx) => (
+          <Label text={label} key={idx} />
+        ))}
       </div>
     </ItemCardStyle>
-  )
+  );
 }
