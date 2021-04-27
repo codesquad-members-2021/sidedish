@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    static func performRequest(urlString: String, completionHandler: @escaping (DishesResponseDTO) -> ()) {
+    func performRequest(urlString: String, completionHandler: @escaping (DishesResponseDTO) -> ()) {
         AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: DishesResponseDTO.self) { (response) in
