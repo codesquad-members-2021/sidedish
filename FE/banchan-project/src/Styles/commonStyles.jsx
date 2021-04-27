@@ -22,7 +22,7 @@ const Image = {
   THUMB_NAILS: styled(ImageBox)`
     width: ${theme.imgSizes.THUMB_NAILS};
     height: ${theme.imgSizes.THUMB_NAILS};
-    border: ${props =>
+    border: ${(props) =>
       props.selectedFlag === true
         ? `2px solid ${theme.boxColors.GREEN}`
         : "none"};

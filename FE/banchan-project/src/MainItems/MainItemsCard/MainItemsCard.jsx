@@ -7,17 +7,25 @@ import MainItemsCardBadge from "./MainItemsCardBadge";
 import * as S from "../MainItemsStyles";
 import * as CS from "../../Styles/commonStyles";
 
-const MainItemsCard = ({ items }) => {
+const MainItemsCard = ({ item, handleClickCard }) => {
   return (
     <CS.Box.FLEX_COLUMN_BOX>
-      <MainItemsCardImage image={items.image} alt={items.alt} />
-      <MainItemsCardTitle title={items.title} />
-      <MainItemsCardDescription description={items.description} />
+      <MainItemsCardImage
+        image={item.image}
+        alt={item.title}
+        detailUrl={item.detail_url}
+        delivery_type={item.delivery_type}
+        handleClickCard={handleClickCard}
+      />
+      <MainItemsCardTitle title={item.title} />
+      <MainItemsCardDescription description={item.description} />
       <S.MainItemsPriceWrapper>
-        <MainItemsCardSPrice sPrice={items.s_price} />
-        <MainItemsCardNPrice nPrice={items.n_price} />
+        <MainItemsCardSPrice sPrice={item.s_price} />
+        {item.s_price === item.n_price ? null : (
+          <MainItemsCardNPrice nPrice={item.n_price} />
+        )}
       </S.MainItemsPriceWrapper>
-      <MainItemsCardBadge badge={items.badge} />
+      <MainItemsCardBadge badge={item.badge} />
     </CS.Box.FLEX_COLUMN_BOX>
   );
 };

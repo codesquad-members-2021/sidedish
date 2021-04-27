@@ -9,8 +9,7 @@ import RecommendedItems from "./RecommendedItems/RecommendedItems";
 import * as S from "../DetailModalStyles";
 import * as CS from "../../Styles/commonStyles";
 
-const DetailModalWindow = () => {
-  // 추후 props로 받은 데이터를 렌더에 사용할 예정입니다.
+const DetailModalWindow = (props) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [mainImg, setMainImg] = useState(null);
@@ -18,16 +17,13 @@ const DetailModalWindow = () => {
   const [stockOverFlag, setStockOverFlag] = useState(false);
 
   const getData = () => {
-    const url =
-      "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/HBDEF";
-
     try {
-      fetch(url)
+      fetch(props.detailUrl)
         .then((res) => res.json())
         .then((json) => {
           if (json) {
-            setData(json.data);
-            setMainImg(json.data.top_image);
+            setData(json);
+            setMainImg(json.main_image);
           }
         });
     } catch (err) {
@@ -44,6 +40,18 @@ const DetailModalWindow = () => {
     setStockOverFlag(boolean);
   };
 
+  const manageCountLimit = ({
+    countNumber,
+    lowerLimit = 0,
+    upperLimit = 30,
+  }) => {
+    if (countNumber < lowerLimit) return lowerLimit;
+    else if (countNumber > upperLimit) return upperLimit;
+    else {
+      return countNumber;
+    }
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -54,31 +62,47 @@ const DetailModalWindow = () => {
   return (
     <>
       <S.CloseButtonWrapper>
-        <CS.Button.CLOSE_BUTTON />
+        <CS.Button.CLOSE_BUTTON onClick={props.handleModalFlag} />
       </S.CloseButtonWrapper>
       <S.DetailModalWindow>
         <S.DetailWrapper>
           <S.DetailModalPropWrapper>
             <CS.Box.FLEX_COLUMN_BOX>
               <DetailMainImage props={mainImg} />
-              <ThumbNails props={data} handleMainImg={handleMainImg} />
+              <ThumbNails
+                thumbNails={data.thumb_images}
+                handleMainImg={handleMainImg}
+              />
             </CS.Box.FLEX_COLUMN_BOX>
           </S.DetailModalPropWrapper>
 
           <S.DetailModalPropWrapper>
-            <ItemInfo props={data} />
-            <Delivery props={data} />
+            <ItemInfo data={data} />
+            <Delivery data={data} />
             <Count
-              count={count}
+              count={manageCountLimit({
+                countNumber: count,
+              })}
               setCount={setCount}
-              stock={10}
+              stock={data.stock}
+              stockOverFlag={stockOverFlag}
               handleStockOver={handleStockOver}
             />
-            <Prices count={count} price={5200} stockOverFlag={stockOverFlag} />
+            <Prices
+              count={manageCountLimit({
+                countNumber: count,
+              })}
+              price={data.s_price}
+              stockOverFlag={stockOverFlag}
+              handleModalFlag={props.handleModalFlag}
+            />
           </S.DetailModalPropWrapper>
         </S.DetailWrapper>
 
-        <RecommendedItems />
+        <RecommendedItems
+          recommended={data.recommended}
+          handleClickCard={props.handleClickCard}
+        />
       </S.DetailModalWindow>
     </>
   );

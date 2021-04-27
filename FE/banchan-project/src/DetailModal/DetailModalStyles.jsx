@@ -6,8 +6,8 @@ const DetailModalWindow = styled(CS.Box.FLEX_COLUMN_BOX)`
   position: absolute;
   width: 960px;
   height: 680px;
-  left: 17%;
-  top: 5%;
+  left: 16%;
+  top: 30%;
 
   background: #fff;
   border-radius: 5px 5px 0px 0px;
@@ -27,7 +27,7 @@ const DetailModalBackground = styled.div`
 
 const CloseButtonWrapper = styled.div`
   position: absolute;
-  top: 5%;
+  top: 30%;
   left: 85%;
   z-index: 1;
 `;
@@ -69,12 +69,16 @@ const DeliveryWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
 
 const DeliveryTitleWrapper = styled.div`
   width: 20%;
-  margin: 0px 16px 16px 0px;
+  margin: 0px 10px 4px 0px;
 `;
 
-const DeliveryContentsWrapper = styled.div`
+const DeliveryContentsWrapper = styled(CS.Box.FLEX_ROW_BOX)`
   width: 100%;
-  margin: 0px 16px 16px 0px;
+  margin: 0px 10px 4px 0px;
+`;
+
+const DeliveryDescriptionWrapper = styled.div`
+  margin-left: 5px;
 `;
 
 const ItemInfoWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
@@ -187,6 +191,7 @@ export {
   DeliveryWrapper,
   DeliveryTitleWrapper,
   DeliveryContentsWrapper,
+  DeliveryDescriptionWrapper,
   ItemInfoWrapper,
   DetailLineWrapper,
   DetailNPriceWrapper,

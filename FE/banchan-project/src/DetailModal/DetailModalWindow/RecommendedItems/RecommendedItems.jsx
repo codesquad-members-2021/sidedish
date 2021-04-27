@@ -5,12 +5,15 @@ import RecommendedItemsPagination from "./RecommendedItemsPagination";
 import * as S from "../../DetailModalStyles";
 import * as CS from "../../../Styles/commonStyles";
 
-const RecommendedItems = () => {
+const RecommendedItems = ({ recommended, handleClickCard }) => {
   const [page, setPage] = useState(1);
 
-  const images = new Array(10).fill(
-    "https://www.straightnews.co.kr/news/photo/201912/61797_33389_525.jpg"
-  );
+  // const managePageLimit = ({ page, lowerLimit = 0, upperLimit = 2 }) => {
+  //   if (page < lowerLimit) return lowerLimit + 1;
+  //   else if (page > upperLimit) return upperLimit - 1;
+  //   else return page;
+  // };
+
   return (
     <S.RecommendedItems>
       <S.RecommendedItemsHeaderWrapper>
@@ -22,7 +25,10 @@ const RecommendedItems = () => {
         </CS.Box.FLEX_ROW_BOX>
       </S.RecommendedItemsHeaderWrapper>
 
-      <RecommendedItemsCard images={images} />
+      <RecommendedItemsCard
+        recommended={recommended}
+        handleClickCard={handleClickCard}
+      />
     </S.RecommendedItems>
   );
 };

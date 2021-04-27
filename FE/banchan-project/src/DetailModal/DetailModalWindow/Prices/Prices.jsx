@@ -10,7 +10,11 @@ const Prices = (props) => {
         <TotalPriceDescription />
         <TotalPrice count={props.count} price={props.price} />
       </S.PricesWrapper>
-      <SubmitButton stockOverFlag={props.stockOverFlag} />
+      <SubmitButton
+        count={props.count}
+        stockOverFlag={props.stockOverFlag}
+        handleModalFlag={props.handleModalFlag}
+      />
     </>
   );
 };

@@ -4,7 +4,8 @@ import theme from "../Styles/theme";
 
 const TotalCategoryButton = styled.button`
   position: absolute;
-  left: 0;
+  left: 0%;
+  bottom: -8%;
   border: none;
   outline: none;
 
@@ -16,11 +17,12 @@ const TotalCategoryButton = styled.button`
 `;
 
 const MainItemsWrapper = styled.div`
+  position: relative;
   width: 1280px;
 `;
 
 const MainItemsTitleWrapper = styled.div`
-  margin-bottom: 40px;
+  margin: 40px 0px;
 `;
 
 const MainItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
@@ -28,6 +30,7 @@ const MainItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
 `;
 
 const MainItemsCardImageWrapper = styled.div`
+  position: relative;
   margin: 0px 16px 16px 0px;
 `;
 
@@ -51,14 +54,38 @@ const MainItemsCardNPriceWrapper = styled.div`
 
 const LeftButtonWrapper = styled.div`
   position: absolute;
-  top: 10%;
-  left: 0%;
+  top: 50%;
+  left: -5%;
 `;
 
 const RightButtonWrapper = styled.div`
   position: absolute;
-  top: 10%;
-  right: 0%;
+  top: 50%;
+  right: -5%;
+`;
+
+const BestItemsHoverBox = styled.div`
+  position: absolute;
+  top: 0px;
+  cursor: pointer;
+`;
+
+const BestItemsHoverTopText = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 37%;
+`;
+
+const BestItemsHoverBottomText = styled.div`
+  position: absolute;
+  top: 55%;
+  left: 37%;
+`;
+
+const BestItemsHoverLine = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 37%;
 `;
 
 export {
@@ -73,4 +100,8 @@ export {
   MainItemsCardNPriceWrapper,
   LeftButtonWrapper,
   RightButtonWrapper,
+  BestItemsHoverBox,
+  BestItemsHoverTopText,
+  BestItemsHoverBottomText,
+  BestItemsHoverLine,
 };
