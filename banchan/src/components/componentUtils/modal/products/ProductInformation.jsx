@@ -14,7 +14,7 @@ const ProductInformation = ({ product, getTotalPrice, increaseCount, decreaseCou
       <ProductCount {...{ count, increaseCount, decreaseCount }}></ProductCount>
       <ProductPrice>
         <ProductTotalTitle>총 주문금액</ProductTotalTitle>
-        <ProductTotalMoney>{getTotalPrice(product.prices[0])}</ProductTotalMoney>
+        <ProductTotalMoney>{getTotalPrice(product.s_price)}</ProductTotalMoney>
       </ProductPrice>
       <TextButton type="ORDER"></TextButton>
     </Information>

@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import IconButton from "../../utils/button/IconButton";
-import { CenterContainer } from "../../utils/styles/common";
+import styled from 'styled-components';
+import IconButton from '../../componentUtils/button/IconButton';
+import { CenterContainer } from '../../componentUtils/styles/common';
 
 const HeaderRight = (props) => {
   const tempFn = () => {
-    console.log("hello");
+    console.log('hello');
   };
   return (
     <HeaderRightDiv>

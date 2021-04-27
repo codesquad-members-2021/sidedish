@@ -13,6 +13,7 @@ const ProductImage = ({ imageUrl, thumbnailList }) => {
 const StyledImage = styled.img`
   width: 392px;
   height: 392px;
+  border-radius: ${(props) => props.theme.borders.radius};
 `;
 
 const ProductImageSection = styled.section`

@@ -26,7 +26,7 @@ const Card = ({ product, cardSize, margin = 0, type, onModal }) => {
   return (
     <>
       <StyledLi cardSize={cardSize} margin={margin} onClick={requestProductDetailInfo}>
-        <Thumbnail {...{ product, cardSize, type }}></Thumbnail>
+        <Thumbnail {...{ product, cardSize, type }} />
         <StyledTitle>{product.title}</StyledTitle>
         <StyledDescription>{product.description}</StyledDescription>
         <Price product={product} />
@@ -59,7 +59,6 @@ const ModalBackground = styled(CenterContainer)`
   background: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
-  z-index: 5;
 `;
 
 const ModalContainer = styled.div`
