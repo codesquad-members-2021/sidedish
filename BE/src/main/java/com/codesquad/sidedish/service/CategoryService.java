@@ -17,15 +17,16 @@ public class CategoryService {
     }
 
     //카테고리별 조회
-    public CategoryResponseDto readDishesByCategory(CategoryType categoryType) {
-        Category category = categoryRepository.findByType(categoryType.name());
+    public CategoryResponseDto readDishesByCategory(String categoryType) {
+        Category category = categoryRepository.findCategoryByType(categoryType);
         return CategoryResponseDto.of(category);
     }
 
     // 상세 조회
-    public DishDetailResponseDto readDishByCategoryTypeAndDishId(CategoryType categoryType, String dishId) {
-        Dish tempDish = categoryRepository.findDishByCategoryTypeAndDishId(categoryType.getTypeNum(), dishId);
-        return DishDetailResponseDto.of(tempDish);
+    public DishDetailResponseDto readDishByCategoryAndDishId(String categoryType, String dishId) {
+        Category category = categoryRepository.findCategoryByType(categoryType);
+        Dish dish = category.getDishByDishId(dishId);
+        return DishDetailResponseDto.of(dish);
     }
 
     public void addDish(String categoryType, Dish dish) {
