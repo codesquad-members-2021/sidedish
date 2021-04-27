@@ -4,21 +4,21 @@ import org.springframework.data.annotation.Id;
 
 public class Order {
     @Id
-    private Long Id;
+    private Long id;
 
     private String github_id;
     private String detail_hash;
     private int qty;
 
     public Order(Long id, String github_id, String detail_hash, int qty) {
-        Id = id;
+        this.id = id;
         this.github_id = github_id;
         this.detail_hash = detail_hash;
         this.qty = qty;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getGithub_id() {
