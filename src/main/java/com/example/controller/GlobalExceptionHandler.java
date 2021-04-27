@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<?> handleNotFoundException(NotFoundException e) {
+    public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException e) {
         final ErrorCode errorCode = e.getErrorCode();
         final ErrorResponse from = ErrorResponse.from(errorCode);
         return new ResponseEntity<>(from, errorCode.getHttpStatus());
     }
 
     @ExceptionHandler(LoginValidException.class)
-    public ResponseEntity<?> handleLoginException(LoginValidException e) {
+    public ResponseEntity<ErrorResponse> handleLoginException(LoginValidException e) {
         final ErrorCode errorCode = e.getErrorCode();
         return new ResponseEntity<>(ErrorResponse.from(errorCode), errorCode.getHttpStatus());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleValidHasError(MethodArgumentNotValidException e) {
+    public ResponseEntity<ErrorResponse> handleValidHasError(MethodArgumentNotValidException e) {
         final ErrorResponse of = ErrorResponse.of(ErrorCode.BAD_REQUEST, e.getBindingResult());
         return new ResponseEntity<>(of, HttpStatus.BAD_REQUEST);
     }
