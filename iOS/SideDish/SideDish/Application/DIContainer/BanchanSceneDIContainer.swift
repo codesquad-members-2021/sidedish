@@ -8,6 +8,7 @@
 import UIKit
 
 class BanchanSceneDIContainer: BanchanSceneFlowCoordinatorDependencies {
+    
     struct Dependencies {
         let apiNetworkService: NetworkService
     }
@@ -29,17 +30,43 @@ class BanchanSceneDIContainer: BanchanSceneFlowCoordinatorDependencies {
     }
     
     // MARK: - ViewModel
-    private func makeBanchanListViewModel() -> BanchanListViewModel {
-        return BanchanListViewModel(fetchBanchanListUseCase: makeFetchBanchanListUseCase())
+    private func makeBanchanListViewModel(action: BanchanListViewModelAction) -> BanchanListViewModel {
+        return BanchanListViewModel(fetchBanchanListUseCase: makeFetchBanchanListUseCase(), action: action)
     }
     
     // MARK: - ViewController
-    internal func makeBanchanListViewController() -> BanchanListViewController {
-        return BanchanListViewController.create(with: makeBanchanListViewModel())
+    internal func makeBanchanListViewController(action: BanchanListViewModelAction) -> BanchanListViewController {
+        return BanchanListViewController.create(with: makeBanchanListViewModel(action: action))
     }
     
     // MARK: - Flow Coordinator
     func makeBanchanSceneFlowCoordinator(navigationController: UINavigationController) -> BanchanSceneFlowCoordinator {
+        return BanchanSceneFlowCoordinator(navigationController: navigationController, dependencies: self)
+    }
+}
+
+extension BanchanSceneDIContainer {
+    private func makeBanchanDetailRepository() -> BanchanDetailRepository {
+        return DefaultBanchanDetailRepository(network: dependencies.apiNetworkService)
+    }
+
+    // MARK: - Use Cases
+    private func makeFetchBanchanDetailUseCase() -> FetchBanchanDetailUseCase{
+        return DefaultFetchBanchanDetailUseCase(banchanDetailRepository: makeBanchanDetailRepository())
+    }
+    
+    // MARK: - ViewModel
+    private func makeBanchanDetailViewModel(hash: Int) -> BanchanDetailViewModel {
+        return BanchanDetailViewModel(hash: hash, fetchBanchanDetailUseCase: makeFetchBanchanDetailUseCase() )
+    }
+    
+    // MARK: - ViewController
+    internal func makeBanchanDetailViewController(hash: Int) -> BanchanDetailViewController {
+        return BanchanDetailViewController.create(with: makeBanchanDetailViewModel(hash: hash))
+    }
+    
+    // MARK: - Flow Coordinator
+    func makeBanchanDetailSceneFlowCoordinator(navigationController: UINavigationController) -> BanchanSceneFlowCoordinator {
         return BanchanSceneFlowCoordinator(navigationController: navigationController, dependencies: self)
     }
 }

@@ -8,14 +8,20 @@
 import Foundation
 import Combine
 
+struct BanchanListViewModelAction {
+    let showBanchanDetails: ((Banchan) -> Void)
+}
+
 class BanchanListViewModel {
     
     @Published var menu: [[Banchan]]
     private var fetchBanchanListUseCase: FetchBanchanListUseCase
+    private var action: BanchanListViewModelAction
     
-    init(fetchBanchanListUseCase: FetchBanchanListUseCase) {
+    init(fetchBanchanListUseCase: FetchBanchanListUseCase, action: BanchanListViewModelAction) {
         self.fetchBanchanListUseCase = fetchBanchanListUseCase
         self.menu = []
+        self.action = action
         configureMenu()
         fetchMenu()
     }
@@ -36,6 +42,11 @@ class BanchanListViewModel {
         Section.allCases.forEach({ _ in
             menu.append([])
         })
+    }
+    
+    func didSelectedItem(indexPath: IndexPath) {
+        let banchan = menu[indexPath.section][indexPath.row]
+        action.showBanchanDetails(banchan)
     }
     
     func getBanchans(section: Section) -> [Banchan]? {

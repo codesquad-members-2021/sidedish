@@ -110,6 +110,10 @@ extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewD
         let cellSize = CGSize(width: 343, height: 130)
         return cellSize
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectedItem(indexPath: indexPath)
+    }
 }
 
 // MARK: - UITapGestureRecongnizer Custom Class
