@@ -49,9 +49,9 @@ const StyleModal = styled.div`
 
   .closeBtn {
     position: fixed;
-    left: 86%;
+    left: 76%;
     font-size: 24px;
-    top: 36px;
+    top: 20px;
     color: white;
   }
 `;

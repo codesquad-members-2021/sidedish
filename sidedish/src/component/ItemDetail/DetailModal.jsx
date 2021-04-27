@@ -109,7 +109,7 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
 export default DetailModal;
 
 export const ModalStyle = styled.div`
-  width: 70%;
+  width: 50%;
   height: 95%;
   background-color: white;
   display: flex;
