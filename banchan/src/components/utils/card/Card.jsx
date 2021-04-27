@@ -23,27 +23,10 @@ const Card = ({ product, cardSize, margin = 0, type, onModal }) => {
     setModalState(true);
   };
 
-  // useEffect를 안쓰고 fetch를 해도 괜찮은걸까...? 아돈노우..
-  // 동작은 된다만...
-
   return (
     <>
       <StyledLi cardSize={cardSize} margin={margin} onClick={requestProductDetailInfo}>
-        <Thumbnail {...{ product, cardSize, type }}>
-          {/* <StyledHoverLayer cardSize={cardSize}>
-            <DeliveryTypeList>
-              {product.delivery_type.reduce((acc, val, idx, array) => {
-                acc.push(
-                  <p>
-                    {val} {idx < array.length - 1 ? <Divider /> : ""}
-                  </p>
-                );
-                return acc;
-              }, [])}
-            </DeliveryTypeList>
-          </StyledHoverLayer> */}
-          {/* <StyledImg cardSize={cardSize} src={type === "베스트" ? mockImage : product.image} alt="card-image" /> */}
-        </Thumbnail>
+        <Thumbnail {...{ product, cardSize, type }}></Thumbnail>
         <StyledTitle>{product.title}</StyledTitle>
         <StyledDescription>{product.description}</StyledDescription>
         <Price product={product} />
@@ -82,40 +65,9 @@ const ModalBackground = styled(CenterContainer)`
 const ModalContainer = styled.div`
   display: flex;
   align-items: flex-start;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-48%);
 `;
-
-// const StyledImg = styled.img`
-//   border-radius: ${theme.borders.radius};
-//   margin-bottom: 16px;
-//   width: ${(props) => props.cardSize};
-//   height: ${(props) => props.cardSize};
-// `;
-
-// const StyledHoverLayer = styled(CenterContainer)`
-//   color: ${(props) => props.theme.colors.white};
-//   opacity: 0;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: ${(props) => props.cardSize};
-//   height: ${(props) => props.cardSize};
-//   border-radius: ${theme.borders.radius};
-//   z-index: 4;
-//   font-size: ${(props) => props.theme.fontSizes.XL};
-//   font-weight: bold;
-
-//   &:hover {
-//     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-//     opacity: 1;
-//   }
-// `;
-
-// const DeliveryTypeList = styled.div``;
-
-// const Divider = styled.div`
-//   border: 1px solid ${(props) => props.theme.colors.white};
-//   width: 90px;
-//   margin: 16px 0;
-// `;
 
 export default Card;

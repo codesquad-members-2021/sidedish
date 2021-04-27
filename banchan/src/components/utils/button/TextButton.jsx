@@ -20,6 +20,7 @@ const StyledTextButton = styled(Button)`
   width: 440px;
   height: 58px;
   text-align: center;
+  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export default TextButton;
