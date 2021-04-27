@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import TopArrowButton from '../../../images/TopArrowButtonDeactive.svg';
-import BottomArrowButton from '../../../images/BottomArrowButtonDeactive.svg';
-import DisabledBottomArrowButton from '../../../images/DisabledBottomArrowButtonDeactive.svg';
+import TopArrowButton from 'images/TopArrowButtonDeactive.svg';
+import BottomArrowButton from 'images/BottomArrowButtonDeactive.svg';
+import DisabledBottomArrowButton from 'images/DisabledBottomArrowButtonDeactive.svg';
 
 const CountSelector = ({ count, handleChangeCount }) => {
   return (

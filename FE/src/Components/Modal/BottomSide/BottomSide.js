@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import * as Carousel from 'Components/Carousel';
+import Card from 'Components/commons/Card.js';
 
-import * as Carousel from '../../../Components/Carousel';
-import Card from '../../../Components/commons/Card.js';
-
-const BottomSide = ({isHide}) => {
+const BottomSide = ({ isHide }) => {
 
   useEffect(() => {
     console.log(isHide)
@@ -14,10 +13,10 @@ const BottomSide = ({isHide}) => {
     <BottomSideWrapper>
       <Carousel.Container navigator={"upper"} unit={5}>
         {/* for test */}
-        {[...new Array(22).keys()].map((_,i) => {
+        {[...new Array(22).keys()].map((_, i) => {
           return <Card key={`test-${i}`} number={i} type={"responsive"} />;
-        })}  
-        
+        })}
+
       </Carousel.Container>
     </BottomSideWrapper>
   );

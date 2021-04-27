@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SpecialLabelTag from '../../commons/SpecialLabelTag';
-import CountSelector from './CountSelector';
-import Sum from './Sum';
-import OrderButton from './OrderButton';
-import { formatPriceAsNumber } from '../../../util/serviceUtils';
+import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
+import CountSelector from 'Components/Modal/RightSide/CountSelector';
+import Sum from 'Components/Modal/RightSide/Sum';
+import OrderButton from 'Components/Modal/RightSide/OrderButton';
+import { formatPriceAsNumber } from 'util/serviceUtils';
 
 const RightSide = ({ prices, product_description, point, delivery_info, delivery_fee, title, badge }) => {
   const [count, setCount] = useState(0);

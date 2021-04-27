@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import defaultImage from '../../../images/default.png';
+import defaultImage from 'images/default.png';
 
 const SmallThumbnail = ({ imgSources, handleChangeImageSource }) => {
   return (

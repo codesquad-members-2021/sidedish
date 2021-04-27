@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-
-import CarouselButton from './CarouselButton.js';
+import CarouselButton from 'Components/Carousel/CarouselNavigator/CarouselButton.js';
 
 const DefaultNavigator = ({ useNavigator }) => {
-  const {slideLeft, slideRight, carouselNavigatorAreaSize} = useNavigator();
-  
+  const { slideLeft, slideRight, carouselNavigatorAreaSize } = useNavigator();
+
   return (
     <CarouselNavigatorArea size={carouselNavigatorAreaSize}>
       <CarouselButtonRelativeArea>
         <CarouselButton type={"left"} onClick={slideLeft} />
         <CarouselButton type={"right"} onClick={slideRight} />
-      </CarouselButtonRelativeArea>      
+      </CarouselButtonRelativeArea>
     </CarouselNavigatorArea>
   )
 }

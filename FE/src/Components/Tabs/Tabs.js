@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import API from '../../util/API.js';
-
-import { Container } from '../commons/base.js';
-import Card from '../commons/Card';
+import API from 'util/API.js';
+import { Container } from 'Components/commons/base.js';
+import Card from 'Components/commons/Card';
 
 const Tabs = ({ setModalState }) => {
   const [tabItemList, setTabItemList] = useState([]);

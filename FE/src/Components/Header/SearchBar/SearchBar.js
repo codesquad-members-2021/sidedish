@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import magnifyingGlassImage from '../../../images/magnifyingGlass.svg';
+import magnifyingGlassImage from 'images/magnifyingGlass.svg';
 
 const SearchBar = () => {
   return (

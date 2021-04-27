@@ -1,7 +1,7 @@
-import DefaultNavigator from './DefaultNavigator.js';
-import UpperNavigatior from './UpperNavigatior.js';
+import DefaultNavigator from 'Components/Carousel/CarouselNavigator/DefaultNavigator.js';
+import UpperNavigatior from 'Components/Carousel/CarouselNavigator/UpperNavigatior.js';
 
 export {
-  DefaultNavigator as Default, 
+  DefaultNavigator as Default,
   UpperNavigatior as Upper
 }

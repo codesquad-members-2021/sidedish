@@ -1,26 +1,25 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-
-import CarouselButton from './CarouselButton.js';
-import CarouselIndex from './CarouselIndex.js';
+import CarouselButton from 'Components/Carousel/CarouselNavigator/CarouselButton.js';
+import CarouselIndex from 'Components/Carousel/CarouselNavigator/CarouselIndex.js';
 
 const UpperNavigatior = ({ useNavigator }) => {
-  const {slideLeft, slideRight, totalIndex} = useNavigator();
+  const { slideLeft, slideRight, totalIndex } = useNavigator();
   const [currentIndex, setCurrentIndex] = useState(1);
-  
+
   const handleOnClick = (type) => {
     if (type === "left" && slideLeft()) {
-      setCurrentIndex(currentIndex-1);
+      setCurrentIndex(currentIndex - 1);
     }
     else if (type === "right" && slideRight()) {
-      setCurrentIndex(currentIndex+1);
+      setCurrentIndex(currentIndex + 1);
     }
   }
   return (
     <CarouselNavigatorArea>
-      <CarouselButton type={"left"} onClick={() => {handleOnClick("left")}} />
+      <CarouselButton type={"left"} onClick={() => { handleOnClick("left") }} />
       <CarouselIndex totalIndex={totalIndex} currentIndex={currentIndex} />
-      <CarouselButton type={"right"} onClick={() => {handleOnClick("right")}} />
+      <CarouselButton type={"right"} onClick={() => { handleOnClick("right") }} />
     </CarouselNavigatorArea>
   )
 }

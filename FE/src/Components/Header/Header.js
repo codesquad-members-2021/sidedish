@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navigation from './Navigation/Navigation';
-import SearchBar from './SearchBar/SearchBar';
-import { Container } from '../commons/base';
+import Navigation from 'Components/Header/Navigation/Navigation';
+import SearchBar from 'Components/Header/SearchBar/SearchBar';
+import { Container } from 'Components/commons/base';
 
 const Header = () => {
   return (
