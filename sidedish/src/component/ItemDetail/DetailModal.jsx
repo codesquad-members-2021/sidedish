@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledBadges } from 'component/DishItem/DishItem';
+import Counter from 'component/ItemDetail/Counter';
 
 const DetailModal = ({ detailData, loading, title, badge }) => {
   const [topImg, setTopImg] = useState(detailData.top_image);
@@ -58,7 +59,17 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
               <span className="info_data">{detailData.delivery_fee}</span>
             </div>
           </div>
-          <div>{/* <span className="info_category">수량</span> <span className="">1</span> */}</div>
+          <div className="info_count border">
+            <span className="info_category">수량</span>
+            <Counter />
+          </div>
+          <div className="info_total">
+            <span className="info_total_fee">총 주문금액</span>
+            <span className="info_total_fee_data">5200원</span>
+          </div>
+          <div className="info_order">
+            <span>주문하기</span>
+          </div>
         </TopRight>
       </Top>
       {/* <Bottom>
@@ -124,6 +135,13 @@ const TopRight = styled.div`
     flex: 1;
   }
 
+  .info_count {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
   .info_data {
     color: ${({ theme: { colors } }) => colors.darkGray};
     flex: 3;
@@ -163,8 +181,42 @@ const TopRight = styled.div`
     }
   }
 
+  .info_total {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 0;
+  }
+
+  .info_total_fee {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: ${({ theme: { colors } }) => colors.darkGray};
+    padding-right: 1rem;
+  }
+
+  .info_total_fee_data {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    color: black;
+  }
+
   .border {
     border-bottom: 1px solid ${({ theme: { colors } }) => colors.whiteBlue};
     padding: 1rem 0;
+  }
+
+  .info_order {
+    width: 100%;
+    height: 58px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: ${({ theme: { colors } }) => colors.green};
+    color: white;
   }
 `;
