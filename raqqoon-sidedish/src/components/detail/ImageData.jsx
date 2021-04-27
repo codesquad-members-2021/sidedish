@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const TopImg = ({ img }) => {
   return (
@@ -7,22 +7,47 @@ const TopImg = ({ img }) => {
     </TopImgDiv>
   );
 };
-const ThumbImg = ({ img }) => {
+const ThumbImg = ({
+  img,
+  setActiveTopImage,
+  activeBorder,
+  setActiveBorder,
+}) => {
+  const handleClickThumbImage = () => {
+    if (!img) return null;
+    setActiveTopImage(img);
+    // setActiveBorder(true);
+  };
+
   return (
-    <ThumbImgDiv>
+    <ThumbImgDiv
+      img={img}
+      onClick={handleClickThumbImage}
+      activeBorder={activeBorder}
+    >
       <img src={img} alt={img} />
     </ThumbImgDiv>
   );
 };
 
-const DetailImg = ({ location, img }) => {
+const ImageData = ({
+  location,
+  img,
+  setActiveTopImage,
+  activeBorder,
+  setActiveBorder,
+}) => {
   return {
     top: <TopImg {...{ img }} />,
-    thumb: <ThumbImg {...{ img }} />,
+    thumb: (
+      <ThumbImg
+        {...{ img, setActiveTopImage, activeBorder, setActiveBorder }}
+      />
+    ),
   }[location];
 };
 
-export default DetailImg;
+export default ImageData;
 
 const TopImgDiv = styled.div`
   width: 392px;
@@ -38,11 +63,21 @@ const TopImgDiv = styled.div`
 const ThumbImgDiv = styled.div`
   width: 72px;
   height: 72px;
+  cursor: ${(props) => props.img !== null && `pointer`};
+  background: #f5f5f7;
   border-radius: 5px;
 
   img {
-    width: 72px;
     height: 72px;
     border-radius: 5px;
+    ${(props) =>
+      props.activeBorder &&
+      css`
+        border: 2px solid #82d32d;
+      `}
+
+    &:hover {
+      border: 2px solid #82d32d;
+    }
   }
 `;

@@ -3,9 +3,11 @@ import styled from 'styled-components';
 const DetailPrice = ({ orderCount, prices }) => {
   if (prices.length === 2) {
     prices = prices[1];
+  } else {
+    prices = prices[0];
   }
 
-  const priceList = prices[0].split('원');
+  const priceList = prices.split('원');
   const price = +priceList[0].split(',').join('');
   const calPrice = price * orderCount;
 
@@ -47,9 +49,12 @@ const DetailPriceTextSpan = styled.div`
   text-align: right;
   color: #828282;
   margin-right: 24px;
+  margin-top: 5px;
 `;
 
 const DetailPriceSpan = styled.div`
+  font-family: Noto Sans KR;
+  font-style: normal;
   align-items: center;
   font-size: 32px;
   font-weight: 700;

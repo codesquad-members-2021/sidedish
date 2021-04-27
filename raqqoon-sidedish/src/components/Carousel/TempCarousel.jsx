@@ -6,17 +6,13 @@ import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = ({ path, ITEM_NUMBER }) => {
-  const dishData = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
-  );
-  console.log(dishData);
+const TempCarousel = ({ detailSection, ITEM_NUMBER }) => {
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
   const [cardsNumber, setCardsNumber] = useState(null);
   const dishList =
-    dishData &&
-    dishData.map((item) => (
+    detailSection &&
+    detailSection.map((item) => (
       <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
     ));
 
@@ -74,7 +70,7 @@ const Carousel = ({ path, ITEM_NUMBER }) => {
   );
 };
 
-export default Carousel;
+export default TempCarousel;
 
 const CarouselStyled = styled.div`
   position: relative;

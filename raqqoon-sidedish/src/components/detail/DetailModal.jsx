@@ -11,7 +11,14 @@ const LongLine = () => {
   return <LongLineBox />;
 };
 
-const DetailModal = ({ title, badge, currentData }) => {
+const DetailModal = ({
+  title,
+  badge,
+  currentData,
+  orderCount,
+  plusCount,
+  minusCount,
+}) => {
   const {
     delivery_fee,
     delivery_info,
@@ -21,16 +28,6 @@ const DetailModal = ({ title, badge, currentData }) => {
     thumb_images,
     top_image,
   } = currentData;
-
-  const [orderCount, setOrderCount] = useState(1);
-
-  const plusCount = () => {
-    setOrderCount(orderCount + 1);
-  };
-  const minusCount = () => {
-    if (orderCount <= 0) return;
-    setOrderCount(orderCount - 1);
-  };
 
   return (
     <DetailModalBox>

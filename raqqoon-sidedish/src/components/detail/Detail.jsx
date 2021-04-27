@@ -3,6 +3,7 @@ import DetailModal from 'components/detail/DetailModal';
 import DetailCarousel from 'components/detail/DetailCarousel';
 import DetailCloseButton from 'components/detail/DetailCloseButton';
 import useFetch from 'customHooks/useFetch';
+import { useState } from 'react';
 
 const Detail = ({ modalData, modalState, setModalState }) => {
   const detailData = useFetch(
@@ -17,14 +18,34 @@ const Detail = ({ modalData, modalState, setModalState }) => {
     }
   });
 
-  if (!currentData) return null;
+  const [orderCount, setOrderCount] = useState(1);
 
+  const plusCount = () => {
+    setOrderCount(orderCount + 1);
+  };
+  const minusCount = () => {
+    if (orderCount <= 0) return;
+    setOrderCount(orderCount - 1);
+  };
+
+  if (!currentData) return null;
+  const detailSection = currentData.detail_section;
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
-        <DetailCloseButton {...{ setModalState }} />
-        <DetailModal {...{ title, badge, currentData }} />
-        <DetailCarousel />
+        <DetailCloseButton {...{ setModalState, setOrderCount }} />
+        <DetailModal
+          {...{
+            title,
+            badge,
+            currentData,
+            orderCount,
+            setOrderCount,
+            plusCount,
+            minusCount,
+          }}
+        />
+        <DetailCarousel {...{ detailSection }} />
       </ModalWrapper>
     </DetailBoxDiv>
   );
