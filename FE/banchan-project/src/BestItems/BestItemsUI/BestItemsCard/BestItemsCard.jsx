@@ -11,28 +11,15 @@ import BestItemsCardSPrice from "./BestItemsCardSPrice";
 
 const BestItemsCard = ({ item }) => {
   const { id, image, title, description, s_price, n_price, badge } = item;
-  const [isMouseOver, setIsMouseOver] = useState(false);
-  const handleMouseEnter = e => {
-    setIsMouseOver(true);
-    console.log("over");
-  };
 
-  const handleMouseLeave = () => {
-    setIsMouseOver(false);
-    console.log("out");
-  };
   return (
     <S.BestItemsCard id={id}>
-      <BestItemsCardImage
-        {...{ image }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      ></BestItemsCardImage>
+      <BestItemsCardImage {...{ image }}></BestItemsCardImage>
       <BestItemsCardTitle {...{ title }}></BestItemsCardTitle>
 
       <BestItemsCardDescription {...{ description }}></BestItemsCardDescription>
       <BestItemsCardSPrice {...{ s_price }}></BestItemsCardSPrice>
-      <BestItemsCardNPrice {...{ n_price }}></BestItemsCardNPrice>
+      <BestItemsCardNPrice {...{ s_price, n_price }}></BestItemsCardNPrice>
 
       <BestItemsCardBadge {...{ badge }}></BestItemsCardBadge>
     </S.BestItemsCard>
