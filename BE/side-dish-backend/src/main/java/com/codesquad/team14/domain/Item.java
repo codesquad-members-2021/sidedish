@@ -5,10 +5,11 @@ import org.springframework.data.annotation.Id;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Item {
     private static final String DELIVERY_FEE_POLICY = "2,500원 (40,000원 이상 구매 시 무료)";
-    private static final String SEPARATOR = ", ";
+    private static final String SEPARATOR = ",";
 
     @Id
     private Long id;
@@ -114,5 +115,18 @@ public class Item {
             return new ArrayList<>();
         }
         return Arrays.asList(this.images.split(SEPARATOR));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(id, item.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
