@@ -17,10 +17,12 @@ const Section = ({ setModalData, setModalOn }) => {
 	}, [urlList]);
 
 	const handleOfClickMore = () => setUrlList(() => ["soup", "side"]);
-	
+
 	return (
 		<SectionWrapper>
-			{cardList.map((ariticle) => <Ariticle ariticle={ariticle} key={ariticle} setModalData={setModalData} setModalOn={setModalOn} />)}
+			{cardList.map((ariticle, i) => (
+				<Ariticle ariticle={ariticle} index={i} key={i} setModalData={setModalData} setModalOn={setModalOn} />
+			))}
 			{cardList.length === 1 && <ButtonMore onClick={handleOfClickMore}>모든 카테고리 보기</ButtonMore>}
 		</SectionWrapper>
 	);

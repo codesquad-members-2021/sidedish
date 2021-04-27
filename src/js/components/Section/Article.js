@@ -2,10 +2,11 @@ import Carousel from "@jjunyjjuny/react-carousel";
 import styled from "styled-components";
 import Card from "../common/Card";
 
-const Ariticle = ({ ariticle, setModalData, setModalOn }) => {
+const Ariticle = ({ ariticle, index, setModalData, setModalOn }) => {
+  const title = ["모두가 좋아하는 든든한 메인요리", "정성이 담긴 뜨끈한 국물요리", "식탁을 풍성하게 하는 정갈한 밑반찬"]
 	return (
 		<AriticleWrapper>
-			<Title>모두가 좋아하는 든든한 메인요리</Title>
+			<Title>{title[index]}</Title>
 			{ariticle.length > 0 && (
 				<Carousel itemsPerPeice={4} autoFit>
 					{ariticle.map((el) => <Card setModalData={setModalData} setModalOn={setModalOn} key={el.detail_hash} size="MEDIUM" data={el} />)}
