@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,10 +18,7 @@
 		8844B8582631AB1300FA49E9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B8572631AB1300FA49E9 /* DetailViewModel.swift */; };
 		88BDE4E82636ACD20056DE3B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4E72636ACD20056DE3B /* AuthViewController.swift */; };
 		88BDE4F02636C73F0056DE3B /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4EF2636C73F0056DE3B /* TempViewController.swift */; };
-		88BDE4F42637A97A0056DE3B /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4F32637A97A0056DE3B /* OAuthService.swift */; };
-		88BDE4F92637AAF30056DE3B /* LocalOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4F82637AAF30056DE3B /* LocalOAuthClient.swift */; };
-		88BDE4FD2637BDC00056DE3B /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4FC2637BDC00056DE3B /* DeepLinkHandler.swift */; };
-		88BDE5022637BE700056DE3B /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE5012637BE700056DE3B /* AppDependencyContainer.swift */; };
+		88BDE50B2637DC150056DE3B /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 88BDE50A2637DC150056DE3B /* OctoKit */; };
 		BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB3262FF79600C0625E /* SideDishManager.swift */; };
 		BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB926301B8000C0625E /* AlertFactory.swift */; };
 		BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */; };
@@ -59,10 +56,6 @@
 		8844B8572631AB1300FA49E9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		88BDE4E72636ACD20056DE3B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		88BDE4EF2636C73F0056DE3B /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
-		88BDE4F32637A97A0056DE3B /* OAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
-		88BDE4F82637AAF30056DE3B /* LocalOAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOAuthClient.swift; sourceTree = "<group>"; };
-		88BDE4FC2637BDC00056DE3B /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
-		88BDE5012637BE700056DE3B /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		BFAE1BB3262FF79600C0625E /* SideDishManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishManager.swift; sourceTree = "<group>"; };
 		BFAE1BB926301B8000C0625E /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardHeaderView.swift; sourceTree = "<group>"; };
@@ -95,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BDE50B2637DC150056DE3B /* OctoKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +112,6 @@
 		8844B7CD262DB62C00FA49E9 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				88BDE4F62637AAD60056DE3B /* OAuth */,
 				BFCE4974262DBFCC006C0882 /* Network */,
 				8844B7CE262DB63B00FA49E9 /* Model */,
 			);
@@ -134,15 +127,6 @@
 				8844B8512631A97300FA49E9 /* ItemDetails.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		88BDE4F62637AAD60056DE3B /* OAuth */ = {
-			isa = PBXGroup;
-			children = (
-				88BDE4F32637A97A0056DE3B /* OAuthService.swift */,
-				88BDE4F82637AAF30056DE3B /* LocalOAuthClient.swift */,
-			);
-			path = OAuth;
 			sourceTree = "<group>";
 		};
 		BFAE1BB626301A5E00C0625E /* ViewModel */ = {
@@ -197,7 +181,6 @@
 			children = (
 				BFCE4952262D4891006C0882 /* AppDelegate.swift */,
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
-				88BDE5012637BE700056DE3B /* AppDependencyContainer.swift */,
 				BFCE49C1262E8918006C0882 /* DIContainer.swift */,
 				BFC2F97F2635BBFA006C9DCA /* Dependency.swift */,
 				8844B7CD262DB62C00FA49E9 /* DataLayer */,
@@ -218,7 +201,6 @@
 				BFCE4979262DC205006C0882 /* HTTPMethod.swift */,
 				BFCE497C262DC22A006C0882 /* NetworkError.swift */,
 				BFCE497F262DC3F2006C0882 /* NetworkManager.swift */,
-				88BDE4FC2637BDC00056DE3B /* DeepLinkHandler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -267,6 +249,9 @@
 			dependencies = (
 			);
 			name = "Side-dish";
+			packageProductDependencies = (
+				88BDE50A2637DC150056DE3B /* OctoKit */,
+			);
 			productName = "Side-dish";
 			productReference = BFCE494F262D4891006C0882 /* Side-dish.app */;
 			productType = "com.apple.product-type.application";
@@ -294,6 +279,9 @@
 				Base,
 			);
 			mainGroup = BFCE4946262D4891006C0882;
+			packageReferences = (
+				88BDE5092637DC150056DE3B /* XCRemoteSwiftPackageReference "octokit" */,
+			);
 			productRefGroup = BFCE4950262D4891006C0882 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,15 +333,11 @@
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
 				88BDE4F02636C73F0056DE3B /* TempViewController.swift in Sources */,
 				BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */,
-				88BDE5022637BE700056DE3B /* AppDependencyContainer.swift in Sources */,
-				88BDE4F92637AAF30056DE3B /* LocalOAuthClient.swift in Sources */,
 				BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */,
 				BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */,
 				BFAE1BC426302DB600C0625E /* Imagloader.swift in Sources */,
-				88BDE4FD2637BDC00056DE3B /* DeepLinkHandler.swift in Sources */,
 				88BDE4E82636ACD20056DE3B /* AuthViewController.swift in Sources */,
 				8844B8522631A97300FA49E9 /* ItemDetails.swift in Sources */,
-				88BDE4F42637A97A0056DE3B /* OAuthService.swift in Sources */,
 				8844B7D9262E723300FA49E9 /* BadgeLabel.swift in Sources */,
 				8844B7D4262DBA3F00FA49E9 /* SideDishes.swift in Sources */,
 			);
@@ -549,6 +533,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		88BDE5092637DC150056DE3B /* XCRemoteSwiftPackageReference "octokit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdishbynature/octokit.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		88BDE50A2637DC150056DE3B /* OctoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88BDE5092637DC150056DE3B /* XCRemoteSwiftPackageReference "octokit" */;
+			productName = OctoKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFCE4947262D4891006C0882 /* Project object */;
 }
