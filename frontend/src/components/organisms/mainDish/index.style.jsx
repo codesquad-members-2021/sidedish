@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const WrapMain = styled.div`
   display: flex;
@@ -8,7 +8,6 @@ const WrapMain = styled.div`
 
 const WrapCarousal = styled.div`
   margin-top: 40px;
-
   display: flex;
 `;
 
@@ -25,8 +24,6 @@ const CardStyle = styled.div`
   display: flex;
   justify-content: center;
   padding: 0px;
-  transition: all 1s;
-  // transform: translate(308px);
   width: 2576px;
   height: 479px;
 `;
