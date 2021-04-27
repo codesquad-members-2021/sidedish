@@ -65,7 +65,7 @@ class SidedishViewController: UIViewController {
             }
         })
         
-        let sectionHeaderRegistration = UICollectionView.SupplementaryRegistration<SectionHeader>(elementKind: SupplementaryElementKind.sectionHeader) { header, kind, indexPath in
+        let sectionHeaderRegistration = UICollectionView.SupplementaryRegistration<SectionHeader>(elementKind: LayoutManager.SupplementaryElementKind.sectionHeader) { header, kind, indexPath in
             guard let sectionKind = Section(rawValue: indexPath.section) else { return }
         
             header.label.text = sectionKind.sectionHeader
@@ -73,7 +73,7 @@ class SidedishViewController: UIViewController {
         
         self.dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             switch kind {
-            case SupplementaryElementKind.sectionHeader:
+            case LayoutManager.SupplementaryElementKind.sectionHeader:
                 return collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderRegistration, for: indexPath)
             default:
                 return nil
@@ -113,22 +113,4 @@ class SidedishViewController: UIViewController {
         snapshot.appendItems(sidedishViewModel.getSideItems(), toSection: .side)
         self.dataSource.apply(snapshot)
     }
-}
-
-enum Section: Int, CaseIterable {
-    case main
-    case soup
-    case side
-    
-    var sectionHeader: String {
-        switch self {
-        case .main: return "모두가 좋아하는 든든한 메인요리"
-        case .soup: return "정성이 담긴 뜨끈뜨끈 국물요리"
-        case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
-        }
-    }
-}
-
-enum SupplementaryElementKind {
-    static let sectionHeader = "supplementary-section-header"
 }

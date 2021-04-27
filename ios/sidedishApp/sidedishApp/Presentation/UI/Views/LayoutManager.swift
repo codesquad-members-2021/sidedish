@@ -8,6 +8,10 @@
 import UIKit
 
 struct LayoutManager {
+    enum SupplementaryElementKind {
+        static let sectionHeader = "supplementary-section-header"
+    }
+    
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
             return createSection()
