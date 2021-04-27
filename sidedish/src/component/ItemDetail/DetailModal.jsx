@@ -22,7 +22,7 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
     );
   });
   if (loading) return <ModalStyle>Loading...</ModalStyle>;
-  if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
+  else if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
   return (
     <ModalStyle>
       <Top>
@@ -45,20 +45,20 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
             {prices.reverse()}
           </div>
           <div className="border">
-            <div className="delivery">
-              <span className="delivery_info">적립금</span>{' '}
-              <span className="delivery_data">{detailData.point}</span>
+            <div className="info">
+              <span className="info_category">적립금</span>{' '}
+              <span className="info_data">{detailData.point}</span>
             </div>
-            <div className="delivery">
-              <div className="delivery_info">배송정보</div>{' '}
-              <div className="delivery_data">{detailData.delivery_info}</div>
+            <div className="info">
+              <div className="info_category">배송정보</div>{' '}
+              <div className="info_data">{detailData.delivery_info}</div>
             </div>
-            <div className="delivery">
-              <span className="delivery_info">배송비</span>{' '}
-              <span className="delivery_data">{detailData.delivery_fee}</span>
+            <div className="info">
+              <span className="info_category">배송비</span>{' '}
+              <span className="info_data">{detailData.delivery_fee}</span>
             </div>
           </div>
-          <div>{/* <span className="delivery_info">수량</span> <span className="">1</span> */}</div>
+          <div>{/* <span className="info_category">수량</span> <span className="">1</span> */}</div>
         </TopRight>
       </Top>
       {/* <Bottom>
@@ -70,7 +70,7 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
 
 export default DetailModal;
 
-const ModalStyle = styled.div`
+export const ModalStyle = styled.div`
   width: 70%;
   height: 90%;
   background-color: white;
@@ -111,20 +111,20 @@ const TopRight = styled.div`
   width: 50%;
   padding: 0 1rem;
 
-  .delivery {
+  .info {
     display: flex;
     margin-bottom: 1rem;
   }
 
-  .delivery:last-child {
+  .info:last-child {
     margin-bottom: 0;
   }
 
-  .delivery_info {
+  .info_category {
     flex: 1;
   }
 
-  .delivery_data {
+  .info_data {
     color: ${({ theme: { colors } }) => colors.darkGray};
     flex: 3;
   }

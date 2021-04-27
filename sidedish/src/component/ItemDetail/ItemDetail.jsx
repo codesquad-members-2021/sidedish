@@ -4,7 +4,7 @@ import usePortal from 'hooks/usePortal';
 import { createPortal } from 'react-dom/cjs/react-dom.development';
 import useFetch from 'hooks/useFetch';
 import { URL } from 'util/data';
-import DetailModal from 'component/ItemDetail/DetailModal';
+import DetailModal, { ModalStyle } from 'component/ItemDetail/DetailModal';
 
 const ItemDetail = ({ id, toggleModal, title, badge }) => {
   const portalElem = usePortal('root');
@@ -17,12 +17,15 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
     url: URL.detail(id),
     parse: parseDetailData,
   });
+  // const modal = detailData ? <div>데이터가 없습니다.</div> : <DetailModal detailData={detailData} loading={loading} title={title} badge={badge}></DetailModal>
 
   if (error) throw Error(error);
   return createPortal(
     <StyleModal>
-      {detailData && (
+      {detailData ? (
         <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
+      ) : (
+        <ModalStyle>데이터가 없습니다.</ModalStyle>
       )}
       <div className="closeBtn" onClick={toggleModal}>
         X
