@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import DishItem from 'component/DishItem/DishItem';
 import { URL } from 'util/data';
 import useFetch from 'hooks/useFetch';
 import Carousel from 'component/Carousel/Carousel';
+import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 
 const SlideDish = ({ category }) => {
+  const ref = useRef();
   const { data: slideData, loading, error } = useFetch({ url: URL[category]() });
   const slideCategory =
     slideData &&
@@ -17,15 +19,27 @@ const SlideDish = ({ category }) => {
   ) : (
     <SlideContainer>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
-      <Carousel
-        itemWidth={324}
-        maxItem={4}
-        skipItem={3}
-        animationTime={0.5}
-        lassName="carouselWrapper"
-      >
-        {slideCategory}
-      </Carousel>
+      <div className="slide_wrapper">
+        <IoChevronBackSharp
+          onClick={() => ref.current.handleClickPrev()}
+          className="leftArrow arrow"
+        />
+        <Carousel
+          ref={ref}
+          itemWidth={324}
+          maxItem={4}
+          skipItem={3}
+          animationTime={0.5}
+          className="carouselWrapper"
+        >
+          {slideCategory}
+        </Carousel>
+
+        <IoChevronForwardSharp
+          onClick={() => ref.current.handleClickNext()}
+          className="rightArrow arrow"
+        />
+      </div>
     </SlideContainer>
   );
 };
@@ -35,8 +49,33 @@ export default SlideDish;
 const SlideContainer = styled.div`
   min-width: 1280px;
   position: relative;
+
+  .arrow {
+    position: absolute;
+    font-size: 2rem;
+    top: 40%;
+  }
+
+  .slide_wrapper {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+  }
+
   .carouselWrapper {
     min-width: 1280px;
+  }
+  .leftArrow {
+    left: -50px;
+  }
+  .leftArrow:hover {
+    color: red;
+  }
+  .rightArrow {
+    right: -50px;
+  }
+  .rightArrow :hover {
+    color: red;
   }
 `;
 

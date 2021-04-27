@@ -114,6 +114,11 @@ export const ModalStyle = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
+
+  .error_center {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Top = styled.div`

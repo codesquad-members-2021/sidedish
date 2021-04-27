@@ -24,7 +24,9 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
       {detailData ? (
         <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
       ) : (
-        <ModalStyle>데이터가 없습니다.</ModalStyle>
+        <ModalStyle>
+          <ErrorStyle>😢불러올 데이터가 없습니다😢</ErrorStyle>
+        </ModalStyle>
       )}
       <div className="closeBtn" onClick={toggleModal}>
         X
@@ -35,6 +37,15 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
 };
 
 export default ItemDetail;
+
+const ErrorStyle = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+`;
 
 const StyleModal = styled.div`
   position: fixed;
