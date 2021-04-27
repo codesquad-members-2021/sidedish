@@ -1,10 +1,13 @@
 package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Dish;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DishResponseDto {
 
     private String id;
+
+    @JsonProperty("image")
     private String mainImage;
     private String alt;
     private String deliveryType;
