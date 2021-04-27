@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Arrow from 'components/icons/Arrow';
 
 const Carousel = ({
-  dishList,
+  children,
   options: {
     panelCount,
     animation: { target, time, effect },
@@ -32,7 +32,7 @@ const Carousel = ({
 
   const moveLeft = (outBoxWidth) => {
     if (position >= 0) return;
-    const defaultCardCount = dishList.length - panelCount;
+    const defaultCardCount = children.length - panelCount;
     if (restCardCount + panelCount > defaultCardCount) {
       setRestCardCount(defaultCardCount);
       return setPosition(0);
@@ -43,14 +43,14 @@ const Carousel = ({
 
   useEffect(() => {
     if (restCardCount !== null) return;
-    dishList && setRestCardCount(dishList.length - panelCount);
-  }, [dishList, panelCount, restCardCount]);
+    setRestCardCount(children.length - panelCount);
+  }, [children, panelCount, restCardCount]);
 
   return (
     <CarouselStyled>
       <OutBox ref={outBoxRef}>
         <Items position={position} animation={{ time, effect, target }}>
-          {dishList}
+          {children}
         </Items>
       </OutBox>
       <Arrow
