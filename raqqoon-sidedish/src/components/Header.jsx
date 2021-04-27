@@ -50,6 +50,9 @@ const Logo = styled.div`
 `;
 
 const NavRight = styled.div`
+  display: flex;
+  align-items: center;
+
   input {
     width: 15.5rem;
     height: 2.5rem;
