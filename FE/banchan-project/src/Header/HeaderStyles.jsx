@@ -5,6 +5,7 @@ const Header = styled.div`
   position: relative;
   padding: 32px 80px;
   height: 132px;
+  width: 1440px;
 `;
 const Logo = styled.div`
   height: 58px;
