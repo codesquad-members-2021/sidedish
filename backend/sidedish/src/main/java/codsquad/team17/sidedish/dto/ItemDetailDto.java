@@ -4,6 +4,7 @@ import codsquad.team17.sidedish.domain.Item;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ItemDetailDto {
     private int deliveryFee = 2500;
 
     @JsonProperty("delivery_description")
-    private String deliveryDescription = "2,500원 (40,000원 이상 구매 시 무료)";
+    private String deliveryDescription = "(40,000원 이상 구매 시 무료)";
 
     private int stock;
 
@@ -115,7 +116,7 @@ public class ItemDetailDto {
     }
 
     private List<String> parseByComma(String badge) {
-        return Arrays.asList(badge.split(", "));
+        return badge.equals("") ? new ArrayList<>() : Arrays.asList(badge.split(", "));
     }
 
     private int calculatePoint(int normalPrice) {

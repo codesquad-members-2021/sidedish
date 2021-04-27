@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
-@JsonPropertyOrder({"item_id", "title", "image", "price","url"})
+@JsonPropertyOrder({"item_id", "title", "image", "price","detail_url"})
 public class RecommandedItemDto {
-    private static final String URL = "";
+    private static final String URL = "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/";
 
     @JsonProperty("item_id")
     private final Long itemId;
@@ -19,8 +19,8 @@ public class RecommandedItemDto {
 
     private final int price;
 
-    @JsonProperty("url")
-    private final String itemUrl;
+    @JsonProperty("detail_url")
+    private final String detailUrl;
 
     public RecommandedItemDto (Item entity, Image image) {
         this.itemId = entity.getItemId();
@@ -28,7 +28,7 @@ public class RecommandedItemDto {
         this.image = image.getUrl();
 
         this.price = entity.getNormalPrice().intValue();
-        this.itemUrl = URL + URL + "/dish" + "/detail" + "/" + itemId;
+        this.detailUrl = URL + URL + "/dish" + "/detail" + "/" + itemId;
     }
 
     public static String getURL() {
@@ -51,7 +51,7 @@ public class RecommandedItemDto {
         return price;
     }
 
-    public String getItemUrl() {
-        return itemUrl;
+    public String getDetailUrl() {
+        return detailUrl;
     }
 }

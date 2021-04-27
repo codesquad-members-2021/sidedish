@@ -26,9 +26,9 @@ VALUES ('[애슐리투고] 로스트 콤보 450 g', '립과 치킨이 만나 더
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
 VALUES ('[한옥집] 소갈비김치찜 2 인분', '부드러운 소갈비와 함께 푹 쪄낸 김치찜 !', 16500, 14850, 1, 2, 9, '이벤트특가');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
-VALUES ('[동네부엌] 사계절 건강식단 작은상', '마포엄마들이 사랑해온 건강반찬', 24000, 24000, 1, 3, 10, '베스트');
+VALUES ('[동네부엌] 사계절 건강식단 작은상', '마포엄마들이 사랑해온 건강반찬', 24000, 24000, 1, 3, 10, '');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
-VALUES ('[집밥의완성] 한상 가득 세트 (3 ~ 4 인)', '식단 정기배송으로 반찬고민 끝', 32000, 32000, 1, 3, 8, '베스트');
+VALUES ('[집밥의완성] 한상 가득 세트 (3 ~ 4 인)', '식단 정기배송으로 반찬고민 끝', 32000, 32000, 1, 3, 8, '');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
 VALUES ('[옹가솜씨] 한끼뚝딱세트', '한 세트만 있으면 한 끼 뚝딱', 19500, 17500, 1, 3, 5, '이벤트특가');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
@@ -116,7 +116,7 @@ INSERT INTO image(url, item_id) VALUES ('https://lh3.googleusercontent.com/proxy
 INSERT INTO image(url, item_id) VALUES ('https://m.yorivery.com/data/goods/19/07/30//1000000783/1000000783_detail_177.jpg',6);
 INSERT INTO image(url, item_id) VALUES ('https://cdn.lightning-ashe.com/wp-content/uploads/2017/10/DSC02028.jpg',6);
 INSERT INTO image(url, item_id) VALUES ('https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F99BE484D5C5FEA291891B7',6);
-INSERT INTO image(url, item_id) VALUES ('https://lh3.googleusercontent.com/proxy/HP-YM9za54z3ErrfbKXrTjpt7dtTdhLAvHU1XNlOIYOUM2E5ElYB24zcXkFsyAzBhYhmgIT2c7Hw8crnfOsXpyd1HkeaoICijxNSIZYSZV_9eRkZpMOR88oz2hwCnSKt9g',7);
+INSERT INTO image(url, item_id) VALUES ('https://lh3.googleusercontent.com/proxy/HP-https://upload.wikimedia.org/wikipedia/commons/1/10/Banchan_2.jpg',7);
 INSERT INTO image(url, item_id) VALUES ('http://mydinner.co.kr/web/product/big/201809/f66fcfa2cc6c85f6ae486a29f5979b9b.jpg',7);
 INSERT INTO image(url, item_id) VALUES ('http://mydinner.co.kr/web/product/big/201809/24b0a19ca5b137d4d046701829a7d9c8.jpg',7);
 INSERT INTO image(url, item_id) VALUES ('https://recipe1.ezmember.co.kr/cache/recipe/2017/07/10/24502c34ab4f7fe1af89e7a0225a52dc1.jpg',7);

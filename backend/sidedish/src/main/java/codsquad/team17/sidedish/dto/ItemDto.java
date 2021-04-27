@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price", "badge", "image", "delivery_type"})
+@JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price",
+        "badge", "image", "delivery_type", "detail_url"})
 public class ItemDto {
+    private static final String URL = "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/";
+
     @JsonProperty("item_id")
     private final Long itemId;
     private final String title;
@@ -23,12 +26,15 @@ public class ItemDto {
     private final int salePrice;
 
     @JsonProperty("delivery_type")
-    private List<String> deliveryType = Arrays.asList(new String[] {"전국택배, 새벽배송"});
+    private List<String> deliveryType = Arrays.asList(new String[] {"새벽배송", "전국택배"});
 
     @JsonProperty("badge")
     private List<String> badges;
 
     private String image;
+
+    @JsonProperty("detail_url")
+    private String detailUrl;
 
     public ItemDto(Item item, Image image) {
         this.itemId = item.getItemId();
@@ -36,8 +42,9 @@ public class ItemDto {
         this.description = item.getDescription();
         this.normalPrice = item.getNormalPrice().intValue();
         this.salePrice = item.getSalePrice().intValue();
-        this.badges = parseBadge(item.getBadge());
+        this.badges = parseByComma(item.getBadge());
         this.image = image.getUrl();
+        this.detailUrl = URL + URL + "/dish" + "/detail" + "/" + itemId;
     }
 
     public Long getItemId() {
@@ -72,11 +79,8 @@ public class ItemDto {
         return image;
     }
 
-    private List<String> parseBadge(String badge) {
-        if(badge.equals("")) {
-            return new ArrayList<>();
-        }
-
-        return Arrays.asList(badge.split(", "));
+    private List<String> parseByComma(String badge) {
+        return badge.equals("") ? new ArrayList<>() : Arrays.asList(badge.split(", "));
     }
+
 }
