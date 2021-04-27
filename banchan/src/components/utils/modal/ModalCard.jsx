@@ -40,21 +40,32 @@ const ModalCard = ({ product }) => {
       <DivForScroll>
         <CardContent>
           <ProductImage imageUrl={productImg} thumbnailList={thumbnailList} />
-          <ProductInformation {...{ product, getTotalPrice, increaseCount, decreaseCount, count }} />
+          <ProductInformation
+            {...{ product, getTotalPrice, increaseCount, decreaseCount, count }}
+          />
         </CardContent>
 
         <RecommendCarouselSection>
-          <RecommendCarouselTitle>함께하면 더욱 맛있는 상품</RecommendCarouselTitle>
+          <RecommendCarouselTitle>
+            함께하면 더욱 맛있는 상품
+          </RecommendCarouselTitle>
           <JennyCarousel
             SLIDE_WIDTH={160}
             SLIDE_HEIGHT={300}
             BACKGROUND_COLOR={theme.colors.lightGrayBG}
-            BUTTON_SIZE={30}
+            BUTTON_SIZE={20}
             NUM_OF_DATAS={mockData.length}
-            NUM_OF_SLIDES={4} // 수정 예정
+            NUM_OF_SLIDES={5} // 수정 예정
+            BUTTON_TYPE={"VERTICAL"}
+            SLIDE_MARGIN={8}
           >
             {mockData.map((item) => (
-              <Card key={item.detail_hash} product={item} cardSize={(props) => props.theme.cardSizes.S} margin={5} />
+              <Card
+                key={item.detail_hash}
+                product={item}
+                cardSize={(props) => props.theme.cardSizes.S}
+                margin={8}
+              />
             ))}
           </JennyCarousel>
         </RecommendCarouselSection>
@@ -104,6 +115,7 @@ const Thumbnail = styled.img`
 
 const RecommendCarouselSection = styled.div`
   // border: 1px solid red;
+  position: relative;
   height: 386px;
   justify-content: center;
   flex-direction: column;
@@ -114,6 +126,9 @@ const RecommendCarouselSection = styled.div`
 
 const RecommendCarouselTitle = styled.div`
   // border: 1px solid red;
+  position: absolute;
+  top: 48px;
+  left: 48px;
   margin-bottom: 32px;
   font-size: ${(props) => props.theme.fontSizes.L};
 `;
