@@ -16,8 +16,8 @@ public class Category {
 
     private final String name;
 
-    @MappedCollection(idColumn = "CATEGORY_ID", keyColumn = "ITEM_ID") // 명시적
-    private Map<String, Item> items = new HashMap<>();  //m 질문 Map의 Key 형태인 String은 Item을 구별하기 위한 식별자? 커스텀이아니고 명명규칙이 맞다면 keyColumn은 따로 안해줘도되는지?
+    @MappedCollection(idColumn = "CATEGORY_ID", keyColumn = "ITEM_ID")
+    private Map<String, Item> items = new HashMap<>();
 
     @PersistenceConstructor
     private Category(Long id, String name) {
@@ -30,13 +30,13 @@ public class Category {
     }
 
     public void addItem(Item item) {
-        if(!items.containsValue(item)) {
-            this.items.put(item.getId(),item);
+        if (!items.containsValue(item)) {
+            this.items.put(item.getId(), item);
         }
     }
 
-    public Item findItem(Long id){
-       return items.get(id);
+    public Item findItem(Long id) {
+        return items.get(id);
     }
 
     public void removeItem(Item item) {
@@ -55,8 +55,8 @@ public class Category {
         return items;
     }
 
-    public void update(Item item){
-        this.items.replace(item.getId(),item);
+    public void update(Item item) {
+        this.items.replace(item.getId(), item);
     }
 
 }

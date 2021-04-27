@@ -1,7 +1,5 @@
 package com.example.dto.Detail;
 
-import java.util.Arrays;
-
 public class RequestDataDto {
     public String top_image;
     public String[] thumb_images;
@@ -44,17 +42,4 @@ public class RequestDataDto {
         return detail_section;
     }
 
-    @Override
-    public String toString() {
-        return "RequestDataDto{" +
-                "top_image='" + top_image + '\'' +
-                ", thumb_images=" + Arrays.toString(thumb_images) +
-                ", product_description='" + product_description + '\'' +
-                ", point='" + point + '\'' +
-                ", delivery_info='" + delivery_info + '\'' +
-                ", delivery_fee='" + delivery_fee + '\'' +
-                ", prices=" + Arrays.toString(prices) +
-                ", detail_section=" + Arrays.toString(detail_section) +
-                '}';
-    }
 }
