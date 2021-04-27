@@ -4,7 +4,6 @@ import axios from "axios";
 import Carousel from "../Main/Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
 import CarouselButton from "../Main/CarouselButton";
-
 const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const [soup, setSoup] = useState([]);
   const [side, setSide] = useState([]);
@@ -13,27 +12,27 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const sideImageRef = useRef();
   const soupRef = useRef();
   const sideRef = useRef();
-
   useEffect(() => {
     const fetchData = async () => {
       const soupData = await axios(URL + "soup").then((res) => res.data.body);
       const sideData = await axios(URL + "side").then((res) => res.data.body);
-      setSoup(soupData.concat(soupData));
-      setSide(sideData.concat(sideData));
+      setSoup(soupData);
+      setSide(sideData);
     };
     fetchData();
   }, []); // eslint-disable-line
-
   const randerImage = () => {
     rander ? setRander(false) : setRander(true);
   };
-
   const soupSlide = (e) => {
-    soupRef.current.Slider(e);
+    e.target.classList.contains("Left")
+      ? soupRef.current.Slider(1)
+      : soupRef.current.Slider(-1);
   };
-
   const sideSlide = (e) => {
-    sideRef.current.Slider(e);
+    e.target.classList.contains("Left")
+      ? sideRef.current.Slider(1)
+      : sideRef.current.Slider(-1);
   };
 
   return (
