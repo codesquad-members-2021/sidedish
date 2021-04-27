@@ -29,45 +29,44 @@ public class SampleDataFactory {
     }
 
     public static List<SidedishDTO> createBestSidedishes() {
-        return jsonToObject(JSON_PATH_PREFIX + "best-sidedishes" + JSON_EXTENSION, new TypeReference<List<SidedishDTO>>() {
+        return jsonToObject("best-sidedishes", new TypeReference<List<SidedishDTO>>() {
         });
     }
 
     public static List<ItemDTO> createMainSidedishes() {
-        return createItemDtoListBy("main-sidedishes");
+        return jsonToObject("main-sidedishes", new TypeReference<List<ItemDTO>>() {
+        });
     }
 
     public static List<ItemDTO> createCourseSidedishes() {
-        return createItemDtoListBy("course-sidedishes");
+        return jsonToObject("course-sidedishes", new TypeReference<List<ItemDTO>>() {
+        });
     }
 
     public static List<ItemDTO> createSoupSidedishes() {
-        return createItemDtoListBy("soup-sidedishes");
+        return jsonToObject("soup-sidedishes", new TypeReference<List<ItemDTO>>() {
+        });
     }
 
     public static List<ItemDTO> createSideSidedishes() {
-        return createItemDtoListBy("side-sidedishes");
+        return jsonToObject("side-sidedishes", new TypeReference<List<ItemDTO>>() {
+        });
     }
 
     public static Map<String, DetailDTO> createDetails() {
-        List<DetailDTO> detailDTOs = jsonToObject(JSON_PATH_PREFIX + "details" + JSON_EXTENSION, new TypeReference<List<DetailDTO>>() {
+        List<DetailDTO> detailDTOs = jsonToObject("details", new TypeReference<List<DetailDTO>>() {
         });
 
         return detailDTOs.stream().collect(Collectors.toMap(DetailDTO::getHash, detailDTO -> detailDTO));
     }
 
-    private static List<ItemDTO> createItemDtoListBy(String sidedishName) {
-        return jsonToObject(JSON_PATH_PREFIX + sidedishName + JSON_EXTENSION, new TypeReference<List<ItemDTO>>() {
-        });
-    }
-
-    private static <E> E jsonToObject(String jsonFilePath, TypeReference<E> typeReference) {
-        try (InputStream is = new ClassPathResource(jsonFilePath).getInputStream()) {
+    private static <E> E jsonToObject(String jsonFileName, TypeReference<E> typeReference) {
+        try (InputStream is = new ClassPathResource(JSON_PATH_PREFIX + jsonFileName + JSON_EXTENSION).getInputStream()) {
             return objectMapper.readValue(is, typeReference);
         } catch (JsonParseException e) {
-            throw new NotParsingJsonFileException(jsonFilePath, e);
+            throw new NotParsingJsonFileException(JSON_PATH_PREFIX + jsonFileName + JSON_EXTENSION, e);
         } catch (IOException e) {
-            throw new NotReadJsonFileException(jsonFilePath, e);
+            throw new NotReadJsonFileException(JSON_PATH_PREFIX + jsonFileName + JSON_EXTENSION, e);
         }
     }
 }
