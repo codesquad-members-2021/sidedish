@@ -9,4 +9,7 @@ import UIKit
 
 class DetailScrollView: UIScrollView {
 
+    @IBOutlet weak var thumbnailScrollView: UIScrollView!
+    @IBOutlet weak var thumnailImage: UIImageView!
+    
 }

@@ -10,6 +10,8 @@ import UIKit
 class DetailMenuViewController: UIViewController {
 
     private var detailHash: String?
+    @IBOutlet weak var detailScrollView: DetailScrollView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
