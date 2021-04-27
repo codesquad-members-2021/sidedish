@@ -1,18 +1,18 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-import CarouselItem from './CarouselItem.js';
-import CarouselEventModal from './CarouselEventModal.js';
-import * as CarouselNavigator from './CarouselNavigator';
+import CarouselItem from 'Components/Carousel/CarouselItem.js';
+import CarouselEventModal from 'Components/Carousel/CarouselEventModal.js';
+import * as CarouselNavigator from 'Components/Carousel/CarouselNavigator';
 
-import useCarousel from './hooks/useCarousel';
+import useCarousel from 'Components/Carousel/hooks/useCarousel';
 
-const CarouselContainer = ({navigator="default", unit=1, ...props}) => {
+const CarouselContainer = ({ navigator = "default", unit = 1, ...props }) => {
 
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
-  
-  const { 
+
+  const {
     useNavigator, useEventModal,
     calculatedMovableRange, itemWidth
   } = useCarousel({ $CarouselAreaWrapper, $CarouselArea, unit, itemLength: props.children.length })
@@ -27,9 +27,9 @@ const CarouselContainer = ({navigator="default", unit=1, ...props}) => {
         </CarouselArea>
       </CarouselAreaWrapper>
       {
-        navigator === "default" 
-        ? <CarouselNavigator.Default useNavigator={useNavigator} /> 
-        : <CarouselNavigator.Upper useNavigator={useNavigator}/>
+        navigator === "default"
+          ? <CarouselNavigator.Default useNavigator={useNavigator} />
+          : <CarouselNavigator.Upper useNavigator={useNavigator} />
       }
       <CarouselEventModal useEventModal={useEventModal} />
     </CarouselLayout>

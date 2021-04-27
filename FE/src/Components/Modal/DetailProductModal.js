@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-
 import styled from 'styled-components';
-import closeImage from '../../images/close.svg';
-import LeftSide from './LeftSide/LeftSide';
-import RightSide from './RightSide/RightSide';
-import BottomSide from './BottomSide/BottomSide';
-import useToggle from '../../util/hooks/useToggle';
-import preparingProduct from '../../images/preparingProduct.png';
+import closeImage from 'images/close.svg';
+import LeftSide from 'Components/Modal//LeftSide/LeftSide';
+import RightSide from 'Components/Modal/RightSide/RightSide';
+import BottomSide from 'Components/Modal/BottomSide/BottomSide';
+import useToggle from 'util/hooks/useToggle';
+import preparingProduct from 'images/preparingProduct.png';
 
 const DetailProductModal = ({ modalState }) => {
   const [isHide, setHide] = useToggle(true);
@@ -28,7 +27,7 @@ const DetailProductModal = ({ modalState }) => {
                   <RightSide {...modalState} /></>
               )}
             </TopSide>
-            {!isHide && <BottomSide /> }
+            {!isHide && <BottomSide />}
           </div>
         }
 

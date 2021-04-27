@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Thumbnail from './Thumbnail';
-import SmallThumbnail from './SmallThumbnail';
+import Thumbnail from 'Components/Modal/LeftSide/Thumbnail';
+import SmallThumbnail from 'Components/Modal/LeftSide/SmallThumbnail';
 
 const LeftSide = ({ thumb_images }) => {
   const [thumbnailSource, setThumbnailSource] = useState('');

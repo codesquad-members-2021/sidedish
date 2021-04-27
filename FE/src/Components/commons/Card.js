@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import preparingImage from '../../images/preparingImage.jpg';
-import SpecialLabelTag from './SpecialLabelTag';
-import ResponsiveCard from './Cards/ResponsiveCard.js';
-import API from '../../util/API';
-import { formatPriceAsNumber } from '../../util/serviceUtils';
+import preparingImage from 'images/preparingImage.jpg';
+import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
+import ResponsiveCard from 'Components/commons/Cards/ResponsiveCard.js';
+import API from 'util/API';
+import { formatPriceAsNumber } from 'util/serviceUtils';
 
 const Card = ({ type = "default", number, item, setModalState }) => {
   switch (type) {
