@@ -7,10 +7,15 @@
 
 import Foundation
 
+struct DishesListViewModelActions {
+    let showDishDetails: (Dish) -> Void
+}
+
 protocol DishesViewModelInput {
     func load()
     func loadByDB()
     func getNumberOfItems() -> Int
+    func didSelectItem(at index: Int)
 }
 
 protocol DishesViewModelOutput {
@@ -22,6 +27,7 @@ protocol DishesViewModel: DishesViewModelInput, DishesViewModelOutput { }
 
 final class DefaultDishesViewModel: DishesViewModel {
     private let fetchDishesUseCase: FetchDishesUseCase
+    private let actions: DishesListViewModelActions?
     
     //MARK: - Output
     var category: Observable<Categorizable>
@@ -29,9 +35,11 @@ final class DefaultDishesViewModel: DishesViewModel {
     
     //MARK: - Init
     init(fetchDishesUseCase: FetchDishesUseCase,
-         category: Observable<Categorizable>) {
+         category: Observable<Categorizable>,
+         actions: DishesListViewModelActions? = nil) {
         self.fetchDishesUseCase = fetchDishesUseCase
         self.category = category
+        self.actions = actions
     }
 }
 
@@ -45,6 +53,7 @@ extension DefaultDishesViewModel {
             switch result {
             
             case .success(let items):
+                //self.dishes = items.dishes
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
                 //이곳에서 DB에 add를 할것이다.
                 realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.value.name)
@@ -63,5 +72,9 @@ extension DefaultDishesViewModel {
     
     func getNumberOfItems() -> Int {
         items.value.count
+    }
+    
+    func didSelectItem(at index: Int) {
+        actions?.showDishDetails(items.value[index].dish)
     }
 }

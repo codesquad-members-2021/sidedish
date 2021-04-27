@@ -37,6 +37,7 @@ class MainPageViewController: UIViewController {
         }                
         
         mainPageDataSource?.viewModels = viewModels
+        mainPageDelegate?.viewModels = viewModels
         
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
@@ -64,7 +65,8 @@ class MainPageViewController: UIViewController {
     
     func makeDishesViewModel(category: Categorizable) -> DishesViewModel {
         let category = Observable(category)
-        return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
+        let actions = DishesListViewModelActions(showDishDetails: showDishDetails)
+        return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category, actions: actions)
     }
     
     private func registerXib() {
@@ -87,5 +89,11 @@ class MainPageViewController: UIViewController {
     
     private func updateItems() {
         dishCollectionView.reloadData()
+    }
+    
+    private func showDishDetails(dish: Dish) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailPageVC = storyboard.instantiateViewController(identifier: "detailPageVC")
+        navigationController?.pushViewController(detailPageVC, animated: true)
     }
 }

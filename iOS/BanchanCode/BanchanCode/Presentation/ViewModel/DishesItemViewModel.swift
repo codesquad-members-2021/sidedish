@@ -10,7 +10,7 @@ import Foundation
 struct DishesItemViewModel {
     let dish: Dish
     
-    init(dish:Dish) {
+    init(dish: Dish) {
         self.dish = dish
     }
 }

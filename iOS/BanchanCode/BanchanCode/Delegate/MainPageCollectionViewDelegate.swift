@@ -8,6 +8,7 @@
 import UIKit
 
 class MainPageCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    var viewModels: [DishesViewModel]!
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width - 32.0, height: 130.0)
@@ -17,5 +18,9 @@ class MainPageCollectionViewDelegate: NSObject, UICollectionViewDelegate, UIColl
         let width: CGFloat = collectionView.frame.width
         let height: CGFloat = 32.0
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModels[indexPath.section].didSelectItem(at: indexPath.row)
     }
 }
