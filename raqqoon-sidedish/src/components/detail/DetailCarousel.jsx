@@ -7,7 +7,7 @@ const DetailCarousel = ({ detailSection }) => {
   // console.log(detailSection);
   return (
     <DetailCarouselDiv>
-      <Carousel path={'side'} ITEM_NUMBER={3} />
+      <Carousel path={'side'} panelCount={3} />
     </DetailCarouselDiv>
   );
 };

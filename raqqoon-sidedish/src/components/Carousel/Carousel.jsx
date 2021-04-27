@@ -42,6 +42,7 @@ const Carousel = ({
   const moveRight = (outBoxWidth) => {
     if (restCardCount === 0) return;
     if (restCardCount < panelCount) {
+      setRestCardCount(0);
       return setPosition(position - (outBoxWidth / panelCount) * restCardCount);
     }
     setRestCardCount((cardCount) => cardCount - panelCount);
@@ -49,12 +50,11 @@ const Carousel = ({
   };
 
   const moveLeft = (outBoxWidth) => {
-    if (position === 0) return;
-    if (restCardCount > dishList.length) {
-      const itemToMove = restCardCount - dishList.length;
-      return setPosition(
-        position + (outBoxWidth / panelCount) * (panelCount - itemToMove)
-      );
+    if (position >= 0) return;
+    const defaultCardCount = dishList.length - panelCount;
+    if (restCardCount + panelCount > defaultCardCount) {
+      setRestCardCount(defaultCardCount);
+      return setPosition(0);
     }
     setRestCardCount((cardCount) => cardCount + panelCount);
     setPosition(position + outBoxWidth);
