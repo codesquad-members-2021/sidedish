@@ -1,6 +1,4 @@
-import { useState } from "react";
 import * as S from "../../BestItemsStyles";
-import * as CS from "../../../Styles/commonStyles";
 
 import BestItemsCardImage from "./BestItemsCardImage";
 import BestItemsCardTitle from "./BestItemsCardTitle";
@@ -10,11 +8,24 @@ import BestItemsCardNPrice from "./BestItemsCardNPrice";
 import BestItemsCardSPrice from "./BestItemsCardSPrice";
 
 const BestItemsCard = ({ item }) => {
-  const { id, image, title, description, s_price, n_price, badge } = item;
+  if (!item) return null;
+  const {
+    id,
+    image,
+    title,
+    description,
+    s_price,
+    n_price,
+    badge,
+    delivery_type,
+  } = item;
 
   return (
     <S.BestItemsCard id={id}>
-      <BestItemsCardImage {...{ image }}></BestItemsCardImage>
+      <BestItemsCardImage
+        image={image}
+        delivery={delivery_type}
+      ></BestItemsCardImage>
       <BestItemsCardTitle {...{ title }}></BestItemsCardTitle>
 
       <BestItemsCardDescription {...{ description }}></BestItemsCardDescription>

@@ -3,8 +3,8 @@ import * as CS from "../Styles/commonStyles";
 import theme from "../Styles/theme";
 
 const TotalCategoryButton = styled.button`
-  position: absolute;
-  left: 0;
+  /* position: absolute; */
+  /* left: 0; */
   border: none;
   outline: none;
 
@@ -13,9 +13,11 @@ const TotalCategoryButton = styled.button`
 
   background: ${theme.boxColors.GRAY6};
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 `;
 
 const MainItemsWrapper = styled.div`
+  position: relative;
   width: 1280px;
 `;
 
@@ -51,14 +53,16 @@ const MainItemsCardNPriceWrapper = styled.div`
 
 const LeftButtonWrapper = styled.div`
   position: absolute;
-  top: 10%;
-  left: 0%;
+  top: 50%;
+  left: -5%;
+  cursor: pointer;
 `;
 
 const RightButtonWrapper = styled.div`
   position: absolute;
-  top: 10%;
-  right: 0%;
+  top: 50%;
+  right: -5%;
+  cursor: pointer;
 `;
 
 export {

@@ -4,11 +4,12 @@ import BestItemsTitle from "./BestItemsTitle";
 import BestItemsTab from "./BestItemsUI/BestItemsTab/BestItemsTab";
 import BestItemsCardWrapper from "./BestItemsUI/BestItemsCardWrapper";
 
-const URL = "/dish/best"; //백엔드 데이터
+const URL = "/dish/best";
+
 const BestItems = () => {
   const [titleList, setTitleList] = useState([]);
   const [bestItemsData, setBestItemsData] = useState({});
-  // 스윙 util로 적용
+
   const getTitleListData = async () => {
     const rawData = await fetch(URL).then(res => res.json());
 
@@ -18,7 +19,6 @@ const BestItems = () => {
     }, []);
   };
 
-  // 스윙 util로 적용
   const getBestItemsData = async id => {
     const rawData = await fetch(`${URL}/${id}`).then(res => res.json());
     return rawData;
@@ -36,11 +36,11 @@ const BestItems = () => {
     });
   }, []);
 
-  // if (!bestItemsData) return null;
+  if (!bestItemsData) return null;
 
   return (
     <S.BestItems>
-      <BestItemsTitle></BestItemsTitle>
+      <BestItemsTitle />
       <BestItemsTab {...{ titleList, setBestItemsData }}></BestItemsTab>
       <BestItemsCardWrapper {...{ bestItemsData }}></BestItemsCardWrapper>
     </S.BestItems>
