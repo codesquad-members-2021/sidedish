@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price", "badge", "main_image", "thumb_images", "point", "delivery_info"
-, "delivery_fee", "delivery_description", "stock", "recommanded"})
+, "delivery_fee", "delivery_description", "stock", "recommended"})
 public class ItemDetailDto {
 
     @JsonProperty("item_id")
@@ -43,10 +43,10 @@ public class ItemDetailDto {
 
     private int stock;
 
-    @JsonProperty("recommanded")
-    private List<RecommandedItemDto> recommandedItems;
+    @JsonProperty("recommended")
+    private List<RecommendedItemDto> recommendedItems;
 
-    public ItemDetailDto(Item item, List<String> thumbImages, List<RecommandedItemDto> recommandedItems) {
+    public ItemDetailDto(Item item, List<String> thumbImages, List<RecommendedItemDto> recommendedItems) {
         this.itemId = item.getItemId();
         this.title = item.getTitle();
         this.description = item.getDescription();
@@ -60,7 +60,7 @@ public class ItemDetailDto {
         this.mainImage = thumbImages.get(0);
         this.thumbImages = thumbImages;
 
-        this.recommandedItems = recommandedItems;
+        this.recommendedItems = recommendedItems;
     }
 
     public Long getItemId() {
@@ -111,8 +111,8 @@ public class ItemDetailDto {
         return stock;
     }
 
-    public List<RecommandedItemDto> getRecommandedItems() {
-        return recommandedItems;
+    public List<RecommendedItemDto> getRecommendedItems() {
+        return recommendedItems;
     }
 
     private List<String> parseByComma(String badge) {

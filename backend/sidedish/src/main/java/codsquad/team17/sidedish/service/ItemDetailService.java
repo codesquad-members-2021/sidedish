@@ -2,7 +2,7 @@ package codsquad.team17.sidedish.service;
 
 import codsquad.team17.sidedish.domain.Item;
 import codsquad.team17.sidedish.dto.ItemDetailDto;
-import codsquad.team17.sidedish.dto.RecommandedItemDto;
+import codsquad.team17.sidedish.dto.RecommendedItemDto;
 import codsquad.team17.sidedish.repository.ImageRepository;
 import codsquad.team17.sidedish.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -26,8 +26,8 @@ public class ItemDetailService {
         List<String> imageUrls = imageRepository.findUrlByItemId(itemId);
 
         List<Item> items = itemRepository.findAll();
-        List<RecommandedItemDto> list = items.stream().map(item1 ->
-                new RecommandedItemDto(item1, imageRepository.findTopImageByItemId(item1.getItemId())
+        List<RecommendedItemDto> list = items.stream().map(item1 ->
+                new RecommendedItemDto(item1, imageRepository.findTopImageByItemId(item1.getItemId())
                         .orElseThrow(RuntimeException::new)))
                 .collect(Collectors.toList());
 
