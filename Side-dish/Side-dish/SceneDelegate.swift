@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        rootViewController.oAuthService = OAuthService(oauthClient: LocalOauthClient())
+        
         window = UIWindow(frame: screen.coordinateSpace.bounds)
         window?.windowScene = screen
         window?.rootViewController = UINavigationController(rootViewController: rootViewController)
