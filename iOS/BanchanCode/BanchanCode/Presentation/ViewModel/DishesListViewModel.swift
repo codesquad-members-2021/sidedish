@@ -9,6 +9,7 @@ import Foundation
 
 protocol DishesListViewModelInput {
     func load(category: Categorizable)
+    func getNumberOfItems() -> Int
 }
 
 protocol DishesListViewModelOutput {
@@ -45,5 +46,9 @@ extension DefaultDishesListViewModel {
                 break
             }
         })
+    }
+    
+    func getNumberOfItems() -> Int {
+        items.value.count
     }
 }

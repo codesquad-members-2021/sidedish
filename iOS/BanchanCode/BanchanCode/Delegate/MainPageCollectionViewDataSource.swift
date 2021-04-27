@@ -15,7 +15,7 @@ class MainPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels[section].items.value.count
+        return viewModels[section].getNumberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -27,7 +27,7 @@ class MainPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.reuseIdentifier, for: indexPath) as! SectionHeaderView
         headerView.fill(with: viewModels[indexPath.section])
-        headerView.countOfMenus = viewModels[indexPath.section].items.value.count
+        headerView.countOfMenus = viewModels[indexPath.section].getNumberOfItems()
         
         return headerView
     }
