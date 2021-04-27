@@ -21,4 +21,18 @@ class NetworkManager {
                 }
             }
     }
+    
+    func updateThumbImage(imageURL: String, completion: @escaping (Data) -> Void) {
+        AF.request(imageURL, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    completion(data)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    break
+                }
+            }
+    }
 }

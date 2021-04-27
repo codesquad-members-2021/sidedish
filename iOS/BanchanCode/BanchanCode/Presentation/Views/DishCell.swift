@@ -19,7 +19,7 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var badgeLabel: UILabel!
     
     static let reuseIdentifier = String(describing: DishCell.self)
-    var viewModel: DishesListItemViewModel!
+    let networkManager = NetworkManager()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,9 +32,7 @@ class DishCell: UICollectionViewCell {
     }
     
     func fill(with viewModel: DishesListItemViewModel) {
-        self.viewModel = viewModel
-        
-        updateThumbImage { imageData in
+        networkManager.updateThumbImage(imageURL: viewModel.imageURL) { imageData in
             DispatchQueue.main.async {
                 self.thumbnailImageView.image = UIImage(data: imageData)
             }
@@ -55,21 +53,5 @@ class DishCell: UICollectionViewCell {
         if badges.count > 0 {
             badgeLabel.text = badges[0]
         }
-    }
-    
-    func updateThumbImage(completion: @escaping (Data) -> Void) {
-        thumbnailImageView.image = nil
-        
-        AF.request(viewModel.imageURL, method: .get)
-            .validate(statusCode: 200..<300)
-            .responseData { (response) in
-                switch response.result {
-                case .success(let data):
-                    completion(data)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    break
-                }
-            }
     }
 }
