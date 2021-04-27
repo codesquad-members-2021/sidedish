@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.SideDish.domain.image;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
 public class DishImage {
@@ -7,6 +8,7 @@ public class DishImage {
     private Long id;
 
     private String dish;
+
     private Long image;
 
     public DishImage(String dish, Long image) {

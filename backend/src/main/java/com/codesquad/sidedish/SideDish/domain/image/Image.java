@@ -2,6 +2,9 @@ package com.codesquad.sidedish.SideDish.domain.image;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Image {
 
     @Id
@@ -10,6 +13,8 @@ public class Image {
     private String imageUrl;
 
     private String type;
+
+    private Set<DishImage> dishImages = new HashSet<>();
 
     protected Image() {
     }
@@ -30,6 +35,10 @@ public class Image {
 
     public String getType() {
         return type;
+    }
+
+    public Set<DishImage> getDishImages() {
+        return dishImages;
     }
 
 }

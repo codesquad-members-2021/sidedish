@@ -1,5 +1,6 @@
 package com.codesquad.sidedish.SideDish.domain.delivery;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
 public class DishDelivery {
@@ -8,6 +9,7 @@ public class DishDelivery {
     private Long id;
 
     private String dish;
+
     private Long delivery;
 
     public DishDelivery(String dish, Long delivery) {

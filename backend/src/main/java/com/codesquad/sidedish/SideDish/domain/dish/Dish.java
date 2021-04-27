@@ -4,6 +4,7 @@ import com.codesquad.sidedish.SideDish.domain.delivery.DishDelivery;
 import com.codesquad.sidedish.SideDish.domain.image.DishImage;
 import com.codesquad.sidedish.SideDish.domain.sale.DishSale;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -109,6 +110,27 @@ public class Dish {
 
     public LocalDateTime getCurrentDateTime() {
         return currentDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "detailHash='" + detailHash + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", salePrice=" + salePrice +
+                ", point=" + point +
+                ", deliveryInfo='" + deliveryInfo + '\'' +
+                ", deliveryFee=" + deliveryFee +
+                ", categoryId=" + categoryId +
+                ", quantity=" + quantity +
+                ", currentDateTime=" + currentDateTime +
+//                ", dishSales=" + dishSales +
+//                ", dishDeliveries=" + dishDeliveries +
+//                ", dishImages=" + dishImages +
+                '}';
     }
 
 }
