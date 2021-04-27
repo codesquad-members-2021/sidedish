@@ -21,7 +21,9 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
   if (error) throw Error(error);
   return createPortal(
     <StyleModal>
-      <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
+      {detailData && (
+        <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
+      )}
       <div className="closeBtn" onClick={toggleModal}>
         X
       </div>

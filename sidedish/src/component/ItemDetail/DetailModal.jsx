@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledBadges } from 'component/DishItem/DishItem';
 
 const DetailModal = ({ detailData, loading, title, badge }) => {
-  console.log('data: ', detailData);
-  console.log('load: ', loading);
-
-  if (loading) return <ModalStyle>Loading...</ModalStyle>;
-  if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
-
+  const [topImg, setTopImg] = useState(detailData.top_image);
   const thumbImgList = detailData.thumb_images.map((img, i) => {
-    return <img className="thumb_img" key={i} src={img} alt={i}></img>;
+    return (
+      <img className="thumb_img" key={i} src={img} alt={i} onClick={() => setTopImg(img)}></img>
+    );
   });
 
   const prices = detailData.prices.map((price, i, arr) => {
@@ -24,13 +21,14 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
       </span>
     );
   });
-
+  if (loading) return <ModalStyle>Loading...</ModalStyle>;
+  if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
   return (
     <ModalStyle>
       <Top>
         <TopLeft>
           <div className="top_img_container">
-            <img className="top_image" src={detailData.top_image} alt="상품이미지"></img>
+            <img className="top_image" src={topImg} alt={title}></img>
           </div>
           <div className="thumb_list_container">{thumbImgList}</div>
         </TopLeft>
@@ -40,7 +38,7 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
           <div className="prices border">
             {badge &&
               badge.map((item, i) => (
-                <StyledBadges key={i} item={item}>
+                <StyledBadges className="badge" key={i} item={item}>
                   {item}
                 </StyledBadges>
               ))}
@@ -150,6 +148,7 @@ const TopRight = styled.div`
       font-weight: bold;
       font-size: 24px;
       line-height: 35px;
+      margin-right: 0.5rem;
     }
 
     .normal_price {
@@ -157,6 +156,10 @@ const TopRight = styled.div`
       font-weight: normal;
       font-size: 16px;
       color: ${({ theme: { colors } }) => colors.darkGray};
+    }
+
+    .badge {
+      margin-right: 1rem;
     }
   }
 
