@@ -16,11 +16,15 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
   const [Up, setUp] = useState(BeforeUp);
   const [Down, setDown] = useState(BeforeDown);
   const [quantity, setQuantity] = useState(0);
+  const [mainImage, setMainImage] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios(URL + "detail").then((res) => res.data.body);
       setDetail(data.filter((v) => v.hash === ModalData[0]).map((v) => v.data));
+      setMainImage(
+        data.filter((v) => v.hash === ModalData[0]).map((v) => v.data)
+      );
     };
     fetchData();
   }, [setDetail]); // eslint-disable-line
@@ -182,7 +186,7 @@ const Finish = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 440px;
-  padding: 32px 0;
+  padding: 20px 0;
 `;
 const DownButton = styled.button`
   display: block;
@@ -239,6 +243,7 @@ const ProductCounter = styled.div`
 `;
 const ImageInformation = styled.div`
   padding-bottom: 28px;
+  width: 440px;
 `;
 const Information = styled.div`
   padding: 24px 0;
@@ -362,18 +367,18 @@ const ModalBackground = styled.div`
   background: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 const ModalCard = styled.div`
   position: fixed;
-  top: 100px;
+  top: 50px;
   display: flex;
   width: 1000px;
-  height: 800px;
+  height: 660px;
   background-color: transparent;
 `;
 const Card = styled.div`
   width: 960px;
-
   background-color: white;
 `;
 
@@ -381,13 +386,13 @@ const Content = styled.div`
   position: relative;
   display: flex;
   width: 960px;
-  height: 680px;
+  height: 660px;
   background-color: white;
 `;
 
 const Carousel = styled.div`
   width: 960px;
-  height: 396px;
+  height: 300px;
   background-color: #f5f5f7;
 `;
 

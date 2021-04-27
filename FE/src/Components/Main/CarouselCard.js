@@ -44,7 +44,7 @@ const CarouselCard = ({
   );
 };
 const ContentMain = styled.div`
-  margin: 0 8px;
+  margin: 0 18px;
 `;
 
 const Image = styled.div`
@@ -52,14 +52,12 @@ const Image = styled.div`
   background-image: ${({ image }) => `url(${image})`};
   background-size: cover;
   background-repeat: no-repeat;
-  width: ${({size}) => (size === "L" ? "384px" : "308px")};
-  height: ${({size}) => (size === "L" ? "384px" : "308px")};
+  height: 308px;
   border-radius: 5px;
   &:active {
     transform: translateY(1px);
   }
   &:hover {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,7 +69,7 @@ const Image = styled.div`
     color: white;
     &::before {
       position: absolute;
-      top: ${({size}) => (size === "L" ? "155px" : "117px")};
+      top: 117px;
       font-size: 22px;
       font-weight: normal;
       content: "새벽배송";
@@ -96,7 +94,6 @@ const Title = styled.div`
   font-size: 16px;
   line-height: 23px;
   color: #333333;
-  margin: 8px 0px;
 `;
 
 const Description = styled.div`
@@ -107,7 +104,6 @@ const Description = styled.div`
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-  margin-bottom: 16px;
 `;
 const NPrice = styled.span`
   width: 48px;
@@ -129,7 +125,6 @@ const SPrice = styled.span`
   font-size: 20px;
   line-height: 29px;
   margin: 0 8px 0 0;
-  margin: 30px 0;
 `;
 
 const Badge = styled.span`
@@ -147,7 +142,6 @@ const Badge = styled.span`
   font-size: 14px;
   line-height: 20px;
   margin-right: 10px;
-  margin-top: 16px;
   font-weight: bold;
 `;
 const BadgeBox = styled.div`

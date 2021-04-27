@@ -36,7 +36,7 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   };
 
   return (
-    <div>
+    <AllBox>
       {rander && (
         <div>
           {modal && (
@@ -73,9 +73,15 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
       <PlusButton onClick={randerImage}>
         {rander ? "끄기" : "모든 카테고리 보기"}
       </PlusButton>
-    </div>
+    </AllBox>
   );
 };
+
+const AllBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const CarouselSlide = styled.div`
   margin-top: 77px;
   padding: 0 35px;
