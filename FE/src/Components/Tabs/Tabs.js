@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import API from 'util/API.js';
 import { Container } from 'Components/commons/base.js';
-import Card from 'Components/commons/Card';
+import Card from 'Components/commons/Cards';
 
 const Tabs = ({ setModalState }) => {
   const [tabItemList, setTabItemList] = useState([]);
@@ -44,7 +44,7 @@ const Tabs = ({ setModalState }) => {
       </FlexWrapper>
       <CardListWrapper>
         {currentTabItems.map((item, idx) => {
-          return (<Card key={idx} item={item} setModalState={setModalState} />);
+          return (<Card key={idx} type={"tabs"}  {...{ item, setModalState }} />);
         })}
       </CardListWrapper>
     </TabsWrapper>

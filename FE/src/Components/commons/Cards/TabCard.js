@@ -1,19 +1,10 @@
 import styled from 'styled-components';
 import preparingImage from 'images/preparingImage.jpg';
 import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
-import ResponsiveCard from 'Components/commons/Cards/ResponsiveCard.js';
 import API from 'util/API';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
-const Card = ({ type = "default", number, item, setModalState }) => {
-  switch (type) {
-    case "responsive":
-      return <ResponsiveCard number={number} loadingImage={preparingImage} SpecialLabelTag />
-    case "default":
-      break; // 수정예정
-    default:
-      break;
-  }
+const TabCard = ({ item, setModalState }) => {
 
   const { detail_hash, delivery_type, title,
     description, n_price, s_price, badge } = item;
@@ -135,5 +126,4 @@ const PriceWrapper = styled.div`
   margin: 0 0 16px 0;
 `;
 
-
-export default Card;
+export default TabCard;
