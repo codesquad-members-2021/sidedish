@@ -18,22 +18,21 @@ class MainPageViewController: UIViewController {
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
         
-        let mainViewModel = makeDishesListViewModel()
-        let soupViewModel = makeDishesListViewModel()
-        let sideViewModel = makeDishesListViewModel()
+        let categories: [Categorizable] = [MainCategory(), SoupCategory(), SideCategory()]
         
-        mainViewModel.showDishList(category: MainCategory())
-        soupViewModel.showDishList(category: SoupCategory())
-        sideViewModel.showDishList(category: SideCategory())
+        let viewModels = categories.map { category in
+            makeDishSetViewModel(category: category)
+        }
         
-        mainPageDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
+        mainPageDataSource?.viewModels = viewModels
         
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
         
-        bind(to: mainViewModel)
-        bind(to: soupViewModel)
-        bind(to: sideViewModel)
+        viewModels.forEach { viewModel in
+            viewModel.load()
+            bind(to: viewModel)
+        }
         
         registerXib()
     }
@@ -42,8 +41,9 @@ class MainPageViewController: UIViewController {
         return DefaultFetchDishesUseCase()
     }
     
-    func makeDishesListViewModel() -> DishesListViewModel {
-        return DefaultDishesListViewModel(fetchDishesUseCase: makeFetchDishesUseCase())
+    func makeDishSetViewModel(category: Categorizable) -> DishSetViewModel {
+        let category = Observable(category)
+        return DefaultDishSetViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
     }
     
     private func registerXib() {
@@ -59,7 +59,7 @@ class MainPageViewController: UIViewController {
         dishCollectionView.collectionViewLayout.invalidateLayout()
     }
     
-    private func bind(to viewModel: DishesListViewModel) {
+    private func bind(to viewModel: DishSetViewModel) {
         viewModel.category.observe(on: self) { [weak self] _ in self?.updateItems() }
         viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
     }
