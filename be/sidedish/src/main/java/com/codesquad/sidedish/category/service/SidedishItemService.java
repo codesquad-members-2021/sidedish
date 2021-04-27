@@ -66,7 +66,8 @@ public class SidedishItemService {
     public void order(String categoryName, Long id, OrderDTO orderDTO) {
         SidedishCategory category = findByCategoryName(categoryName);
         SidedishItem item = category.findItem(id);
-        item.order(orderDTO);
+
+        item.order(orderDTO.getQuantity());
         sidedishCategoryRepository.save(category);
     }
 

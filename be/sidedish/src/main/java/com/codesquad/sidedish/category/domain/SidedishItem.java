@@ -63,11 +63,11 @@ public class SidedishItem {
         return id.equals(itemId);
     }
 
-    public boolean order(OrderDTO orderDTO) {
-        if (!isPurchasable(orderDTO)) {
+    public boolean order(int purchaseQuantity) {
+        if (!isPurchasable(purchaseQuantity)) {
             throw new OutOfStockException();
         }
-        this.itemQuantity -= orderDTO.getQuantity();
+        this.itemQuantity -= purchaseQuantity;
         return true;
     }
 
@@ -75,8 +75,8 @@ public class SidedishItem {
         return itemQuantity > 0;
     }
 
-    public boolean isPurchasable(OrderDTO orderDTO) {
-        return itemQuantity >= orderDTO.getQuantity();
+    public boolean isPurchasable(int purchaseQuantity) {
+        return itemQuantity >= purchaseQuantity;
     }
 
     public void addEvent(SidedishEvent sidedishEvent) {
