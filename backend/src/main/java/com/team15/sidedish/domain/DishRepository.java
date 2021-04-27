@@ -17,7 +17,7 @@ public interface DishRepository extends CrudRepository<DishDTO, String> {
     Optional<DishDTO> findById(String hash);
 
     @Query("select di.`hash` AS `detail_hash`, di.`top_image` AS `image`, de.`delivery_type`, di.`title`, di.`description`, di.`normal_price`, di.`special_price`, e.`badge` " +
-            "from dish di JOIN delivery de on di.`hash` = de.`dish_hash` JOIN event e ON di.`hash` = e.`dish_hash` ")
+            "from dish di JOIN delivery de on di.`hash` = de.`dish_hash` LEFT OUTER JOIN event e ON di.`hash` = e.`dish_hash` ")
     @Override
     List<DishDTO> findAll();
 
