@@ -4,7 +4,6 @@ const port = process.env.PORT || 3001;
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2');
 const cors = require('cors');
-const { application } = require('express');
 require('dotenv').config();
 
 app.use(express.json());
