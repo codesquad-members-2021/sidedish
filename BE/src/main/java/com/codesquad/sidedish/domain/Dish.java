@@ -119,4 +119,27 @@ public class Dish {
     public String getPoint() {
         return point;
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id='" + id + '\'' +
+                ", mainImage='" + mainImage + '\'' +
+                ", alt='" + alt + '\'' +
+                ", deliveryType='" + deliveryType + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", normalPrice='" + normalPrice + '\'' +
+                ", sellingPrice='" + sellingPrice + '\'' +
+                ", badge='" + badge + '\'' +
+                ", categoryId=" + categoryId +
+                ", topImage='" + topImage + '\'' +
+                ", thumbImages='" + thumbImages + '\'' +
+                ", deliveryInfo='" + deliveryInfo + '\'' +
+                ", deliveryFee='" + deliveryFee + '\'' +
+                ", detailSection='" + detailSection + '\'' +
+                ", stock=" + stock +
+                ", point='" + point + '\'' +
+                '}';
+    }
 }
