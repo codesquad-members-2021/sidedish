@@ -1,5 +1,7 @@
 package com.codesquad.sidedish.utils;
 
+import com.codesquad.sidedish.NotReadJsonFileException;
+import com.codesquad.sidedish.NotParsingJsonFileException;
 import com.codesquad.sidedish.web.sidedish.DTO.DetailDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.ItemDTO;
 import com.codesquad.sidedish.web.sidedish.DTO.SidedishDTO;
@@ -17,52 +19,54 @@ import java.util.stream.Collectors;
 
 public class SampleDataFactory {
 
-    private SampleDataFactory() {
+    private static final String JSON_PATH_PREFIX = "sample-data/";
+    private static final String JSON_EXTENSION = ".json";
 
+    public static final ObjectMapper objectMapper = new ObjectMapper()
+            .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+
+    private SampleDataFactory() {
     }
 
     public static List<SidedishDTO> createBestSidedishes() {
-        return jsonToObject("sample-data/best-sidedishes.json", new TypeReference<List<SidedishDTO>>() {
+        return jsonToObject("best-sidedishes", new TypeReference<List<SidedishDTO>>() {
         });
     }
 
     public static List<ItemDTO> createMainSidedishes() {
-        return jsonToObject("sample-data/main-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        return jsonToObject("main-sidedishes", new TypeReference<List<ItemDTO>>() {
         });
     }
 
     public static List<ItemDTO> createCourseSidedishes() {
-        return jsonToObject("sample-data/course-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        return jsonToObject("course-sidedishes", new TypeReference<List<ItemDTO>>() {
         });
     }
 
     public static List<ItemDTO> createSoupSidedishes() {
-        return jsonToObject("sample-data/soup-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        return jsonToObject("soup-sidedishes", new TypeReference<List<ItemDTO>>() {
         });
     }
 
     public static List<ItemDTO> createSideSidedishes() {
-        return jsonToObject("sample-data/side-sidedishes.json", new TypeReference<List<ItemDTO>>() {
+        return jsonToObject("side-sidedishes", new TypeReference<List<ItemDTO>>() {
         });
     }
 
     public static Map<String, DetailDTO> createDetails() {
-        List<DetailDTO> detailDTOs = jsonToObject("sample-data/details.json", new TypeReference<List<DetailDTO>>() {
+        List<DetailDTO> detailDTOs = jsonToObject("details", new TypeReference<List<DetailDTO>>() {
         });
 
         return detailDTOs.stream().collect(Collectors.toMap(DetailDTO::getHash, detailDTO -> detailDTO));
     }
 
-    private static <E> E jsonToObject(String jsonFilePath, TypeReference<E> typeReference) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-
-        try (InputStream is = new ClassPathResource(jsonFilePath).getInputStream()) {
+    private static <E> E jsonToObject(String jsonFileName, TypeReference<E> typeReference) {
+        try (InputStream is = new ClassPathResource(JSON_PATH_PREFIX + jsonFileName + JSON_EXTENSION).getInputStream()) {
             return objectMapper.readValue(is, typeReference);
         } catch (JsonParseException e) {
-            throw new IllegalStateException("Json파일 파싱 중 에러 발생. jsonFilePath: " + jsonFilePath, e);
+            throw new NotParsingJsonFileException(JSON_PATH_PREFIX + jsonFileName + JSON_EXTENSION, e);
         } catch (IOException e) {
-            throw new IllegalStateException("파일 읽는 중 에러 발생. jsonFilePath: " + jsonFilePath, e);
+            throw new NotReadJsonFileException(JSON_PATH_PREFIX + jsonFileName + JSON_EXTENSION, e);
         }
     }
 }
