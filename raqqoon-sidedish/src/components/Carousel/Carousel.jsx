@@ -2,7 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = ({ dishList, options: { panelCount, time } }) => {
+const Carousel = ({
+  dishList,
+  options: {
+    panelCount,
+    animation: { target, time, effect },
+  },
+}) => {
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
   const [restCardCount, setRestCardCount] = useState(null);
@@ -43,7 +49,7 @@ const Carousel = ({ dishList, options: { panelCount, time } }) => {
   return (
     <CarouselStyled>
       <OutBox ref={outBoxRef}>
-        <Items position={position} time={time}>
+        <Items position={position} animation={{ time, effect, target }}>
           {dishList}
         </Items>
       </OutBox>
@@ -78,6 +84,7 @@ const Items = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  transition: ${({ time }) => `transform ${time}s ease-in-out`};
+  transition: ${({ animation: { target, time, effect } }) =>
+    `${target} ${time}s ${effect}`};
   transform: ${({ position }) => `translateX(${position}px)`};
 `;

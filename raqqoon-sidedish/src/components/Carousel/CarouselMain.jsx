@@ -27,7 +27,13 @@ const CarouselMain = ({
     ));
 
   return dishList ? (
-    <Carousel dishList={dishList} options={{ panelCount: 4, time: 0.5 }} />
+    <Carousel
+      dishList={dishList}
+      options={{
+        panelCount: 4,
+        animation: { target: 'transform', time: 0.5, effect: 'ease-in-out' },
+      }}
+    />
   ) : (
     <div>로딩중입니다!!!!!!!</div>
   );
