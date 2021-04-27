@@ -41,7 +41,7 @@ const Carousel = ({ dishList, options: { panelCount, time } }) => {
   }, [dishList, panelCount, restCardCount]);
 
   return dishList ? (
-    <>
+    <CarouselStyled>
       <OutBox ref={outBoxRef}>
         <Items position={position} time={time}>
           {dishList}
@@ -57,13 +57,18 @@ const Carousel = ({ dishList, options: { panelCount, time } }) => {
         direction={'LEFT'}
         onClick={(e) => handleClickArrowBtn(e)}
       />
-    </>
+    </CarouselStyled>
   ) : (
     <div>로딩중입니다!!!!!!!</div>
   );
 };
 
 export default Carousel;
+
+const CarouselStyled = styled.div`
+  position: relative;
+  width: 100%;
+`;
 
 const OutBox = styled.div`
   margin-top: 2rem;

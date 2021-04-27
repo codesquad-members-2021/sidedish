@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { DEFAULT, SIZE_MEDIUM } from 'const';
 import useFetch from 'customHooks/useFetch';
@@ -28,17 +27,10 @@ const CarouselMain = ({
     ));
 
   return dishList ? (
-    <CarouselStyled>
-      <Carousel dishList={dishList} options={{ panelCount: 4, time: 0.5 }} />
-    </CarouselStyled>
+    <Carousel dishList={dishList} options={{ panelCount: 4, time: 0.5 }} />
   ) : (
     <div>로딩중입니다!!!!!!!</div>
   );
 };
 
 export default CarouselMain;
-
-const CarouselStyled = styled.div`
-  position: relative;
-  width: 100%;
-`;
