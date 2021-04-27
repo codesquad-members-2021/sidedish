@@ -23,27 +23,12 @@ public class ItemController {
     @GetMapping("/dish/{hash}")
     public DishDTO showSingleDish(@PathVariable String hash) {
         return dishService.showSingleDish(hash);
-
     }
 
     @GetMapping("/section/{sectionName}")
     public HashMap<String, List<DishDTO>> showDishesBySectionName(@PathVariable String sectionName){
         HashMap<String, List<DishDTO>> items = new HashMap<>();
         items.put("main_items", dishService.showDishsBySection(sectionName));
-        return items;
-    }
-
-    @GetMapping("/soup")
-    public HashMap<String, List<DishDTO>> showSoupDishes(){
-        HashMap<String, List<DishDTO>> items = new HashMap<>();
-        items.put("soup_items", dishService.showDishsBySection("soup"));
-        return items;
-    }
-
-    @GetMapping("/side")
-    public HashMap<String, List<DishDTO>> showSideDishes(){
-        HashMap<String, List<DishDTO>> items = new HashMap<>();
-        items.put("side_items", dishService.showDishsBySection("side"));
         return items;
     }
 
