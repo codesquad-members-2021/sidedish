@@ -10,6 +10,7 @@ const fontWeight = {
 const fontSize = {
   S: "14px",
   M: "16px",
+  MM: "18px",
   L: "20px",
   XL: "24px",
   XXL: "40px",
