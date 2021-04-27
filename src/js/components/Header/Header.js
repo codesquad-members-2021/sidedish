@@ -1,7 +1,21 @@
-import { useState } from "react";
 import styled from "styled-components";
-import Menu from "./Menu";
-import SearchBarIcon from "./SearchBarIcon"
+import Menu from "./HeaderMenu";
+import SearchBarIcon from "./HeaderSearchIcon";
+
+const Header = () => (
+	<HeaderWrapper>
+		<Title>banchan</Title>
+		<MenuWrapper>
+			<Menu title="든든한 메인요리" body={["육류 요리", "해산물 요리"]} />
+			<Menu title="뜨끈한 국물요리" body={["국/밥/찌개"]} />
+			<Menu title="뜨끈한 국물요리" body={["나물/무침", "조림/볶음", "절임/장아찌"]} />
+		</MenuWrapper>
+		<SearchBar />
+		<SearchBarIcon />
+		<Login>로그인</Login>
+		<Basket>장바구니</Basket>
+	</HeaderWrapper>
+);
 
 const HeaderWrapper = styled.div`
 	position: relative;
@@ -71,25 +85,5 @@ const Basket = styled.div`
 		font-weight: bold;
 	}
 `;
-
-const Header = () => {
-	const [isM1On, setM1On] = useState(false);
-	const [isM2On, setM2On] = useState(false);
-	const [isM3On, setM3On] = useState(false);
-	return (
-		<HeaderWrapper>
-			<Title>banchan</Title>
-			<MenuWrapper>
-				<Menu title="든든한 메인요리" body={["육류 요리", "해산물 요리"]} onMouseEnter={() => setM1On(true)} onMouseLeave={() => setM1On(false)} isOn={isM1On} />
-				<Menu title="뜨끈한 국물요리" body={["국/밥/찌개"]} onMouseEnter={() => setM2On(true)} onMouseLeave={() => setM2On(false)} isOn={isM2On} />
-				<Menu title="뜨끈한 국물요리" body={["나물/무침", "조림/볶음", "절임/장아찌"]} onMouseEnter={() => setM3On(true)} onMouseLeave={() => setM3On(false)} isOn={isM3On} />
-			</MenuWrapper>
-			<SearchBar />
-			<SearchBarIcon />
-			<Login>로그인</Login>
-			<Basket>장바구니</Basket>
-		</HeaderWrapper>
-	);
-};
 
 export default Header;

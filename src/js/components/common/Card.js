@@ -3,6 +3,42 @@ import styled, { ThemeProvider } from "styled-components";
 import Price from "./CardPrice";
 import Badge from "./Badge";
 
+const Card = ({ data, size, setModalOn, setModalData }) => {
+	const { detail_hash, image, title, description, n_price, s_price, badge, delivery_type } = data;
+	const [isHover, setHover] = useState(false);
+	const [src, setSrc] = useState(image);
+	const clickImage = (e) => {
+		fetch(`https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/${detail_hash}`)
+			.then((response) => response.json())
+			.then((json) => {
+				if (!json.hash) return console.log("error!! : card click - ", json);
+				json.data.name = title;
+				json.data.badge = badge;
+				const modalHeight = 680;
+				json.data.y = Math.round(e.pageY - e.clientY + (window.innerHeight - modalHeight) / 2);
+				setModalData(() => json.data);
+				setModalOn(true);
+			})
+			.catch((response) => console.log("error!! :", response));
+	};
+	return (
+		<ThemeProvider theme={theme}>
+			<CardWrapper>
+				<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={clickImage}>
+					<CardImage src={src} size={size} isHover={isHover} onError={() => setSrc("https://codesquad.kr/img/company/codesquad2.png")} />
+					<CardHover size={size}>{isHover && delivery_type.map((e) => <li key={e}>{e}</li>)}</CardHover>
+				</div>
+				<CardInfo size={size}>
+					<CardName>{title}</CardName>
+					<CardBody>{description}</CardBody>
+				</CardInfo>
+				<Price n_price={n_price} s_price={s_price} />
+				{badge && <Badge badge={badge} />}
+			</CardWrapper>
+		</ThemeProvider>
+	);
+};
+
 const theme = {
 	sizes: {
 		LARGE: "384px",
@@ -70,41 +106,5 @@ const CardHover = styled.ul`
 	font-size: 24px;
 	line-height: 35px;
 `;
-
-const Card = ({ data, size, setModalOn, setModalData }) => {
-	const { detail_hash, image, title, description, n_price, s_price, badge, delivery_type } = data;
-	const [isHover, setHover] = useState(false);
-	const [src, setSrc] = useState(image);
-	const clickImage = (e) => {
-		fetch(`https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/${detail_hash}`)
-			.then((response) => response.json())
-			.then((json) => {
-				if (!json.hash) return console.log("error!! : card click - ", json);
-				json.data.name = title;
-				json.data.badge = badge;
-				const modalHeight = 680;
-				json.data.y = Math.round(e.pageY - e.clientY + (window.innerHeight - modalHeight) / 2);
-				setModalData(() => json.data);
-				setModalOn(true);
-			})
-			.catch((response) => console.log("error!! :", response));
-	};
-	return (
-		<ThemeProvider theme={theme}>
-			<CardWrapper>
-				<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={clickImage}>
-					<CardImage src={src} size={size} isHover={isHover} onError={() => setSrc("https://codesquad.kr/img/company/codesquad2.png")}></CardImage>
-					<CardHover size={size}>{!isHover || delivery_type.map((e) => <li key={e}>{e}</li>)}</CardHover>
-				</div>
-				<CardInfo size={size}>
-					<CardName>{title}</CardName>
-					<CardBody>{description}</CardBody>
-				</CardInfo>
-				<Price n_price={n_price} s_price={s_price} />
-				{!badge || <Badge badge={badge} />}
-			</CardWrapper>
-		</ThemeProvider>
-	);
-};
 
 export default Card;
