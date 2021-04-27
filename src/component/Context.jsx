@@ -1,4 +1,4 @@
-import { useReducer, createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import API from "../common/api.js";
 
 const DetailDataContext = createContext();
