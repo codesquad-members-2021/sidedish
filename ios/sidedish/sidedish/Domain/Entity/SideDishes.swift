@@ -9,10 +9,15 @@ import Foundation
 
 class SideDishes: Decodable {
     
-    private let category_id : String
+    private let categoryId : String
     private(set) var name : String
     private(set) var items : [SideDish]
     
+    enum CodingKeys: String, CodingKey {
+        case categoryId = "category_id"
+        case name
+        case items
+    }
 }
 
 extension SideDishes: SideDishFindable {

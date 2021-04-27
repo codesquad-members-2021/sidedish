@@ -10,13 +10,25 @@ import Foundation
 import CoreData
 
 
-extension SaveSideDishes {
+extension SaveSideDishes: SideDishesCategoryManageable {
+    
+    func getName() -> String {
+        self.categoryName
+    }
+    
+    func getEndpoint() -> String {
+        self.endPoint
+    }
+    
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SaveSideDishes> {
         return NSFetchRequest<SaveSideDishes>(entityName: "SaveSideDishes")
     }
-
-    @NSManaged public var sideDish: [SaveSideDish]?
+    
+    @NSManaged public var categoryName: String
+    @NSManaged public var endPoint: String
+    @NSManaged public var id: Int16
+    @NSManaged public var sideDish: [SaveSideDish]
 
 }
 

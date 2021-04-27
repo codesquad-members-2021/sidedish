@@ -5,16 +5,19 @@
         <attribute name="deliveryTypes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="image" attributeType="String"/>
-        <attribute name="price" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="saleprice" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="price" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="saleprice" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="subtitle" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
     </entity>
     <entity name="SaveSideDishes" representedClassName="SaveSideDishes" syncable="YES">
-        <attribute name="sideDish" attributeType="Transformable" valueTransformerName="" customClassName="[사이드디쉬디티오]"/>
+        <attribute name="categoryName" attributeType="String"/>
+        <attribute name="endPoint" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sideDish" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[SideDish]"/>
     </entity>
     <elements>
         <element name="SaveSideDish" positionX="21.19749450683594" positionY="5.541259765625" width="128" height="149"/>
-        <element name="SaveSideDishes" positionX="-63.9647216796875" positionY="-126.251708984375" width="128" height="14"/>
+        <element name="SaveSideDishes" positionX="-63.9647216796875" positionY="-126.251708984375" width="128" height="89"/>
     </elements>
 </model>

@@ -9,15 +9,19 @@ import Foundation
 
 protocol SideDishesCategoryManageable{
     func getName() -> String
+    func getEndpoint() -> String
 }
 
 
 class SideDishesCategory : Decodable, SideDishesCategoryManageable {
     func getName() -> String {
-        self.categoryName
+        return self.categoryName
+    }
+    func getEndpoint() -> String {
+        return self.endPoint
     }
     
-    let id: Int
+    let id: Int16
     let categoryName: String
     let endPoint: String
 }

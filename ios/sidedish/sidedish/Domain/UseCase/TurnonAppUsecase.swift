@@ -11,9 +11,9 @@ import Alamofire
 
 protocol ManufactureDataforViewModel {
     
-    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], AFError>
+    func manufactureForMainViewCategory() -> AnyPublisher<SideDishesCategoryManageable, Never>
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], AFError>
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<SideDishManageable, Never>
     
 }
 
@@ -25,8 +25,9 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
     init(networkmanager: AFNetworkManagable) {
         self.repoprotocol = DishRepository()
         self.networkmanager = networkmanager
-        //self.repoprotocol.getMainDishes()
-        //self.repoprotocol.deleteAllInCoreData()
+        //self.repoprotocol.getCategories()
+//        self.repoprotocol.getMainDishes()
+//        self.repoprotocol.deleteAllInCoreData()
         //self.repoprotocol.helloLollo()
 //        self.repoprotocol.밥먹어요롤로()
     }
@@ -36,11 +37,13 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
         self.init(networkmanager : networkmanager)
     }
     
-    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], AFError> {
-        return networkmanager.get(decodingType: [SideDishesCategory].self, endPoint: EndPoint.categories)
+    func manufactureForMainViewCategory() -> AnyPublisher<SideDishesCategoryManageable, Never> {
+        repoprotocol.getCategories {
+            return repoprotocol.loadCategories()
+        }
     }
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], AFError> {
-        return networkmanager.get(decodingType: [SideDish].self, endPoint: endPoint)
+    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<SideDishManageable, Never> {
+        return repoprotocol.loadMainDishes() //networkmanager.get(decodingType: [SideDish].self, endPoint: endPoint)
     }
 }

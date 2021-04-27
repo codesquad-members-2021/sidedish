@@ -11,7 +11,7 @@ import Combine
 class MenuCellViewModel {
     
     @Published var dishesCategory: [SideDishesCategoryManageable]!
-    @Published var dishes: [[SideDishManageable]]!
+    @Published var dishes: [SideDishManageable]!
     @Published var errorMessage: String!
     
     private var subscriptions = Set<AnyCancellable>()
@@ -24,6 +24,7 @@ class MenuCellViewModel {
     convenience init() {
         let turnonAppUsecase = TurnonAppUsecase()
         self.init(turnonAppUsecase: turnonAppUsecase)
+        dishesCategory = []
     }
     
     func configureMainmenuBoard() {
@@ -32,21 +33,20 @@ class MenuCellViewModel {
                 if case .failure(let error) = result {
                     self.errorMessage = error.localizedDescription
                 }
-            }, receiveValue: { (categories) in
-                self.dishesCategory = categories
-                self.updateEndpoint(from: categories)
-                self.loadSideDishes(count: categories.count)
+            }, receiveValue: { (category) in
+                self.dishesCategory.append(category)
+                self.updateEndpoint(from: category)
+                print(self.dishesCategory)
+                //self.loadSideDishes(count: categories.count)
             }).store(in: &subscriptions)
     }
     
-    private func updateEndpoint(from categories: [SideDishesCategory]) {
-        categories.forEach { (category) in
-            EndPoint.sideDishes.append(category.endPoint)
-        }
+    private func updateEndpoint(from category: SideDishesCategoryManageable) {
+        EndPoint.sideDishes.append(category.getEndpoint())
     }
     
     private func loadSideDishes(count: Int) {
-        self.dishes = Array(repeating: [], count: count)
+        self.dishes = []
         for i in 0..<count {
             turnonAppUsecase.manufactureForMainViewSideDishes(endPoint: EndPoint.sideDishes[i])
                 .sink { (result) in
@@ -54,7 +54,7 @@ class MenuCellViewModel {
                         self.errorMessage = error.localizedDescription
                     }
                 } receiveValue: { (sideDish) in
-                    self.dishes[i] = sideDish
+                    self.dishes.append(sideDish)
                 }.store(in: &subscriptions)
         }
     }
@@ -73,7 +73,7 @@ class MenuCellViewModel {
             return 0
         }
         else {
-            return dishes[section].count
+            return dishes.count
         }
     }
 }
