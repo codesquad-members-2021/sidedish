@@ -44,7 +44,7 @@ public class Category {
         return dishes;
     }
 
-    public Dish getDish(String dishId) {
+    public Dish getDishByDishId(String dishId) {
         return dishes.get(dishId);
     }
 
