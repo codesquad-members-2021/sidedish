@@ -25,8 +25,8 @@ public class SidedishEvent {
         this.eventSaleRate = eventSaleRate;
     }
 
-    public int discount(SidedishItem item) {
-        return (int) (item.getItemNormalPrice() * (eventSaleRate / 100));
+    public int discount(int normalPrice) {
+        return (int) (normalPrice * (eventSaleRate / 100));
     }
 
     public Long getId() {

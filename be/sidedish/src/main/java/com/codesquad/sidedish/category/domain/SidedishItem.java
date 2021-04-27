@@ -51,7 +51,7 @@ public class SidedishItem {
         }
 
         for (SidedishEvent currentEvent : sidedishEvents) {
-            salePrice -= currentEvent.discount(this);
+            salePrice -= currentEvent.discount(itemNormalPrice);
         }
         if (salePrice < 0) {
             salePrice = 0;
