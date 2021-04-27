@@ -5,17 +5,16 @@ import Carousel from "../../utilComponent/carousel/Carousel";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const SubContentsSection = ({ data, type }) => {
-
   const carouselOptions = {
     itemsPerCnt: 4,
     cssCarouselWrapStyle,
     transitionProperty: "all",
     transitionDuration: "0.4s",
     arrowOption: {
-      leftIcon: <MdKeyboardArrowLeft/>,
+      leftIcon: <MdKeyboardArrowLeft />,
       rightIcon: <MdKeyboardArrowRight />,
-      // arrowLocation: 'top',
-      btnSize: '30px',
+      // arrowLocation: "top",
+      btnSize: "30px",
     },
   };
 
@@ -25,10 +24,11 @@ const SubContentsSection = ({ data, type }) => {
 
       {data && (
         <Carousel {...carouselOptions}>
-          {data.map((item, i) => <ProductCard key={i} size="small" item={item} />)}
+          {data.map((item, i) => (
+            <ProductCard key={i} size="small" item={item} />
+          ))}
         </Carousel>
       )}
-
     </StyledSubContentsSection>
   );
 };

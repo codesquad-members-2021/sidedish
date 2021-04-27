@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 const Button = ({ type }) => {
     return (
@@ -26,6 +26,15 @@ const StyledBtn = styled.button`
         font-size: 18px;
         font-weight: bold;
     }
+
+    cursor: ${({type}) => type === 'order' ? 'pointer' : 'not-allowed'};
+    ${({ type }) =>
+        type === "order" && css`
+        &:hover {
+            background-color: #8ee432;
+        }
+    `};
+
 `
 
 export default Button;

@@ -10,7 +10,7 @@ const Detail = () => {
   const visibleOptions = { isModalVisible, setIsModalVisible };
 
   return (
-    <Modal visibleOptions={visibleOptions} >
+    <Modal visibleOptions={visibleOptions}>
       <DetailTop />
       <DetailBottom />
     </Modal>
@@ -18,5 +18,3 @@ const Detail = () => {
 };
 
 export default Detail;
-
-// --- Styled Components ---

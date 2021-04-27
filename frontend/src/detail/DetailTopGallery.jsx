@@ -15,7 +15,7 @@ const DetailTopGallery = ({ items }) => {
 
   return (
     <StyledDetailTopGallery>
-      {items && 
+      {items &&
         items.map((item, i) => (
           <GalleryItem
             key={i}
@@ -39,9 +39,15 @@ const StyledDetailTopGallery = styled.ul`
   grid-template-columns: repeat(5, 1fr);
   row-gap: 8px;
   column-gap: 8px;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
 `;
+
 const GalleryItem = styled.li`
   ${cssFlexCenter};
+
+  cursor: pointer;
 
   ${({ currSelectedIdx, ...props }) =>
     currSelectedIdx === props["data-idx"]

@@ -13,7 +13,8 @@ const fontSize = {
   MM: "18px",
   L: "20px",
   XL: "24px",
-  XXL: "40px",
+  XXL: "32px",
+  XXXL: "40px",
 };
 const colors = {
   white: "#FFF",
