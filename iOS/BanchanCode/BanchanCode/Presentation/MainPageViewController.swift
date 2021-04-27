@@ -21,7 +21,7 @@ class MainPageViewController: UIViewController {
         let categories: [Categorizable] = [MainCategory(), SoupCategory(), SideCategory()]
         
         let viewModels = categories.map { category in
-            makeDishSetViewModel(category: category)
+            makeDishesViewModel(category: category)
         }
         
         mainPageDataSource?.viewModels = viewModels
@@ -41,9 +41,9 @@ class MainPageViewController: UIViewController {
         return DefaultFetchDishesUseCase()
     }
     
-    func makeDishSetViewModel(category: Categorizable) -> DishSetViewModel {
+    func makeDishesViewModel(category: Categorizable) -> DishesViewModel {
         let category = Observable(category)
-        return DefaultDishSetViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
+        return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
     }
     
     private func registerXib() {
@@ -59,7 +59,7 @@ class MainPageViewController: UIViewController {
         dishCollectionView.collectionViewLayout.invalidateLayout()
     }
     
-    private func bind(to viewModel: DishSetViewModel) {
+    private func bind(to viewModel: DishesViewModel) {
         viewModel.category.observe(on: self) { [weak self] _ in self?.updateItems() }
         viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
     }

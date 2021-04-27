@@ -16,6 +16,6 @@ struct Dish {
     let badges: [String]
 }
 
-struct DishSet {
+struct Dishes {
     var dishes: [Dish]
 }

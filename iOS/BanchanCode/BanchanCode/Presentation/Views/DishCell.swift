@@ -31,7 +31,7 @@ class DishCell: UICollectionViewCell {
         badgeBackgroundView.layer.cornerRadius = 5.0
     }
     
-    func fill(with viewModel: DishSetItemViewModel) {
+    func fill(with viewModel: DishesItemViewModel) {
         networkManager.updateThumbImage(imageURL: viewModel.imageURL) { imageData in
             DispatchQueue.main.async {
                 self.thumbnailImageView.image = UIImage(data: imageData)
