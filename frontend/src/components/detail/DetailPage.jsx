@@ -92,14 +92,14 @@ function DetailPage({
 	const handleClick = () => {
 		setModalState(!modalMode);
 	};
-
+	console.log(modalMode);
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
 				<Loading width="960px" height="568px" />
 			) : (
 				<>
-					<RepresentativeBlock>
+					<RepresentativeBlock className="MODAL">
 						<ImageBlock>
 							<MainIMG image={detailData.topImage} size="L" />
 							<DetailBlock>
