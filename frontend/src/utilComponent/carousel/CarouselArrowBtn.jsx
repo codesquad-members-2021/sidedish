@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { cssTranslate, cssFlexAlignCenter } from "../style/CommonStyledCSS";
+import { cssTranslate, cssFlexAlignCenter } from "../../style/CommonStyledCSS";
 
 const ArrowButton = ({ children, ...props }) => (
   <StyledArrowButton {...props}>{children}</StyledArrowButton>

@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
 import Title from "../../utilComponent/Title";
 import ProductCard from "../../utilComponent/ProductCard";
-import Carousel from "../../carousel/Carousel";
+import Carousel from "../../utilComponent/carousel/Carousel";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const SubContentsSection = ({ data, type }) => {
 
   const carouselOptions = {
     itemsPerCnt: 4,
-    carouselWrapStyle: cssCarouselWrapStyle,
+    cssCarouselWrapStyle,
     transitionProperty: "all",
     transitionDuration: "0.4s",
     arrowOption: {
@@ -25,10 +25,7 @@ const SubContentsSection = ({ data, type }) => {
 
       {data && (
         <Carousel {...carouselOptions}>
-          {data.map((item, i) => (
-            <ProductCard key={i} size="small" item={item} />
-            // <div style={{width: '300px', height: '1000px', backgroundColor: 'blanchedalmond'}}>{i}</div>
-          ))}
+          {data.map((item, i) => <ProductCard key={i} size="small" item={item} />)}
         </Carousel>
       )}
 

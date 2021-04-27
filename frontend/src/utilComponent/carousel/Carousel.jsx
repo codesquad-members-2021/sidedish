@@ -5,7 +5,7 @@ import CarouselArrowBtn from "./CarouselArrowBtn";
 
 const Carousel = ({
   itemsPerCnt = 4,
-  carouselWrapStyle = null,
+  cssCarouselWrapStyle = null,
   transitionProperty = "all",
   transitionDuration = "0.4s",
   arrowOption: {
@@ -102,7 +102,7 @@ const Carousel = ({
   );
 
   return (
-    <StyledCarousel carouselWrapStyle={carouselWrapStyle}>
+    <StyledCarousel cssCarouselWrapStyle={cssCarouselWrapStyle}>
 
       <ContentItemsWrap>
         {arrowLocation === "top" ? (
@@ -134,7 +134,7 @@ export default Carousel;
 
 // --- Styled Components ---
 const StyledCarousel = styled.div`
-  ${({ carouselWrapStyle }) => carouselWrapStyle && carouselWrapStyle};
+  ${({ cssCarouselWrapStyle }) => cssCarouselWrapStyle && cssCarouselWrapStyle};
   position: relative;
 `;
 
