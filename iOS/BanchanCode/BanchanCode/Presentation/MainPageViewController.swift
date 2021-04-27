@@ -18,22 +18,21 @@ class MainPageViewController: UIViewController {
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
         
-        let mainViewModel = makeDishesListViewModel(category: Observable(MainCategory()))
-        let soupViewModel = makeDishesListViewModel(category: Observable(SoupCategory()))
-        let sideViewModel = makeDishesListViewModel(category: Observable(SideCategory()))
+        let categories: [Categorizable] = [MainCategory(), SoupCategory(), SideCategory()]
         
-        mainViewModel.load()
-        soupViewModel.load()
-        sideViewModel.load()
+        let viewModels = categories.map { category in
+            makeDishesListViewModel(category: category)
+        }
         
-        mainPageDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
+        mainPageDataSource?.viewModels = viewModels
         
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
         
-        bind(to: mainViewModel)
-        bind(to: soupViewModel)
-        bind(to: sideViewModel)
+        viewModels.forEach { viewModel in
+            viewModel.load()
+            bind(to: viewModel)
+        }
         
         registerXib()
     }
@@ -42,7 +41,8 @@ class MainPageViewController: UIViewController {
         return DefaultFetchDishesUseCase()
     }
     
-    func makeDishesListViewModel(category: Observable<Categorizable>) -> DishesListViewModel {
+    func makeDishesListViewModel(category: Categorizable) -> DishesListViewModel {
+        let category = Observable(category)
         return DefaultDishesListViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
     }
     
