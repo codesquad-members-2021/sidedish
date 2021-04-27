@@ -34,7 +34,7 @@ extension DishesResponseDTO {
 }
 
 extension DishesResponseDTO {
-    func toDomain() -> DishList {
+    func toDomain() -> DishSet {
         return .init(dishes: dishes.map { $0.toDomain() })
     }
 }

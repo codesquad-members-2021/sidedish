@@ -7,24 +7,24 @@
 
 import Foundation
 
-protocol DishesListViewModelInput {
+protocol DishSetViewModelInput {
     func load()
     func getNumberOfItems() -> Int
 }
 
-protocol DishesListViewModelOutput {
+protocol DishSetViewModelOutput {
     var category: Observable<Categorizable> { get }
-    var items: Observable<[DishesListItemViewModel]> { get }
+    var items: Observable<[DishSetItemViewModel]> { get }
 }
 
-protocol DishesListViewModel: DishesListViewModelInput, DishesListViewModelOutput { }
+protocol DishSetViewModel: DishSetViewModelInput, DishSetViewModelOutput { }
 
-final class DefaultDishesListViewModel: DishesListViewModel {
+final class DefaultDishSetViewModel: DishSetViewModel {
     private let fetchDishesUseCase: FetchDishesUseCase
     
     //MARK: - Output
     var category: Observable<Categorizable>
-    var items: Observable<[DishesListItemViewModel]> = Observable([])
+    var items: Observable<[DishSetItemViewModel]> = Observable([])
     
     //MARK: - Init
     init(fetchDishesUseCase: FetchDishesUseCase,
@@ -35,12 +35,12 @@ final class DefaultDishesListViewModel: DishesListViewModel {
 }
 
 //MARK: - Input
-extension DefaultDishesListViewModel {
+extension DefaultDishSetViewModel {
     func load() {
         fetchDishesUseCase.execute(requestValue: .init(category: category.value), completion: { (result) in
             switch result {
             case .success(let items):
-                self.items.value = items.dishes.map(DishesListItemViewModel.init)
+                self.items.value = items.dishes.map(DishSetItemViewModel.init)
             case .failure(let error):
                 print(error.localizedDescription)
                 break
