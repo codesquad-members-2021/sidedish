@@ -1,4 +1,4 @@
-package com.codesquad.sidedish;
+package com.codesquad.sidedish.utils;
 
 public class NotParsingJsonFileException extends RuntimeException {
     public NotParsingJsonFileException(String jsonFilePath, Throwable e) {
