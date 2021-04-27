@@ -92,7 +92,7 @@ class SampleDataFactoryTest {
 
 
     @ParameterizedTest
-    @MethodSource
+    @MethodSource("createDetailsProvider")
     void createDetails(String hash, String expected) throws JsonProcessingException {
         if (!environment.acceptsProfiles(Profiles.of("dev"))) {
             return;
@@ -102,7 +102,7 @@ class SampleDataFactoryTest {
                 .isEqualTo(expected);
     }
 
-    static Stream<Arguments> createDetails() {
+    static Stream<Arguments> createDetailsProvider() {
         return Stream.of(
                 Arguments.of("H9881", DetailDTOTestResults.H9881),
                 Arguments.of("HDF4C", DetailDTOTestResults.HDF4C),
