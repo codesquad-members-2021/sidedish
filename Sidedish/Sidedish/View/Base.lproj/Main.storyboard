@@ -198,10 +198,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4g-Pq-i4F" userLabel="Scroll Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2244"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="4488"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="414" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-S7-dUF" userLabel="Thumbnail Scroll View">
-                                                <rect key="frame" x="0.0" y="1122" width="414" height="0.0"/>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-S7-dUF" userLabel="Thumbnail Scroll View">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgM-VV-npk" userLabel="Thumbnail Content View">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
@@ -212,27 +212,23 @@
                                                     <constraint firstAttribute="bottom" secondItem="TgM-VV-npk" secondAttribute="bottom" id="9K6-ON-kjm"/>
                                                     <constraint firstItem="TgM-VV-npk" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="top" id="OK9-f9-zuw"/>
                                                     <constraint firstItem="TgM-VV-npk" firstAttribute="width" secondItem="hPQ-S7-dUF" secondAttribute="width" id="OSD-ZQ-vtG"/>
-                                                    <constraint firstItem="TgM-VV-npk" firstAttribute="height" secondItem="hPQ-S7-dUF" secondAttribute="height" id="l9S-kF-4lQ"/>
+                                                    <constraint firstItem="TgM-VV-npk" firstAttribute="height" secondItem="hPQ-S7-dUF" secondAttribute="width" id="l9S-kF-4lQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="TgM-VV-npk" secondAttribute="trailing" id="mxp-NN-txn"/>
                                                     <constraint firstItem="TgM-VV-npk" firstAttribute="leading" secondItem="hPQ-S7-dUF" secondAttribute="leading" id="zQD-C8-ggg"/>
                                                 </constraints>
                                             </scrollView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="708" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-0E-DE9">
-                                                <rect key="frame" x="0.0" y="1122" width="414" height="708"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-zh-Y6A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
-                                                        <color key="backgroundColor" red="0.59534823410000004" green="0.60522724839999997" blue="0.61874595210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </stackView>
-                                                </subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-zh-Y6A">
+                                                <rect key="frame" x="0.0" y="414" width="414" height="4074"/>
+                                                <color key="backgroundColor" red="0.59534823410000004" green="0.60522724839999997" blue="0.61874595210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="rcg-0E-DE9" secondAttribute="bottom" id="LBt-Lc-hmp"/>
-                                            <constraint firstAttribute="trailing" secondItem="rcg-0E-DE9" secondAttribute="trailing" id="WkE-mM-vw0"/>
-                                            <constraint firstItem="rcg-0E-DE9" firstAttribute="leading" secondItem="J4g-Pq-i4F" secondAttribute="leading" id="sAH-g6-X5D"/>
-                                            <constraint firstItem="rcg-0E-DE9" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="bottom" id="wum-rZ-TfO"/>
+                                            <constraint firstAttribute="trailing" secondItem="HQ6-zh-Y6A" secondAttribute="trailing" id="8pS-ZX-qqQ"/>
+                                            <constraint firstItem="HQ6-zh-Y6A" firstAttribute="top" secondItem="TgM-VV-npk" secondAttribute="bottom" id="IVc-kI-FmS"/>
+                                            <constraint firstAttribute="bottom" secondItem="HQ6-zh-Y6A" secondAttribute="bottom" id="JsK-KL-XTC"/>
+                                            <constraint firstItem="HQ6-zh-Y6A" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="bottom" id="TeB-Lj-pCj"/>
+                                            <constraint firstItem="HQ6-zh-Y6A" firstAttribute="leading" secondItem="J4g-Pq-i4F" secondAttribute="leading" id="xkz-Do-VjT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -242,9 +238,9 @@
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="trailing" secondItem="N1B-qG-pDc" secondAttribute="trailing" id="6ds-TX-pHl"/>
                                     <constraint firstItem="hPQ-S7-dUF" firstAttribute="leading" secondItem="cI7-cb-mc2" secondAttribute="leading" id="KDV-TZ-yE0"/>
                                     <constraint firstItem="cI7-cb-mc2" firstAttribute="trailing" secondItem="hPQ-S7-dUF" secondAttribute="trailing" id="LEY-R7-e4L"/>
-                                    <constraint firstItem="hPQ-S7-dUF" firstAttribute="top" secondItem="cI7-cb-mc2" secondAttribute="top" id="lrq-tO-k95"/>
+                                    <constraint firstItem="hPQ-S7-dUF" firstAttribute="top" secondItem="J4g-Pq-i4F" secondAttribute="top" id="lrq-tO-k95"/>
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="bottom" secondItem="N1B-qG-pDc" secondAttribute="bottom" id="nBG-it-Dyg"/>
-                                    <constraint firstItem="J4g-Pq-i4F" firstAttribute="height" secondItem="cI7-cb-mc2" secondAttribute="height" multiplier="2" id="q69-vo-0Cc"/>
+                                    <constraint firstItem="J4g-Pq-i4F" firstAttribute="height" secondItem="cI7-cb-mc2" secondAttribute="height" multiplier="4" id="q69-vo-0Cc"/>
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="top" secondItem="N1B-qG-pDc" secondAttribute="top" id="st6-yB-gUY"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="N1B-qG-pDc"/>

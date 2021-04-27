@@ -20,14 +20,16 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setThumbnailScrollView()
-        self.setDetailScrollView()
         
-        detailViewModel.detailHandler = {
+        detailViewModel.imageFetchHandler = {
             DispatchQueue.main.async {
                 self.setImage()
-                self.thumbnailContentViewWidth.constant = self.view.frame.width * CGFloat(self.detailViewModel.currentDetail.thumbImagesData?.count ?? 0)
-                self.setInformationView()
+                self.setDetailScrollView()
             }
+        }
+        
+        detailViewModel.detailImageFetchHandler = {
+            
         }
         
         self.detailViewModel.errorHandler = { error in
@@ -54,6 +56,9 @@ class DetailViewController: UIViewController {
     
     private func setImage() {
         let currentDetailItem = self.detailViewModel.currentDetail
+        self.thumbnailContentView.subviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
         for index in 0..<(currentDetailItem.thumbImagesData?.count ?? 0) + 1{
             let imageView = UIImageView(frame: CGRect(x: thumbnailScrollView.frame.width * CGFloat(index),
                                                       y: 0,
@@ -68,17 +73,28 @@ class DetailViewController: UIViewController {
                 imageView.image = UIImage(data: imageData)
             }
             
-            
+            self.thumbnailContentViewWidth.constant = self.view.frame.width * CGFloat(self.detailViewModel.currentDetail.thumbImagesData?.count ?? 0)
             self.thumbnailContentView.addSubview(imageView)
         }
     }
     
     private func setDetailScrollView() {
-        // 상세이미지 추가
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1).isActive = true
-        detailImages.addArrangedSubview(imageView)
+        guard let thumbImagesData = self.detailViewModel.currentDetail.thumbImagesData else { return }
+        guard let detailSectionData = self.detailViewModel.currentDetail.detailSectionData else { return }
+        guard detailSectionData.filter({ $0 == nil }).isEmpty,
+              thumbImagesData.filter({ $0 == nil }).isEmpty else { return }
+        
+        
+        for index in 0..<detailSectionData.count {
+            let imageView = UIImageView()
+            guard let data = detailSectionData[index] else { continue }
+            imageView.image = UIImage(data: data)
+            imageView.contentMode = .scaleAspectFit
+//            imageView.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
+            detailImages.addArrangedSubview(imageView)
+        }
+//        규조 ?
+        
         
     }
 }

@@ -10,7 +10,8 @@ import Foundation
 class DetailViewModel {
     var sidedishProcessing: SidedishProcessable
     var currentDetail: DetailItem
-    var detailHandler: (() -> ())?
+    var imageFetchHandler: (() -> ())?
+    var detailImageFetchHandler: (() -> ())?
     var errorHandler: ((String) -> ())?
     
     init(sidedishProcessable: SidedishProcessable) {
@@ -25,8 +26,7 @@ class DetailViewModel {
             case .success(let detailItem):
                 guard let strongSelf = self else { return }
                 strongSelf.currentDetail = detailItem
-                strongSelf.detailHandler?()
-                print(detailItem)
+                strongSelf.imageFetchHandler?()
             case .failure(let error):
                 #if DEBUG
                 NSLog(error.localizedDescription)
