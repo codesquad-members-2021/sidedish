@@ -19,22 +19,39 @@ const ContentContainer = styled.div`
   height: 620px;
   flex-grow: 1;
 `;
-const TabContent = ({ Food, toggleState, URL, modal, setModal, ModalData, setModalData }) => {
+const TabContent = ({
+  Food,
+  toggleState,
+  URL,
+  modal,
+  setModal,
+  ModalData,
+  setModalData,
+}) => {
   return (
     <ContentContainer>
-        {modal && (
+      {modal && (
         <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
       )}
       {Food.map((_, idx) => {
         return (
           <ContentWrapper
+            key={idx}
             toggleState={toggleState}
             active={toggleState === idx + 1}
           >
             <CardBlock>
-              {Food[idx].items.map((v) => {
-                return <CarouselCard {...v} setModal={setModal} setModalData={setModalData} size='L' />
-      })}
+              {Food[idx].items.map((v, idx) => {
+                return (
+                  <CarouselCard
+                    {...v}
+                    key={idx}
+                    setModal={setModal}
+                    setModalData={setModalData}
+                    size="L"
+                  />
+                );
+              })}
             </CardBlock>
           </ContentWrapper>
         );

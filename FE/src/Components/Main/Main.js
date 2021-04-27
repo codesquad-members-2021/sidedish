@@ -14,13 +14,16 @@ const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios(URL + "main").then((res) => res.data.body);
-      setFood(data.concat(data));
+      setFood(data);
     };
     fetchData();
   }, []); // eslint-disable-line
 
-  const slider = (e) => {
-    foodRef.current.Slider(e);
+  const leftSlider = () => {
+    foodRef.current.Slider(1);
+  };
+  const rightSlider = () => {
+    foodRef.current.Slider(-1);
   };
 
   return (
@@ -28,7 +31,7 @@ const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
       {modal && (
         <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
       )}
-      <CarouselButton Name={"Left"} Slide={slider} />
+      <CarouselButton Name={"Left"} Slide={leftSlider} />
       <Carousel
         MainTitle={"모두가 좋아하는 든든한 메인요리"}
         Food={Food}
@@ -38,14 +41,14 @@ const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
         ref={foodRef}
         setModalData={setModalData}
       />
-      <CarouselButton Name={"Right"} Slide={slider} />
+      <CarouselButton Name={"Right"} Slide={rightSlider} />
     </CarouselSlide>
   );
 };
 
 const CarouselSlide = styled.div`
- padding: 0 35px;
   display: flex;
+  margin-top: 77px;
 `;
 
 export default Main;
