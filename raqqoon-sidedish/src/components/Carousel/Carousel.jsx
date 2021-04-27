@@ -1,36 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
-import { DEFAULT, SIZE_MEDIUM } from 'const';
-import useFetch from 'customHooks/useFetch';
-import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = ({
-  path,
-  panelCount,
-  modalData,
-  modalState,
-  setModalState,
-  setModalData,
-}) => {
-  const dishData = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
-  );
+const Carousel = ({ dishList, options: { panelCount, time } }) => {
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
   const [restCardCount, setRestCardCount] = useState(null);
-  const dishList =
-    dishData &&
-    dishData.map((item) => (
-      <Card
-        key={uuidv4()}
-        item={item}
-        cardSize={SIZE_MEDIUM}
-        cardType={DEFAULT}
-        {...{ modalData, modalState, setModalState, setModalData }}
-      />
-    ));
 
   const handleClickArrowBtn = ({ currentTarget }) => {
     const direction = currentTarget.getAttribute('direction');
@@ -66,9 +41,11 @@ const Carousel = ({
   }, [dishList, panelCount, restCardCount]);
 
   return dishList ? (
-    <CarouselStyled>
+    <>
       <OutBox ref={outBoxRef}>
-        <CategoryContents position={position}>{dishList}</CategoryContents>
+        <Items position={position} time={time}>
+          {dishList}
+        </Items>
       </OutBox>
       <Arrow
         size={'L'}
@@ -80,7 +57,7 @@ const Carousel = ({
         direction={'LEFT'}
         onClick={(e) => handleClickArrowBtn(e)}
       />
-    </CarouselStyled>
+    </>
   ) : (
     <div>로딩중입니다!!!!!!!</div>
   );
@@ -88,21 +65,16 @@ const Carousel = ({
 
 export default Carousel;
 
-const CarouselStyled = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
 const OutBox = styled.div`
   margin-top: 2rem;
   overflow: hidden;
   position: relative;
 `;
 
-const CategoryContents = styled.div`
+const Items = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  transition: transform 0.5s ease-in-out;
+  transition: ${({ time }) => `transform ${time}s ease-in-out`};
   transform: ${({ position }) => `translateX(${position}px)`};
 `;
