@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import Price from "../Price";
-// import { LabelList, StyledDescription, StyledTitle } from "../styles/common";
-// import TextButton from "../button/TextButton";
 import ProductImage from "./products/ProductImage";
 import ProductInformation from "./products/ProductInformation";
 import JennyCarousel from "reallyawesome-jennyrousel/dist/JennyCarousel";
-// import { CenterContainer } from "../styles/common";
 import theme from "../styles/theme";
-import { mockData } from "../../../utils/mockData";
+import { mockData } from "../mockData";
 import Card from "../card/Card";
-import { CenterContainer } from "../styles/common";
 
 const ModalCard = ({ product }) => {
   const [count, setCount] = useState(1);
@@ -37,39 +32,27 @@ const ModalCard = ({ product }) => {
 
   return (
     <ModalCardBackGround>
-      <DivForScroll>
-        <CardContent>
-          <ProductImage imageUrl={productImg} thumbnailList={thumbnailList} />
-          <ProductInformation
-            {...{ product, getTotalPrice, increaseCount, decreaseCount, count }}
-          />
-        </CardContent>
-
-        <RecommendCarouselSection>
-          <RecommendCarouselTitle>
-            함께하면 더욱 맛있는 상품
-          </RecommendCarouselTitle>
-          <JennyCarousel
-            SLIDE_WIDTH={160}
-            SLIDE_HEIGHT={300}
-            BACKGROUND_COLOR={theme.colors.lightGrayBG}
-            BUTTON_SIZE={20}
-            NUM_OF_DATAS={mockData.length}
-            NUM_OF_SLIDES={5} // 수정 예정
-            BUTTON_TYPE={"VERTICAL"}
-            SLIDE_MARGIN={8}
-          >
-            {mockData.map((item) => (
-              <Card
-                key={item.detail_hash}
-                product={item}
-                cardSize={(props) => props.theme.cardSizes.S}
-                margin={8}
-              />
-            ))}
-          </JennyCarousel>
-        </RecommendCarouselSection>
-      </DivForScroll>
+      <CardContent>
+        <ProductImage imageUrl={productImg} thumbnailList={thumbnailList} />
+        <ProductInformation {...{ product, getTotalPrice, increaseCount, decreaseCount, count }} />
+      </CardContent>
+      <RecommendCarouselSection>
+        <RecommendCarouselTitle>함께하면 더욱 맛있는 상품</RecommendCarouselTitle>
+        <JennyCarousel
+          SLIDE_WIDTH={160}
+          SLIDE_HEIGHT={300}
+          BACKGROUND_COLOR={theme.colors.lightGrayBG}
+          BUTTON_SIZE={20}
+          NUM_OF_DATAS={mockData.length}
+          NUM_OF_SLIDES={5}
+          BUTTON_TYPE="VERTICAL"
+          SLIDE_MARGIN={8}
+        >
+          {mockData.map((item) => (
+            <Card key={item.detail_hash} product={item} cardSize={(props) => props.theme.cardSizes.S} margin={8} />
+          ))}
+        </JennyCarousel>
+      </RecommendCarouselSection>
     </ModalCardBackGround>
   );
 };
@@ -82,13 +65,7 @@ const ModalCardBackGround = styled.div`
   flex-direction: column;
   background: white;
   border-radius: ${(props) => props.theme.borders.radius};
-  padding-right: 5px;
-  // padding-bottom: 5px;
   height: 90vh;
-  // height: fit-content;
-`;
-
-const DivForScroll = styled.div`
   overflow-y: scroll;
 `;
 
@@ -114,7 +91,6 @@ const Thumbnail = styled.img`
 `;
 
 const RecommendCarouselSection = styled.div`
-  // border: 1px solid red;
   position: relative;
   height: 386px;
   justify-content: center;
@@ -125,7 +101,6 @@ const RecommendCarouselSection = styled.div`
 `;
 
 const RecommendCarouselTitle = styled.div`
-  // border: 1px solid red;
   position: absolute;
   top: 48px;
   left: 48px;

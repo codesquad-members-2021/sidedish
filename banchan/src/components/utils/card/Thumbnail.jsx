@@ -39,7 +39,6 @@ const HoverLayer = styled(CenterContainer)`
   width: ${(props) => props.cardSize};
   height: ${(props) => props.cardSize};
   border-radius: ${(props) => props.theme.borders.radius};
-  z-index: 4;
   font-size: ${(props) => props.theme.fontSizes.XL};
   font-weight: bold;
 

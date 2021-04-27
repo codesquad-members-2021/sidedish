@@ -17,10 +17,6 @@ const StyledIconButton = styled(Button)`
     if (props.type === "CLOSE") return props.theme.colors.white;
     if (props.disabled || props.type === "SEARCH") return props.theme.colors.lightGray;
     return props.theme.colors.darkGray;
-    // ? props.theme.colors.lightGray
-    // : props.type === "CLOSE"
-    // ? props.theme.colors.white
-    // : props.theme.colors.darkGray}
   }};
   font-size: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.fontSizes.M : "30px")};
   margin: ${({ margin }) => `${margin}px`};
