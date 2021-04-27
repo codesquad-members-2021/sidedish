@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { WrapDiv, WrapContent } from "./index.style";
-import HoverCard from "../../molecules/HoverCard";
-import Image from "../../atoms/Image";
-import Span from "../../atoms/Span";
+import React, { useState } from 'react';
+import { WrapDiv, WrapContent } from './index.style';
+import HoverCard from '../../molecules/HoverCard';
+import Image from '../../atoms/Image';
+import Span from '../../atoms/Span';
 import TagBox from '../../molecules/TagBox';
 
 const LargeCard = ({ children, ...props }) => {
@@ -21,11 +21,12 @@ const LargeCard = ({ children, ...props }) => {
         isHover={isHover}
         onMouseLeave={() => setIsHover(false)}
       />
-      <Span _title>{props._title}</Span>
-      <Span _description>{props._description}</Span>
+      <Span className="_title">{props._title}</Span>
+      <Span className="_description">{props._description}</Span>
       <WrapContent>
-        <Span _sPrice>{props._sPrice}</Span>
-        <Span _nPrice>{props._nPrice}</Span>
+        <Span className="_sPrice">{props._sPrice}</Span>
+        <Span className="_nPrice">{props._nPrice}</Span>
+      </WrapContent>
       <TagBox _badge={props._badge} />
     </WrapDiv>
   );

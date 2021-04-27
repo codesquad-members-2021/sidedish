@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Icon from "../Icon";
+import React from 'react';
+import styled from 'styled-components';
+import Icon from '../Icon';
 
 const WrapDiv = styled.div`
   position: relative;
@@ -15,9 +15,6 @@ const Input = styled.input`
   height: 40px;
   font-size: 16px;
 `;
-// const IconWrap = styled.div`
-//   display: relative;
-// `;
 
 const SearchBar = ({ children, ...props }) => {
   return (

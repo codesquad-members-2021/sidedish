@@ -1,33 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { WrapDiv, WrapTab, WrapCard } from "./index.style";
+import React, { useState, useEffect } from 'react';
+import { WrapDiv, WrapTab, WrapCard } from './index.style';
+import loadData from '../../../util/loadData';
+import useTabs from '../../../util/useTaps';
+import Span from '../../atoms/Span';
+import Tab from '../../molecules/Tab';
+import LargeCard from '../../molecules/LargeCard';
 
-import useTabs from "../../../util/useTaps";
-import styled from "styled-components";
-import Span from "../../atoms/Span";
-import Tab from "../../molecules/Tab";
-import LargeCard from "../../molecules/LargeCard";
-import useFetch from "../../../util/useFetch";
 const BestDish = ({ children, ...props }) => {
   const [bestDish, setBestDish] = useState([]);
   const { currentItem, changeItem } = useTabs(0, bestDish);
   //임시이미지
   const tempImgUrl =
-    "http://public.codesquad.kr/jk/storeapp/data/f6817349118d4c671da8dca9065649a9.jpg";
+    'http://public.codesquad.kr/jk/storeapp/data/f6817349118d4c671da8dca9065649a9.jpg';
 
-  useFetch(setBestDish, "bestDish");
+  useEffect(() => {
+    loadData(setBestDish, props._dishType);
+  }, []);
 
   if (!currentItem) return null;
 
   return (
     <WrapDiv>
-      <Span _innerTitle>후기가 증명하는 베스트 반찬</Span>
+      <Span className="_innerTitle">후기가 증명하는 베스트 반찬</Span>
       <WrapTab>
         {bestDish.map((tabMenu, i) => {
           if (tabMenu.category_id === currentItem.category_id) {
             return (
               <Tab
                 onClick={() => changeItem(i)}
-                isTabAct={"_tabAct"}
+                isTabAct={'_tabAct'}
                 key={tabMenu.category_id}
                 name={tabMenu.name}
               ></Tab>
@@ -36,7 +37,7 @@ const BestDish = ({ children, ...props }) => {
             return (
               <Tab
                 onClick={() => changeItem(i)}
-                isTabAct={"_tabDeact"}
+                isTabAct={'_tabDeact'}
                 key={tabMenu.category_id}
                 name={tabMenu.name}
               ></Tab>

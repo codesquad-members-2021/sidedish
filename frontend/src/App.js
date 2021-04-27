@@ -6,13 +6,10 @@ import MainDish from './components/organisms/MainDish';
 import ViewMore from './components/organisms/ViewMore';
 import ProductDetail from './components/organisms/ProductDetail';
 function App() {
-  // const [bestDish, setBestDish] = useState([]);
-
   return (
     <div className="App">
       <Header />
-
-      <BestDish />
+      <BestDish _dishType="bestDish" />
       <MainDish _dishType="mainDish" />
       <ViewMore />
       <ProductDetail />

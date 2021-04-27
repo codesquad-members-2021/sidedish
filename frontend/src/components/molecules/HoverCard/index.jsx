@@ -1,15 +1,15 @@
-import React from "react";
-import { WrapDiv, LineDiv, WrapTitle } from "./index.style";
-import Span from "../../atoms/Span";
+import React from 'react';
+import { WrapDiv, LineDiv, WrapTitle } from './index.style';
+import Span from '../../atoms/Span';
 
 const HoverCard = ({ children, ...props }) => {
   if (props.isHover) {
     return (
       <WrapDiv {...props}>
         <WrapTitle>
-          <Span _hoverTitle>새벽배송</Span>
+          <Span className="_hoverTitle">새벽배송</Span>
           <LineDiv />
-          <Span _hoverTitle>전국택배</Span>
+          <Span className="_hoverTitle">전국택배</Span>
         </WrapTitle>
       </WrapDiv>
     );

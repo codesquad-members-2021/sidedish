@@ -25,16 +25,16 @@ const InfoGeneral = ({ children, ...props }) => {
   return (
     <InfosWrapper>
       <SingleInfoWrapper>
-        <Span _detailLabel>적립금</Span>
-        <Span _detailText>{props._point}</Span>
+        <Span className="_detailLabel">적립금</Span>
+        <Span className="_detailText">{props._point}</Span>
       </SingleInfoWrapper>
       <SingleInfoWrapper>
-        <Span _detailLabel>배송정보</Span>
-        <Span _detailText>{props.delivery_info}</Span>
+        <Span className="_detailLabel">배송정보</Span>
+        <Span className="_detailText">{props.delivery_info}</Span>
       </SingleInfoWrapper>
       <SingleInfoWrapper>
-        <Span _detailLabel>배송비</Span>
-        <Span _detailText>{props.delivery_fee}</Span>
+        <Span className="_detailLabel">배송비</Span>
+        <Span className="_detailText">{props.delivery_fee}</Span>
       </SingleInfoWrapper>
     </InfosWrapper>
   );

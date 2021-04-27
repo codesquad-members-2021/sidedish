@@ -26,7 +26,7 @@ const QuantityWrapper = styled.div`
 const InfoQuantity = ({ children, ...props }) => {
   return (
     <>
-      <Span _detailLabel>수량</Span>
+      <Span className="_detailLabel">수량</Span>
       <QuantityWrapper>
         <Input></Input>
         <IconWrapper>

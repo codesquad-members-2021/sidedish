@@ -9,19 +9,17 @@ const StyledTag = styled.button`
   padding: 4px 16px;
   border-radius: 5px;
 
-  ${props =>
-    props._event &&
-    `width: 97px;
+  &._event {
+    width: 97px;
     height: 28px;
-    margin-right: 10px;
-    background: #82d32d;`}
+    background: #82d32d;
+  }
 
-  ${props =>
-    props._new &&
-    `width: 84px;
+  &._new {
+    width: 84px;
     height: 28px;
-    margin-right: 10px;
-    background: #86C6FF;`}
+    background: #86c6ff;
+  }
 `;
 
 const StyledTagSpan = styled.span`
@@ -35,11 +33,10 @@ const StyledTagSpan = styled.span`
   margin: 0px 10px;
 `;
 
-const Tag = props => {
-  const text = props._event ? '이벤트 특가' : '런칭특가';
+const Tag = ({ children, ...props }) => {
   return (
     <StyledTag {...props}>
-      <StyledTagSpan>{text}</StyledTagSpan>
+      <StyledTagSpan>{children}</StyledTagSpan>
     </StyledTag>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
 import MediumCard from '../../molecules/MediumCard';
 import Icon from '../../atoms/Icon';
-import UseFetch from '../../../util/useFetch';
+import loadData from '../../../util/loadData';
 
 const MainDish = props => {
   const directionRef = useRef(false);
@@ -10,10 +10,13 @@ const MainDish = props => {
 
   const SLIDES = 4;
   const LENGTH = (imageWidth, margin) => {
-    return imageWidth * SLIDES + margin * (SLIDES + 1);
+    return imageWidth * SLIDES + margin * (SLIDES + 4);
+    //slide + 개수 이유 확인
   };
 
-  UseFetch(setData, props._dishType);
+  useEffect(() => {
+    loadData(setData, props._dishType);
+  }, []);
 
   const Cards = () => {
     return data.map((card, i) => (
@@ -37,9 +40,9 @@ const MainDish = props => {
 
   const moveSlide = type => {
     if (type === 'RightIcon') {
-      setStyle('all 0.5s', `translate(-${LENGTH(308, 16)}px)`);
+      setStyle('all 0.5s', `translate(-${LENGTH(308, 8)}px)`);
     } else {
-      setStyle('all 0.5s', `translate(${LENGTH(308, 16)}px)`);
+      setStyle('all 0.5s', `translate(${LENGTH(308, 8)}px)`);
     }
   };
 
@@ -62,6 +65,7 @@ const MainDish = props => {
             _width="32px"
             _color="#BDBDBD"
             _type="LeftIcon"
+            _margin="130px 25px 0 25px"
           />
           <WrapCard>
             <CardStyle onTransitionEnd={onTransitionEnd} ref={directionRef}>
@@ -73,6 +77,7 @@ const MainDish = props => {
             _width="32px"
             _color="#BDBDBD"
             _type="RightIcon"
+            _margin="130px 25px 0 25px"
           />
         </WrapCarousal>
       </WrapMain>

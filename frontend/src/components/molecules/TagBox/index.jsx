@@ -7,13 +7,18 @@ const TagWrapper = styled.div`
 `;
 
 const TagBox = props => {
-  if (props._badge && props._badge.length === 1) {
-    return props._badge[0] === '론칭특가' ? <Tag _new /> : <Tag _event />;
-  } else if (props._badge && props._badge.length === 2) {
+  const tagType = {
+    이벤트특가: '_event',
+    론칭특가: '_new',
+  };
+
+  if (props._badge) {
     return (
       <TagWrapper>
-        <Tag _new />
-        <Tag _event />
+        {props._badge.map(tag => {
+          const tagName = tagType[tag];
+          return <Tag className={tagName}>{tag}</Tag>;
+        })}
       </TagWrapper>
     );
   }

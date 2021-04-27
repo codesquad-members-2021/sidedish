@@ -17,12 +17,12 @@ const PriceWrapper = styled.div`
 const InfoGeneral = ({ children, ...props }) => {
   return (
     <>
-      <Span _innerTitle>{props.title}</Span>
+      <Span className="_innerTitle">{props.title}</Span>
       <Span>{props.description}</Span>
       <PriceWrapper>
         <TagBox _badge={props._badge} />
-        <Span _sPrice>{props._sPrice}</Span>
-        <Span _nPrice>{props._nPrice}</Span>
+        <Span className="_sPrice">{props._sPrice}</Span>
+        <Span className="_nPrice">{props._nPrice}</Span>
       </PriceWrapper>
     </>
   );
