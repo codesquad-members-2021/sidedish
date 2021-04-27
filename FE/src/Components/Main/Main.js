@@ -42,10 +42,11 @@ const Main = ({ URL, modal, setModal, ModalData, setModalData }) => {
   );
 };
 
-
 const CarouselSlide = styled.div`
   display: flex;
-  margin-top: 77px;
+  margin: 77px auto 0;
+  width: 1370px;
+  align-items: center;
 `;
 
 export default Main;

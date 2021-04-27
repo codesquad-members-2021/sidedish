@@ -51,22 +51,29 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
 
   const Calculate = () => {
     if (detail[0].prices.length === 1) {
-      return numberWithCommas(quantity * detail[0].prices[0].replace(/[^0-9]/g, ""));
+      return numberWithCommas(
+        quantity * detail[0].prices[0].replace(/[^0-9]/g, "")
+      );
     }
     if (detail[0].prices.length === 2) {
-      return numberWithCommas(quantity * detail[0].prices[1].replace(/[^0-9]/g, ""));
+      return numberWithCommas(
+        quantity * detail[0].prices[1].replace(/[^0-9]/g, "")
+      );
     }
   };
 
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  };
   const [toggleState, setToggleState] = useState();
   const [imgState, setState] = useState(1);
-  
+
   const toggleImg = (v) => {
     setState(0);
     setToggleState(v);
+  };
+  const test = () => {
+    console.log("test");
   };
   return (
     <ModalBackground>
@@ -76,10 +83,17 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
             {detail && (
               <>
                 <ImageBox>
-                  <Image toggleImg={()=>toggleImg(detail[0].top_image)} src={imgState===1 ? detail[0].top_image : toggleState } />
+                  <Image
+                    toggleImg={() => toggleImg(detail[0].top_image)}
+                    src={imgState === 1 ? detail[0].top_image : toggleState}
+                  />
                   <Mini>
                     {detail[0].thumb_images.map((v, idx) => (
-                      <MiniImage key={idx} src={v} onClick={() => toggleImg(v)}/>
+                      <MiniImage
+                        key={idx}
+                        src={v}
+                        onClick={() => toggleImg(v)}
+                      />
                     ))}
                   </Mini>
                 </ImageBox>
@@ -146,6 +160,7 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
                     <MoneyTitle>총 주문금액</MoneyTitle>
                     <AllMoney>{Calculate()}원</AllMoney>
                   </Finish>
+                  <OrderButton onClick={test}>주문하기</OrderButton>
                 </ModalContent>
               </>
             )}
@@ -164,6 +179,25 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
     </ModalBackground>
   );
 };
+const OrderButton = styled.button`
+  position: absolute;
+  width: 440px;
+  height: 58px;
+  background: #82d32d;
+  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
+    0px 2px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  /* identical to box height */
+  text-align: center;
+  /* White */
+  color: #ffffff;
+`;
 const AllMoney = styled.div`
   font-family: Noto Sans KR;
   font-style: normal;
