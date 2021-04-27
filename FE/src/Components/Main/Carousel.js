@@ -1,4 +1,9 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import styled from "styled-components";
 import CarouselCard from "./CarouselCard";
 
@@ -6,38 +11,39 @@ const Carousel = (
   { MainTitle, Food, setFood, Ref, setModal, setModalData },
   ref
 ) => {
-  const [xtransform] = useState("-680");
+  const virtualImage = Food.slice(Food.length - 4, Food.length); // 마지막부분 4개의 사진을 복사하여 0~4번 이미지를 만들어준다.
+  const transitionDefault = `all 0.5s ease-in-out`;
+  const panelWidth = 344;
+  const panelCount = 4;
+  const [X, setX] = useState(0);
+  const [moving, setMoving] = useState(false);
+  const [transitionValue, setTransitionValue] = useState(transitionDefault);
 
   useImperativeHandle(ref, () => ({
     Slider,
   }));
 
-  const Slider = (e) => {
-    const RightClass = e.target.classList.contains("Right");
-    const LeftClass = e.target.classList.contains("Left");
-    Ref.current.style.transition = "0.5s transform ease-in-out";
+  useEffect(() => {
+    if (transitionValue === "none") setTransitionValue(transitionDefault);
+  }, [X]);
 
-    if (RightClass) {
-      Ref.current.style.transform = `translateX(${xtransform - 1360}px)`;
-      const first = Food.slice(4, Food.length);
-      const result = first.concat(Food.slice(0, 4));
+  const Slider = (direction) => {
+    if (moving) return;
+    setX((prevX) =>
+      prevX
+        ? prevX + direction * panelWidth * panelCount
+        : direction * panelWidth * panelCount
+    );
+    setMoving(true);
+  };
 
-      setTimeout(() => {
-        Ref.current.style.transition = "none";
-        Ref.current.style.transform = `translateX(-680px)`;
-        setFood(result);
-      }, 500);
-    }
-    if (LeftClass) {
-      Ref.current.style.transform = `translateX(${680}px)`;
-      const first = Food.slice(4, Food.length);
-      const result = first.concat(Food.slice(0, 4));
-      setTimeout(() => {
-        Ref.current.style.transition = "none";
-        Ref.current.style.transform = "translateX(-680px)";
-        setFood(result);
-      }, 500);
-    }
+  const onTransitionEnd = () => {
+    setMoving(false);
+    setTransitionValue("none");
+    const first = Food.slice(4, Food.length);
+    const result = first.concat(Food.slice(0, 4));
+    setFood(result);
+    setX(0);
   };
 
   return (
@@ -45,40 +51,47 @@ const Carousel = (
       <CarouselTitle>{MainTitle}</CarouselTitle>
       {
         <CarouselImage>
-          <Image ref={Ref} xtransform={xtransform}>
-            {Food.map(
-              (
-                {
-                  detail_hash,
-                  image,
-                  alt,
-                  delivery_type,
-                  title,
-                  description,
-                  n_price,
-                  s_price,
-                  badge,
-                },
-                index
-              ) => {
-                return (
-                  <CarouselCard
-                    key={index}
-                    detail_hash={detail_hash}
-                    image={image}
-                    alt={alt}
-                    delivery_type={delivery_type}
-                    title={title}
-                    description={description}
-                    n_price={n_price}
-                    s_price={s_price}
-                    badge={badge}
-                    setModal={setModal}
-                    setModalData={setModalData}
-                  />
-                );
-              }
-            )}
+          <Image
+            ref={Ref}
+            X={X}
+            transitionValue={transitionValue}
+            onTransitionEnd={onTransitionEnd}
+          >
+            {virtualImage
+              .concat(Food)
+              .map(
+                (
+                  {
+                    detail_hash,
+                    image,
+                    alt,
+                    delivery_type,
+                    title,
+                    description,
+                    n_price,
+                    s_price,
+                    badge,
+                  },
+                  index
+                ) => {
+                  return (
+                    <CarouselCard
+                      key={index}
+                      detail_hash={detail_hash}
+                      image={image}
+                      alt={alt}
+                      delivery_type={delivery_type}
+                      title={title}
+                      description={description}
+                      n_price={n_price}
+                      s_price={s_price}
+                      badge={badge}
+                      setModal={setModal}
+                      setModalData={setModalData}
+                    />
+                  );
+                }
+              )}
           </Image>
         </CarouselImage>
       }
@@ -87,17 +100,16 @@ const Carousel = (
 };
 
 const Box = styled.div`
-  width: 1280px;
-  height: 534px;
+  width: 1392px;
+  /* height: 534px; */
   margin: auto;
-  
 `;
 
 const CarouselTitle = styled.div`
   width: 350px;
   height: 35px;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  margin: 0 36px;
+
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
@@ -112,10 +124,10 @@ const CarouselImage = styled.div`
 `;
 
 const Image = styled.div`
-  transform: ${({ xtransform }) => `translateX(${xtransform}px)`};
+  transform: ${({ X }) => `translateX(${X}px)`};
+  transition: ${({ transitionValue }) => transitionValue};
   z-index: 0;
   display: flex;
-  margin-left: 66px;
 `;
 
 export default forwardRef(Carousel);
