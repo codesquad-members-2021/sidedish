@@ -1,22 +1,27 @@
 package com.team15.sidedish.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class BestDishesDTO {
-    private List<BestDTO> bestDishesDTO;
+    @JsonProperty("best_dishes")
+    private List<BestDTO> bestDishes;
 
-    public BestDishesDTO(List<BestDTO> bestDishesDTO) {
-        this.bestDishesDTO = bestDishesDTO;
+    public BestDishesDTO(List<BestDTO> bestDishes) {
+        this.bestDishes = bestDishes;
     }
 
-    public List<BestDTO> getBestDishesDTO() {
-        return bestDishesDTO;
+    public List<BestDTO> getBestDishes() {
+        return bestDishes;
     }
 
     @Override
     public String toString() {
-        return "BestAllDTO{" +
-                "bestDishesDTO=" + bestDishesDTO +
+        return "BestDishesDTO{" +
+                "bestDishes=" + bestDishes +
                 '}';
     }
 }
+
+
