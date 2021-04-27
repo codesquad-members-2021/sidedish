@@ -6,7 +6,6 @@ import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-
 const Carousel = ({
   path,
   panelCount,
@@ -15,11 +14,9 @@ const Carousel = ({
   setModalState,
   setModalData,
 }) => {
-
   const dishData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
   );
-  console.log(dishData);
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
   const [restCardCount, setRestCardCount] = useState(null);
