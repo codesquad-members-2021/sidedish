@@ -4,6 +4,8 @@ import develop.baminchan.entity.Order;
 import develop.baminchan.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OrderService {
 
@@ -15,5 +17,10 @@ public class OrderService {
 
     public void createOrder(Order order) {
         orderRepository.save(order);
+    }
+
+    public Optional<Order> findById(Long id) {
+        Optional<Order> order = orderRepository.findById(id);
+        return order;
     }
 }
