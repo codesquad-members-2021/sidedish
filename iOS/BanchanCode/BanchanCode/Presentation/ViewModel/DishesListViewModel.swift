@@ -8,12 +8,12 @@
 import Foundation
 
 protocol DishesListViewModelInput {
-    func load(category: Categorizable)
+    func load()
     func getNumberOfItems() -> Int
 }
 
 protocol DishesListViewModelOutput {
-    var category: Observable<Categorizable?> { get }
+    var category: Observable<Categorizable> { get }
     var items: Observable<[DishesListItemViewModel]> { get }
 }
 
@@ -23,21 +23,21 @@ final class DefaultDishesListViewModel: DishesListViewModel {
     private let fetchDishesUseCase: FetchDishesUseCase
     
     //MARK: - Output
-    var category: Observable<Categorizable?> = Observable(.none)
+    var category: Observable<Categorizable>
     var items: Observable<[DishesListItemViewModel]> = Observable([])
     
     //MARK: - Init
-    init(fetchDishesUseCase: FetchDishesUseCase) {
+    init(fetchDishesUseCase: FetchDishesUseCase,
+         category: Observable<Categorizable>) {
         self.fetchDishesUseCase = fetchDishesUseCase
+        self.category = category
     }
 }
 
 //MARK: - Input
 extension DefaultDishesListViewModel {
-    func load(category: Categorizable) {
-        self.category.value = category
-        
-        fetchDishesUseCase.execute(requestValue: .init(category: category), completion: { (result) in
+    func load() {
+        fetchDishesUseCase.execute(requestValue: .init(category: category.value), completion: { (result) in
             switch result {
             case .success(let items):
                 self.items.value = items.dishes.map(DishesListItemViewModel.init)

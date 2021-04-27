@@ -18,13 +18,13 @@ class MainPageViewController: UIViewController {
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
         
-        let mainViewModel = makeDishesListViewModel()
-        let soupViewModel = makeDishesListViewModel()
-        let sideViewModel = makeDishesListViewModel()
+        let mainViewModel = makeDishesListViewModel(category: Observable(MainCategory()))
+        let soupViewModel = makeDishesListViewModel(category: Observable(SoupCategory()))
+        let sideViewModel = makeDishesListViewModel(category: Observable(SideCategory()))
         
-        mainViewModel.load(category: MainCategory())
-        soupViewModel.load(category: SoupCategory())
-        sideViewModel.load(category: SideCategory())
+        mainViewModel.load()
+        soupViewModel.load()
+        sideViewModel.load()
         
         mainPageDataSource?.viewModels = [mainViewModel, soupViewModel, sideViewModel]
         
@@ -42,8 +42,8 @@ class MainPageViewController: UIViewController {
         return DefaultFetchDishesUseCase()
     }
     
-    func makeDishesListViewModel() -> DishesListViewModel {
-        return DefaultDishesListViewModel(fetchDishesUseCase: makeFetchDishesUseCase())
+    func makeDishesListViewModel(category: Observable<Categorizable>) -> DishesListViewModel {
+        return DefaultDishesListViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
     }
     
     private func registerXib() {
