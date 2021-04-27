@@ -8,7 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
+    var dependencyContainer = AppDependencyContainer()
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -25,6 +25,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = UINavigationController(rootViewController: rootViewController)
         window?.makeKeyAndVisible()
     }
+    
+    // app will react to the custom URL schema and we need to handle it properly. To be notified when such interaction happen while the app is in the foreground we need to override this method of the Scene delegate
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+            if let urlContext = URLContexts.first {
+                let url = urlContext.url
+                if let deepLink = DeepLink(url: url) {
+                    dependencyContainer.deepLinkHandler.handleDeepLinkIfPossible(deepLink: deepLink)
+                }
+            }
+        }
 }
 
 

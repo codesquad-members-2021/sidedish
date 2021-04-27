@@ -20,6 +20,8 @@
 		88BDE4F02636C73F0056DE3B /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4EF2636C73F0056DE3B /* TempViewController.swift */; };
 		88BDE4F42637A97A0056DE3B /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4F32637A97A0056DE3B /* OAuthService.swift */; };
 		88BDE4F92637AAF30056DE3B /* LocalOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4F82637AAF30056DE3B /* LocalOAuthClient.swift */; };
+		88BDE4FD2637BDC00056DE3B /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4FC2637BDC00056DE3B /* DeepLinkHandler.swift */; };
+		88BDE5022637BE700056DE3B /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE5012637BE700056DE3B /* AppDependencyContainer.swift */; };
 		BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB3262FF79600C0625E /* SideDishManager.swift */; };
 		BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB926301B8000C0625E /* AlertFactory.swift */; };
 		BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */; };
@@ -59,6 +61,8 @@
 		88BDE4EF2636C73F0056DE3B /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		88BDE4F32637A97A0056DE3B /* OAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
 		88BDE4F82637AAF30056DE3B /* LocalOAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOAuthClient.swift; sourceTree = "<group>"; };
+		88BDE4FC2637BDC00056DE3B /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
+		88BDE5012637BE700056DE3B /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		BFAE1BB3262FF79600C0625E /* SideDishManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishManager.swift; sourceTree = "<group>"; };
 		BFAE1BB926301B8000C0625E /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardHeaderView.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 			children = (
 				BFCE4952262D4891006C0882 /* AppDelegate.swift */,
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
+				88BDE5012637BE700056DE3B /* AppDependencyContainer.swift */,
 				BFCE49C1262E8918006C0882 /* DIContainer.swift */,
 				BFC2F97F2635BBFA006C9DCA /* Dependency.swift */,
 				8844B7CD262DB62C00FA49E9 /* DataLayer */,
@@ -213,6 +218,7 @@
 				BFCE4979262DC205006C0882 /* HTTPMethod.swift */,
 				BFCE497C262DC22A006C0882 /* NetworkError.swift */,
 				BFCE497F262DC3F2006C0882 /* NetworkManager.swift */,
+				88BDE4FC2637BDC00056DE3B /* DeepLinkHandler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -339,10 +345,12 @@
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
 				88BDE4F02636C73F0056DE3B /* TempViewController.swift in Sources */,
 				BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */,
+				88BDE5022637BE700056DE3B /* AppDependencyContainer.swift in Sources */,
 				88BDE4F92637AAF30056DE3B /* LocalOAuthClient.swift in Sources */,
 				BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */,
 				BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */,
 				BFAE1BC426302DB600C0625E /* Imagloader.swift in Sources */,
+				88BDE4FD2637BDC00056DE3B /* DeepLinkHandler.swift in Sources */,
 				88BDE4E82636ACD20056DE3B /* AuthViewController.swift in Sources */,
 				8844B8522631A97300FA49E9 /* ItemDetails.swift in Sources */,
 				88BDE4F42637A97A0056DE3B /* OAuthService.swift in Sources */,

@@ -9,10 +9,19 @@ import UIKit
 import SafariServices
 
 class AuthViewController: UIViewController {
-    var oAuthService: OAuthService?
+    let oAuthService: OAuthService
+        init(oAuthService: OAuthService) {
+            self.oAuthService = oAuthService
+            super.init(nibName: nil, bundle: nil)
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("sdf")
         navigationController?.navigationBar.isHidden = true
     }
     

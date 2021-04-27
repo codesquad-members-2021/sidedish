@@ -9,9 +9,20 @@ import Foundation
 
 protocol OAuthClient {
     func getAuthPageUrl(state: String) -> URL?
+    func exchangeCodeForToken(code: String,
+                                  state: String,
+                                  completion: @escaping (Result<TokenBag, Error>) -> Void)
+}
+
+struct TokenBag {
+    let accessToken: String
 }
 
 class LocalOauthClient: OAuthClient {
+    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, Error>) -> Void) {
+        print("meh")
+    }
+    
     func getAuthPageUrl(state: String) -> URL? {
         let clientID = "7f32a79b176298db2f2f"
         let redirect_uri = "hoonha.Side-dish://authentication"
