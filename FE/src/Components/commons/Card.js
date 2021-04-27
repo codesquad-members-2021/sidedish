@@ -57,14 +57,15 @@ const Card = ({ type = "default", number, item, setModalState }) => {
 }
 
 const CardWrapper = styled.div`
-  width: 384px;
-  height: 540px;
+  max-width: 384px;
+  max-height: 540px;
+  flex-basis:33%;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
-  width: 384px;
-  height: 384px;
+  max-width: 384px;
+  max-height: 384px;
   margin: 0 0 16px 0;
   &:hover{
     cursor:pointer;
@@ -80,7 +81,7 @@ const Overlay = styled.div`
   position: absolute;
   display:flex;
   height: 100%;
-  width: inherit;
+  width: 100%;
   background: #000;
   bottom: 0;
   opacity: 0;

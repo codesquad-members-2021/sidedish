@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import API from '../../util/API.js';
 
 import { Container } from '../commons/base.js';
 import Card from '../commons/Card';
@@ -13,12 +14,14 @@ const Tabs = ({ setModalState }) => {
   };
 
   useEffect(() => {
-    const fetchItemList = async () => {
-      const tabItems = await (await fetch('/develop/baminchan/best')).json();
-      setTabItemList(tabItems.body);
-    };
-
-    fetchItemList();
+    (async () => {
+      try {
+        const { body } = await API.get.best();
+        setTabItemList(body);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
   }, []);
 
   useEffect(() => {
@@ -30,7 +33,7 @@ const Tabs = ({ setModalState }) => {
   return (
     <TabsWrapper>
       <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
-      <div>
+      <FlexWrapper>
         {tabItemList.map(({ name }, idx) => {
           return (
             <label key={idx}>
@@ -39,7 +42,7 @@ const Tabs = ({ setModalState }) => {
             </label>
           );
         })}
-      </div>
+      </FlexWrapper>
       <CardListWrapper>
         {currentTabItems.map((item, idx) => {
           return (<Card key={idx} item={item} setModalState={setModalState} />);
@@ -50,6 +53,10 @@ const Tabs = ({ setModalState }) => {
 };
 
 const TabsWrapper = styled(Container)``;
+
+const FlexWrapper = styled.div`
+  display:flex;
+`;
 
 const LabelBelongSpan = styled.span`
   display: inline-flex;
@@ -79,8 +86,8 @@ const TabsTitle = styled.div`
 
 const CardListWrapper = styled.div`
   display: flex;
-  width: 1280px;
-  height: 620px;
+  max-width: 1280px;
+  max-height: 620px;
   padding: 40px;
   box-sizing:border-box;
   justify-content: space-between;

@@ -8,6 +8,9 @@ const API = {
     },
     detail: ({ hash }) => {
       return customFetch(`${END_POINT}/detail/${hash}`);
+    },
+    best: () => {
+      return customFetch(`${END_POINT}/best`);
     }
   },
   post: {}
