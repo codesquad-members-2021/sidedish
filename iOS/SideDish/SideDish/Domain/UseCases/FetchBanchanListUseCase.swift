@@ -8,24 +8,21 @@
 import Foundation
 import Combine
 
-struct FetchBanchanListUseCase {
-    private var subscriptions = Set<AnyCancellable>()
-    
-    mutating func fetchBanchanList(network: NetworkRequest, baseURL: String, section: String, completion: @escaping ([Banchan]?) -> Void) {
-        let url = baseURL+section
+protocol FetchBanchanListUseCase {
+    func execute(section: Section, completion: @escaping ([Banchan]?)->Void)
+}
 
-        network.request(with: url, dataType: BanchanListDTO.self, httpMethod: .get)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    break
-                }
-            }, receiveValue: { banchanListDTO in
-                completion(banchanListDTO.toDomain())
-            })
-            .store(in: &subscriptions)
+class DefaultFetchBanchanListUseCase: FetchBanchanListUseCase {
+    
+    private let banchanListRepository: BanchanListRepository
+    
+    init(banchanListRepository: BanchanListRepository) {
+        self.banchanListRepository = banchanListRepository
+    }
+    
+    func execute(section: Section, completion: @escaping ([Banchan]?)->Void) {
+        banchanListRepository.fetchBanchanList(section: section) { (banchans) in
+            completion(banchans)
+        }
     }
 }

@@ -6,32 +6,30 @@
 //
 
 import Foundation
-import Alamofire
 import Combine
 
-protocol NetworkRequest {
-    func request<T:Decodable>(with url: String, dataType: T.Type, httpMethod: HTTPMethod)
+protocol NetworkService {
+    func request<T:Decodable>(with endPoint: Requestable, dataType: T.Type)
     -> AnyPublisher<T, NetworkError>
     func decode<T: Decodable>(data: Data, dataType: T.Type) -> AnyPublisher<T, NetworkError>
 }
 
-class NetworkSerivce: NetworkRequest {
+public class DefaultNetworkSerivce: NetworkService {
     
-    static let shared = NetworkSerivce()
-    
-    private init() {
+    init() {
     }
     
-    func request<T:Decodable>(with url: String, dataType: T.Type, httpMethod: HTTPMethod)
+    func request<T:Decodable>(with endPoint: Requestable, dataType: T.Type)
     -> AnyPublisher<T, NetworkError> {
-        guard let url = URL(string: url) else {
+        
+        guard let url = endPoint.url() else {
             let error = NetworkError.network(description: "Couldn't create URL")
             return Fail(error: error).eraseToAnyPublisher()
         }
         
         var request = URLRequest(url: url)
         request.httpBody = nil
-        request.httpMethod = httpMethod.rawValue
+        request.httpMethod = endPoint.httpMethod.rawValue
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .mapError { error in
@@ -66,4 +64,9 @@ class NetworkSerivce: NetworkRequest {
 enum NetworkError: Error {
     case parsing(description: String)
     case network(description: String)
+}
+
+public enum HttpMethod: String {
+    case get = "GET"
+    case post = "POST"
 }

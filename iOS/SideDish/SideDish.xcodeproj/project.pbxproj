@@ -12,6 +12,12 @@
 		5C69859173AA8099B0701A54 /* Pods_SideDishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7433C6120AE2C2B5B290532 /* Pods_SideDishTests.framework */; };
 		D4A2C9AC263273C10019AFB6 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C9AB263273C10019AFB6 /* BadgeLabel.swift */; };
 		D4A2CA37263417B60019AFB6 /* ImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CA36263417B60019AFB6 /* ImageView+Extension.swift */; };
+		D4A2CABA2637A6890019AFB6 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CAB92637A6890019AFB6 /* EndPoint.swift */; };
+		D4A2CAC32637A8970019AFB6 /* BanchanListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CAC22637A8970019AFB6 /* BanchanListRepository.swift */; };
+		D4A2CACC2637AFCA0019AFB6 /* BanchanSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CACB2637AFCA0019AFB6 /* BanchanSceneFlowCoordinator.swift */; };
+		D4A2CAD32637B1250019AFB6 /* BanchanSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CAD22637B1250019AFB6 /* BanchanSceneDIContainer.swift */; };
+		D4A2CAD92637B25B0019AFB6 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CAD82637B25B0019AFB6 /* AppDIContainer.swift */; };
+		D4A2CADE2637B3D90019AFB6 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2CADD2637B3D90019AFB6 /* AppFlowCoordinator.swift */; };
 		D4BFBAD3262E989000D68297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD2262E989000D68297 /* AppDelegate.swift */; };
 		D4BFBAD5262E989000D68297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD4262E989000D68297 /* SceneDelegate.swift */; };
 		D4BFBAD7262E989000D68297 /* BanchanListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBAD6262E989000D68297 /* BanchanListViewController.swift */; };
@@ -63,6 +69,12 @@
 		8C36659865215502B6A787B2 /* Pods_SideDish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A2C9AB263273C10019AFB6 /* BadgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		D4A2CA36263417B60019AFB6 /* ImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extension.swift"; sourceTree = "<group>"; };
+		D4A2CAB92637A6890019AFB6 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		D4A2CAC22637A8970019AFB6 /* BanchanListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanListRepository.swift; sourceTree = "<group>"; };
+		D4A2CACB2637AFCA0019AFB6 /* BanchanSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanSceneFlowCoordinator.swift; sourceTree = "<group>"; };
+		D4A2CAD22637B1250019AFB6 /* BanchanSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanchanSceneDIContainer.swift; sourceTree = "<group>"; };
+		D4A2CAD82637B25B0019AFB6 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		D4A2CADD2637B3D90019AFB6 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		D4BFBACF262E989000D68297 /* SideDish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BFBAD2262E989000D68297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BFBAD4262E989000D68297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +167,42 @@
 			path = Utills;
 			sourceTree = "<group>";
 		};
+		D4A2CAC12637A8810019AFB6 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2CAC22637A8970019AFB6 /* BanchanListRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		D4A2CACA2637AFB20019AFB6 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2CACB2637AFCA0019AFB6 /* BanchanSceneFlowCoordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		D4A2CAD02637B0EB0019AFB6 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2CAD12637B10B0019AFB6 /* DIContainer */,
+				D4BFBAD2262E989000D68297 /* AppDelegate.swift */,
+				D4BFBAD4262E989000D68297 /* SceneDelegate.swift */,
+				D4A2CADD2637B3D90019AFB6 /* AppFlowCoordinator.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D4A2CAD12637B10B0019AFB6 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2CAD22637B1250019AFB6 /* BanchanSceneDIContainer.swift */,
+				D4A2CAD82637B25B0019AFB6 /* AppDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
 		D4BFBAC6262E989000D68297 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +228,7 @@
 		D4BFBAD1262E989000D68297 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
+				D4A2CAD02637B0EB0019AFB6 /* Application */,
 				D4BFBB1B262EA76300D68297 /* Data */,
 				D4BFBB1A262EA75D00D68297 /* Domain */,
 				D4BFBB19262EA74E00D68297 /* Presentaion */,
@@ -211,6 +260,7 @@
 		D4BFBB19262EA74E00D68297 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				D4A2CACA2637AFB20019AFB6 /* Flow */,
 				D4A2C9AA263273A60019AFB6 /* Utills */,
 				D4BFBB1F262EA7AC00D68297 /* DetailBanchan */,
 				D4BFBB1E262EA7A100D68297 /* BanchanList */,
@@ -230,6 +280,7 @@
 		D4BFBB1B262EA76300D68297 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D4A2CAC12637A8810019AFB6 /* Repositories */,
 				D4BFBB27262EA80B00D68297 /* PersistentStorages */,
 				D4BFBB26262EA7F500D68297 /* Network */,
 			);
@@ -313,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				FFEF70F826310FB400189376 /* NetworkService.swift */,
+				D4A2CAB92637A6890019AFB6 /* EndPoint.swift */,
 				FFEF70FD2631103C00189376 /* DataMapping */,
 			);
 			path = Network;
@@ -328,8 +380,6 @@
 		D4BFBB28262EA83E00D68297 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				D4BFBAD2262E989000D68297 /* AppDelegate.swift */,
-				D4BFBAD4262E989000D68297 /* SceneDelegate.swift */,
 				D4BFBADB262E989300D68297 /* Assets.xcassets */,
 				D4BFBADD262E989300D68297 /* LaunchScreen.storyboard */,
 			);
@@ -588,8 +638,10 @@
 				FFEF70F926310FB400189376 /* NetworkService.swift in Sources */,
 				D4BFBAD7262E989000D68297 /* BanchanListViewController.swift in Sources */,
 				D4BFBAD3262E989000D68297 /* AppDelegate.swift in Sources */,
+				D4A2CAC32637A8970019AFB6 /* BanchanListRepository.swift in Sources */,
 				D4BFBAD5262E989000D68297 /* SceneDelegate.swift in Sources */,
 				FFA10EB1262FC6CD00D584B6 /* BanchanCollectionView.swift in Sources */,
+				D4A2CABA2637A6890019AFB6 /* EndPoint.swift in Sources */,
 				D4BFBB0A262E9A8200D68297 /* BanchanDetailViewController.swift in Sources */,
 				D4BFBB2F262EAD1C00D68297 /* BanchanDetail.swift in Sources */,
 				FFEF71042631107200189376 /* FetchBanchanListUseCase.swift in Sources */,
@@ -597,9 +649,13 @@
 				D4BFBB35262EB89800D68297 /* BanchanCustomCell.swift in Sources */,
 				D4A2CA37263417B60019AFB6 /* ImageView+Extension.swift in Sources */,
 				D4BFBB2A262EA93700D68297 /* Banchan.swift in Sources */,
+				D4A2CAD92637B25B0019AFB6 /* AppDIContainer.swift in Sources */,
 				FFEF71092631128900189376 /* FetchImageUseCase.swift in Sources */,
+				D4A2CACC2637AFCA0019AFB6 /* BanchanSceneFlowCoordinator.swift in Sources */,
 				D4A2C9AC263273C10019AFB6 /* BadgeLabel.swift in Sources */,
+				D4A2CAD32637B1250019AFB6 /* BanchanSceneDIContainer.swift in Sources */,
 				FFEF7123263119C500189376 /* BanchanListViewModel.swift in Sources */,
+				D4A2CADE2637B3D90019AFB6 /* AppFlowCoordinator.swift in Sources */,
 				D4BFBB3C262EC8DB00D68297 /* BanchanCustomCellHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
