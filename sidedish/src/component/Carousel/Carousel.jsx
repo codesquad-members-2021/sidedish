@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 
-const Carousel = ({ children, itemWidth, maxItem, skipItem, animationTime }) => {
+const Carousel = forwardRef(({ children, itemWidth, maxItem, skipItem, animationTime }, ref) => {
   const [locationX, setLocationX] = useState(0);
   const [currIdx, setCurrIdx] = useState(0);
   const [leftItem, setLeftItem] = useState();
@@ -23,6 +23,15 @@ const Carousel = ({ children, itemWidth, maxItem, skipItem, animationTime }) => 
     setLeftItem(newLeftItem - possibleMove);
   };
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      handleClickPrev,
+      handleClickNext,
+    }),
+    [handleClickPrev, handleClickNext]
+  );
+
   return (
     <StyledCarousel
       locationX={locationX}
@@ -30,14 +39,14 @@ const Carousel = ({ children, itemWidth, maxItem, skipItem, animationTime }) => 
       currIdx={currIdx}
       leftItem={leftItem}
     >
-      <IoChevronBackSharp onClick={handleClickPrev} className="leftArrow arrow" />
+      {/* <IoChevronBackSharp onClick={handleClickPrev} className="leftArrow arrow" /> */}
       <div className="carouselWrapper">
         <div className="carouselList">{children}</div>
       </div>
-      <IoChevronForwardSharp onClick={handleClickNext} className="rightArrow arrow" />
+      {/* <IoChevronForwardSharp onClick={handleClickNext} className="rightArrow arrow" /> */}
     </StyledCarousel>
   );
-};
+});
 
 export default Carousel;
 
