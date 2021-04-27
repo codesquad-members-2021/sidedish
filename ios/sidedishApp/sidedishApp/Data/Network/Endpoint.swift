@@ -8,13 +8,28 @@
 import Foundation
 import Combine
 
+enum Section: Int, CaseIterable {
+    case main
+    case soup
+    case side
+
+    var sectionHeader: String {
+        switch self {
+        case .main: return "모두가 좋아하는 든든한 메인요리"
+        case .soup: return "정성이 담긴 뜨끈뜨끈 국물요리"
+        case .side: return "식탁을 풍성하게 하는 정갈한 밑반찬"
+        }
+    }
+}
+
 struct Endpoint {
     private var path: String
     
     var url: URL {
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "45a2d464-7981-45cc-8b6d-4667ad9bf6f5.mock.pstmn.io"
+        components.scheme = "http"
+        components.host = "3.34.213.95"
+        components.port = 8080
         components.path = "\(path)"
         let url = components.url
         assert(url != nil, "url is nil")

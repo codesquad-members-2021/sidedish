@@ -8,21 +8,13 @@
 import UIKit
 
 struct LayoutManager {
+    enum SupplementaryElementKind {
+        static let sectionHeader = "supplementary-section-header"
+    }
+    
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-         
-            guard let sectionKind = Section(rawValue: sectionIndex) else {
-                fatalError("Undefined section for value: \(sectionIndex)")//수정해야 함
-            }
-            
-            switch sectionKind {
-            case .main:
-                return createSection()
-            case .soup:
-                return createSection()
-            case .side:
-                return createSection()
-            }
+            return createSection()
         }
         
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
