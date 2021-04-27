@@ -52,8 +52,7 @@ CREATE TABLE IF NOT EXISTS `sidedish`.`dish` (
     `delivery_fee` INT(11),
     `category_id` INT(11),
     `quantity` INT(11),
-
-
+    `current_date_time` TIMESTAMP,
     PRIMARY KEY (`detail_hash`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
