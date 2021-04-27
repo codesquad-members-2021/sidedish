@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledBadges } from 'component/DishItem/DishItem';
 import Counter from 'component/ItemDetail/Counter';
+import { StyledCarousel } from 'component/Carousel/Carousel';
 
 const DetailModal = ({ detailData, loading, title, badge }) => {
   const [count, setCount] = useState(1);
@@ -92,9 +93,10 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
           </div>
         </TopRight>
       </Top>
-      {/* <Bottom>
-
-      </Bottom> */}
+      <Bottom>
+        <div className="header">함께하면 더욱 맛있는 상품</div>
+        {/* carousel 들어갈 자리 */}
+      </Bottom>
     </ModalStyle>
   );
 };
@@ -103,14 +105,19 @@ export default DetailModal;
 
 export const ModalStyle = styled.div`
   width: 70%;
-  height: 90%;
+  height: 95%;
   background-color: white;
   display: flex;
   flex-direction: column;
+`;
+
+const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
   padding: 50px;
+`;
 
-  /* position: relative; */
-
+const TopLeft = styled.div`
   .top_img_container {
     left: 35em;
     top: 48px;
@@ -132,15 +139,8 @@ export const ModalStyle = styled.div`
   }
 `;
 
-const Top = styled.div`
-  display: flex;
-`;
-
-const TopLeft = styled.div``;
-
 const TopRight = styled.div`
   width: 50%;
-  padding: 0 1rem;
 
   .info {
     display: flex;
@@ -238,5 +238,13 @@ const TopRight = styled.div`
     border-radius: 5px;
     background-color: ${({ theme: { colors } }) => colors.green};
     color: white;
+  }
+`;
+
+const Bottom = styled.div`
+  background-color: ${({ theme: { colors } }) => colors.lightGray};
+  height: 100%;
+  .header {
+    font-size: 18px;
   }
 `;

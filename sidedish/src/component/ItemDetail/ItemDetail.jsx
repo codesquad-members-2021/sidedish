@@ -17,7 +17,6 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
     url: URL.detail(id),
     parse: parseDetailData,
   });
-  // const modal = detailData ? <div>데이터가 없습니다.</div> : <DetailModal detailData={detailData} loading={loading} title={title} badge={badge}></DetailModal>
 
   if (error) throw Error(error);
   return createPortal(
