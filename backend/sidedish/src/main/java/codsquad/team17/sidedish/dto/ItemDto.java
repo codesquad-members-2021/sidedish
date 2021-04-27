@@ -44,7 +44,7 @@ public class ItemDto {
         this.salePrice = item.getSalePrice().intValue();
         this.badges = parseByComma(item.getBadge());
         this.image = image.getUrl();
-        this.detailUrl = URL + URL + "/dish" + "/detail" + "/" + itemId;
+        this.detailUrl = URL + "/dish" + "/detail" + "/" + itemId;
     }
 
     public Long getItemId() {
