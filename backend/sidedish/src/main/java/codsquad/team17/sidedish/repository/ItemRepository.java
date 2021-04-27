@@ -13,7 +13,7 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
 
     List<Item> findAllByDishCategoryId(Long dishtCategoryId);
 
-    @Query("SELECT DISTINCT best_category_id FROM item")
+    @Query("SELECT DISTINCT best_category_id FROM item WHERE best_category_id <> 6")
     List<Item> findDistinctByBestCategoryId();
 
 }
