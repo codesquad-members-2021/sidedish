@@ -12,7 +12,7 @@ import java.util.List;
 @JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price",
         "badge", "image", "delivery_type", "detail_url"})
 public class ItemDto {
-    private static final String URL = "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/";
+    private static final String URL = "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080";
 
     @JsonProperty("item_id")
     private final Long itemId;
