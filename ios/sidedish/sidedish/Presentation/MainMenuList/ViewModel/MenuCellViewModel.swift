@@ -11,10 +11,10 @@ import Combine
 class MenuCellViewModel {
     
     @Published var dishesCategory: [SideDishesCategoryManageable]!
-    @Published var dishes: [SideDishManageable]!
+    @Published var dishes: [[SideDishManageable]]!
     @Published var errorMessage: String!
     
-    private var subscriptions = Set<AnyCancellable>()
+    private var cancleBag = Set<AnyCancellable>()
     private var turnonAppUsecase: ManufactureDataforViewModel
     
     init(turnonAppUsecase: ManufactureDataforViewModel) {
@@ -24,38 +24,40 @@ class MenuCellViewModel {
     convenience init() {
         let turnonAppUsecase = TurnonAppUsecase()
         self.init(turnonAppUsecase: turnonAppUsecase)
-        dishesCategory = []
     }
     
     func configureMainmenuBoard() {
-        turnonAppUsecase.manufactureForMainViewCategory()
-            .sink(receiveCompletion: { (result) in
+        turnonAppUsecase.manufactureForMainViewCategory { (publisher) in
+            publisher.sink(receiveCompletion: { (result) in
                 if case .failure(let error) = result {
                     self.errorMessage = error.localizedDescription
                 }
-            }, receiveValue: { (category) in
-                self.dishesCategory.append(category)
-                self.updateEndpoint(from: category)
-                print(self.dishesCategory)
-                //self.loadSideDishes(count: categories.count)
-            }).store(in: &subscriptions)
+            }, receiveValue: { (categories) in
+                self.dishesCategory = categories
+                self.updateEndpoint(from: categories)
+                self.loadSideDishes(count: categories.count)
+            }).store(in: &self.cancleBag)
+        }
     }
     
-    private func updateEndpoint(from category: SideDishesCategoryManageable) {
-        EndPoint.sideDishes.append(category.getEndpoint())
+    private func updateEndpoint(from categories: [SideDishesCategoryManageable]) {
+        categories.forEach { (category) in
+            EndPoint.sideDishes.append(category.getEndpoint())
+        }
     }
     
     private func loadSideDishes(count: Int) {
-        self.dishes = []
+        self.dishes = Array(repeating: [], count: count)
         for i in 0..<count {
-            turnonAppUsecase.manufactureForMainViewSideDishes(endPoint: EndPoint.sideDishes[i])
-                .sink { (result) in
+            turnonAppUsecase.manufactureForMainViewSideDishes(endPoint: EndPoint.sideDishes[i]) { (publisher) in
+                publisher.sink { (result) in
                     if case .failure(let error) = result {
                         self.errorMessage = error.localizedDescription
                     }
                 } receiveValue: { (sideDish) in
-                    self.dishes.append(sideDish)
-                }.store(in: &subscriptions)
+                    self.dishes[i] = sideDish
+                }.store(in: &self.cancleBag)
+            }
         }
     }
     
@@ -73,7 +75,7 @@ class MenuCellViewModel {
             return 0
         }
         else {
-            return dishes.count
+            return dishes[section].count
         }
     }
 }

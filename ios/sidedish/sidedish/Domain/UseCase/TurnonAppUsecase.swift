@@ -11,15 +11,16 @@ import Alamofire
 
 protocol ManufactureDataforViewModel {
     
-    func manufactureForMainViewCategory() -> AnyPublisher<SideDishesCategoryManageable, Never>
+    func manufactureForMainViewCategory(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ())
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<SideDishManageable, Never>
+    func manufactureForMainViewSideDishes(endPoint: String,
+                                          completionHandler: @escaping (Just<[SideDishManageable]>) -> ())
     
 }
 
 class TurnonAppUsecase: ManufactureDataforViewModel {
 
-    private let repoprotocol: tempRepoProtocol
+    private let repoprotocol: DishRepository
     private let networkmanager: AFNetworkManagable
     
     init(networkmanager: AFNetworkManagable) {
@@ -27,7 +28,7 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
         self.networkmanager = networkmanager
         //self.repoprotocol.getCategories()
 //        self.repoprotocol.getMainDishes()
-//        self.repoprotocol.deleteAllInCoreData()
+        self.repoprotocol.deleteAllInCoreData()
         //self.repoprotocol.helloLollo()
 //        self.repoprotocol.밥먹어요롤로()
     }
@@ -37,13 +38,16 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
         self.init(networkmanager : networkmanager)
     }
     
-    func manufactureForMainViewCategory() -> AnyPublisher<SideDishesCategoryManageable, Never> {
-        repoprotocol.getCategories {
-            return repoprotocol.loadCategories()
+    func manufactureForMainViewCategory(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ()) {
+        return repoprotocol.getCategories { (publisher) in
+            completionHandler(publisher)
         }
     }
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<SideDishManageable, Never> {
-        return repoprotocol.loadMainDishes() //networkmanager.get(decodingType: [SideDish].self, endPoint: endPoint)
+    func manufactureForMainViewSideDishes(endPoint: String,
+                                          completionHandler: @escaping (Just<[SideDishManageable]>) -> ()) {
+        return repoprotocol.getSideDishes(endPoint: endPoint) { (publisher) in
+            completionHandler(publisher)
+        }
     }
 }

@@ -9,21 +9,21 @@ import CoreData
 import Combine
 import Alamofire
 
-protocol tempRepoProtocol {
-    func getMainDishes() -> Void
-    func loadMainDishes() -> AnyPublisher<SideDishManageable, Never>
-    func getCategories(closure: @escaping () -> AnyPublisher<SideDishesCategoryManageable, Never>)
-    func loadCategories() -> AnyPublisher<SideDishesCategoryManageable, Never>
-    func 밥먹어요롤로() -> Void
-    func deleteAllInCoreData() -> Void
-}
+//protocol tempRepoProtocol {
+//    func getMainDishes() -> Void
+//    func loadMainDishes() -> AnyPublisher<SideDishManageable, Never>
+//    func getCategories()
+//    func loadCategories() -> AnyPublisher<SideDishesCategoryManageable, Never>
+//    func 밥먹어요롤로() -> Void
+//    func deleteAllInCoreData() -> Void
+//}
 
 
-final class DishRepository: tempRepoProtocol {
+final class DishRepository {
     
     private let coreData = CoreDataStorage.shared
     private var context : NSManagedObjectContext!
-    private var entity : NSEntityDescription!
+    private var sideDishEntity : NSEntityDescription!
     private var categoryEntity : NSEntityDescription!
     
     private let networkManager: AFNetworkManagable!
@@ -32,10 +32,90 @@ final class DishRepository: tempRepoProtocol {
     
     init() {
         self.context = coreData.persistentContainer.viewContext
-        self.entity = NSEntityDescription.entity(forEntityName: "SaveSideDish", in: context)
+        self.sideDishEntity = NSEntityDescription.entity(forEntityName: "SaveSideDish", in: context)
         self.categoryEntity = NSEntityDescription.entity(forEntityName: "SaveSideDishes", in: context)
         self.networkManager = NetworkManager(baseAddress: "http://3.37.26.82:8080")
     }
+    
+    func update() {
+        //날짜가 달라 get~~
+        //날짜가 같아 load~~
+    }
+    
+    func getCategories(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ()) {
+        
+        let categories = networkManager.get(decodingType: [SideDishesCategory].self, endPoint: EndPoint.categories)
+        
+        categories.sink { (error) in
+            print(error)
+        } receiveValue: { categories in
+            if let entity = self.categoryEntity {
+                categories.forEach {
+                    let sideDishCategory = NSManagedObject(entity: entity, insertInto: self.context)
+                    sideDishCategory.setValue($0.id, forKey: "id")
+                    sideDishCategory.setValue($0.categoryName, forKey: "categoryName")
+                    sideDishCategory.setValue($0.endPoint, forKey: "endPoint")
+                }
+                self.save()
+                completionHandler(self.loadCategories())
+            }
+        }.store(in: &subscription)
+    }
+    
+    private func save() {
+        do {
+            try self.context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func loadCategories() -> Just<[SideDishesCategoryManageable]> {
+        let sideDishes = try! context.fetch(SaveSideDishes.fetchRequest()) as! [SideDishesCategoryManageable]
+        let publisher = Just(sideDishes)
+        return publisher
+    }
+    
+    func getSideDishes(endPoint: String, completionHandler: @escaping (Just<[SideDishManageable]>) -> ()) {
+        
+        let mainSideDishes = networkManager.get(decodingType: [SideDish].self, endPoint: endPoint)
+        
+        mainSideDishes.sink { (error) in
+            print(error)
+        } receiveValue: { (dishes) in
+            if let sideDishEntity = self.sideDishEntity {
+                
+                var sideDishes = [NSManagedObject]()
+                
+                dishes.forEach {
+                    let sideDish = NSManagedObject(entity: sideDishEntity, insertInto: self.context)
+                    sideDish.setValue($0.id, forKey: "id")
+                    sideDish.setValue($0.image, forKey: "image")
+                    sideDish.setValue($0.title, forKey: "title")
+                    sideDish.setValue($0.description, forKey: "subtitle")
+                    sideDish.setValue($0.price, forKey: "price")
+                    sideDish.setValue($0.salePrice, forKey: "saleprice")
+                    sideDish.setValue($0.deliveryTypes, forKey: "deliveryTypes")
+                    sideDish.setValue($0.badges, forKey: "badges")
+                    sideDishes.append(sideDish)
+                }
+
+                self.save()
+                completionHandler(self.loadSideDishes())
+            }
+        }.store(in: &subscription)
+    }
+
+    private func loadSideDishes() -> Just<[SideDishManageable]> {
+        let sideDishes = try! context.fetch(SaveSideDish.fetchRequest()) as! [SideDishManageable]
+        let publisher = Just(sideDishes)
+        return publisher
+    }
+}
+
+
+//delete 관련
+extension DishRepository {
     
     func 밥먹어요롤로() {
         let request: NSFetchRequest<SaveSideDish> = SaveSideDish.fetchRequest()
@@ -49,96 +129,17 @@ final class DishRepository: tempRepoProtocol {
         do {
             try self.context.execute(delete)
             return true
-        } catch{
+        } catch {
             return false
         }
     }
     
     func deleteAllInCoreData(){
         let request: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
-        print(self.deleteAll(request: request))
+        let request2: NSFetchRequest<SaveSideDish> = SaveSideDish.fetchRequest()
+        print("반찬삭제",self.deleteAll(request: request2))
+        print("카테고리삭제",self.deleteAll(request: request))
     }
-    
-    func update() {
-        //날짜가 달라 get~~
-        //날짜가 같아 load~~
-    }
-    
-    func getCategories(closure: @escaping () -> AnyPublisher<SideDishesCategoryManageable, Never>) {
-        let categories = networkManager.get(decodingType: [SideDishesCategory].self, endPoint: EndPoint.categories)
-        
-        categories.sink { (_) in
-        } receiveValue: { [self] (main) in
-            if let entity = self.categoryEntity {
-                main.forEach {
-                    let sideDishCategory = NSManagedObject(entity: entity, insertInto: self.context)
-                    sideDishCategory.setValue($0.id, forKey: "id")
-                    sideDishCategory.setValue($0.categoryName, forKey: "categoryName")
-                    sideDishCategory.setValue($0.endPoint, forKey: "endPoint")
-                }
-                do {
-                    try self.context.save()
-                } catch {
-                    print(error.localizedDescription)
-                }
-                closure()
-            }
-        }.store(in: &subscription)
-    }
-    
-    func loadCategories() -> AnyPublisher<SideDishesCategoryManageable, Never> {
-        
-        let sidedish = try! context.fetch(SaveSideDishes.fetchRequest()) as! [SideDishesCategoryManageable]
-        sidedish.forEach {
-            print($0.getName())
-        }
-        let temp = sidedish.publisher.eraseToAnyPublisher()
-        return temp
-    }
-    
-    func loadMainDishes() -> AnyPublisher<SideDishManageable, Never> {
-        let sidedish = try! context.fetch(SaveSideDish.fetchRequest()) as! [SideDishManageable]
-        let temp = sidedish.publisher.eraseToAnyPublisher()
-        return temp
-    }
-    
-    func getMainDishes() {
-        let mainSideDishes = networkManager.get(decodingType: [SideDish].self, endPoint: "/main")
-        
-        mainSideDishes.sink { (_) in
-        } receiveValue: { (main) in
-            if let entity = self.entity {
-                
-                var sideDishes = [NSManagedObject]()
-                
-                main.forEach {
-                    let sideDish = NSManagedObject(entity: entity, insertInto: self.context)
-                    sideDish.setValue($0.id, forKey: "id")
-                    sideDish.setValue($0.image, forKey: "image")
-                    sideDish.setValue($0.title, forKey: "title")
-                    sideDish.setValue($0.description, forKey: "subtitle")
-                    sideDish.setValue($0.price, forKey: "price")
-                    sideDish.setValue($0.salePrice, forKey: "saleprice")
-                    sideDish.setValue($0.deliveryTypes, forKey: "deliveryTypes")
-                    sideDish.setValue($0.badges, forKey: "badges")
-                    sideDishes.append(sideDish)
-                }
-                
-                //                let sideDishes2 = NSManagedObject(entity: self.entity2, insertInto: self.context)
-                //                sideDishes2.setValue("테스트", forKey: "categoryName")
-                //                sideDishes2.setValue(0, forKey: "id")
-                //                sideDishes2.setValue(sideDishes, forKey: "sideDish")
-                do {
-                    try self.context.save()
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }.store(in: &subscription)
-        
-    }
-    
-    
     
     private func delete(object: NSManagedObject) -> Bool {
         self.context.delete(object)
@@ -160,27 +161,5 @@ final class DishRepository: tempRepoProtocol {
             return []
         }
     }
-}
-
-class 사이드디쉬디티오: NSObject, Decodable{
     
-    var id: String
-    var image : String
-    var title: String
-    var subtitle: String
-    var price: Int
-    var salePrice: Int
-    var deliveryTypes: [String]?
-    var badges: [String]?
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "detailHash"
-        case image
-        case title
-        case subtitle = "description"
-        case price
-        case salePrice
-        case deliveryTypes
-        case badges
-    }
 }

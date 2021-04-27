@@ -27,7 +27,7 @@ class MainTableViewDataSource: NSObject, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell() }
         
-        let dishProperty = menuCellViewModel.dishes[indexPath.row]
+        let dishProperty = menuCellViewModel.dishes[indexPath.section][indexPath.row]
         
         cell.updateMenu(image: UIImage(),
                         titleText: dishProperty.getTitle(),
