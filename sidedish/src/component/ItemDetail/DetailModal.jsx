@@ -94,8 +94,13 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
         </TopRight>
       </Top>
       <Bottom>
-        <div className="header">함께하면 더욱 맛있는 상품</div>
-        {/* carousel 들어갈 자리 */}
+        <div className="bottom_contents_wrapper">
+          <div className="header">
+            <span>함께하면 더욱 맛있는 상품</span>
+            <span>화살표들어갈자리</span>
+          </div>
+          {/* carousel 들어갈 자리 */}
+        </div>
       </Bottom>
     </ModalStyle>
   );
@@ -244,7 +249,19 @@ const TopRight = styled.div`
 const Bottom = styled.div`
   background-color: ${({ theme: { colors } }) => colors.lightGray};
   height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .bottom_contents_wrapper {
+    width: 100%;
+    padding: 26px 0px;
+    display: flex;
+    justify-content: center;
+  }
   .header {
     font-size: 18px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
   }
 `;
