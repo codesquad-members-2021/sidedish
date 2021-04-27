@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS test_table;
-CREATE TABLE test_table
-(
-    `ID`    BIGINT AUTO_INCREMENT NOT NULL,
-    `TEST_VALUE` VARCHAR(200),
-    PRIMARY KEY (`ID`)
-);
