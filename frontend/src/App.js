@@ -1,18 +1,12 @@
 import './styles/style.scss';
 import React, { useState, useEffect } from 'react';
-import Header from './components/organisms/Header';
-import BestDish from './components/organisms/BestDish';
-import MainDish from './components/organisms/MainDish';
-import ViewMore from './components/organisms/ViewMore';
-import ProductDetail from './components/organisms/ProductDetail';
+import Home from './components/pages/Home';
+import Details from './components/pages/Details';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <BestDish _dishType="bestDish" />
-      <MainDish _dishType="mainDish" />
-      <ViewMore />
-      <ProductDetail />
+      <Home />
+      <Details />
     </div>
   );
 }
