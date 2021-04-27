@@ -55,7 +55,7 @@ class DetailViewController: UIViewController {
     func bind() {
         detailViewModel.didFetchDetails { [weak self] (itemDetail) in
             self?.thumbImageLoad(images: itemDetail.thumbImages)
-            self?.desctionImageLoad(desctionImages: itemDetail.detailSection)
+            self?.descriptionImageLoad(desctionImages: itemDetail.detailSection)
             
             DispatchQueue.main.async {
                 self?.descriptionLabel.text = itemDetail.productDescription
@@ -106,7 +106,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func desctionImageLoad(desctionImages : [String]) {
+    func descriptionImageLoad(desctionImages : [String]) {
         DispatchQueue.main.async { [weak self] in
             desctionImages.forEach { (image) in
                 self?.imageLoad(urlString: image) { (uiImage) in
