@@ -40,8 +40,7 @@ public class Category {
     }
 
     public void removeItem(Item item) {
-        System.err.println(this.items.remove(item));
-        System.err.println(item.getId());
+        this.items.remove(item);
     }
 
     public Long getId() {
