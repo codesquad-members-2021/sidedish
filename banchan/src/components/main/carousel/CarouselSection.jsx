@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import IconButton from "../../utils/button/IconButton";
-import Card from "../../utils/Card";
+import Card from "../../utils/card/Card";
 import { CenterContainer } from "../../utils/styles/common";
+import { mockData } from "../../../utils/mockData";
 
 const CarouselSection = ({ key, url, title, onModal }) => {
-  const [products, setProducts] = useState([]);
-  // const [products, setProducts] = useState(mockData);
+  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(mockData);
   const [currentX, setX] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(4);
   const [rightDisabled, setLeftDisabled] = useState(false);
@@ -15,39 +16,72 @@ const CarouselSection = ({ key, url, title, onModal }) => {
   const slideCount = 4;
   const slideWidth = 320;
   const totalWidth = 320 * slideCount + 16;
+  const speed = 300;
+  const direct = {
+    LEFT: 1,
+    RIGHT: -1,
+  };
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(url);
-      const result = await response.json();
-      setProducts(result.body);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await fetch(url);
+  //     const result = await response.json();
+  //     setProducts(result.body);
+  //   })();
+  // }, []);
 
-  const moveSlide = (speed, distance, nextIndex) => {
+  const moveSlide = (distance, nextIndex) => {
     slides.current.style.transition = `${speed}ms`;
     slides.current.style.transform = `translateX(${distance}px)`;
     setX(distance);
     setCurrentIndex(nextIndex);
   };
 
-  const moveRight = () => {
-    const remainSlideCount = products.length - currentIndex;
-    const distance = remainSlideCount >= slideCount ? currentX - totalWidth : currentX - slideWidth * remainSlideCount;
-    const nextIndex = remainSlideCount >= slideCount ? currentIndex + slideCount : currentIndex + remainSlideCount;
-    moveSlide(300, distance, nextIndex);
-    distance && setRightDisabled(false);
-    nextIndex >= products.length && setLeftDisabled(true);
+  const moveSlidesWithDirection = (direction) => {
+    const remainSlideCount = direct[direction] > 0 ? currentIndex - slideCount : products.length - currentIndex;
+    let distance;
+    let nextIndex;
+
+    if (remainSlideCount >= slideCount) {
+      distance = currentX + totalWidth * direct[direction];
+      nextIndex = currentIndex - slideCount * direct[direction];
+    } else {
+      distance = currentX + slideWidth * direct[direction] * remainSlideCount;
+      nextIndex = currentX - remainSlideCount * direct[direction];
+    }
+
+    moveSlide(distance, nextIndex);
+
+    if (direction === "RIGHT") {
+      distance && setRightDisabled(false);
+      nextIndex >= products.length && setLeftDisabled(true);
+    }
+    if (direction === "LEFT") {
+      !distance && setRightDisabled(true);
+      nextIndex < products.length && setLeftDisabled(false);
+    }
   };
 
-  const moveLeft = () => {
-    const remainSlideCount = currentIndex - slideCount;
-    const distance = remainSlideCount >= slideCount ? currentX + totalWidth : currentX + slideWidth * remainSlideCount;
-    const nextIndex = remainSlideCount >= slideCount ? currentIndex - slideCount : currentIndex - remainSlideCount;
-    moveSlide(300, distance, nextIndex);
-    !distance && setRightDisabled(true);
-    nextIndex < products.length && setLeftDisabled(false);
-  };
+  // const moveRight = () => {
+  //   const remainSlideCount = products.length - currentIndex;
+  //   const distance = remainSlideCount >= slideCount ? currentX - totalWidth : currentX - slideWidth * remainSlideCount;
+  //   const nextIndex = remainSlideCount >= slideCount ? currentIndex + slideCount : currentIndex + remainSlideCount;
+  //   moveSlide(300, distance, nextIndex);
+  //   distance && setRightDisabled(false);
+  //   nextIndex >= products.length && setLeftDisabled(true);
+  // };
+
+  // const moveLeft = () => {
+  //   const remainSlideCount = currentIndex - slideCount;
+  //   const distance = remainSlideCount >= slideCount ? currentX + totalWidth : currentX + slideWidth * remainSlideCount;
+  //   // let distance;
+  //   // if (remainSlideCount >= slideCount) distance = currentX + totalWidth;
+  //   // else distance = currentX + slideWidth * remainSlideCount;
+  //   const nextIndex = remainSlideCount >= slideCount ? currentIndex - slideCount : currentIndex - remainSlideCount;
+  //   moveSlide(300, distance, nextIndex);
+  //   !distance && setRightDisabled(true);
+  //   nextIndex < products.length && setLeftDisabled(false);
+  // };
 
   return (
     <SectionContainer>
@@ -68,8 +102,8 @@ const CarouselSection = ({ key, url, title, onModal }) => {
         </SectionContent>
       </SectionBox>
       <SectionButton>
-        <IconButton type="LEFT" fn={moveLeft} disabled={leftDisabled} />
-        <IconButton type="RIGHT" fn={moveRight} disabled={rightDisabled} />
+        <IconButton type="LEFT" fn={() => moveSlidesWithDirection("LEFT")} disabled={leftDisabled} />
+        <IconButton type="RIGHT" fn={() => moveSlidesWithDirection("RIGHT")} disabled={rightDisabled} />
       </SectionButton>
     </SectionContainer>
   );
@@ -79,7 +113,7 @@ const SectionContainer = styled(CenterContainer)`
   position: relative;
   margin: 30px 0;
   /*border: 1px solid blue;*/
-  width: 1320px;
+  width: 1400px;
 `;
 
 const SectionBox = styled.div`

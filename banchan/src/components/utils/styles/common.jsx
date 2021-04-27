@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from './theme.js';
+import styled from "styled-components";
+import theme from "./theme.js";
 
 const Button = styled.button`
   all: unset;
@@ -39,6 +39,19 @@ const LabelList = styled(CenterContainer)`
   justify-content: start;
 `;
 
+const ProductBuyInfoTitle = styled.div`
+  min-width: 60px;
+  margin-right: 16px;
+  color: ${(props) => props.theme.colors.gray};
+`;
+
+const ProductTotalTitle = styled.div`
+  font-size: ${(props) => props.theme.fontSizes.XL};
+  font-weight: bold;
+  color: ${(props) => props.theme.colors.darkGray};
+  margin-right: 24px;
+`;
+
 export {
   Button,
   CenterContainer,
@@ -47,4 +60,6 @@ export {
   StyledTitle,
   StyledDescription,
   LabelList,
+  ProductBuyInfoTitle,
+  ProductTotalTitle,
 };

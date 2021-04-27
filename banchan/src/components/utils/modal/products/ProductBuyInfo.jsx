@@ -1,4 +1,4 @@
-import React from "react";
+import { ProductBuyInfoTitle } from "../../styles/common";
 import styled from "styled-components";
 
 const ProductBuyInfo = ({ product }) => {
@@ -30,12 +30,6 @@ const ProductBuyInfoLi = styled.li`
   list-style: none;
   display: flex;
   font-size: ${(props) => props.theme.fontSizes.S};
-`;
-
-const ProductBuyInfoTitle = styled.div`
-  min-width: 60px;
-  margin-right: 16px;
-  color: ${(props) => props.theme.colors.gray};
 `;
 
 export default ProductBuyInfo;

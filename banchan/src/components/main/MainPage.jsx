@@ -12,6 +12,7 @@ const MainPage = (props) => {
     <>
       <TabSection />
       <CarouselSectionList />
+      {/* <JennyCarousel /> */}
     </>
   );
 };

@@ -2,21 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 const ProductImage = ({ imageUrl, thumbnailList }) => {
-  console.log(thumbnailList);
   return (
     <ProductImageSection>
-      <img src={imageUrl} alt="product-thumbnail" />
-      <ThumbnailUL>
-        {thumbnailList}
-        {/* {thumbnailList.map((thumbnailUrl) => (
-          <li>
-            <Thumbnail src={thumbnailUrl} />
-          </li>
-        ))} */}
-      </ThumbnailUL>
+      <StyledImage src={imageUrl} alt="product-thumbnail" />
+      <ThumbnailUL>{thumbnailList}</ThumbnailUL>
     </ProductImageSection>
   );
 };
+
+const StyledImage = styled.img`
+  width: 392px;
+  height: 392px;
+`;
 
 const ProductImageSection = styled.section`
   margin-right: 32px;
@@ -24,11 +21,6 @@ const ProductImageSection = styled.section`
 
 const ThumbnailUL = styled.div`
   display: flex;
-`;
-
-const Thumbnail = styled.img`
-  width: 100px;
-  height: 100px;
 `;
 
 export default ProductImage;

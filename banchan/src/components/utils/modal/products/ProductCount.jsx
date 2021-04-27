@@ -1,7 +1,7 @@
 import React from "react";
 import IconButton from "../../../utils/button/IconButton";
 import styled from "styled-components";
-import { CenterContainer } from "../../styles/common";
+import { CenterContainer, ProductBuyInfoTitle } from "../../styles/common";
 
 const ProductCount = ({ count, increaseCount, decreaseCount }) => {
   return (
@@ -21,6 +21,8 @@ const ProductCount = ({ count, increaseCount, decreaseCount }) => {
     </Count>
   );
 };
+
+export default ProductCount;
 
 const Count = styled(CenterContainer)`
   justify-content: space-between;
@@ -44,12 +46,4 @@ const CountBox = styled.div`
   border: 2px solid #e0e0e0;
   padding: 15px 25px;
   font-size: ${(props) => props.theme.fontSizes.M};
-`;
-
-export default ProductCount;
-
-const ProductBuyInfoTitle = styled.div`
-  min-width: 60px;
-  margin-right: 16px;
-  color: ${(props) => props.theme.colors.gray};
 `;
