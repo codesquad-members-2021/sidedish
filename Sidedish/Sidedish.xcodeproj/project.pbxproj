@@ -30,6 +30,8 @@
 		A46CDD6D47430A384FEB7271 /* Pods_Sidedish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2266576CDB07714024C22C84 /* Pods_Sidedish.framework */; };
 		D06C739626310CD3002404A3 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C739526310CD3002404A3 /* BadgeLabel.swift */; };
 		D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */; };
+		D0C1A7112637F95B005F6113 /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C1A7102637F95B005F6113 /* CustomView.xib */; };
+		D0C1A7142637F9A7005F6113 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1A7132637F9A7005F6113 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		71EC35DD2BAA44FFBB2A183D /* Pods-Sidedish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.debug.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.debug.xcconfig"; sourceTree = "<group>"; };
 		D06C739526310CD3002404A3 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0C1A7102637F95B005F6113 /* CustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
+		D0C1A7132637F9A7005F6113 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E7B0F586A26D135247BB28E9 /* Pods-Sidedish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sidedish.release.xcconfig"; path = "Target Support Files/Pods-Sidedish/Pods-Sidedish.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +100,8 @@
 		2204E946262EC5A2008102BD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D0C1A7102637F95B005F6113 /* CustomView.xib */,
+				D0C1A7132637F9A7005F6113 /* CustomView.swift */,
 				22418747262D4D8300AC14C7 /* Main.storyboard */,
 				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
@@ -249,6 +255,7 @@
 				2241874E262D4D8600AC14C7 /* LaunchScreen.storyboard in Resources */,
 				2241874B262D4D8600AC14C7 /* Assets.xcassets in Resources */,
 				22418749262D4D8300AC14C7 /* Main.storyboard in Resources */,
+				D0C1A7112637F95B005F6113 /* CustomView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +311,7 @@
 				D06C739626310CD3002404A3 /* BadgeLabel.swift in Sources */,
 				22D5024A2633049700325C5F /* String+NSAttributedString.swift in Sources */,
 				228295C32637813C00BBDACD /* Detail.swift in Sources */,
+				D0C1A7142637F9A7005F6113 /* CustomView.swift in Sources */,
 				2291A1A926326FD6007A1B72 /* Badge.swift in Sources */,
 				22418746262D4D8300AC14C7 /* ViewController.swift in Sources */,
 				22EBA5662633B332009611CB /* HeaderViewModel.swift in Sources */,

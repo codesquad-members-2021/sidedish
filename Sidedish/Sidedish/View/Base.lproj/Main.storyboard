@@ -198,13 +198,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4g-Pq-i4F" userLabel="Scroll Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1122"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2244"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="414" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-S7-dUF" userLabel="Thumbnail Scroll View">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="414" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-S7-dUF" userLabel="Thumbnail Scroll View">
+                                                <rect key="frame" x="0.0" y="1122" width="414" height="0.0"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgM-VV-npk" userLabel="Thumbnail Content View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgM-VV-npk" userLabel="Thumbnail Content View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
@@ -217,17 +217,22 @@
                                                     <constraint firstItem="TgM-VV-npk" firstAttribute="leading" secondItem="hPQ-S7-dUF" secondAttribute="leading" id="zQD-C8-ggg"/>
                                                 </constraints>
                                             </scrollView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-zh-Y6A">
-                                                <rect key="frame" x="0.0" y="414" width="414" height="708"/>
-                                                <color key="backgroundColor" red="0.59534823410000004" green="0.60522724839999997" blue="0.61874595210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="708" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-0E-DE9">
+                                                <rect key="frame" x="0.0" y="1122" width="414" height="708"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-zh-Y6A">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
+                                                        <color key="backgroundColor" red="0.59534823410000004" green="0.60522724839999997" blue="0.61874595210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </stackView>
+                                                </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="HQ6-zh-Y6A" secondAttribute="trailing" id="8pS-ZX-qqQ"/>
-                                            <constraint firstItem="HQ6-zh-Y6A" firstAttribute="top" secondItem="TgM-VV-npk" secondAttribute="bottom" id="IVc-kI-FmS"/>
-                                            <constraint firstAttribute="bottom" secondItem="HQ6-zh-Y6A" secondAttribute="bottom" id="JsK-KL-XTC"/>
-                                            <constraint firstItem="HQ6-zh-Y6A" firstAttribute="leading" secondItem="J4g-Pq-i4F" secondAttribute="leading" id="xkz-Do-VjT"/>
+                                            <constraint firstAttribute="bottom" secondItem="rcg-0E-DE9" secondAttribute="bottom" id="LBt-Lc-hmp"/>
+                                            <constraint firstAttribute="trailing" secondItem="rcg-0E-DE9" secondAttribute="trailing" id="WkE-mM-vw0"/>
+                                            <constraint firstItem="rcg-0E-DE9" firstAttribute="leading" secondItem="J4g-Pq-i4F" secondAttribute="leading" id="sAH-g6-X5D"/>
+                                            <constraint firstItem="rcg-0E-DE9" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="bottom" id="wum-rZ-TfO"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -239,7 +244,7 @@
                                     <constraint firstItem="cI7-cb-mc2" firstAttribute="trailing" secondItem="hPQ-S7-dUF" secondAttribute="trailing" id="LEY-R7-e4L"/>
                                     <constraint firstItem="hPQ-S7-dUF" firstAttribute="top" secondItem="cI7-cb-mc2" secondAttribute="top" id="lrq-tO-k95"/>
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="bottom" secondItem="N1B-qG-pDc" secondAttribute="bottom" id="nBG-it-Dyg"/>
-                                    <constraint firstItem="J4g-Pq-i4F" firstAttribute="height" secondItem="cI7-cb-mc2" secondAttribute="height" id="q69-vo-0Cc"/>
+                                    <constraint firstItem="J4g-Pq-i4F" firstAttribute="height" secondItem="cI7-cb-mc2" secondAttribute="height" multiplier="2" id="q69-vo-0Cc"/>
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="top" secondItem="N1B-qG-pDc" secondAttribute="top" id="st6-yB-gUY"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="N1B-qG-pDc"/>
@@ -260,6 +265,7 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="detailImages" destination="HQ6-zh-Y6A" id="sIC-R5-NQ7"/>
+                        <outlet property="informationStackView" destination="rcg-0E-DE9" id="Si5-oN-bqk"/>
                         <outlet property="thumbnailContentView" destination="TgM-VV-npk" id="OVK-W3-73v"/>
                         <outlet property="thumbnailContentViewWidth" destination="OSD-ZQ-vtG" id="3fq-en-lqa"/>
                         <outlet property="thumbnailScrollView" destination="hPQ-S7-dUF" id="5ts-Qy-V9n"/>

@@ -26,6 +26,7 @@ class DetailViewModel {
                 guard let strongSelf = self else { return }
                 strongSelf.currentDetail = detailItem
                 strongSelf.detailHandler?()
+                print(detailItem)
             case .failure(let error):
                 #if DEBUG
                 NSLog(error.localizedDescription)

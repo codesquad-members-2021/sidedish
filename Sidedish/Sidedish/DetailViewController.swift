@@ -13,6 +13,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var thumbnailScrollView: UIScrollView!
     @IBOutlet weak var thumbnailContentView: UIView!
     @IBOutlet weak var thumbnailContentViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var informationStackView: UIStackView!
+    
     var detailViewModel: DetailViewModel!
 
     override func viewDidLoad() {
@@ -24,11 +26,19 @@ class DetailViewController: UIViewController {
             DispatchQueue.main.async {
                 self.setImage()
                 self.thumbnailContentViewWidth.constant = self.view.frame.width * CGFloat(self.detailViewModel.currentDetail.thumbImagesData?.count ?? 0)
+                self.setInformationView()
             }
         }
         
         self.detailViewModel.errorHandler = { error in
             Toast(text: error).show()
+        }
+    }
+    
+    private func setInformationView() {
+        if let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as? CustomView {
+            view.configure(item: detailViewModel.currentDetail)
+            informationStackView.addArrangedSubview(view)
         }
     }
     
