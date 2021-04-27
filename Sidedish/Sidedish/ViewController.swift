@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let networking = SidedishNetworkCenter()
         let sidedishProcessing = SidedishProcessing(networkable: networking)
-        
         self.itemViewModel = ItemViewModel(sidedishProcessable: sidedishProcessing)
         self.headerViewModel = HeaderViewModel()
         self.bind()
@@ -105,13 +104,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             guard let category = Category(rawValue: indexPath.section) else { return }
             guard let items = self.itemViewModel.items[category.description] else { return }
             let detailHash = items[indexPath.row].detailHash
-            
-            self.itemViewModel.fetchDetail(hash: detailHash)
             let vc = segue.destination as? DetailViewController
-            vc?.itemViewModel = self.itemViewModel
-        }
-        if segue.destination is DetailViewController {
-            
+            let networking = SidedishNetworkCenter()
+            let sidedishProcessing = SidedishProcessing(networkable: networking)
+            vc?.detailViewModel = DetailViewModel(sidedishProcessable: sidedishProcessing)
+            vc?.detailViewModel.fetchDetail(hash: detailHash)
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220B06922637D7D5009FAEFF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B06912637D7D5009FAEFF /* DetailViewModel.swift */; };
 		222E3DB32636936600CB8330 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E3DB22636936600CB8330 /* Category.swift */; };
 		2240D5AC262D74890077EF4D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AB262D74890077EF4D /* DetailViewController.swift */; };
 		2240D5B0262D7E500077EF4D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240D5AF262D7E500077EF4D /* ItemViewModel.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220B06912637D7D5009FAEFF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		222E3DB22636936600CB8330 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2240D5AB262D74890077EF4D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2240D5AF262D7E500077EF4D /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				2240D5AF262D7E500077EF4D /* ItemViewModel.swift */,
+				220B06912637D7D5009FAEFF /* DetailViewModel.swift */,
 				22EBA5652633B332009611CB /* HeaderViewModel.swift */,
 			);
 			path = ViewModel;
@@ -305,6 +308,7 @@
 				22418746262D4D8300AC14C7 /* ViewController.swift in Sources */,
 				22EBA5662633B332009611CB /* HeaderViewModel.swift in Sources */,
 				D08A5398262D587700DD1CBE /* ItemCollectionViewCell.swift in Sources */,
+				220B06922637D7D5009FAEFF /* DetailViewModel.swift in Sources */,
 				22418742262D4D8300AC14C7 /* AppDelegate.swift in Sources */,
 				22418771262D6A5A00AC14C7 /* SidedishItem.swift in Sources */,
 				22418761262D5C8400AC14C7 /* HeaderCollectionReusableView.swift in Sources */,
