@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { IoCloseOutline } from 'react-icons/io5';
 import { NONE } from 'const';
 
-const DetailCloseButton = ({ setModalState }) => {
+const DetailCloseButton = ({ setModalState, setOrderCount }) => {
   const handleClickCloseButton = () => {
     setModalState(NONE);
+    setOrderCount(1);
   };
 
   return (

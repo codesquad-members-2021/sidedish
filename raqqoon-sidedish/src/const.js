@@ -31,3 +31,8 @@ export const INITIAL = 'initial';
 export const NONE = 'none';
 export const FLEX = 'flex';
 export const BLOCK = 'block';
+
+// Type
+export const DETAIL = 'detail';
+export const DEFAULT = 'default';
+export const CAROUSEL = 'carousel';

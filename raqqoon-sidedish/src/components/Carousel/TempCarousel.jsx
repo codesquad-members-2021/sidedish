@@ -1,37 +1,22 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { DEFAULT, SIZE_MEDIUM } from 'const';
-import useFetch from 'customHooks/useFetch';
+import { CAROUSEL, SIZE_MEDIUM } from 'const';
 import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-
-const Carousel = ({
-  path,
-  panelCount,
-  modalData,
-  modalState,
-  setModalState,
-  setModalData,
-}) => {
-
-  const dishData = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
-  );
-  console.log(dishData);
+const TempCarousel = ({ detailSection, ITEM_NUMBER }) => {
   const [position, setPosition] = useState(0);
   const outBoxRef = useRef();
-  const [restCardCount, setRestCardCount] = useState(null);
+  const [cardsNumber, setCardsNumber] = useState(null);
   const dishList =
-    dishData &&
-    dishData.map((item) => (
+    detailSection &&
+    detailSection.map((item) => (
       <Card
         key={uuidv4()}
         item={item}
         cardSize={SIZE_MEDIUM}
-        cardType={DEFAULT}
-        {...{ modalData, modalState, setModalState, setModalData }}
+        cardType={CAROUSEL}
       />
     ));
 
@@ -43,30 +28,30 @@ const Carousel = ({
   };
 
   const moveRight = (outBoxWidth) => {
-    if (restCardCount === 0) return;
-    if (restCardCount < panelCount) {
-      return setPosition(position - (outBoxWidth / panelCount) * restCardCount);
+    if (cardsNumber === 0) return;
+    if (cardsNumber < ITEM_NUMBER) {
+      return setPosition(position - (outBoxWidth / ITEM_NUMBER) * cardsNumber);
     }
-    setRestCardCount((cardCount) => cardCount - panelCount);
+    setCardsNumber((cardCount) => cardCount - ITEM_NUMBER);
     setPosition(position - outBoxWidth);
   };
 
   const moveLeft = (outBoxWidth) => {
     if (position === 0) return;
-    if (restCardCount > dishList.length) {
-      const itemToMove = restCardCount - dishList.length;
+    if (cardsNumber > dishList.length) {
+      const itemToMove = cardsNumber - dishList.length;
       return setPosition(
-        position + (outBoxWidth / panelCount) * (panelCount - itemToMove)
+        position + (outBoxWidth / ITEM_NUMBER) * (ITEM_NUMBER - itemToMove)
       );
     }
-    setRestCardCount((cardCount) => cardCount + panelCount);
+    setCardsNumber((cardCount) => cardCount + ITEM_NUMBER);
     setPosition(position + outBoxWidth);
   };
 
   useEffect(() => {
-    if (restCardCount !== null) return;
-    dishList && setRestCardCount(dishList.length - panelCount);
-  }, [dishList, panelCount, restCardCount]);
+    if (cardsNumber !== null) return;
+    dishList && setCardsNumber(dishList.length - ITEM_NUMBER);
+  }, [dishList, ITEM_NUMBER, cardsNumber]);
 
   return dishList ? (
     <CarouselStyled>
@@ -89,7 +74,7 @@ const Carousel = ({
   );
 };
 
-export default Carousel;
+export default TempCarousel;
 
 const CarouselStyled = styled.div`
   position: relative;

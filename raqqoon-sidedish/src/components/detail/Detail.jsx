@@ -2,14 +2,50 @@ import styled from 'styled-components';
 import DetailModal from 'components/detail/DetailModal';
 import DetailCarousel from 'components/detail/DetailCarousel';
 import DetailCloseButton from 'components/detail/DetailCloseButton';
+import useFetch from 'customHooks/useFetch';
+import { useState } from 'react';
 
-const Detail = ({ modalState, setModalState }) => {
+const Detail = ({ modalData, modalState, setModalState }) => {
+  const detailData = useFetch(
+    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/`,
+    []
+  );
+  const { hash, title, badge } = modalData;
+  let currentData;
+  detailData.forEach((data) => {
+    if (data.hash === hash) {
+      currentData = data.data;
+    }
+  });
+
+  const [orderCount, setOrderCount] = useState(1);
+
+  const plusCount = () => {
+    setOrderCount(orderCount + 1);
+  };
+  const minusCount = () => {
+    if (orderCount <= 0) return;
+    setOrderCount(orderCount - 1);
+  };
+
+  if (!currentData) return null;
+  const detailSection = currentData.detail_section;
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
-        <DetailCloseButton {...{ setModalState }} />
-        <DetailModal />
-        <DetailCarousel />
+        <DetailCloseButton {...{ setModalState, setOrderCount }} />
+        <DetailModal
+          {...{
+            title,
+            badge,
+            currentData,
+            orderCount,
+            setOrderCount,
+            plusCount,
+            minusCount,
+          }}
+        />
+        <DetailCarousel {...{ detailSection }} />
       </ModalWrapper>
     </DetailBoxDiv>
   );

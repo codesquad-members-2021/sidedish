@@ -1,20 +1,21 @@
-import styled from 'styled-components';
+import { DETAIL } from 'const';
+import styled, { css } from 'styled-components';
 
-const Price = ({ normal, discount }) => {
+const Price = ({ normal, discount, type }) => {
   return (
     <PriceBoxDiv>
-      <Normal normal={normal} />
-      <Discount discount={discount} />
+      <Normal normal={normal} type={type} />
+      <Discount discount={discount} type={type} />
     </PriceBoxDiv>
   );
 };
 
-const Normal = ({ normal }) => {
-  return <NormalDiv>{normal}</NormalDiv>;
+const Normal = ({ normal, type }) => {
+  return <NormalDiv type={type}>{normal}</NormalDiv>;
 };
-const Discount = ({ discount }) => {
+const Discount = ({ discount, type }) => {
   if (!discount) return null;
-  return <DiscountDiv>{discount}</DiscountDiv>;
+  return <DiscountDiv type={type}>{discount}</DiscountDiv>;
 };
 
 export default Price;
@@ -34,6 +35,12 @@ const NormalDiv = styled.div`
   font-size: 20px;
   line-height: 29px;
   color: #010101;
+  ${(props) =>
+    props.type === DETAIL &&
+    css`
+      font-size: 24px;
+      line-height: 35px;
+    `}
 `;
 
 const DiscountDiv = styled.div`
@@ -45,4 +52,10 @@ const DiscountDiv = styled.div`
   text-decoration-line: line-through;
   color: #bdbdbd;
   margin: 0px 8px;
+  ${(props) =>
+    props.type === DETAIL &&
+    css`
+      font-size: 16px;
+      line-height: 23px;
+    `}
 `;
