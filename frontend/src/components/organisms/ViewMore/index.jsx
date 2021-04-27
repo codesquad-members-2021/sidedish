@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import MainDish from '../MainDish';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import MainDish from "../MainDish";
 
 const Button = styled.button`
   width: 1440px;

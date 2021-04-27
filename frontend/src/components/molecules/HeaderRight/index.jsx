@@ -1,23 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { WrapDiv, Li } from "./index.style";
 import SearchBar from "../../atoms/Searchbar";
 import Span from "../../atoms/Span";
-const WrapDiv = styled.div`
-  display: flex;
-
-  /* margin: 32px 100px 80px 80px; */
-  margin: 32px 0 80px 0;
-  min-width: 700px;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 0 120px;
-`;
-
-const Li = styled.li`
-  list-style-type: none;
-  float: left;
-  padding: 11px 0;
-`;
 
 const HeaderRight = ({ children, ...props }) => {
   return (
