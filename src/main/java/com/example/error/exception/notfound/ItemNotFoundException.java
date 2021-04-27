@@ -1,4 +1,4 @@
-package com.example.error.exception;
+package com.example.error.exception.notfound;
 
 import com.example.error.ErrorCode;
 

@@ -1,5 +1,6 @@
 package com.example.domain;
 
+import com.example.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.relational.core.mapping.MappedCollection;
@@ -31,6 +32,10 @@ public class User {
         return new User(null, email, password);
     }
 
+    public static User map(UserDto userDto) {
+        return new User(null, userDto.getEmail(), userDto.getPassword());
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,6 +50,10 @@ public class User {
 
     public void addOrder(Order order) {
         orders.add(order);
+    }
+
+    public boolean isMatchedPassword(String password) {
+        return this.password.equals(password);
     }
 
     public List<Order> getOrders() {
