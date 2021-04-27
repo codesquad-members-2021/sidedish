@@ -8,19 +8,9 @@
 import Foundation
 
 struct DishesItemViewModel {
-    let name: String
-    let description: String
-    let imageURL: String
-    let prices: [Int]
-    let badges: [String]
-}
-
-extension DishesItemViewModel {
+    let dish: Dish
+    
     init(dish: Dish) {
-        self.name = dish.name
-        self.description = dish.description
-        self.imageURL = dish.imageURL
-        self.prices = dish.prices
-        self.badges = dish.badges
+        self.dish = dish
     }
 }
