@@ -4,63 +4,66 @@ import IconButton from "../../utils/button/IconButton";
 import Card from "../../utils/card/Card";
 import { CenterContainer } from "../../utils/styles/common";
 import { mockData } from "../../../utils/mockData";
+import JennyCarousel from "reallyawesome-jennyrousel/dist/JennyCarousel";
+import theme from "../../utils/styles/theme";
 
 const CarouselSection = ({ key, url, title, onModal }) => {
-  // const [products, setProducts] = useState([]);
-  const [products, setProducts] = useState(mockData);
-  const [currentX, setX] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(4);
-  const [rightDisabled, setLeftDisabled] = useState(false);
-  const [leftDisabled, setRightDisabled] = useState(true);
-  const slides = useRef();
-  const slideCount = 4;
-  const slideWidth = 320;
-  const totalWidth = 320 * slideCount + 16;
-  const speed = 300;
-  const direct = {
-    LEFT: 1,
-    RIGHT: -1,
-  };
+  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState(mockData);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const response = await fetch(url);
-  //     const result = await response.json();
-  //     setProducts(result.body);
-  //   })();
-  // }, []);
+  // const [currentX, setX] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(4);
+  // const [rightDisabled, setLeftDisabled] = useState(false);
+  // const [leftDisabled, setRightDisabled] = useState(true);
+  // const slides = useRef();
+  // const slideCount = 4;
+  // const slideWidth = 320;
+  // const totalWidth = 320 * slideCount + 16;
+  // const speed = 300;
+  // const direct = {
+  //   LEFT: 1,
+  //   RIGHT: -1,
+  // };
 
-  const moveSlide = (distance, nextIndex) => {
-    slides.current.style.transition = `${speed}ms`;
-    slides.current.style.transform = `translateX(${distance}px)`;
-    setX(distance);
-    setCurrentIndex(nextIndex);
-  };
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(url);
+      const result = await response.json();
+      setProducts(result.body);
+    })();
+  }, []);
 
-  const moveSlidesWithDirection = (direction) => {
-    const remainSlideCount = direct[direction] > 0 ? currentIndex - slideCount : products.length - currentIndex;
-    let distance;
-    let nextIndex;
+  // const moveSlide = (distance, nextIndex) => {
+  //   slides.current.style.transition = `${speed}ms`;
+  //   slides.current.style.transform = `translateX(${distance}px)`;
+  //   setX(distance);
+  //   setCurrentIndex(nextIndex);
+  // };
 
-    if (remainSlideCount >= slideCount) {
-      distance = currentX + totalWidth * direct[direction];
-      nextIndex = currentIndex - slideCount * direct[direction];
-    } else {
-      distance = currentX + slideWidth * direct[direction] * remainSlideCount;
-      nextIndex = currentX - remainSlideCount * direct[direction];
-    }
+  // const moveSlidesWithDirection = (direction) => {
+  //   const remainSlideCount = direct[direction] > 0 ? currentIndex - slideCount : products.length - currentIndex;
+  //   let distance;
+  //   let nextIndex;
 
-    moveSlide(distance, nextIndex);
+  //   if (remainSlideCount >= slideCount) {
+  //     distance = currentX + totalWidth * direct[direction];
+  //     nextIndex = currentIndex - slideCount * direct[direction];
+  //   } else {
+  //     distance = currentX + slideWidth * direct[direction] * remainSlideCount;
+  //     nextIndex = currentX - remainSlideCount * direct[direction];
+  //   }
 
-    if (direction === "RIGHT") {
-      distance && setRightDisabled(false);
-      nextIndex >= products.length && setLeftDisabled(true);
-    }
-    if (direction === "LEFT") {
-      !distance && setRightDisabled(true);
-      nextIndex < products.length && setLeftDisabled(false);
-    }
-  };
+  //   moveSlide(distance, nextIndex);
+
+  //   if (direction === "RIGHT") {
+  //     distance && setRightDisabled(false);
+  //     nextIndex >= products.length && setLeftDisabled(true);
+  //   }
+  //   if (direction === "LEFT") {
+  //     !distance && setRightDisabled(true);
+  //     nextIndex < products.length && setLeftDisabled(false);
+  //   }
+  // };
 
   // const moveRight = () => {
   //   const remainSlideCount = products.length - currentIndex;
@@ -87,8 +90,20 @@ const CarouselSection = ({ key, url, title, onModal }) => {
     <SectionContainer>
       <SectionBox>
         <SectionTitle>{title}</SectionTitle>
-        <SectionContent>
-          <CardList ref={slides}>
+        <JennyCarousel BUTTON_SIZE={35}>
+          {products.map((product) => (
+            <Card
+              key={product.detail_hash}
+              product={product}
+              cardSize={(props) => props.theme.cardSizes.M}
+              margin={5} // 원래 8이었음
+              // onModal={onModal}
+            />
+          ))}
+        </JennyCarousel>
+      </SectionBox>
+      {/* <SectionContent> */}
+      {/* <CardList ref={slides}>
             {products.map((product) => (
               <Card
                 key={product.detail_hash}
@@ -98,26 +113,26 @@ const CarouselSection = ({ key, url, title, onModal }) => {
                 // onModal={onModal}
               />
             ))}
-          </CardList>
-        </SectionContent>
-      </SectionBox>
-      <SectionButton>
+          </CardList> */}
+      {/* </SectionContent> */}
+      {/* <SectionButton>
         <IconButton type="LEFT" fn={() => moveSlidesWithDirection("LEFT")} disabled={leftDisabled} />
         <IconButton type="RIGHT" fn={() => moveSlidesWithDirection("RIGHT")} disabled={rightDisabled} />
-      </SectionButton>
+      </SectionButton> */}
     </SectionContainer>
   );
 };
 
 const SectionContainer = styled(CenterContainer)`
+  flex-direction: column;
   position: relative;
   margin: 30px 0;
-  /*border: 1px solid blue;*/
-  width: 1400px;
+  // border: 1px solid blue;
 `;
 
 const SectionBox = styled.div`
-  /*border: 1px solid violet;*/
+  // border: 1px solid violet;
+  width: 1500px;
 `;
 
 const SectionContent = styled.div`
@@ -140,7 +155,7 @@ const SectionTitle = styled.div`
   font-size: ${(props) => props.theme.fontSizes.XL};
   font-weight: bold;
   color: ${(props) => props.theme.darkGray};
-  margin: 20px 0;
+  margin: 20px 5em;
 `;
 
 const SectionButton = styled.div`
