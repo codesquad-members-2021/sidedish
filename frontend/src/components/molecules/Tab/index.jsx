@@ -10,17 +10,26 @@ const Tab = ({ children, ...props }) => {
     height: 58px;
     margin-right: 8px;
     width: 184px;
-    background-color: #f5f5f7;
+    background-color: ${(props) => props._backgroundColor};
     border-radius: 5px 5px 0px 0px;
     padding: 0;
     cursor: pointer;
   `;
-
-  return (
-    <TabButton {...props}>
-      <Span _tabDeact>{props.name}</Span>
-    </TabButton>
-  );
+  {
+    if (props.isTabAct === "_tabDeact") {
+      return (
+        <TabButton _backgroundColor="#f5f5f7" {...props}>
+          <Span _tabDeact>{props.name}</Span>
+        </TabButton>
+      );
+    } else {
+      return (
+        <TabButton _backgroundColor="#eef4fa" {...props}>
+          <Span _tabAct>{props.name}</Span>
+        </TabButton>
+      );
+    }
+  }
 };
 
 export default Tab;
