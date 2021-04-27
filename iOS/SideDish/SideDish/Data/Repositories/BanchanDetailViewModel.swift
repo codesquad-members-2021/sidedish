@@ -17,6 +17,7 @@ class BanchanDetailViewModel {
     init(hash: Int, fetchBanchanDetailUseCase: FetchBanchanDetailUseCase) {
         self.hash = hash
         self.fetchBanchanDetailUseCase = fetchBanchanDetailUseCase
+        fetchBanchanDetail()
     }
     
     func fetchBanchanDetail() {

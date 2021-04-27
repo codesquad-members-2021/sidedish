@@ -64,10 +64,5 @@ extension BanchanSceneDIContainer {
     internal func makeBanchanDetailViewController(hash: Int) -> BanchanDetailViewController {
         return BanchanDetailViewController.create(with: makeBanchanDetailViewModel(hash: hash))
     }
-    
-    // MARK: - Flow Coordinator
-    func makeBanchanDetailSceneFlowCoordinator(navigationController: UINavigationController) -> BanchanSceneFlowCoordinator {
-        return BanchanSceneFlowCoordinator(navigationController: navigationController, dependencies: self)
-    }
 }
 

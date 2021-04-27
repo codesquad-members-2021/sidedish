@@ -30,6 +30,23 @@ public struct BanchanAPIEndpoint: Requestable {
     }
 }
 
+public struct BanchanDetailAPIEndpoint: Requestable {
+    
+    public let baseURL = "http://ec2-54-180-115-20.ap-northeast-2.compute.amazonaws.com:8080/detail/"
+    public let path: String
+    public let httpMethod: HttpMethod
+    
+    init(path: String, httpMethod: HttpMethod) {
+        self.path = path
+        self.httpMethod = httpMethod
+    }
+    
+    public func url() -> URL? {
+        return URL(string: baseURL + path)
+    }
+}
+
+
 public enum Section: Int, CaseIterable {
     case main = 0
     case soup, side

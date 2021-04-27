@@ -32,30 +32,28 @@ class BanchanDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        bind()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-//    private func bind() {
-//        banchanDetailViewModel.fetchBanchanDetail(id: banchanId)
-//        banchanDetailViewModel.$banchanDetail
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { (result) in
-//                switch result {
-//                case .failure(let error):
-//                    print(error)
-//                case .finished:
-//                    break
-//                }
-//            }, receiveValue: { (value) in
-//                self.configure(images: value?.thumbImages ?? [])
-//                print(value?.thumbImages)
-//            })
-//            .store(in: &subscriptions)
-//    }
+    private func bind() {
+        viewModel.$banchanDetail
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { (result) in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            }, receiveValue: { (value) in
+                self.configure(images: value?.thumbImages ?? [])
+            })
+            .store(in: &subscriptions)
+    }
     
     private func configure(images: [String]) {
         imageViews.removeAll()

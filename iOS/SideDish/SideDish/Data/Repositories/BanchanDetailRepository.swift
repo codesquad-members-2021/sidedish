@@ -20,7 +20,8 @@ class DefaultBanchanDetailRepository: BanchanDetailRepository {
     }
     
     func fetchBanchanDetail(hash: Int, completion: @escaping (BanchanDetail?) -> Void) {
-        let endPoint = BanchanAPIEndpoint(path: "\(hash)", httpMethod: .get)
+        let endPoint = BanchanDetailAPIEndpoint(path: "\(hash)", httpMethod: .get)
+
         network.request(with: endPoint, dataType: BanchanDetailDTO.self)
             .sink(receiveCompletion: {result in
                 switch result {
