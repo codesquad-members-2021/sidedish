@@ -15,18 +15,26 @@ class ViewController: UIViewController {
     
     private let menuListViewModel = MenuListViewModel()
     private var subscriptions = Set<AnyCancellable>()
-    
-    let dishCollectionViewDelegate = DishCollectionViewDelegate()
+    private var loadingView = LoadingView()
     var dataSource : UICollectionViewDiffableDataSource<Dishes,Dish>!
+    let dishCollectionViewDelegate = DishCollectionViewDelegate()
     var snapshot = NSDiffableDataSourceSnapshot<Dishes,Dish>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setLoadingView()
         dishCollectionView.delegate = dishCollectionViewDelegate
         dataSource = DiffableProvider().configureDataSource(collectionView: dishCollectionView)
         bind()
         menuListViewModel.requestDishes()
-        
+    }
+    
+    func setLoadingView() {
+        let loadingiewFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        loadingView = LoadingView(frame: loadingiewFrame)
+        loadingView.center = self.view.center
+        self.view.addSubview(loadingView)
     }
     
     private func addDataToSnapshot (dishes: [Dishes]) {
@@ -46,6 +54,7 @@ class ViewController: UIViewController {
             .sink(receiveCompletion: { _ in
                 //error
             }, receiveValue: { mainDishes in
+                self.loadingView.removeFromSuperview()
                 self.addDataToSnapshot(dishes: mainDishes)
             })
             .store(in: &subscriptions)

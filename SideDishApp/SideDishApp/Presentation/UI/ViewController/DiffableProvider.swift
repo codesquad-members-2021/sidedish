@@ -84,7 +84,6 @@ class DiffableProvider  {
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
             headerView.addGestureRecognizer(tap)
-            
             headerView.contentConfiguration = configuration
         }
         return headerRegistration
