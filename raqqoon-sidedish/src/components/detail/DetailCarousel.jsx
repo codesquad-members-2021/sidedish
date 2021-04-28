@@ -1,7 +1,6 @@
 import Card from 'components/card/Card';
 import Carousel from 'components/carousel/Carousel';
 import { CAROUSEL, SIZE_MEDIUM } from 'const';
-import useFetch from 'customHooks/useFetch';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 

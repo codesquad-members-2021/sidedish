@@ -30,6 +30,7 @@ const Img = ({
       title: title,
       badge: badge,
     });
+    console.log(detail_hash);
   };
   return (
     <ImgDiv

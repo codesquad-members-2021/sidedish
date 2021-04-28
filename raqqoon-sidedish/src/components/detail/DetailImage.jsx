@@ -2,12 +2,16 @@ import styled from 'styled-components';
 import ImageData from 'components/detail/ImageData';
 import { LOCATION_TOP, LOCATION_THUMB } from 'const';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const DetailImage = ({ top_image, thumb_images }) => {
-  const [activeTopImage, setActiveTopImage] = useState(top_image);
+  const [activeTopImage, setActiveTopImage] = useState(null);
   const [activeBorder, setActiveBorder] = useState(false);
 
+  useEffect(() => {
+    setActiveTopImage(top_image);
+  }, [top_image]);
+  console.log(activeTopImage);
   return (
     <DetailImgBox>
       <LargeImgBoxDiv>
