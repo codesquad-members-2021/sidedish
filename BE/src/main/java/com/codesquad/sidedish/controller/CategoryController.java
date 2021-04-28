@@ -37,7 +37,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{dishId}")
-    public ResponseEntity<ResponseDto> OrderDish(@PathVariable String type, @PathVariable String dishId, @RequestParam("count") int orderSize) {
+    public ResponseEntity<ResponseDto> orderDish(@PathVariable String type, @PathVariable String dishId, @RequestParam("count") int orderSize) {
         if (categoryService.orderDish(type, dishId, orderSize)) {
             return ResponseEntity.ok().body(new ResponseDto("Success"));
         }

@@ -18,7 +18,6 @@ create table dish (
     category_id int not null,
     top_image varchar(200) not null,
     thumb_images varchar(1000) not null,
-    product_description varchar(45) not null,
     delivery_info varchar(1000) not null,
     delivery_fee varchar(45) not null,
     detail_section varchar(1000) not null,

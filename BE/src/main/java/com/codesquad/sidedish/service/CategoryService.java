@@ -28,7 +28,7 @@ public class CategoryService {
         Dish dish = findDishByTypeAndId(type, dishId);
         if (dish.checkStock(orderSize)) {
             dish.updateStock(orderSize);
-            addDish(type,dish);
+            addDish(type, dish);
             return true;
         }
         return false;

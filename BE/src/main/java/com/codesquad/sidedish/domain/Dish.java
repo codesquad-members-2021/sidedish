@@ -7,7 +7,6 @@ public class Dish {
 
     @Id
     private String id;
-
     private String mainImage;
     private String alt;
     private String deliveryType;
