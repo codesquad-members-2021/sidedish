@@ -1,4 +1,4 @@
-package com.codesquad.sidedish;
+package com.codesquad.sidedish.exception;
 
 public class NotFoundException extends RuntimeException {
 

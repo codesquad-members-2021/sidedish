@@ -1,12 +1,9 @@
 package com.codesquad.sidedish.service;
 
-import com.codesquad.sidedish.NotFoundException;
+import com.codesquad.sidedish.exception.NotFoundException;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
-import com.codesquad.sidedish.dto.CategoryResponseDto;
-import com.codesquad.sidedish.dto.DishDetailResponseDto;
 import com.codesquad.sidedish.repository.CategoryRepository;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 @Service
