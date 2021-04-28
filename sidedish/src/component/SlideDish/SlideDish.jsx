@@ -6,7 +6,7 @@ import useFetch from 'hooks/useFetch';
 import Carousel from 'component/Carousel/Carousel';
 
 const SlideDish = ({ category }) => {
-  const ref = useRef();
+  const carouselRef = useRef();
   const { data: slideData, loading, error } = useFetch({ url: URL[category]() });
 
   const slideCategory =
@@ -19,7 +19,7 @@ const SlideDish = ({ category }) => {
   ) : (
     <SlideContainer>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
-      <Carousel ref={ref} slideToScroll={2} speed={500} defaultArrow={true}>
+      <Carousel ref={carouselRef} slideToScroll={2} speed={500} defaultArrow={true}>
         {slideCategory}
       </Carousel>
     </SlideContainer>
