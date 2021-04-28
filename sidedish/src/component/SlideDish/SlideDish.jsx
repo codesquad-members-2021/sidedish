@@ -19,20 +19,9 @@ const SlideDish = ({ category }) => {
   ) : (
     <SlideContainer>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
-
-      {/* slideToShow
-      slideToScroll */}
-      <Carousel
-        ref={ref}
-        itemWidth={324}
-        maxItem={4}
-        animationTime={0.5}
-        defaultArrow={true}
-        className="carouselWrapper"
-      >
+      <Carousel ref={ref} slideToScroll={2} speed={500} defaultArrow={true}>
         {slideCategory}
       </Carousel>
-      {ref.current && <div>{ref.current.currentIdx}</div>}
     </SlideContainer>
   );
 };
