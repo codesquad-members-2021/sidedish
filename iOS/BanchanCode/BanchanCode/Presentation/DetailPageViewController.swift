@@ -18,6 +18,7 @@ class DetailPageViewController: UIViewController {
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var detailImagesStackView: UIStackView!
     @IBOutlet weak var orderButton: UIButton!
+    var categoryName: String?
     var id: Int?
     var dishDetail: DishDetail?
     
@@ -33,7 +34,8 @@ class DetailPageViewController: UIViewController {
         let baseURL = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code"
         
         guard let id = id else { return }
-        NetworkManager().performRequestDishDetail(urlString: "\(baseURL)/main/\(id)") { (responseDTO) in
+        guard let categoryName = categoryName else { return }
+        NetworkManager().performRequestDishDetail(urlString: "\(baseURL)/\(categoryName)/\(id)") { (responseDTO) in
             self.dishDetail = responseDTO.toDomain()
             
             DispatchQueue.main.async {

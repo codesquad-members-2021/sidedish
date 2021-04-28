@@ -80,9 +80,10 @@ class MainPageViewController: UIViewController {
         dishCollectionView.reloadData()
     }
     
-    private func goToDishDetail(dish: Dish) {
+    private func goToDishDetail(categoryName: String, dish: Dish) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailPageVC = storyboard.instantiateViewController(identifier: "detailPageVC") as DetailPageViewController
+        detailPageVC.categoryName = categoryName
         detailPageVC.id = dish.id
         navigationController?.pushViewController(detailPageVC, animated: true)
     }
