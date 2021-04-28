@@ -27,6 +27,7 @@
 		BD930B7A262D6F5900906633 /* SideDishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD930B79262D6F5900906633 /* SideDishUITests.swift */; };
 		BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA95262FF9FC00803154 /* Parsing.swift */; };
 		BDFABAA0262FFA1C00803154 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFABA9F262FFA1C00803154 /* Network.swift */; };
+		CE04C03826393C54002D7D07 /* FetchDetailDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04C03726393C54002D7D07 /* FetchDetailDataUseCase.swift */; };
 		CE29EB432632A0B700221658 /* MenusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29EB422632A0B700221658 /* MenusViewModel.swift */; };
 		CE5905F826319C580085F570 /* MenuCellValidater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5905F726319C580085F570 /* MenuCellValidater.swift */; };
 		CE5905FE26327DFE0085F570 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5905FD26327DFE0085F570 /* MenuViewModel.swift */; };
@@ -88,6 +89,7 @@
 		BDFABA95262FF9FC00803154 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		BDFABA9F262FFA1C00803154 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CB7E749E27E4F2FB199FD307 /* Pods-SideDish-SideDishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDish-SideDishUITests.debug.xcconfig"; path = "Target Support Files/Pods-SideDish-SideDishUITests/Pods-SideDish-SideDishUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE04C03726393C54002D7D07 /* FetchDetailDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailDataUseCase.swift; sourceTree = "<group>"; };
 		CE29EB422632A0B700221658 /* MenusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusViewModel.swift; sourceTree = "<group>"; };
 		CE5905F726319C580085F570 /* MenuCellValidater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellValidater.swift; sourceTree = "<group>"; };
 		CE5905FD26327DFE0085F570 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				CE5905FD26327DFE0085F570 /* MenuViewModel.swift */,
 				CE29EB422632A0B700221658 /* MenusViewModel.swift */,
 				CEAE6F2F2636AAFD00720625 /* FetchDataUseCase.swift */,
+				CE04C03726393C54002D7D07 /* FetchDetailDataUseCase.swift */,
 				BD26B1262637F0A600DEA046 /* DetailMenuViewModel.swift */,
 			);
 			path = ViewModel;
@@ -517,6 +520,7 @@
 				BDFABA96262FF9FC00803154 /* Parsing.swift in Sources */,
 				BD930B5C262D6F5800906633 /* ViewController.swift in Sources */,
 				BD930B58262D6F5800906633 /* AppDelegate.swift in Sources */,
+				CE04C03826393C54002D7D07 /* FetchDetailDataUseCase.swift in Sources */,
 				BD090658262E9B450094421D /* MenuCell.swift in Sources */,
 				CEAE6F302636AAFD00720625 /* FetchDataUseCase.swift in Sources */,
 				CE29EB432632A0B700221658 /* MenusViewModel.swift in Sources */,

@@ -8,5 +8,5 @@ struct MenuResponse: Decodable {
 
 struct DetailMenuResponse: Decodable {
     let hash: String
-    let data: [DetailMenu]
+    let data: DetailMenu
 }

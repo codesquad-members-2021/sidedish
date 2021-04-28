@@ -36,7 +36,7 @@ class MenusViewModel {
         case .side:
             self.sideViewModel = viewModelList
         }
-        NotificationCenter.default.post(name: MenusViewModel.changeMenu, object: self)
+        NotificationCenter.default.post(name: Notification.Name.fetchMenu, object: self)
     }
     
     func giveMenus(section: MainDiffableDataSource.sectionTitle) -> [MenuViewModel] {
@@ -84,6 +84,7 @@ class MenusViewModel {
     
 }
 
-extension MenusViewModel {
-    static let changeMenu = Notification.Name("changeMenu")
+extension Notification.Name {
+    static let fetchMenu = Notification.Name("fetchMenu")
+    static let fetchDetailMenu = Notification.Name("fetchDetailMenu")
 }

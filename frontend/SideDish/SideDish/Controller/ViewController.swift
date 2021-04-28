@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(sendMenuList), name: MenusViewModel.changeMenu, object: menusViewModel)
+        NotificationCenter.default.addObserver(self, selector: #selector(sendMenuList), name: Notification.Name.fetchMenu, object: menusViewModel)
         configureCollectionView()
         menusViewModel.fetchData()
     }
