@@ -17,75 +17,75 @@ const TotalCategoryButton = styled.button`
   cursor: pointer;
 `;
 
-const MainItemsWrapper = styled.div`
+const CategoryItemsWrapper = styled.div`
   position: relative;
   width: 1280px;
 `;
 
-const MainItemsTitleWrapper = styled.div`
+const CategoryItemsTitleWrapper = styled.div`
   margin: 40px 0px;
 `;
 
-const MainItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
+const CategoryItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
   overflow: auto;
 `;
 
-const MainItemsCardImageWrapper = styled.div`
+const CategoryItemsCardImageWrapper = styled.div`
   position: relative;
   margin: 0px 16px 16px 0px;
 `;
 
-const MainItemsCardDescriptionWrapper = styled.div`
+const CategoryItemsCardDescriptionWrapper = styled.div`
   margin: 8px 0px;
 `;
 
-const MainItemsPriceWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
+const CategoryItemsPriceWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
   margin-bottom: 16px;
 `;
 
-const MainItemsCardSPriceWrapper = styled.div`
+const CategoryItemsCardSPriceWrapper = styled.div`
   margin-right: 8px;
 `;
 
-const MainItemsCardNPriceWrapper = styled.div`
+const CategoryItemsCardNPriceWrapper = styled.div`
   color: ${theme.fontColors.GRAY4};
   text-decoration-line: line-through;
   margin: 0px 8px;
 `;
 
-const LeftButtonWrapper = styled.div`
+const CategoryLeftButtonWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: -5%;
   cursor: pointer;
 `;
 
-const RightButtonWrapper = styled.div`
+const CategoryRightButtonWrapper = styled.div`
   position: absolute;
   top: 50%;
   right: -5%;
   cursor: pointer;
 `;
 
-const BestItemsHoverBox = styled.div`
+const ItemsHoverBox = styled.div`
   position: absolute;
   top: 0px;
   cursor: pointer;
 `;
 
-const BestItemsHoverTopText = styled.div`
+const ItemsHoverTopText = styled.div`
   position: absolute;
   top: 35%;
   left: 37%;
 `;
 
-const BestItemsHoverBottomText = styled.div`
+const ItemsHoverBottomText = styled.div`
   position: absolute;
   top: 55%;
   left: 37%;
 `;
 
-const BestItemsHoverLine = styled.div`
+const ItemsHoverLine = styled.div`
   position: absolute;
   top: 50%;
   left: 37%;
@@ -93,18 +93,18 @@ const BestItemsHoverLine = styled.div`
 
 export {
   TotalCategoryButton,
-  MainItemsWrapper,
-  MainItemsTitleWrapper,
-  MainItemsCardScrollWrapper,
-  MainItemsCardImageWrapper,
-  MainItemsCardDescriptionWrapper,
-  MainItemsPriceWrapper,
-  MainItemsCardSPriceWrapper,
-  MainItemsCardNPriceWrapper,
-  LeftButtonWrapper,
-  RightButtonWrapper,
-  BestItemsHoverBox,
-  BestItemsHoverTopText,
-  BestItemsHoverBottomText,
-  BestItemsHoverLine,
+  CategoryItemsWrapper,
+  CategoryItemsTitleWrapper,
+  CategoryItemsCardScrollWrapper,
+  CategoryItemsCardImageWrapper,
+  CategoryItemsCardDescriptionWrapper,
+  CategoryItemsPriceWrapper,
+  CategoryItemsCardSPriceWrapper,
+  CategoryItemsCardNPriceWrapper,
+  CategoryLeftButtonWrapper,
+  CategoryRightButtonWrapper,
+  ItemsHoverBox,
+  ItemsHoverTopText,
+  ItemsHoverBottomText,
+  ItemsHoverLine,
 };

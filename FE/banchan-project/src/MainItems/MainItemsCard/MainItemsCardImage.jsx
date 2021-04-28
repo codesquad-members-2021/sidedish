@@ -12,14 +12,14 @@ const MainItemsCardImage = ({
 }) => {
   const [isMouseOver, setIsMouseOver] = useState(false);
   return (
-    <S.MainItemsCardImageWrapper
+    <S.CategoryItemsCardImageWrapper
       onMouseEnter={() => setIsMouseOver(true)}
       onMouseLeave={() => setIsMouseOver(false)}
       onClick={() => handleClickCard(detailUrl)}
     >
       <CS.Image.MAIN_ITEMS src={image} alt={alt} />
       <MainItemsHover {...{ isMouseOver, delivery_type }}></MainItemsHover>
-    </S.MainItemsCardImageWrapper>
+    </S.CategoryItemsCardImageWrapper>
   );
 };
 

@@ -97,7 +97,7 @@ const DetailNPriceWrapper = styled.div`
 `;
 
 const DetailSPriceWrapper = styled.div`
-  margin: 0px 8px;
+  margin-right: 8px;
 `;
 
 const SubmitWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
