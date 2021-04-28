@@ -4,7 +4,6 @@ import CategorySlide from './CategorySlide';
 import useFetch from '../useFetch';
 import ItemCard from '../ItemCard';
 import Loading from '../state/Loading';
-import Error from '../state/Error';
 const TitleBlock = styled.div`
 	margin: 0 40px;
 `;

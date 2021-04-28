@@ -4,6 +4,7 @@ import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
+import { useState } from 'react';
 
 const RepresentativeBlock = styled.div`
 	display: flex;
@@ -89,10 +90,16 @@ function DetailPage({
 	item,
 	badges,
 }) {
+	const [orderCount, setOrderCount] = useState(1);
 	const handleClick = () => {
 		setModalState(!modalMode);
 	};
-	console.log(modalMode);
+	let prev = 1;
+	const handleChange = (e) => {
+		console.log(e);
+		setOrderCount(+e.target.value);
+		console.log(orderCount);
+	};
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
@@ -128,8 +135,16 @@ function DetailPage({
 								<DetailText>{detailData.deliveryFee}</DetailText>
 							</PointDeliveryInfoBlock>
 							<img src="./longUnderLine.png" alt="underline"></img>
+
 							<ItemDescDetails>수량</ItemDescDetails>
-							<input type="number" min="1" max={detailData.stock}></input>
+							<input
+								type="number"
+								name="order"
+								placeholder="1"
+								min="1"
+								max={detailData.stock}
+								onChange={handleChange}
+							></input>
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<DetailText>총 주문금액</DetailText>
 							<ItemPrice>{detailData.nPrice}</ItemPrice>

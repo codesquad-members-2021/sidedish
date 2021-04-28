@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BiX } from 'react-icons/bi';
-import { theme, Button, AlignTextCenter } from './Theme';
+import { theme, Button } from './Theme';
 import ModalPortal from '../ModalPortal';
 const DarkBackground = styled.div`
 	position: fixed;
