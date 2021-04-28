@@ -262,3 +262,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,intellij,jetbrains,java
+
+# Custom Setting
+./src/main/resources/server.secret.json
