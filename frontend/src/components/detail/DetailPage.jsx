@@ -5,7 +5,7 @@ import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
 import { useState } from 'react';
-
+import React from 'react';
 const RepresentativeBlock = styled.div`
 	display: flex;
 	margin: 48px;
@@ -95,12 +95,14 @@ function DetailPage({
 	const [topImg, setTopImg] = useState(detailData.topImage);
 	const [orderCount, setOrderCount] = useState(1);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
+	// const orderCount = useMemo(() => setOrderCount(orderCount로직), [orderCount ])
 
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
 				<Loading width="960px" height="568px" />
 			) : (
+				//에러처리해보기
 				<>
 					<RepresentativeBlock className="MODAL">
 						<ImageBlock>
@@ -167,4 +169,8 @@ function DetailPage({
 	);
 }
 
-export default DetailPage;
+export default React.memo(DetailPage);
+
+// : categoryData === 400 ? (
+// 	<Error></Error>
+// )

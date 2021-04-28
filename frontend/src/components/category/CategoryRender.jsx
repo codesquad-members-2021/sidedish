@@ -8,7 +8,6 @@ import Error from '../state/Error';
 const TitleBlock = styled.div`
 	margin: 0 40px;
 `;
-// const loadingData = { img: './load.jpg' }
 
 function CategoryRender({ title, url }) {
 	const [categoryData, loadingState] = useFetch(
@@ -23,13 +22,12 @@ function CategoryRender({ title, url }) {
 			{loadingState ? (
 				<Loading width="1280px" height="384px" />
 			) : categoryData === 400 ? (
-				<Error />
+				<Error></Error>
 			) : (
 				<CategorySlide width={1280} count={3} duration={'.5s'}>
-					{!loadingState &&
-						categoryData.map((data, idx) => (
-							<ItemCard key={idx} data={data} size={'S'} />
-						))}
+					{categoryData.map((data, idx) => (
+						<ItemCard key={idx} data={data} size={'S'} />
+					))}
 				</CategorySlide>
 			)}
 		</>

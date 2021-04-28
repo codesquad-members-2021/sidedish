@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { AlignTextCenter, theme } from '../Theme';
 import Logo from '../atomic/Logo';
-import ErrorPortal from '../../ErrorPortal';
-import { Route, Link } from 'react-router-dom';
-import App from '../../App';
+
 const ErrorWapper = styled(AlignTextCenter)`
 	flex-direction: column;
 	position: fixed;
@@ -25,17 +23,14 @@ const Biggest = styled.div`
 `;
 function Error() {
 	return (
-		<ErrorPortal>
-			<ErrorWapper>
-				<Link to="/">
-					<Logo>BANCHAN</Logo>
-				</Link>
-				<Route path="/" exact={true} component={App}></Route>
-				<Biggest>😧</Biggest>
-				<Big>404 ERROR</Big>
-				<Big>Oops, something went wrong...</Big>
-			</ErrorWapper>
-		</ErrorPortal>
+		<ErrorWapper>
+			<div onClick={() => window.location.replace('/')}>
+				<Logo>BANCHAN</Logo>
+			</div>
+			<Biggest>😧</Biggest>
+			<Big>404 ERROR</Big>
+			<Big>Oops, something went wrong...</Big>
+		</ErrorWapper>
 	);
 }
 

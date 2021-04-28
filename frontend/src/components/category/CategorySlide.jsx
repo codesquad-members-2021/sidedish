@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
-import { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
 const CatgoryWrapper = styled.div`
 	width: 1280px;
 	padding: 0px;
@@ -115,4 +114,4 @@ function CategorySlide({ width, count, duration, children }) {
 		</>
 	);
 }
-export default CategorySlide;
+export default React.memo(CategorySlide);
