@@ -9,7 +9,7 @@ const BestItemsStyle = styled.div`
   padding: 2.5rem;
 `;
 
-export default function BestItems({ childs, onFetchDetailData }) {
+export default function BestItems({ childs }) {
   const getRandom = (n, max) => {
     const set = new Set();
     while (set.size < n) {
@@ -34,7 +34,6 @@ export default function BestItems({ childs, onFetchDetailData }) {
           labels={childs[idx].label}
           key={idx}
           id={childs[idx]._id}
-          onFetchDetailData={onFetchDetailData}
         />
       ))}
     </BestItemsStyle>
