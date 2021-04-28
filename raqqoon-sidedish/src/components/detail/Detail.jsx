@@ -17,7 +17,7 @@ const Detail = ({ modalData, modalState, setModalState }) => {
       currentData = data.data;
     }
   });
-
+  console.log(currentData, 'currentData');
   const [orderCount, setOrderCount] = useState(1);
 
   const plusCount = () => {

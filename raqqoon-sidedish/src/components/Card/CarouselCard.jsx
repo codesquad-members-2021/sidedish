@@ -11,8 +11,6 @@ const CarouselCard = ({
   setModalData,
   detail_hash,
 }) => {
-  console.log(item);
-
   return (
     <CardBoxDiv>
       <Img
@@ -44,8 +42,4 @@ const CardBoxDiv = styled.div`
   &:last-child {
     margin-right: 10px;
   }
-`;
-
-const TagBoxDiv = styled.div`
-  display: flex;
 `;

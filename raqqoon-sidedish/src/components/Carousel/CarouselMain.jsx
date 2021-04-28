@@ -14,12 +14,14 @@ const CarouselMain = ({
   const dishData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
   );
+
   const dishList =
     dishData &&
     dishData.map((item) => (
       <Card
         key={uuidv4()}
         item={item}
+        detail_hash={item.detail_hash}
         cardSize={SIZE_MEDIUM}
         cardType={DEFAULT}
         {...{ modalData, modalState, setModalState, setModalData }}

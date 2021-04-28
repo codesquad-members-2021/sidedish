@@ -16,8 +16,7 @@ const Img = ({
   const url = image;
   const [opacitiy, setOpacity] = useState(0);
   const onToggleOpacity = (opacitiy) => {
-    if (opacitiy === 0) return setOpacity(100);
-    return setOpacity(0);
+    opacitiy === 0 ? setOpacity(100) : setOpacity(0);
   };
 
   const handleErrorImg = (e) => {
@@ -31,7 +30,6 @@ const Img = ({
       title: title,
       badge: badge,
     });
-    console.log(title);
   };
   return (
     <ImgDiv
