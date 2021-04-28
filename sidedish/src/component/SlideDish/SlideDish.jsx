@@ -4,6 +4,7 @@ import DishItem from 'component/DishItem/DishItem';
 import { URL } from 'util/data';
 import useFetch from 'hooks/useFetch';
 import Carousel from 'component/Carousel/Carousel';
+import CarouselPage from 'component/Carousel/CarouselPage';
 
 const SlideDish = ({ category }) => {
   const carouselRef = useRef();
@@ -19,7 +20,13 @@ const SlideDish = ({ category }) => {
   ) : (
     <SlideContainer>
       <Header>모두가 좋아하는 든든한 메인요리</Header>
-      <Carousel ref={carouselRef} slideToScroll={2} speed={500} defaultArrow={true}>
+      <Carousel
+        ref={carouselRef}
+        slideToScroll={2}
+        speed={500}
+        defaultArrow={true}
+        defaultPaging={true}
+      >
         {slideCategory}
       </Carousel>
     </SlideContainer>
