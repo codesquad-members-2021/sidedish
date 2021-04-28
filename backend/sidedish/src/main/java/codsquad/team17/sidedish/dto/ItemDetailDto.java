@@ -41,6 +41,9 @@ public class ItemDetailDto {
     @JsonProperty("delivery_description")
     private String deliveryDescription = "(40,000원 이상 구매 시 무료)";
 
+    @JsonProperty("delivery_info")
+    private String deliveryInfo = "서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.";
+
     private int stock;
 
     @JsonProperty("recommended")
@@ -105,6 +108,10 @@ public class ItemDetailDto {
 
     public String getDeliveryDescription() {
         return deliveryDescription;
+    }
+
+    public String getDeliveryInfo() {
+        return deliveryInfo;
     }
 
     public int getStock() {
