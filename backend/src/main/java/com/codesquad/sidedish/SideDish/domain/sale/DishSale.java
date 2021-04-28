@@ -2,6 +2,7 @@ package com.codesquad.sidedish.SideDish.domain.sale;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 public class DishSale {
 
@@ -12,8 +13,8 @@ public class DishSale {
 
     private Long sale;
 
-    public DishSale(String dish, Long sale) {
-        this.dish = dish;
+    @PersistenceConstructor
+    public DishSale(Long sale) {
         this.sale = sale;
     }
 

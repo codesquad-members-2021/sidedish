@@ -1,29 +1,27 @@
 package com.codesquad.sidedish.SideDish.dto;
 
-import com.codesquad.sidedish.SideDish.domain.Dish;
+import com.codesquad.sidedish.SideDish.domain.delivery.DishDelivery;
+import com.codesquad.sidedish.SideDish.domain.dish.Dish;
+import com.codesquad.sidedish.SideDish.domain.sale.DishSale;
+import com.codesquad.sidedish.SideDish.domain.sale.Sale;
+import javafx.util.Builder;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DishDto {
     private final String detailHash;
     private final String image;
     private final String title;
     private final String description;
-    private final List<String> deliveryTypes;
     private final int price;
     private final int salePrice;
-    private final List<String> badges;
 
-    private DishDto(Builder builder) {
-        this.detailHash = builder.detailHash;
-        this.image = builder.image;
-        this.deliveryTypes = builder.deliveryTypes;
-        this.title = builder.title;
-        this.description = builder.description;
-        this.price = builder.price;
-        this.salePrice = builder.salePrice;
-        this.badges = builder.badges;
-    }
+
+    private Set<SaleDto> badgeList;
+
 
     public static DishDto from(Dish dish) {
         return new Builder()
@@ -31,27 +29,37 @@ public class DishDto {
                 .image(dish.getImage())
                 .title(dish.getTitle())
                 .description(dish.getDescription())
-                .deliveryTypes(dish.getDeliveryTypes())
                 .price(dish.getPrice())
                 .salePrice(dish.getSalePrice())
-                .badges(dish.getBadges())
+                .badgeList(dish.getDishSales().stream()
+                        .map(dishSale -> new SaleDto(new Sale("badge", "saleType", 0))) // TODO: 가라 데이터를 정상
+                        .collect(Collectors.toSet()))
                 .build();
     }
 
+    public DishDto(Builder builder) {
+        this.detailHash = builder.detailHash;
+        this.image = builder.image;
+        this.title = builder.title;
+        this.description = builder.description;
+        this.price = builder.price;
+        this.salePrice = builder.salePrice;
+        this.badgeList = builder.badgeList;
+    }
+
     public static class Builder {
-        private String detailHash;
-        private String image;
-        private String title;
-        private String description;
-        private List<String> deliveryTypes;
-        private int price;
-        private int salePrice;
-        private List<String> badges;
+        private  String detailHash;
+        private  String image;
+        private  String title;
+        private  String description;
+        private  int price;
+        private  int salePrice;
+
+        private Set<SaleDto> badgeList;
 
         public DishDto build() {
             return new DishDto(this);
         }
-
 
         public Builder detailHash(String detailHash) {
             this.detailHash = detailHash;
@@ -73,11 +81,6 @@ public class DishDto {
             return this;
         }
 
-        public Builder deliveryTypes(List<String> deliveryTypes) {
-            this.deliveryTypes = deliveryTypes;
-            return this;
-        }
-
         public Builder price(int price) {
             this.price = price;
             return this;
@@ -88,10 +91,11 @@ public class DishDto {
             return this;
         }
 
-        public Builder badges(List<String> badges) {
-            this.badges = badges;
+        public Builder badgeList(Set<SaleDto> badgeList) {
+            this.badgeList = badgeList;
             return this;
         }
+
     }
 
     public String getDetailHash() {
@@ -100,10 +104,6 @@ public class DishDto {
 
     public String getImage() {
         return image;
-    }
-
-    public List<String> getDeliveryTypes() {
-        return deliveryTypes;
     }
 
     public String getTitle() {
@@ -122,7 +122,7 @@ public class DishDto {
         return salePrice;
     }
 
-    public List<String> getBadges() {
-        return badges;
+    public Set<SaleDto> getBadgeList() {
+        return badgeList;
     }
 }

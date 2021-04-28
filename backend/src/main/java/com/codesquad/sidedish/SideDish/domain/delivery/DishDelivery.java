@@ -2,6 +2,7 @@ package com.codesquad.sidedish.SideDish.domain.delivery;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 public class DishDelivery {
 
@@ -12,8 +13,8 @@ public class DishDelivery {
 
     private Long delivery;
 
-    public DishDelivery(String dish, Long delivery) {
-        this.dish = dish;
+    @PersistenceConstructor
+    public DishDelivery(Long delivery) {
         this.delivery = delivery;
     }
 
