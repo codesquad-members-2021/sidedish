@@ -4,7 +4,7 @@ import axios from "axios";
 import Carousel from "../Main/Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
 import CarouselButton from "../Main/CarouselButton";
-const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
+const All = ({ modal, setModal, ModalData, setModalData }) => {
   const [soup, setSoup] = useState([]);
   const [side, setSide] = useState([]);
   const [rander, setRander] = useState(false);
@@ -12,23 +12,31 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
   const sideImageRef = useRef();
   const soupRef = useRef();
   const sideRef = useRef();
+
   useEffect(() => {
     const fetchData = async () => {
-      const soupData = await axios(URL + "soup").then((res) => res.data.body);
-      const sideData = await axios(URL + "side").then((res) => res.data.body);
+      const soupData = await axios
+        .get("/products/soup")
+        .then((res) => res.data.data.items);
+      const sideData = await axios
+        .get("/products/side")
+        .then((res) => res.data.data.items);
       setSoup(soupData);
       setSide(sideData);
     };
     fetchData();
   }, []); // eslint-disable-line
+
   const randerImage = () => {
     rander ? setRander(false) : setRander(true);
   };
+
   const soupSlide = (e) => {
     e.target.classList.contains("Left")
       ? soupRef.current.Slider(1)
       : soupRef.current.Slider(-1);
   };
+
   const sideSlide = (e) => {
     e.target.classList.contains("Left")
       ? sideRef.current.Slider(1)
@@ -39,9 +47,7 @@ const All = ({ URL, modal, setModal, ModalData, setModalData }) => {
     <AllBox>
       {rander && (
         <div>
-          {modal && (
-            <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
-          )}
+          {modal && <PopUpModal setModal={setModal} ModalData={ModalData} />}
           <CarouselSlide>
             <CarouselButton Name={"Left"} Slide={soupSlide} />
             <Carousel

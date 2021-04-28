@@ -7,10 +7,12 @@ const TabsBlock = styled.div`
   flex-direction: row;
   align-items: flex-start;
 `;
+
 const Btn = styled.button`
   font-size: 18px;
   border: none;
 `;
+
 const TabBtn = styled(Btn)`
   background-color: ${(props) => (props.active ? "#eef4fa;" : "#f5f5f7")};
   border-radius: 5px 5px 0px 0px;
@@ -41,6 +43,5 @@ const TabButton = ({ Food, setFood, toggleState, toggleTab }) => {
     </TabsBlock>
   );
 };
-
 
 export default TabButton;

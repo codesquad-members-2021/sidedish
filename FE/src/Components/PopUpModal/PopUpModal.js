@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import {
   BeforeX,
@@ -9,22 +9,36 @@ import {
   AfterUp,
 } from "../../Svg/Button";
 import axios from "axios";
+import CarouselButton from "../Main/CarouselButton";
+import Carousel from "../Main/Carousel";
 
-const PopUpModal = ({ setModal, ModalData, URL }) => {
+const PopUpModal = ({
+  modal,
+  setModal,
+  MainTitle,
+  Food,
+  setFood,
+  setModalData,
+  ModalData,
+}) => {
+  const [PopUpCarousel, setPopUpCarousel] = useState(Food);
   const [close, setClose] = useState(BeforeX);
   const [detail, setDetail] = useState();
   const [Up, setUp] = useState(BeforeUp);
   const [Down, setDown] = useState(BeforeDown);
   const [quantity, setQuantity] = useState(0);
-  const [mainImage, setMainImage] = useState();
+  const [toggleState, setToggleState] = useState();
+  const [imgState, setState] = useState(1);
+
+  const PopUpRef = useRef(null);
+  const PopUpCardRef = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await axios(URL + "detail").then((res) => res.data.body);
-      setDetail(data.filter((v) => v.hash === ModalData[0]).map((v) => v.data));
-      setMainImage(
-        data.filter((v) => v.hash === ModalData[0]).map((v) => v.data)
+      const data = await axios(`products/detail/${ModalData[0]}`).then(
+        (res) => res.data.data
       );
+      setDetail(data);
     };
     fetchData();
   }, [setDetail]); // eslint-disable-line
@@ -50,31 +64,38 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
   };
 
   const Calculate = () => {
-    if (detail[0].prices.length === 1) {
-      return numberWithCommas(
-        quantity * detail[0].prices[0].replace(/[^0-9]/g, "")
-      );
+    if (detail.prices.length === 1) {
+      return numberWithCommas(quantity * detail.prices[0]);
     }
-    if (detail[0].prices.length === 2) {
-      return numberWithCommas(
-        quantity * detail[0].prices[1].replace(/[^0-9]/g, "")
-      );
+    if (detail.prices.length === 2) {
+      return numberWithCommas(quantity * detail.prices[1]);
     }
   };
 
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  const [toggleState, setToggleState] = useState();
-  const [imgState, setState] = useState(1);
 
   const toggleImg = (v) => {
     setState(0);
     setToggleState(v);
   };
-  const test = () => {
-    console.log("test");
+  const apiPost = async () => {
+    //수량 받아서 그만큼 -된 값을 반환하기.
+    await axios.post(`/order`, {
+      productHash: `${ModalData[0]}`,
+      count: `${quantity}`,
+    });
   };
+
+  const leftSlider = () => {
+    PopUpCardRef.current.Slider(1);
+  };
+
+  const rightSlider = () => {
+    PopUpCardRef.current.Slider(-1);
+  };
+
   return (
     <ModalBackground>
       <ModalCard>
@@ -84,11 +105,11 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
               <>
                 <ImageBox>
                   <Image
-                    toggleImg={() => toggleImg(detail[0].top_image)}
-                    src={imgState === 1 ? detail[0].top_image : toggleState}
+                    toggleImg={() => toggleImg(detail.topImage)}
+                    src={imgState === 1 ? detail.topImage : toggleState}
                   />
                   <Mini>
-                    {detail[0].thumb_images.map((v, idx) => (
+                    {detail.thumbImages.map((v, idx) => (
                       <MiniImage
                         key={idx}
                         src={v}
@@ -100,33 +121,31 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
                 <ModalContent>
                   <ImageInformation>
                     <Title>{ModalData[1]}</Title>
-                    <Description>{detail[0].product_description}</Description>
+                    <Description>{detail.productDescription}</Description>
                     {ModalData[2] !== undefined &&
                     ModalData[2].length !== 0 &&
                     ModalData[2].length <= 1 ? (
                       <Badge badge={ModalData[2]}>{ModalData[2]}</Badge>
                     ) : null}
-                    <Sprice>{detail[0].prices[1]}</Sprice>
-                    <Nprice props={detail[0].prices}>
-                      {detail[0].prices[0]}
-                    </Nprice>
+                    <Sprice>{detail.prices[1]}</Sprice>
+                    <Nprice props={detail.prices}>{detail.prices[0]}</Nprice>
                   </ImageInformation>
                   <Divider />
                   <Information>
                     <Subheading>
                       <InformationTitle>적립금</InformationTitle>
-                      <InformationContent>{detail[0].point}</InformationContent>
+                      <InformationContent>{detail.point}</InformationContent>
                     </Subheading>
                     <Subheading middle>
                       <InformationTitle>배송정보</InformationTitle>
                       <InformationContent>
-                        {detail[0].delivery_info}
+                        {detail.deliveryInfo}
                       </InformationContent>
                     </Subheading>
                     <Subheading>
                       <InformationTitle>배송비</InformationTitle>
                       <InformationContent>
-                        {detail[0].delivery_fee}
+                        {detail.deliveryFee}
                       </InformationContent>
                     </Subheading>
                   </Information>
@@ -160,12 +179,35 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
                     <MoneyTitle>총 주문금액</MoneyTitle>
                     <AllMoney>{Calculate()}원</AllMoney>
                   </Finish>
-                  <OrderButton onClick={test}>주문하기</OrderButton>
+                  <OrderButton onClick={apiPost} detail={detail}>
+                    {detail.stock === 0 ? "일시품절" : "주문하기"}
+                  </OrderButton>
                 </ModalContent>
               </>
             )}
           </Content>
-          <Carousel></Carousel>
+          <CarouselSlide>
+            <Button>
+              <CarouselButton Name={"Left"} Slide={leftSlider} PopUp={"pop"} />
+              <CarouselButton
+                Name={"Right"}
+                Slide={rightSlider}
+                PopUp={"pop"}
+              />
+            </Button>
+            {Food && (
+              <Carousel
+                PopUp={"pop"}
+                MainTitle={MainTitle}
+                Food={PopUpCarousel}
+                setFood={setPopUpCarousel}
+                setModal={setModal}
+                setModalData={setModalData}
+                Ref={PopUpRef}
+                ref={PopUpCardRef}
+              />
+            )}
+          </CarouselSlide>
         </Card>
         <CloseButton
           className="close"
@@ -179,15 +221,36 @@ const PopUpModal = ({ setModal, ModalData, URL }) => {
     </ModalBackground>
   );
 };
+const Button = styled.div`
+  position: absolute;
+  display: flex;
+  float: right;
+  width: 70px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  right: 60px;
+`;
+const CarouselSlide = styled.div`
+  position: relative;
+  width: 960px;
+  height: 440px;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f7;
+`;
+
 const OrderButton = styled.button`
   position: absolute;
   width: 440px;
   height: 58px;
-  background: #82d32d;
+  background: ${({ detail }) => (detail.stock === 0 ? `#E0E0E0` : `#82d32d`)};
+  color: ${({ detail }) => (detail.stock === 0 ? `#BDBDBD` : `#ffffff`)};
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
     0px 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   border-radius: 5px;
+  border: none;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
@@ -195,8 +258,6 @@ const OrderButton = styled.button`
   line-height: 26px;
   /* identical to box height */
   text-align: center;
-  /* White */
-  color: #ffffff;
 `;
 const AllMoney = styled.div`
   font-family: Noto Sans KR;
@@ -204,7 +265,7 @@ const AllMoney = styled.div`
   font-weight: bold;
   font-size: 32px;
   line-height: 46px;
-  width: 140px;
+  width: 160px;
   text-align: right;
 `;
 const MoneyTitle = styled.div`
@@ -405,7 +466,7 @@ const ModalBackground = styled.div`
 `;
 const ModalCard = styled.div`
   position: fixed;
-  top: 50px;
+  top: 100px;
   display: flex;
   width: 1000px;
   height: 660px;
@@ -422,12 +483,6 @@ const Content = styled.div`
   width: 960px;
   height: 660px;
   background-color: white;
-`;
-
-const Carousel = styled.div`
-  width: 960px;
-  height: 300px;
-  background-color: #f5f5f7;
 `;
 
 const CloseButton = styled.button`
