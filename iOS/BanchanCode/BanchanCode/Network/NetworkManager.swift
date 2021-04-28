@@ -22,6 +22,19 @@ class NetworkManager {
             }
     }
     
+    func performRequestDishDetail(urlString: String, completionHandler: @escaping (DishDetailResponseDTO) -> ()) {
+        AF.request(urlString, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: DishDetailResponseDTO.self) { (response) in
+                switch response.result {
+                case .success(let dishDetail):
+                    completionHandler(dishDetail)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+    }
+    
     func updateThumbImage(imageURL: String, completion: @escaping (Data) -> Void) {
         AF.request(imageURL, method: .get)
             .validate(statusCode: 200..<300)
