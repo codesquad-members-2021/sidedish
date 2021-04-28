@@ -19,17 +19,17 @@ public class SidedishItem {
     @Id
     private Long id;
 
-    private final String itemName;
-    private final String itemDescription;
-    private final int itemNormalPrice;
+    private String itemName;
+    private String itemDescription;
+    private int itemNormalPrice;
     private int itemQuantity;
-    private final int itemPointRate;
-    private final String itemDeliveryInfo;
-    private final String itemDeliveryFee;
+    private int itemPointRate;
+    private String itemDeliveryInfo;
+    private String itemDeliveryFee;
 
-    private final Set<SidedishEventItem> eventItems = new HashSet<>();
+    private Set<SidedishEventItem> eventItems = new HashSet<>();
 
-    private final List<SidedishItemImage> sidedishItemImages = new ArrayList<>();
+    private List<SidedishItemImage> sidedishItemImages = new ArrayList<>();
 
     public SidedishItem(String itemName, String itemDescription, int itemNormalPrice,
                         int itemQuantity, int itemPointRate, String itemDeliveryInfo, String itemDeliveryFee) {

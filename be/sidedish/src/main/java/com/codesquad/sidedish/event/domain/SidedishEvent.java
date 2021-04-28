@@ -12,11 +12,11 @@ public class SidedishEvent {
     @Id
     private Long id;
 
-    private final String eventName;
-    private final String eventColor;
-    private final float eventSaleRate;
+    private String eventName;
+    private String eventColor;
+    private float eventSaleRate;
 
-    private final Set<SidedishEventItem> eventItems = new HashSet<>();
+    private Set<SidedishEventItem> eventItems = new HashSet<>();
 
     public SidedishEvent(String eventName, String eventColor, int eventSaleRate) {
         this.eventName = eventName;
