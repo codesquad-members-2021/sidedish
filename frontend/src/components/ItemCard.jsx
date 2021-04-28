@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { theme, AlignTextCenter } from './Theme';
+import { theme, AlignTextCenter } from './style/Theme';
 import ItemPrice from './atomic/ItemPrice';
 import Badge from './atomic/Badge';
 import DetailPage from './detail/DetailPage';
@@ -73,8 +73,7 @@ function ItemCard({ data, size }) {
 		setDetailFetchUrl(DetailUrl + hash);
 	};
 
-	const [detailData, loadingState] = useFetch(detailFetchUrl); //첫 페이지 로딩시부터 데이터요청이 진행되는게 맞는가?
-	//커스텀 훅을 고쳐서 error 퇴치했습니다.
+	const [detailData, loadingState] = useFetch(detailFetchUrl);
 	return (
 		<>
 			{modalMode && !loadingState && (

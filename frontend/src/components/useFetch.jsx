@@ -23,7 +23,7 @@ function useFetch(url) {
 		return () => {
 			setData([]);
 			setLoading(true);
-		}; // eslint-disable-next-line
+		};
 	}, [url]);
 
 	return [data, loading];

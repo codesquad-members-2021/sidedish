@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { AlignTextCenter, theme } from '../Theme';
+import { AlignTextCenter, theme } from '../style/Theme';
 import Logo from '../atomic/Logo';
 
 const ErrorWapper = styled(AlignTextCenter)`

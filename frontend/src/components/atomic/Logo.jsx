@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../Theme';
+import { theme } from '../style/Theme';
 const HeaderLogo = styled.h1`
 	font-family: Noto Sans KR;
 	font-size: ${theme.fontSize.X_large};

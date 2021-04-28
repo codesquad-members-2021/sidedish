@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { AlignTextCenter } from '../Theme';
+import { AlignTextCenter } from '../style/Theme';
 const LoadingWapper = styled(AlignTextCenter)`
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};

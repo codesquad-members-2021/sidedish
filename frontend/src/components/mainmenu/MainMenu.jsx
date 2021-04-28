@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, AlignTextCenter } from '../Theme';
+import { theme, AlignTextCenter } from '../style/Theme';
 import ItemCard from '../ItemCard';
 import useFetch from '../useFetch';
 import Title from '../atomic/Title';

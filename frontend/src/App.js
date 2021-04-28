@@ -1,11 +1,15 @@
 import './App.css';
 import Home from './components/Home';
-import { Route } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
+import Oauth from './components/Oauth';
 function App() {
 	return (
-		<div>
-			<Route path="/" component={Home} exact={true} />
-		</div>
+		<BrowserRouter>
+			<div>
+				<Route path="/" component={Home} exact={true} />
+				<Route path="/logIn" component={Oauth} />
+			</div>
+		</BrowserRouter>
 	);
 }
 

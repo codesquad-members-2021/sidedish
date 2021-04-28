@@ -26,17 +26,19 @@ const SearchBarIcon = styled.div`
 	top: 23.38%;
 `;
 const HeaderLonIn = styled.button``;
-
 const HeaderCart = styled.button``;
+const url = `https://github.com/login/oauth/authorize?client_id=e1541c566570ff3e0151&redirect_uri=http://localhost:3000/logIn&scope=user
+`;
 function HeaderRight() {
-	const handleClick = () => {};
 	return (
 		<HeaderRightBlock>
 			<HeaderSeachBar />
 			<SearchBarIcon>
 				<BsSearch />
 			</SearchBarIcon>
-			<HeaderLonIn onClick={handleClick}>로그인</HeaderLonIn>
+			<HeaderLonIn>
+				<a href={url}>로그인</a>
+			</HeaderLonIn>
 			<HeaderCart>장바구니</HeaderCart>
 		</HeaderRightBlock>
 	);
