@@ -12,7 +12,7 @@ const Info = ({ name, body, type, cardSize }) => {
   return (
     <InfoBoxDiv type={type} {...{ cardSize }}>
       {name && <Name {...{ name, type }} />}
-      <Body {...{ body, type }} />
+      {body && <Body {...{ body, type }} />}
     </InfoBoxDiv>
   );
 };
@@ -22,6 +22,7 @@ export default Info;
 const NameDiv = styled.div`
   color: #333;
   margin: 8px 0px;
+  line-height: 23px;
   ${(props) =>
     props.type === DETAIL &&
     css`
@@ -33,11 +34,9 @@ const NameDiv = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  line-height: 23px;
 `;
 
 const BodyDiv = styled.div`
-  height: 20px;
   color: #828282;
   font-size: 14px;
   line-height: 20px;
@@ -50,7 +49,7 @@ const BodyDiv = styled.div`
       color: #828282;
       margin: 24px 0;
     `}
-  white-space: nowrap;
+  /* white-space: nowrap; */
   text-overflow: ellipsis;
   overflow: hidden;
 `;

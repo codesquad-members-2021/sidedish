@@ -33,6 +33,7 @@ const CarouselMain = ({
       options={{
         panelCount: 4,
         animation: { target: 'transform', time: 0.5, effect: 'ease-in-out' },
+        type: 'main',
       }}
     >
       {dishList}

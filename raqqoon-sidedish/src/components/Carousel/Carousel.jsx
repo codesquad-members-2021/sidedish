@@ -7,6 +7,7 @@ const Carousel = ({
   options: {
     panelCount,
     animation: { target, time, effect },
+    type,
   },
 }) => {
   const [position, setPosition] = useState(0);
@@ -48,7 +49,7 @@ const Carousel = ({
 
   return (
     <CarouselStyled>
-      <OutBox ref={outBoxRef}>
+      <OutBox ref={outBoxRef} type={type}>
         <Items position={position} animation={{ time, effect, target }}>
           {children}
         </Items>
@@ -71,17 +72,17 @@ export default Carousel;
 
 const CarouselStyled = styled.div`
   position: relative;
-  width: 100%;
 `;
 
 const OutBox = styled.div`
   overflow: hidden;
+  width: ${({ type }) => (type === 'main' ? '1275px' : '850px')};
   position: relative;
 `;
 
 const Items = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: fit-content;
   position: relative;
   transition: ${({ animation: { target, time, effect } }) =>
     `${target} ${time}s ${effect}`};
