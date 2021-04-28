@@ -4,7 +4,7 @@ import ProductImage from "./products/ProductImage";
 import ProductInformation from "./products/ProductInformation";
 import JennyCarousel from "reallyawesome-jennyrousel/dist/JennyCarousel";
 import theme from "../styles/theme";
-import { mockData } from "../mockData";
+import { mockData } from "../../../utils/mockData";
 import Card from "../card/Card";
 
 const ModalCard = ({ product }) => {
