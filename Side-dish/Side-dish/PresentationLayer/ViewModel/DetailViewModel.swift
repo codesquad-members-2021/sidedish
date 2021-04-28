@@ -14,7 +14,6 @@ class DetailViewModel {
     private var cancellable = Set<AnyCancellable>()
     
     @Published var itemDetails: ItemData?
-        //= ItemData()
     @Published var errorMessage = ""
     
     init(sideDishUseCase: SideDishProtocol) {
@@ -31,10 +30,10 @@ class DetailViewModel {
                 self.itemDetails = detail.data
             }.store(in: &cancellable)
     }
-
+    
     func didFetchDetails(completion: @escaping ((ItemData) -> ())) {
         $itemDetails
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { (detail) in
                 guard let detail = detail else {
                     return
@@ -47,7 +46,7 @@ class DetailViewModel {
         $errorMessage
             .dropFirst()
             .sink { (message) in
-            completion(message)
-        }.store(in: &cancellable)
+                completion(message)
+            }.store(in: &cancellable)
     }
 }

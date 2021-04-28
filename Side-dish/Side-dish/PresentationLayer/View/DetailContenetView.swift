@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class DetailContenetView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +22,8 @@ class DetailContenetView: UIView {
     @IBOutlet weak var orderButton: OrderButton!
     @IBOutlet weak var thumbnailStackView: UIStackView!
     @IBOutlet weak var detailSectionStackView: UIStackView!
+    
+    private var cancellable = Set<AnyCancellable>()
     
     func configure(with item: Item) {
         titleLabel.text = item.title
@@ -46,27 +49,36 @@ class DetailContenetView: UIView {
     
     func thumbImageLoad(images: [String]) {
         images.forEach { [unowned self] (imageURL) in
-            self.imageLoad(urlString: imageURL) { [unowned self] (uiImage) in
-                let imageView = UIImageView(image: uiImage)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                self.thumbnailStackView.addArrangedSubview(imageView)
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            self.thumbnailStackView.addArrangedSubview(imageView)
+            
+            ImageLoader().imageLoad(urlString: imageURL).sink { (uiImage) in
+                guard let image = uiImage else {
+                    return
+                }
+                imageView.image = image
                 let ratio = self.frame.width / self.thumbnailStackView.frame.height
                 imageView.widthAnchor.constraint(equalTo: self.thumbnailStackView.heightAnchor, multiplier: ratio).isActive = true
-            }
+            }.store(in: &cancellable)
         }
     }
     
     func desctionImageLoad(desctionImage: [String]) {
         desctionImage.forEach { [weak self] (imageURL) in
-            self?.imageLoad(urlString: imageURL) { (uiImage) in
-                let imageView = UIImageView(image: uiImage)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                self?.detailSectionStackView.addArrangedSubview(imageView)
-                let ratio = imageView.frame.height / imageView.frame.width
-                if !(ratio.isNaN) {
-                    imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: ratio).isActive = true
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            self?.detailSectionStackView.addArrangedSubview(imageView)
+            
+            ImageLoader().imageLoad(urlString: imageURL).sink { (uiImage) in
+                guard let uiimage = uiImage else {
+                    imageView.isHidden = true
+                    return
                 }
-            }
+                imageView.image = uiImage
+                let ratio = uiimage.size.height / uiimage.size.width
+                imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: ratio).isActive = true
+            }.store(in: &cancellable)
         }
     }
     
@@ -85,12 +97,6 @@ class DetailContenetView: UIView {
     private func configurePrices(sPrice: String, nPrice: String?) {
         sPriceLabel.text = sPrice
         nPriceLabel.configure(price: nPrice)
-    }
-    
-    private func imageLoad(urlString: String, handler: @escaping (UIImage) -> ()) {
-        ImageLoader().load(imageURL: urlString) { (data) in
-            handler(UIImage(contentsOfFile: data) ?? UIImage())
-        }
     }
     
 }

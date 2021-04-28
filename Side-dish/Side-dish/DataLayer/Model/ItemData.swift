@@ -11,7 +11,6 @@ struct ItemData: Codable {
     let topImage: String
     let thumbImages: [String]
     let productDescription, point, deliveryInfo, deliveryFee: String
-    let prices: [String]
     let detailSection: [String]
 
     enum CodingKeys: String, CodingKey {
@@ -21,9 +20,9 @@ struct ItemData: Codable {
         case point
         case deliveryInfo = "delivery_info"
         case deliveryFee = "delivery_fee"
-        case prices
         case detailSection = "detail_section"
     }
+    
     init() {
         self.topImage = "test"
         self.thumbImages = ["test"]
@@ -31,7 +30,6 @@ struct ItemData: Codable {
         self.point = "test"
         self.deliveryInfo = "test"
         self.deliveryFee = "test"
-        self.prices = []
         self.detailSection = []
     }
 }

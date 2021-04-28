@@ -38,10 +38,11 @@ class FoodCardCell: UICollectionViewCell {
         setBadge(badges: item.badge)
     }
     
-    func setImage(itemURL: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.itemImageView.image = UIImage(contentsOfFile: itemURL)
+    func setImage(with uiimage: UIImage?) {
+        guard let image = uiimage else {
+            return
         }
+        self.itemImageView.image = image
     }
     
     func setBadge(badges: [Badge]?) {

@@ -37,9 +37,9 @@ class SideDishViewController: UIViewController {
     
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<FoodCardCell, Item>.init(cellNib: FoodCardCell.nib) { (cell, indexPath, item) in
-            ImageLoader().load(imageURL: item.image) { (imageURL) in
-                cell.setImage(itemURL: imageURL)
-            }
+            ImageLoader().imageLoad(urlString: item.image).sink { (uiimage) in
+                cell.setImage(with: uiimage)
+            }.store(in: &self.cancellable)
             cell.configure(with: item)
         }
         
@@ -108,7 +108,7 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         
         targetVC.depend2(detailViewModel: DIContainer.createDI2())
         targetVC.setItemInfo(from: itemDetail)
-
+        
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
     
