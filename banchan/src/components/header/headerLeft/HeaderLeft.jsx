@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import HeaderNavbar from "./HeaderNavbar.jsx";
-import { CenterContainer } from "../../utils/styles/common.jsx";
+import styled from 'styled-components';
+import HeaderNavbar from './HeaderNavbar.jsx';
+import { CenterContainer } from '../../componentUtils/styles/common.jsx';
 
 const HeaderLeft = () => {
   return (

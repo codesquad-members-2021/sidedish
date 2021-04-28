@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Card from '../../utils/Card';
-import { CenterContainer } from '../../utils/styles/common';
-import { Button, SectionTitle, CardList } from '../../utils/styles/common';
+import Card from '../../componentUtils/card/Card';
+import { CenterContainer } from '../../componentUtils/styles/common';
+import {
+  Button,
+  SectionTitle,
+  CardList,
+} from '../../componentUtils/styles/common';
 
 const tempUrl =
   'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best';

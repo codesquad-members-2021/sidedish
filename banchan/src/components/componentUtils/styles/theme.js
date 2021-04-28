@@ -18,6 +18,7 @@ const theme = {
     XL: "24px",
   },
   cardSizes: {
+    S: "160px",
     M: "308px",
     L: "384px",
   },

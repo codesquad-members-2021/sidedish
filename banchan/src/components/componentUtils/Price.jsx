@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../utils/styles/theme.js';
+import theme from '../componentUtils/styles/theme.js';
 import { CenterContainer } from './styles/common.jsx';
 
 const Price = ({ product }) => {

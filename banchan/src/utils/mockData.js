@@ -81,6 +81,16 @@ const mockData = [
     description: "이것은 테스트용입니다.",
     s_price: "1000원",
   },
+  {
+    detail_hash: "235DSN",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/0606_hanjeongsik_damyang.jpg/361px-0606_hanjeongsik_damyang.jpg",
+    alt: "전라도 반찬",
+    delivery_type: ["새벽배송", "전국택배"],
+    title: "전라도 반찬",
+    description: "이것은 테스트용입니다.",
+    s_price: "1000원",
+  },
 ];
 
 // 6개

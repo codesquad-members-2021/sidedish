@@ -1,7 +1,7 @@
-import HeaderLeft from "./headerLeft/HeaderLeft";
-import HeaderRight from "./headerRight/HeaderRight";
-import styled from "styled-components";
-import { CenterContainer } from "../utils/styles/common";
+import HeaderLeft from './headerLeft/HeaderLeft';
+import HeaderRight from './headerRight/HeaderRight';
+import styled from 'styled-components';
+import { CenterContainer } from '../componentUtils/styles/common';
 
 const Header = () => {
   return (
