@@ -17,6 +17,9 @@ const DetailModal = ({
   orderCount,
   plusCount,
   minusCount,
+  inputValue,
+  setInputValue,
+  setOrderCount,
 }) => {
   const {
     delivery_fee,
@@ -38,7 +41,16 @@ const DetailModal = ({
         <LongLine />
         <DetailDelivery {...{ point, delivery_info, delivery_fee }} />
         <LongLine />
-        <DetailOrder {...{ orderCount, plusCount, minusCount }} />
+        <DetailOrder
+          {...{
+            orderCount,
+            setOrderCount,
+            plusCount,
+            minusCount,
+            inputValue,
+            setInputValue,
+          }}
+        />
         <LongLine />
         <DetailPrice {...{ orderCount, prices }} />
         <OrderButton />

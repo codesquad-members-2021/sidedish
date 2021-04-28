@@ -19,13 +19,16 @@ const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
   });
 
   const [orderCount, setOrderCount] = useState(1);
+  const [inputValue, setInputValue] = useState(orderCount);
 
   const plusCount = () => {
     setOrderCount(orderCount + 1);
+    setInputValue(inputValue + 1);
   };
   const minusCount = () => {
     if (orderCount <= 0) return;
     setOrderCount(orderCount - 1);
+    setInputValue(inputValue - 1);
   };
 
   if (!currentData) return null;
@@ -33,7 +36,9 @@ const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
-        <DetailCloseButton {...{ setModalState, setOrderCount }} />
+        <DetailCloseButton
+          {...{ setModalState, setOrderCount, setInputValue }}
+        />
         <DetailModal
           {...{
             title,
@@ -43,6 +48,8 @@ const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
             setOrderCount,
             plusCount,
             minusCount,
+            inputValue,
+            setInputValue,
           }}
         />
         <DetailCarousel
