@@ -3,6 +3,8 @@ package codsquad.team17.sidedish.service;
 import codsquad.team17.sidedish.domain.Item;
 import codsquad.team17.sidedish.dto.ItemDetailDto;
 import codsquad.team17.sidedish.dto.RecommendedItemDto;
+import codsquad.team17.sidedish.exception.ImageNotFoundException;
+import codsquad.team17.sidedish.exception.ItemNotFoundException;
 import codsquad.team17.sidedish.repository.ImageRepository;
 import codsquad.team17.sidedish.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -22,15 +24,16 @@ public class ItemDetailService {
 
     public ItemDetailDto getItemDetail(Long itemId) {
         Item item = itemRepository.findById(itemId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(ItemNotFoundException::new);
         List<String> imageUrls = imageRepository.findUrlByItemId(itemId);
 
         List<Item> randomItems = itemRepository.findRandomItemsByItemId(item.getDishCategoryId());
         List<RecommendedItemDto> list = randomItems.stream()
                 .map(item1 -> new RecommendedItemDto(item1, imageRepository.findTopImageByItemId(item1.getItemId())
-                        .orElseThrow(RuntimeException::new)))
+                        .orElseThrow(ImageNotFoundException::new)))
                 .collect(Collectors.toList());
 
         return new ItemDetailDto(item, imageUrls, list);
     }
+
 }

@@ -1,6 +1,7 @@
 package codsquad.team17.sidedish.dto;
 
 import codsquad.team17.sidedish.domain.Item;
+import codsquad.team17.sidedish.exception.ItemStockEmptyException;
 
 import java.math.BigDecimal;
 
@@ -30,7 +31,7 @@ public class OrderDto {
 
     public void orderItem(int orderAmount) {
         if(this.stock - orderAmount < 0) {
-            throw new RuntimeException("재고가 모자랍니다.");
+            throw new ItemStockEmptyException();
         }
         this.stock = this.stock - orderAmount;
     }

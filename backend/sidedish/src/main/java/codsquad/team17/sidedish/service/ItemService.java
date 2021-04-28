@@ -2,6 +2,7 @@ package codsquad.team17.sidedish.service;
 
 import codsquad.team17.sidedish.domain.Item;
 import codsquad.team17.sidedish.dto.ItemDto;
+import codsquad.team17.sidedish.exception.ItemNotFoundException;
 import codsquad.team17.sidedish.repository.ImageRepository;
 import codsquad.team17.sidedish.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class ItemService {
         return items.stream()
                 .map(item -> new ItemDto(item, imageRepository
                         .findTopImageByItemId(item.getItemId())
-                        .orElseThrow(RuntimeException::new)))
+                        .orElseThrow(ItemNotFoundException::new)))
                 .collect(Collectors.toList());
     }
 }
