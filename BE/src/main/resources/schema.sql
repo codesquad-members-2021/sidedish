@@ -13,7 +13,7 @@ CREATE TABLE DISH
 (
     ID            bigint(20) auto_increment primary key,
     NAME          varchar(50),
-    TOP_IMAGE     varchar (100),
+    TOP_IMAGE     varchar (200),
     DESCRIPTION   varchar(100),
     PRICES        varchar(100),
     BADGES        varchar (100),
