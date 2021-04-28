@@ -1,11 +1,13 @@
 package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 import sidedish.service.ConvertUtils;
 import sidedish.service.dto.DetailDishDTO;
 
 import java.util.Objects;
 
+@Table("DISH")
 public class Dish {
 
     @Id

@@ -1,9 +1,11 @@
 package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
+@Table("CATEGORY")
 public class Category {
 
     @Id
