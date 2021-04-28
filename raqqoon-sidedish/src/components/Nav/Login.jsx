@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import qs from 'qs';
 const Login = () => {
+  const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
     const getToken = async () => {
       const { code } = qs.parse(window.location.search, {
@@ -18,6 +19,7 @@ const Login = () => {
         });
         const { access_token } = await res.json();
         localStorage.setItem('access_token', access_token);
+        setIsLogged(true);
       } catch (error) {
         console.error(error);
       }
@@ -26,7 +28,12 @@ const Login = () => {
     const homePage = 'http://localhost:3000';
     window.history.pushState(null, null, homePage);
   }, []);
-  return <LoginWrap href="http://localhost:3001/auth/github">로그인</LoginWrap>;
+
+  return isLogged ? (
+    <div>로그인 되었습니다.</div>
+  ) : (
+    <LoginWrap href="http://localhost:3001/auth/github">로그인</LoginWrap>
+  );
 };
 
 export default Login;
