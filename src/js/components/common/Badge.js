@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const Badge = ({ badge }) => <BadgeWrapper>{badge.map((e) => <Tag key={e} type={e}>{e}</Tag>)}</BadgeWrapper>;
+
 const BadgeWrapper = styled.ul`
 	display: flex;
 	flex-direction: row;
@@ -27,10 +29,8 @@ const Tag = styled.li`
 	line-height: 20px;
 
 	color: #fff;
-    
-    margin-right:8px;
-`;
 
-const Badge = ({ badge }) => <BadgeWrapper>{badge.map(e => <Tag key={e} type={e}>{e}</Tag>)}</BadgeWrapper>;
+	margin-right: 8px;
+`;
 
 export default Badge;
