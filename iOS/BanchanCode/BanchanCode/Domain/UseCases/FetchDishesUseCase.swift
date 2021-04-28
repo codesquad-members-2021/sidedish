@@ -24,7 +24,7 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     
     func fetchDishes(category: Categorizable,
                      completion: @escaping (Result<Dishes, Error>) -> Void) {
-        let url = "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/\(category.name)"
+        let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(category.name)"
         networkManager.performRequest(urlString: url) { (responseDTO) in
             completion(.success(responseDTO.toDomain()))
         }
