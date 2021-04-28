@@ -13,13 +13,24 @@ import RealmSwift
 
 class DishDB: Object {
     
-//    @objc dynamic var id: Int = -1 나중에 쓸 예정
+    //primary key
+    @objc dynamic var id: Int = -1 //나중에 쓸 예정
     @objc dynamic var name: String = ""
-    
     @objc dynamic var contents: String = ""
-//    @objc dynamic var description: String = ""
-    //Getter for 'description' with Objective-C selector 'description' conflicts with getter for 'description' from superclass 'RealmSwiftObject' with the same Objective-C selector
     @objc dynamic var imageURL: String = ""
-//    @objc dynamic var prices: [Int] = [] 테이블에 배열을 넣는
-//    @objc dynamic var badges: [String] = []
+    
+    let prices = List<Int>()
+    let badges = List<String>()
+
+    convenience init(id: Int, name: String, contents: String, imageURL: String) {
+        self.init()
+        self.id = id
+        self.name = name
+        self.contents = contents
+        self.imageURL = imageURL
+    }
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
 }
