@@ -31,28 +31,28 @@ class DetailViewController: UIViewController {
     }
     
     func bind() {
-        detailViewModel.didFetchDetails { [weak self] (itemDetail) in
+        detailViewModel.didFetchDetails().sink { [weak self] (itemDetail) in
             self?.detailContentView.thumbImageLoad(images: itemDetail.thumbImages)
             self?.detailContentView.desctionImageLoad(desctionImage: itemDetail.detailSection)
             self?.detailContentView.deliveryInfoConfigure(with: itemDetail)
-        }
+        }.store(in: &cancellable)
         
-        detailViewModel.except { [weak self] (error) in
+        detailViewModel.except().sink { [weak self] (error) in
             self?.triggerAlert(by: error)
-        }
+        }.store(in: &cancellable)
         
-        amountButtomViewModel.bind { [weak self] (action) in
+        amountButtomViewModel.bind().sink { [weak self] (action) in
             switch action {
             case .plus:
                 self?.sideDishAmountViewModel.amountState.Increase()
             case .minus:
                 self?.sideDishAmountViewModel.amountState.Decrease()
             }
-        }
+        }.store(in: &cancellable)
         
-        sideDishAmountViewModel.bind(sPrice: detailItem.sPrice) { [weak self] (totalPrice, amount) in
+        sideDishAmountViewModel.bind(sPrice: detailItem.sPrice).sink { [weak self] (totalPrice, amount) in
             self?.detailContentView.amountConfigure(amount: amount, total: totalPrice)
-        }
+        }.store(in: &cancellable)
     }
     
     private func triggerAlert(by error : String) {
@@ -61,7 +61,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func depend2(detailViewModel: DetailViewModel) {
+    func dependDetail(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
     }
     

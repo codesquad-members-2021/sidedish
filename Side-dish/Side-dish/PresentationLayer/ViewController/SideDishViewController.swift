@@ -66,15 +66,8 @@ class SideDishViewController: UIViewController {
             self?.dataSource.apply(snap)
         }
         
-        sideDishViewModel.except { [weak self] (error) in
+        sideDishViewModel.except().sink { [weak self] (error) in
             self?.triggerAlert(by: error)
-        }
-        
-        sideDishViewModel.didFetch().sink { item in
-        }.store(in: &cancellable)
-        
-        sideDishViewModel.except2().sink { (error) in
-            self.triggerAlert(by: error)
         }.store(in: &cancellable)
     }
     
@@ -106,7 +99,7 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
             return
         }
         
-        targetVC.depend2(detailViewModel: DIContainer.createDI2())
+        targetVC.dependDetail(detailViewModel: DIContainer.createDI2())
         targetVC.setItemInfo(from: itemDetail)
         
         self.navigationController?.pushViewController(targetVC, animated: true)

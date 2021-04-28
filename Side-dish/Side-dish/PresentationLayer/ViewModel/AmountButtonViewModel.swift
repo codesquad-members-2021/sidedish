@@ -25,9 +25,7 @@ class AmountButtonViewModel: NSObject {
         buttonSelect.send(.minus)
     }
     
-    func bind(handler: @escaping (Action) -> ()) {
-        cancell = buttonSelect.sink { (action) in
-            handler(action)
-        }
+    func bind() -> AnyPublisher<Action, Never> {
+        return buttonSelect.eraseToAnyPublisher()
     }
 }

@@ -18,13 +18,14 @@ class SideDishAmountViewModel {
         amountState = AmountState()
     }
     
-    func bind(sPrice: String, handler: @escaping (String, String) -> ()) {
-        cancell = amountState.$amount.sink { (amount) in
-            let price = sPrice.formatStringNumber()
-            let total = (Int(price) ?? 0) * amount
-            handler(total.DecimalWon(), String(amount))
-        }
+    func bind(sPrice: String) -> AnyPublisher<(String, String) , Never> {
+        return amountState.$amount
+            .map {
+                let price = sPrice.formatStringNumber()
+                let total = (Int(price) ?? 0) * $0
+                return (total.decimalWon(), String($0))
+            }
+            .eraseToAnyPublisher()
     }
-
 }
 

@@ -10,12 +10,9 @@ import Combine
 
 class SideDishManager {
     
-    enum NotificationName {
-        static let updateMenu = Notification.Name("updateMenu")
-    }
-    
     private var sideDishesInfo : [Menu : [Item]] = [:]
     private(set) var arriveMenuType = PassthroughSubject<Menu, Never>()
+    
     func insert(path: Menu, items: [Item]) {
         sideDishesInfo[path] = items
         arriveMenuType.send(path)

@@ -50,20 +50,10 @@ class SideDishViewModel {
         return sideDishManager.getItemDetailHash(with: path, sequence: sequence)
     }
     
-    func except(completion: @escaping ((String) ->())) {
-        $errorMessage
+    func except() -> AnyPublisher<String, Never> {
+        return $errorMessage
             .dropFirst()
-            .sink { (message) in
-            completion(message)
-        }.store(in: &cancellable)
-    }
-    
-    // @escaping을 쓰지않고 넘기는 방법 연습
-    func didFetch() -> PassthroughSubject<Menu, Never> {
-        return self.sideDishManager.arriveMenuType
-    }
-    func except2() -> AnyPublisher<String, Never> {
-        return $errorMessage.dropFirst().eraseToAnyPublisher()
+            .eraseToAnyPublisher()
     }
 }
 

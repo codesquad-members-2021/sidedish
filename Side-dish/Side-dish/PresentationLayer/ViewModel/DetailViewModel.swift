@@ -31,22 +31,16 @@ class DetailViewModel {
             }.store(in: &cancellable)
     }
     
-    func didFetchDetails(completion: @escaping ((ItemData) -> ())) {
-        $itemDetails
+    func didFetchDetails() -> AnyPublisher<ItemData, Never> {
+        return $itemDetails
             .receive(on: DispatchQueue.main)
-            .sink { (detail) in
-                guard let detail = detail else {
-                    return
-                }
-                completion(detail)
-            }.store(in: &cancellable)
+            .compactMap { $0 }
+            .eraseToAnyPublisher()
     }
     
-    func except(completion: @escaping ((String) ->())) {
-        $errorMessage
+    func except() -> AnyPublisher<String, Never> {
+        return $errorMessage
             .dropFirst()
-            .sink { (message) in
-                completion(message)
-            }.store(in: &cancellable)
+            .eraseToAnyPublisher()
     }
 }
