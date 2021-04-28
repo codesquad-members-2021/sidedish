@@ -24,6 +24,16 @@ public class CategoryService {
         return category.getDishByDishId(dishId);
     }
 
+    public boolean orderDish(String type, String dishId, int orderSize) {
+        Dish dish = findDishByTypeAndId(type, dishId);
+        if (dish.checkStock(orderSize)) {
+            dish.updateStock(orderSize);
+            addDish(type,dish);
+            return true;
+        }
+        return false;
+    }
+
     public void addDish(String type, Dish dish) {
         Category category = findCategoryByType(type);
         category.addDish(dish);
