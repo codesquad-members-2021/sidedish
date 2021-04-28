@@ -280,6 +280,14 @@
                     </view>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="badgeBackgroundView" destination="BDP-0E-0yk" id="8J2-aX-fR8"/>
+                        <outlet property="badgeLabel" destination="s0f-Ue-lrP" id="fB7-3Z-mbx"/>
+                        <outlet property="descriptionLabel" destination="3B1-0J-t8f" id="0M6-4X-snj"/>
+                        <outlet property="detailImagesStackView" destination="TQl-g5-kXj" id="oSN-wP-wpa"/>
+                        <outlet property="lastPriceLabel" destination="jlp-q1-70c" id="LF5-pd-fgS"/>
+                        <outlet property="nameLabel" destination="Ynn-1y-DGb" id="YQC-as-m6P"/>
+                        <outlet property="orderButton" destination="5Xr-rC-TZo" id="9Gr-yo-08F"/>
+                        <outlet property="originalPriceLabel" destination="rNd-T5-652" id="1BQ-IZ-gLo"/>
                         <outlet property="thumbnailImagesScrollView" destination="uI5-Pp-gY6" id="edF-Dz-d1N"/>
                     </connections>
                 </viewController>
