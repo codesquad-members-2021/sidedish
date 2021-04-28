@@ -8,9 +8,9 @@ INSERT INTO best_category(best_category_name) VALUES ('우리아이 영양반찬
 INSERT INTO best_category(best_category_name) VALUES ('해당없음');
 
 --dish_category
-INSERT INTO dish_category(dish_category_name) VALUES ('든든한 메인요리');
-INSERT INTO dish_category(dish_category_name) VALUES ('뜨끈한 국물요리');
-INSERT INTO dish_category(dish_category_name) VALUES ('정갈한 밑찬반');
+INSERT INTO dish_category(dish_category_name) VALUES ('모두가 좋아하는 든든한 메인요리');
+INSERT INTO dish_category(dish_category_name) VALUES ('정성이 담긴 뜨끈한 국물요리');
+INSERT INTO dish_category(dish_category_name) VALUES ('식탁을 풍성하게 하는 정갈한 밑반찬');
 
 --item table
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
@@ -68,7 +68,7 @@ VALUES ('[국물닷컴] 치즈부대찌개 600 g', '안주용 부대찌개와는
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
 VALUES ('[집밥의완성] 스키야키 1.5 kg (2 ~ 3 인분)', '진한 풍미의 일본식 전골, 스키야키', 19800, 10000, 2, 6, 8, '이벤트특가');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
-VALUES ('[새로미부산어묵] 프리미엄 어묵탕세트', '밀가루 0 % 프리미엄 어묵에 어묵스프까지 드려요 !', 18000, 14400, 2, 6, 3, '론칭특가, 이벤트특가');
+VALUES ('[새로미부산어묵] 프리미엄 어묵탕세트', '밀가루 0 % 프리미엄 어묵에 어묵스프까지 드려요 !', 18000, 14400, 2, 6, 3, '이벤트특가, 론칭특가');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
 VALUES ('[모이세] 육개장 1 팩(600 g)', '제주3대해장국 맛집의 인기메뉴', 5900, 4400, 2, 6, 9, '론칭특가');
 INSERT INTO item(title, description, normal_price, sale_price, dish_category_id, best_category_id, stock, badge)
