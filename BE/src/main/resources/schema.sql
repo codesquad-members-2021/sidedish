@@ -15,6 +15,19 @@ CREATE SCHEMA IF NOT EXISTS `side_dish` DEFAULT CHARACTER SET utf8;
 USE `side_dish`;
 
 -- -----------------------------------------------------
+-- Table `side_dish`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `side_dish`.`user`;
+CREATE TABLE IF NOT EXISTS `side_dish`.`user` (
+    `id` INT NOT NULL,
+    `name` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(45) NOT NULL,
+    `user_id` VARCHAR(45) NOT NULL,
+    `token` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB;
+
+-- -----------------------------------------------------
 -- Table `side_dish`.`best_menu_category`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `side_dish`.`best_menu_category`;
