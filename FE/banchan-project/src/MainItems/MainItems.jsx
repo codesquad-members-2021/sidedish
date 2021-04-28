@@ -5,7 +5,7 @@ import TotalCategoryButton from "./TotalCategoryButton";
 import * as S from "./MainItemsStyles";
 import * as CS from "../Styles/commonStyles";
 
-const MainItems = (props) => {
+const MainItems = props => {
   const [mainDishData, setMainDishData] = useState(null);
   const [soupDishData, setSoupDishData] = useState(null);
   const [sideDishData, setSideDishData] = useState(null);
@@ -52,7 +52,7 @@ const MainItems = (props) => {
     getData(URL.MAINDISH, setMainDishData);
   }, []);
 
-  const Category = (categoryData) => {
+  const Category = categoryData => {
     if (categoryData === null) return null;
 
     return (
