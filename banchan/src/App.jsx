@@ -1,8 +1,11 @@
-import './App.css';
-import StateProvider from './components/StateProvider';
-import { createGlobalStyle } from 'styled-components';
-import { ThemeProvider } from 'styled-components';
-import theme from './components/componentUtils/styles/theme';
+import "./App.css";
+import StateProvider from "./components/StateProvider";
+import { createGlobalStyle } from "styled-components";
+import { ThemeProvider } from "styled-components";
+import theme from "./components/componentUtils/styles/theme";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Error from "./components/Error";
+import Callback from "./components/Callback";
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -25,7 +28,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <StateProvider />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={StateProvider} />
+          <Route path="/error" component={Error} />
+          <Route path="/callback" component={Callback} />
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }
