@@ -40,6 +40,18 @@ public class Dish: NSObject, Codable, NSCoding {
         sellingPrice = coder.decodeObject(of: NSString.self, forKey: "sellingPrice") as String? ?? ""
         badge = coder.decodeObject(of: NSString.self, forKey: "badge") as String? ?? ""
     }
+    
+    init(dishID: String, title: String, image: String, alt: String, deliveryType: String, dishDescription: String, normalPrice: String, sellingPrice: String, badge: String) {
+        self.dishID = dishID
+        self.title = title
+        self.image = image
+        self.alt = alt
+        self.deliveryType = deliveryType
+        self.dishDescription = dishDescription
+        self.normalPrice = normalPrice
+        self.sellingPrice = sellingPrice
+        self.badge = badge
+    }
 
     private(set) var dishID: String
     private(set) var image: String

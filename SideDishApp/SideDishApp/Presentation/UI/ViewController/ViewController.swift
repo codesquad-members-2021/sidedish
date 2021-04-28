@@ -67,6 +67,7 @@ class ViewController: UIViewController {
                 self.snapshot.appendSections(soupDishesArray)
                 self.snapshot.appendItems(soupDishes.dishes, toSection: soupDishes)
                 self.dataSource.apply(self.snapshot)
+                self.loadingView.removeFromSuperview()
             })
             .store(in: &subscriptions)
         
@@ -83,6 +84,7 @@ class ViewController: UIViewController {
                 self.snapshot.appendSections(sideDishesArray)
                 self.snapshot.appendItems(sideDishes.dishes, toSection: sideDishes)
                 self.dataSource.apply(self.snapshot)
+                self.loadingView.removeFromSuperview()
             })
             .store(in: &subscriptions)
     }

@@ -73,16 +73,17 @@ class CoreDataMenuResponseStorage {
         }
     }
     
-    func loadSaveDataInCoreData(category: String) -> AnyPublisher<[Dishes], CoreDataError> {
+    func loadSaveDataInCoreData(category: String) -> AnyPublisher<[Dishes], CoreDataError>? {
+        self.context = persistentContainer.viewContext
         var result: [Dishes] = []
-        var resultOut: Future<[Dishes], CoreDataError>!
-        
+        var resultOut: Future<[Dishes], CoreDataError>?
+   
         do {
-            self.context = persistentContainer.viewContext
+           
             let request: NSFetchRequest = DishesEntity.fetchRequest()
             request.predicate = NSPredicate(format: "category = %@", "\(category)")
             let contact = try context.fetch(request)
-
+   
             contact.forEach { dishesEntity in
                 guard let dishes = dishesEntity as? DishesEntity,
                       let category = dishes.category,
@@ -101,7 +102,8 @@ class CoreDataMenuResponseStorage {
                 assertionFailure(error.localizedDescription)
             }
         }
-        return resultOut.eraseToAnyPublisher()
+       
+        return resultOut?.eraseToAnyPublisher()
     }
     
     func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>){
@@ -117,6 +119,7 @@ class CoreDataMenuResponseStorage {
     }
     
     func deleteCategory(_ category: String) {
+        self.context = persistentContainer.viewContext
         let request: NSFetchRequest<NSFetchRequestResult> = DishesEntity.fetchRequest()
         request.predicate = NSPredicate(format: "category = %@", "\(category)")
         let delete = NSBatchDeleteRequest(fetchRequest: request)
@@ -126,7 +129,6 @@ class CoreDataMenuResponseStorage {
         }
         catch {
             assertionFailure(error.localizedDescription)
-
         }
     }
 }

@@ -19,16 +19,19 @@ class NetworkManager: NetworkManageable {
 
             return Fail(error: NetworkError.urlError).eraseToAnyPublisher()
         }
-        
+ 
         return URLSession.shared.dataTaskPublisher(for: myUrl)
             .mapError { _ in NetworkError.networkConnection }
             .flatMap { data, response -> AnyPublisher<T, NetworkError> in
+                
                 guard let httpResponse = response as? HTTPURLResponse else {
                     return Fail(error: NetworkError.responseNil).eraseToAnyPublisher()
                 }
+                
                 guard 200..<300 ~= httpResponse.statusCode else {
                     return Fail(error: NetworkError.unknown).eraseToAnyPublisher()
                 }
+                
                 completion(.success(data))
                 let decodeData = Just(data)
                     .decode(type: T.self, decoder: JSONDecoder())
