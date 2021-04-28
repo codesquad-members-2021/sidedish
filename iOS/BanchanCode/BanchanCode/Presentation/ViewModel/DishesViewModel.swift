@@ -46,9 +46,7 @@ final class DefaultDishesViewModel: DishesViewModel {
 //MARK: - Input
 extension DefaultDishesViewModel {
     func load() {
-        
         let realmManager = RealmManager()
-        
         fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { (result) in
             switch result {
             
