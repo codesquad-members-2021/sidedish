@@ -15,8 +15,13 @@ class DetailPageViewController: UIViewController {
     @IBOutlet weak var originalPriceLabel: UILabel!
     @IBOutlet weak var badgeBackgroundView: UIView!
     @IBOutlet weak var badgeLabel: UILabel!
-    @IBOutlet weak var detailImagesStackView: UIStackView!
+    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var deliveryInfoLabel: UILabel!
+    @IBOutlet weak var deliveryFeeLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var detailImagesStackView: UIStackView!
+    
     var categoryName: String?
     var id: Int?
     var viewModel: DishDetailsViewModel!
@@ -34,6 +39,7 @@ class DetailPageViewController: UIViewController {
         badgeBackgroundView.layer.cornerRadius = 5.0
         orderButton.layer.masksToBounds = true
         orderButton.layer.cornerRadius = 5.0
+        totalPriceLabel.text = "0원"
     }
     
     func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
@@ -57,11 +63,15 @@ class DetailPageViewController: UIViewController {
     }
     
     private func updateView() {
-        self.title = viewModel.dishDetail.value?.name
-        self.nameLabel.text = viewModel.dishDetail.value?.name
-        self.descriptionLabel.text = viewModel.dishDetail.value?.description
-        guard let prices = viewModel.dishDetail.value?.prices else { return }
+        guard let dishDetail = viewModel.dishDetail.value else { return }
+        self.title = dishDetail.name
+        self.nameLabel.text = dishDetail.name
+        self.descriptionLabel.text = dishDetail.description
+        let prices = dishDetail.prices
         self.lastPriceLabel.text = "\(prices[0])원"
+        pointLabel.text = "\(dishDetail.point)원"
+        deliveryInfoLabel.text = dishDetail.deliveryInfo
+        deliveryFeeLabel.attributedText = attributedText(withString: "2,500원 (40,000원 이상 구매 시 무료)", boldString: "(40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
     }
     
     private func updateThumbnailImages() {
@@ -77,6 +87,15 @@ class DetailPageViewController: UIViewController {
                 self.thumbnailImagesScrollView.addSubview(imageView)
             }
         }
+    }
+    
+    func attributedText(withString string: String, boldString: String, font: UIFont) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: string,
+                                                         attributes: [NSAttributedString.Key.font: font])
+        let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
+        let range = (string as NSString).range(of: boldString)
+        attributedString.addAttributes(boldFontAttribute, range: range)
+        return attributedString
     }
     
     private func updateDetailImages() {

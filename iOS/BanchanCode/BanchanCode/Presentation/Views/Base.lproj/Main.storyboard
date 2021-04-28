@@ -123,36 +123,36 @@
                                                     <constraint firstAttribute="height" constant="1" id="5qE-TP-KIg"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="적립금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqS-GI-Jt9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="적립금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqS-GI-Jt9">
                                                 <rect key="frame" x="16" y="619" width="48.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="DescTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="배송정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlN-qa-2DO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="배송정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlN-qa-2DO">
                                                 <rect key="frame" x="16" y="652" width="48.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="DescTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GPv-sh-AM6">
-                                                <rect key="frame" x="80.5" y="619" width="35.5" height="83"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GPv-sh-AM6">
+                                                <rect key="frame" x="84.5" y="619" width="222.5" height="83"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-zQ-4fk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="35.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-zQ-4fk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="222.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" name="DetailInfoTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7q-0g-5fv">
-                                                        <rect key="frame" x="0.0" y="33" width="35.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7q-0g-5fv">
+                                                        <rect key="frame" x="0.0" y="33" width="222.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" name="DetailInfoTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0a-6M-gwx">
-                                                        <rect key="frame" x="0.0" y="66" width="35.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="2,500원 (40,000원 이상 구매 시 무료)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0a-6M-gwx">
+                                                        <rect key="frame" x="0.0" y="66" width="222.5" height="17"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                         <color key="textColor" name="DetailInfoTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -197,7 +197,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TQl-g5-kXj">
                                                 <rect key="frame" x="0.0" y="988.5" width="414" height="133.5"/>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="배송비" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMh-Q6-7YQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송비" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMh-Q6-7YQ">
                                                 <rect key="frame" x="16" y="685" width="48.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="DescTextColor"/>
@@ -210,13 +210,13 @@
                                             <constraint firstItem="R0a-6M-gwx" firstAttribute="top" secondItem="MMh-Q6-7YQ" secondAttribute="top" id="5EG-DV-ofg"/>
                                             <constraint firstItem="Nmg-bE-fzY" firstAttribute="centerY" secondItem="AKx-Yp-ABQ" secondAttribute="centerY" id="5hV-id-PfH"/>
                                             <constraint firstItem="5Xr-rC-TZo" firstAttribute="top" secondItem="Nmg-bE-fzY" secondAttribute="bottom" constant="24" id="6Ka-iF-S0B"/>
-                                            <constraint firstItem="GPv-sh-AM6" firstAttribute="leading" secondItem="GlN-qa-2DO" secondAttribute="trailing" constant="16" id="6xI-2N-y6o"/>
-                                            <constraint firstItem="GPv-sh-AM6" firstAttribute="leading" secondItem="nqS-GI-Jt9" secondAttribute="trailing" constant="16" id="8ik-F1-8xf"/>
+                                            <constraint firstItem="GPv-sh-AM6" firstAttribute="leading" secondItem="GlN-qa-2DO" secondAttribute="trailing" constant="20" id="6xI-2N-y6o"/>
+                                            <constraint firstItem="GPv-sh-AM6" firstAttribute="leading" secondItem="nqS-GI-Jt9" secondAttribute="trailing" constant="20" id="8ik-F1-8xf"/>
                                             <constraint firstItem="BDP-0E-0yk" firstAttribute="top" secondItem="jlp-q1-70c" secondAttribute="bottom" constant="8" id="AW0-li-XgA"/>
                                             <constraint firstItem="y7q-0g-5fv" firstAttribute="top" secondItem="GlN-qa-2DO" secondAttribute="top" id="Ba8-i7-34D"/>
                                             <constraint firstItem="jlp-q1-70c" firstAttribute="leading" secondItem="c86-Sf-83H" secondAttribute="leading" constant="16" id="E5J-gO-6UK"/>
                                             <constraint firstItem="rNd-T5-652" firstAttribute="leading" secondItem="jlp-q1-70c" secondAttribute="trailing" constant="8" id="EpW-fq-M3n"/>
-                                            <constraint firstAttribute="trailing" secondItem="GPv-sh-AM6" secondAttribute="trailing" constant="16" id="G2M-Yv-SRc"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GPv-sh-AM6" secondAttribute="trailing" constant="16" id="G2M-Yv-SRc"/>
                                             <constraint firstItem="47g-iF-eKV" firstAttribute="top" secondItem="BDP-0E-0yk" secondAttribute="bottom" constant="24" id="GYw-71-fyO"/>
                                             <constraint firstItem="kVc-Pt-0HW" firstAttribute="leading" secondItem="c86-Sf-83H" secondAttribute="leading" constant="16" id="Gxg-J8-RP7"/>
                                             <constraint firstAttribute="trailing" secondItem="Ynn-1y-DGb" secondAttribute="trailing" constant="16" id="HjD-SB-XIN"/>
@@ -248,7 +248,7 @@
                                             <constraint firstAttribute="trailing" secondItem="3B1-0J-t8f" secondAttribute="trailing" constant="16" id="hlK-kP-QoM"/>
                                             <constraint firstAttribute="trailing" secondItem="5Xr-rC-TZo" secondAttribute="trailing" constant="16" id="icR-dt-PS2"/>
                                             <constraint firstItem="Nmg-bE-fzY" firstAttribute="top" secondItem="dpo-3a-13c" secondAttribute="bottom" constant="24" id="ivP-zL-xWR"/>
-                                            <constraint firstItem="GPv-sh-AM6" firstAttribute="leading" secondItem="MMh-Q6-7YQ" secondAttribute="trailing" constant="16" id="j28-zR-g2r"/>
+                                            <constraint firstItem="GPv-sh-AM6" firstAttribute="leading" secondItem="MMh-Q6-7YQ" secondAttribute="trailing" constant="20" id="j28-zR-g2r"/>
                                             <constraint firstItem="dpo-3a-13c" firstAttribute="leading" secondItem="c86-Sf-83H" secondAttribute="leading" constant="16" id="ot7-Ia-9c0"/>
                                             <constraint firstItem="47g-iF-eKV" firstAttribute="leading" secondItem="c86-Sf-83H" secondAttribute="leading" constant="16" id="uiQ-mo-cTg"/>
                                             <constraint firstItem="kVc-Pt-0HW" firstAttribute="top" secondItem="Won-Z7-JgT" secondAttribute="bottom" constant="25" id="xgc-gy-sMc"/>
@@ -282,13 +282,17 @@
                     <connections>
                         <outlet property="badgeBackgroundView" destination="BDP-0E-0yk" id="8J2-aX-fR8"/>
                         <outlet property="badgeLabel" destination="s0f-Ue-lrP" id="fB7-3Z-mbx"/>
+                        <outlet property="deliveryFeeLabel" destination="R0a-6M-gwx" id="O1A-51-0j2"/>
+                        <outlet property="deliveryInfoLabel" destination="y7q-0g-5fv" id="j2e-qg-DW1"/>
                         <outlet property="descriptionLabel" destination="3B1-0J-t8f" id="0M6-4X-snj"/>
                         <outlet property="detailImagesStackView" destination="TQl-g5-kXj" id="oSN-wP-wpa"/>
                         <outlet property="lastPriceLabel" destination="jlp-q1-70c" id="LF5-pd-fgS"/>
                         <outlet property="nameLabel" destination="Ynn-1y-DGb" id="YQC-as-m6P"/>
                         <outlet property="orderButton" destination="5Xr-rC-TZo" id="9Gr-yo-08F"/>
                         <outlet property="originalPriceLabel" destination="rNd-T5-652" id="1BQ-IZ-gLo"/>
+                        <outlet property="pointLabel" destination="XOr-zQ-4fk" id="klx-di-4pZ"/>
                         <outlet property="thumbnailImagesScrollView" destination="uI5-Pp-gY6" id="edF-Dz-d1N"/>
+                        <outlet property="totalPriceLabel" destination="Nmg-bE-fzY" id="Uy5-HS-445"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGh-Qo-ptl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
