@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id;
 public class Image {
     @Id
     private Long id;
-
     private String imageUrl;
     private String dishHash;
     private boolean isThumb;
