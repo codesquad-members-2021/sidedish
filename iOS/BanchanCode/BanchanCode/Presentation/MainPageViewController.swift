@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainPageViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class MainPageViewController: UIViewController {
         
         let viewModels = categories.map { category in
             makeDishesViewModel(category: category)
-        }
+        }                
         
         mainPageDataSource?.viewModels = viewModels
         
@@ -35,6 +36,10 @@ class MainPageViewController: UIViewController {
         }
         
         registerXib()
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+
+        
     }
     
     func makeFetchDishesUseCase() -> FetchDishesUseCase {

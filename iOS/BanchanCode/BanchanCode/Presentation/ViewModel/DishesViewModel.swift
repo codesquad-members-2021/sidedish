@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol DishesViewModelInput {
     func load()
@@ -37,10 +38,26 @@ final class DefaultDishesViewModel: DishesViewModel {
 //MARK: - Input
 extension DefaultDishesViewModel {
     func load() {
+        //test
+        let realm = try! Realm()
+        
         fetchDishesUseCase.execute(requestValue: .init(category: category.value), completion: { (result) in
             switch result {
             case .success(let items):
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
+                //test
+                self.items.value.forEach{ item in
+                    let dishDB = DishDB()
+                    dishDB.name = item.name
+                    dishDB.contents = item.description
+                    dishDB.imageURL = item.imageURL
+//                    dishDB.badges = item.badges
+//                    dishDB.prices = item.prices
+                    try! realm.write {
+                        realm.add(dishDB)
+                    }
+                }
+            
             case .failure(let error):
                 print(error.localizedDescription)
                 break
