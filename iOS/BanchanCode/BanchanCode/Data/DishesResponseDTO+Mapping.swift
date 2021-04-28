@@ -11,7 +11,7 @@ struct DishesResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case dishes
     }
-    let dishes: [DishDTO]
+    let dishes: [DishDTO]    
 }
 
 extension DishesResponseDTO {
@@ -31,6 +31,7 @@ extension DishesResponseDTO {
         let prices: [Int]
         let badges: [String]
     }
+    
 }
 
 extension DishesResponseDTO {

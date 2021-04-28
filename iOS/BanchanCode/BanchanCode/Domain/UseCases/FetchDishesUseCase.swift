@@ -22,13 +22,15 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
         })
     }
     
-    func fetchDishes(category: Categorizable,
+    
+     func fetchDishes(category: Categorizable,
                      completion: @escaping (Result<Dishes, Error>) -> Void) {
         let url = "https://79129275-12cd-405a-80a6-677b968b1977.mock.pstmn.io/banchan-code/\(category.name)"
         networkManager.performRequest(urlString: url) { (responseDTO) in
             completion(.success(responseDTO.toDomain()))
         }
     }
+    
 }
 
 struct FetchDishesUseCaseRequestValue {
