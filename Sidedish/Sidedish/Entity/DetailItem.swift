@@ -47,5 +47,4 @@ struct DetailItem: Codable {
         self.detailSectionURL = [String]()
         self.detailSectionData = nil
     }
-
 }

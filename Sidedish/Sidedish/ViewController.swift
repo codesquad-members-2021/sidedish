@@ -103,7 +103,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let vc = segue.destination as? DetailViewController
             let networking = SidedishNetworkCenter()
             let sidedishProcessing = SidedishProcessing(networkable: networking)
-            vc?.detailViewModel = DetailViewModel(sidedishProcessable: sidedishProcessing, title: items[indexPath.row].title)
+            
+            let badge = handleBadge(badge: items[indexPath.row].badge)
+            vc?.detailViewModel = DetailViewModel(sidedishProcessable: sidedishProcessing, title: items[indexPath.row].title, badges: badge)
             vc?.detailViewModel.fetchDetail(hash: detailHash)
         }
     }

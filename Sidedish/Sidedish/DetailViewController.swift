@@ -57,6 +57,7 @@ class DetailViewController: UIViewController {
     private func setInformationView() {
         if let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as? CustomView {
             view.configure(productName: self.detailViewModel.currentItemTitle, item: detailViewModel.currentDetail)
+            view.configureBadge(for: detailViewModel.currentItemBadge)
             view.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
             view.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
             self.informationStackView.insertArrangedSubview(view, at: 0)
