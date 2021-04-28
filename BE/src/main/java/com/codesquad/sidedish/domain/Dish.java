@@ -16,8 +16,6 @@ public class Dish {
     private String normalPrice;
     private String sellingPrice;
     private String badge;
-
-    @Column(value = "category")
     private Long categoryId;
     private String topImage;
     private String thumbImages;
@@ -118,6 +116,14 @@ public class Dish {
 
     public String getPoint() {
         return point;
+    }
+
+    public boolean checkStock(int orderSize) {
+        return stock >= orderSize;
+    }
+
+    public void updateStock(int orderSize) {
+        this.stock -= orderSize;
     }
 
     @Override

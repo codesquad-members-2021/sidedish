@@ -1,9 +1,8 @@
 package com.codesquad.sidedish.service;
 
+import com.codesquad.sidedish.exception.NotFoundException;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
-import com.codesquad.sidedish.dto.CategoryResponseDto;
-import com.codesquad.sidedish.dto.DishDetailResponseDto;
 import com.codesquad.sidedish.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,21 +15,27 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    //카테고리별 조회
-    public CategoryResponseDto readDishesByCategory(String categoryType) {
-        Category category = categoryRepository.findCategoryByType(categoryType);
-        return CategoryResponseDto.of(category);
+    public Category findCategoryByType(String type) {
+        return categoryRepository.findCategoryByType(type).orElseThrow(() -> new NotFoundException("존재하지 않는 카테코리입니다."));
     }
 
-    // 상세 조회
-    public DishDetailResponseDto readDishByCategoryAndDishId(String categoryType, String dishId) {
-        Category category = categoryRepository.findCategoryByType(categoryType);
-        Dish dish = category.getDishByDishId(dishId);
-        return DishDetailResponseDto.of(dish);
+    public Dish findDishByTypeAndId(String type, String dishId) {
+        Category category = findCategoryByType(type);
+        return category.getDishByDishId(dishId);
     }
 
-    public void addDish(String categoryType, Dish dish) {
-        Category category = categoryRepository.findCategoryByType(categoryType);
+    public boolean orderDish(String type, String dishId, int orderSize) {
+        Dish dish = findDishByTypeAndId(type, dishId);
+        if (dish.checkStock(orderSize)) {
+            dish.updateStock(orderSize);
+            addDish(type,dish);
+            return true;
+        }
+        return false;
+    }
+
+    public void addDish(String type, Dish dish) {
+        Category category = findCategoryByType(type);
         category.addDish(dish);
         categoryRepository.save(category);
     }
