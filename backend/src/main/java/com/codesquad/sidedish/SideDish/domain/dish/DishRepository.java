@@ -9,10 +9,10 @@ import java.util.List;
 public interface DishRepository extends CrudRepository<Dish, String> {
 //    @Query("SELECT detail_hash FROM dish WHERE DISH.CATEGORY_ID =:categoryId"
 
-    @Query("select * from DISH where dish.category_id = :categoryId")
-    List<Dish> findAllByCategoryId(@Param("categoryId")Long categoryId);
 
-    @Query("SELECT * FROM DISH where dish.detail_hash =:detailHash")
+
+    List<Dish> findAllByCategoryId(Long categoryId);
+
     Dish findByDetailHash(String detailHash);
 
     @Query("select count(*) from DISH where dish.category_id = :categoryId")

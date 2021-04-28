@@ -1,8 +1,10 @@
 package com.codesquad.sidedish.SideDish.dto;
 
-import com.codesquad.sidedish.SideDish.domain.Dish;
+import com.codesquad.sidedish.SideDish.domain.dish.Dish;
+import com.codesquad.sidedish.SideDish.domain.image.Image;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DishDetailDto {
     private final List<String> thumbImages;
@@ -11,60 +13,12 @@ public class DishDetailDto {
     private int deliveryFee;
     private final List<String> detailImages;
 
-    private DishDetailDto(Builder builder) {
-        this.thumbImages = builder.thumbImages;
-        this.point = builder.point;
-        this.deliveryInfo = builder.deliveryInfo;
-        this.deliveryFee = builder.deliveryFee;
-        this.detailImages = builder.detailImages;
-    }
-
-    public static DishDetailDto from(Dish dish) {
-        return new Builder()
-                .thumbImages(dish.getThumbImages())
-                .point(dish.getPoint())
-                .deliveryInfo(dish.getDeliveryInfo())
-                .deliveryFee(dish.getDeliveryFee())
-                .detailImages(dish.getDetailImages())
-                .build();
-    }
-
-    private static class Builder {
-        private List<String> thumbImages;
-        private int point;
-        private String deliveryInfo;
-        private int deliveryFee;
-        private List<String> detailImages;
-
-        public DishDetailDto build() {
-            return new DishDetailDto(this);
-        }
-
-
-        public Builder thumbImages(List<String> thumbImages) {
-            this.thumbImages = thumbImages;
-            return this;
-        }
-
-        public Builder point(int point) {
-            this.point = point;
-            return this;
-        }
-
-        public Builder deliveryInfo(String deliveryInfo) {
-            this.deliveryInfo = deliveryInfo;
-            return this;
-        }
-
-        public Builder deliveryFee(int deliveryFee) {
-            this.deliveryFee = deliveryFee;
-            return this;
-        }
-
-        public Builder detailImages(List<String> detailSection) {
-            this.detailImages = detailSection;
-            return this;
-        }
+    public DishDetailDto(Dish dish, List<Image> thumbImages, List<Image> detailImages) {
+        this.thumbImages = thumbImages.stream().map(Image::getImageUrl).collect(Collectors.toList());
+        this.point = dish.getPoint();
+        this.deliveryInfo = dish.getDeliveryInfo();
+        this.deliveryFee = dish.getDeliveryFee();
+        this.detailImages = detailImages.stream().map(Image::getImageUrl).collect(Collectors.toList());
     }
 
     public List<String> getThumbImages() {

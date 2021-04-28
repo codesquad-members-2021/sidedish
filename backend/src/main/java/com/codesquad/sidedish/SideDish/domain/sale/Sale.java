@@ -16,9 +16,6 @@ public class Sale {
 
     private Set<DishSale> dishSales = new HashSet<>();
 
-    protected Sale(){
-
-    }
 
     public Sale(String badge, String saleType, int saleValue) {
         this.badge = badge;

@@ -3,13 +3,16 @@ package com.codesquad.sidedish.SideDish.domain.dish;
 import com.codesquad.sidedish.SideDish.domain.delivery.DishDelivery;
 import com.codesquad.sidedish.SideDish.domain.image.DishImage;
 import com.codesquad.sidedish.SideDish.domain.sale.DishSale;
+import com.codesquad.sidedish.SideDish.dto.SaleDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@Table("DISH")
 public class Dish {
 
     private final String detailHash;

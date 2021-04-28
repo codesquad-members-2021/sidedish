@@ -2,6 +2,7 @@ package com.codesquad.sidedish.SideDish.domain.image;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 public class DishImage {
     @Id
@@ -11,8 +12,8 @@ public class DishImage {
 
     private Long image;
 
-    public DishImage(String dish, Long image) {
-        this.dish = dish;
+    @PersistenceConstructor
+    public DishImage(Long image) {
         this.image = image;
     }
 
