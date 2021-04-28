@@ -7,10 +7,8 @@ import java.util.List;
 
 public interface ImageRepository extends CrudRepository<Image, Long> {
 
-    @Query("SELECT `IMAGE`.`ID` AS `ID`, IF(`IMAGE`.`IS_THUMB`, 'true', 'false') AS `IS_THUMB`, `IMAGE`.`DISH_HASH` AS `DISH_HASH`, `IMAGE`.`IMAGE_URL` AS `IMAGE_URL` " +
-            "FROM `IMAGE` WHERE `IMAGE`.`DISH_HASH` = :hash  AND (`IMAGE`.`IS_THUMB` = TRUE) ORDER BY ID ASC;")
+    @Query("select `image`.`id` as `id`, if(`image`.`is_thumb`, 'true', 'false') as `is_thumb`, `image`.`dish_hash` as `dish_hash`, `image`.`image_url` as `image_url` from `image` where `image`.`dish_hash` = :hash  and (`image`.`is_thumb` = true) order by id asc")
     List<Image> findAllByDishHashAndIsThumbTrue(String hash);
-    @Query("SELECT `IMAGE`.`ID` AS `ID`, IF(`IMAGE`.`IS_THUMB`, 'true', 'false') AS `IS_THUMB`, `IMAGE`.`DISH_HASH` AS `DISH_HASH`, `IMAGE`.`IMAGE_URL` AS `IMAGE_URL` " +
-            "FROM `IMAGE` WHERE `IMAGE`.`DISH_HASH` = :hash  AND (`IMAGE`.`IS_THUMB` = FALSE) ORDER BY ID ASC;")
+    @Query("select `image`.`id` as `id`, if(`image`.`is_thumb`, 'true', 'false') as `is_thumb`, `image`.`dish_hash` as `dish_hash`, `image`.`image_url` as `image_url` from `image` where `image`.`dish_hash` = :hash  and (`image`.`is_thumb` = false) order by id asc;")
     List<Image> findAllByDishHashAndIsThumbFalse(String hash);
 }

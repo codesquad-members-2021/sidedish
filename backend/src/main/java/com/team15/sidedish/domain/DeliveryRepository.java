@@ -7,8 +7,7 @@ import java.util.Optional;
 
 public interface DeliveryRepository extends CrudRepository<Delivery, Long> {
 
-    @Query("SELECT `DELIVERY`.`ID` AS `ID`, IF(`DELIVERY`.`IS_MONDAY`, 'true', 'false') AS `IS_MONDAY`, `DELIVERY`.`DISH_HASH` AS `DISH_HASH`, `DELIVERY`.`DELIVERY_FEE` AS `DELIVERY_FEE`, `DELIVERY`.`DELIVERY_TYPE` AS `DELIVERY_TYPE`, `DELIVERY`.`DELIVERY_CONDITION` AS `DELIVERY_CONDITION` " +
-            "FROM `DELIVERY` WHERE `DELIVERY`.`DISH_HASH` = :hash")
+    @Query("select `delivery`.`id` as `id`, if(`delivery`.`is_monday`, 'true', 'false') as `is_monday`, `delivery`.`dish_hash` as `dish_hash`, `delivery`.`delivery_fee` as `delivery_fee`, `delivery`.`delivery_type` as `delivery_type`, `delivery`.`delivery_condition` as `delivery_condition` from `delivery` where `delivery`.`dish_hash` = :hash")
     Optional<Delivery> findByDishHash(String hash);
 
 }
