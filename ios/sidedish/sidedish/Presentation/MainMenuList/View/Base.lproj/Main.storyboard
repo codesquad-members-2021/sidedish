@@ -45,8 +45,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcr-uh-8FH">
                                                     <rect key="frame" x="126" y="0.0" width="227" height="130"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[미노리키친] 규동 250g [미노리키친] 규동 250g[미노리키친] 규동 250g" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFy-Qg-94P">
-                                                            <rect key="frame" x="8" y="5" width="216" height="38.333333333333336"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[미노리키친] 규동 250g" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFy-Qg-94P">
+                                                            <rect key="frame" x="8" y="5" width="216" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="311-eL-wU1"/>
                                                             </constraints>
@@ -55,7 +55,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adn-xA-Y07">
-                                                            <rect key="frame" x="8" y="47.333333333333336" width="216" height="20.000000000000007"/>
+                                                            <rect key="frame" x="8" y="30" width="216" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="xkf-8B-e9o"/>
                                                             </constraints>
@@ -64,7 +64,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,500원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZz-9i-Zzs">
-                                                            <rect key="frame" x="65.333333333333343" y="75.333333333333329" width="50" height="20"/>
+                                                            <rect key="frame" x="65.333333333333343" y="58" width="50" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="XKA-Ff-8gc"/>
                                                             </constraints>
@@ -73,7 +73,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,200원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1I-wH-UN6">
-                                                            <rect key="frame" x="8.0000000000000036" y="75.333333333333329" width="53.333333333333343" height="20"/>
+                                                            <rect key="frame" x="8.0000000000000036" y="58" width="53.333333333333343" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="51" id="6pn-XN-snR"/>
                                                                 <constraint firstAttribute="height" constant="20" id="i9H-G6-oQe"/>
@@ -83,7 +83,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yOn-P2-uu6">
-                                                            <rect key="frame" x="8" y="100.33333333333333" width="137" height="25"/>
+                                                            <rect key="frame" x="8" y="83" width="137" height="25"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-aC-v39">
                                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="25"/>
@@ -320,7 +320,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 주문금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gce-OR-yRJ">
-                                                <rect key="frame" x="149.66666666666666" y="928.33333333333337" width="82" height="21"/>
+                                                <rect key="frame" x="132" y="928.33333333333337" width="82" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="2s4-2C-FfR"/>
                                                     <constraint firstAttribute="height" constant="21" id="Y7h-bF-f2i"/>
@@ -329,14 +329,17 @@
                                                 <color key="textColor" red="0.51093643899999996" green="0.51101326940000003" blue="0.5109196305" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,200원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g10-iw-5xj">
-                                                <rect key="frame" x="255.66666666666666" y="919.33333333333337" width="118.33333333333334" height="39"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,200원" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g10-iw-5xj">
+                                                <rect key="frame" x="255.33333333333334" y="919.66666666666663" width="118.66666666666666" height="38.333333333333371"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118.33" id="E9c-8l-EOP"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cq-oz-rfo">
-                                                <rect key="frame" x="16" y="982.33333333333326" width="358" height="58"/>
+                                                <rect key="frame" x="16" y="982" width="358" height="58"/>
                                                 <color key="backgroundColor" red="0.5827482343" green="0.81842011209999999" blue="0.30182066559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="58" id="MI6-Jt-aBB"/>
@@ -435,6 +438,7 @@
                                             <constraint firstItem="fPt-ja-Q7Y" firstAttribute="top" secondItem="PaL-CX-XYk" secondAttribute="top" id="GTH-EN-Vo8"/>
                                             <constraint firstItem="g10-iw-5xj" firstAttribute="centerY" secondItem="gce-OR-yRJ" secondAttribute="centerY" id="HUz-Ge-GTP"/>
                                             <constraint firstItem="PEB-z0-g61" firstAttribute="leading" secondItem="VmB-TX-zD3" secondAttribute="leading" id="JIm-Sr-bYL"/>
+                                            <constraint firstItem="g10-iw-5xj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gce-OR-yRJ" secondAttribute="trailing" constant="24" id="K7d-rI-GKC"/>
                                             <constraint firstItem="4cq-oz-rfo" firstAttribute="top" secondItem="g10-iw-5xj" secondAttribute="bottom" constant="24" id="K9e-2C-97R"/>
                                             <constraint firstItem="2em-vB-7Bk" firstAttribute="top" secondItem="fPt-ja-Q7Y" secondAttribute="bottom" constant="24" id="Kd9-7j-HD0"/>
                                             <constraint firstItem="mvV-Tz-xwH" firstAttribute="top" secondItem="VJn-uW-7m1" secondAttribute="bottom" constant="16" id="O63-d3-yDs"/>
@@ -458,9 +462,8 @@
                                             <constraint firstAttribute="height" constant="5656" id="iv2-dP-Twp"/>
                                             <constraint firstItem="2em-vB-7Bk" firstAttribute="leading" secondItem="PaL-CX-XYk" secondAttribute="leading" constant="16" id="jzE-RN-hKk"/>
                                             <constraint firstItem="ugt-d3-gCD" firstAttribute="top" secondItem="iHl-RB-2dW" secondAttribute="bottom" constant="28" id="q0s-2t-ifC"/>
-                                            <constraint firstItem="g10-iw-5xj" firstAttribute="leading" secondItem="gce-OR-yRJ" secondAttribute="trailing" constant="24" id="qgn-KB-uC8"/>
                                             <constraint firstItem="VmB-TX-zD3" firstAttribute="leading" secondItem="mvV-Tz-xwH" secondAttribute="leading" id="rkf-TJ-QUu"/>
-                                            <constraint firstItem="gce-OR-yRJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PaL-CX-XYk" secondAttribute="leading" constant="132" id="u4e-M4-gnd"/>
+                                            <constraint firstItem="gce-OR-yRJ" firstAttribute="leading" secondItem="PaL-CX-XYk" secondAttribute="leading" constant="132" id="sHN-Ly-pjt"/>
                                             <constraint firstItem="fPt-ja-Q7Y" firstAttribute="leading" secondItem="PaL-CX-XYk" secondAttribute="leading" id="unm-ZZ-IVr"/>
                                             <constraint firstItem="ugt-d3-gCD" firstAttribute="leading" secondItem="nXU-yX-Jyy" secondAttribute="trailing" constant="8" id="w8E-J8-Pve"/>
                                             <constraint firstItem="PEB-z0-g61" firstAttribute="centerY" secondItem="Kal-6C-CFv" secondAttribute="centerY" id="xb2-HQ-p9T"/>

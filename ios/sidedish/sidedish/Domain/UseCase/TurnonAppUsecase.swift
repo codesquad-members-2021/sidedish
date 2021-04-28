@@ -7,34 +7,40 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 protocol ManufactureDataforViewModel {
     
-    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], AFError>
+    func manufactureForMainViewCategory(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ())
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], AFError>
+    func manufactureForMainViewSideDishes(endPoint: String,
+                                          completionHandler: @escaping (Just<[SideDishManageable]>) -> ())
     
 }
 
 class TurnonAppUsecase: ManufactureDataforViewModel {
 
-    private let networkmanager: AFNetworkManagable
+    private let repository: DishRepository
     
-    init(networkmanager: AFNetworkManagable) {
-        self.networkmanager = networkmanager
+    init(repository: DishRepository) {
+        self.repository = repository
+        self.repository.deleteAllInCoreData()
     }
     
     convenience init(baseUrl: String = "http://3.37.26.82:8080"){
-        let networkmanager = NetworkManager(baseAddress: baseUrl)
-        self.init(networkmanager : networkmanager)
+        let repository = DishRepository(with: baseUrl)
+        self.init(repository: repository)
     }
     
-    func manufactureForMainViewCategory() -> AnyPublisher<[SideDishesCategory], AFError> {
-        return networkmanager.get(decodingType: [SideDishesCategory].self, endPoint: EndPoint.categories)
+    func manufactureForMainViewCategory(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ()) {
+        return repository.getCategories { (publisher) in
+            completionHandler(publisher)
+        }
     }
     
-    func manufactureForMainViewSideDishes(endPoint: String) -> AnyPublisher<[SideDish], AFError> {
-        return networkmanager.get(decodingType: [SideDish].self, endPoint: endPoint)
+    func manufactureForMainViewSideDishes(endPoint: String,
+                                          completionHandler: @escaping (Just<[SideDishManageable]>) -> ()) {
+        return repository.getSideDishes(endPoint: endPoint) { (publisher) in
+            completionHandler(publisher)
+        }
     }
 }
