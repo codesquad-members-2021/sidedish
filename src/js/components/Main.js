@@ -4,13 +4,6 @@ import Header from "./Header/Header";
 import BestList from "./BestList/BestList";
 import Modal from "./Modal/Modal";
 import Section from "./Section/Section";
-const Wrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	filter: ${(props) => (props.isModalOn ? "brightness(40%)" : "brightness(100%)")};
-	background-color: #fff;
-`;
 
 const Main = () => {
 	const [modalData, setModalData] = useState();
@@ -26,5 +19,13 @@ const Main = () => {
 		</>
 	);
 };
+
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	filter: ${(props) => (props.isModalOn ? "brightness(40%)" : "brightness(100%)")};
+	background-color: #fff;
+`;
 
 export default Main;

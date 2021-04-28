@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const Price = ({ n_price, s_price }) => (
+	<PriceWrapper>
+		<SaledPrice>{n_price <= s_price ? n_price + "원" : s_price}</SaledPrice>
+		<OriginPrice>{n_price && (n_price <= s_price ? s_price : n_price + "원")}</OriginPrice>
+	</PriceWrapper>
+);
+
 const PriceWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -24,12 +31,5 @@ const OriginPrice = styled.div`
 	text-decoration-line: line-through;
 	color: #bdbdbd;
 `;
-
-const Price = ({n_price, s_price}) => (
-	<PriceWrapper>
-		<SaledPrice>{n_price ? n_price + "원" : s_price}</SaledPrice>
-		<OriginPrice>{!n_price || s_price}</OriginPrice>
-	</PriceWrapper>
-);
 
 export default Price;

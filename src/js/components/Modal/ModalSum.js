@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const Sum = ({ data, count }) => (
+	<SumWrapper>
+		<Title>총 주문금액</Title>
+		<Body>{(count * parseInt((data.prices[1] ? data.prices[1] : data.prices[0]).replace("원", "").replace(",", ""))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</Body>
+	</SumWrapper>
+);
+
 const SumWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -30,12 +37,5 @@ const Body = styled.div`
 	color: #010101;
 	margin-left: 24px;
 `;
-
-const Sum = ({ data, count }) => (
-	<SumWrapper>
-		<Title>총 주문금액</Title>
-		<Body>{(count * parseInt((data.prices[1] ? data.prices[1] : data.prices[0]).replace("원", "").replace(",", ""))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</Body>
-	</SumWrapper>
-);
 
 export default Sum;

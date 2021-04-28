@@ -1,4 +1,17 @@
+import { useState } from "react";
 import styled from "styled-components";
+
+const Menu = ({ title, body }) => {
+	const [isOn, setOn] = useState(false);
+	return (
+		<MenuWrapper onMouseEnter={() => setOn(true)} onMouseLeave={() => setOn(false)}>
+			<MenuTitle isOn={isOn}>{title}</MenuTitle>
+			<MenuBodyWrapper isOn={isOn}>
+				{body.map((e) => (<MenuBody key={e}>{e}</MenuBody>))}
+			</MenuBodyWrapper>
+		</MenuWrapper>
+	);
+};
 
 const MenuWrapper = styled.div``;
 const MenuTitle = styled.div`
@@ -29,17 +42,4 @@ const MenuBody = styled.div`
 	}
 `;
 
-const Menu = ({ title, body, isOn, onMouseEnter, onMouseLeave }) => {
-	return (
-		<MenuWrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-			<MenuTitle isOn={isOn}>{title}</MenuTitle>
-			<MenuBodyWrapper isOn={isOn}>
-				{body.map((e) => (
-					<MenuBody key={e}>{e}</MenuBody>
-				))}
-			</MenuBodyWrapper>
-		</MenuWrapper>
-	);
-};
-
-export default Menu
+export default Menu;

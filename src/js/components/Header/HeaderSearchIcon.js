@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-const SearchBarIconWrapper = styled.div`
-	position: absolute;
-	top: 50px;
-	left: 1096px;
-`;
-
 const SearchBarIcon = () => (
 	<SearchBarIconWrapper>
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,5 +8,11 @@ const SearchBarIcon = () => (
 		</svg>
 	</SearchBarIconWrapper>
 );
+
+const SearchBarIconWrapper = styled.div`
+	position: absolute;
+	top: 50px;
+	left: 1096px;
+`;
 
 export default SearchBarIcon;
