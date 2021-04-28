@@ -73,8 +73,7 @@ const OrderBtn = styled(Button)`
     0px 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   border-radius: 5px;
-  cursor: ${props =>
-    props.disabled ?  "default" : "pointer" };
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 `
 
 const ItemDetailCards = styled.div``
@@ -95,7 +94,6 @@ function DetailPage ({
   const handleClick = () => {
     setModalState(!modalMode)
   }
-  console.log(modalMode)
   return (
     <Modal {...{ modalMode, setModalState }}>
       {loadingState ? (
@@ -122,7 +120,6 @@ function DetailPage ({
                 ></ItemPrice>
               </FlexBox>
               <img src='./longUnderLine.png' alt='underline'></img>
-
               <PointDeliveryInfoBlock>
                 <ItemDescDetails>적립</ItemDescDetails>
                 <DetailText>{detailData.point}</DetailText>
@@ -131,20 +128,18 @@ function DetailPage ({
                 <ItemDescDetails>배송비</ItemDescDetails>
                 <DetailText>{detailData.deliveryFee}</DetailText>
               </PointDeliveryInfoBlock>
-
               <img src='./longUnderLine.png' alt='underline'></img>
               <ItemDescDetails>수량</ItemDescDetails>
               <input type='number' min='1' max={detailData.stock}></input>
               <img src='./longUnderLine.png' alt='underline'></img>
               <DetailText>총 주문금액</DetailText>
               <ItemPrice>{detailData.nPrice}</ItemPrice>
-              {detailData.stock ? (
-                <OrderBtn onClick={handleClick}>주문하기</OrderBtn>
-              ) : (
-                <OrderBtn onClick={handleClick} disabled={true}>
-                  상품 준비중
-                </OrderBtn>
-              )}
+              <OrderBtn
+                onClick={handleClick}
+                disabled={!Boolean(detailData.stock)}
+              >
+                {detailData.stock? "주문하기" : "상품 준비중"}
+              </OrderBtn>
             </ItemDetailInfo>
           </RepresentativeBlock>
           <ItemDetailCards>
