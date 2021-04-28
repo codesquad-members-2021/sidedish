@@ -31,7 +31,7 @@ class MenuListViewModel {
             .sink(receiveCompletion: { result in
                     switch result {
                     case .finished:
-                        print("완료 해쪄욤")
+                        break
                     case .failure(.urlError):
                         assertionFailure("url")
                     case .failure(.networkConnection):
