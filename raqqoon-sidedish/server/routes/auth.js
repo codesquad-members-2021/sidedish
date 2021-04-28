@@ -47,6 +47,8 @@ router.post('/', async (req, res) => {
       subject: 'userInfo',
     }
   );
+
+  // db logic
   return res.json({ access_token });
 });
 
