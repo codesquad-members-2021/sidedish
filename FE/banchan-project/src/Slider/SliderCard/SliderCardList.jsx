@@ -1,14 +1,13 @@
 import { Style } from "../SliderStyles";
 
 import SliderCard from "./SliderCard";
-const SliderCardList = () => {
+const SliderCardList = ({ card, X }) => {
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
-    <Style.SliderCardList>
-      <SliderCard></SliderCard>
-      <SliderCard></SliderCard>
-      <SliderCard></SliderCard>
-      <SliderCard></SliderCard>
-      <SliderCard></SliderCard>
+    <Style.SliderCardList {...{ X }}>
+      {arr.map((x, idx) => (
+        <SliderCard key={idx}>{x}</SliderCard>
+      ))}
     </Style.SliderCardList>
   );
 };
