@@ -32,7 +32,7 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
 
       {additionalInfo.map(({ title, desc }, idx) => {
         return (
-          <AdditionalInfoWrapper key={idx}>
+          <AdditionalInfoWrapper key={`additionalInfo-${idx}`}>
             <AdditionalInfoTitle>{title}</AdditionalInfoTitle>
             <AdditionalInfoDesc>{desc}</AdditionalInfoDesc>
           </AdditionalInfoWrapper>

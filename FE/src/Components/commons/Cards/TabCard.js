@@ -42,7 +42,7 @@ const TabCard = ({ item, dispatchModal }) => {
       </PriceWrapper>
 
       {badge?.map((badge, idx) => {
-        return (<SpecialLabelTag key={idx} badge={badge} />);
+        return (<SpecialLabelTag key={`TabSpecialLabel-${idx}`} badge={badge} />);
       })}
     </CardWrapper>
   )

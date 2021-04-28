@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import styled from 'styled-components';
 import { FlexContainer, Container } from 'Components/commons/base.js';
 import Header from 'Components/Header/Header.js';

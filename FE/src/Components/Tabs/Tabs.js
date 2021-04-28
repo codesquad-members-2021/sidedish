@@ -46,7 +46,7 @@ const Tabs = ({ dispatchModal }) => {
         <FlexWrapper>
           {data?.map(({ name }, idx) => {
             return (
-              <label key={idx}>
+              <label key={`label-${idx}`}>
                 <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
                 <LabelBelongSpan>{name}</LabelBelongSpan>
               </label>
@@ -55,7 +55,7 @@ const Tabs = ({ dispatchModal }) => {
         </FlexWrapper>
         <CardListWrapper>
           {currentTabItems.map((item, idx) => {
-            return (<Card key={idx} type={"tabs"}  {...{ item, dispatchModal }} />);
+            return (<Card key={`card-${idx}`} type={"tabs"}  {...{ item, dispatchModal }} />);
           })}
         </CardListWrapper>
       </>}
