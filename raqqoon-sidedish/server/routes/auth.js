@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
         },
       }
     )
-    .catch((error) => console.error('error'));
+    .catch((error) => console.error('error in /auth'));
   const token = response.data.access_token;
 
   const { data } = await axios.get('https://api.github.com/user', {
@@ -48,8 +48,10 @@ router.post('/', async (req, res) => {
     }
   );
 
+  const { login } = data;
+
   // db logic
-  return res.json({ access_token });
+  return res.json({ access_token, login });
 });
 
 module.exports = router;
