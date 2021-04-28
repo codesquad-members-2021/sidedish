@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import qs from 'qs';
+import { logInStyle, LoginModal } from 'components/nav/LoginModal';
+
 const Login = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const [USER_ID, SetUSER_ID] = useState(null);
+  const [isShowModal, setIsShowModal] = useState(false);
+
+  const handleModalToggle = () => {
+    setIsShowModal((status) => !status);
+  };
+
   useEffect(() => {
     const getToken = async () => {
       const { code } = qs.parse(window.location.search, {
         ignoreQueryPrefix: true,
       });
+      if (!code) return;
 
       try {
         const res = await fetch(`http://localhost:3001/auth`, {
@@ -17,9 +27,12 @@ const Login = () => {
           },
           body: JSON.stringify({ data: code }),
         });
-        const { access_token } = await res.json();
+
+        const { access_token, login } = await res.json();
         localStorage.setItem('access_token', access_token);
-        setIsLogged(true);
+        SetUSER_ID(login);
+        setIsLoggedIn(true);
+        window.close();
       } catch (error) {
         console.error(error);
       }
@@ -29,18 +42,21 @@ const Login = () => {
     window.history.pushState(null, null, homePage);
   }, []);
 
-  return isLogged ? (
-    <div>로그인 되었습니다.</div>
-  ) : (
-    <LoginWrap href="http://localhost:3001/auth/github">로그인</LoginWrap>
+  return (
+    <>
+      {isLoggedin ? (
+        <Span>{USER_ID}</Span>
+      ) : (
+        <Span onClick={handleModalToggle}>로그인</Span>
+      )}
+      {isShowModal && <LoginModal handleModalToggle={handleModalToggle} />}
+    </>
   );
 };
 
 export default Login;
 
-const LoginWrap = styled.a`
+const Span = styled.span`
+  ${logInStyle};
   padding-left: 1.5rem;
-  font-family: Noto Sans KR;
-  font-size: 1rem;
-  cursor: pointer;
 `;
