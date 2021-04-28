@@ -13,8 +13,6 @@
 		1E1DBAD9262DDDFC0050FE6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */; };
 		1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */; };
 		1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1DBADC262DDDFD0050FE6C /* LaunchScreen.storyboard */; };
-		1E5053C82636F504005615F5 /* DishesEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */; };
-		1E5053C92636F504005615F5 /* DishesEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */; };
 		1E50540B26395ADB005615F5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E50540A26395ADB005615F5 /* LoadingViewController.swift */; };
 		1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F61262F256000DC56C0 /* Endpoint.swift */; };
 		1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */; };
@@ -25,14 +23,15 @@
 		1ECF2EBC2635D6FD006982BE /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2EBB2635D6FD006982BE /* MenuRepository.swift */; };
 		1ECF2EC02635DE65006982BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2EBE2635DE65006982BE /* CoreData.xcdatamodeld */; };
 		1ECF2EC32635E2EC006982BE /* CoreDataMenuResponseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2EC22635E2EC006982BE /* CoreDataMenuResponseStorage.swift */; };
+		B04466292636911D00DAD616 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04466272636911D00DAD616 /* DishCell.swift */; };
+		B044662A2636911D00DAD616 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04466282636911D00DAD616 /* DishCell.xib */; };
 		B04466392637B17600DAD616 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04466382637B17600DAD616 /* MockNetworkManager.swift */; };
 		B04466432638149900DAD616 /* SideDishAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04466422638149900DAD616 /* SideDishAppTests.swift */; };
 		B044664D263814B400DAD616 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044664C263814B400DAD616 /* NetworkTests.swift */; };
 		B04466512638152200DAD616 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = B04466502638152200DAD616 /* testData.json */; };
 		B044665D26383DD500DAD616 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = B04466502638152200DAD616 /* testData.json */; };
-		B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E6E262EA29200D5EBEC /* DishCardCell.swift */; };
-		B04466292636911D00DAD616 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04466272636911D00DAD616 /* DishCell.swift */; };
-		B044662A2636911D00DAD616 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04466282636911D00DAD616 /* DishCell.xib */; };
+		B044666526398D2A00DAD616 /* DishesEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044666426398D2A00DAD616 /* DishesEntity+CoreDataClass.swift */; };
+		B044666926398D3600DAD616 /* DishesEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044666826398D3600DAD616 /* DishesEntity+CoreDataProperties.swift */; };
 		B0911EA026316B9A00D5EBEC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E9F26316B9A00D5EBEC /* String+Extension.swift */; };
 		B0911EA42631AF3400D5EBEC /* DiffableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911EA32631AF3400D5EBEC /* DiffableProvider.swift */; };
 		B0911EA82632B7A100D5EBEC /* DishCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911EA72632B7A000D5EBEC /* DishCollectionViewDelegate.swift */; };
@@ -58,8 +57,6 @@
 		1E1DBADA262DDDFD0050FE6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E1DBADD262DDDFD0050FE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E1DBADF262DDDFD0050FE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DishesEntity+CoreDataClass.swift"; path = "/Users/ohking/Desktop/masters_codesquad/sidedish/SideDishApp/SideDishApp/Data/Persistence/DishesEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DishesEntity+CoreDataProperties.swift"; path = "/Users/ohking/Desktop/masters_codesquad/sidedish/SideDishApp/SideDishApp/Data/Persistence/DishesEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1E50540A26395ADB005615F5 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		1ECD5F61262F256000DC56C0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -73,15 +70,16 @@
 		4942C5A177086C5C99933038 /* Pods-SideDishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.debug.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.debug.xcconfig"; sourceTree = "<group>"; };
 		605A37FD869863C7E023EE85 /* Pods-SideDishApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.release.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.release.xcconfig"; sourceTree = "<group>"; };
 		96A87B12151B0D006007CD63 /* Pods_SideDishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04466272636911D00DAD616 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
+		B04466282636911D00DAD616 /* DishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCell.xib; sourceTree = "<group>"; };
 		B04466382637B17600DAD616 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		B04466402638149900DAD616 /* SideDishAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideDishAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04466422638149900DAD616 /* SideDishAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishAppTests.swift; sourceTree = "<group>"; };
 		B04466442638149900DAD616 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B044664C263814B400DAD616 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		B04466502638152200DAD616 /* testData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
-		B0911E6E262EA29200D5EBEC /* DishCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCardCell.swift; sourceTree = "<group>"; };
-		B04466272636911D00DAD616 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
-		B04466282636911D00DAD616 /* DishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCell.xib; sourceTree = "<group>"; };
+		B044666426398D2A00DAD616 /* DishesEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DishesEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B044666826398D3600DAD616 /* DishesEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DishesEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B0911E9F26316B9A00D5EBEC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B0911EA32631AF3400D5EBEC /* DiffableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableProvider.swift; sourceTree = "<group>"; };
 		B0911EA72632B7A000D5EBEC /* DishCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -150,8 +148,8 @@
 		1E1DBAE6262DDE040050FE6C /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */,
-				1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */,
+				B044666826398D3600DAD616 /* DishesEntity+CoreDataProperties.swift */,
+				B044666426398D2A00DAD616 /* DishesEntity+CoreDataClass.swift */,
 				1ECF2EBE2635DE65006982BE /* CoreData.xcdatamodeld */,
 				1ECF2EC22635E2EC006982BE /* CoreDataMenuResponseStorage.swift */,
 			);
@@ -389,7 +387,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */,
-				1ECF2E812632A70F006982BE /* LoadingView.xib in Resources */,
 				B044665D26383DD500DAD616 /* testData.json in Resources */,
 				B044662A2636911D00DAD616 /* DishCell.xib in Resources */,
 				1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */,
@@ -462,7 +459,6 @@
 				1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */,
 				1ECD5F6A262F3B6500DC56C0 /* DishNetworkManager.swift in Sources */,
 				1E50540B26395ADB005615F5 /* LoadingViewController.swift in Sources */,
-				1E5053C82636F504005615F5 /* DishesEntity+CoreDataProperties.swift in Sources */,
 				B04466292636911D00DAD616 /* DishCell.swift in Sources */,
 				1E1DBAD2262DDDFC0050FE6C /* AppDelegate.swift in Sources */,
 				1ECF2EC32635E2EC006982BE /* CoreDataMenuResponseStorage.swift in Sources */,
@@ -470,10 +466,10 @@
 				1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */,
 				B0911EA42631AF3400D5EBEC /* DiffableProvider.swift in Sources */,
 				B0911EA82632B7A100D5EBEC /* DishCollectionViewDelegate.swift in Sources */,
+				B044666926398D3600DAD616 /* DishesEntity+CoreDataProperties.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
 				B04466392637B17600DAD616 /* MockNetworkManager.swift in Sources */,
-				1ECF2E842632A862006982BE /* LoadingView.swift in Sources */,
-				1E5053C92636F504005615F5 /* DishesEntity+CoreDataClass.swift in Sources */,
+				B044666526398D2A00DAD616 /* DishesEntity+CoreDataClass.swift in Sources */,
 				1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,7 @@ class NetworkTests: XCTestCase {
         var result = [Dishes.init(category: "", name: "", dishes: [])]
         let answer = Dishes.init(category: "test", name: "success", dishes: [])
         
-        sut.getDishes(path: "test")
+        sut.getDishes(path: "test", completion:{_ in })
             .sink(receiveCompletion: { response in
             }, receiveValue: { data in
                 result = data

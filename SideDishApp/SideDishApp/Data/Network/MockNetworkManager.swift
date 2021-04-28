@@ -23,7 +23,7 @@ struct MockNetworkSessionSuccess : URLSessionProtocol {
 }
 
 class MockNetworkManager : NetworkManager {
-    override func get<T>(url: URL?) -> AnyPublisher<T, NetworkError> where T : Decodable {
+    override func get<T>(url: URL?, completion: @escaping (Result<Data, NetworkError>) -> Void) -> AnyPublisher<T, NetworkError> where T : Decodable {
         
         guard let myUrl = url else {
             return Fail(error: NetworkError.urlError).eraseToAnyPublisher()
