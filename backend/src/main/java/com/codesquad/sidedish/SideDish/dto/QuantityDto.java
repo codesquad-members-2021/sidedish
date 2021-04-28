@@ -1,6 +1,6 @@
 package com.codesquad.sidedish.SideDish.dto;
 
-import com.codesquad.sidedish.SideDish.domain.Dish;
+import com.codesquad.sidedish.SideDish.domain.dish.Dish;
 
 public class QuantityDto {
     private final int quantity;
