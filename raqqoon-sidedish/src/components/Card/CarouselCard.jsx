@@ -34,12 +34,4 @@ export default CarouselCard;
 const CardBoxDiv = styled.div`
   width: fit-content;
   margin: 10px 5px;
-
-  &:first-child {
-    margin-left: 10px;
-  }
-
-  &:last-child {
-    margin-right: 10px;
-  }
 `;
