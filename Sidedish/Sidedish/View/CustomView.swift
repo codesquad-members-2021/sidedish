@@ -10,7 +10,6 @@ import UIKit
 class CustomView: UIView {
     @IBOutlet weak var eventLabel: BadgeLabel!
     @IBOutlet weak var launchLabel: BadgeLabel!
-    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var point: UILabel!
@@ -19,8 +18,7 @@ class CustomView: UIView {
     @IBOutlet weak var sellingPrice: UILabel!
     @IBOutlet weak var originalPrice: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
-    
-    @IBOutlet weak var quantity: UILabel! // 1
+    @IBOutlet weak var quantity: UILabel!
     
     func configure(productName: String = "", item: DetailItem) {
         title.text = productName
@@ -30,6 +28,7 @@ class CustomView: UIView {
         deliveryFee.text = item.deleveryFee
         sellingPrice.text = item.prices.first
         originalPrice.attributedText = item.prices.last?.attributedStringOfStrikethroughStyle()
+        totalPrice.text = item.prices.first
     }
     
     func configureBadge(for badges: [Bool]) {
@@ -37,14 +36,18 @@ class CustomView: UIView {
         launchLabel.isHidden = badges[1]
     }
     
+    func configure(quantity: Int, totalPrice: String) {
+        self.quantity.text = "\(quantity)"
+        self.totalPrice.text = totalPrice
+    }
+    
     @IBAction func upQuantity(_ sender: UIButton) {
-        
+        NotificationCenter.default.post(name: .increaseQuntity, object: self)
     }
     
     @IBAction func downQuantity(_ sender: UIButton) {
-        
+        NotificationCenter.default.post(name: .decreaseQuntity, object: self)
     }
-    
     
     @IBAction func sendOrder(_ sender: Any) {
         

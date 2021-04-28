@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var thumbnailContentViewWidth: NSLayoutConstraint!
     @IBOutlet weak var informationStackView: UIStackView!
     
-    
+    var customView: CustomView!
     var detailViewModel: DetailViewModel!
 
     override func viewDidLoad() {
@@ -34,6 +34,45 @@ class DetailViewController: UIViewController {
         self.detailViewModel.errorHandler = { error in
             Toast(text: error).show()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(increaseQuantity), name: .increaseQuntity, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(decreaseQuantity), name: .decreaseQuntity, object: nil)
+    }
+    
+    @objc func increaseQuantity() {
+        detailViewModel.quantity += 1
+        guard let price = detailViewModel.currentDetail.prices.first else {
+            return
+        }
+        let originalPrice = convertPriceToInteger(with: price)
+        let totalPrice = convertPriceToString(value: detailViewModel.quantity * originalPrice)
+        customView.configure(quantity: detailViewModel.quantity, totalPrice: totalPrice)
+    }
+    
+    @objc func decreaseQuantity() {
+        guard detailViewModel.quantity > 1 else {
+            return
+        }
+        detailViewModel.quantity -= 1
+        guard let price = detailViewModel.currentDetail.prices.first else {
+            return
+        }
+        let originalPrice = convertPriceToInteger(with: price)
+        let totalPrice = convertPriceToString(value: detailViewModel.quantity * originalPrice)
+        customView.configure(quantity: detailViewModel.quantity, totalPrice: totalPrice)
+    }
+    
+    func convertPriceToString(value: Int) -> String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let result = numberFormatter.string(from: NSNumber(value: value))! + "원"
+        return result
+    }
+    
+    func convertPriceToInteger(with price: String) -> Int {
+        let temp = price.replacingOccurrences(of: ",", with: "")
+        let price = temp.replacingOccurrences(of: "원", with: "")
+        return Int(price) ?? 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +100,7 @@ class DetailViewController: UIViewController {
             view.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
             view.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
             self.informationStackView.insertArrangedSubview(view, at: 0)
+            customView = view
         }
     }
     
@@ -106,4 +146,9 @@ class DetailViewController: UIViewController {
         guard let image = image else { return 0 }
         return image.size.height / image.size.width
     }
+}
+
+extension Notification.Name {
+    static let increaseQuntity = Notification.Name("increaseQuntity")
+    static let decreaseQuntity = Notification.Name("decreaseQuntity")
 }

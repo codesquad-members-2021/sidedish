@@ -15,6 +15,7 @@ class DetailViewModel: ObservableObject {
     var imageFetchHandler: (() -> ())?
     var detailImageFetchHandler: (() -> ())?
     var errorHandler: ((String) -> ())?
+    var quantity: Int = 1
     
     init(sidedishProcessable: SidedishProcessable, title: String, badges: [Bool]) {
         self.sidedishProcessing = sidedishProcessable
