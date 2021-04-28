@@ -1,10 +1,12 @@
 package com.codesquad.sidedish.service;
 
+import com.codesquad.sidedish.NotFoundException;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
 import com.codesquad.sidedish.dto.CategoryResponseDto;
 import com.codesquad.sidedish.dto.DishDetailResponseDto;
 import com.codesquad.sidedish.repository.CategoryRepository;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +19,7 @@ public class CategoryService {
     }
 
     public Category findCategoryByType(String type) {
-        return categoryRepository.findCategoryByType(type);
+        return categoryRepository.findCategoryByType(type).orElseThrow(() -> new NotFoundException("존재하지 않는 카테코리입니다."));
     }
 
     public Dish findDishByTypeAndId(String type, String dishId) {
@@ -25,8 +27,8 @@ public class CategoryService {
         return category.getDishByDishId(dishId);
     }
 
-    public void addDish(String categoryType, Dish dish) {
-        Category category = categoryRepository.findCategoryByType(categoryType);
+    public void addDish(String type, Dish dish) {
+        Category category = findCategoryByType(type);
         category.addDish(dish);
         categoryRepository.save(category);
     }
