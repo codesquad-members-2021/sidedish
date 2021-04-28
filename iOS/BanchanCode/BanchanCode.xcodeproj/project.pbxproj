@@ -14,6 +14,8 @@
 		E463431E263155C00001D87A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E463431D263155C00001D87A /* NetworkManager.swift */; };
 		E463432D263178E10001D87A /* String+StrikeThrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = E463432C263178E10001D87A /* String+StrikeThrough.swift */; };
 		E49F172F2638CF39006C2108 /* DetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F172E2638CF39006C2108 /* DetailPageViewController.swift */; };
+		E49F173526390170006C2108 /* DishDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F173426390170006C2108 /* DishDetail.swift */; };
+		E49F173726390185006C2108 /* DishDetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F173626390185006C2108 /* DishDetailResponseDTO.swift */; };
 		E4D5D7F7263276120077DF97 /* DishesItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */; };
 		E4D5D8342632ECFF0077DF97 /* DishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */; };
 		E4D5D83C2632ED5C0077DF97 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D83B2632ED5C0077DF97 /* Observable.swift */; };
@@ -67,6 +69,8 @@
 		E463431D263155C00001D87A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E463432C263178E10001D87A /* String+StrikeThrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+StrikeThrough.swift"; sourceTree = "<group>"; };
 		E49F172E2638CF39006C2108 /* DetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewController.swift; sourceTree = "<group>"; };
+		E49F173426390170006C2108 /* DishDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetail.swift; sourceTree = "<group>"; };
+		E49F173626390185006C2108 /* DishDetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailResponseDTO.swift; sourceTree = "<group>"; };
 		E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesItemViewModel.swift; sourceTree = "<group>"; };
 		E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewModel.swift; sourceTree = "<group>"; };
 		E4D5D83B2632ED5C0077DF97 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				E46342E92631199B0001D87A /* DishesResponseDTO+Mapping.swift */,
+				E49F173626390185006C2108 /* DishDetailResponseDTO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				E4FC9CBA26300D5800BEAAE4 /* Dish.swift */,
+				E49F173426390170006C2108 /* DishDetail.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -561,6 +567,7 @@
 				E463431E263155C00001D87A /* NetworkManager.swift in Sources */,
 				E4FC9C79262E9E5800BEAAE4 /* MainPageCollectionViewDelegate.swift in Sources */,
 				E4D5D8342632ECFF0077DF97 /* DishesViewModel.swift in Sources */,
+				E49F173726390185006C2108 /* DishDetailResponseDTO.swift in Sources */,
 				E4E3BF682636A53A0041BA5B /* Categorizable.swift in Sources */,
 				FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */,
 				E463432D263178E10001D87A /* String+StrikeThrough.swift in Sources */,
@@ -568,6 +575,7 @@
 				FA88E9DF262E7F50001C3E53 /* AppDelegate.swift in Sources */,
 				E4FC9CBB26300D5800BEAAE4 /* Dish.swift in Sources */,
 				E4FC9C8E262EA2E000BEAAE4 /* DishCell.swift in Sources */,
+				E49F173526390170006C2108 /* DishDetail.swift in Sources */,
 				FA88E9E1262E7F50001C3E53 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
