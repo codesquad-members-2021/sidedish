@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import IconButton from "../../componentUtils/button/IconButton";
 import { CenterContainer } from "../../componentUtils/styles/common";
+import { Link } from "react-router-dom";
 
 const HeaderRight = ({ loginState, setLoginState }) => {
   const tempFn = () => {
@@ -22,9 +23,9 @@ const HeaderRight = ({ loginState, setLoginState }) => {
       {loginState ? (
         <StyledSpan onClick={onClickLogOut}>로그아웃</StyledSpan>
       ) : (
-        <a href="https://github.com/login/oauth/authorize?client_id=a330856c90f83a69a3ea&redirect_uri=http://localhost:3000/callback">
+        <Link to="/login">
           <StyledSpan>로그인</StyledSpan>
-        </a>
+        </Link>
       )}
 
       <StyledSpan>장바구니</StyledSpan>
