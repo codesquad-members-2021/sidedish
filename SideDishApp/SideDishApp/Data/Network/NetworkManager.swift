@@ -14,15 +14,19 @@ protocol NetworkManageable {
 
 class NetworkManager: NetworkManageable {
     
+    let session: URLSessionProtocol
+    
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
+    
     func get<T>(url: URL?) -> AnyPublisher<T, NetworkError> where T: Decodable {
         guard let myUrl = url else {
-
             return Fail(error: NetworkError.urlError).eraseToAnyPublisher()
         }
         
-        return URLSession.shared.dataTaskPublisher(for: myUrl)
+        return session.dataTaskPublisher(for: myUrl)
             .mapError { _ in NetworkError.networkConnection }
-    
             .flatMap { data, response -> AnyPublisher<T, NetworkError> in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     return Fail(error: NetworkError.responseNil).eraseToAnyPublisher()

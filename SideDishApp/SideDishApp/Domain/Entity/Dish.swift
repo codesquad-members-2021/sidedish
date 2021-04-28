@@ -8,15 +8,36 @@
 import Foundation
 
 // MARK: - Dishes
-struct Dishes: Codable, Hashable {
+struct Dishes: Codable, Hashable, Equatable {
     private(set) var category: String
     private(set) var name: String
     private(set) var dishes: [Dish]
 }
 
 // MARK: - Dish
-public class Dish: NSObject, Codable, NSSecureCoding,NSCoding {
+public class Dish: NSObject, Codable, NSSecureCoding, NSCoding {
     public static var supportsSecureCoding: Bool = true
+    
+    init(dishID: String,
+         image: String,
+         alt: String,
+         deliveryType: String,
+         title: String,
+         dishDescription: String,
+         normalPrice: String,
+         sellingPrice: String,
+         badge: String) {
+        self.dishID = dishID
+        self.image = image
+        self.alt = alt
+        self.deliveryType = deliveryType
+        self.title = title
+        self.dishDescription = dishDescription
+        self.normalPrice = normalPrice
+        self.sellingPrice = sellingPrice
+        self.badge = badge
+    }
+    
     
     public func encode(with coder: NSCoder) {
         coder.encode(dishID, forKey: "dishId")

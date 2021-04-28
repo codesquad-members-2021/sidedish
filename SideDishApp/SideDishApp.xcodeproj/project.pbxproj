@@ -24,11 +24,26 @@
 		1ECF2EBC2635D6FD006982BE /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2EBB2635D6FD006982BE /* MenuRepository.swift */; };
 		1ECF2EC02635DE65006982BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2EBE2635DE65006982BE /* CoreData.xcdatamodeld */; };
 		1ECF2EC32635E2EC006982BE /* CoreDataMenuResponseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECF2EC22635E2EC006982BE /* CoreDataMenuResponseStorage.swift */; };
+		B04466392637B17600DAD616 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04466382637B17600DAD616 /* MockNetworkManager.swift */; };
+		B04466432638149900DAD616 /* SideDishAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04466422638149900DAD616 /* SideDishAppTests.swift */; };
+		B044664D263814B400DAD616 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044664C263814B400DAD616 /* NetworkTests.swift */; };
+		B04466512638152200DAD616 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = B04466502638152200DAD616 /* testData.json */; };
+		B044665D26383DD500DAD616 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = B04466502638152200DAD616 /* testData.json */; };
 		B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E6E262EA29200D5EBEC /* DishCardCell.swift */; };
 		B0911EA026316B9A00D5EBEC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911E9F26316B9A00D5EBEC /* String+Extension.swift */; };
 		B0911EA42631AF3400D5EBEC /* DiffableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0911EA32631AF3400D5EBEC /* DiffableProvider.swift */; };
 		D8279798DA0A1BCEB97E7780 /* Pods_SideDishApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A87B12151B0D006007CD63 /* Pods_SideDishApp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B04466452638149900DAD616 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1DBAC6262DDDFC0050FE6C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E1DBACD262DDDFC0050FE6C;
+			remoteInfo = SideDishApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1E1DBACE262DDDFC0050FE6C /* SideDishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +68,12 @@
 		4942C5A177086C5C99933038 /* Pods-SideDishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.debug.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.debug.xcconfig"; sourceTree = "<group>"; };
 		605A37FD869863C7E023EE85 /* Pods-SideDishApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishApp.release.xcconfig"; path = "Target Support Files/Pods-SideDishApp/Pods-SideDishApp.release.xcconfig"; sourceTree = "<group>"; };
 		96A87B12151B0D006007CD63 /* Pods_SideDishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04466382637B17600DAD616 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		B04466402638149900DAD616 /* SideDishAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideDishAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04466422638149900DAD616 /* SideDishAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishAppTests.swift; sourceTree = "<group>"; };
+		B04466442638149900DAD616 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B044664C263814B400DAD616 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		B04466502638152200DAD616 /* testData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
 		B0911E6E262EA29200D5EBEC /* DishCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCardCell.swift; sourceTree = "<group>"; };
 		B0911E9F26316B9A00D5EBEC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B0911EA32631AF3400D5EBEC /* DiffableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableProvider.swift; sourceTree = "<group>"; };
@@ -64,6 +85,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8279798DA0A1BCEB97E7780 /* Pods_SideDishApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B044663D2638149900DAD616 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1DBAD0262DDDFC0050FE6C /* SideDishApp */,
+				B04466412638149900DAD616 /* SideDishAppTests */,
 				1E1DBACF262DDDFC0050FE6C /* Products */,
 				25F4FE78497FA432687D2A6F /* Pods */,
 				134494D3AD3A3BAD38EFF6AF /* Frameworks */,
@@ -92,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1DBACE262DDDFC0050FE6C /* SideDishApp.app */,
+				B04466402638149900DAD616 /* SideDishAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +153,7 @@
 			children = (
 				1ECD5F61262F256000DC56C0 /* Endpoint.swift */,
 				1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */,
+				B04466382637B17600DAD616 /* MockNetworkManager.swift */,
 				1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */,
 			);
 			path = Network;
@@ -245,6 +276,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B04466412638149900DAD616 /* SideDishAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				B04466502638152200DAD616 /* testData.json */,
+				B04466422638149900DAD616 /* SideDishAppTests.swift */,
+				B04466442638149900DAD616 /* Info.plist */,
+				B044664C263814B400DAD616 /* NetworkTests.swift */,
+			);
+			path = SideDishAppTests;
+			sourceTree = "<group>";
+		};
 		B0911E9E26316B8700D5EBEC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,17 +317,39 @@
 			productReference = 1E1DBACE262DDDFC0050FE6C /* SideDishApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B044663F2638149900DAD616 /* SideDishAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B04466472638149900DAD616 /* Build configuration list for PBXNativeTarget "SideDishAppTests" */;
+			buildPhases = (
+				B044663C2638149900DAD616 /* Sources */,
+				B044663D2638149900DAD616 /* Frameworks */,
+				B044663E2638149900DAD616 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B04466462638149900DAD616 /* PBXTargetDependency */,
+			);
+			name = SideDishAppTests;
+			productName = SideDishAppTests;
+			productReference = B04466402638149900DAD616 /* SideDishAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1E1DBAC6262DDDFC0050FE6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					1E1DBACD262DDDFC0050FE6C = {
 						CreatedOnToolsVersion = 12.3;
+					};
+					B044663F2638149900DAD616 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 1E1DBACD262DDDFC0050FE6C;
 					};
 				};
 			};
@@ -303,6 +367,7 @@
 			projectRoot = "";
 			targets = (
 				1E1DBACD262DDDFC0050FE6C /* SideDishApp */,
+				B044663F2638149900DAD616 /* SideDishAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -314,8 +379,17 @@
 			files = (
 				1E1DBADE262DDDFD0050FE6C /* LaunchScreen.storyboard in Resources */,
 				1ECF2E812632A70F006982BE /* LoadingView.xib in Resources */,
+				B044665D26383DD500DAD616 /* testData.json in Resources */,
 				1E1DBADB262DDDFD0050FE6C /* Assets.xcassets in Resources */,
 				1E1DBAD9262DDDFC0050FE6C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B044663E2638149900DAD616 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04466512638152200DAD616 /* testData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,12 +456,30 @@
 				B0911EA42631AF3400D5EBEC /* DiffableProvider.swift in Sources */,
 				B0911E6F262EA29200D5EBEC /* DishCardCell.swift in Sources */,
 				1E1DBAD4262DDDFC0050FE6C /* SceneDelegate.swift in Sources */,
+				B04466392637B17600DAD616 /* MockNetworkManager.swift in Sources */,
 				1ECF2E842632A862006982BE /* LoadingView.swift in Sources */,
 				1ECD5F73262F405100DC56C0 /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B044663C2638149900DAD616 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B044664D263814B400DAD616 /* NetworkTests.swift in Sources */,
+				B04466432638149900DAD616 /* SideDishAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B04466462638149900DAD616 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E1DBACD262DDDFC0050FE6C /* SideDishApp */;
+			targetProxy = B04466452638149900DAD616 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1E1DBAD7262DDDFC0050FE6C /* Main.storyboard */ = {
@@ -563,6 +655,48 @@
 			};
 			name = Release;
 		};
+		B04466482638149900DAD616 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PSH4C5839A;
+				INFOPLIST_FILE = SideDishAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Dahun-Lee.SideDishAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SideDishApp.app/SideDishApp";
+			};
+			name = Debug;
+		};
+		B04466492638149900DAD616 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PSH4C5839A;
+				INFOPLIST_FILE = SideDishAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Dahun-Lee.SideDishAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SideDishApp.app/SideDishApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -580,6 +714,15 @@
 			buildConfigurations = (
 				1E1DBAE3262DDDFD0050FE6C /* Debug */,
 				1E1DBAE4262DDDFD0050FE6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B04466472638149900DAD616 /* Build configuration list for PBXNativeTarget "SideDishAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04466482638149900DAD616 /* Debug */,
+				B04466492638149900DAD616 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
