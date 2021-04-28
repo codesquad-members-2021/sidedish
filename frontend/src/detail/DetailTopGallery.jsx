@@ -4,10 +4,33 @@ import { cssFlexCenter } from "../style/CommonStyledCSS";
 
 const DetailTopGallery = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
+  const [galleryItems, setGalleryItems] = useState(null);
+  const [loadingImages, setLoadingImages] = useState(true);
   const selectedTarget = useRef(null);
 
-  // 첫 렌더 (images 데이터 감시해야함)
+  // 작은 이미지 (GalleryItems) 업데이트 
   useEffect(() => {
+    if (!images || images.length <= 0) return;
+    const aGalleryItems = 
+      images.map((image, i) => (
+        <GalleryItem key={i} onClick={handleItemClick}>
+          <img src={image} alt={"image" + (i+1)} />
+        </GalleryItem>
+      ));
+
+    while(aGalleryItems.length < 5)
+      aGalleryItems.push(<GalleryItem key={aGalleryItems.length} empty />);
+
+    setGalleryItems(aGalleryItems);
+    setLoadingImages(false);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images]);
+
+  // 메인 이미지 (SelectedGalleryItem) 업데이트
+  useEffect(() => {
+    if (loadingImages) return;
+
     const firstItem = selectedTarget.current.children[0];
     if (!firstItem || firstItem.tagName !== "LI") return;
 
@@ -15,12 +38,14 @@ const DetailTopGallery = ({ images }) => {
     if (!itemImage || itemImage.tagName !== "IMG") return;
 
     const { src, alt } = itemImage;
+
     setSelectedImage({
       ...selectedImage,
       src, alt
     });
+    setLoadingImages(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [images]);
+  }, [loadingImages]);
 
   const handleItemClick = ({ target }) => {
     const closestTarget = target.closest("li");
@@ -44,15 +69,7 @@ const DetailTopGallery = ({ images }) => {
       </SelectedGalleryItem>
 
       {/* 처음 렌더시에만 ref(selectedTarget)는 GalleryItems */}
-      <GalleryItems ref={selectedTarget}>
-        {images &&
-          images.map((image, i) => (
-            <GalleryItem key={i} onClick={handleItemClick}>
-              <img src={image} alt={"image" + (i+1)} />
-            </GalleryItem>
-          ))}
-        {images && images.length < 5 && <GalleryItem empty />}
-      </GalleryItems>
+      <GalleryItems ref={selectedTarget}>{galleryItems}</GalleryItems>
 
     </StyledDetailTopGallery>
   );

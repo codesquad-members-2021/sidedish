@@ -1,64 +1,120 @@
+import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { cssTranslate } from "../style/CommonStyledCSS";
 import Tag from "../utilComponent/Tag";
 import Button from "../utilComponent/Button";
+import { changeAllToNumbers, threeDigitsComma } from "../util/util";
 
-const DetailTopInfo = () => {
+const DetailTopInfo = ({ data }) => {
+  const [priceInfo, setPriceInfo] = useState({ prevPrice: null, price: null });
+  const [volume, setVolume] = useState(1); // 수량
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    if (!data || !data.prices || data.prices.length <= 0) return;
+    const arrPrices = data.prices.map((v) => changeAllToNumbers(v));
+
+    // 더 작은 값이 price, 큰 가격이 prevPrice
+    if (arrPrices.length === 1)
+      setPriceInfo({ ...priceInfo, price: arrPrices[0], prevPrice: null });
+    else
+      setPriceInfo({
+        ...priceInfo,
+        price: Math.min.apply(null, arrPrices),
+        prevPrice: Math.max.apply(null, arrPrices),
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  useEffect(() => {
+    if (!priceInfo || !priceInfo.price) return;
+    setTotalPrice(volume * priceInfo.price);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [priceInfo]);
+
+  const handleInputVolumeChange = ({ target }) => {
+    if (target.value < 1) target.value = 1;
+    else if (target.value > 20) target.value = 20;
+    setVolume(target.value);
+    if (priceInfo && priceInfo.price)
+      setTotalPrice(target.value * priceInfo.price);
+  };
+
   return (
-    <StyledDetailTopInfo>
-      {/* 상품명, 상품설명, 가격 */}
-      <Name>상품명</Name>
-      <Desc>상품설명설명</Desc>
-      <ProductPrice>
-        <Tag type="이벤트특가" />
-        <Price>5,700원</Price>
-        <Price prevPrice>6,500원</Price> {/* prevPrice가 있다면 할인중 */}
-      </ProductPrice>
+    data && (
+      <StyledDetailTopInfo>
+        {/* 상품명, 상품설명, 가격 */}
+        <Name>{data.subject || "상품명"}</Name>
+        <Desc>{data.product_description || "상품 설명"}</Desc>
+        <ProductPrice>
+          <Tag type="이벤트특가" />
+          {priceInfo && (
+            <>
+              {priceInfo.price && <Price>{threeDigitsComma(priceInfo.price)}원</Price>}
+              {priceInfo.prevPrice && (
+                <Price prevPrice>{threeDigitsComma(priceInfo.prevPrice)}원</Price>
+              )}
+            </>
+          )}
+        </ProductPrice>
 
-      <Line />
+        <Line />
 
-      {/* 적립금, 배송정보, 배송비 */}
-      <AdditionalInfo>
-        <span className="label">적립금</span>
-        <span className="text">52원</span>
-      </AdditionalInfo>
-      <AdditionalInfo>
-        <span className="label">배송정보</span>
-        <span className="text">
-          서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가)
-          <br />
-          [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.
-        </span>
-      </AdditionalInfo>
-      <AdditionalInfo>
-        <span className="label">배송비</span>
-        <span className="text">
-          2,500원
-          <span className="bold"> (40,000원 이상 구매 시 무료)</span>
-        </span>
-      </AdditionalInfo>
+        {/* 적립금, 배송정보, 배송비 */}
+        <AdditionalInfo>
+          <span className="label">적립금</span>
+          <span className="text">{data.point || "0원"}</span>
+        </AdditionalInfo>
+        <AdditionalInfo>
+          <span className="label">배송정보</span>
+          <span className="text">
+            {data.delivery_info || (
+              <>
+                서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가)
+                <br />
+                [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.
+              </>
+            )}
+          </span>
+        </AdditionalInfo>
+        <AdditionalInfo>
+          <span className="label">배송비</span>
+          <span className="text">
+            {data.delivery_fee || (
+              <>
+                2,500원
+                <span className="bold"> (40,000원 이상 구매 시 무료)</span>
+              </>
+            )}
+          </span>
+        </AdditionalInfo>
 
-      <Line />
+        <Line />
 
-      {/* 수량 */}
-      <AdditionalInfo>
-        <span className="label">수량</span>
-        <InputVolume name="volume" type="number" />
-      </AdditionalInfo>
+        {/* 수량 */}
+        <AdditionalInfo>
+          <span className="label">수량</span>
+          <InputVolume
+            name="volume"
+            type="number"
+            onChange={handleInputVolumeChange}
+            value={volume}
+          />
+        </AdditionalInfo>
 
-      <Line />
+        <Line />
 
-      {/* 총 주문금액 & 주문하기 Btn */}
-      <TotalPrice>
-        <span className="total--label">총 주문금액</span>
-        <span className="total--price">5200원</span>
-      </TotalPrice>
+        {/* 총 주문금액 & 주문하기 Btn */}
+        <TotalPrice>
+          <span className="total--label">총 주문금액</span>
+          <span className="total--price">{threeDigitsComma(totalPrice)}원</span>
+        </TotalPrice>
 
-      <Order>
-        <Button type={"order"} />
-      </Order>
-
-    </StyledDetailTopInfo>
+        <Order>
+          <Button type={"order"} />
+        </Order>
+      </StyledDetailTopInfo>
+    )
   );
 };
 
@@ -68,6 +124,7 @@ export default DetailTopInfo;
 const StyledDetailTopInfo = styled.div`
   font-family: ${({ theme }) => theme.fontFamily};
   min-width: 440px;
+  max-width: 440px;
 `;
 
 // 1. 공통

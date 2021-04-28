@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { SideDishContext } from "../utilComponent/SideDishStore";
 
 import _ from "../ref";
-import useFetch from "../hooks/useFetch";
 import Modal from "../utilComponent/modal/Modal";
 import DetailTop from "./DetailTop";
 import DetailBottom from "./DetailBottom";
@@ -13,17 +12,43 @@ const Detail = () => {
     currProductData, setCurrProductData,
   } = useContext(SideDishContext);
 
-  const [ detailData, setDetailData ] = useState({});
-  const { response, loading } = useFetch(_.URL + `detail/${currProductData}`);
+  // useFetch 사용안함 --
+  const initialDetail = { result: null, error: null };
+  const [ detailData, setDetailData ] = useState(initialDetail);
+  const [ loading, setLoading ] = useState(true);
+
+  const executeFetch = async (url, subject = null) => {
+    try {
+      const res = await fetch(url);
+      const json = await res.json();
+      setDetailData({
+        ...detailData,
+        result: {
+          ...json,
+          data: {
+            ...json['data'],
+            subject
+          }
+        }
+      });
+    } catch (error) {
+      setDetailData({ ...detailData, error });
+    }
+  };
 
   useEffect(() => {
-    if(loading || !currProductData) return;
-    setDetailData(response);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!currProductData) return;
+    const { alt: subject, detail_hash } = currProductData;
+    executeFetch(_.URL + `detail/${detail_hash}`, subject);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currProductData]);
 
+  useEffect(() => !detailData.data && setLoading(false), [detailData]);
+  // ----
+
   const handleAddCloseBtnClick = () => {
-    setDetailData({});
+    setLoading(true);
+    setDetailData(initialDetail);
     setCurrProductData(null);
   };
 
@@ -34,10 +59,11 @@ const Detail = () => {
   };
 
   return (
-    <Modal visibleOptions={visibleOptions}>
-      <DetailTop {...detailData["data"]} />
-      <DetailBottom />
-    </Modal>
+    !loading && 
+      <Modal visibleOptions={visibleOptions}>
+        <DetailTop {...detailData} />
+        <DetailBottom />
+      </Modal>
   );
 };
 

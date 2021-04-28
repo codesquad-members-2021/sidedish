@@ -1,6 +1,6 @@
 import { createContext, useState, useMemo } from "react";
 
-export const SideDishContext = createContext({
+const SideDishContext = createContext({
   isModalVisible: null,
   setIsModalVisible: () => {},
   currProductData: null,
@@ -28,4 +28,4 @@ const SideDishStore = ({ children }) => {
   );
 };
 
-export default SideDishStore;
+export { SideDishStore, SideDishContext };

@@ -15,7 +15,10 @@ const ProductCard = ({ size, item }) => {
   };
   const handleProductClick = () => {
     setIsModalVisible(true);
-    item && setCurrProductData(item.detail_hash);
+    if (item) {
+      const { alt, detail_hash } = item;
+      setCurrProductData({ alt, detail_hash });
+    }
   };
   return (
     <StyledCard size={size} onClick={handleProductClick}>
