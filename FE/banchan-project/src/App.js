@@ -5,6 +5,8 @@ import Header from "./Header/Header";
 import BestItems from "./BestItems/BestItems";
 import DetailModal from "./DetailModal/DetailModal";
 
+import MainItemsCard from "./MainItems/MainItemsCard/MainItemsCard";
+import Slider from "./Slider/Slider";
 const App = () => {
   const [detailUrl, setDetailUrl] = useState(null);
   const [modalFlag, setModalFlag] = useState(false);
@@ -23,10 +25,13 @@ const App = () => {
     <div className="App">
       <div className="container">
         <GlobalStyles />
-        <Header></Header>
-        <BestItems></BestItems>
+        <Header />
+        <BestItems />
         <MainItems handleClickCard={handleClickCard} />
         <DetailModal detailUrl={detailUrl} modalFlag={modalFlag} handleModalFlag={handleModalFlag} handleClickCard={handleClickCard} />
+        <Slider>
+          <MainItemsCard />
+        </Slider>
       </div>
     </div>
   );

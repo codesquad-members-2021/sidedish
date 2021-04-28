@@ -33,6 +33,7 @@ const fontColors = {
 
 const boxColors = {
   BLACK: "#010101",
+  WHITE: "#FFF",
   GREEN: "#82d32d",
   LIGHT_BLUE: "#86c6ff",
   WHITE_BLUE: "#eef4fa",

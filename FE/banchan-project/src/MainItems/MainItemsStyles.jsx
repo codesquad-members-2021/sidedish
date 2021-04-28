@@ -14,6 +14,7 @@ const TotalCategoryButton = styled.button`
 
   background: ${theme.boxColors.GRAY6};
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 `;
 
 const MainItemsWrapper = styled.div`
@@ -56,12 +57,14 @@ const LeftButtonWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: -5%;
+  cursor: pointer;
 `;
 
 const RightButtonWrapper = styled.div`
   position: absolute;
   top: 50%;
   right: -5%;
+  cursor: pointer;
 `;
 
 const BestItemsHoverBox = styled.div`

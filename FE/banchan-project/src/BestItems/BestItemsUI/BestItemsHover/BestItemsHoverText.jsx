@@ -1,17 +1,17 @@
 import * as S from "../../BestItemsStyles";
-import * as CS from "../../../Styles/commonStyles";
+import { ColorFont } from "../../../Styles/commonStyles";
 
-const BestItemsHoverText = () => {
-  return (
+const BestItemsHoverText = ({ deliveryType }) => {
+  return deliveryType ? (
     <>
       <S.BestItemsHoverTopText>
-        <CS.ColorFont.WHITE_XL_BOLD>새벽 배송</CS.ColorFont.WHITE_XL_BOLD>
+        <ColorFont.WHITE_XL_BOLD>{deliveryType[0]}</ColorFont.WHITE_XL_BOLD>
       </S.BestItemsHoverTopText>
       <S.BestItemsHoverBottomText>
-        <CS.ColorFont.WHITE_XL_BOLD>전국 택배</CS.ColorFont.WHITE_XL_BOLD>
+        <ColorFont.WHITE_XL_BOLD>{deliveryType[1]}</ColorFont.WHITE_XL_BOLD>
       </S.BestItemsHoverBottomText>
     </>
-  );
+  ) : null;
 };
 
 export default BestItemsHoverText;

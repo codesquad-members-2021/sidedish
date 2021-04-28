@@ -21,8 +21,8 @@ const MainItems = (props) => {
   const getData = (url, setFn) => {
     try {
       fetch(url)
-        .then((res) => res.json())
-        .then((json) => {
+        .then(res => res.json())
+        .then(json => {
           if (json) {
             setFn(json);
           }
