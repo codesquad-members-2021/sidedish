@@ -9,7 +9,6 @@ import UIKit
 import Toaster
 
 class DetailViewController: UIViewController {
-    @IBOutlet weak var detailImages: UIStackView!
     @IBOutlet weak var thumbnailScrollView: UIScrollView!
     @IBOutlet weak var thumbnailContentView: UIView!
     @IBOutlet weak var thumbnailContentViewWidth: NSLayoutConstraint!
@@ -23,7 +22,9 @@ class DetailViewController: UIViewController {
         
         detailViewModel.imageFetchHandler = {
             DispatchQueue.main.async {
-                self.setImage()
+                self.clearImage()
+                self.setThumdnailImage()
+                self.setInformationView()
                 self.setDetailScrollView()
             }
         }
@@ -37,10 +38,21 @@ class DetailViewController: UIViewController {
         }
     }
     
+    private func clearImage() {
+        for subview in self.informationStackView.subviews {
+            subview.removeFromSuperview()
+        }
+        self.thumbnailContentView.subviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
+    }
+    
     private func setInformationView() {
         if let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as? CustomView {
             view.configure(item: detailViewModel.currentDetail)
-            informationStackView.addArrangedSubview(view)
+            view.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+            view.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
+            self.informationStackView.insertArrangedSubview(view, at: 0)
         }
     }
     
@@ -54,11 +66,8 @@ class DetailViewController: UIViewController {
         self.thumbnailScrollView.isPagingEnabled = true
     }
     
-    private func setImage() {
+    private func setThumdnailImage() {
         let currentDetailItem = self.detailViewModel.currentDetail
-        self.thumbnailContentView.subviews.forEach { (view) in
-            view.removeFromSuperview()
-        }
         for index in 0..<(currentDetailItem.thumbImagesData?.count ?? 0) + 1{
             let imageView = UIImageView(frame: CGRect(x: thumbnailScrollView.frame.width * CGFloat(index),
                                                       y: 0,
@@ -79,22 +88,13 @@ class DetailViewController: UIViewController {
     }
     
     private func setDetailScrollView() {
-        guard let thumbImagesData = self.detailViewModel.currentDetail.thumbImagesData else { return }
         guard let detailSectionData = self.detailViewModel.currentDetail.detailSectionData else { return }
-        guard detailSectionData.filter({ $0 == nil }).isEmpty,
-              thumbImagesData.filter({ $0 == nil }).isEmpty else { return }
-        
-        
         for index in 0..<detailSectionData.count {
             let imageView = UIImageView()
             guard let data = detailSectionData[index] else { continue }
             imageView.image = UIImage(data: data)
             imageView.contentMode = .scaleAspectFit
-//            imageView.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
-            detailImages.addArrangedSubview(imageView)
+            informationStackView.addArrangedSubview(imageView)
         }
-//        규조 ?
-        
-        
     }
 }

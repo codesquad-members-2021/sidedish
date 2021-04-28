@@ -54,6 +54,7 @@ class ViewController: UIViewController {
             self.collectionView.reloadItems(at: [IndexPath(index: index)])
         }
     }
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -70,7 +71,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         guard let category = Category.init(rawValue: indexPath.section) else { return cell }
-        guard let item = self.itemViewModel.items[category.description]?[indexPath.row] else { return cell }
+        guard let items = self.itemViewModel.items[category.description] else { return cell }
+        let item = items[indexPath.row]
         let badge = handleBadge(badge: item.badge)
         cell.configure(model: item, nPrice: item.nPrice, badge: badge)
         guard let data = item.imageData else { return cell }
