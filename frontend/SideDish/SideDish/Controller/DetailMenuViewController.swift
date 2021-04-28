@@ -19,22 +19,11 @@ class DetailMenuViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(configureViewModel), name: Notification.Name.fetchDetailMenu, object: detailMenuViewModel)
         
-        let color : [UIColor] = [.red, .orange, .yellow, .green, .blue]
-        var location = self.detailScrollView.thumbnailScrollView.bounds.minX
-        var size : CGFloat = 414
-        for i in 0..<color.count {
-            let imageView = UIImageView()
-            imageView.backgroundColor = color[i]
-            let xPos = self.detailScrollView.thumbnailScrollView.frame.width * CGFloat(i)
-            imageView.frame = CGRect(x: xPos, y: 0, width: self.detailScrollView.thumbnailScrollView.bounds.width, height: self.detailScrollView.thumbnailScrollView.bounds.height)
-            self.detailScrollView.thumbnailScrollView.addSubview(imageView)
-            self.detailScrollView.thumbnailScrollView.contentSize.width = imageView.frame.width * CGFloat(i+1)
-            
-//            size += 414
-            location += 414
-            print("*********")
-            print(size, location, self.detailScrollView.thumbnailScrollView.contentSize.width)
-        }
+        self.detailScrollView.setCornerRadius()
+        self.detailScrollView.setBorderWidth()
+        configureThumbnailImageSize()
+        configureViewModel()
+        
     }
 
     func receive(detailHash: String) {
@@ -48,7 +37,14 @@ class DetailMenuViewController: UIViewController {
         self.detailScrollView.point.text = detailMenuViewModel.point
         self.detailScrollView.deliveryInfo.text = detailMenuViewModel.deliveryInfo
         self.detailScrollView.deliveryFee.text = detailMenuViewModel.deliveryFee
+        configureThumbnailImage(imageArray: detailMenuViewModel.thumbImages)
+    }
+    
+    func configureThumbnailImageSize() {
+        let width = self.view.frame.width
         
+        self.detailScrollView.thumbnailImageWidthConstraint.constant = width
+        self.detailScrollView.thumbnailImageHeightConstraint.constant = width
     }
     
     func configureBadges(verified: [Bool]) {
@@ -65,9 +61,13 @@ class DetailMenuViewController: UIViewController {
     }
     
     func configureThumbnailImage(imageArray: [String]) {
-        for image in imageArray {
-            guard let url = URL(string: image) else { return }
-            let imageView = UIImageView()
+        let width = self.detailScrollView.thumbnailImageWidthConstraint.constant
+        self.detailScrollView.thumbnailImageWidthConstraint.constant = self.detailScrollView.thumbnailImageWidthConstraint.constant * CGFloat(imageArray.count)
+        
+        for index in 0..<imageArray.count {
+            guard let url = URL(string: imageArray[index]) else { return }
+            let xPos: CGFloat = self.detailScrollView.thumbnailImageWidthConstraint.constant * CGFloat(index)
+            let imageView = UIImageView(frame: CGRect(x: xPos, y: self.detailScrollView.thumbnailScrollView.bounds.minY, width: width, height: width))
             imageView.kf.setImage(with: url)
             self.detailScrollView.thumbnailScrollView.addSubview(imageView)
         }

@@ -83,7 +83,8 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pkc-lh-8sK">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Pkc-lh-8sK" secondAttribute="height" multiplier="1:1" id="HMX-D2-VsC"/>
+                                                            <constraint firstAttribute="width" constant="414" id="57r-kd-5jh"/>
+                                                            <constraint firstAttribute="height" constant="414" id="WLV-fb-KgO"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
@@ -93,7 +94,6 @@
                                                     <constraint firstItem="Pkc-lh-8sK" firstAttribute="bottom" secondItem="nhH-f3-BsC" secondAttribute="bottom" id="Ghg-hu-u1K"/>
                                                     <constraint firstItem="Pkc-lh-8sK" firstAttribute="height" secondItem="bkK-g0-wEd" secondAttribute="height" id="MFd-f8-nEZ"/>
                                                     <constraint firstItem="Pkc-lh-8sK" firstAttribute="top" secondItem="nhH-f3-BsC" secondAttribute="top" id="R6p-oq-B8d"/>
-                                                    <constraint firstItem="Pkc-lh-8sK" firstAttribute="centerX" secondItem="L2j-eG-g0y" secondAttribute="centerX" id="Rn0-QI-qJY"/>
                                                     <constraint firstItem="Pkc-lh-8sK" firstAttribute="trailing" secondItem="nhH-f3-BsC" secondAttribute="trailing" id="e3A-o3-WLz"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="nhH-f3-BsC"/>
@@ -286,7 +286,6 @@
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-9K-vct">
                                                         <rect key="frame" x="360.5" y="200.5" width="37.5" height="25"/>
-                                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="37.5" id="44x-b9-uFf"/>
                                                             <constraint firstAttribute="height" constant="25" id="y2X-Lx-Wlq"/>
@@ -296,7 +295,6 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sE8-4E-dGb">
                                                         <rect key="frame" x="360.5" y="225.5" width="37.5" height="25"/>
-                                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="XCA-XM-qvD"/>
                                                             <constraint firstAttribute="width" constant="37.5" id="lhK-Wp-aRR"/>
@@ -305,8 +303,7 @@
                                                         <state key="normal" image="chevron.down" catalog="system"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGp-Fq-dqX">
-                                                        <rect key="frame" x="294.5" y="200.5" width="65" height="50"/>
-                                                        <color key="backgroundColor" red="0.50980392159999999" green="0.82745098039999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="295.5" y="200.5" width="65" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="65" id="Bps-6K-hKW"/>
                                                             <constraint firstAttribute="height" constant="50" id="wKi-XT-7y9"/>
@@ -384,7 +381,7 @@
                                                     <constraint firstItem="GqR-bN-TER" firstAttribute="top" secondItem="EeF-8r-3Ep" secondAttribute="bottom" constant="16" id="p9b-mw-5z4"/>
                                                     <constraint firstItem="xp1-U3-QxB" firstAttribute="top" secondItem="rj8-TC-1g7" secondAttribute="bottom" constant="34" id="pXM-O4-CJa"/>
                                                     <constraint firstAttribute="trailing" secondItem="88W-ge-aFF" secondAttribute="trailing" constant="16" id="qiS-0X-jsR"/>
-                                                    <constraint firstItem="ebY-9K-vct" firstAttribute="leading" secondItem="bGp-Fq-dqX" secondAttribute="trailing" constant="1" id="v7c-12-rWu"/>
+                                                    <constraint firstItem="ebY-9K-vct" firstAttribute="leading" secondItem="bGp-Fq-dqX" secondAttribute="trailing" id="v7c-12-rWu"/>
                                                     <constraint firstItem="qM8-UT-DpQ" firstAttribute="leading" secondItem="BF7-Dl-pW4" secondAttribute="trailing" constant="24" id="vSS-WJ-CHu"/>
                                                     <constraint firstAttribute="trailing" secondItem="a7h-La-a9z" secondAttribute="trailing" constant="16" id="wEB-e3-q3J"/>
                                                     <constraint firstAttribute="trailing" secondItem="ebY-9K-vct" secondAttribute="trailing" constant="16" id="zEo-xB-WSj"/>
@@ -445,6 +442,8 @@
                                     <outlet property="point" destination="X6K-Fc-3BE" id="TL4-sh-nd5"/>
                                     <outlet property="salePrice" destination="sM2-qO-esH" id="NLb-Wi-wZR"/>
                                     <outlet property="thumbnailImage" destination="Pkc-lh-8sK" id="ENm-4V-uT7"/>
+                                    <outlet property="thumbnailImageHeightConstraint" destination="WLV-fb-KgO" id="aJn-VD-AMj"/>
+                                    <outlet property="thumbnailImageWidthConstraint" destination="57r-kd-5jh" id="sqw-UX-Stw"/>
                                     <outlet property="thumbnailScrollView" destination="L2j-eG-g0y" id="pgg-Ph-zSC"/>
                                     <outlet property="title" destination="6pH-c0-kUh" id="JH2-5w-z7C"/>
                                     <outlet property="totalPrice" destination="qM8-UT-DpQ" id="t8x-IS-JX1"/>
@@ -499,9 +498,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

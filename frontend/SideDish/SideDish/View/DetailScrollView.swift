@@ -8,7 +8,8 @@
 import UIKit
 
 class DetailScrollView: UIScrollView {
-
+    @IBOutlet weak var thumbnailImageWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var thumbnailImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var thumbnailScrollView: UIScrollView!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var title: UILabel!
@@ -31,4 +32,27 @@ class DetailScrollView: UIScrollView {
     @IBOutlet weak var orderButton: UIButton!
     
     @IBOutlet weak var detailStackView: UIStackView!
+    
+    func setCornerRadius() {
+        self.eventBadge.layer.masksToBounds = true
+        self.eventBadge.layer.cornerRadius = 5
+        
+        self.launchingBadge.layer.masksToBounds = true
+        self.launchingBadge.layer.cornerRadius = 5
+        
+        self.orderButton.layer.cornerRadius = 5
+    }
+    
+    func setBorderWidth() {
+        let gray = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.3).cgColor
+        
+        self.orderCount.layer.borderWidth = 1
+        self.orderCount.layer.borderColor = gray
+        
+        self.increaseButton.layer.borderWidth = 1
+        self.increaseButton.layer.borderColor = gray
+
+        self.decreaseButton.layer.borderWidth = 1
+        self.decreaseButton.layer.borderColor = gray
+    }
 }
