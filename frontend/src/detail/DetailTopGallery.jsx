@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import { cssFlexCenter } from "../style/CommonStyledCSS";
 
-const DetailTopGallery = ({ items }) => {
+const DetailTopGallery = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
   const selectedTarget = useRef(null);
 
-  // 초기 렌더 시
+  // 첫 렌더 (images 데이터 감시해야함)
   useEffect(() => {
     const firstItem = selectedTarget.current.children[0];
     if (!firstItem || firstItem.tagName !== "LI") return;
@@ -20,7 +20,7 @@ const DetailTopGallery = ({ items }) => {
       src, alt
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [images]);
 
   const handleItemClick = ({ target }) => {
     const closestTarget = target.closest("li");
@@ -45,12 +45,13 @@ const DetailTopGallery = ({ items }) => {
 
       {/* 처음 렌더시에만 ref(selectedTarget)는 GalleryItems */}
       <GalleryItems ref={selectedTarget}>
-        {items &&
-          items.map((item, i) => (
+        {images &&
+          images.map((image, i) => (
             <GalleryItem key={i} onClick={handleItemClick}>
-              <img src="/img/testimg.jpg" alt={"바나나"+ i} />
+              <img src={image} alt={"image" + (i+1)} />
             </GalleryItem>
           ))}
+        {images && images.length < 5 && <GalleryItem empty />}
       </GalleryItems>
 
     </StyledDetailTopGallery>
@@ -85,6 +86,10 @@ const SelectedGalleryItem = styled.div`
   ${cssGalleryItem};
   width: 392px;
   height: 392px;
+
+  img {
+    width: 100%;
+  }
 `;
 
 const GalleryItems = styled.ul`
@@ -99,7 +104,7 @@ const GalleryItem = styled.li`
   ${cssFlexCenter};
   ${cssGalleryItem};
 
-  cursor: pointer;
+  cursor: ${({empty}) => empty ? "default" : "pointer"} ;
   width: 72px;
   height: 72px;
 `;

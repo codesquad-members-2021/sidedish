@@ -18,8 +18,8 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <Header />
-    <MainContentsContainer />
     <SideDishStore>
+      <MainContentsContainer />
       <SubContents />
       <Detail />
     </SideDishStore>

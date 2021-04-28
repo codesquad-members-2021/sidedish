@@ -1,7 +1,7 @@
 // 모든 카테고리 보기 or 데이터 처리하여 SubContents Section 생성
 import _ from "../ref";
 import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch2";
+import useFetch from "../hooks/useFetch";
 import SubContentsSection from "./partial/SubContentsSection";
 import AllSubContentsView from "./partial/AllSubContentsView";
 

@@ -2,14 +2,22 @@ import styled from "styled-components";
 import ModalCloseButton from "./ModalCloseButton";
 
 const Modal = ({
-  visibleOptions: { isModalVisible = null, setIsModalVisible = () => {} } = {
+  visibleOptions: {
+    isModalVisible = null,
+    setIsModalVisible = () => {},
+    addCbFunc = null,
+  } = {
     isModalVisible: null,
     setIsModalVisible: () => {},
+    addCbFunc: null,
   },
   cssCloseButtonStyle = null,
   ...props
 }) => {
-  const handleCloseBtnClick = () => setIsModalVisible(!isModalVisible);
+  const handleCloseBtnClick = () => {
+    addCbFunc && addCbFunc();
+    setIsModalVisible(!isModalVisible);
+  };
 
   return (
     <StyledModal isModalVisible={isModalVisible}>

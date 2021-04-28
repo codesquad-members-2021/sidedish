@@ -8,8 +8,8 @@ export const SideDishContext = createContext({
 });
 
 const SideDishStore = ({ children }) => {
-  const [isModalVisible, setIsModalVisible] = useState(true); // DetailModal 상태 (보이기 / 숨김) // 추후 기본값 false로
-  const [currProductData, setCurrProductData] = useState(null); // DetailModal에 들어갈 데이터
+  const [isModalVisible, setIsModalVisible] = useState(false); // DetailModal 상태 (보이기 / 숨김)
+  const [currProductData, setCurrProductData] = useState(null); // DetailModal에 들어갈 데이터 (해쉬 값 or 고유 키 값)
 
   const value = useMemo(
     () => ({

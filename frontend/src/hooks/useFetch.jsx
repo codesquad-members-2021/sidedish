@@ -1,20 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const useFetch = (url, callback, options = {}) => {
-    const [response, setResponse] = useState();
-    const [loading, setLoading] = useState(false);
-    const fetchData = async() => {
-        setLoading(true);
-        const res = await fetch(url, options);
-        const json = await res.json();
-        setResponse(json);
-        if(callback) callback(json)
-        setLoading(false);
+const useFetch = (
+  url,
+  { callback = null, options = {} } = {
+    callback: null,
+    options: {},
+  }
+) => {
+  const [response, setResponse] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch(url, options);
+      if (!res.ok) {
+        setError(`Error: code ${res.status}`);
+        return;
+      }
+      const json = await res.json();
+      setResponse(json);
+      if (callback) callback(json);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
     }
-    useEffect(() => { 
-        fetchData(); 
-    }, []);
-    return {response, loading};
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => fetchData(), []);
+
+  return { response, loading, error };
 };
 
-export default useFetch
+export default useFetch;

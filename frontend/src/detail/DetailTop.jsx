@@ -2,10 +2,10 @@ import styled from "styled-components";
 import DetailTopGallery from "./DetailTopGallery";
 import DetailTopInfo from "./DetailTopInfo";
 
-const DetailTop = () => {
+const DetailTop = ({ thumb_images, ...props }) => {
   return (
     <StyledDetailTop>
-      <DetailTopGallery items={[...Array(5)]} />
+      <DetailTopGallery images={thumb_images} />
       <DetailTopInfo />
     </StyledDetailTop>
   );
