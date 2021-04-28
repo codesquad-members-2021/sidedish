@@ -10,17 +10,15 @@ const DetailCarousel = ({
   modalState,
   setModalState,
   setModalData,
+  detailData,
 }) => {
-  const detailSection = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail`
-  );
-
   const detailCarouselList =
-    detailSection &&
-    detailSection.map((item) => (
+    detailData &&
+    detailData.map((item) => (
       <Card
         key={uuidv4()}
         item={item.data.top_image}
+        detail_hash={item.hash}
         cardSize={SIZE_MEDIUM}
         cardType={CAROUSEL}
         {...{ modalData, modalState, setModalState, setModalData }}

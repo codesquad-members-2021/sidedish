@@ -5,7 +5,7 @@ import DetailCloseButton from 'components/detail/DetailCloseButton';
 import useFetch from 'customHooks/useFetch';
 import { useState } from 'react';
 
-const Detail = ({ modalData, modalState, setModalState }) => {
+const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
   const detailData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/`,
     []
@@ -17,7 +17,7 @@ const Detail = ({ modalData, modalState, setModalState }) => {
       currentData = data.data;
     }
   });
-  console.log(currentData, 'currentData');
+
   const [orderCount, setOrderCount] = useState(1);
 
   const plusCount = () => {
@@ -29,7 +29,7 @@ const Detail = ({ modalData, modalState, setModalState }) => {
   };
 
   if (!currentData) return null;
-  const detailSection = currentData.detail_section;
+
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
@@ -45,7 +45,15 @@ const Detail = ({ modalData, modalState, setModalState }) => {
             minusCount,
           }}
         />
-        <DetailCarousel {...{ detailSection }} />
+        <DetailCarousel
+          {...{
+            modalData,
+            modalState,
+            setModalState,
+            setModalData,
+            detailData,
+          }}
+        />
       </ModalWrapper>
     </DetailBoxDiv>
   );
