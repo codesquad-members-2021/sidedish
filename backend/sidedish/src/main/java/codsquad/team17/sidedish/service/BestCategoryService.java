@@ -4,6 +4,7 @@ import codsquad.team17.sidedish.domain.BestCategory;
 import codsquad.team17.sidedish.domain.Item;
 import codsquad.team17.sidedish.dto.BestCategoryDto;
 import codsquad.team17.sidedish.dto.ItemDto;
+import codsquad.team17.sidedish.exception.BestCategoryNotFoundException;
 import codsquad.team17.sidedish.repository.BestCategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,6 @@ public class BestCategoryService {
 
     public BestCategory findBestCategoryId(Long bestCategoryId) {
         return bestCategoryRepository.findById(bestCategoryId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(BestCategoryNotFoundException::new);
     }
 }

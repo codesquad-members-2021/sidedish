@@ -4,6 +4,7 @@ import codsquad.team17.sidedish.domain.DishCategory;
 import codsquad.team17.sidedish.domain.Item;
 import codsquad.team17.sidedish.dto.DishCategoryDto;
 import codsquad.team17.sidedish.dto.ItemDto;
+import codsquad.team17.sidedish.exception.DishCategoryNotFoundException;
 import codsquad.team17.sidedish.repository.DishCategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class DishCategoryService {
     }
 
     public DishCategory findDishCategoryId(Long dishCategoryId) {
-        return dishCategoryRepository.findById(dishCategoryId).orElseThrow(RuntimeException::new);
+        return dishCategoryRepository.findById(dishCategoryId).orElseThrow(DishCategoryNotFoundException::new);
     }
 
     public DishCategoryDto getDishCategoryDto(Long dishCategoryId) {
