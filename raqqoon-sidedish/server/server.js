@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
+const axios = require('axios');
+const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2');
 const cors = require('cors');
@@ -18,7 +20,7 @@ passport.use(
       callbackURL: 'http://localhost:3000/auth/github/callback',
     },
     function (accessToken, refreshToken, profile, done) {
-      return { accessToken };
+      return done(null, profile);
     }
   )
 );
@@ -29,29 +31,53 @@ app.get(
 );
 
 app.get(
-  '/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/login' }),
+  'http://localhost:3000/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/' }),
   function (req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/');
   }
 );
 
 app.post('/auth', async (req, res) => {
+  const client_id = process.env.GITHUB_CLIENT_ID;
+  const client_secret = process.env.GITHUB_CLIENT_SECRET;
   const { data: code } = await req.body;
-  //axios 로 바꿔야함
-  const response = await fetch(
-    `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}&code=${code}`,
-    {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
+  const response = await axios
+    .post(
+      'https://github.com/login/oauth/access_token',
+      {
+        code,
+        client_id,
+        client_secret,
       },
+      {
+        headers: {
+          accept: 'application/json',
+        },
+      }
+    )
+    .catch((error) => console.error('error'));
+  const token = response.data.access_token;
+
+  // 로그인한 유저의 정보를 받아오는 코드
+  const { data } = await axios.get('https://api.github.com/user', {
+    headers: {
+      Authorization: `token ${token}`,
+    },
+  });
+
+  // db logic
+
+  const access_token = jwt.sign(
+    { login: data.login, id: data.id },
+    client_secret,
+    {
+      expiresIn: '1d',
+      issuer: 'Raqqoon',
+      subject: 'userInfo',
     }
   );
-
-  const accessToken = response.data.access_token;
-  console.log(accessToken);
+  return res.json({ access_token });
 });
 
 app.listen(port, () => {

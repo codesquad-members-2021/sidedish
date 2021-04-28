@@ -4,24 +4,28 @@ import qs from 'qs';
 
 const Login = () => {
   useEffect(() => {
-    async function getToken() {
+    const getToken = async () => {
       const { code } = qs.parse(window.location.search, {
         ignoreQueryPrefix: true,
       });
 
       try {
-        // 이 부분은 express에 요청하여 JWT 토큰을 발급합니다.
-        const { access_token } = await fetch(`http://localhost:3001/auth`, {
+        const res = await fetch(`http://localhost:3001/auth`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ data: code }),
         });
-        // 유저 JWT 토큰을 저장합니다.
+        const { access_token } = await res.json();
         localStorage.setItem('access_token', access_token);
-      } catch (error) {}
-    }
+
+        const homePage = 'http://localhost:3000';
+        window.history.pushState(null, null, homePage);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
     getToken();
   }, []);
