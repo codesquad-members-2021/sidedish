@@ -32,14 +32,14 @@ class DishCell: UICollectionViewCell {
     }
     
     func fill(with viewModel: DishesItemViewModel) {
-        networkManager.updateThumbImage(imageURL: viewModel.imageURL) { imageData in
+        networkManager.updateThumbImage(imageURL: viewModel.dish.imageURL) { imageData in
             DispatchQueue.main.async {
                 self.thumbnailImageView.image = UIImage(data: imageData)
             }
         }
-        nameLabel.text = viewModel.name
-        descriptionLabel.text = viewModel.description
-        let prices = viewModel.prices
+        nameLabel.text = viewModel.dish.name
+        descriptionLabel.text = viewModel.dish.description
+        let prices = viewModel.dish.prices
         let originalPrice = prices[0]
         if prices.count > 1 {
             let lastPrice = prices[1]
@@ -49,7 +49,7 @@ class DishCell: UICollectionViewCell {
             lastPriceLabel.text = "\(originalPrice)원"
             originalPriceLabel.text = ""
         }
-        let badges = viewModel.badges
+        let badges = viewModel.dish.badges
         if badges.count > 0 {
             badgeLabel.text = badges[0]
         }
