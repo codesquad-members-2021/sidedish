@@ -1,7 +1,9 @@
 import { useState } from "react";
 import * as S from "../../BestItemsStyles";
 
-const URL = "/dish/best";
+const URL =
+  "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/best";
+
 const getBestItemsData = async id => {
   const rawData = await fetch(`${URL}/${id}`).then(res => res.json());
   return rawData;

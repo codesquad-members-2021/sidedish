@@ -5,7 +5,7 @@ import TotalCategoryButton from "./TotalCategoryButton";
 import * as S from "./MainItemsStyles";
 import * as CS from "../Styles/commonStyles";
 
-const MainItems = (props) => {
+const MainItems = props => {
   const [mainDishData, setMainDishData] = useState(null);
   const [soupDishData, setSoupDishData] = useState(null);
   const [sideDishData, setSideDishData] = useState(null);
@@ -13,9 +13,12 @@ const MainItems = (props) => {
   const [error, setError] = useState(false);
 
   const URL = {
-    MAINDISH: "/dish/main",
-    SOUPDISH: "/dish/soup",
-    SIDEDISH: "/dish/side",
+    MAINDISH:
+      "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/main",
+    SOUPDISH:
+      "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/soup",
+    SIDEDISH:
+      "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/side",
   };
 
   const getData = (url, setFn) => {
@@ -49,7 +52,7 @@ const MainItems = (props) => {
     getData(URL.MAINDISH, setMainDishData);
   }, []);
 
-  const Category = (categoryData) => {
+  const Category = categoryData => {
     if (categoryData === null) return null;
 
     return (

@@ -4,7 +4,8 @@ import BestItemsTitle from "./BestItemsTitle";
 import BestItemsTab from "./BestItemsUI/BestItemsTab/BestItemsTab";
 import BestItemsCardWrapper from "./BestItemsUI/BestItemsCardWrapper";
 
-const URL = "/dish/best";
+const URL =
+  "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/best";
 
 const BestItems = ({ handleClickCard }) => {
   const [titleList, setTitleList] = useState([]);
