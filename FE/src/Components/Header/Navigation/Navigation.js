@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from 'Components/Header/Dropdown/Dropdown';
 
 const Navigation = () => {
 
@@ -24,19 +24,18 @@ const Navigation = () => {
 
 const NavSpan = styled.span` 
   display:inline-block;
-  width: 125px;
+  flex-basis:33%;
   padding: 16px 0;
   text-align:center;
   font-weight: 400;
   cursor: pointer;
-  font-family: 'Noto Sans KR', sans-serif;
   &:hover{
     font-weight: 700;
   }
 `;
 
 const NavContent = styled.div`
-    margin: 0 5px;
+    margin: 0 24px 0 0;
     &:hover >:last-child{
       display:flex;
     }
@@ -44,6 +43,7 @@ const NavContent = styled.div`
 
 const NavWrapper = styled.div`
   display:flex;
+  max-width: 405px;
 `;
 
 export default Navigation;

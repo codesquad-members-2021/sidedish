@@ -1,58 +1,49 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-import CarouselButton from './CarouselButton.js';
+import CarouselItem from 'Components/Carousel/CarouselItem.js';
+import CarouselEventModal from 'Components/Carousel/CarouselEventModal.js';
+import * as CarouselNavigator from 'Components/Carousel/CarouselNavigator';
 
-const CarouselContainer = ({type = "default", items, children}) => {
-  const [WH, setWH] = useState({width: 0, height: 0});
+import useCarousel from 'Components/Carousel/hooks/useCarousel';
+
+const CarouselContainer = ({ navigator = "default", unit = 1, ...props }) => {
+
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
-  
-  useEffect(()=> {
-    const $CarouselAreaDOMRect = $CarouselAreaWrapper.current.getBoundingClientRect();
-    setWH({ width: $CarouselAreaDOMRect.width, height: $CarouselAreaDOMRect.height });
-  }, [])
-  
-  const handleDispatch = ({action}) => {
-    
-    let beforeTransition = $CarouselArea.current.style.transform.match(/(-?[0-9\.]+)/g);
-    if (!beforeTransition) 
-      beforeTransition = [0,0];
-    else 
-      beforeTransition = beforeTransition.map(each => Number(each));
-    
-    console.log("beforeTransition", beforeTransition)
-    switch(action) {
-      case "left":
-        $CarouselArea.current.style.transform = `translate(${beforeTransition[0]-50}px, ${beforeTransition[1]+0}px)`;
-        break;
-      case "right":
-        $CarouselArea.current.style.transform = `translate(${beforeTransition[0]+50}px, ${beforeTransition[1]+0}px)`;
-        break;
-      default:
-        break;
-    }
-  }
+
+  const {
+    useNavigator, useEventModal,
+    calculatedMovableRange, itemWidth
+  } = useCarousel({ $CarouselAreaWrapper, $CarouselArea, unit, itemLength: props.children.length })
 
   return (
-    <CarouselLayout>
-      <CarouselAreaWrapper ref={$CarouselAreaWrapper}>
-        <CarouselArea ref={$CarouselArea}>
-          {children}
+    <CarouselLayout navigator={navigator}>
+      <CarouselAreaWrapper className={"carousel-area-wrapper"} ref={$CarouselAreaWrapper}>
+        <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange}>
+          {[...props.children].map((child, i) => {
+            return <CarouselItem key={`Carousel-Item-${i}`} width={itemWidth} children={child} />
+          })}
         </CarouselArea>
       </CarouselAreaWrapper>
-      <CarouselButtonArea WH={WH}>
-        <CarouselButtonRelativeArea>
-          <CarouselButton type={"left"} onDispatch={handleDispatch} />
-          <CarouselButton type={"right"} onDispatch={handleDispatch} />
-        </CarouselButtonRelativeArea>
-      </CarouselButtonArea>
+      {
+        navigator === "default"
+          ? <CarouselNavigator.Default useNavigator={useNavigator} />
+          : <CarouselNavigator.Upper useNavigator={useNavigator} />
+      }
+      <CarouselEventModal useEventModal={useEventModal} />
     </CarouselLayout>
   )
 }
 
 const CarouselLayout = styled.div`
   display: flex;
+  justify-content: ${props => props.navigator === "default" ? "center" : "flex-end"};
+
+  & > .carousel-area-wrapper {
+    padding-top: 20px;
+  }
+
 `;
 
 const CarouselAreaWrapper = styled.div`
@@ -63,30 +54,13 @@ const CarouselAreaWrapper = styled.div`
 const CarouselArea = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
+  left: ${props => `${props.calculatedMovableRange.from}px`};
   
-  div + div {
-    margin-left: 10px;
+  &.carousel-start {
+    transition: left 0.5s;
+    left: ${props => `${props.calculatedMovableRange.to}px`};
   }
-`
-const CarouselButtonRelativeArea = styled.div`
-  width: 100%;
-  left: -20px;
-  position: absolute;
-  
-  display: flex;
-  justify-content: space-between;
-`
-const CarouselButtonArea = styled.div`
-  width: ${(props) => {return `${props.WH.width+40}px`}};
-  height: ${(props) => {return `${props.WH.height}px`}};
-  position: absolute;
-
-  display: flex;
-  align-items: center;
 `;
-
-
-
-
 
 export default CarouselContainer;

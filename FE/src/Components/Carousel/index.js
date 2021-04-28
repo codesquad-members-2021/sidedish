@@ -1,7 +1,7 @@
-import CarouselContainer from "./CarouselContainer.js";
-import CarouselItem from "./CarouselItem.js";
+import CarouselContainer from "Components/Carousel/CarouselContainer.js";
+import CarouselItem from "Components/Carousel/CarouselItem.js";
 
-export { 
-  CarouselItem as Item, 
-  CarouselContainer as Container 
+export {
+  CarouselItem as Item,
+  CarouselContainer as Container
 };

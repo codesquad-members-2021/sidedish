@@ -1,21 +1,22 @@
 import styled from 'styled-components';
+import LeftArrowButtonActive from 'Components/commons/Buttons/LeftArrowButtonActive.js';
+import RightArrowButtonActive from 'Components/commons/Buttons/RightArrowButtonActive.js';
 
-import LeftArrowButtonActive from '../commons/Buttons/LeftArrowButtonActive.js';
-import RightArrowButtonActive from '../commons/Buttons/RightArrowButtonActive.js';
+const CarouselButton = ({ type, onClick }) => {
 
-const CarouselButton = ({ type, onDispatch }) => {
-  
   const selectButton = () => {
     switch (type) {
       case "right":
         return <RightArrowButtonActive />;
       case "left":
         return <LeftArrowButtonActive />;
+      default:
+        return <></>;
     }
   }
-  
+
   return (
-    <ButtonBox onClick={() => onDispatch({ action: type })}>
+    <ButtonBox onClick={onClick}>
       {selectButton()}
     </ButtonBox>
   )
