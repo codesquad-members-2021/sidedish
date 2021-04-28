@@ -8,7 +8,7 @@
 import Foundation
 
 struct DishesListViewModelActions {
-    let goToDishDetail: (Dish) -> Void
+    let goToDishDetail: (String, Dish) -> Void
 }
 
 protocol DishesViewModelInput {
@@ -74,6 +74,6 @@ extension DefaultDishesViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.goToDishDetail(items.value[index].dish)
+        actions?.goToDishDetail(category.value.name, items.value[index].dish)
     }
 }
