@@ -15,5 +15,5 @@ const DetailCarouselTitleBox = styled.div`
   font-size: 24px;
   line-height: 35px;
   color: #333333;
-  margin: 10px;
+  margin: 60px 60px 30px 60px;
 `;

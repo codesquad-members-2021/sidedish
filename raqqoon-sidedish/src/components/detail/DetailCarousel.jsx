@@ -28,20 +28,22 @@ const DetailCarousel = ({
   return (
     <DetailCarouselDiv>
       <DetailCarouselTitle />
-      {detailCarouselList && (
-        <Carousel
-          options={{
-            panelCount: 5,
-            animation: {
-              target: 'transform',
-              time: 0.5,
-              effect: 'ease-in-out',
-            },
-          }}
-        >
-          {detailCarouselList}
-        </Carousel>
-      )}
+      <CarouselWrapper>
+        {detailCarouselList && (
+          <Carousel
+            options={{
+              panelCount: 5,
+              animation: {
+                target: 'transform',
+                time: 0.5,
+                effect: 'ease-in-out',
+              },
+            }}
+          >
+            {detailCarouselList}
+          </Carousel>
+        )}
+      </CarouselWrapper>
     </DetailCarouselDiv>
   );
 };
@@ -53,4 +55,11 @@ const DetailCarouselDiv = styled.div`
   height: 396px;
   background: #f5f5f7;
   border-radius: 0px 0px 5px 5px;
+`;
+
+const CarouselWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  margin: 0 60px;
 `;
