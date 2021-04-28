@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
-import MediumCard from '../../molecules/MediumCard';
-import Icon from '../../atoms/Icon';
-import loadData from '../../../util/loadData';
+import React, { useState, useEffect, useRef } from "react";
+import { CardStyle, WrapCard, WrapMain, WrapCarousal } from "./index.style";
+import MediumCard from "../../molecules/MediumCard";
+import Icon from "../../atoms/Icon";
+import loadData from "../../../util/loadData";
 
-const MainDish = props => {
+const MainDish = (props) => {
   const directionRef = useRef(false);
   const [data, setData] = useState([]);
 
@@ -38,22 +38,22 @@ const MainDish = props => {
     directionRef.current.style.transform = move;
   };
 
-  const moveSlide = type => {
-    if (type === 'RightIcon') {
-      setStyle('all 0.5s', `translate(-${LENGTH(308, 8)}px)`);
+  const moveSlide = (type) => {
+    if (type === "RightIcon") {
+      setStyle("all 0.5s", `translate(-${LENGTH(308, 8)}px)`);
     } else {
-      setStyle('all 0.5s', `translate(${LENGTH(308, 8)}px)`);
+      setStyle("all 0.5s", `translate(${LENGTH(308, 8)}px)`);
     }
   };
 
-  const onTransitionEnd = type => {
-    if (type === 'RightIcon') {
+  const onTransitionEnd = (type) => {
+    if (type === "RightIcon") {
       setData(data.slice(SLIDES).concat(data.slice(0, SLIDES)));
     } else {
       setData(data.slice(-SLIDES).concat(data.slice(0, -SLIDES)));
     }
-    directionRef.current.style.transform = 'translate(0)';
-    directionRef.current.style.transition = 'none';
+    directionRef.current.style.transform = "translate(0)";
+    directionRef.current.style.transition = "none";
   };
 
   return (
