@@ -17,7 +17,6 @@ const DishItem = ({
 
   const toggleModal = () => {
     setShowDetail((showDetail) => !showDetail);
-    console.log('modal is toggled');
   };
 
   const handleMouseEnter = () => setIsHover(true);
@@ -69,7 +68,7 @@ export default DishItem;
 const StyledDishItem = styled.div`
   width: ${({ size }) => (size === 'L' ? '384px' : '308px')};
   height: ${({ size }) => (size === 'L' ? '540px' : '456px')};
-  margin-right: ${({ size }) => size === 'M' && '16px'};
+  margin-right: ${({ size }) => size === 'M' && '16px'}; // 얘를 지우고 캐로셀 안에서 작동이 되게
   .imgContainer {
     position: relative;
   }

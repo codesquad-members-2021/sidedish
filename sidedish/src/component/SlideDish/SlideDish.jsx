@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
 import DishItem from 'component/DishItem/DishItem';
 import { URL } from 'util/data';
@@ -8,10 +8,18 @@ import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 
 const SlideDish = ({ category }) => {
   const ref = useRef();
+
   const { data: slideData, loading, error } = useFetch({ url: URL[category]() });
   const slideCategory =
     slideData &&
     slideData.body.map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
+
+  const settings = {
+    ref: ref,
+    maxItem: 4, // 얘도 settings 에서 제외해보자~ 먼저 maxItem이 어떤식으로 Carousel에 필요한지 알아야
+    skipItem: 3,
+    animationTime: 0.5,
+  };
 
   if (error) throw Error(error);
   return loading ? (
@@ -24,16 +32,7 @@ const SlideDish = ({ category }) => {
           onClick={() => ref.current.handleClickPrev()}
           className="leftArrow arrow"
         />
-        <Carousel
-          ref={ref}
-          itemWidth={324}
-          maxItem={4}
-          skipItem={3}
-          animationTime={0.5}
-          className="carouselWrapper"
-        >
-          {slideCategory}
-        </Carousel>
+        <Carousel {...settings}>{slideCategory}</Carousel>
 
         <IoChevronForwardSharp
           onClick={() => ref.current.handleClickNext()}
