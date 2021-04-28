@@ -106,6 +106,7 @@
 				D08A5397262D587700DD1CBE /* ItemCollectionViewCell.swift */,
 				22418760262D5C8400AC14C7 /* HeaderCollectionReusableView.swift */,
 				D06C739526310CD3002404A3 /* BadgeLabel.swift */,
+				22E32CC226392CF200EE3AF8 /* extension */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,7 +142,6 @@
 				2245D890262D92D700E0B637 /* Repository */,
 				22418776262D6C1700AC14C7 /* Entity */,
 				2241874C262D4D8600AC14C7 /* LaunchScreen.storyboard */,
-				22D502492633049700325C5F /* String+NSAttributedString.swift */,
 				2241874F262D4D8600AC14C7 /* Info.plist */,
 				2241874A262D4D8600AC14C7 /* Assets.xcassets */,
 			);
@@ -183,6 +183,14 @@
 				222E3DB22636936600CB8330 /* Category.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		22E32CC226392CF200EE3AF8 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				22D502492633049700325C5F /* String+NSAttributedString.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 		E82A359D5367162E8BD6F247 /* Frameworks */ = {

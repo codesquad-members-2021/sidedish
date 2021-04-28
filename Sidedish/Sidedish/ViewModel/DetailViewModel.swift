@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailViewModel {
+class DetailViewModel: ObservableObject {
     var sidedishProcessing: SidedishProcessable
     var currentDetail: DetailItem
     var imageFetchHandler: (() -> ())?
@@ -18,7 +18,7 @@ class DetailViewModel {
         self.sidedishProcessing = sidedishProcessable
         self.currentDetail = DetailItem()
     }
-    
+        
     func fetchDetail(hash: String) {
         let url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/\(hash)"
         self.sidedishProcessing.getDetail(url: url) { [weak self] (result) in

@@ -6,16 +6,13 @@
 //
 
 import UIKit
-import Combine
 import Toaster
-import Alamofire
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var itemViewModel: ItemViewModel!
     var headerViewModel: HeaderViewModel!
-    var fetchItemSubscription = Set<AnyCancellable>()
     var headerViewActionHander: (() -> ())?
     
     override func viewDidLoad() {
@@ -59,9 +56,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let category = Category.init(rawValue: section) else { return 0 }
-        guard let item = self.itemViewModel.items[category.description] else { return 0 }
-        return item.count
+        guard let items = self.indexItemBySection(of: section) else { return 0 }
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,8 +66,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             return ItemCollectionViewCell()
         }
         
-        guard let category = Category.init(rawValue: indexPath.section) else { return cell }
-        guard let items = self.itemViewModel.items[category.description] else { return cell }
+        guard let items = self.indexItemBySection(of: indexPath.section) else { return cell }
         let item = items[indexPath.row]
         let badge = handleBadge(badge: item.badge)
         cell.configure(model: item, nPrice: item.nPrice, badge: badge)
@@ -90,8 +85,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
         header.delegate = self
-        guard let category = Category(rawValue: indexPath.section) else { return header }
-        guard let items = self.itemViewModel.items[category.description] else { return header }
+        guard let items = self.indexItemBySection(of: indexPath.section) else { return header }
         header.title.text = self.headerViewModel.titles[indexPath.section]
         header.countLabel.text = "\(items.count)개 상품이 등록되어 있습니다"
         return header
@@ -103,9 +97,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? ItemCollectionViewCell, let indexPath = self.collectionView.indexPath(for: cell) {
-            guard let category = Category(rawValue: indexPath.section) else { return }
-            guard let items = self.itemViewModel.items[category.description] else { return }
+            guard let items = self.indexItemBySection(of: indexPath.section) else { return }
             let detailHash = items[indexPath.row].detailHash
+            
             let vc = segue.destination as? DetailViewController
             let networking = SidedishNetworkCenter()
             let sidedishProcessing = SidedishProcessing(networkable: networking)
@@ -128,6 +122,12 @@ extension ViewController: HeaderClickable {
 }
 
 extension ViewController {
+    func indexItemBySection(of section: Int) -> [SidedishItem]? {
+        guard let category = Category(rawValue: section) else { return nil }
+        guard let items = self.itemViewModel.items[category.description] else { return nil }
+        return items
+    }
+    
     func handleBadge(badge: [String]?) -> [Bool] {
         var isHiddenBadges = [true, true]
         if badge != nil {

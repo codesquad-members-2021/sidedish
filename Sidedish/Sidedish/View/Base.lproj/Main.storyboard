@@ -49,13 +49,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="r8r-vV-M3w">
                                                     <rect key="frame" x="154" y="24.5" width="244" height="81.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="[미노리키친]" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af7-tu-DHV">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[미노리키친]" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af7-tu-DHV">
                                                             <rect key="frame" x="0.0" y="0.0" width="82.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="일본인의 소울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaS-t0-x6k">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일본인의 소울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaS-t0-x6k">
                                                             <rect key="frame" x="0.0" y="26.5" width="93" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -191,14 +191,14 @@
             <objects>
                 <viewController id="ByU-MJ-sEq" customClass="DetailViewController" customModule="Sidedish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oKX-0y-oau">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQ3-FA-bB6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4g-Pq-i4F" userLabel="Scroll Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="4488"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-S7-dUF" userLabel="Thumbnail Scroll View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -217,8 +217,8 @@
                                                     <constraint firstItem="TgM-VV-npk" firstAttribute="leading" secondItem="hPQ-S7-dUF" secondAttribute="leading" id="zQD-C8-ggg"/>
                                                 </constraints>
                                             </scrollView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="pGM-XY-V8j" userLabel="Information Stack View">
-                                                <rect key="frame" x="0.0" y="414" width="414" height="4074"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pGM-XY-V8j" userLabel="Information Stack View">
+                                                <rect key="frame" x="0.0" y="414" width="414" height="404"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -239,7 +239,7 @@
                                     <constraint firstItem="cI7-cb-mc2" firstAttribute="trailing" secondItem="hPQ-S7-dUF" secondAttribute="trailing" id="LEY-R7-e4L"/>
                                     <constraint firstItem="hPQ-S7-dUF" firstAttribute="top" secondItem="J4g-Pq-i4F" secondAttribute="top" id="lrq-tO-k95"/>
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="bottom" secondItem="N1B-qG-pDc" secondAttribute="bottom" id="nBG-it-Dyg"/>
-                                    <constraint firstItem="J4g-Pq-i4F" firstAttribute="height" secondItem="cI7-cb-mc2" secondAttribute="height" multiplier="4" id="q69-vo-0Cc"/>
+                                    <constraint firstItem="J4g-Pq-i4F" firstAttribute="height" secondItem="cI7-cb-mc2" secondAttribute="height" priority="250" id="q69-vo-0Cc"/>
                                     <constraint firstItem="J4g-Pq-i4F" firstAttribute="top" secondItem="N1B-qG-pDc" secondAttribute="top" id="st6-yB-gUY"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="N1B-qG-pDc"/>
@@ -257,7 +257,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="rM2-Xy-qyY"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="informationStackView" destination="pGM-XY-V8j" id="vn9-E7-ihu"/>
                         <outlet property="thumbnailContentView" destination="TgM-VV-npk" id="OVK-W3-73v"/>

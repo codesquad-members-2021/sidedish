@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
         
         detailViewModel.imageFetchHandler = {
             DispatchQueue.main.async {
+                self.setTitle()
                 self.clearImage()
                 self.setThumdnailImage()
                 self.setInformationView()
@@ -29,13 +30,18 @@ class DetailViewController: UIViewController {
             }
         }
         
-        detailViewModel.detailImageFetchHandler = {
-            
-        }
-        
         self.detailViewModel.errorHandler = { error in
             Toast(text: error).show()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func setTitle() {
+        self.title = self.detailViewModel.currentDetail.productDescription
     }
     
     private func clearImage() {
@@ -56,14 +62,8 @@ class DetailViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-    }
-    
     private func setThumbnailScrollView() {
         self.thumbnailScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
-        self.thumbnailScrollView.isPagingEnabled = true
     }
     
     private func setThumdnailImage() {
@@ -94,7 +94,14 @@ class DetailViewController: UIViewController {
             guard let data = detailSectionData[index] else { continue }
             imageView.image = UIImage(data: data)
             imageView.contentMode = .scaleAspectFit
+            let ratio = calculateImageRatioOfImageView(imageView.image)
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: ratio).isActive = true
             informationStackView.addArrangedSubview(imageView)
         }
+    }
+    
+    private func calculateImageRatioOfImageView(_ image: UIImage?) -> CGFloat {
+        guard let image = image else { return 0 }
+        return image.size.height / image.size.width
     }
 }
