@@ -11,8 +11,10 @@ import Combine
 class SideDishViewController: UIViewController {
     
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
-    @Dependency private var sideDishViewModel: SideDishViewModel
+    //@Dependency
+    private var sideDishViewModel: SideDishViewModel!
     @Dependency var dvm : DetailViewModel
+    @Dependency var usecase: SideDishUseCase
     private var cancellable = Set<AnyCancellable>()
     private var dataSource : UICollectionViewDiffableDataSource<Menu, Item>!
         
@@ -20,6 +22,8 @@ class SideDishViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .red
         print("asdf")
+        sideDishViewModel = SideDishViewModel(sideDishUseCase: usecase)
+        
         sideDishCollectionView.delegate = self
         configureDataSource()
         bind()

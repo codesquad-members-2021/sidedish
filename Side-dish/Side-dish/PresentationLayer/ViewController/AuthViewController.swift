@@ -35,10 +35,9 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
         
         webAuthSession = ASWebAuthenticationSession.init(url: url!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
             
-            guard error == nil, let successURL = callBack else {
-                return
-            }
-            
+            guard error == nil else { return }
+            guard let successURL = callBack else { return }
+
             self.config.handleOpenURL(url: successURL) { config in
                 self.loadCurrentUser(config: config)
             }
@@ -57,11 +56,12 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
     }
     
     func loadCurrentUser(config: TokenConfiguration) {
+//        print(config.accessToken ?? "accessToken has not been found")
         Octokit(config).me() { response in
             switch response {
             case .success(let user):
                 DispatchQueue.main.async {
-                    let targetVC = self.storyboard?.instantiateViewController(identifier: "TempViewController") as? TempViewController
+                    let targetVC = self.storyboard?.instantiateViewController(identifier: "ViewController") as? SideDishViewController
                     self.navigationController?.pushViewController(targetVC!, animated: true)
                 }
             case .failure(let error):

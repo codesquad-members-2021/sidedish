@@ -17,8 +17,8 @@
 		8844B8552631AB0500FA49E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B8542631AB0500FA49E9 /* DetailViewController.swift */; };
 		8844B8582631AB1300FA49E9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8844B8572631AB1300FA49E9 /* DetailViewModel.swift */; };
 		88BDE4E82636ACD20056DE3B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4E72636ACD20056DE3B /* AuthViewController.swift */; };
-		88BDE4F02636C73F0056DE3B /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE4EF2636C73F0056DE3B /* TempViewController.swift */; };
 		88BDE50B2637DC150056DE3B /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 88BDE50A2637DC150056DE3B /* OctoKit */; };
+		88BDE51426393FDB0056DE3B /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88BDE51326393FDB0056DE3B /* KeychainSwift */; };
 		BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB3262FF79600C0625E /* SideDishManager.swift */; };
 		BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BB926301B8000C0625E /* AlertFactory.swift */; };
 		BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */; };
@@ -55,7 +55,6 @@
 		8844B8542631AB0500FA49E9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8844B8572631AB1300FA49E9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		88BDE4E72636ACD20056DE3B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		88BDE4EF2636C73F0056DE3B /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		BFAE1BB3262FF79600C0625E /* SideDishManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishManager.swift; sourceTree = "<group>"; };
 		BFAE1BB926301B8000C0625E /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardHeaderView.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BDE51426393FDB0056DE3B /* KeychainSwift in Frameworks */,
 				88BDE50B2637DC150056DE3B /* OctoKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				88BDE4E72636ACD20056DE3B /* AuthViewController.swift */,
-				88BDE4EF2636C73F0056DE3B /* TempViewController.swift */,
 				BFCE4956262D4891006C0882 /* SideDishViewController.swift */,
 				8844B8542631AB0500FA49E9 /* DetailViewController.swift */,
 			);
@@ -251,6 +250,7 @@
 			name = "Side-dish";
 			packageProductDependencies = (
 				88BDE50A2637DC150056DE3B /* OctoKit */,
+				88BDE51326393FDB0056DE3B /* KeychainSwift */,
 			);
 			productName = "Side-dish";
 			productReference = BFCE494F262D4891006C0882 /* Side-dish.app */;
@@ -281,6 +281,7 @@
 			mainGroup = BFCE4946262D4891006C0882;
 			packageReferences = (
 				88BDE5092637DC150056DE3B /* XCRemoteSwiftPackageReference "octokit" */,
+				88BDE51226393FDB0056DE3B /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = BFCE4950262D4891006C0882 /* Products */;
 			projectDirPath = "";
@@ -331,7 +332,6 @@
 				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
 				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
-				88BDE4F02636C73F0056DE3B /* TempViewController.swift in Sources */,
 				BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */,
 				BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */,
 				BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */,
@@ -543,6 +543,14 @@
 				minimumVersion = 0.11.0;
 			};
 		};
+		88BDE51226393FDB0056DE3B /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -550,6 +558,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 88BDE5092637DC150056DE3B /* XCRemoteSwiftPackageReference "octokit" */;
 			productName = OctoKit;
+		};
+		88BDE51326393FDB0056DE3B /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88BDE51226393FDB0056DE3B /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
