@@ -4,6 +4,7 @@ import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
 import com.codesquad.sidedish.dto.CategoryResponseDto;
 import com.codesquad.sidedish.dto.DishDetailResponseDto;
+import com.codesquad.sidedish.dto.DishResponseDto;
 import com.codesquad.sidedish.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,8 @@ public class CategoryController {
     }
 
     @GetMapping("/{dishId}")
-    public DishDetailResponseDto readDish(@PathVariable String category, @PathVariable String dishId) {
-        return categoryService.readDishByCategoryAndDishId(category, dishId);
+    public DishDetailResponseDto readDish(@PathVariable String type, @PathVariable String dishId) {
+        Dish dish = categoryService.findDishByTypeAndId(type,dishId);
+        return DishDetailResponseDto.of(dish);
     }
 }

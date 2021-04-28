@@ -20,11 +20,9 @@ public class CategoryService {
         return categoryRepository.findCategoryByType(type);
     }
 
-    // 상세 조회
-    public DishDetailResponseDto readDishByCategoryAndDishId(String categoryType, String dishId) {
-        Category category = categoryRepository.findCategoryByType(categoryType);
-        Dish dish = category.getDishByDishId(dishId);
-        return DishDetailResponseDto.of(dish);
+    public Dish findDishByTypeAndId(String type, String dishId) {
+        Category category = findCategoryByType(type);
+        return category.getDishByDishId(dishId);
     }
 
     public void addDish(String categoryType, Dish dish) {
