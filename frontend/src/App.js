@@ -3,6 +3,7 @@ import MainMenu from './components/mainmenu/MainMenu';
 import CategoryEntry from './components/category/CategoryEntry';
 import Header from './components/header/Header';
 import { createGlobalStyle } from 'styled-components';
+
 const GlobalStyle = createGlobalStyle`
 body{
   width: 1440px;

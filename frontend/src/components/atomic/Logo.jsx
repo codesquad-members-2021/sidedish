@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { theme } from '../Theme';
 const HeaderLogo = styled.h1`
 	font-family: Noto Sans KR;
-	font-size: 40px;
+	font-size: ${theme.fontSize.X_large};
 	font-style: normal;
 	font-weight: 900;
 	line-height: 58px;
