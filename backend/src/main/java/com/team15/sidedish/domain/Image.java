@@ -1,7 +1,9 @@
 package com.team15.sidedish.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("image")
 public class Image {
     @Id
     private Long id;

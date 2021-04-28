@@ -19,6 +19,3 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
 }
 
-test {
-    useJUnitPlatform()
-}
