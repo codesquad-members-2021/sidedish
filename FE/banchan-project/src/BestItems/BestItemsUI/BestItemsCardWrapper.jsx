@@ -8,7 +8,6 @@ const BestItemsCardWrapper = ({ bestItemsData, handleClickCard }) => {
         bestItemsData.items
           .sort(() => Math.random() - 0.5) //배열 랜덤 정렬
           .map((item, idx) => {
-            console.log(item);
             return (
               <BestItemsCard
                 key={idx}
