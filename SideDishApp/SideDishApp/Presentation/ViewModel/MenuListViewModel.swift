@@ -31,7 +31,7 @@ class MenuListViewModel {
             .sink(receiveCompletion: { result in
                     switch result {
                     case .finished:
-                        break
+                        print("완료 해쪄욤")
                     case .failure(.urlError):
                         assertionFailure("url")
                     case .failure(.networkConnection):
@@ -60,9 +60,10 @@ class MenuListViewModel {
             .store(in: &subscriptions)
     }
     
-    func requestDishes() {
+    func requestDishes(completion: () -> Void) {
         fetchDishes(dish: "main")
         fetchDishes(dish: "soup")
         fetchDishes(dish: "side")
+        completion()
     }
 }

@@ -13,7 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var dishCollectionView: UICollectionView!
     
-    private let menuListViewModel = MenuListViewModel()
+    ///LoadingView에서 주입
+    var menuListViewModel: MenuListViewModel!
     private var subscriptions = Set<AnyCancellable>()
     private var loadingView = LoadingView()
     var dataSource : UICollectionViewDiffableDataSource<Dishes,Dish>!
@@ -23,11 +24,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setLoadingView()
         dishCollectionView.delegate = dishCollectionViewDelegate
         dataSource = DiffableProvider().configureDataSource(collectionView: dishCollectionView)
-        bind()
-        menuListViewModel.requestDishes()
     }
     
     func setLoadingView() {
@@ -54,7 +52,6 @@ class ViewController: UIViewController {
             .sink(receiveCompletion: { _ in
                 //error
             }, receiveValue: { mainDishes in
-                self.loadingView.removeFromSuperview()
                 self.addDataToSnapshot(dishes: mainDishes)
             })
             .store(in: &subscriptions)
