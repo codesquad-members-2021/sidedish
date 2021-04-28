@@ -1,52 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import styled from 'styled-components';
 import API from 'util/API.js';
 import { Container } from 'Components/commons/base.js';
 import Card from 'Components/commons/Cards';
+import { reducer, reducerInitialState } from 'util/reducer';
+import loadingImage from 'images/loading.gif';
+import errorImage from 'images/preparingProduct.png';
 
-const Tabs = ({ setModalState }) => {
-  const [tabItemList, setTabItemList] = useState([]);
+const Tabs = ({ dispatchModal }) => {
+  const [tabItemState, dispatchTabItem] = useReducer(reducer, reducerInitialState);
   const [currentTabItems, setCurrentTabItems] = useState([]);
+  const { loading, data, error } = tabItemState;
 
   const handleChangeTabs = ({ idx }) => () => {
-    setCurrentTabItems(tabItemList[idx].items);
+    setCurrentTabItems(data[idx].items);
   };
 
   useEffect(() => {
-    (async () => {
+    const fetchBestProduct = async () => {
+      dispatchTabItem({ type: 'LOADING' });
       try {
         const { body } = await API.get.best();
-        setTabItemList(body);
+        dispatchTabItem({ type: 'SUCCESS', data: body });
       } catch (e) {
-        console.error(e);
+        dispatchTabItem({ type: 'ERROR', error: e });
       }
-    })();
+    };
+    fetchBestProduct();
   }, []);
 
   useEffect(() => {
-    if (tabItemList[0]) {
-      setCurrentTabItems(tabItemList[0].items);
-    }
-  }, [tabItemList]);
+    if (data) setCurrentTabItems(data[0].items);
+  }, [data]);
 
   return (
     <TabsWrapper>
-      <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
-      <FlexWrapper>
-        {tabItemList.map(({ name }, idx) => {
-          return (
-            <label key={idx}>
-              <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
-              <LabelBelongSpan>{name}</LabelBelongSpan>
-            </label>
-          );
-        })}
-      </FlexWrapper>
-      <CardListWrapper>
-        {currentTabItems.map((item, idx) => {
-          return (<Card key={idx} type={"tabs"}  {...{ item, setModalState }} />);
-        })}
-      </CardListWrapper>
+      {loading &&
+        <div>
+          <img src={loadingImage} alt="" width='100%' />
+        </div>
+      }
+
+      {data && <>
+        <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
+        <FlexWrapper>
+          {data?.map(({ name }, idx) => {
+            return (
+              <label key={`label-${idx}`}>
+                <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
+                <LabelBelongSpan>{name}</LabelBelongSpan>
+              </label>
+            );
+          })}
+        </FlexWrapper>
+        <CardListWrapper>
+          {currentTabItems.map((item, idx) => {
+            return (<Card key={`card-${idx}`} type={"tabs"}  {...{ item, dispatchModal }} />);
+          })}
+        </CardListWrapper>
+      </>}
+
+      {error &&
+        <div>
+          <img src={errorImage} alt="" width="100%" />
+        </div>
+      }
     </TabsWrapper>
   );
 };

@@ -5,8 +5,8 @@ const Dropdown = ({ list }) => {
   return (
     <DropdownWrapper>
       <MenuList>
-        {list.map((text, index) => {
-          return <MenuItem key={index}>{text}</MenuItem>;
+        {list.map((text, idx) => {
+          return <MenuItem key={`menuItem-${idx}`}>{text}</MenuItem>;
         })}
       </MenuList>
     </DropdownWrapper>
