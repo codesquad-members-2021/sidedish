@@ -14,7 +14,7 @@ public interface ImageRepository extends CrudRepository<Image, Long> {
     @Query("SELECT image_id, url, item_id FROM image WHERE item_id=:itemId LIMIT 1;")
     Optional<Image> findTopImageByItemId(@Param("itemId") Long itemId);
 
-    @Query("SELECT url FROM image WHERE item_id=:itemId")
+    @Query("SELECT url FROM image WHERE item_id=:itemId LIMIT 5")
     List<String> findUrlByItemId(@Param("itemId") Long itemId);
 
     List<Image> findAllByItemId(Long item);

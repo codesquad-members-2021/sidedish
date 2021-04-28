@@ -25,9 +25,9 @@ public class ItemDetailService {
                 .orElseThrow(RuntimeException::new);
         List<String> imageUrls = imageRepository.findUrlByItemId(itemId);
 
-        List<Item> items = itemRepository.findAll();
-        List<RecommendedItemDto> list = items.stream().map(item1 ->
-                new RecommendedItemDto(item1, imageRepository.findTopImageByItemId(item1.getItemId())
+        List<Item> randomItems = itemRepository.findRandomItemsByItemId(item.getDishCategoryId());
+        List<RecommendedItemDto> list = randomItems.stream()
+                .map(item1 -> new RecommendedItemDto(item1, imageRepository.findTopImageByItemId(item1.getItemId())
                         .orElseThrow(RuntimeException::new)))
                 .collect(Collectors.toList());
 
