@@ -1,5 +1,6 @@
 package codsquad.team17.sidedish.domain;
 
+import codsquad.team17.sidedish.dto.OrderDto;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
@@ -71,5 +72,9 @@ public class Item {
 
     public Long getBestCategoryId() {
         return bestCategoryId;
+    }
+
+    public void updateStock(OrderDto dto) {
+        this.stock = dto.getStock();
     }
 }
