@@ -86,6 +86,7 @@ const DropBtn = styled.button`
   }
 `;
 const DropList = styled.li``;
+
 const Header = () => {
   const [isShownDrop1, setIsShownDrop1] = useState(false);
   const [isShownDrop2, setIsShownDrop2] = useState(false);

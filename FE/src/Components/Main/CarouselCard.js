@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 const CarouselCard = ({
-  detail_hash,
+  detailHash,
+  PopUp,
   image,
   alt,
-  delivery_type,
+  deliveryType,
   title,
   description,
   n_price,
@@ -12,21 +13,23 @@ const CarouselCard = ({
   badge,
   setModal,
   setModalData,
+  best,
 }) => {
   const openModal = () => {
-    setModalData([detail_hash, title, badge]);
+    setModalData([detailHash, title, badge]);
     setModal(true);
   };
+
   return (
-    <ContentMain>
-      <Image image={image} onClick={openModal} />
+    <ContentMain best={best} PopUp={PopUp}>
+      <Image best={best} image={image} PopUp={PopUp} onClick={openModal} />
       <Title>{title}</Title>
       <Description>{description}</Description>
       {n_price !== undefined ? (
-        <div>
+        <Price>
           <SPrice>{s_price}</SPrice>
           <NPrice>{n_price}</NPrice>
-        </div>
+        </Price>
       ) : (
         <SPrice false>{s_price}</SPrice>
       )}
@@ -43,8 +46,13 @@ const CarouselCard = ({
     </ContentMain>
   );
 };
+const Price = styled.div`
+  margin-top: 10px;
+`;
+
 const ContentMain = styled.div`
-  margin: 0 10px;
+  margin: 10px;
+  align-self: ${({ best }) => (best ? `center` : null)};
 `;
 
 const Image = styled.div`
@@ -52,11 +60,9 @@ const Image = styled.div`
   background-image: ${({ image }) => `url(${image})`};
   background-size: cover;
   background-repeat: no-repeat;
-  height: 305px;
+  width: ${({ best, PopUp }) => (best ? `384px` : PopUp ? `160px` : `305px`)};
+  height: ${({ best, PopUp }) => (best ? `384px` : PopUp ? `160px` : `305px`)};
   border-radius: 5px;
-  &:active {
-    transform: translateY(1px);
-  }
   &:hover {
     display: flex;
     justify-content: center;
@@ -69,7 +75,7 @@ const Image = styled.div`
     color: white;
     &::before {
       position: absolute;
-      top: 117px;
+      top: ${({ best, PopUp }) => (best ? `270px` : PopUp ? `50px` : `125px`)};
       font-size: 22px;
       font-weight: normal;
       content: "새벽배송";
@@ -87,7 +93,7 @@ const Image = styled.div`
 `;
 
 const Title = styled.div`
-  width: 305px;
+  margin-top: 16px;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
@@ -97,7 +103,7 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
-  width: 305px;
+  margin-top: 8px;
   color: #828282;
   font-family: Noto Sans KR;
   font-style: normal;
