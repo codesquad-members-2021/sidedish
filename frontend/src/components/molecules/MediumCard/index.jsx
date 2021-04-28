@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { WrapDiv, WrapContent } from "./index.style";
-import HoverCard from "../../molecules/HoverCard";
-import Image from "../../atoms/Image";
-import Span from "../../atoms/Span";
-import TagBox from "../../molecules/TagBox";
-import Modal from "../../pages/Modal";
+import React, { useState } from 'react';
+import { WrapDiv, WrapContent } from './index.style';
+import HoverCard from '../../molecules/HoverCard';
+import Image from '../../atoms/Image';
+import Span from '../../atoms/Span';
+import TagBox from '../../molecules/TagBox';
+import Modal from '../../pages/Modal';
 
 const MediumCard = ({ children, ...props }) => {
   const [isHover, setIsHover] = useState(false);
@@ -15,9 +15,7 @@ const MediumCard = ({ children, ...props }) => {
 
   return (
     <>
-      <Modal open={isOpen} onClose={onClose} _hash={props._hash}>
-        Modal
-      </Modal>
+      <Modal open={isOpen} onClose={onClose} _hash={props._hash} />
       <WrapDiv onClick={onClick}>
         <Image
           src={props._image}

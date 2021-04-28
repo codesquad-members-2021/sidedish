@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const WrapMain = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 10px;
 `;
 
 const WrapCarousal = styled.div`
