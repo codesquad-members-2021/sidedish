@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
-import { AlignTextCenter } from '../Theme';
-import { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
 const CatgoryWrapper = styled.div`
 	width: 1280px;
 	padding: 0px;
@@ -27,10 +25,6 @@ const Button = styled.button`
 `;
 const ButtonLeft = styled(Button)``;
 const ButtonRight = styled(Button)``;
-const LoadingWapper = styled(AlignTextCenter)`
-	width: 1280px;
-	height: 384px;
-`;
 const CardWrapper = styled.div`
 	display: flex;
 	justify-content: center;
@@ -42,7 +36,6 @@ const Block = styled.div`
 	display: flex;
 `;
 function CategorySlide({ width, count, duration, children }) {
-	console.log(children);
 	const transitionDefault = `all ${duration}`;
 	const panelWidth = width / count; //320
 	const panelCount = count;
@@ -65,7 +58,6 @@ function CategorySlide({ width, count, duration, children }) {
 		setX((prevX) => prevX + direction * panelCount * panelWidth); //-1280 + (-1)*width
 		setMoving(true);
 	};
-
 	const onTransitionEnd = () => {
 		setMoving(false); //(-1) * 4 * 320 * -1280(1)/-2560(2)/-3840(3)
 		if (x === -panelCount * panelWidth * (filterBlock.length + 1)) {
@@ -79,7 +71,6 @@ function CategorySlide({ width, count, duration, children }) {
 	useEffect(() => {
 		if (trasitionValue === 'none') setTransitionValue(transitionDefault);
 	}, [x]);
-
 	const ulStyles = {
 		transform: `translate3d(${x}px, 0, 0)`,
 		transition: trasitionValue,
@@ -123,4 +114,4 @@ function CategorySlide({ width, count, duration, children }) {
 		</>
 	);
 }
-export default CategorySlide;
+export default React.memo(CategorySlide);
