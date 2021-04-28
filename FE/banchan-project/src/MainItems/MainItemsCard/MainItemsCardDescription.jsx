@@ -3,9 +3,9 @@ import * as CS from "../../Styles/commonStyles";
 
 const MainItemsCardDescription = ({ description }) => {
   return (
-    <S.MainItemsCardDescriptionWrapper>
+    <S.CategoryItemsCardDescriptionWrapper>
       <CS.ColorFont.GRAY3_XS_NORMAL>{description}</CS.ColorFont.GRAY3_XS_NORMAL>
-    </S.MainItemsCardDescriptionWrapper>
+    </S.CategoryItemsCardDescriptionWrapper>
   );
 };
 

@@ -56,8 +56,7 @@ const DetailModalWindow = (props) => {
     getData();
   }, []);
 
-  if (!data) return null;
-  if (error) return null;
+  if (!data || error) return null;
 
   return (
     <>

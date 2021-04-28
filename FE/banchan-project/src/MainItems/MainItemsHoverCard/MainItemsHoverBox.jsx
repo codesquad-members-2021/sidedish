@@ -3,9 +3,9 @@ import * as CS from "../../Styles/commonStyles";
 
 const MainItemsHoverBox = () => {
   return (
-    <S.BestItemsHoverBox>
+    <S.ItemsHoverBox>
       <CS.Box.HOVER_BOX_MAIN></CS.Box.HOVER_BOX_MAIN>
-    </S.BestItemsHoverBox>
+    </S.ItemsHoverBox>
   );
 };
 

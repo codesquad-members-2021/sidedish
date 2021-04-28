@@ -3,9 +3,9 @@ import * as CS from "../Styles/commonStyles.jsx";
 
 const MainItemsTitle = ({ categoryTitle }) => {
   return (
-    <S.MainItemsTitleWrapper>
+    <S.CategoryItemsTitleWrapper>
       <CS.ColorFont.GRAY1_XL_BOLD>{categoryTitle}</CS.ColorFont.GRAY1_XL_BOLD>
-    </S.MainItemsTitleWrapper>
+    </S.CategoryItemsTitleWrapper>
   );
 };
 
