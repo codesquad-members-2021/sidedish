@@ -13,7 +13,7 @@ public class Category {
     private String name;
     private String type;
 
-    @MappedCollection(idColumn = "category", keyColumn = "id")
+    @MappedCollection(idColumn = "category_id", keyColumn = "id")
     private Map<String, Dish> dishes = new HashMap<>();
 
     private Category() {

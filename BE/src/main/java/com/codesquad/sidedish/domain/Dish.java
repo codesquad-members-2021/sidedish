@@ -17,7 +17,6 @@ public class Dish {
     private String sellingPrice;
     private String badge;
 
-    @Column(value = "category")
     private Long categoryId;
     private String topImage;
     private String thumbImages;
