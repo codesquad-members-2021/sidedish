@@ -18,6 +18,9 @@ class DetailPageViewController: UIViewController {
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var deliveryInfoLabel: UILabel!
     @IBOutlet weak var deliveryFeeLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var detailImagesStackView: UIStackView!
@@ -25,6 +28,8 @@ class DetailPageViewController: UIViewController {
     var categoryName: String?
     var id: Int?
     var viewModel: DishDetailsViewModel!
+    var currentQuantity: Int = 1
+    var totalPrice: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +44,33 @@ class DetailPageViewController: UIViewController {
         badgeBackgroundView.layer.cornerRadius = 5.0
         orderButton.layer.masksToBounds = true
         orderButton.layer.cornerRadius = 5.0
-        totalPriceLabel.text = "0원"
+        quantityLabel.text = "\(currentQuantity)"
+        
+        quantityLabel.layer.borderWidth = 1.0
+        quantityLabel.layer.borderColor = UIColor(named: "LineSeparatorColor")?.cgColor
+        setupUI(of: addButton)
+        setupUI(of: removeButton)
+    }
+    
+    func setupUI(of button: UIButton) {
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor(named: "LineSeparatorColor")?.cgColor
+    }
+    
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        guard let dishDetail = viewModel.dishDetail.value else { return }
+        currentQuantity += 1
+        totalPrice = currentQuantity * dishDetail.prices[0]
+        quantityLabel.text = "\(currentQuantity)"
+        totalPriceLabel.text = "\(totalPrice)원"
+    }
+    
+    @IBAction func removeButtonPressed(_ sender: UIButton) {
+        guard let dishDetail = viewModel.dishDetail.value else { return }
+        currentQuantity -= 1
+        totalPrice = currentQuantity * dishDetail.prices[0]
+        quantityLabel.text = "\(currentQuantity)"
+        totalPriceLabel.text = "\(totalPrice)원"
     }
     
     func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
@@ -72,6 +103,7 @@ class DetailPageViewController: UIViewController {
         pointLabel.text = "\(dishDetail.point)원"
         deliveryInfoLabel.text = dishDetail.deliveryInfo
         deliveryFeeLabel.attributedText = attributedText(withString: "2,500원 (40,000원 이상 구매 시 무료)", boldString: "(40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
+        totalPriceLabel.text = "\(totalPrice)원"
     }
     
     private func updateThumbnailImages() {
