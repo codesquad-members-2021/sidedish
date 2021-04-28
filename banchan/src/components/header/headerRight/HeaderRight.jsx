@@ -2,19 +2,31 @@ import styled from "styled-components";
 import IconButton from "../../componentUtils/button/IconButton";
 import { CenterContainer } from "../../componentUtils/styles/common";
 
-const HeaderRight = (props) => {
+const HeaderRight = ({ loginState, setLoginState }) => {
   const tempFn = () => {
     console.log("hello");
   };
+
+  const onClickLogOut = () => {
+    //
+    localStorage.removeItem("token");
+    setLoginState(false);
+  };
+
   return (
     <HeaderRightDiv>
       <SearchBox>
         <input />
         <IconButton type="SEARCH" fn={tempFn} />
       </SearchBox>
-      <a href="https://github.com/login/oauth/authorize?client_id=a330856c90f83a69a3ea&redirect_uri=http://localhost:3000/callback">
-        <StyledSpan>로그인</StyledSpan>
-      </a>
+      {loginState ? (
+        <StyledSpan onClick={onClickLogOut}>로그아웃</StyledSpan>
+      ) : (
+        <a href="https://github.com/login/oauth/authorize?client_id=a330856c90f83a69a3ea&redirect_uri=http://localhost:3000/callback">
+          <StyledSpan>로그인</StyledSpan>
+        </a>
+      )}
+
       <StyledSpan>장바구니</StyledSpan>
     </HeaderRightDiv>
   );
