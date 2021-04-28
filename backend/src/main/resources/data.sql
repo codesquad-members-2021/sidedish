@@ -48,7 +48,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (29, 'http://public
 
 --HF778 3
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
-VALUES('HF778', 'http://public.codesquad.kr/jk/storeapp/data/cad8eee316cf7151e07638aa57b32a9d.jpg', '[소중한식사] 골뱅이무침 195g', '매콤새콤달콤, 반찬으로도 안주로도 좋은', 7000, 6300, NULL, 10);
+VALUES('HF778', 'http://public.codesquad.kr/jk/storeapp/data/cad8eee316cf7151e07638aa57b32a9d.jpg', '[소중한식사] 골뱅이무침 195g', '매콤새콤달콤, 반찬으로도 안주로도 좋은', 7000, 6300, 'main', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (2, '이벤트특가', 'HF778');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (3, 0, 'HF778');
 
@@ -290,8 +290,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (173, 'http://publi
 --H3254 6
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H3254', 'http://public.codesquad.kr/jk/storeapp/data/ae571e13d18fd4f0f40d685d2c8fe8f1.jpg', '[새로미부산어묵] 프리미엄 어묵탕세트', '밀가루 0% 프리미엄 어묵에 어묵스프까지 드려요!', 18000, 14400, 'soup', 10);
-INSERT INTO event(id, badge, dish_hash) VALUES (8, '론칭특가', 'H3254');
-INSERT INTO event(id, badge, dish_hash) VALUES (9, '이벤트특가', 'H3254');
+INSERT INTO event(id, badge, dish_hash) VALUES (8, '론칭특가, 이벤트특가', 'H3254');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (14, 1, 'H3254');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (174, 'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/4e96f386d5a5c4459bc0ac6ffd0c1fce.jpg','H3254', 1);
@@ -543,8 +542,7 @@ INSERT INTO delivery(id, is_monday, dish_hash) VALUES (27, 1, 'H7F20');
 --풍성한 고기반찬
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HA567', 'https://cdn.bmf.kr/_data/product/HA567/a5bbaa6bfb727030345f26ca9afe27c5.jpg', '[아내의쉐프] 아쉐찜닭', '아내의쉐프가 자신 있게 만들어서 이름도 ''아쉐찜닭''입니다!', 11900, 10700, NULL, 10);
-INSERT INTO event(id, badge, dish_hash) VALUES (16, '이벤트특가', 'HA567');
-INSERT INTO event(id, badge, dish_hash) VALUES (17, '론칭특가', 'HA567');
+INSERT INTO event(id, badge, dish_hash) VALUES (16, '이벤트특가, 론칭특가', 'HA567');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (28, 0, 'HA567');
 
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
