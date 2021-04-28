@@ -16,9 +16,13 @@ const Details = ({ ...props }) => {
     loadData(setDetailDish, props._dishType, props._hash);
   }, []);
 
+  const DetailWrapper = styled.div`
+    display: flex;
+
   useEffect(() => {
     setTopImage(detailDish.top_image);
   }, [detailDish.top_image]);
+
 
   const ImageWrapper = styled.div`
     display: flex;
@@ -43,13 +47,23 @@ const Details = ({ ...props }) => {
           _thumb_images={detailDish.thumb_images}
         />
       </ImageWrapper>
-      {/* <ContentWrapper>
-        <InfoGeneral></InfoGeneral>
-        <InfoPrice></InfoPrice>
-        <InfoProduct></InfoProduct>
+      <ContentWrapper>
+        <InfoProduct
+          title="미노리키친]규동 250g"
+          description={detailDish.product_description}
+          badge="['이벤트특가','론칭특가']"
+          _sPrice="5200"
+          _nPrice="6500"
+        ></InfoProduct>
+        <InfoGeneral
+          point={detailDish.point}
+          delivery_info={detailDish.delivery_info}
+          delivery_fee={detailDish.delivery_fee}
+        ></InfoGeneral>
         <InfoQuantity></InfoQuantity>
-      </ContentWrapper> */}
-    </>
+        <InfoPrice t_price="5200"></InfoPrice>
+      </ContentWrapper>
+    </DetailWrapper>
   );
 };
 
