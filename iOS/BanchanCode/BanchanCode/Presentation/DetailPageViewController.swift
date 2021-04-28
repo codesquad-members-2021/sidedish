@@ -8,7 +8,6 @@
 import UIKit
 
 class DetailPageViewController: UIViewController {
-    
     @IBOutlet weak var thumbnailImagesScrollView: UIScrollView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -20,67 +19,78 @@ class DetailPageViewController: UIViewController {
     @IBOutlet weak var orderButton: UIButton!
     var categoryName: String?
     var id: Int?
-    var dishDetail: DishDetail?
+    var viewModel: DishDetailsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = makeDishDetailsViewModel()
+        bind(to: viewModel)
+        
+        viewModel.load()
         
         self.thumbnailImagesScrollView.isPagingEnabled = true
         badgeBackgroundView.layer.masksToBounds = true
         badgeBackgroundView.layer.cornerRadius = 5.0
         orderButton.layer.masksToBounds = true
         orderButton.layer.cornerRadius = 5.0
-        
-        let baseURL = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code"
-        
-        guard let id = id else { return }
-        guard let categoryName = categoryName else { return }
-        NetworkManager().performRequestDishDetail(urlString: "\(baseURL)/\(categoryName)/\(id)") { (responseDTO) in
-            self.dishDetail = responseDTO.toDomain()
-            
-            DispatchQueue.main.async {
-                self.title = self.dishDetail?.name
-                self.nameLabel.text = self.dishDetail?.name
-                self.descriptionLabel.text = self.dishDetail?.description
-                guard let prices = self.dishDetail?.prices else { return }
-                self.lastPriceLabel.text = "\(prices[0])원"
+    }
+    
+    func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
+                                     completion: @escaping (FetchDishDetailsUseCase.ResultValue) -> Void) -> UseCase {
+        return FetchDishDetailsUseCase(requestValue: requestValue,
+                                       completion: completion)
+    }
+    
+    func makeDishDetailsViewModel() -> DishDetailsViewModel? {
+        guard let categoryName = categoryName else { return nil }
+        guard let id = id else { return nil }
+        return DefaultDishDetailsViewModel(fetchDishDetailsUseCaseFactory: makeFetchDishDetailsUseCase,
+                                           categoryName: categoryName,
+                                           id: id)
+    }
+    
+    private func bind(to viewModel: DishDetailsViewModel) {
+        viewModel.dishDetail.observe(on: self) { [weak self] _ in self?.updateView() }
+        viewModel.dishDetail.observe(on: self) { [weak self] _ in self?.updateThumbnailImages() }
+        viewModel.dishDetail.observe(on: self) { [weak self] _ in self?.updateDetailImages() }
+    }
+    
+    private func updateView() {
+        self.title = viewModel.dishDetail.value?.name
+        self.nameLabel.text = viewModel.dishDetail.value?.name
+        self.descriptionLabel.text = viewModel.dishDetail.value?.description
+        guard let prices = viewModel.dishDetail.value?.prices else { return }
+        self.lastPriceLabel.text = "\(prices[0])원"
+    }
+    
+    private func updateThumbnailImages() {
+        guard let thumbImageURLs = viewModel.dishDetail.value?.thumbImages else { return }
+        thumbImageURLs.enumerated().forEach { (index, imageURL) in
+            NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
+                let image = UIImage(data: imageData)
+                let imageView = UIImageView(image: image)
+                self.thumbnailImagesScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(thumbImageURLs.count),
+                                                                    height: self.view.frame.width)
+                imageView.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0,
+                                         width: self.view.frame.width, height: self.view.frame.width)
+                self.thumbnailImagesScrollView.addSubview(imageView)
             }
-            
-            //MARK: - thumbImages
-            var thumbImagesViews: [UIImageView] = []
-            self.dishDetail?.thumbImages.forEach { imageURL in
-                NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
-                    let image = UIImage(data: imageData)
-                    thumbImagesViews.append(UIImageView(image: image))
-                    
-                    DispatchQueue.main.async {
-                        self.thumbnailImagesScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(thumbImagesViews.count),
-                                                                            height: self.view.frame.width)
-                        
-                        (0..<thumbImagesViews.count).forEach { index in
-                            thumbImagesViews[index].frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0,
-                                                                   width: self.view.frame.width, height: self.view.frame.width)
-                            self.thumbnailImagesScrollView.addSubview(thumbImagesViews[index])
-                        }
-                    }
-                }
-            }
-            
-            //MARK: - detailImages
-            self.dishDetail?.detailImages.forEach { imageURL in
-                NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
-                    guard let image = UIImage(data: imageData) else { return }
-                    let ratio = image.size.height / image.size.width
-
-                    let imageView = UIImageView(image: image)
-                    imageView.contentMode = .scaleAspectFit
-
-                    DispatchQueue.main.async {
-                        self.detailImagesStackView.addArrangedSubview(imageView)
-                        imageView.translatesAutoresizingMaskIntoConstraints = false
-                        imageView.heightAnchor.constraint(equalToConstant: ratio * self.view.frame.width).isActive = true
-                    }
-                }
+        }
+    }
+    
+    private func updateDetailImages() {
+        viewModel.dishDetail.value?.detailImages.forEach { imageURL in
+            NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
+                guard let image = UIImage(data: imageData) else { return }
+                let ratio = image.size.height / image.size.width
+                
+                let imageView = UIImageView(image: image)
+                imageView.contentMode = .scaleAspectFit
+                self.detailImagesStackView.addArrangedSubview(imageView)
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                imageView.heightAnchor.constraint(equalToConstant: ratio * self.view.frame.width).isActive = true
+                
             }
         }
     }

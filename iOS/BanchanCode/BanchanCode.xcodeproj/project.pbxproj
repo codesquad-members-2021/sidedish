@@ -18,6 +18,7 @@
 		E49F173726390185006C2108 /* DishDetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F173626390185006C2108 /* DishDetailResponseDTO.swift */; };
 		E49F173D26393964006C2108 /* FetchDishDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F173C26393963006C2108 /* FetchDishDetailsUseCase.swift */; };
 		E4B254A12639544B00F522A6 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B254A02639544B00F522A6 /* UseCase.swift */; };
+		E4B254A526397CEF00F522A6 /* DishDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B254A426397CEF00F522A6 /* DishDetailsViewModel.swift */; };
 		E4D5D7F7263276120077DF97 /* DishesItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */; };
 		E4D5D8342632ECFF0077DF97 /* DishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */; };
 		E4D5D83C2632ED5C0077DF97 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D83B2632ED5C0077DF97 /* Observable.swift */; };
@@ -77,6 +78,7 @@
 		E49F173626390185006C2108 /* DishDetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailResponseDTO.swift; sourceTree = "<group>"; };
 		E49F173C26393963006C2108 /* FetchDishDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDishDetailsUseCase.swift; sourceTree = "<group>"; };
 		E4B254A02639544B00F522A6 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		E4B254A426397CEF00F522A6 /* DishDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailsViewModel.swift; sourceTree = "<group>"; };
 		E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesItemViewModel.swift; sourceTree = "<group>"; };
 		E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewModel.swift; sourceTree = "<group>"; };
 		E4D5D83B2632ED5C0077DF97 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */,
 				E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */,
 				E4E3BF672636A53A0041BA5B /* Categorizable.swift */,
+				E4B254A426397CEF00F522A6 /* DishDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				FA88E9E3262E7F50001C3E53 /* MainPageViewController.swift in Sources */,
 				FA74E4BE2638880A00F1CC7B /* RealmManager.swift in Sources */,
 				E463431E263155C00001D87A /* NetworkManager.swift in Sources */,
+				E4B254A526397CEF00F522A6 /* DishDetailsViewModel.swift in Sources */,
 				E4FC9C79262E9E5800BEAAE4 /* MainPageCollectionViewDelegate.swift in Sources */,
 				E4D5D8342632ECFF0077DF97 /* DishesViewModel.swift in Sources */,
 				E49F173726390185006C2108 /* DishDetailResponseDTO.swift in Sources */,
