@@ -92,16 +92,10 @@ function DetailPage({
 	item,
 	badges,
 }) {
+	const [topImg, setTopImg] = useState(detailData.topImage);
 	const [orderCount, setOrderCount] = useState(1);
-	const handleClick = () => {
-		setModalState(!modalMode);
-	};
-	let prev = 1;
-	const handleChange = (e) => {
-		console.log(e);
-		setOrderCount(+e.target.value);
-		console.log(orderCount);
-	};
+	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
+
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
@@ -110,10 +104,14 @@ function DetailPage({
 				<>
 					<RepresentativeBlock className="MODAL">
 						<ImageBlock>
-							<MainIMG image={detailData.topImage} size="L" />
+							<MainIMG image={topImg} size="L" />
 							<DetailBlock>
 								{detailData.thumbImages.map((el, idx) => (
-									<DetailIMG key={idx} image={el}></DetailIMG>
+									<DetailIMG
+										key={idx}
+										image={el}
+										onClick={() => setTopImg(el)}
+									></DetailIMG>
 								))}
 							</DetailBlock>
 						</ImageBlock>
@@ -141,17 +139,17 @@ function DetailPage({
 							<ItemDescDetails>수량</ItemDescDetails>
 							<input
 								type="number"
-								name="order"
+								value={orderCount}
 								placeholder="1"
 								min="1"
 								max={detailData.stock}
-								onChange={handleChange}
+								onChange={(e) => setOrderCount(e.target.value)}
 							></input>
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<DetailText>총 주문금액</DetailText>
-							<ItemPrice>{detailData.nPrice}</ItemPrice>
+							<ItemPrice nPrice={orderPrice * orderCount}></ItemPrice>
 							<OrderBtn
-								onClick={handleClick}
+								onClick={() => setModalState(!modalMode)}
 								disabled={!Boolean(detailData.stock)}
 							>
 								{detailData.stock ? '주문하기' : '상품 준비중'}

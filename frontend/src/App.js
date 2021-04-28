@@ -1,6 +1,6 @@
 import './App.css';
 import MainMenu from './components/mainmenu/MainMenu';
-import Category from './components/category/Category';
+import CategoryEntry from './components/category/CategoryEntry';
 import Header from './components/header/Header';
 import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
@@ -31,7 +31,7 @@ function App() {
 			<GlobalStyle />
 			<Header />
 			<MainMenu />
-			<Category />
+			<CategoryEntry />
 		</>
 	);
 }

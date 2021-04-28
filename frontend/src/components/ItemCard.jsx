@@ -77,7 +77,7 @@ function ItemCard({ data, size }) {
 	//커스텀 훅을 고쳐서 error 퇴치했습니다.
 	return (
 		<>
-			{modalMode && (
+			{modalMode && !loadingState && (
 				<DetailPage
 					{...{ loadingState, modalMode, setModalState }}
 					detailData={detailData.data}

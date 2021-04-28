@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CategoryList from './CategoryList';
+import CategoryRender from './CategoryRender';
 import { useState } from 'react';
 
 const CategoryBlock = styled.div`
@@ -28,21 +28,24 @@ const handleClick = (setToggle) => {
 };
 
 // 질문 훅의 위치는 어디에?
-function Category() {
+function CategoryEntry() {
 	const [toggle, setToggle] = useState(false);
-	const CategoryLists = toggle ? (
+	const category = toggle ? (
 		<>
-			<CategoryList title={'모두가 좋아하는 든든한 메인요리'} url={'main'} />{' '}
-			<CategoryList title={'정성이 담긴 뜨끈한 국물요리'} url={'soup'} />
-			<CategoryList title={'식탁을 풍성하게 하는 정갈한 밑반찬'} url={'side'} />
+			<CategoryRender title={'모두가 좋아하는 든든한 메인요리'} url={'man'} />{' '}
+			<CategoryRender title={'정성이 담긴 뜨끈한 국물요리'} url={'soup'} />
+			<CategoryRender
+				title={'식탁을 풍성하게 하는 정갈한 밑반찬'}
+				url={'side'}
+			/>
 		</>
 	) : (
-		<CategoryList title={'식탁을 풍성하게 하는 정갈한 밑반찬'} url={'main'} />
+		<CategoryRender title={'식탁을 풍성하게 하는 정갈한 밑반찬'} url={'main'} />
 	);
 	return (
 		<>
 			<CategoryBlock>
-				{CategoryLists}
+				{category}
 				<CategoryBtn onClick={() => handleClick(setToggle)}>
 					{toggle ? '카테고리 접기' : '모든 카테고리 보기'}
 				</CategoryBtn>
@@ -51,4 +54,4 @@ function Category() {
 	);
 }
 
-export default Category;
+export default CategoryEntry;

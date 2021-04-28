@@ -7,13 +7,12 @@ function useFetch(url) {
 	async function fetchUrl() {
 		if (!url || url === undefined) return;
 		try {
-			console.log(url);
 			const res = await axios.get(url);
 			setData(res.data);
 		} catch (error) {
 			if (error.response.status === 400) {
-				setData('400Error');
-				console.error('요청주소에 문제가 있어요 ㅠ.ㅠ', error.response.status);
+				setData(400);
+				console.error('요청주소에 문제가 있어요😯', error.response.status);
 			}
 		} finally {
 			setLoading(false);
