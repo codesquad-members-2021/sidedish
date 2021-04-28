@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol DishNetworkManageable {
-    func getDishes(path: String) -> AnyPublisher<[Dishes], NetworkError>
+    func getDishes(path: String, completion: @escaping (Result<Data, NetworkError>) -> Void) -> AnyPublisher<[Dishes], NetworkError>
 }
 
 class DishNetworkManager: DishNetworkManageable {
@@ -24,9 +24,11 @@ class DishNetworkManager: DishNetworkManageable {
         self.init(networkManager: networkManager)
     }
     
-    func getDishes(path: String) -> AnyPublisher<[Dishes], NetworkError> {
+    func getDishes(path: String, completion: @escaping (Result<Data, NetworkError>) -> Void) -> AnyPublisher<[Dishes], NetworkError> {
         let url = Endpoint.get(path: path).url
-
-        return networkManager.get(url: url)
+        
+        return networkManager.get(url: url) { data in
+            completion(data)
+        }
     }
 }

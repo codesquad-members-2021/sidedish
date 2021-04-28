@@ -8,72 +8,132 @@
 import Foundation
 import CoreData
 import UIKit
+import Combine
 
 class CoreDataMenuResponseStorage {
-    
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     private var context : NSManagedObjectContext! = nil
     private var entity : NSEntityDescription! = nil
-    private var entity2 : NSEntityDescription! = nil
     
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
-        do { let fetchResult = try self.context.fetch(request)
-            return fetchResult
-            
+    static let shared = CoreDataMenuResponseStorage()
+    
+    // MARK: - Core Data stack
+    lazy var persistentContainer: NSPersistentContainer = {
+  
+        let container = NSPersistentContainer(name: "CoreData")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+
+                assertionFailure("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // MARK: - Core Data Saving support
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                assertionFailure("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
-        catch { print(error.localizedDescription)
-            return [] } }
+    }
+    
+    private func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+        do {
+            let fetchResult = try self.context.fetch(request)
+            return fetchResult
+        }
+        catch {
+            assertionFailure(error.localizedDescription)
+            return []
+        }
+    }
 
     func save(_ items: [Dishes]) {
-        self.context = appDelegate.persistentContainer.viewContext
-        self.entity = NSEntityDescription.entity(forEntityName: "DishesEntity" , in: context)
-       // self.entity2 = NSEntityDescription.entity(forEntityName: "DishEntity", in: context)
-        
-//        if let entity2 = self.entity2 {
-//            let dish = NSManagedObject(entity: entity2, insertInto: self.context)
-//            
-//            
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//            dish.setValue("둠바", forKey: "title")
-//        }
-        
+        self.context = persistentContainer.viewContext
+        self.entity = NSEntityDescription.entity(forEntityName: DishesEntity.identifier , in: context)
+
         if let entity = self.entity {
            let dish = NSManagedObject(entity: entity, insertInto: self.context)
             
             dish.setValue(items[0].category, forKey: "category")
             dish.setValue(items[0].dishes, forKey: "dishes")
             dish.setValue(items[0].name, forKey: "name")
-            print("있어")
         }
         
         do {
             try context.save()
-            print("성공")
         } catch {
-            print(error.localizedDescription)
+            assertionFailure(error.localizedDescription)
         }
     }
     
-    func loadSaveDataInCoreData() {
+    func loadSaveDataInCoreData(category: String) -> AnyPublisher<[Dishes], CoreDataError>? {
+        self.context = persistentContainer.viewContext
+        var result: [Dishes] = []
+        var resultOut: Future<[Dishes], CoreDataError>?
+   
         do {
-            print(1)
-            self.context = appDelegate.persistentContainer.viewContext
-            print(2)
-            let contact = try context.fetch(DishesEntity.fetchRequest())
-            print(3)
-            contact.forEach { a in
-                let test = a as? [Dishes]
-                print("사단가")
-                print(test?.last!.name, "쑤이쑤이쑤이")
+           
+            let request: NSFetchRequest = DishesEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "category = %@", "\(category)")
+            let contact = try context.fetch(request)
+   
+            contact.forEach { dishesEntity in
+                guard let dishes = dishesEntity as? DishesEntity,
+                      let category = dishes.category,
+                      let name = dishes.name,
+                      let dishesArray = dishes.dishes else {
+                    return
+                }
+                result = [Dishes(category: category, name: name, dishes: dishesArray)]
+                resultOut = Future<[Dishes], CoreDataError> { promise in
+                    promise(.success(result))
+                }
             }
         } catch {
-            print(error.localizedDescription)
+            resultOut = Future<[Dishes], CoreDataError> { promise in
+                promise(.failure(.someError))
+                assertionFailure(error.localizedDescription)
+            }
+        }
+       
+        return resultOut?.eraseToAnyPublisher()
+    }
+    
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>){
+        let request: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
+        let delete = NSBatchDeleteRequest(fetchRequest: request)
+        
+        do {
+            try self.context.execute(delete)
+        }
+        catch {
+            assertionFailure(error.localizedDescription)
+        }
+    }
+    
+    func deleteCategory(_ category: String) {
+        self.context = persistentContainer.viewContext
+        let request: NSFetchRequest<NSFetchRequestResult> = DishesEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "category = %@", "\(category)")
+        let delete = NSBatchDeleteRequest(fetchRequest: request)
+        
+        do {
+            try self.context.execute(delete)
+        }
+        catch {
+            assertionFailure(error.localizedDescription)
         }
     }
 }
+
+enum CoreDataError: Error {
+    case someError
+}
+

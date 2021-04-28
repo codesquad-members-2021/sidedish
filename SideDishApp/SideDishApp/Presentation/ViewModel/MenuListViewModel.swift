@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class MenuListViewModel {
     private let menuListUseCase: MenuListUseCasePort
@@ -14,7 +15,7 @@ class MenuListViewModel {
     @Published var main: [Dishes] = []
     @Published var soup: [Dishes] = []
     @Published var side: [Dishes] = []
-    private let cache = CoreDataMenuResponseStorage()
+    private let cache = CoreDataMenuResponseStorage.shared
     
     init(menuListUseCase: MenuListUseCasePort) {
         self.menuListUseCase = menuListUseCase
@@ -29,21 +30,21 @@ class MenuListViewModel {
         menuListUseCase.showMenu(food: dish)
             .sink(receiveCompletion: { result in
                     switch result {
-                    case .finished: print("끝")
+                    case .finished:
+                        break
                     case .failure(.urlError):
-                         /*에러처리*/ print("url")
+                        assertionFailure("url")
                     case .failure(.networkConnection):
-                         /*에러처리*/ print("networkConnection")
+                        assertionFailure("networkConnection")
                     case .failure(.responseNil):
-                         /*에러처리*/ print("responseNil")
+                        assertionFailure("responseNil")
                     case .failure(.parsing):
-                         /*에러처리*/ print("parsing")
+                        assertionFailure("parsing")
                     case .failure(.unknown):
-                         /*에러처리*/ print("unknown")
+                        assertionFailure("unknown")
                     } },
                   
                   receiveValue: { data in
-                    print("성공")
                     switch dish {
                     case "main":
                         self.main = data
@@ -54,15 +55,15 @@ class MenuListViewModel {
                     default:
                         break
                     }
-                    self.cache.save(data)
-                    self.cache.loadSaveDataInCoreData()
+                   
                   })
             .store(in: &subscriptions)
     }
     
-    func requestDishes() {
+    func requestDishes(completion: () -> Void) {
         fetchDishes(dish: "main")
         fetchDishes(dish: "soup")
         fetchDishes(dish: "side")
+        completion()
     }
 }

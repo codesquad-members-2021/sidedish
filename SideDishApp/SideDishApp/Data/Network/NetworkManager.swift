@@ -9,18 +9,19 @@ import Foundation
 import Combine
 
 protocol NetworkManageable {
-    func get<T>(url: URL?) -> AnyPublisher<T, NetworkError> where T: Decodable
+    func get<T>(url: URL?, completion: @escaping (Result<Data, NetworkError>) -> Void) -> AnyPublisher<T, NetworkError> where T: Decodable
 }
 
 class NetworkManager: NetworkManageable {
     
+
     let session: URLSessionProtocol
     
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
-    func get<T>(url: URL?) -> AnyPublisher<T, NetworkError> where T: Decodable {
+    func get<T>(url: URL?, completion: @escaping (Result<Data, NetworkError>) -> Void) -> AnyPublisher<T, NetworkError> where T: Decodable {
         guard let myUrl = url else {
             return Fail(error: NetworkError.urlError).eraseToAnyPublisher()
         }
@@ -28,15 +29,20 @@ class NetworkManager: NetworkManageable {
         return session.dataTaskPublisher(for: myUrl)
             .mapError { _ in NetworkError.networkConnection }
             .flatMap { data, response -> AnyPublisher<T, NetworkError> in
+                
                 guard let httpResponse = response as? HTTPURLResponse else {
                     return Fail(error: NetworkError.responseNil).eraseToAnyPublisher()
                 }
+                
                 guard 200..<300 ~= httpResponse.statusCode else {
                     return Fail(error: NetworkError.unknown).eraseToAnyPublisher()
                 }
-                return Just(data)
+                
+                completion(.success(data))
+                let decodeData = Just(data)
                     .decode(type: T.self, decoder: JSONDecoder())
                     .mapError { _ in NetworkError.parsing }.eraseToAnyPublisher()
+                return decodeData
             }.eraseToAnyPublisher()
     }
 }

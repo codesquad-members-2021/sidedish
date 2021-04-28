@@ -38,7 +38,6 @@ public class Dish: NSObject, Codable, NSSecureCoding, NSCoding {
         self.badge = badge
     }
     
-    
     public func encode(with coder: NSCoder) {
         coder.encode(dishID, forKey: "dishId")
         coder.encode(title, forKey: "title")
@@ -62,30 +61,7 @@ public class Dish: NSObject, Codable, NSSecureCoding, NSCoding {
         sellingPrice = coder.decodeObject(of: NSString.self, forKey: "sellingPrice") as String? ?? ""
         badge = coder.decodeObject(of: NSString.self, forKey: "badge") as String? ?? ""
     }
-    
-//    public static func == (lhs: Dish, rhs: Dish) -> Bool {
-//        return lhs.dishID == rhs.dishID &&
-//            lhs.image == rhs.image &&
-//            lhs.alt == rhs.alt &&
-//            lhs.deliveryType == rhs.deliveryType &&
-//            lhs.title == rhs.title &&
-//            lhs.dishDescription == rhs.dishDescription &&
-//            lhs.normalPrice == rhs.normalPrice &&
-//            lhs.sellingPrice == rhs.sellingPrice &&
-//            lhs.badge == rhs.badge
-//    }
-    
-//    public func hash(into hasher: inout Hasher) {
-//        hasher.combine(dishID)
-//        hasher.combine(image)
-//        hasher.combine(alt)
-//        hasher.combine(deliveryType)
-//        hasher.combine(dishDescription)
-//        hasher.combine(normalPrice)
-//        hasher.combine(sellingPrice)
-//        hasher.combine(badge)
-//    }
-    
+
     private(set) var dishID: String
     private(set) var image: String
     private(set) var alt: String
