@@ -11,7 +11,7 @@ const BestTabStyle = styled.div`
   margin-bottom: 5rem;
 `;
 
-export default function BestTab({ onFetchDetailData }) {
+export default function BestTab() {
   const [active, setActive] = useState(0);
   const [bestItems, setBestItems] = useState(null);
 
@@ -37,7 +37,6 @@ export default function BestTab({ onFetchDetailData }) {
       />
       <BestTabContainer
         bestItem={bestItems[active]}
-        onFetchDetailData={onFetchDetailData}
       />
     </BestTabStyle>
   );
