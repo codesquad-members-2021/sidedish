@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDom from "react-dom";
-import styled from "styled-components";
-import Details from "../Details";
-import Icon from "../../atoms/Icon";
+import React from 'react';
+import ReactDom from 'react-dom';
+import styled from 'styled-components';
+import Details from '../Details';
+import Icon from '../../atoms/Icon';
 
 const OverlayStyle = styled.div`
   position: fixed;
@@ -36,7 +36,6 @@ const Modal = ({ open, onClose, ...props }) => {
     <>
       <OverlayStyle />
       <ModalStyles>
-        {props._hash}
         <Details _dishType="detailDish" _hash={props._hash} />
         <Icon
           onClose={onClose}
@@ -49,7 +48,7 @@ const Modal = ({ open, onClose, ...props }) => {
         />
       </ModalStyles>
     </>,
-    document.getElementById("detail")
+    document.getElementById('detail')
   );
 };
 

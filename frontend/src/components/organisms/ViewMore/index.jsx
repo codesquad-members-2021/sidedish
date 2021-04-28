@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import MainDish from "../MainDish";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import MainDish from '../MainDish';
 
 const Button = styled.button`
   width: 1440px;
@@ -19,7 +19,7 @@ const Span = styled.span`
   line-height: 26px;
 `;
 
-const ViewMore = () => {
+const ViewMore = props => {
   const [view, setView] = useState(false);
 
   const showOthers = () => {
@@ -29,8 +29,8 @@ const ViewMore = () => {
   const NewMenu = () => {
     return (
       <>
-        <MainDish _dishType="soupDish" />
-        <MainDish _dishType="sideDish" />
+        <MainDish _innerText={props._innerText.soupDish} _dishType="soupDish" />
+        <MainDish _innerText={props._innerText.sideDish} _dishType="sideDish" />
       </>
     );
   };

@@ -15,9 +15,13 @@ const TagBox = props => {
   if (props._badge) {
     return (
       <TagWrapper>
-        {props._badge.map(tag => {
+        {props._badge.map((tag, i) => {
           const tagName = tagType[tag];
-          return <Tag className={tagName}>{tag}</Tag>;
+          return (
+            <Tag key={i} className={tagName}>
+              {tag}
+            </Tag>
+          );
         })}
       </TagWrapper>
     );
