@@ -1,5 +1,5 @@
---main
---HBDEF 1
+-- main
+-- HBDEF 1
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HBDEF', 'http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg', '[미노리키친] 규동 250g', '일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 7000, 6500, 'main', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (1, '이벤트특가', 'HBDEF');
@@ -22,10 +22,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (13, 'http://public
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (14, 'http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/c0dd6887c9d9368604fc70d7fc3c4598.jpg','HBDEF', 0);
 
 
---HDF73 2
+-- HDF73 2
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HDF73', 'http://public.codesquad.kr/jk/storeapp/data/7674311a02ba7c88675f3186ddaeef9e.jpg', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '편식하는 아이도 좋아하는 건강한 연근조림', 5500, 'main', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (2, 0, 'HDF73');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (15, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/0f95f44ea8e2e7930321def493753a48.jpg','HDF73', 1);
@@ -46,7 +46,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (28, 'http://public
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (29, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d7799b67683128642453f9e2b4c8ce84.jpg','HDF73', 0);
 
 
---HF778 3
+-- HF778 3
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HF778', 'http://public.codesquad.kr/jk/storeapp/data/cad8eee316cf7151e07638aa57b32a9d.jpg', '[소중한식사] 골뱅이무침 195g', '매콤새콤달콤, 반찬으로도 안주로도 좋은', 7000, 6300, 'main', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (2, '이벤트특가', 'HF778');
@@ -69,10 +69,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (42, 'http://public
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (43, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d9e4fa00652483d74b46317d38159a2f.jpg','HF778', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (44, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d7799b67683128642453f9e2b4c8ce84.jpg','HF778', 0);
 
---HFB53 4
+-- HFB53 4
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HFB53', 'http://public.codesquad.kr/jk/storeapp/data/b6beada6b89af950289003d929936d9c.jpg', '[옹가솜씨] 꽁치간장조림 240g', '생강 향이 산뜻한', 5800, 'main', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (4, 1, 'HFB53');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (45, 'http://public.codesquad.kr/jk/storeapp/data/b6beada6b89af950289003d929936d9c.jpg','HFB53', 1);
@@ -95,7 +95,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (59, 'http://public
 
 
 
---H077F 5
+-- H077F 5
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H077F', 'http://public.codesquad.kr/jk/storeapp/data/0221110ead70dfd455e40703bbdd6252.jpg', '[마더앤찬] 코다리구이 320g', '큼지막하고 살집 많은 동태 한 마리로 만든 코다리구이입니다.', 7500, 6750, 'main', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (3, '론칭특가', 'H077F');
@@ -118,10 +118,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (72, 'http://public
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (73, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d9e4fa00652483d74b46317d38159a2f.jpg','H077F', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (74, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d7799b67683128642453f9e2b4c8ce84.jpg','H077F', 0);
 
---H4665 6
+-- H4665 6
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H4665', 'http://public.codesquad.kr/jk/storeapp/data/385f4106ac26f6e4fe7c640714f405a5.jpg', '[남도애꽃] 반건조 문어조림 120g', '씹을수록 감칠맛나는 문어살의 쫄깃함', 4600, 'main', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (6, 0, 'H4665');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (75, 'http://public.codesquad.kr/jk/storeapp/data/385f4106ac26f6e4fe7c640714f405a5.jpg', 'H4665', 1);
@@ -142,7 +142,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (88, 'http://public
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (89, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d7799b67683128642453f9e2b4c8ce84.jpg','H4665', 0);
 
 
---H1AA9 7
+-- H1AA9 7
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H1AA9', 'http://public.codesquad.kr/jk/storeapp/data/2455226945d52f5aefd51f35d663bb16.jpg', '[마샐미디쉬] 매콤마늘쫑 해산물볶음 180g', '탱글탱글한 새우와 오징어를 마늘쫑과 함께 매콤하게 볶아냈어요.', 6900, 6210, 'main', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (4, '론칭특가', 'H1AA9');
@@ -165,10 +165,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (102, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (103, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d9e4fa00652483d74b46317d38159a2f.jpg','H1AA9', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (104, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d7799b67683128642453f9e2b4c8ce84.jpg','H1AA9', 0);
 
---HEDFB 8
+-- HEDFB 8
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HEDFB', 'http://public.codesquad.kr/jk/storeapp/data/bc3b777115e8377a48c7bd762fe5fdc9.jpg', '[빅마마의밥친구] 비빔오징어 150g', '달콤한 신야초발효액이 포인트!', 5000, 'main', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (8, 0, 'HEDFB');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (105, 'http://public.codesquad.kr/jk/storeapp/data/2455226945d52f5aefd51f35d663bb16.jpg','HEDFB', 1);
@@ -189,8 +189,8 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (118, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (119, 'http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/d7799b67683128642453f9e2b4c8ce84.jpg','HEDFB', 0);
 
 
---soup
---H72C3 1
+-- soup
+-- H72C3 1
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H72C3', 'http://public.codesquad.kr/jk/storeapp/data/d1fccf125f0a78113d0e06cb888f2e74.jpg', '[수하동] 특곰탕 850g', '100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14200, 'soup', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (5, '이벤트특가', 'H72C3');
@@ -212,10 +212,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (131, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (132, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/e113889a6120357c8e6196802a9f155b.jpg','H72C3', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (133, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/967e8e1ef357e9722b796e2bcb09ba3d.jpg','H72C3', 0);
 
---HA6EE 2
+-- HA6EE 2
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HA6EE', 'http://public.codesquad.kr/jk/storeapp/data/c069bc32cb37727c59e1f0c2839311a0.jpg', '[빅마마의밥친구] 된장찌개 900g', '항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 'soup', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (10, 0, 'HA6EE');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (134, 'http://public.codesquad.kr/jk/storeapp/data/c069bc32cb37727c59e1f0c2839311a0.jpg','HA6EE', 1);
@@ -233,10 +233,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (144, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (145, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/f84dc16f4f6d97661bd13d587a72d6b1.jpg','HA6EE', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (146, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/fd3f49614f731a0610a5409c0deb3c60.jpg','HA6EE', 0);
 
---H8CD0 3
+-- H8CD0 3
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H8CD0', 'http://public.codesquad.kr/jk/storeapp/data/f31fc3f5828c27ff60e4cf89a862d31c.jpg', '[탐나는밥상] 동태탕 1000g', '칼칼한 국물이 속 풀기에 딱 좋은 동태탕', 14000, 'soup', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (11, 0, 'H8CD0');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (147, 'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/4e96f386d5a5c4459bc0ac6ffd0c1fce.jpg','H8CD0', 1);
@@ -251,7 +251,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (154, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (155, 'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/36a0566d2fb69a4bcea946727181836d.jpg','H8CD0', 0);
 
 
---HE2E9 4
+-- HE2E9 4
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HE2E9', 'http://public.codesquad.kr/jk/storeapp/data/6edbb16da52708e8533b85fbf743f882.jpg', '[국물닷컴] 치즈부대찌개 600g', '안주용 부대찌개와는 달라 밥말아먹기 딱 좋은', 5500, 4300, 'soup', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (6, '이벤트특가', 'HE2E9');
@@ -269,7 +269,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (163, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (164, 'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/36a0566d2fb69a4bcea946727181836d.jpg','HE2E9', 0);
 
 
---HAA47 5
+-- HAA47 5
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HAA47', 'http://public.codesquad.kr/jk/storeapp/data/892f3e7f043bfa7dbbcd58f88eecac36.jpg', '[집밥의완성] 스키야키 1.5kg (2~3인분)', '진한 풍미의 일본식 전골, 스키야키', 19800, 10000, 'soup', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (7, '이벤트특가', 'HAA47');
@@ -287,7 +287,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (172, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (173, 'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/36a0566d2fb69a4bcea946727181836d.jpg','HAA47', 0);
 
 
---H3254 6
+-- H3254 6
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H3254', 'http://public.codesquad.kr/jk/storeapp/data/ae571e13d18fd4f0f40d685d2c8fe8f1.jpg', '[새로미부산어묵] 프리미엄 어묵탕세트', '밀가루 0% 프리미엄 어묵에 어묵스프까지 드려요!', 18000, 14400, 'soup', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (8, '론칭특가, 이벤트특가', 'H3254');
@@ -305,7 +305,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (181, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (182, 'http://public.codesquad.kr/jk/storeapp/data/detail/HAA47/36a0566d2fb69a4bcea946727181836d.jpg','H3254', 0);
 
 
---H26C7 7
+-- H26C7 7
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H26C7', 'http://public.codesquad.kr/jk/storeapp/data/8fd330b5f5dbccbcbf4f5731e5e9e29b.jpg', '[모이세] 육개장 1팩(600g)', '제주3대해장국 맛집의 인기메뉴', 5900, 4400, 'soup', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (10, '론칭특가', 'H26C7');
@@ -326,7 +326,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (193, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (194, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/b0a70ff59a3b5360b6246b507693c4d4.jpg','H26C7', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (195, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/dc772923b4a2e053f1baf68fa28a48ee.jpg','H26C7', 0);
 
---HFFF9 8
+-- HFFF9 8
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HFFF9', 'http://public.codesquad.kr/jk/storeapp/data/2416b58044d49f0d3a24256f8e76163b.jpg', '[마더앤찬] 명란감자국  630ml', '간간한 저염명란과 고소한 감자가 조화로운 국이에요', 7000, 6300, 'soup', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (11, '론칭특가', 'HFFF9');
@@ -348,11 +348,11 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (207, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (208, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/dc772923b4a2e053f1baf68fa28a48ee.jpg','HFFF9', 0);
 
 
---side
---HBBCC 1
+-- side
+-- HBBCC 1
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HBBCC', 'http://public.codesquad.kr/jk/storeapp/data/fdb0d5fcfb86e332505785225a6d9ade.jpg', '[마샐미디쉬] 유자소스 연근무침 250g', '향긋한 유자향과 아삭한 연근', 6500, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (17, 1, 'HBBCC');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (209, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/2ad963a9f63d371826748c852a0025c3.jpg','HBBCC', 1);
@@ -371,10 +371,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (220, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (221, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/dc772923b4a2e053f1baf68fa28a48ee.jpg','HBBCC', 0);
 
 
---H1939 2
+-- H1939 2
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H1939', 'http://public.codesquad.kr/jk/storeapp/data/e5646e5fc09a01a9243979b229e0572b.jpg', '[동네부엌] 쇠고기야채장조림 200g', '부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 7400, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (18, 0, 'H1939');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (222, 'http://public.codesquad.kr/jk/storeapp/data/e5646e5fc09a01a9243979b229e0572b.jpg','H1939', 1);
@@ -392,10 +392,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (232, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (233, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/b0a70ff59a3b5360b6246b507693c4d4.jpg','H1939', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (234, 'http://public.codesquad.kr/jk/storeapp/data/detail/H26C7/dc772923b4a2e053f1baf68fa28a48ee.jpg','H1939', 0);
 
---H8EA5 3
+-- H8EA5 3
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H8EA5', 'http://public.codesquad.kr/jk/storeapp/data/4cfd1954861ebd18b5b53e558a8e902e.jpg', '[소중한식사] 도라지초무침 150g', '새콤달콤 입맛 돋우는"', 4000, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (19, 0, 'H8EA5');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (235, 'http://public.codesquad.kr/jk/storeapp/data/4cfd1954861ebd18b5b53e558a8e902e.jpg','H8EA5', 1);
@@ -413,10 +413,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (246, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (247, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/f84dc16f4f6d97661bd13d587a72d6b1.jpg','H8EA5', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (248, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/fd3f49614f731a0610a5409c0deb3c60.jpg','H8EA5', 0);
 
---H602F 4
+-- H602F 4
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H602F', 'http://public.codesquad.kr/jk/storeapp/data/422befe07f7e2860b9a83a8d7049ec2e.jpg', '[미노리키친] 일본식 우엉조림(킨피라고보) 80g', '한국식 우엉조림과는 다른 진한 감칠맛', 3300, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (20, 1, 'H602F');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (249, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/c8c8045696b4692107ef28c8b445ca42.jpg','H602F', 1);
@@ -434,10 +434,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (259, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (260, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/f84dc16f4f6d97661bd13d587a72d6b1.jpg','H602F', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (261, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/fd3f49614f731a0610a5409c0deb3c60.jpg','H602F', 0);
 
---H9F0B 5
+-- H9F0B 5
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H9F0B', 'http://public.codesquad.kr/jk/storeapp/data/d0b5d2be962947d9534e2140d1b34b2d.jpg', '[빅마마의밥친구] 갈치포무침 150g', '쉽게 접할수 없는 꼬순내가득 갈치포 무침', 7000, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (21, 0, 'H9F0B');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (262, 'http://public.codesquad.kr/jk/storeapp/data/d0b5d2be962947d9534e2140d1b34b2d.jpg','H9F0B', 1);
@@ -455,7 +455,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (271, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (272, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/f84dc16f4f6d97661bd13d587a72d6b1.jpg','H9F0B', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (273, 'http://public.codesquad.kr/jk/storeapp/data/detail/H602F/fd3f49614f731a0610a5409c0deb3c60.jpg','H9F0B', 0);
 
---H0FC6 6
+-- H0FC6 6
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H0FC6', 'http://public.codesquad.kr/jk/storeapp/data/f6817349118d4c671da8dca9065649a9.jpg', '[마더앤찬] 명란치즈계란말이 230g', '아이반찬으로 최고 계란말이', 4300, 3870, 'side', 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (12, '이벤트특가', 'H0FC6');
@@ -477,10 +477,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (285, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (286, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/e113889a6120357c8e6196802a9f155b.jpg','H0FC6', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (287, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/967e8e1ef357e9722b796e2bcb09ba3d.jpg','H0FC6', 0);
 
---HCCFE 7
+-- HCCFE 7
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HCCFE', 'http://public.codesquad.kr/jk/storeapp/data/757878b14ee5a8d5af905c154fc38f01.jpg', '[옹가솜씨] 달걀곤약조림 330g', '칼로리 부담 쭉쭉 내린', 5800, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (23, 1, 'HCCFE');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (288, 'http://public.codesquad.kr/jk/storeapp/data/757878b14ee5a8d5af905c154fc38f01.jpg','HCCFE', 1);
@@ -499,10 +499,10 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (299, 'http://publi
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (300, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/e113889a6120357c8e6196802a9f155b.jpg','HCCFE', 0);
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (301, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/967e8e1ef357e9722b796e2bcb09ba3d.jpg','HCCFE', 0);
 
---HB9C1 8
+-- HB9C1 8
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('HB9C1', 'http://public.codesquad.kr/jk/storeapp/data/043cf496f07899e7515f761e29d1ffa9.jpg', '[너의반찬] 미소된장 고추무침 200g', '고소한 양념 때문에 손이 자꾸 가요', 4500, 'side', 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (24, 0, 'HB9C1');
 
 INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (302, 'http://public.codesquad.kr/jk/storeapp/data/detail/H0FC6/43c38eeffa556554c9b06301eb3e85b2.jpg','HB9C1', 1);
@@ -523,7 +523,7 @@ INSERT INTO image(id, image_url, dish_hash, is_thumb) VALUES (315, 'http://publi
 
 
 
---할인특가 세트상품
+-- 할인특가 세트상품
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('H9881', 'https://cdn.bmf.kr/_data/product/H9881/910a01a81c49cb75414edb759237501f.jpg', '[소중한식사] 경상도 한상차림', '경상도 명물 요리 세 가지를 한 상에!', 39000, 31200, NULL, 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (13, '이벤트특가', 'H9881');
@@ -539,7 +539,7 @@ VALUES('H7F20', 'https://cdn.bmf.kr/_data/product/H7F20/dc164f934d614469d097ccd0
 INSERT INTO event(id, badge, dish_hash) VALUES (15, '이벤트특가', 'H7F20');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (27, 1, 'H7F20');
 
---풍성한 고기반찬
+-- 풍성한 고기반찬
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
 VALUES('HA567', 'https://cdn.bmf.kr/_data/product/HA567/a5bbaa6bfb727030345f26ca9afe27c5.jpg', '[아내의쉐프] 아쉐찜닭', '아내의쉐프가 자신 있게 만들어서 이름도 ''아쉐찜닭''입니다!', 11900, 10700, NULL, 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (16, '이벤트특가, 론칭특가', 'HA567');
@@ -555,7 +555,7 @@ VALUES('H75A2', 'https://cdn.bmf.kr/_data/product/H75A2/f0d1fade9f7d16e7e33211a2
 INSERT INTO event(id, badge, dish_hash) VALUES (19, '이벤트특가', 'H75A2');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (30, 1, 'H75A2');
 
---편리한 반찬세트
+-- 편리한 반찬세트
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('E055F', 'https://cdn.bmf.kr/_data/product/201410/13/b8b0a0aba3386f030155b6cb0c1c75fa.jpg', '[동네부엌] 사계절 건강식단 작은상', '마포엄마들이 사랑해온 건강반찬', 24000, NULL, 10);
 INSERT INTO event(id, badge, dish_hash) VALUES (20, '베스트', 'E055F');
@@ -571,10 +571,10 @@ VALUES('H762E', 'https://cdn.bmf.kr/_data/product/H762E/03cfe3d522df7451ca09ff1e
 INSERT INTO event(id, badge, dish_hash) VALUES (22, '이벤트특가', 'H762E');
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (33, 1, 'H762E');
 
---간편한 덮밥요리
+-- 간편한 덮밥요리
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H05FB', 'https://cdn.bmf.kr/_data/product/H05FB/6ff744c6f36ba437a4f8b9e9a000b0b1.jpg', '[옹가솜씨] 소고기쩜짜장 280g', '짜장의 착한 변신', 7200, NULL, 10);
---event x
+-- event x
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (34, 1, 'H05FB');
 
 INSERT INTO dish(hash, top_image, title, description, normal_price, special_price, section_name, stock)
@@ -587,7 +587,7 @@ INSERT INTO delivery(id, is_monday, dish_hash) VALUES (35, 1, 'H0699');
 -- INSERT INTO event(id, badge, dish_hash) VALUES (24, '이벤트특가', 'HBDEF');
 -- INSERT INTO delivery(id, is_monday, dish_hash) VALUES (36, 1, 'HBDEF');
 
---우리아이 영양반찬
+-- 우리아이 영양반찬
 INSERT INTO dish(hash, top_image, title, description, special_price, section_name, stock)
 VALUES('H82A2', 'https://cdn.bmf.kr/_data/product/H82A2/a43eaf448c21906cd1300735fa9dd7a1.jpg', '[빅마마의밥친구] 입맛감각 살려주는 유부토마토조림 200g', '아이반찬과 다이어트 반찬으로 일석이조!', 4900, NULL, 10);
 INSERT INTO delivery(id, is_monday, dish_hash) VALUES (37, 0, 'H82A2');
@@ -607,25 +607,23 @@ INSERT INTO best(category_id, name) VALUES (17010200, '편리한 반찬세트');
 INSERT INTO best(category_id, name) VALUES (17010300, '간편한 덮밥요리');
 INSERT INTO best(category_id, name) VALUES (17011400, '우리아이 영양반찬');
 
---할인특가 세트상품
+-- 할인특가 세트상품
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H9881', 17011200);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('HDF4C', 17011200);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H7F20', 17011200);
---풍성한 고기반찬
+-- 풍성한 고기반찬
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('HA567', 17011000);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H206E', 17011000);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H75A2', 17011000);
---편리한 반찬세트
+-- 편리한 반찬세트
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('E055F', 17010200);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('FDAEB', 17010200);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H762E', 17010200);
---간편한 덮밥요리
+-- 간편한 덮밥요리
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H05FB', 17010300);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H0699', 17010300);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('HBDEF', 17010300);
---우리아이 영양반찬
+-- 우리아이 영양반찬
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H82A2', 17011400);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H213E', 17011400);
 INSERT INTO best_dishes(dish_hash, best_category_id) VALUES ('H7A16', 17011400);
-
----
