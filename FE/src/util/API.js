@@ -7,10 +7,10 @@ const API = {
       return response.json();
     },
     detail: ({ hash }) => {
-      return customFetch(`${END_POINT}/detail/${hash}`);
+      return customFetch(`/develop/baminchan/detail/${hash}`);
     },
     best: () => {
-      return customFetch(`${END_POINT}/best`);
+      return customFetch(`/develop/baminchan/best`);
     }
   },
   post: {}

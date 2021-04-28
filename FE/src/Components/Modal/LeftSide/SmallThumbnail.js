@@ -7,7 +7,7 @@ const SmallThumbnail = ({ imgSources, handleChangeImageSource }) => {
     <SmallThumbnailWrapper >
       {imgSources && imgSources.map((img, idx) => {
         return (
-          <label key={idx}>
+          <label key={`smallThumbnail-${idx}`}>
             <RadioButton
               type="radio"
               name="small-thumbnail"
