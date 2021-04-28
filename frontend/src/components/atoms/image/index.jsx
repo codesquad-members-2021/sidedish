@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledImage = styled.img`
-  width: ${(props) => props._width};
+  width: ${props => props._width};
+  margin: ${props => props._margin};
   border-radius: 5px;
   display: relative;
 `;
