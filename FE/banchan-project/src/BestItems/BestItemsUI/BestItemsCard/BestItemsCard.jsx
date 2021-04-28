@@ -7,8 +7,7 @@ import BestItemsCardDescription from "./BestItemsCardDescription";
 import BestItemsCardNPrice from "./BestItemsCardNPrice";
 import BestItemsCardSPrice from "./BestItemsCardSPrice";
 
-const BestItemsCard = ({ item }) => {
-  if (!item) return null;
+const BestItemsCard = ({ item, handleClickCard }) => {
   const {
     id,
     image,
@@ -18,6 +17,7 @@ const BestItemsCard = ({ item }) => {
     n_price,
     badge,
     delivery_type,
+    detail_url,
   } = item;
 
   return (
@@ -25,6 +25,8 @@ const BestItemsCard = ({ item }) => {
       <BestItemsCardImage
         image={image}
         delivery={delivery_type}
+        detailURL={detail_url}
+        handleClickCard={handleClickCard}
       ></BestItemsCardImage>
       <BestItemsCardTitle {...{ title }}></BestItemsCardTitle>
 

@@ -6,7 +6,7 @@ import BestItemsCardWrapper from "./BestItemsUI/BestItemsCardWrapper";
 
 const URL = "/dish/best";
 
-const BestItems = () => {
+const BestItems = ({ handleClickCard }) => {
   const [titleList, setTitleList] = useState([]);
   const [bestItemsData, setBestItemsData] = useState({});
 
@@ -42,7 +42,9 @@ const BestItems = () => {
     <S.BestItems>
       <BestItemsTitle />
       <BestItemsTab {...{ titleList, setBestItemsData }}></BestItemsTab>
-      <BestItemsCardWrapper {...{ bestItemsData }}></BestItemsCardWrapper>
+      <BestItemsCardWrapper
+        {...{ bestItemsData, handleClickCard }}
+      ></BestItemsCardWrapper>
     </S.BestItems>
   );
 };

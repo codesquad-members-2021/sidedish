@@ -11,14 +11,14 @@ const App = () => {
   const [detailUrl, setDetailUrl] = useState(null);
   const [modalFlag, setModalFlag] = useState(false);
 
-  const handleClickCard = async (detail_url) => {
-    setDetailUrl(detail_url)
+  const handleClickCard = async detail_url => {
+    setDetailUrl(detail_url);
     await handleModalFlag();
-    setModalFlag(true)
-  }
+    setModalFlag(true);
+  };
 
   const handleModalFlag = () => {
-    modalFlag === true ? setModalFlag(false) : setModalFlag(true)
+    modalFlag === true ? setModalFlag(false) : setModalFlag(true);
   };
 
   return (
@@ -26,9 +26,14 @@ const App = () => {
       <div className="container">
         <GlobalStyles />
         <Header />
-        <BestItems />
+        <BestItems handleClickCard={handleClickCard} />
         <MainItems handleClickCard={handleClickCard} />
-        <DetailModal detailUrl={detailUrl} modalFlag={modalFlag} handleModalFlag={handleModalFlag} handleClickCard={handleClickCard} />
+        <DetailModal
+          detailUrl={detailUrl}
+          modalFlag={modalFlag}
+          handleModalFlag={handleModalFlag}
+          handleClickCard={handleClickCard}
+        />
         <Slider>
           <MainItemsCard />
         </Slider>
