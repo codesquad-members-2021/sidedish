@@ -10,7 +10,7 @@ public interface BestRepository extends CrudRepository<Best, Long> {
     @Override
     List<Best> findAll();
 
-    @Query("select dish_hash from dish_best where category_id = :categoryId")
+    @Query("select dish_hash from best_dishes where best_category_id = :categoryId")
     List<String> findByCategoryId(Long categoryId);
 
 }
