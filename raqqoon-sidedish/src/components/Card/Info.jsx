@@ -1,11 +1,16 @@
-import { DETAIL, SIZE_SMALL } from 'const';
+import { DETAIL } from 'const';
 import styled, { css } from 'styled-components';
+import getInfoBoxStyle from 'util/getInfoBoxStyle';
 
 const Name = ({ name, type }) => {
   return <NameDiv type={type}>{name}</NameDiv>;
 };
-const Body = ({ body, type }) => {
-  return <BodyDiv type={type}>{body}</BodyDiv>;
+const Body = ({ body, type, cardSize }) => {
+  return (
+    <BodyDiv type={type} cardSize={cardSize}>
+      {body}
+    </BodyDiv>
+  );
 };
 
 const Info = ({ name, body, type, cardSize }) => {
@@ -49,7 +54,8 @@ const BodyDiv = styled.div`
       color: #828282;
       margin: 24px 0;
     `}
-  /* white-space: nowrap; */
+
+  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
@@ -62,9 +68,9 @@ const InfoBoxDiv = styled.div`
       margin: 0;
     `};
   ${({ cardSize }) =>
-    cardSize === SIZE_SMALL &&
+    cardSize &&
     css`
-      width: 160px;
+      width: ${getInfoBoxStyle(cardSize)};
       margin: 0;
     `}
 `;
