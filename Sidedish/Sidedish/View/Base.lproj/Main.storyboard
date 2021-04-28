@@ -47,7 +47,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="r8r-vV-M3w">
-                                                    <rect key="frame" x="154" y="24.5" width="244" height="81.5"/>
+                                                    <rect key="frame" x="154" y="12" width="244" height="106.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[미노리키친]" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af7-tu-DHV">
                                                             <rect key="frame" x="0.0" y="0.0" width="82.5" height="19.5"/>
@@ -79,9 +79,9 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="jH7-bW-ipp">
-                                                            <rect key="frame" x="0.0" y="81.5" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="81.5" width="140" height="25"/>
                                                             <subviews>
-                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4k-P9-8lq" customClass="BadgeLabel" customModule="Sidedish" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4k-P9-8lq" customClass="BadgeLabel" customModule="Sidedish" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="25"/>
                                                                     <color key="backgroundColor" red="0.50980392156862742" green="0.82745098039215681" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
@@ -92,8 +92,8 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="론칭특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4c-iW-7Pe" customClass="BadgeLabel" customModule="Sidedish" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="61" height="25"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="론칭특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4c-iW-7Pe" customClass="BadgeLabel" customModule="Sidedish" customModuleProvider="target">
+                                                                    <rect key="frame" x="79" y="0.0" width="61" height="25"/>
                                                                     <color key="backgroundColor" red="0.52549019607843139" green="0.77647058823529413" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="61" id="9XO-oE-W5Q"/>

@@ -10,13 +10,15 @@ import Foundation
 class DetailViewModel: ObservableObject {
     var sidedishProcessing: SidedishProcessable
     var currentDetail: DetailItem
+    var currentItemTitle: String
     var imageFetchHandler: (() -> ())?
     var detailImageFetchHandler: (() -> ())?
     var errorHandler: ((String) -> ())?
     
-    init(sidedishProcessable: SidedishProcessable) {
+    init(sidedishProcessable: SidedishProcessable, title: String) {
         self.sidedishProcessing = sidedishProcessable
         self.currentDetail = DetailItem()
+        self.currentItemTitle = title
     }
         
     func fetchDetail(hash: String) {

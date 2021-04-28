@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var thumbnailContentViewWidth: NSLayoutConstraint!
     @IBOutlet weak var informationStackView: UIStackView!
     
+    
     var detailViewModel: DetailViewModel!
 
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ class DetailViewController: UIViewController {
     }
     
     private func setTitle() {
-        self.title = self.detailViewModel.currentDetail.productDescription
+        self.title = self.detailViewModel.currentItemTitle
     }
     
     private func clearImage() {
@@ -55,7 +56,7 @@ class DetailViewController: UIViewController {
     
     private func setInformationView() {
         if let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as? CustomView {
-            view.configure(item: detailViewModel.currentDetail)
+            view.configure(productName: self.detailViewModel.currentItemTitle, item: detailViewModel.currentDetail)
             view.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
             view.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
             self.informationStackView.insertArrangedSubview(view, at: 0)
