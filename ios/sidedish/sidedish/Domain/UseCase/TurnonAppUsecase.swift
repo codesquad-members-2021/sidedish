@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 protocol ManufactureDataforViewModel {
     
@@ -20,33 +19,27 @@ protocol ManufactureDataforViewModel {
 
 class TurnonAppUsecase: ManufactureDataforViewModel {
 
-    private let repoprotocol: DishRepository
-    private let networkmanager: AFNetworkManagable
+    private let repository: DishRepository
     
-    init(networkmanager: AFNetworkManagable) {
-        self.repoprotocol = DishRepository()
-        self.networkmanager = networkmanager
-        //self.repoprotocol.getCategories()
-//        self.repoprotocol.getMainDishes()
-        self.repoprotocol.deleteAllInCoreData()
-        //self.repoprotocol.helloLollo()
-//        self.repoprotocol.밥먹어요롤로()
+    init(repository: DishRepository) {
+        self.repository = repository
+        self.repository.deleteAllInCoreData()
     }
     
     convenience init(baseUrl: String = "http://3.37.26.82:8080"){
-        let networkmanager = NetworkManager(baseAddress: baseUrl)
-        self.init(networkmanager : networkmanager)
+        let repository = DishRepository(with: baseUrl)
+        self.init(repository: repository)
     }
     
     func manufactureForMainViewCategory(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ()) {
-        return repoprotocol.getCategories { (publisher) in
+        return repository.getCategories { (publisher) in
             completionHandler(publisher)
         }
     }
     
     func manufactureForMainViewSideDishes(endPoint: String,
                                           completionHandler: @escaping (Just<[SideDishManageable]>) -> ()) {
-        return repoprotocol.getSideDishes(endPoint: endPoint) { (publisher) in
+        return repository.getSideDishes(endPoint: endPoint) { (publisher) in
             completionHandler(publisher)
         }
     }

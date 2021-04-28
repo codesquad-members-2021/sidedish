@@ -6,7 +6,7 @@
         <attribute name="id" attributeType="String"/>
         <attribute name="image" attributeType="String"/>
         <attribute name="price" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="saleprice" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="salePrice" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="subtitle" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
     </entity>

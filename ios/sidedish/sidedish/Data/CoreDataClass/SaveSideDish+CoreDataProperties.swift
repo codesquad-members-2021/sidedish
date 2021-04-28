@@ -13,7 +13,7 @@ import CoreData
 extension SaveSideDish: SideDishManageable {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SaveSideDish> {
-        return NSFetchRequest<SaveSideDish>(entityName: "SaveSideDish")
+        return NSFetchRequest<SaveSideDish>(entityName: Properties.entity)
     }
 
     @NSManaged public var badges: [String]?
@@ -21,19 +21,20 @@ extension SaveSideDish: SideDishManageable {
     @NSManaged public var id: String
     @NSManaged public var image: String
     @NSManaged public var price: Int16
-    @NSManaged public var saleprice: Int16
+    @NSManaged public var salePrice: Int16
     @NSManaged public var subtitle: String
     @NSManaged public var title: String
     
-    enum CodingKeys: String, CodingKey {
-        case id = "detailHash"
-        case image
-        case title
-        case subtitle = "description"
-        case price
-        case salePrice
-        case deliveryTypes
-        case badges
+    enum Properties {
+        static let entity = "SaveSideDish"
+        static let id = "id"
+        static let image = "image"
+        static let title = "title"
+        static let subtitle = "subtitle"
+        static let price = "price"
+        static let salePrice = "salePrice"
+        static let deliveryTypes = "deliveryTypes"
+        static let badges = "badges"
     }
     
     func getTitle() -> String {
@@ -53,7 +54,7 @@ extension SaveSideDish: SideDishManageable {
     }
     
     func getSalePrice() -> Int {
-        return Int(self.saleprice)
+        return Int(self.salePrice)
     }
     
     func getDeliveryTypes() -> [String]? {

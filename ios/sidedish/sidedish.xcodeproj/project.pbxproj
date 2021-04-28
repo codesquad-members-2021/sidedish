@@ -59,10 +59,10 @@
 		82A971D62632478E005E419A /* CustomHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderFooter.swift; sourceTree = "<group>"; };
 		82A971DA263252A1005E419A /* SideDishesManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishesManageable.swift; sourceTree = "<group>"; };
 		82A971E026326CFB005E419A /* SideDishesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishesCategory.swift; sourceTree = "<group>"; };
-		82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDish+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDish+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDishes+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SaveSideDishes+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SaveSideDish+CoreDataClass.swift"; path = "sidedish/Data/CoreDataClass/SaveSideDish+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SaveSideDish+CoreDataProperties.swift"; path = "sidedish/Data/CoreDataClass/SaveSideDish+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SaveSideDishes+CoreDataClass.swift"; path = "sidedish/Data/CoreDataClass/SaveSideDishes+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SaveSideDishes+CoreDataProperties.swift"; path = "sidedish/Data/CoreDataClass/SaveSideDishes+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		82BBBBB52630067B008F89CB /* SideDishFindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishFindable.swift; sourceTree = "<group>"; };
 		82BBBBB62630067B008F89CB /* SideDishesCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideDishesCollection.swift; sourceTree = "<group>"; };
 		82FDB9C3262DCFD8009E3EB7 /* sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,10 +115,7 @@
 		829BF3F726353BC9003CE411 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */,
-				82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */,
-				82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */,
-				82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */,
+				E47222672639310800ED0E56 /* CoreDataClass */,
 				829BF3F826353BF1003CE411 /* DishRepository.swift */,
 				829BF3FC26353DBB003CE411 /* SideDish.xcdatamodeld */,
 				82680CC426354BC400009775 /* CoreDataStorage.swift */,
@@ -290,6 +287,17 @@
 				E4896DFE26353AB000AA4DD7 /* NetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E47222672639310800ED0E56 /* CoreDataClass */ = {
+			isa = PBXGroup;
+			children = (
+				82B8C9D12637A563008F1E32 /* SaveSideDish+CoreDataClass.swift */,
+				82B8C9D22637A563008F1E32 /* SaveSideDish+CoreDataProperties.swift */,
+				82B8C9D32637A563008F1E32 /* SaveSideDishes+CoreDataClass.swift */,
+				82B8C9D42637A563008F1E32 /* SaveSideDishes+CoreDataProperties.swift */,
+			);
+			path = CoreDataClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

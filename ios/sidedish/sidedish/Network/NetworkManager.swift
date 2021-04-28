@@ -13,7 +13,7 @@ class NetworkManager: AFNetworkManagable {
     
     private let requestManager: AFRequestManagable
     
-    init(baseAddress: String) {
+    init(with baseAddress: String) {
         self.requestManager = RequestManager(baseAddress: baseAddress)
     }
     
