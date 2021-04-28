@@ -65,6 +65,9 @@ const Icon = props => {
         if (props.moveSlide && (props._type === 'LeftIcon' || 'RightIcon')) {
           props.moveSlide(props._type);
         }
+        if (props.onClose && props._type === 'CloseIcon') {
+          props.onClose();
+        }
       }}
     >
       <IconSvg />

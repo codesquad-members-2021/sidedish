@@ -7,13 +7,17 @@ import InfoQuantity from '../molecules/InfoQuantity';
 
 const Details = () => {
   return (
-    <div>
-      <InfoImages></InfoImages>
-      <InfoGeneral></InfoGeneral>
-      <InfoPrice></InfoPrice>
-      <InfoProduct></InfoProduct>
-      <InfoQuantity></InfoQuantity>
-    </div>
+    <>
+      <div>
+        <InfoImages></InfoImages>
+      </div>
+      <div>
+        <InfoGeneral></InfoGeneral>
+        <InfoPrice></InfoPrice>
+        <InfoProduct></InfoProduct>
+        <InfoQuantity></InfoQuantity>
+      </div>
+    </>
   );
 };
 
