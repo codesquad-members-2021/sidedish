@@ -15,17 +15,19 @@ class ViewController: UIViewController {
     
     private let menuListViewModel = MenuListViewModel()
     private var subscriptions = Set<AnyCancellable>()
-    var loadingView = LoadingView()
+    private var loadingView = LoadingView()
     var dataSource : UICollectionViewDiffableDataSource<Dishes,Dish>!
-    
+    let dishCollectionViewDelegate = DishCollectionViewDelegate()
     var snapshot = NSDiffableDataSourceSnapshot<Dishes,Dish>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setLoadingView()
+        dishCollectionView.delegate = dishCollectionViewDelegate
+        dataSource = DiffableProvider().configureDataSource(collectionView: dishCollectionView)
         bind()
         menuListViewModel.requestDishes()
-        dataSource = DiffableProvider().configureDataSource(collectionView: dishCollectionView)
     }
     
     func setLoadingView() {
@@ -35,22 +37,25 @@ class ViewController: UIViewController {
         self.view.addSubview(loadingView)
     }
     
+    private func addDataToSnapshot (dishes: [Dishes]) {
+        let dishesArray = dishes as Array<Dishes>
+        
+        guard let dishes = dishesArray.first else {
+            return
+        }
+        self.snapshot.appendSections(dishesArray)
+        self.snapshot.appendItems(dishes.dishes, toSection: dishes)
+        self.dataSource.apply(self.snapshot)
+    }
+    
     func bind() {
         menuListViewModel.$main
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in
                 //error
             }, receiveValue: { mainDishes in
-                
-                let mainDishesArray = mainDishes as Array<Dishes>
-                
-                guard let mainDishes = mainDishesArray.first else {
-                    return
-                }
-                self.snapshot.appendSections(mainDishesArray)
-                self.snapshot.appendItems(mainDishes.dishes, toSection: mainDishes)
-                self.dataSource.apply(self.snapshot)
                 self.loadingView.removeFromSuperview()
+                self.addDataToSnapshot(dishes: mainDishes)
             })
             .store(in: &subscriptions)
         
@@ -59,15 +64,7 @@ class ViewController: UIViewController {
             .sink(receiveCompletion: { _ in
                 //error
             }, receiveValue: { soupDishes in
-                let soupDishesArray = soupDishes as Array<Dishes>
-                
-                guard let soupDishes = soupDishesArray.first else {
-                    return
-                }
-                self.snapshot.appendSections(soupDishesArray)
-                self.snapshot.appendItems(soupDishes.dishes, toSection: soupDishes)
-                self.dataSource.apply(self.snapshot)
-                self.loadingView.removeFromSuperview()
+                self.addDataToSnapshot(dishes: soupDishes)
             })
             .store(in: &subscriptions)
         
@@ -76,19 +73,9 @@ class ViewController: UIViewController {
             .sink(receiveCompletion: { _ in
                 //error
             }, receiveValue: { sideDishes in
-                let sideDishesArray = sideDishes as Array<Dishes>
-                
-                guard let sideDishes = sideDishesArray.first else {
-                    return
-                }
-                self.snapshot.appendSections(sideDishesArray)
-                self.snapshot.appendItems(sideDishes.dishes, toSection: sideDishes)
-                self.dataSource.apply(self.snapshot)
-                self.loadingView.removeFromSuperview()
+                self.addDataToSnapshot(dishes: sideDishes)
             })
             .store(in: &subscriptions)
     }
     
-    
 }
-

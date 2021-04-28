@@ -10,7 +10,9 @@ import Toast_Swift
 
 class DiffableProvider  {
     
-    private let colorDictionary = ["이벤트특가" : UIColor.systemGreen, "론칭특가" : UIColor.systemBlue]
+    private var toasterCloser = Dictionary<Int, () -> Void>()
+    
+    private let colorDictionary = ["이벤트특가" : UIColor.init(displayP3Red: 130/255, green: 211/255, blue: 45/255, alpha: 1), "론칭특가" : UIColor.init(displayP3Red: 134/255, green: 198/255, blue: 255/255, alpha: 1)]
     
     func configureDataSource(collectionView : UICollectionView) -> UICollectionViewDiffableDataSource<Dishes,Dish> {
         let dataSource = UICollectionViewDiffableDataSource<Dishes,Dish> (collectionView: collectionView, cellProvider: { collectionView, indexPath, dishData in
@@ -31,34 +33,36 @@ class DiffableProvider  {
     }
     
     private func configureCell(collectionView: UICollectionView, indexPath: IndexPath, dishData: Dish) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCardCell.reuseIdentifier, for: indexPath) as? DishCardCell else {
-            return UICollectionViewCell()
-        }
-        for subview in cell.eventStackView.arrangedSubviews{
-            cell.eventStackView.removeArrangedSubview(subview)
-        }
-        
-        DispatchQueue.main.async {
-            cell.dishImage.image = self.createImage(url: dishData.image)
-        }
-        
-        cell.title.text = "\(dishData.title)"
-        cell.body.text = "\(dishData.dishDescription)"
-        
-        let badgeArray = dishData.badge.components(separatedBy: ",")
-        
-        for badgeText in badgeArray {
-            let label = self.createEventLabel(text: badgeText)
-            cell.eventStackView.addArrangedSubview(label)
-        }
-        
-        if dishData.sellingPrice != "" {
-            cell.charge.attributedText = (dishData.normalPrice + " " + dishData.sellingPrice).addStroke(target: dishData.normalPrice)
-        } else {
-            cell.charge.text = dishData.normalPrice
-        }
+
+        let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration(), for: indexPath, item: dishData)
         
         return cell
+    }
+    
+    func cellRegistration() -> UICollectionView.CellRegistration<DishCell, Dish> {
+        let cellRegistration = UICollectionView.CellRegistration<DishCell,Dish>.init(cellNib: UINib.init(nibName: DishCell.reuseIdentifier, bundle: nil), handler: { cell, indexPath, dishData in
+            
+            DispatchQueue.main.async {
+                cell.dishImage.layer.cornerRadius = 15
+                cell.dishImage.image = self.createImage(url: dishData.image)
+            }
+            DispatchQueue.main.async {
+                cell.title.text = "\(dishData.title)"
+                cell.body.text = "\(dishData.dishDescription)"
+                
+                cell.charge.attributedText = self.convertCharge(normal: dishData.normalPrice, selling: dishData.sellingPrice)
+                
+                self.removeResidualBadges(stackView: cell.eventStackView)
+                if let badgeArray = self.createBadges(badgeString: dishData.badge) {
+                    for badge in badgeArray {
+                        cell.eventStackView.addArrangedSubview(badge)
+                    }
+                }
+            }
+            
+        })
+        
+        return cellRegistration
     }
     
     private func configureHeader(dataSource: UICollectionViewDiffableDataSource<Dishes,Dish>) -> UICollectionView.SupplementaryRegistration
@@ -67,26 +71,57 @@ class DiffableProvider  {
         <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) {
             [unowned self] (headerView, elementKind, indexPath) in
             
-            // Obtain header item using index path
             let headerItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
-            // Configure header view content based on headerItem
             var configuration = headerView.defaultContentConfiguration()
             configuration.text = headerItem.name
             
-            // Customize header appearance to make it more eye-catching
-            configuration.textProperties.font = .boldSystemFont(ofSize: 20)
+            configuration.textProperties.font = .boldSystemFont(ofSize: 22)
             configuration.textProperties.color = .black
             
-            
-            let tap = CustomTapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)), dishCount: headerItem.dishes.count)
-            headerView.addGestureRecognizer(tap)
-            
-            // Apply the configuration to header view
             headerView.backgroundColor = .white
+            
+            self.addCloser(headerSection: headerView, sectionData: headerItem)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
+            headerView.addGestureRecognizer(tap)
             headerView.contentConfiguration = configuration
         }
         return headerRegistration
+    }
+    
+    private func addCloser(headerSection: UIView, sectionData: Dishes) {
+        self.toasterCloser[headerSection.hash] = {
+            guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
+                return
+            }
+            let message = "상품 \(sectionData.dishes.count)개 있어요!"
+            
+            mainView.hideAllToasts()
+            mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
+        }
+    }
+    
+    private func removeResidualBadges(stackView : UIStackView) {
+        for subView in stackView.subviews {
+            stackView.removeArrangedSubview(subView)
+            subView.removeFromSuperview()
+        }
+    }
+    
+    private func createBadges(badgeString: String) -> [UILabel]? {
+        if badgeString == "" {
+            return nil
+        }
+        
+        let stringArray = badgeString.components(separatedBy: ",")
+        var returnLabels = [UILabel]()
+        
+        for string in stringArray {
+            returnLabels.append(self.createEventLabel(text: string))
+        }
+        
+        return returnLabels
     }
     
     private func createImage(url: String) -> UIImage {
@@ -116,24 +151,32 @@ class DiffableProvider  {
         return label
     }
     
-    @objc private func handleTapGesture(recognizer: CustomTapGestureRecognizer) {
-        guard let mainView = UIApplication.shared.windows[0].rootViewController?.view else {
+    private func convertCharge(normal: String, selling: String) -> NSMutableAttributedString {
+        let normalCharge = "\(String.insertComma(with: normal))원"
+        let sellingCharge = "\(String.insertComma(with: selling))원"
+        var attributedText : NSMutableAttributedString
+        
+        if selling != "" {
+            let wholeString = normalCharge + " " + sellingCharge
+            
+            attributedText = wholeString.styleAsCharge(with: normalCharge, with: sellingCharge)
+        } else {
+            attributedText = normalCharge.styleAsCharge(with: "", with: normalCharge)
+        }
+        return attributedText
+    }
+    
+    @objc private func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        guard let targetHeader = recognizer.view else {
             return
         }
-        let message = "상품 \(recognizer.dishCount)개 있어요!"
         
-        mainView.hideAllToasts()
-//        mainView.makeToast(message)
-        mainView.makeToast(message, duration: 1.0, point: CGPoint(x: mainView.center.x , y: mainView.center.y / 2), title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
+        guard let toaster = toasterCloser.first(where: {
+            $0.key == targetHeader.hash
+        }) else {
+            return
+        }
+        toaster.value()
     }
     
-}
-
-class CustomTapGestureRecognizer: UITapGestureRecognizer {
-    var dishCount : Int
-    
-    init(target: Any?, action: Selector?, dishCount: Int) {
-        self.dishCount = dishCount
-        super.init(target: target, action: action)
-    }
 }

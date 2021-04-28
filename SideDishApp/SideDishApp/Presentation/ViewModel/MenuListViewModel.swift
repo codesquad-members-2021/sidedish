@@ -30,21 +30,21 @@ class MenuListViewModel {
         menuListUseCase.showMenu(food: dish)
             .sink(receiveCompletion: { result in
                     switch result {
-                    case .finished: print("끝")
+                    case .finished:
+                        break
                     case .failure(.urlError):
-                         /*에러처리*/ print("url")
+                        assertionFailure("url")
                     case .failure(.networkConnection):
-                         /*에러처리*/ print("networkConnection")
+                        assertionFailure("networkConnection")
                     case .failure(.responseNil):
-                         /*에러처리*/ print("responseNil")
+                        assertionFailure("responseNil")
                     case .failure(.parsing):
-                         /*에러처리*/ print("parsing")
+                        assertionFailure("parsing")
                     case .failure(.unknown):
-                         /*에러처리*/ print("unknown")
+                        assertionFailure("unknown")
                     } },
                   
                   receiveValue: { data in
-                    print("성공")
                     switch dish {
                     case "main":
                         self.main = data

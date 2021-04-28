@@ -17,6 +17,7 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "setLoadingView()"
+<<<<<<< HEAD
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -113,6 +114,8 @@
             startingLineNumber = "27"
             endingLineNumber = "27"
             landmarkName = "get(url:completion:)"
+=======
+>>>>>>> Dev-iOS
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

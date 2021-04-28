@@ -81,7 +81,6 @@
                                                 <constraint firstItem="srq-Id-Dji" firstAttribute="leading" secondItem="yN9-DB-dHX" secondAttribute="trailing" constant="8" id="w2L-3l-CV5"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="343" height="130"/>
                                         <connections>
                                             <outlet property="body" destination="Acp-1m-rGV" id="yZz-iH-O7o"/>
                                             <outlet property="charge" destination="8T5-wN-3d4" id="PWw-RL-oIY"/>
