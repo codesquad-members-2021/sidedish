@@ -45,7 +45,7 @@ final class DefaultDishesViewModel: DishesViewModel {
 //MARK: - Input
 extension DefaultDishesViewModel {
     func load() {
-        fetchDishesUseCase.execute(requestValue: .init(category: category.value), completion: { (result) in
+        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { (result) in
             switch result {
             case .success(let items):
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
