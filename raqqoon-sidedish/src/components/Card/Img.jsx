@@ -1,7 +1,8 @@
-import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from 'const';
+import { MSG_BOTTOM, MSG_TOP } from 'const';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BLOCK } from 'const';
+import checkCardSize from 'util/checkCardSize';
 
 const Img = ({
   cardSize,
@@ -31,9 +32,10 @@ const Img = ({
       badge: badge,
     });
   };
+
   return (
     <ImgDiv
-      cardSize={cardSize}
+      cardSize={checkCardSize(cardSize)}
       onMouseEnter={() => onToggleOpacity(opacitiy)}
       onMouseLeave={() => onToggleOpacity(opacitiy)}
       onClick={handleClickCard}
@@ -42,8 +44,8 @@ const Img = ({
         src={url}
         alt={alt}
         onError={handleErrorImg}
-        width={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
-        height={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
+        width={checkCardSize(cardSize)}
+        height={checkCardSize(cardSize)}
       />
       <HoverText cardSize={cardSize} opacitiy={opacitiy} />
     </ImgDiv>
@@ -75,8 +77,8 @@ export default Img;
 
 const ImgDiv = styled.div`
   position: relative;
-  width: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
-  height: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
+  width: ${({ cardSize }) => checkCardSize(cardSize)};
+  height: ${({ cardSize }) => checkCardSize(cardSize)};
   display: flex;
 
   img {
@@ -89,8 +91,8 @@ const HoverTextBoxDiv = styled.div`
   padding: 0px;
   display: flex;
   opacity: ${(props) => props.opacitiy};
-  width: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
-  height: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
+  width: ${({ cardSize }) => checkCardSize(cardSize)};
+  height: ${({ cardSize }) => checkCardSize(cardSize)};
   background: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   flex-direction: column;

@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
-const OrderButton = () => {
-  return <OrderButtonBox>주문하기</OrderButtonBox>;
+const OrderButton = ({ handleClickOrderButton, orderButtonState }) => {
+  const buttonName = orderButtonState ? '임시품절' : '주문하기';
+  return (
+    <OrderButtonBox
+      onClick={handleClickOrderButton}
+      disabled={orderButtonState}
+    >
+      {buttonName}
+    </OrderButtonBox>
+  );
 };
 
 export default OrderButton;
 
-const OrderButtonBox = styled.div`
+const OrderButtonBox = styled.button`
   width: 440px;
   height: 58px;
   background: #82d32d;
@@ -24,6 +32,8 @@ const OrderButtonBox = styled.div`
   color: #fff;
   margin: 16px 0;
   cursor: pointer;
+  border: none;
+
   &:hover {
     background: #9ad857;
     transition: 0.4s;
@@ -31,5 +41,9 @@ const OrderButtonBox = styled.div`
   &:active {
     background: #82d32d;
     transition: 0.4s;
-    
+  }
+  &:disabled {
+    background: #cdcdcd;
+    cursor: default;
+  }
 `;

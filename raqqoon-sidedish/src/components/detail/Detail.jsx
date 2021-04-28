@@ -20,6 +20,7 @@ const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
 
   const [orderCount, setOrderCount] = useState(1);
   const [inputValue, setInputValue] = useState(orderCount);
+  const [orderButtonState, setOrderButtonState] = useState(false);
 
   const plusCount = () => {
     setOrderCount(orderCount + 1);
@@ -31,13 +32,25 @@ const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
     setInputValue(inputValue - 1);
   };
 
+  const handleClickOrderButton = () => {
+    console.log('주문이 완료되었습니다!라는 말은 남기지 않을게요');
+    setOrderButtonState(true);
+    setOrderCount(0);
+    setInputValue(0);
+  };
+
   if (!currentData) return null;
 
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
         <DetailCloseButton
-          {...{ setModalState, setOrderCount, setInputValue }}
+          {...{
+            setModalState,
+            setOrderCount,
+            setInputValue,
+            setOrderButtonState,
+          }}
         />
         <DetailModal
           {...{
@@ -50,6 +63,8 @@ const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
             minusCount,
             inputValue,
             setInputValue,
+            handleClickOrderButton,
+            orderButtonState,
           }}
         />
         <DetailCarousel

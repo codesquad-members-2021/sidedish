@@ -1,4 +1,4 @@
-import { DETAIL } from 'const';
+import { DETAIL, SIZE_SMALL } from 'const';
 import styled, { css } from 'styled-components';
 
 const Name = ({ name, type }) => {
@@ -8,10 +8,10 @@ const Body = ({ body, type }) => {
   return <BodyDiv type={type}>{body}</BodyDiv>;
 };
 
-const Info = ({ name, body, type }) => {
+const Info = ({ name, body, type, cardSize }) => {
   return (
-    <InfoBoxDiv type={type}>
-      <Name {...{ name, type }} />
+    <InfoBoxDiv type={type} {...{ cardSize }}>
+      {name && <Name {...{ name, type }} />}
       <Body {...{ body, type }} />
     </InfoBoxDiv>
   );
@@ -20,7 +20,6 @@ const Info = ({ name, body, type }) => {
 export default Info;
 
 const NameDiv = styled.div`
-  height: 23px;
   color: #333;
   margin: 8px 0px;
   ${(props) =>
@@ -31,6 +30,10 @@ const NameDiv = styled.div`
       line-height: 35px;
       margin: 0;
     `}
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 23px;
 `;
 
 const BodyDiv = styled.div`
@@ -47,13 +50,22 @@ const BodyDiv = styled.div`
       color: #828282;
       margin: 24px 0;
     `}
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const InfoBoxDiv = styled.div`
   margin: 16px 0;
-  ${(props) =>
-    props.type === DETAIL &&
+  ${({ type }) =>
+    type === DETAIL &&
     css`
+      margin: 0;
+    `};
+  ${({ cardSize }) =>
+    cardSize === SIZE_SMALL &&
+    css`
+      width: 160px;
       margin: 0;
     `}
 `;

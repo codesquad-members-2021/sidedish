@@ -20,6 +20,8 @@ const DetailModal = ({
   inputValue,
   setInputValue,
   setOrderCount,
+  handleClickOrderButton,
+  orderButtonState,
 }) => {
   const {
     delivery_fee,
@@ -53,7 +55,7 @@ const DetailModal = ({
         />
         <LongLine />
         <DetailPrice {...{ orderCount, prices }} />
-        <OrderButton />
+        <OrderButton {...{ handleClickOrderButton, orderButtonState }} />
       </InfoBox>
     </DetailModalBox>
   );

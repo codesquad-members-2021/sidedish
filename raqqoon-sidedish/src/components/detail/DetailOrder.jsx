@@ -31,7 +31,7 @@ const Number = ({
     setInputValue(+e.target.value);
     setOrderCount(+e.target.value);
   };
-  console.log(inputValue);
+
   return (
     <NumberBox>
       <NumberInput value={inputValue} onChange={handleOnChange} />

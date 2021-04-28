@@ -11,6 +11,8 @@ const CarouselCard = ({
   setModalData,
   detail_hash,
 }) => {
+  const { top_image, prices, product_description } = item;
+
   return (
     <CardBoxDiv>
       <Img
@@ -21,10 +23,10 @@ const CarouselCard = ({
           modalData,
           detail_hash,
         }}
-        image={item}
+        image={top_image}
       />
-      <Info name={null} body={null} />
-      <Price normal={null} discount={null} />
+      <Info name={null} body={product_description} {...{ cardSize }} />
+      <Price normal={prices[1]} discount={prices[0]} {...{ cardSize }} />
     </CardBoxDiv>
   );
 };
