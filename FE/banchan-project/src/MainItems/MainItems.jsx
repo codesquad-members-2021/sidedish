@@ -2,24 +2,29 @@ import { useState, useEffect } from "react";
 import MainItemsTitle from "./MainItemsTitle";
 import MainItemsCard from "./MainItemsCard/MainItemsCard";
 import TotalCategoryButton from "./TotalCategoryButton";
-// import getData from "../utils/getData";
 import * as S from "./MainItemsStyles";
 import * as CS from "../Styles/commonStyles";
 
-const MainItems = () => {
-  const [data, setData] = useState(null);
+const MainItems = (props) => {
+  const [mainDishData, setMainDishData] = useState(null);
+  const [soupDishData, setSoupDishData] = useState(null);
+  const [sideDishData, setSideDishData] = useState(null);
+  const [totalButtonFlag, setTotalButtonFlag] = useState(true);
   const [error, setError] = useState(false);
 
-  const getData = () => {
-    const url =
-      "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main";
+  const URL = {
+    MAINDISH: "/dish/main",
+    SOUPDISH: "/dish/soup",
+    SIDEDISH: "/dish/side",
+  };
 
+  const getData = (url, setFn) => {
     try {
       fetch(url)
         .then(res => res.json())
         .then(json => {
           if (json) {
-            setData(json);
+            setFn(json);
           }
         });
     } catch (err) {
@@ -28,32 +33,59 @@ const MainItems = () => {
     }
   };
 
+  const handleClickTotalButton = () => {
+    if (totalButtonFlag) {
+      setTotalButtonFlag(false);
+      getData(URL.SOUPDISH, setSoupDishData);
+      getData(URL.SIDEDISH, setSideDishData);
+    } else {
+      setTotalButtonFlag(true);
+      setSoupDishData(null);
+      setSideDishData(null);
+    }
+  };
+
   useEffect(() => {
-    getData();
+    getData(URL.MAINDISH, setMainDishData);
   }, []);
 
-  if (!data) return null;
+  const Category = (categoryData) => {
+    if (categoryData === null) return null;
+
+    return (
+      <S.MainItemsWrapper>
+        <MainItemsTitle categoryTitle={categoryData.dish_category_name} />
+        <S.MainItemsCardScrollWrapper>
+          <S.LeftButtonWrapper>
+            <CS.Button.LEFT_BUTTON />
+          </S.LeftButtonWrapper>
+          {categoryData.items.map((item, index) => (
+            <MainItemsCard
+              key={index}
+              item={item}
+              handleClickCard={props.handleClickCard}
+            />
+          ))}
+          <S.RightButtonWrapper>
+            <CS.Button.RIGHT_BUTTON />
+          </S.RightButtonWrapper>
+        </S.MainItemsCardScrollWrapper>
+      </S.MainItemsWrapper>
+    );
+  };
+
   if (error) return null;
 
   return (
-    <S.MainItemsWrapper>
-      <MainItemsTitle />
-      <S.MainItemsCardScrollWrapper>
-        <S.LeftButtonWrapper>
-          <CS.Button.LEFT_BUTTON />
-        </S.LeftButtonWrapper>
-
-        {data.body.map((items, index) => (
-          <MainItemsCard key={index} items={items} />
-        ))}
-
-        <S.RightButtonWrapper>
-          <CS.Button.RIGHT_BUTTON />
-        </S.RightButtonWrapper>
-      </S.MainItemsCardScrollWrapper>
-
-      <TotalCategoryButton />
-    </S.MainItemsWrapper>
+    <>
+      {Category(mainDishData)}
+      {Category(soupDishData)}
+      {Category(sideDishData)}
+      <TotalCategoryButton
+        totalButtonFlag={totalButtonFlag}
+        handleClickTotalButton={handleClickTotalButton}
+      />
+    </>
   );
 };
 

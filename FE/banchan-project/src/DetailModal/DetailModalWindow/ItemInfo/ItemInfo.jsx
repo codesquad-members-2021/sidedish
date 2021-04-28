@@ -6,15 +6,17 @@ import DetailNPrice from "./DetailNPrice";
 import * as S from "../../DetailModalStyles";
 import * as CS from "../../../Styles/commonStyles";
 
-const ItemInfo = ({ props }) => {
+const ItemInfo = ({ data }) => {
   return (
     <S.ItemInfoWrapper>
-      <DetailTitle detailTitle={"[미노리키친] 규동 250g"} />
-      <DetailDescription detailDescription={props.product_description} />
+      <DetailTitle detailTitle={data.title} />
+      <DetailDescription detailDescription={data.description} />
       <CS.Box.FLEX_ROW_CENTER_BOX>
-        <DetailBadge detailBadge={["이벤트특가", "론칭특가"]} />
-        <DetailSPrice sPrice={"5200원"} />
-        <DetailNPrice nPrice={"6500원"} />
+        <DetailBadge detailBadge={data.badge} />
+        <DetailSPrice s_Price={data.s_price} />
+        {data.s_price === data.n_price ? null : (
+          <DetailNPrice n_Price={data.n_price} />
+        )}
       </CS.Box.FLEX_ROW_CENTER_BOX>
     </S.ItemInfoWrapper>
   );

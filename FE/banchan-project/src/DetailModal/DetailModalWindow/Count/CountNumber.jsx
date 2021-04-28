@@ -3,9 +3,13 @@ import * as CS from "../../../Styles/commonStyles";
 
 const CountNumber = ({ props }) => {
   if (props.count > props.stock) {
-    props.handleStockOver(true);
+    if (!props.stockOverFlag) {
+      props.handleStockOver(true);
+    }
   } else {
-    props.handleStockOver(false);
+    if (props.stockOverFlag) {
+      props.handleStockOver(false);
+    }
   }
   return (
     <S.CountNumber>

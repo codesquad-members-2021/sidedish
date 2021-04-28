@@ -3,8 +3,9 @@ import * as CS from "../Styles/commonStyles";
 import theme from "../Styles/theme";
 
 const TotalCategoryButton = styled.button`
-  /* position: absolute; */
-  /* left: 0; */
+  position: absolute;
+  left: 0%;
+  bottom: -8%;
   border: none;
   outline: none;
 
@@ -22,7 +23,7 @@ const MainItemsWrapper = styled.div`
 `;
 
 const MainItemsTitleWrapper = styled.div`
-  margin-bottom: 40px;
+  margin: 40px 0px;
 `;
 
 const MainItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
@@ -30,6 +31,7 @@ const MainItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
 `;
 
 const MainItemsCardImageWrapper = styled.div`
+  position: relative;
   margin: 0px 16px 16px 0px;
 `;
 
@@ -65,6 +67,30 @@ const RightButtonWrapper = styled.div`
   cursor: pointer;
 `;
 
+const BestItemsHoverBox = styled.div`
+  position: absolute;
+  top: 0px;
+  cursor: pointer;
+`;
+
+const BestItemsHoverTopText = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 37%;
+`;
+
+const BestItemsHoverBottomText = styled.div`
+  position: absolute;
+  top: 55%;
+  left: 37%;
+`;
+
+const BestItemsHoverLine = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 37%;
+`;
+
 export {
   TotalCategoryButton,
   MainItemsWrapper,
@@ -77,4 +103,8 @@ export {
   MainItemsCardNPriceWrapper,
   LeftButtonWrapper,
   RightButtonWrapper,
+  BestItemsHoverBox,
+  BestItemsHoverTopText,
+  BestItemsHoverBottomText,
+  BestItemsHoverLine,
 };

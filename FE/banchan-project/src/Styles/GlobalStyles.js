@@ -2,33 +2,128 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle` 
   
-  *{
-        box-sizing:border-box;
-    }
-    body{
-        font-size:14px;
-        /* background-color:rgba(20,20,20,0.5); */
-        font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    }
-    a{
-        text-decoration:none;
-        color:inherit;
-        cursor: pointer;
-    }
-    ol, ul, li {
-        list-style: none;
-    }
-    img {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    input, button {
-        background-color: transparent;
-    }
-    h1, h2, h3, h4, h5, h6 {
-    font-family:'Maven Pro', sans-serif;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+button,
+div,
+input,
+textarea {
+  border: none;
+
+  &:focus {
+    outline: 0;
   }
+}
+
   .App{
     
     display:flex;
@@ -40,7 +135,7 @@ const GlobalStyles = createGlobalStyle`
     .container{
       position:relative;
       width:1440px;
-      height: 2847px;
+      // height: 2847px;
       display:flex;
       flex-direction:column;
       align-items:center;
