@@ -31,6 +31,7 @@ class MenuCell : UITableViewCell {
     
     func updateMenu(image: UIImage, titleText: String, subTitle: String, price: Int, reducedPrice: Int, badge: [String]){
         selectionStyle = .none
+        self.menuImage?.image = image
         self.menuTitle.text = titleText
         self.menuSubTitle.text = subTitle
         

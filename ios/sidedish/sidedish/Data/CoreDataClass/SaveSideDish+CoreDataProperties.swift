@@ -11,7 +11,7 @@ import CoreData
 
 
 extension SaveSideDish: SideDishManageable {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SaveSideDish> {
         return NSFetchRequest<SaveSideDish>(entityName: Properties.entity)
     }
@@ -24,6 +24,7 @@ extension SaveSideDish: SideDishManageable {
     @NSManaged public var salePrice: Int16
     @NSManaged public var subtitle: String
     @NSManaged public var title: String
+    @NSManaged public var thumbnailPath: String?
     
     enum Properties {
         static let entity = "SaveSideDish"
@@ -35,14 +36,23 @@ extension SaveSideDish: SideDishManageable {
         static let salePrice = "salePrice"
         static let deliveryTypes = "deliveryTypes"
         static let badges = "badges"
+        static let thumbnailPath = "thumbnailPath"
+    }
+    
+    func getID() -> String {
+        self.id
     }
     
     func getTitle() -> String {
         return self.title
     }
     
-    func getimage() -> String {
+    func getImageURL() -> String {
         return self.image
+    }
+    
+    func getThumbnailPath() -> String? {
+        return self.thumbnailPath
     }
     
     func getdescription() -> String {
@@ -63,6 +73,10 @@ extension SaveSideDish: SideDishManageable {
     
     func getbadge() -> [String]? {
         return self.badges
+    }
+    
+    func updateThumbnailPath(_ path: String) {
+        self.thumbnailPath = path
     }
 }
 

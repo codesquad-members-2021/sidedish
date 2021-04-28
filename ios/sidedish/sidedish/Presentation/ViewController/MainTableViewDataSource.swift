@@ -29,22 +29,16 @@ class MainTableViewDataSource: NSObject, UITableViewDataSource {
         
         let dishProperty = menuCellViewModel.dishes[indexPath.section][indexPath.row]
         
-        cell.updateMenu(image: UIImage(),
+        let thumbnailPath = dishProperty.getThumbnailPath() ?? ""
+        let image = UIImage(contentsOfFile: thumbnailPath)
+
+        cell.updateMenu(image: image ?? UIImage(),
                         titleText: dishProperty.getTitle(),
                         subTitle: dishProperty.getdescription(),
                         price: dishProperty.getPrice(),
                         reducedPrice: dishProperty.getSalePrice(),
                         badge: dishProperty.getbadge() ?? ["",""])
 
-        DispatchQueue.global().async {
-            let url = URL(string: dishProperty.getimage())!
-            let data = try? Data(contentsOf: url)
-            DispatchQueue.main.async {
-                if let tempdata = data {
-                    cell.menuImage.image = UIImage(data: tempdata)
-                }
-            }
-        }
         return cell
     }
 }

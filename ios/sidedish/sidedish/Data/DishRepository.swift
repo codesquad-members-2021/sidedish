@@ -18,14 +18,17 @@ final class DishRepository {
     private var cancelBag = Set<AnyCancellable>()
     
     private let networkManager: AFNetworkManagable!
+    private let imageDownloadManager: ImageDownloadManager!
     
     init(with url: String) {
         self.context = coreData.persistentContainer.viewContext
         self.sideDishEntity = NSEntityDescription.entity(forEntityName: SaveSideDish.Properties.entity, in: context)
         self.categoryEntity = NSEntityDescription.entity(forEntityName: SaveSideDishes.Properties.entity, in: context)
         self.networkManager = NetworkManager(with: url)
+        self.imageDownloadManager = ImageDownloadManager()
     }
 
+    //MARK: - category
     func getCategories(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ()) {
         
         let categories = networkManager.get(decodingType: [SideDishesCategory].self,
@@ -60,6 +63,8 @@ final class DishRepository {
         return publisher
     }
     
+    
+    //MARK: - sidedishes
     func getSideDishes(endPoint: String, completionHandler: @escaping (Just<[SideDishManageable]>) -> ()) {
         
         let mainSideDishes = networkManager.get(decodingType: [SideDish].self, endPoint: endPoint)
@@ -110,6 +115,54 @@ final class DishRepository {
         return fetchRequest
     }
     
+    
+    //MARK: - thumbnail path
+    func getSideDishThumbnailPath(from url: String, id: String, completionHandler: @escaping (Just<String?>) -> ()) {
+        
+        imageDownloadManager.download(from: url, fileName: id) { (thumbnailPath) in
+            self.updateThumbnailPath(of: id, with: thumbnailPath)
+            self.save()
+            completionHandler(self.loadThumbnailPath(of: id))
+        }
+    }
+    
+    private func updateThumbnailPath(of id: String, with path: String) {
+        let fetchRequest = findSideDishForHash(id)
+        
+        guard let objectToUpdate = try! self.context.fetch(fetchRequest).first,
+              let targetDish = objectToUpdate.sideDish?.first(where: { (dish) -> Bool in
+                  dish.getID() == id
+              }) else { return }
+        
+        targetDish.setValue(path, forKeyPath: SaveSideDish.Properties.thumbnailPath)
+    }
+    
+    private func findSideDishForHash(_ hash: String) -> NSFetchRequest<SaveSideDishes> {
+        let fetchRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "ANY sideDish.id == %@", hash)
+        return fetchRequest
+    }
+    
+    private func loadThumbnailPath(of id: String) -> Just<String?> {
+        let fetchRequest = findSideDishForHash(id)
+        
+        guard let targetSideDish = try? context.fetch(fetchRequest).first else {
+            return Just(nil)
+        }
+        
+        var thumnailPath: String?
+        
+        targetSideDish.sideDish?.forEach({ (sideDish) in
+            if id == sideDish.id {
+                thumnailPath = sideDish.thumbnailPath ?? nil
+            }
+        })
+        
+        let publisher = Just(thumnailPath)
+        return publisher
+    }
+    
+    //MARK: - delete
     func deleteAllInCoreData(){
         let saveSideDishesRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
         let saveSideDishRequest: NSFetchRequest<SaveSideDish> = SaveSideDish.fetchRequest()

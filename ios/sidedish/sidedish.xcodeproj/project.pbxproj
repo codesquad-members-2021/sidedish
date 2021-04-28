@@ -37,6 +37,7 @@
 		E41EC954262EBA2E0043CC44 /* SideDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EC953262EBA2E0043CC44 /* SideDishes.swift */; };
 		E41EC97D263119E90043CC44 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EC97C263119E90043CC44 /* EndPoint.swift */; };
 		E41EC98B263172760043CC44 /* CustomToaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EC98A263172760043CC44 /* CustomToaster.swift */; };
+		E43A3C242639538C00BACB07 /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A3C232639538C00BACB07 /* ImageDownloadManager.swift */; };
 		E4896DFF26353AB000AA4DD7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4896DFE26353AB000AA4DD7 /* NetworkManager.swift */; };
 		E4896E0226353F1400AA4DD7 /* AFNetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4896E0126353F1400AA4DD7 /* AFNetworkManagable.swift */; };
 		E4896E092635420000AA4DD7 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4896E082635420000AA4DD7 /* RequestManager.swift */; };
@@ -78,6 +79,7 @@
 		E41EC953262EBA2E0043CC44 /* SideDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishes.swift; sourceTree = "<group>"; };
 		E41EC97C263119E90043CC44 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		E41EC98A263172760043CC44 /* CustomToaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToaster.swift; sourceTree = "<group>"; };
+		E43A3C232639538C00BACB07 /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
 		E4896DFE26353AB000AA4DD7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E4896E0126353F1400AA4DD7 /* AFNetworkManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetworkManagable.swift; sourceTree = "<group>"; };
 		E4896E082635420000AA4DD7 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				E4896E082635420000AA4DD7 /* RequestManager.swift */,
 				E4896E0126353F1400AA4DD7 /* AFNetworkManagable.swift */,
 				E4896DFE26353AB000AA4DD7 /* NetworkManager.swift */,
+				E43A3C232639538C00BACB07 /* ImageDownloadManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				E4896E0E2635422300AA4DD7 /* AFRequestManagable.swift in Sources */,
 				E4896E0226353F1400AA4DD7 /* AFNetworkManagable.swift in Sources */,
 				8208FC5926315CCA009504EE /* TableViewTapToasterGesture.swift in Sources */,
+				E43A3C242639538C00BACB07 /* ImageDownloadManager.swift in Sources */,
 				82A971D72632478E005E419A /* CustomHeaderFooter.swift in Sources */,
 				82680CC526354BC400009775 /* CoreDataStorage.swift in Sources */,
 				E41EC97D263119E90043CC44 /* EndPoint.swift in Sources */,

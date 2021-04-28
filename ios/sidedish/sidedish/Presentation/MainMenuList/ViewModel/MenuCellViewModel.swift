@@ -51,16 +51,29 @@ class MenuCellViewModel {
     
     private func loadSideDishes(count: Int) {
         self.dishes = Array(repeating: [], count: count)
-        for i in 0..<count {
-            turnonAppUsecase.manufactureForMainViewSideDishes(endPoint: EndPoint.sideDishes[i]) { (publisher) in
+        for section in 0..<count {
+            turnonAppUsecase.manufactureForMainViewSideDishes(endPoint: EndPoint.sideDishes[section]) { (publisher) in
                 publisher.sink { (result) in
                     if case .failure(let error) = result {
                         self.errorMessage = error.localizedDescription
                     }
                 } receiveValue: { (sideDish) in
-                    self.dishes[i] = sideDish
+                    self.dishes[section] = sideDish
+                    for (row, dish) in sideDish.enumerated() {
+                        self.loadThumbnails(for: dish, section: section, row: row)
+                    }
                 }.store(in: &self.cancelBag)
             }
+        }
+    }
+    
+    private func loadThumbnails(for sideDish: SideDishManageable, section: Int, row: Int) {
+        turnonAppUsecase.thumbnailForMainiewSideDishes(url: sideDish.getImageURL(), id: sideDish.getID()) { (publisher) in
+            publisher.sink { (thumbnailPath) in
+                if let thumbnailPath = thumbnailPath {
+                    self.dishes[section][row].updateThumbnailPath(thumbnailPath)
+                }
+            }.store(in: &self.cancelBag)
         }
     }
     
