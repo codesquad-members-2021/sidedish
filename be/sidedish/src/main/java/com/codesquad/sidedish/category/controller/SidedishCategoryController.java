@@ -4,9 +4,13 @@ import com.codesquad.sidedish.category.domain.dto.DetailItemDtoWrapper;
 import com.codesquad.sidedish.category.domain.dto.OrderDTO;
 import com.codesquad.sidedish.category.domain.dto.PreviewListDtoWrapper;
 import com.codesquad.sidedish.category.service.SidedishItemService;
+import com.codesquad.sidedish.util.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.StringTokenizer;
 
 @RestController
 @RequestMapping("/{category}")
@@ -32,7 +36,19 @@ public class SidedishCategoryController {
 
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestBody OrderDTO orderDTO) {
+    public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestBody OrderDTO orderDTO, HttpServletRequest request) {
+        String authorizationValue = request.getHeader("Authorization");
+        StringTokenizer stringTokenizer = new StringTokenizer(authorizationValue);
+
+        String tokenType = stringTokenizer.nextToken();
+        String jwtToken = stringTokenizer.nextToken();
+
+        if(JwtUtil.validateToken(jwtToken)) {
+            System.out.println("ok");
+        }else {
+            System.out.println("not ok");
+            return;
+        }
         itemService.order(category, id, orderDTO);
     }
 }

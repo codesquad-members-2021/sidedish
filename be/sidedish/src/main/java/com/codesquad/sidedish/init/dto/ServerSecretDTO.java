@@ -3,6 +3,7 @@ package com.codesquad.sidedish.init.dto;
 public class ServerSecretDTO {
     private String clientId;
     private String clientSecret;
+    private String serverSecret;
 
     public ServerSecretDTO() {
     }
@@ -15,11 +16,7 @@ public class ServerSecretDTO {
         return clientSecret;
     }
 
-    @Override
-    public String toString() {
-        return "ServerSecretDTO{" +
-                "clientId='" + clientId + '\'' +
-                ", clientSecret='" + clientSecret + '\'' +
-                '}';
+    public String getServerSecret() {
+        return serverSecret;
     }
 }

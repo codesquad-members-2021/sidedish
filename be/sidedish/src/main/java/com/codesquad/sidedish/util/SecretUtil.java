@@ -33,4 +33,8 @@ public class SecretUtil {
     public static String clientSecret() {
         return SERVER_SECRET_DTO.getClientSecret();
     }
+
+    public static String serverSecret() {
+        return SERVER_SECRET_DTO.getServerSecret();
+    }
 }

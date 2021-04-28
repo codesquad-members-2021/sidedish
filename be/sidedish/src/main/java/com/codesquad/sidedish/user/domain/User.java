@@ -2,7 +2,9 @@ package com.codesquad.sidedish.user.domain;
 
 import com.codesquad.sidedish.user.dto.UserInfoDTO;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("USERS")
 public class User {
 
     @Id
@@ -15,7 +17,6 @@ public class User {
     private String givenName;
     private String picture;
     private String locale;
-    private String accessToken;
 
     protected User() {
     }
@@ -31,8 +32,15 @@ public class User {
         locale = userInfoDTO.getLocale();
     }
 
-    public void updateToken(String newToken) {
-        this.accessToken = newToken;
+    public void update(UserInfoDTO userInfoDTO) {
+        userId = userInfoDTO.getId();
+        email = userInfoDTO.getEmail();
+        verifiedEmail = userInfoDTO.getVerified_email();
+        name = userInfoDTO.getName();
+        familyName = userInfoDTO.getFamily_name();
+        givenName = userInfoDTO.getGiven_name();
+        picture = userInfoDTO.getPicture();
+        locale = userInfoDTO.getLocale();
     }
 
     public Long getId() {
