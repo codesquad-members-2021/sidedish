@@ -51,15 +51,59 @@
             <objects>
                 <viewController storyboardIdentifier="detailPageVC" id="NnL-1q-VR7" customClass="DetailPageViewController" customModule="BanchanCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2i9-YO-Ksy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9H-2X-tAU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="922"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c86-Sf-83H">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="922"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uI5-Pp-gY6">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="uI5-Pp-gY6" secondAttribute="height" multiplier="1:1" id="g1D-AB-Ojl"/>
+                                                </constraints>
+                                            </scrollView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="uI5-Pp-gY6" firstAttribute="top" secondItem="c86-Sf-83H" secondAttribute="top" id="J64-ry-Pl3"/>
+                                            <constraint firstAttribute="trailing" secondItem="uI5-Pp-gY6" secondAttribute="trailing" id="OoE-Ic-zQ5"/>
+                                            <constraint firstItem="uI5-Pp-gY6" firstAttribute="leading" secondItem="c86-Sf-83H" secondAttribute="leading" id="eTj-w3-sgp"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="c86-Sf-83H" firstAttribute="top" secondItem="nmS-yc-0Fl" secondAttribute="top" id="2e4-yS-OlU"/>
+                                    <constraint firstItem="c86-Sf-83H" firstAttribute="width" secondItem="ehC-MB-YIq" secondAttribute="width" id="HOk-cx-ozA"/>
+                                    <constraint firstItem="c86-Sf-83H" firstAttribute="trailing" secondItem="nmS-yc-0Fl" secondAttribute="trailing" id="XnG-py-J3K"/>
+                                    <constraint firstItem="c86-Sf-83H" firstAttribute="leading" secondItem="nmS-yc-0Fl" secondAttribute="leading" id="a0c-6t-0br"/>
+                                    <constraint firstItem="c86-Sf-83H" firstAttribute="height" secondItem="ehC-MB-YIq" secondAttribute="height" priority="250" id="m1m-G7-CGz"/>
+                                    <constraint firstItem="c86-Sf-83H" firstAttribute="bottom" secondItem="nmS-yc-0Fl" secondAttribute="bottom" id="rut-Wt-wl9"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="nmS-yc-0Fl"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ehC-MB-YIq"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OtQ-H8-DGg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B9H-2X-tAU" firstAttribute="top" secondItem="OtQ-H8-DGg" secondAttribute="top" id="Grk-Cu-A5K"/>
+                            <constraint firstItem="OtQ-H8-DGg" firstAttribute="bottom" secondItem="B9H-2X-tAU" secondAttribute="bottom" id="foS-pg-5sy"/>
+                            <constraint firstItem="B9H-2X-tAU" firstAttribute="leading" secondItem="OtQ-H8-DGg" secondAttribute="leading" id="i9t-Gh-5GP"/>
+                            <constraint firstItem="OtQ-H8-DGg" firstAttribute="trailing" secondItem="B9H-2X-tAU" secondAttribute="trailing" id="jFx-K9-grb"/>
+                        </constraints>
                     </view>
+                    <size key="freeformSize" width="414" height="1000"/>
+                    <connections>
+                        <outlet property="thumbnailImagesScrollView" destination="uI5-Pp-gY6" id="edF-Dz-d1N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGh-Qo-ptl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="80"/>
+            <point key="canvasLocation" x="1871.0144927536232" y="79.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PuN-hI-O6q">
