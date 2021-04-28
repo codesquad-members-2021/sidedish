@@ -8,11 +8,28 @@ public class Image {
 
     private String imageUrl;
     private String dishHash;
+    private boolean isThumb;
 
-    public Image(Long id, String imageUrl, String dishHash) {
+    public Image(Long id, String imageUrl, String dishHash, boolean isThumb) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.dishHash = dishHash;
+        this.isThumb = isThumb;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getDishHash() {
+        return dishHash;
+    }
+
+    public boolean isThumb() {
+        return isThumb;
+    }
 }

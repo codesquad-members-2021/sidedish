@@ -64,6 +64,10 @@ public class DishDTO {
         return badge;
     }
 
+    public Integer[] makePriceArray() {
+        return (normalPrice != null) ? new Integer[]{normalPrice, specialPrice} : new Integer[]{specialPrice};
+    }
+
     @Override
     public String toString() {
         return "DishDTO{" +
