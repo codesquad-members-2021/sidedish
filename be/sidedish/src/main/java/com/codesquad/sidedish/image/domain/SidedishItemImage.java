@@ -6,10 +6,10 @@ public class SidedishItemImage {
     @Id
     private Long id;
 
-    private Long sidedishImage;
-    private Long sidedishItem;
+    private final Long sidedishImage;
+    private final Long sidedishItem;
 
-    private SidedishImageTypeEnum imageType;
+    private final SidedishImageTypeEnum imageType;
 
     public SidedishItemImage(Long sidedishImage, Long sidedishItem, SidedishImageTypeEnum imageType) {
         this.sidedishImage = sidedishImage;

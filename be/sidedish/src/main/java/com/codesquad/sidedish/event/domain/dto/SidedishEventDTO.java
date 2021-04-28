@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 public class SidedishEventDTO {
 
-    private Long id;
-    private String name;
-    private String colorHex;
+    private final Long id;
+    private final String name;
+    private final String colorHex;
 
     public SidedishEventDTO(SidedishEvent sidedishEvent) {
         this.id = sidedishEvent.getId();

@@ -2,7 +2,7 @@ package com.codesquad.sidedish.category.domain.dto;
 
 public class DetailItemDtoWrapper {
 
-    private SidedishDetailItemDTO item;
+    private final SidedishDetailItemDTO item;
 
     public DetailItemDtoWrapper(SidedishDetailItemDTO item) {
         this.item = item;

@@ -9,13 +9,13 @@ import java.util.Set;
 
 public class SidedishItemPreviewDTO {
 
-    private Long id;
-    private String thumbnailImage;
-    private String name;
-    private String description;
-    private int normalPrice;
-    private int salePrice;
-    private Set<SidedishEventDTO> eventBadgeList;
+    private final Long id;
+    private final String thumbnailImage;
+    private final String name;
+    private final String description;
+    private final int normalPrice;
+    private final int salePrice;
+    private final Set<SidedishEventDTO> eventBadgeList;
 
     public SidedishItemPreviewDTO(SidedishItem item, Set<SidedishEvent> eventBadgeList, SidedishImage thumbnailImageUrl) {
         this.id = item.getId();

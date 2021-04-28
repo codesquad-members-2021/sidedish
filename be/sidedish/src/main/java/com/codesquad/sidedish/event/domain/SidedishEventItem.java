@@ -7,7 +7,7 @@ public class SidedishEventItem {
     private Long id;
 
     private Long sidedishItem;
-    private Long sidedishEvent;
+    private final Long sidedishEvent;
 
     public SidedishEventItem(Long sidedishEvent) {
         this.sidedishEvent = sidedishEvent;

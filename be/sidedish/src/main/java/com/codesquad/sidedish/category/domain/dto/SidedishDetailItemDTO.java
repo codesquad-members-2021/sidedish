@@ -9,18 +9,18 @@ import java.util.Set;
 
 public class SidedishDetailItemDTO {
 
-    private Long id;
-    private List<String> detailImages;
-    private List<String> descriptionImages;
-    private String name;
-    private String description;
-    private int normalPrice;
-    private int salePrice;
-    private Set<SidedishEventDTO> eventBadgeList;
-    private int PointRate;
-    private boolean isPurchasable;
-    private String DeliveryInfo;
-    private String DeliveryFee;
+    private final Long id;
+    private final List<String> detailImages;
+    private final List<String> descriptionImages;
+    private final String name;
+    private final String description;
+    private final int normalPrice;
+    private final int salePrice;
+    private final Set<SidedishEventDTO> eventBadgeList;
+    private final int PointRate;
+    private final boolean isPurchasable;
+    private final String DeliveryInfo;
+    private final String DeliveryFee;
 
     public SidedishDetailItemDTO(SidedishItem item, Set<SidedishEvent> eventBadgeList,
                                  List<String> detailImages, List<String> descriptionImages) {

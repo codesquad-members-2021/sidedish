@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.category.domain;
 
-import com.codesquad.sidedish.category.domain.dto.OrderDTO;
 import com.codesquad.sidedish.category.exception.OutOfStockException;
 import com.codesquad.sidedish.event.domain.SidedishEvent;
 import com.codesquad.sidedish.event.domain.SidedishEventItem;
@@ -20,17 +19,17 @@ public class SidedishItem {
     @Id
     private Long id;
 
-    private String itemName;
-    private String itemDescription;
-    private int itemNormalPrice;
+    private final String itemName;
+    private final String itemDescription;
+    private final int itemNormalPrice;
     private int itemQuantity;
-    private int itemPointRate;
-    private String itemDeliveryInfo;
-    private String itemDeliveryFee;
+    private final int itemPointRate;
+    private final String itemDeliveryInfo;
+    private final String itemDeliveryFee;
 
-    private Set<SidedishEventItem> eventItems = new HashSet<>();
+    private final Set<SidedishEventItem> eventItems = new HashSet<>();
 
-    private List<SidedishItemImage> sidedishItemImages = new ArrayList<>();
+    private final List<SidedishItemImage> sidedishItemImages = new ArrayList<>();
 
     public SidedishItem(String itemName, String itemDescription, int itemNormalPrice,
                         int itemQuantity, int itemPointRate, String itemDeliveryInfo, String itemDeliveryFee) {
