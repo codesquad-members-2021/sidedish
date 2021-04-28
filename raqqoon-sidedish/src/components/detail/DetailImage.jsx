@@ -11,7 +11,9 @@ const DetailImage = ({ top_image, thumb_images }) => {
   useEffect(() => {
     setActiveTopImage(top_image);
   }, [top_image]);
-  console.log(activeTopImage);
+
+  const emptyImageList = new Array(5 - thumb_images.length).fill(null);
+
   return (
     <DetailImgBox>
       <LargeImgBoxDiv>
@@ -26,12 +28,14 @@ const DetailImage = ({ top_image, thumb_images }) => {
             {...{ setActiveTopImage, activeBorder, setActiveBorder }}
           />
         ))}
-        <ImageData
-          location={LOCATION_THUMB}
-          img={null}
-          key={uuidv4()}
-          {...{ setActiveTopImage, activeBorder, setActiveBorder }}
-        />
+        {emptyImageList.map((img) => (
+          <ImageData
+            location={LOCATION_THUMB}
+            img={img}
+            key={uuidv4()}
+            {...{ setActiveTopImage, activeBorder, setActiveBorder }}
+          />
+        ))}
       </SmallImgBoxDiv>
     </DetailImgBox>
   );
