@@ -94,7 +94,7 @@ const Image = styled.div`
 
 const Title = styled.div`
   margin-top: 16px;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -105,7 +105,7 @@ const Title = styled.div`
 const Description = styled.div`
   margin-top: 8px;
   color: #828282;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -113,7 +113,7 @@ const Description = styled.div`
 `;
 const NPrice = styled.span`
   width: 48px;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -125,7 +125,7 @@ const NPrice = styled.span`
 
 const SPrice = styled.span`
   width: 73px;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;

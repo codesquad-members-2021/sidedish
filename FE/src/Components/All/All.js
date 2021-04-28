@@ -43,11 +43,36 @@ const All = ({ modal, setModal, ModalData, setModalData }) => {
       : sideRef.current.Slider(-1);
   };
 
+  const PopUpCarousel = () => {
+    for (const i of soup) {
+      if (i.detailHash === ModalData[0]) {
+        return (
+          <PopUpModal
+            MainTitle={"정성이 담긴 뜨끈한 국물요리"}
+            Food={soup}
+            setModal={setModal}
+            ModalData={ModalData}
+            setModalData={setModalData}
+          />
+        );
+      }
+    }
+    return (
+      <PopUpModal
+        MainTitle={"식탁을 풍성하게 하는 정갈한 밑반찬"}
+        Food={side}
+        setModal={setModal}
+        ModalData={ModalData}
+        setModalData={setModalData}
+      />
+    );
+  };
+
   return (
     <AllBox>
       {rander && (
         <div>
-          {modal && <PopUpModal setModal={setModal} ModalData={ModalData} />}
+          {modal && PopUpCarousel()}
           <CarouselSlide>
             <CarouselButton Name={"Left"} Slide={soupSlide} />
             <Carousel
@@ -98,7 +123,7 @@ const PlusButton = styled.button`
   width: 1440px;
   height: 100px;
   background-color: #f5f5f7;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: bold;
   font-size: 18px;

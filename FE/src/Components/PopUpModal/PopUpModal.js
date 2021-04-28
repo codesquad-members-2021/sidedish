@@ -12,15 +12,7 @@ import axios from "axios";
 import CarouselButton from "../Main/CarouselButton";
 import Carousel from "../Main/Carousel";
 
-const PopUpModal = ({
-  modal,
-  setModal,
-  MainTitle,
-  Food,
-  setFood,
-  setModalData,
-  ModalData,
-}) => {
+const PopUpModal = ({ MainTitle, Food, setModal, ModalData, setModalData }) => {
   const [PopUpCarousel, setPopUpCarousel] = useState(Food);
   const [close, setClose] = useState(BeforeX);
   const [detail, setDetail] = useState();
@@ -41,12 +33,14 @@ const PopUpModal = ({
       setDetail(data);
     };
     fetchData();
-  }, [setDetail]); // eslint-disable-line
+  }, [setDetail, ModalData[0]]); // eslint-disable-line
 
   const MouseEnter = (e) => {
-    if (e.target.classList.contains("Up")) setUp(AfterUp);
-    if (e.target.classList.contains("Down")) setDown(AfterDown);
-    if (e.target.classList.contains("close")) setClose(AfterX);
+    if (detail.stock !== 0) {
+      if (e.target.classList.contains("Up")) setUp(AfterUp);
+      if (e.target.classList.contains("Down")) setDown(AfterDown);
+      if (e.target.classList.contains("close")) setClose(AfterX);
+    }
   };
   const MouseLeave = (e) => {
     if (e.target.classList.contains("Up")) setUp(BeforeUp);
@@ -157,6 +151,7 @@ const PopUpModal = ({
                       <CounterButton>
                         <UpButton
                           className="Up"
+                          stock={detail.stock}
                           onClick={quantityCheck}
                           onMouseEnter={MouseEnter}
                           onMouseLeave={MouseLeave}
@@ -165,6 +160,7 @@ const PopUpModal = ({
                         </UpButton>
                         <DownButton
                           className="Down"
+                          stock={detail.stock}
                           onClick={quantityCheck}
                           onMouseEnter={MouseEnter}
                           onMouseLeave={MouseLeave}
@@ -176,8 +172,12 @@ const PopUpModal = ({
                   </ProductCounter>
                   <Divider />
                   <Finish>
-                    <MoneyTitle>총 주문금액</MoneyTitle>
-                    <AllMoney>{Calculate()}원</AllMoney>
+                    <MoneyTitle>
+                      {detail.stock === 0 ? "" : "총 주문금액"}
+                    </MoneyTitle>
+                    <AllMoney>
+                      {detail.stock === 0 ? "일시품절" : `${Calculate()}원`}
+                    </AllMoney>
                   </Finish>
                   <OrderButton onClick={apiPost} detail={detail}>
                     {detail.stock === 0 ? "일시품절" : "주문하기"}
@@ -251,7 +251,7 @@ const OrderButton = styled.button`
   backdrop-filter: blur(4px);
   border-radius: 5px;
   border: none;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -260,7 +260,6 @@ const OrderButton = styled.button`
   text-align: center;
 `;
 const AllMoney = styled.div`
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
@@ -269,7 +268,6 @@ const AllMoney = styled.div`
   text-align: right;
 `;
 const MoneyTitle = styled.div`
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -284,6 +282,7 @@ const Finish = styled.div`
   padding: 20px 0;
 `;
 const DownButton = styled.button`
+  pointer-events: ${({ stock }) => (stock === 0 ? `none` : null)};
   display: block;
   width: 30px;
   height: 25px;
@@ -297,6 +296,7 @@ const DownButton = styled.button`
   }
 `;
 const UpButton = styled.button`
+  pointer-events: ${({ stock }) => (stock === 0 ? `none` : null)};
   display: block;
   width: 30px;
   height: 25px;
@@ -343,7 +343,7 @@ const ImageInformation = styled.div`
 const Information = styled.div`
   padding: 24px 0;
   width: 440px;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -406,14 +406,14 @@ const Nprice = styled.span`
   ${({ props }) =>
     props.length === 1
       ? `width: 73px;
-  font-family: Noto Sans KR;
+   
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
   line-height: 29px;
   margin: 0 8px 0 0;`
       : `width: 48px;
-  font-family: Noto Sans KR;
+   
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -424,7 +424,7 @@ const Nprice = styled.span`
 `;
 const Sprice = styled.span`
   width: 73px;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -433,12 +433,11 @@ const Sprice = styled.span`
 `;
 const Title = styled.div`
   font-size: 24px;
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: bold;
 `;
 const Description = styled.div`
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
