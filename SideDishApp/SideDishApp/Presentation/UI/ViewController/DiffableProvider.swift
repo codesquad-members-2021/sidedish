@@ -33,6 +33,7 @@ class DiffableProvider  {
     }
     
     private func configureCell(collectionView: UICollectionView, indexPath: IndexPath, dishData: Dish) -> UICollectionViewCell {
+
         let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration(), for: indexPath, item: dishData)
         
         return cell
@@ -47,7 +48,7 @@ class DiffableProvider  {
             }
             DispatchQueue.main.async {
                 cell.title.text = "\(dishData.title)"
-                cell.body.text = "\(dishData.description)"
+                cell.body.text = "\(dishData.dishDescription)"
                 
                 cell.charge.attributedText = self.convertCharge(normal: dishData.normalPrice, selling: dishData.sellingPrice)
                 

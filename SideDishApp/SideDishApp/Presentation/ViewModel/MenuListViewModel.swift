@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class MenuListViewModel {
     private let menuListUseCase: MenuListUseCasePort
@@ -14,6 +15,7 @@ class MenuListViewModel {
     @Published var main: [Dishes] = []
     @Published var soup: [Dishes] = []
     @Published var side: [Dishes] = []
+    private let cache = CoreDataMenuResponseStorage.shared
     
     init(menuListUseCase: MenuListUseCasePort) {
         self.menuListUseCase = menuListUseCase
@@ -53,6 +55,7 @@ class MenuListViewModel {
                     default:
                         break
                     }
+                   
                   })
             .store(in: &subscriptions)
     }

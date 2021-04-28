@@ -14,9 +14,9 @@ protocol MenuListUseCasePort {
 
 class MenuListUseCase: MenuListUseCasePort {
     
-    private let sideDishNetworkManager = DishNetworkManager()
+    private let menuRepository = MenuRepository()
     
     func showMenu(food path: String) -> AnyPublisher<[Dishes], NetworkError> {
-        return sideDishNetworkManager.getDishes(path: path)
+        return menuRepository.fetchMenuList(path: path)
     }
 }
