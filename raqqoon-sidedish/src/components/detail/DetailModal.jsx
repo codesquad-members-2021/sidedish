@@ -5,7 +5,6 @@ import DetailDelivery from 'components/detail/DetailDelivery';
 import DetailOrder from 'components/detail/DetailOrder';
 import DetailPrice from 'components/detail/DetailPrice';
 import OrderButton from 'components/detail/OrderButton';
-import { useState } from 'react';
 
 const LongLine = () => {
   return <LongLineBox />;
@@ -18,6 +17,11 @@ const DetailModal = ({
   orderCount,
   plusCount,
   minusCount,
+  inputValue,
+  setInputValue,
+  setOrderCount,
+  handleClickOrderButton,
+  orderButtonState,
 }) => {
   const {
     delivery_fee,
@@ -39,10 +43,19 @@ const DetailModal = ({
         <LongLine />
         <DetailDelivery {...{ point, delivery_info, delivery_fee }} />
         <LongLine />
-        <DetailOrder {...{ orderCount, plusCount, minusCount }} />
+        <DetailOrder
+          {...{
+            orderCount,
+            setOrderCount,
+            plusCount,
+            minusCount,
+            inputValue,
+            setInputValue,
+          }}
+        />
         <LongLine />
         <DetailPrice {...{ orderCount, prices }} />
-        <OrderButton />
+        <OrderButton {...{ handleClickOrderButton, orderButtonState }} />
       </InfoBox>
     </DetailModalBox>
   );

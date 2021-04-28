@@ -1,21 +1,21 @@
-import { DETAIL } from 'const';
+import { DETAIL, SIZE_SMALL } from 'const';
 import styled, { css } from 'styled-components';
 
-const Price = ({ normal, discount, type }) => {
+const Price = ({ normal, discount, type, cardSize }) => {
   return (
-    <PriceBoxDiv>
-      <Normal normal={normal} type={type} />
-      <Discount discount={discount} type={type} />
+    <PriceBoxDiv {...{ cardSize }}>
+      <Normal {...{ normal, type, cardSize }} />
+      <Discount {...{ discount, type, cardSize }} />
     </PriceBoxDiv>
   );
 };
 
-const Normal = ({ normal, type }) => {
-  return <NormalDiv type={type}>{normal}</NormalDiv>;
+const Normal = ({ normal, type, cardSize }) => {
+  return <NormalDiv {...{ type, cardSize }}>{normal}</NormalDiv>;
 };
-const Discount = ({ discount, type }) => {
+const Discount = ({ discount, type, cardSize }) => {
   if (!discount) return null;
-  return <DiscountDiv type={type}>{discount}</DiscountDiv>;
+  return <DiscountDiv {...{ type, cardSize }}>{discount}</DiscountDiv>;
 };
 
 export default Price;
@@ -26,6 +26,11 @@ const PriceBoxDiv = styled.div`
   align-items: flex-end;
   margin: 16px 0px;
   padding: 0px;
+  ${({ cardSize }) =>
+    cardSize === SIZE_SMALL &&
+    css`
+      margin: 0;
+    `}
 `;
 
 const NormalDiv = styled.div`
@@ -35,11 +40,17 @@ const NormalDiv = styled.div`
   font-size: 20px;
   line-height: 29px;
   color: #010101;
-  ${(props) =>
-    props.type === DETAIL &&
+  ${({ type }) =>
+    type === DETAIL &&
     css`
       font-size: 24px;
       line-height: 35px;
+    `}
+  ${({ cardSize }) =>
+    cardSize === SIZE_SMALL &&
+    css`
+      font-size: 14px;
+      line-height: 20px;
     `}
 `;
 
@@ -52,8 +63,8 @@ const DiscountDiv = styled.div`
   text-decoration-line: line-through;
   color: #bdbdbd;
   margin: 0px 8px;
-  ${(props) =>
-    props.type === DETAIL &&
+  ${({ type }) =>
+    type === DETAIL &&
     css`
       font-size: 16px;
       line-height: 23px;

@@ -1,7 +1,8 @@
-import { MSG_BOTTOM, MSG_TOP, SIZE_MEDIUM } from 'const';
+import { MSG_BOTTOM, MSG_TOP } from 'const';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BLOCK } from 'const';
+import checkCardSize from 'util/checkCardSize';
 
 const Img = ({
   cardSize,
@@ -16,8 +17,7 @@ const Img = ({
   const url = image;
   const [opacitiy, setOpacity] = useState(0);
   const onToggleOpacity = (opacitiy) => {
-    if (opacitiy === 0) return setOpacity(100);
-    return setOpacity(0);
+    opacitiy === 0 ? setOpacity(100) : setOpacity(0);
   };
 
   const handleErrorImg = (e) => {
@@ -31,11 +31,11 @@ const Img = ({
       title: title,
       badge: badge,
     });
-    console.log(title);
   };
+
   return (
     <ImgDiv
-      cardSize={cardSize}
+      cardSize={checkCardSize(cardSize)}
       onMouseEnter={() => onToggleOpacity(opacitiy)}
       onMouseLeave={() => onToggleOpacity(opacitiy)}
       onClick={handleClickCard}
@@ -44,8 +44,8 @@ const Img = ({
         src={url}
         alt={alt}
         onError={handleErrorImg}
-        width={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
-        height={cardSize === SIZE_MEDIUM ? '308px' : '384px'}
+        width={checkCardSize(cardSize)}
+        height={checkCardSize(cardSize)}
       />
       <HoverText cardSize={cardSize} opacitiy={opacitiy} />
     </ImgDiv>
@@ -77,8 +77,8 @@ export default Img;
 
 const ImgDiv = styled.div`
   position: relative;
-  width: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
-  height: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
+  width: ${({ cardSize }) => checkCardSize(cardSize)};
+  height: ${({ cardSize }) => checkCardSize(cardSize)};
   display: flex;
 
   img {
@@ -91,8 +91,8 @@ const HoverTextBoxDiv = styled.div`
   padding: 0px;
   display: flex;
   opacity: ${(props) => props.opacitiy};
-  width: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
-  height: ${(props) => (props.cardSize === SIZE_MEDIUM ? '308px' : '384px')};
+  width: ${({ cardSize }) => checkCardSize(cardSize)};
+  height: ${({ cardSize }) => checkCardSize(cardSize)};
   background: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   flex-direction: column;

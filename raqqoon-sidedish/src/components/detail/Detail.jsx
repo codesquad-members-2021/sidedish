@@ -5,7 +5,7 @@ import DetailCloseButton from 'components/detail/DetailCloseButton';
 import useFetch from 'customHooks/useFetch';
 import { useState } from 'react';
 
-const Detail = ({ modalData, modalState, setModalState }) => {
+const Detail = ({ modalData, modalState, setModalState, setModalData }) => {
   const detailData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/`,
     []
@@ -19,21 +19,39 @@ const Detail = ({ modalData, modalState, setModalState }) => {
   });
 
   const [orderCount, setOrderCount] = useState(1);
+  const [inputValue, setInputValue] = useState(orderCount);
+  const [orderButtonState, setOrderButtonState] = useState(false);
 
   const plusCount = () => {
     setOrderCount(orderCount + 1);
+    setInputValue(inputValue + 1);
   };
   const minusCount = () => {
     if (orderCount <= 0) return;
     setOrderCount(orderCount - 1);
+    setInputValue(inputValue - 1);
+  };
+
+  const handleClickOrderButton = () => {
+    console.log('주문이 완료되었습니다!라는 말은 남기지 않을게요');
+    setOrderButtonState(true);
+    setOrderCount(0);
+    setInputValue(0);
   };
 
   if (!currentData) return null;
-  const detailSection = currentData.detail_section;
+
   return (
     <DetailBoxDiv {...{ modalState }}>
       <ModalWrapper>
-        <DetailCloseButton {...{ setModalState, setOrderCount }} />
+        <DetailCloseButton
+          {...{
+            setModalState,
+            setOrderCount,
+            setInputValue,
+            setOrderButtonState,
+          }}
+        />
         <DetailModal
           {...{
             title,
@@ -43,9 +61,21 @@ const Detail = ({ modalData, modalState, setModalState }) => {
             setOrderCount,
             plusCount,
             minusCount,
+            inputValue,
+            setInputValue,
+            handleClickOrderButton,
+            orderButtonState,
           }}
         />
-        <DetailCarousel {...{ detailSection }} />
+        <DetailCarousel
+          {...{
+            modalData,
+            modalState,
+            setModalState,
+            setModalData,
+            detailData,
+          }}
+        />
       </ModalWrapper>
     </DetailBoxDiv>
   );

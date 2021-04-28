@@ -11,7 +11,7 @@ const CarouselCard = ({
   setModalData,
   detail_hash,
 }) => {
-  console.log(item);
+  const { top_image, prices, product_description } = item;
 
   return (
     <CardBoxDiv>
@@ -23,10 +23,10 @@ const CarouselCard = ({
           modalData,
           detail_hash,
         }}
-        image={item}
+        image={top_image}
       />
-      <Info name={null} body={null} />
-      <Price normal={null} discount={null} />
+      <Info name={null} body={product_description} {...{ cardSize }} />
+      <Price normal={prices[1]} discount={prices[0]} {...{ cardSize }} />
     </CardBoxDiv>
   );
 };
@@ -36,16 +36,4 @@ export default CarouselCard;
 const CardBoxDiv = styled.div`
   width: fit-content;
   margin: 10px 5px;
-
-  &:first-child {
-    margin-left: 10px;
-  }
-
-  &:last-child {
-    margin-right: 10px;
-  }
-`;
-
-const TagBoxDiv = styled.div`
-  display: flex;
 `;

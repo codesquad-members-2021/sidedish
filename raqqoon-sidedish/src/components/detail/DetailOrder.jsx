@@ -19,20 +19,48 @@ const Arrow = ({ plusCount, minusCount }) => {
   );
 };
 
-const Number = ({ orderCount, plusCount, minusCount }) => {
+const Number = ({
+  setOrderCount,
+  plusCount,
+  minusCount,
+  inputValue,
+  setInputValue,
+}) => {
+  const handleOnChange = (e) => {
+    if (isNaN(+e.target.value)) return;
+    setInputValue(+e.target.value);
+    setOrderCount(+e.target.value);
+  };
+
   return (
     <NumberBox>
-      <NumberInput value={orderCount} />
+      <NumberInput value={inputValue} onChange={handleOnChange} />
       <Arrow {...{ plusCount, minusCount }} />
     </NumberBox>
   );
 };
 
-const DetailOrder = ({ orderCount, plusCount, minusCount }) => {
+const DetailOrder = ({
+  orderCount,
+  setOrderCount,
+  plusCount,
+  minusCount,
+  inputValue,
+  setInputValue,
+}) => {
   return (
     <TextBox>
       <LabelBox>수량</LabelBox>
-      <Number {...{ orderCount, plusCount, minusCount }} />
+      <Number
+        {...{
+          orderCount,
+          setOrderCount,
+          plusCount,
+          minusCount,
+          inputValue,
+          setInputValue,
+        }}
+      />
     </TextBox>
   );
 };
