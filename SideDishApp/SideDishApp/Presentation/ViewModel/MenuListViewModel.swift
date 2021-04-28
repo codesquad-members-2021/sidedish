@@ -60,9 +60,10 @@ class MenuListViewModel {
             .store(in: &subscriptions)
     }
     
-    func requestDishes() {
+    func requestDishes(completion: () -> Void) {
         fetchDishes(dish: "main")
         fetchDishes(dish: "soup")
         fetchDishes(dish: "side")
+        completion()
     }
 }
