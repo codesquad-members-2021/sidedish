@@ -75,7 +75,6 @@ const CarouselStyled = styled.div`
 `;
 
 const OutBox = styled.div`
-  margin-top: 2rem;
   overflow: hidden;
   position: relative;
 `;

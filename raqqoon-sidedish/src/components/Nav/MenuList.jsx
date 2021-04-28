@@ -32,5 +32,6 @@ const MenuContainer = styled.ul`
   padding-left: 1.5rem;
   display: flex;
   align-items: center;
+  margin-left: 2rem;
   position: relative;
 `;

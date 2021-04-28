@@ -24,9 +24,9 @@ const Menu = ({ title, subMenu }) => {
 export default Menu;
 
 const MenuLi = styled.li`
-  width: 100%;
   margin-right: 2rem;
   width: 107px;
+  height: 130%;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
@@ -34,6 +34,8 @@ const MenuLi = styled.li`
   color: #333333;
   cursor: pointer;
   position: relative;
+  display: flex;
+  align-items: center;
 
   &:hover {
     font-weight: bold;

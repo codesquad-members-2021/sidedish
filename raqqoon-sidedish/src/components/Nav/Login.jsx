@@ -43,4 +43,13 @@ const LoginWrap = styled.a`
   font-family: Noto Sans KR;
   font-size: 1rem;
   cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  margin: 0 0.6rem;
+  :visited {
+    text-decoration: none;
+  }
+  :hover {
+    text-decoration: underline;
+  }
 `;

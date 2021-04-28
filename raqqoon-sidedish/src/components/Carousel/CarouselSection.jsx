@@ -50,7 +50,9 @@ const CarouselSection = ({
   }, [categoryContents]);
   return (
     <CarouselWrapper>
-      <h2>모두가 좋아하는 든든한 메인요리</h2>
+      <CarouselTitleDiv>
+        <h2>모두가 좋아하는 든든한 메인요리</h2>
+      </CarouselTitleDiv>
       <CarouselContainer categoryContents={categoryContents} />
       <CategoryButton onClick={handleClickMoreBtn} isFolded={isFolded} />
     </CarouselWrapper>
@@ -63,6 +65,11 @@ const CarouselWrapper = styled.section`
   margin: 5rem 0 2rem;
   width: 1280px;
   position: relative;
+`;
+
+const CarouselTitleDiv = styled.div`
+  margin-bottom: 2rem;
+
   h2 {
     font-family: Noto Sans KR;
     font-style: normal;
