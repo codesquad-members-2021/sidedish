@@ -3,13 +3,12 @@ package codsquad.team17.sidedish.controller;
 import codsquad.team17.sidedish.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/dish")
 public class OrderController {
     private OrderService orderService;
 
@@ -17,8 +16,8 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PutMapping("/{itemId}/{itemAmount}")
-    public ResponseEntity orderItem(@PathVariable Long itemId, @PathVariable int itemAmount) {
-        return new ResponseEntity(orderService.orderItem(itemId, itemAmount), HttpStatus.OK);
+    @PutMapping("/{itemId}/order")
+    public ResponseEntity orderItem(@PathVariable Long itemId, @RequestBody HashMap<String, Integer> body) {
+        return new ResponseEntity(orderService.orderItem(itemId, body.get("order_amount")), HttpStatus.OK);
     }
 }
