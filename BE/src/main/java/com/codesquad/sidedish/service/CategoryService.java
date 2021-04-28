@@ -16,10 +16,8 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    //카테고리별 조회
-    public CategoryResponseDto readDishesByCategory(String categoryType) {
-        Category category = categoryRepository.findCategoryByType(categoryType);
-        return CategoryResponseDto.of(category);
+    public Category findCategoryByType(String type) {
+        return categoryRepository.findCategoryByType(type);
     }
 
     // 상세 조회
