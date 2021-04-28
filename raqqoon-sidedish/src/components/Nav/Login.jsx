@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import qs from 'qs';
-
 const Login = () => {
   useEffect(() => {
     const getToken = async () => {
@@ -19,15 +18,13 @@ const Login = () => {
         });
         const { access_token } = await res.json();
         localStorage.setItem('access_token', access_token);
-
-        const homePage = 'http://localhost:3000';
-        window.history.pushState(null, null, homePage);
       } catch (error) {
         console.error(error);
       }
     };
-
     getToken();
+    const homePage = 'http://localhost:3000';
+    window.history.pushState(null, null, homePage);
   }, []);
   return <LoginWrap href="http://localhost:3001/auth/github">로그인</LoginWrap>;
 };
