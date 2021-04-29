@@ -8,57 +8,49 @@
 import Foundation
 import Combine
 
+struct BanchanListViewModelAction {
+    let showBanchanDetails: ((Banchan) -> Void)
+}
+
 class BanchanListViewModel {
-    enum Section: Int, CaseIterable{
-        case main = 0
-        case soup, side
-        
-        func description() -> String {
-            switch self {
-            case .main:
-                return "모두가 좋아하는 든든한 메인요리"
-            case .soup:
-                return  "정성이 담긴 뜨끈뜨끈 국물요리"
-            case .side:
-                return "식탁을 풍성하게 하는 정갈한 밑반찬"
-            }
-        }
-    }
     
-    @Published var menu: Dictionary<Section, [Banchan]>
-    private let baseURL = "http://ec2-54-180-115-20.ap-northeast-2.compute.amazonaws.com:8080/"
+    @Published var menu: [[Banchan]]
     private var fetchBanchanListUseCase: FetchBanchanListUseCase
-    private var network = NetworkSerivce.shared
+    private var action: BanchanListViewModelAction
     
-    init() {
-        self.menu = [:]
-        self.fetchBanchanListUseCase = FetchBanchanListUseCase.init()
+    init(fetchBanchanListUseCase: FetchBanchanListUseCase, action: BanchanListViewModelAction) {
+        self.fetchBanchanListUseCase = fetchBanchanListUseCase
+        self.menu = []
+        self.action = action
+        configureMenu()
         fetchMenu()
     }
     
     func count(section: Section) -> Int {
-        return menu[section]?.count ?? 0
+        return menu[section.rawValue].count
     }
     
     func fetchMenu() {
-        fetchBanchanListUseCase.fetchBanchanList(network: network, baseURL: baseURL, section: "main", completion: { banchans in
-            guard let banchans = banchans else { return }
-            self.menu[.main] = banchans
-        })
-        
-        fetchBanchanListUseCase.fetchBanchanList(network: network, baseURL: baseURL, section: "soup", completion: { banchans in
-            guard let banchans = banchans else { return }
-            self.menu[.soup] = banchans
-        })
-        
-        fetchBanchanListUseCase.fetchBanchanList(network: network, baseURL: baseURL, section: "side", completion: { banchans in
-            guard let banchans = banchans else { return }
-            self.menu[.side] = banchans
+        Section.allCases.forEach { (section) in
+            fetchBanchanListUseCase.execute(section: section) { (banchans) in
+                self.menu[section.rawValue] = banchans ?? []
+            }
+        }
+    }
+    
+    func configureMenu() {
+        Section.allCases.forEach({ _ in
+            menu.append([])
         })
     }
     
+    func didSelectedItem(indexPath: IndexPath) {
+        let banchan = menu[indexPath.section][indexPath.row]
+        action.showBanchanDetails(banchan)
+    }
+    
     func getBanchans(section: Section) -> [Banchan]? {
-        return menu[section]
+        return menu[section.rawValue]
     }
 }
 

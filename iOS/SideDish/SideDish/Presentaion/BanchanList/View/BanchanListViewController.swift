@@ -13,13 +13,24 @@ class BanchanListViewController: UIViewController {
     
     @IBOutlet weak var banchanCollectionView: BanchanCollectionView!
     
-    private var viewModel = BanchanListViewModel()
+    static let storyboardName = "Main"
+    static let storyboardID = "BanchanListViewController"
+    
+    private var viewModel: BanchanListViewModel!
     private lazy var dataSource = configureDataSource()
     private var subscriptions = Set<AnyCancellable>()
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Banchan>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Banchan>
-    typealias Section = BanchanListViewModel.Section
+    
+    static func create(with viewModel: BanchanListViewModel) -> BanchanListViewController {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        guard let vc = storyboard.instantiateViewController(identifier: storyboardID) as? BanchanListViewController else {
+            return BanchanListViewController()
+        }
+        vc.viewModel = viewModel
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +109,10 @@ extension BanchanListViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize = CGSize(width: 343, height: 130)
         return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectedItem(indexPath: indexPath)
     }
 }
 
