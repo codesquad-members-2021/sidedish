@@ -11,7 +11,10 @@ import Combine
 protocol NetworkService {
     func request<T:Decodable>(with endPoint: Requestable, dataType: T.Type)
     -> AnyPublisher<T, NetworkError>
+    func post<T:Encodable> (with endPoint: Requestable, data: T)
+    -> AnyPublisher<Int, NetworkError>
     func decode<T: Decodable>(data: Data, dataType: T.Type) -> AnyPublisher<T, NetworkError>
+    func encode<T:Encodable>(anyData: T) -> Result<Data,NetworkError>
 }
 
 public class DefaultNetworkSerivce: NetworkService {
@@ -41,27 +44,67 @@ public class DefaultNetworkSerivce: NetworkService {
             .eraseToAnyPublisher()
     }
     
+    func post<T:Encodable> (with endPoint: Requestable, data: T)
+    -> AnyPublisher<Int, NetworkError> {
+        guard let url = endPoint.url() else {
+            let error = NetworkError.network(description: "Couldn't create URL")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        let result = encode(anyData: data)
+        let json: Data
+        switch result {
+        case .failure(let error):
+            print(error)
+            return Fail(error: error).eraseToAnyPublisher()
+        case .success(let data):
+            json = data
+        }
+
+        var request = URLRequest(url: url)
+        request.httpBody = json
+        request.httpMethod = endPoint.httpMethod.rawValue
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        if json != nil { request.setValue(String(json.count), forHTTPHeaderField: "Content-Length") }
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response -> Int in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.network(description: "Couldn't create URL")
+                }
+                return httpResponse.statusCode
+            }
+            .mapError { error in
+                NetworkError.network(description: error.localizedDescription)
+            }
+            .eraseToAnyPublisher()
+    }
+    
     func decode<T: Decodable>(data: Data, dataType: T.Type) -> AnyPublisher<T, NetworkError> {
       let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
       
-      // Just는 오직 하나의 값만을 출력하고 끝나게되는 가장 단순한 형태의 Publisher
-      // Combine Framework 에서 빌트인형태로 제공하는 Publisher
-      // 인자로 받는 값의 타입을 Output 타입으로 실패타입은 항상 Never로 리턴
       return Just(data)
         .decode(type: T.self, decoder: decoder)
-        // 기본적으로 map과 같은역할. error가 발생하면 해당 error 를 내가 원하는 error 타입으로 바꿔준다.
         .mapError { error in
           .parsing(description: error.localizedDescription)
         }
         .eraseToAnyPublisher()
-        // Operation에서 데이터를 처리할 땐 Operation 상호 간 에러 처리나 혹은 스트림 제어를 위해서
-        // 데이터 형식을 알아야 하지만 Subscriber 에게 전달될 땐 필요가 없다.
-        // 따라서 최종적인 형태로 데이터를 전달할 땐 eraseToAnyPublisher() 를 사용하게 된다.
+    }
+    
+    func encode<T:Encodable>(anyData: T) -> Result<Data,NetworkError> {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        guard let data = try? encoder.encode(anyData) else {
+            return Result.failure(NetworkError.encoding(description: "encoding Failure"))
+        }
+        return Result.success(data)
     }
 }
 
 enum NetworkError: Error {
+    case encoding(description: String)
     case parsing(description: String)
     case network(description: String)
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol BanchanSceneFlowCoordinatorDependencies {
     func makeBanchanListViewController(action: BanchanListViewModelAction) -> BanchanListViewController
-    func makeBanchanDetailViewController(hash: Int) -> BanchanDetailViewController
+    func makeBanchanDetailViewController(hash: Int, action: BanchanDetailViewModelAction) -> BanchanDetailViewController
 }
 
 class BanchanSceneFlowCoordinator {
@@ -31,7 +31,13 @@ class BanchanSceneFlowCoordinator {
     }
     
     func showBanchanDetails(banchan: Banchan) {
-        let vc = dependencies.makeBanchanDetailViewController(hash: banchan.detailHash)
+        let action = BanchanDetailViewModelAction(popBanchanDetail: popBanchanDetail)
+        let vc = dependencies.makeBanchanDetailViewController(hash: banchan.detailHash, action: action)
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func popBanchanDetail() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
