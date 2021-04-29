@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } f
 import styled from 'styled-components';
 import CarouselItem from 'component/Carousel/CarouselItem';
 
-const Carousel = forwardRef(({ children, maxItem, skipItem, animationTime }, ref) => {
+const Carousel = forwardRef(({ children, skipItem, animationTime }, ref) => {
+  const currRef = useRef();
   const [locationX, setLocationX] = useState(0);
   const [currIdx, setCurrIdx] = useState(0);
   const [leftItem, setLeftItem] = useState();
   const [itemWidth, setItemWidth] = useState(0);
+  const maxItem = currRef.current && Math.floor(currRef.current.offsetWidth / itemWidth) + 1;
 
   const handleClickPrev = () => {
     const possibleMove = currIdx >= skipItem ? skipItem : currIdx;
@@ -17,7 +19,7 @@ const Carousel = forwardRef(({ children, maxItem, skipItem, animationTime }, ref
 
   const handleClickNext = () => {
     const totalItemCount = children.length;
-    // console.log(currIdx);
+    console.log(currIdx);
     const newLeftItem = totalItemCount - (currIdx + maxItem);
     const possibleMove = newLeftItem >= skipItem ? skipItem : newLeftItem;
     setLocationX(locationX - itemWidth * possibleMove);
@@ -34,15 +36,11 @@ const Carousel = forwardRef(({ children, maxItem, skipItem, animationTime }, ref
     [handleClickPrev, handleClickNext]
   );
 
-  const CarouselItems = () => {
-    return children ? (
-      children.map((child) => {
-        return <CarouselItem item={child} setItemWidth={setItemWidth} />;
-      })
-    ) : (
-      <div>children 없음</div>
-    );
-  };
+  const carouselItems =
+    children &&
+    children.map((child) => {
+      return <CarouselItem item={child} setItemWidth={setItemWidth} />;
+    });
 
   return (
     <StyledCarousel
@@ -51,8 +49,8 @@ const Carousel = forwardRef(({ children, maxItem, skipItem, animationTime }, ref
       currIdx={currIdx}
       leftItem={leftItem}
     >
-      <div className="container">
-        <CarouselItems />
+      <div className="container" ref={currRef}>
+        {carouselItems}
       </div>
     </StyledCarousel>
   );
@@ -62,9 +60,9 @@ export default Carousel;
 
 export const StyledCarousel = styled.div`
   position: relative;
+  overflow: hidden;
 
   .container {
-    overflow: hidden;
     display: flex;
     transition: ${({ animationTime }) => `transform ${animationTime}s`};
     transform: ${({ locationX }) => `translateX(${locationX}px)`};
