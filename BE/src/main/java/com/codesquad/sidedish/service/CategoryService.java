@@ -4,6 +4,7 @@ import com.codesquad.sidedish.exception.NotFoundException;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
 import com.codesquad.sidedish.repository.CategoryRepository;
+import com.codesquad.sidedish.util.Status;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,25 +17,10 @@ public class CategoryService {
     }
 
     public Category findCategoryByType(String type) {
-        return categoryRepository.findCategoryByType(type).orElseThrow(() -> new NotFoundException("존재하지 않는 카테코리입니다."));
+        return categoryRepository.findCategoryByType(type).orElseThrow(() -> new NotFoundException(Status.NOTFOUND_CATEGORY.getMessage()));
     }
 
-    public Dish findDishByTypeAndId(String type, String dishId) {
-        Category category = findCategoryByType(type);
-        return category.getDishByDishId(dishId);
-    }
-
-    public boolean orderDish(String type, String dishId, int orderSize) {
-        Dish dish = findDishByTypeAndId(type, dishId);
-        if (dish.checkStock(orderSize)) {
-            dish.updateStock(orderSize);
-            addDish(type, dish);
-            return true;
-        }
-        return false;
-    }
-
-    public void addDish(String type, Dish dish) {
+    public void addDishToCategory(String type, Dish dish) {
         Category category = findCategoryByType(type);
         category.addDish(dish);
         categoryRepository.save(category);
