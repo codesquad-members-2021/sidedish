@@ -6,7 +6,7 @@ import OrderButton from 'Components/Modal/RightSide/OrderButton';
 import Prices from 'Components/Modal/RightSide/Prices';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
-const RightSide = ({ prices, product_description, point, delivery_info, delivery_fee, title, badge }) => {
+const RightSide = ({ salePrice, normalPrice, description, point, deliveryFee, title, badges }) => {
   const [count, setCount] = useState(0);
   const handleChangeCount = (number) => () => {
     setCount(count + number);
@@ -14,19 +14,19 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
 
   useEffect(() => {
     setCount(0); // 모달 새로 띄우면 카운트 0으로 초기화
-  }, [prices])
+  }, [salePrice])
 
   const additionalInfo = [
     { title: '적립금', desc: `${formatPriceAsNumber(point)}원` },
-    { title: '배송정보', desc: delivery_info },
-    { title: '배송비', desc: delivery_fee }
+    { title: '배송정보', desc: '서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.' },
+    { title: '배송비', desc: deliveryFee }
   ];
 
   return (
     <RightSideWrapper>
       <TitleDiv>{title}</TitleDiv>
-      <DescriptionDiv>{product_description}</DescriptionDiv>
-      <Prices {...{ badge, prices }} />
+      <DescriptionDiv>{description}</DescriptionDiv>
+      <Prices {...{ badges, salePrice, normalPrice }} />
 
       <DivisionHr />
 
@@ -47,9 +47,7 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
       </AdditionalInfoWrapper>
 
       <DivisionHr topMargin="24" />
-      <Sum sumPrice={prices[1]
-        ? formatPriceAsNumber(prices[1], count)
-        : formatPriceAsNumber(prices[0], count)} />
+      <Sum sumPrice={formatPriceAsNumber(salePrice, count)} />
       <OrderButton />
 
     </RightSideWrapper>

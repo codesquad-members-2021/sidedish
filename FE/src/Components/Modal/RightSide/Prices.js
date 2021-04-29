@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
-const Prices = ({ badge, prices: [netPrice, salePrice] }) => {
+const Prices = ({ badges, salePrice, normalPrice }) => {
   return (
     <PriceWrapper>
-      {badge?.map((badge, idx) => {
+      {badges?.split(', ').map((badge, idx) => {
         return (<SpecialLabelTag key={`modalSpacialLabel-${idx}`} badge={badge} />);
       })}
-      {salePrice
+      {salePrice !== normalPrice
         ? <><SalePriceSpan>{formatPriceAsNumber(salePrice)}</SalePriceSpan>
-          <NetPriceSpan>{formatPriceAsNumber(netPrice)}</NetPriceSpan></>
-        : <SalePriceSpan>{formatPriceAsNumber(netPrice)}</SalePriceSpan>
+          <NetPriceSpan>{formatPriceAsNumber(normalPrice)}</NetPriceSpan></>
+        : <SalePriceSpan>{formatPriceAsNumber(normalPrice)}</SalePriceSpan>
       }
     </PriceWrapper>
   );

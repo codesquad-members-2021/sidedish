@@ -4,18 +4,20 @@ import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
 const TabCard = ({ item, refetchModal }) => {
-  const { detail_hash, delivery_type, title,
-    description, n_price, s_price, badge } = item;
+  const { id, deliveryTypes, title, description,
+    normalPrice, salePrice, badges, topImage } = item;
+
+  const [DOMESTIC_POST, NEXT_DAY] = deliveryTypes.split(', ');
 
   return (
     <CardWrapper>
-      <ImageWrapper onClick={refetchModal({ hash: detail_hash }, { title, badge })}>
+      <ImageWrapper onClick={refetchModal({ hash: id }, { title, badges })}>
         <Image src={preparingImage} alt="" />
         <Overlay>
           <OverlayText>
-            <div>{delivery_type[0]}</div>
+            <div>{DOMESTIC_POST && '새벽배송'}</div>
             <hr />
-            <div>{delivery_type[1]}</div>
+            <div>{NEXT_DAY && '전국택배'}</div>
           </OverlayText>
         </Overlay>
       </ImageWrapper>
@@ -23,13 +25,13 @@ const TabCard = ({ item, refetchModal }) => {
       <DescriptionDiv>{description}</DescriptionDiv>
 
       <PriceWrapper>
-        {n_price ?
-          <><SalePriceSpan>{formatPriceAsNumber(s_price)}</SalePriceSpan>
-            <NetPriceSpan>{formatPriceAsNumber(n_price)}</NetPriceSpan></> :
-          <SalePriceSpan>{formatPriceAsNumber(s_price)}</SalePriceSpan>}
+        {normalPrice !== salePrice ?
+          <><SalePriceSpan>{formatPriceAsNumber(salePrice)}</SalePriceSpan>
+            <NetPriceSpan>{formatPriceAsNumber(normalPrice)}</NetPriceSpan></> :
+          <SalePriceSpan>{formatPriceAsNumber(salePrice)}</SalePriceSpan>}
       </PriceWrapper>
 
-      {badge?.map((badge, idx) => {
+      {badges?.split(', ').map((badge, idx) => {
         return (<SpecialLabelTag key={`TabSpecialLabel-${idx}`} badge={badge} />);
       })}
     </CardWrapper>

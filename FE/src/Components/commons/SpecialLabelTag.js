@@ -10,9 +10,9 @@ const SpecialLabelTag = ({ badge }) => {
 };
 
 const specialLabelColor = {
-  이벤트특가: "#82D32D",
-  론칭특가: "#86C6FF",
-  베스트: "#ed5151"
+  EVENT: "#82D32D",
+  LAUNCHING: "#86C6FF",
+  BEST: "#ed5151"
 }
 
 const SpecialLabel = styled.span`
