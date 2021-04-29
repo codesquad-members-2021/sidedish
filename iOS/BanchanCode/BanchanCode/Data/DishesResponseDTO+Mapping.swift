@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct DishesResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
