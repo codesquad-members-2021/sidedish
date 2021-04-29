@@ -42,12 +42,12 @@ const MainColumn = styled.div`
 function MainMenu() {
 	const basicUrl = process.env.REACT_APP_API_URL + 'best/';
 	//5개: 탭 전체 데이터 요청
-	const [bestDishMenu, bestDishLoading] = useFetch(basicUrl);
+	const [bestDishMenu, bestDishLoading] = useFetch(basicUrl, 'get');
 	const [clickedID, setClickedID] = useState(1);
 	//초기 베스트메뉴 url 설정
 	const [fetchData, setFetchData] = useState(basicUrl + 1);
 	//3개: 초기 베스트메뉴 데이터 요청
-	const [bestData, loadingState] = useFetch(fetchData);
+	const [bestData, loadingState] = useFetch(fetchData, 'get');
 	//클릭한 후 해당 탭 데이터 요청
 	const handleClick = (target, id) => {
 		setClickedID(id);

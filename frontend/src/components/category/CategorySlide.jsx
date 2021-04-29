@@ -39,7 +39,7 @@ function CategorySlide({ width, count, duration, children }) {
 	const transitionDefault = `all ${duration}`;
 	const panelWidth = width / count; //320
 	const panelCount = count;
-
+	console.log(children);
 	let block = [];
 	for (let i = 0; i < children.length; i++) {
 		if (i === 0) {

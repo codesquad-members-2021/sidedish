@@ -5,6 +5,7 @@ import useFetch from '../useFetch';
 import ItemCard from '../ItemCard';
 import Loading from '../state/Loading';
 import Error from '../state/Error';
+
 const TitleBlock = styled.div`
 	margin: 0 40px;
 `;
@@ -12,6 +13,7 @@ const TitleBlock = styled.div`
 function CategoryRender({ title, url }) {
 	const [categoryData, loadingState] = useFetch(
 		process.env.REACT_APP_API_URL + url,
+		'get',
 	);
 
 	return (

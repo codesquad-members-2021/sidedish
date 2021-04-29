@@ -6,6 +6,7 @@ import Loading from '../state/Loading';
 import Modal from '../Modal';
 import { useState } from 'react';
 import React from 'react';
+import Error from '../state/Error';
 const RepresentativeBlock = styled.div`
 	display: flex;
 	margin: 48px;
@@ -101,8 +102,9 @@ function DetailPage({
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
 				<Loading width="960px" height="568px" />
+			) : detailData === 400 ? (
+				<Error></Error>
 			) : (
-				//에러처리해보기
 				<>
 					<RepresentativeBlock className="MODAL">
 						<ImageBlock>

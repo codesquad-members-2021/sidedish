@@ -73,7 +73,8 @@ function ItemCard({ data, size }) {
 		setDetailFetchUrl(DetailUrl + hash);
 	};
 
-	const [detailData, loadingState] = useFetch(detailFetchUrl);
+	const [detailData, loadingState] = useFetch(detailFetchUrl, 'get');
+
 	return (
 		<>
 			{modalMode && !loadingState && (
