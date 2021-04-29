@@ -40,9 +40,13 @@ class DetailPageViewController: UIViewController {
         
         viewModel = makeDishDetailsViewModel()
         bind(to: viewModel)
-        
         viewModel.load()
         
+        setupViews()
+        updateRemoveButtonState()
+    }
+    
+    private func setupViews() {
         self.thumbnailImagesScrollView.isPagingEnabled = true
         orderButton.layer.masksToBounds = true
         orderButton.layer.cornerRadius = 5.0
@@ -51,11 +55,9 @@ class DetailPageViewController: UIViewController {
         quantityLabel.layer.borderColor = KeyColors.lineSeparatorColor?.cgColor
         setupUI(of: addButton)
         setupUI(of: removeButton)
-        
-        updateRemoveButtonState()
     }
     
-    func setupUI(of button: UIButton) {
+    private func setupUI(of button: UIButton) {
         button.layer.borderWidth = 1.0
         button.layer.borderColor = KeyColors.lineSeparatorColor?.cgColor
     }
@@ -93,12 +95,12 @@ class DetailPageViewController: UIViewController {
     }
     
     private func bind(to viewModel: DishDetailsViewModel) {
-        viewModel.basicInformation.observe(on: self) { [weak self] _ in self?.updateView() }
-        viewModel.thumbImages.observe(on: self) { [weak self] _ in self?.updateThumbnailImages() }
-        viewModel.detailImages.observe(on: self) { [weak self] _ in self?.updateDetailImages() }
+        viewModel.basicInformation.observe(on: self) { [weak self] _ in self?.refreshView() }
+        viewModel.thumbImages.observe(on: self) { [weak self] _ in self?.refreshThumbImages() }
+        viewModel.detailImages.observe(on: self) { [weak self] _ in self?.refreshDetailImages() }
     }
     
-    private func updateView() {
+    private func refreshView() {
         let basicInfo = viewModel.basicInformation.value
         self.title = basicInfo.name
         self.nameLabel.text = basicInfo.name
@@ -140,44 +142,43 @@ class DetailPageViewController: UIViewController {
         totalPriceLabel.text = String().format(price: totalPrice)
     }
     
-    private func updateThumbnailImages() {
-        let thumbImageURLs = viewModel.thumbImages.value
-        thumbImageURLs.enumerated().forEach { (index, imageURL) in
-            NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
-                let image = UIImage(data: imageData)
-                let imageView = UIImageView(image: image)
-                self.thumbnailImagesScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(thumbImageURLs.count),
-                                                                    height: self.view.frame.width)
-                imageView.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0,
-                                         width: self.view.frame.width, height: self.view.frame.width)
-                self.thumbnailImagesScrollView.addSubview(imageView)
-            }
+    private func refreshThumbImages() {
+        let thumbImages = viewModel.thumbImages.value
+        thumbImages.enumerated().forEach { index, imageData in
+            let image = UIImage(data: imageData)
+            let imageView = UIImageView(image: image)
+            self.thumbnailImagesScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(thumbImages.count),
+                                                                height: self.view.frame.width)
+            imageView.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0,
+                                     width: self.view.frame.width, height: self.view.frame.width)
+            self.thumbnailImagesScrollView.addSubview(imageView)
         }
     }
     
-    func attributedText(withString string: String, boldString: String, font: UIFont) -> NSAttributedString {
+    private func refreshDetailImages() {
+        detailImagesStackView.arrangedSubviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
+        let detailImages = viewModel.detailImages.value
+        detailImages.forEach { imageData in
+            guard let image = UIImage(data: imageData) else { return }
+            let ratio = image.size.height / image.size.width
+            
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            self.detailImagesStackView.addArrangedSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.heightAnchor.constraint(equalToConstant: ratio * self.view.frame.width).isActive = true
+        }
+    }
+    
+    private func attributedText(withString string: String, boldString: String, font: UIFont) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string,
                                                          attributes: [NSAttributedString.Key.font: font])
         let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
         let range = (string as NSString).range(of: boldString)
         attributedString.addAttributes(boldFontAttribute, range: range)
         return attributedString
-    }
-    
-    private func updateDetailImages() {
-        let detailImageURLs = viewModel.detailImages.value
-        detailImageURLs.forEach { imageURL in
-            NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
-                guard let image = UIImage(data: imageData) else { return }
-                let ratio = image.size.height / image.size.width
-                
-                let imageView = UIImageView(image: image)
-                imageView.contentMode = .scaleAspectFit
-                self.detailImagesStackView.addArrangedSubview(imageView)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.heightAnchor.constraint(equalToConstant: ratio * self.view.frame.width).isActive = true
-            }
-        }
     }
     
     private func updateRemoveButtonState() {
