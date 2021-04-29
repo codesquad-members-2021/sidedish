@@ -11,16 +11,20 @@ const BestTabStyle = styled.div`
   margin-bottom: 5rem;
 `;
 
-export default function BestTab({ onFetchDetailData }) {
+export default function BestTab() {
   const [active, setActive] = useState(0);
   const [bestItems, setBestItems] = useState(null);
 
   useEffect(() => {
     if (!bestItems) {
-      (async () => {
-        const data = await api("/best");
-        setBestItems(data);
-      })();
+      try {
+        (async () => {
+          const data = await api("/best");
+          setBestItems(data);
+        })();
+      } catch (e) {
+        console.log(e);
+      }
     }
     return;
   }, [bestItems]);
@@ -37,7 +41,6 @@ export default function BestTab({ onFetchDetailData }) {
       />
       <BestTabContainer
         bestItem={bestItems[active]}
-        onFetchDetailData={onFetchDetailData}
       />
     </BestTabStyle>
   );

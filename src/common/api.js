@@ -10,9 +10,17 @@ const API = () => {
         return fetch(URL + path, req);
     }
     return async (path) => {
-        const result = await API(path);
-        let json = await result.json();
-        if (!json || json.length === 0) json = null;
+        let json;
+        try {
+            const result = await API(path);
+            json = await result.json();
+        } catch(e) {
+            console.log(e);
+        } finally {
+            if(!json || json.length === 0) {
+                json = null;
+            }
+        }
         return json;
     }
 }
