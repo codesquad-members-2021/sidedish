@@ -49,13 +49,13 @@ extension DefaultDishesViewModel {
         
         let realmManager = RealmManager()
         
-        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { (result) in
+        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.name), completion: { (result) in
             switch result {
             
             case .success(let items):
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
                 //이곳에서 DB에 add를 할것이다.
-                realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.value.name)
+                realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.name)
                 
             case .failure(let error):                
                 print(error.localizedDescription)
@@ -66,7 +66,7 @@ extension DefaultDishesViewModel {
     
     func loadByDB() {
         let realmManager = RealmManager()
-        self.items.value = realmManager.getDishes(by: self.category.value.name)
+        self.items.value = realmManager.getDishes(by: self.category.name)
     }
     
     func getNumberOfItems() -> Int {
