@@ -36,7 +36,15 @@ class DetailPageViewController: UIViewController {
         viewModel = makeDishDetailsViewModel()
         bind(to: viewModel)
         
-        viewModel.load()
+        
+//        viewModel.load()
+        let networkManager = NetworkManager()
+        
+        if networkManager.isConnectedToInternet() {
+            viewModel.load()
+        }else{
+            viewModel.loadbyDB() //realm에 있는 db를 불러오기.
+        }
         
         self.thumbnailImagesScrollView.isPagingEnabled = true
         orderButton.layer.masksToBounds = true
