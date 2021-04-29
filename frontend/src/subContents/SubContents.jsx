@@ -1,5 +1,4 @@
 // 모든 카테고리 보기 or 데이터 처리하여 SubContents Section 생성
-import _ from "../ref";
 import styled, { css } from "styled-components";
 import { useEffect, useState, useContext } from "react";
 import useFetch from "../hooks/useFetch";
@@ -14,9 +13,9 @@ const SubContents = () => {
   const [contentsSections, setContentsSections] = useState(null);
   const [allView, setAllView] = useState(false);
 
-  const { response: mainResponse, loading: mainLoading, error: mainError } = useFetch(_.URL + "main");
-  const { response: soupResponse, loading: soupLoading, error: soupError } = useFetch(_.URL + "soup");
-  const { response: sideResponse, loading: sideLoading, error: sideError } = useFetch(_.URL + "side");
+  const { response: mainResponse, loading: mainLoading, error: mainError } = useFetch("/api/main");
+  const { response: soupResponse, loading: soupLoading, error: soupError } = useFetch("/api/soup");
+  const { response: sideResponse, loading: sideLoading, error: sideError } = useFetch("/api/side");
 
   // 1) SubContents에 필요한 데이터 요청
   useEffect(() => {

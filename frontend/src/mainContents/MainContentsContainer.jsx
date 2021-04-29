@@ -3,7 +3,6 @@ import styled from "styled-components"
 import useFetch from "../hooks/useFetch"
 import Title from "../utilComponent/Title"
 import MainContents from "./MainContents"
-import _ from "../ref"
 import TabList from "./TabList"
 
 const MainContentsContainer = () => {
@@ -12,7 +11,7 @@ const MainContentsContainer = () => {
         const initial = json.body[0].category_id;
         setClickedTabId(initial)
     }
-    const {response: data, loading} = useFetch(_.URL + "best", { callback: parse } );
+    const {response: data, loading} = useFetch("/api/best", { callback: parse } );
 
     return (
         <>  
@@ -21,12 +20,12 @@ const MainContentsContainer = () => {
             :   <StyledMainContents>
                     <Title type={"best"}/>
                     {data && <TabList
-                        txtArr={data.body.map(v => v.name)} 
+                        txtArr={data.body.map(v => v.name)}
                         keyArr={data.body.map(v => v.category_id)}
                         clickedTabId={clickedTabId}
                         setClickedTabId={setClickedTabId}
                     />}
-                    {data && <MainContents 
+                    {data && <MainContents
                         items={data.body.find(v => v.category_id === clickedTabId).items}
                     />}
                 </StyledMainContents>

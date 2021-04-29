@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import { SideDishContext } from "../utilComponent/SideDishStore";
 
-import _ from "../ref";
 import Modal from "../utilComponent/modal/Modal";
 import DetailTop from "./DetailTop";
 import DetailBottom from "./DetailBottom";
@@ -42,7 +41,7 @@ const Detail = () => {
   useEffect(() => {
     if (!currProductData) return;
     const { alt: subject, badge, detail_hash } = currProductData;
-    executeFetch(_.URL + `detail/${detail_hash}`, {subject, badge});
+    executeFetch(`/api/detail/${detail_hash}`, {subject, badge});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currProductData]);
 
