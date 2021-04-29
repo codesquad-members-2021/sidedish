@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let networking = SidedishNetworkCenter()
+        let imageCacheCenter = ImageCacheCenter()
+        let networking = SidedishNetworkCenter(imageCacheable: imageCacheCenter)
         let sidedishProcessing = SidedishProcessing(networkable: networking)
         self.itemViewModel = ItemViewModel(sidedishProcessable: sidedishProcessing)
         self.headerViewModel = HeaderViewModel()
@@ -101,7 +102,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let detailHash = items[indexPath.row].detailHash
             
             let vc = segue.destination as? DetailViewController
-            let networking = SidedishNetworkCenter()
+            let imageCacheCenter = ImageCacheCenter()
+            let networking = SidedishNetworkCenter(imageCacheable: imageCacheCenter)
             let sidedishProcessing = SidedishProcessing(networkable: networking)
             
             let badge = handleBadge(badge: items[indexPath.row].badge)

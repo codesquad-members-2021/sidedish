@@ -15,6 +15,12 @@ protocol Networkable {
 }
 
 class SidedishNetworkCenter: Networkable {
+    var imageCacheCenter: ImageCacheable
+    
+    init(imageCacheable: ImageCacheable) {
+        self.imageCacheCenter = imageCacheable
+    }
+    
     func fetchItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ()) {
         AF.request(url).validate().responseDecodable(of: SidedishOfCategory.self) { (response) in
             switch response.result {
@@ -45,9 +51,17 @@ class SidedishNetworkCenter: Networkable {
         var originalSidedishs = sidedishOfCategory
         for (index, item) in sidedishOfCategory.body.enumerated() {
             guard let url = URL(string: item.imageURL) else { return }
-            self.downloadImage(from: url) { (data) in
-                originalSidedishs.body[index].imageData = data
-                completion(originalSidedishs)
+            
+            if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
+                imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
+                    originalSidedishs.body[index].imageData = data
+                    completion(originalSidedishs)
+                }
+            } else {
+                self.downloadImage(from: url) { (data) in
+                    originalSidedishs.body[index].imageData = data
+                    completion(originalSidedishs)
+                }
             }
         }
     }
@@ -55,26 +69,47 @@ class SidedishNetworkCenter: Networkable {
     private func fetchDetailImgae(detail: Detail, completion: @escaping (Detail) -> ()) {
         let originalDetail = detail
         guard let url = URL(string: originalDetail.data.topImageURL) else { return }
-        self.downloadImage(from: url) { (data) in
-            originalDetail.data.topImageData = data
-            completion(originalDetail)
+        if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
+            imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
+                originalDetail.data.topImageData = data
+                completion(originalDetail)
+            }
+        } else {
+            self.downloadImage(from: url) { (data) in
+                originalDetail.data.topImageData = data
+                completion(originalDetail)
+            }
         }
         
         originalDetail.data.thumbImagesData = Array(repeating: nil, count: originalDetail.data.thumbImagesURL.count)
         for (index, thumbImageURL) in originalDetail.data.thumbImagesURL.enumerated() {
             guard let url = URL(string: thumbImageURL) else { return }
-            self.downloadImage(from: url) { (data) in
-                originalDetail.data.thumbImagesData?[index] = data
-                completion(originalDetail)
+            if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
+                imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
+                    originalDetail.data.thumbImagesData?[index] = data
+                    completion(originalDetail)
+                }
+            } else {
+                self.downloadImage(from: url) { (data) in
+                    originalDetail.data.thumbImagesData?[index] = data
+                    completion(originalDetail)
+                }
             }
         }
         
         originalDetail.data.detailSectionData = Array(repeating: nil, count: originalDetail.data.detailSectionURL.count)
         for (index, detailSectionURL) in originalDetail.data.detailSectionURL.enumerated() {
             guard let url = URL(string: detailSectionURL) else { return }
-            self.downloadImage(from: url) { (data) in
-                originalDetail.data.detailSectionData?[index] = data
-                completion(originalDetail)
+            if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
+                imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
+                    originalDetail.data.detailSectionData?[index] = data
+                    completion(originalDetail)
+                }
+            } else {
+                self.downloadImage(from: url) { (data) in
+                    originalDetail.data.detailSectionData?[index] = data
+                    completion(originalDetail)
+                }
             }
         }
     }
@@ -90,6 +125,8 @@ class SidedishNetworkCenter: Networkable {
             guard let imageData = data else {
                 return
             }
+            self.imageCacheCenter.cachingImage(named: url.lastPathComponent,
+                                               imageData: imageData)
             completion(imageData)
         }.resume()
     }
