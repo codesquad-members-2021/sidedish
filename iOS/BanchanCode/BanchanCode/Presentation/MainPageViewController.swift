@@ -14,8 +14,19 @@ class MainPageViewController: UIViewController {
     private var mainPageDelegate: MainPageCollectionViewDelegate?
     private var mainPageDataSource: MainPageCollectionViewDataSource?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerXib()
         
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
@@ -27,6 +38,7 @@ class MainPageViewController: UIViewController {
         }                
         
         mainPageDataSource?.viewModels = viewModels
+        mainPageDelegate?.viewModels = viewModels
         
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
@@ -53,8 +65,8 @@ class MainPageViewController: UIViewController {
     }
     
     func makeDishesViewModel(category: Categorizable) -> DishesViewModel {
-        let category = Observable(category)
-        return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category)
+        let actions = DishesListViewModelActions(goToDishDetail: goToDishDetail)
+        return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category, actions: actions)
     }
     
     private func registerXib() {
@@ -71,11 +83,19 @@ class MainPageViewController: UIViewController {
     }
     
     private func bind(to viewModel: DishesViewModel) {
-        viewModel.category.observe(on: self) { [weak self] _ in self?.updateItems() }
-        viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
+        viewModel.items.observe(on: self) { [weak self] items in self?.updateItems(items) }
     }
     
-    private func updateItems() {
-        dishCollectionView.reloadData()
+    private func updateItems(_ items: [DishesItemViewModel]) {
+        //dishCollectionView.reloadData()
+        dishCollectionView.reloadSections(IndexSet(integersIn: 0...2))
+    }
+    
+    private func goToDishDetail(categoryName: String, dish: Dish) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailPageVC = storyboard.instantiateViewController(identifier: "detailPageVC") as DetailPageViewController
+        detailPageVC.categoryName = categoryName
+        detailPageVC.id = dish.id
+        navigationController?.pushViewController(detailPageVC, animated: true)
     }
 }
