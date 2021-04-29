@@ -25,6 +25,8 @@ class MainPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerXib()
+        
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
         
@@ -44,8 +46,6 @@ class MainPageViewController: UIViewController {
             viewModel.load()
             bind(to: viewModel)
         }
-        
-        registerXib()
     }
     
     func makeFetchDishesUseCase() -> FetchDishesUseCase {
@@ -53,7 +53,6 @@ class MainPageViewController: UIViewController {
     }
     
     func makeDishesViewModel(category: Categorizable) -> DishesViewModel {
-        let category = Observable(category)
         let actions = DishesListViewModelActions(goToDishDetail: goToDishDetail)
         return DefaultDishesViewModel(fetchDishesUseCase: makeFetchDishesUseCase(), category: category, actions: actions)
     }
@@ -72,12 +71,12 @@ class MainPageViewController: UIViewController {
     }
     
     private func bind(to viewModel: DishesViewModel) {
-        viewModel.category.observe(on: self) { [weak self] _ in self?.updateItems() }
-        viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
+        viewModel.items.observe(on: self) { [weak self] items in self?.updateItems(items) }
     }
     
-    private func updateItems() {
-        dishCollectionView.reloadData()
+    private func updateItems(_ items: [DishesItemViewModel]) {
+        //dishCollectionView.reloadData()
+        dishCollectionView.reloadSections(IndexSet(integersIn: 0...2))
     }
     
     private func goToDishDetail(categoryName: String, dish: Dish) {

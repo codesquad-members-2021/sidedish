@@ -47,6 +47,8 @@ class DetailPageViewController: UIViewController {
         quantityLabel.layer.borderColor = UIColor(named: "LineSeparatorColor")?.cgColor
         setupUI(of: addButton)
         setupUI(of: removeButton)
+        
+        updateRemoveButtonState()
     }
     
     private func createBadgeView(with text: String) -> UIView {
@@ -86,6 +88,7 @@ class DetailPageViewController: UIViewController {
         totalPrice = currentQuantity * (dishDetail.prices?[0] ?? 0)
         quantityLabel.text = "\(currentQuantity)"
         totalPriceLabel.text = String().format(price: totalPrice)
+        updateRemoveButtonState()
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
@@ -94,6 +97,7 @@ class DetailPageViewController: UIViewController {
         totalPrice = currentQuantity * (dishDetail.prices?[0] ?? 0)
         quantityLabel.text = "\(currentQuantity)"
         totalPriceLabel.text = String().format(price: totalPrice)
+        updateRemoveButtonState()
     }
     
     func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
@@ -191,5 +195,9 @@ class DetailPageViewController: UIViewController {
                 imageView.heightAnchor.constraint(equalToConstant: ratio * self.view.frame.width).isActive = true
             }
         }
+    }
+    
+    private func updateRemoveButtonState() {
+        removeButton.isEnabled = totalPrice > 0
     }
 }
