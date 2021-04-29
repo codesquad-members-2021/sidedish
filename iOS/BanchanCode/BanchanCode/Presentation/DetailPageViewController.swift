@@ -8,6 +8,11 @@
 import UIKit
 
 class DetailPageViewController: UIViewController {
+    enum KeyColors {
+        static let lineSeparatorColor = UIColor(named: "LineSeparatorColor")
+        static let eventBadgeBackgroundColor = UIColor(named: "EventBadgeBackgroundColor")
+        static let launchBadgeBackgroundColor = UIColor(named: "LaunchBadgeBackgroundColor")
+    }
     @IBOutlet weak var thumbnailImagesScrollView: UIScrollView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -52,7 +57,7 @@ class DetailPageViewController: UIViewController {
         orderButton.layer.cornerRadius = 5.0
         quantityLabel.text = "\(currentQuantity)"
         quantityLabel.layer.borderWidth = 1.0
-        quantityLabel.layer.borderColor = UIColor(named: "LineSeparatorColor")?.cgColor
+        quantityLabel.layer.borderColor = KeyColors.lineSeparatorColor?.cgColor
         setupUI(of: addButton)
         setupUI(of: removeButton)
         
@@ -61,7 +66,7 @@ class DetailPageViewController: UIViewController {
     
     func setupUI(of button: UIButton) {
         button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor(named: "LineSeparatorColor")?.cgColor
+        button.layer.borderColor = KeyColors.lineSeparatorColor?.cgColor
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
@@ -133,7 +138,7 @@ class DetailPageViewController: UIViewController {
             badges?.forEach { badgeString in
                 let badgeView = BadgeView()
                 badgeView.badgeLabel.text = badgeString
-                badgeView.backgroundColor = badgeString == "이벤트특가" ? #colorLiteral(red: 0.5098039216, green: 0.8274509804, blue: 0.1764705882, alpha: 1) : #colorLiteral(red: 0.5254901961, green: 0.7764705882, blue: 1, alpha: 1)
+                badgeView.backgroundColor = badgeString == "이벤트특가" ? KeyColors.eventBadgeBackgroundColor : KeyColors.launchBadgeBackgroundColor
                 badgeStackView.addArrangedSubview(badgeView)
             }
         }
