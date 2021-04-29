@@ -37,14 +37,15 @@ class DetailPageViewController: UIViewController {
         bind(to: viewModel)
         
         
-//        viewModel.load()
-        let networkManager = NetworkManager()
+        viewModel.load()
         
-        if networkManager.isConnectedToInternet() {
-            viewModel.load()
-        }else{
-            viewModel.loadbyDB() //realm에 있는 db를 불러오기.
-        }
+//        let networkManager = NetworkManager()
+//
+//        if networkManager.isConnectedToInternet() {
+//            viewModel.load()
+//        }else{
+//            viewModel.loadbyDB() //realm에 있는 db를 불러오기.
+//        }
         
         self.thumbnailImagesScrollView.isPagingEnabled = true
         orderButton.layer.masksToBounds = true

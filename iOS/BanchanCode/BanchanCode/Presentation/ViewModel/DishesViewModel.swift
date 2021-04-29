@@ -46,17 +46,10 @@ final class DefaultDishesViewModel: DishesViewModel {
 //MARK: - Input
 extension DefaultDishesViewModel {
     func load() {
-        
-        let realmManager = RealmManager()
-        
         fetchDishesUseCase.execute(requestValue: .init(categoryName: category.name), completion: { (result) in
             switch result {
-            
             case .success(let items):
-                self.items.value = items.dishes.map(DishesItemViewModel.init)
-                //이곳에서 DB에 add를 할것이다.
-                realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.name)
-                
+                self.items.value = items.dishes.map(DishesItemViewModel.init)                
             case .failure(let error):                
                 print(error.localizedDescription)
                 break
