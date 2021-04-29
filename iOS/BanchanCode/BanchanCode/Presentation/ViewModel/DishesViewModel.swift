@@ -50,21 +50,15 @@ extension DefaultDishesViewModel {
                 realmManager.add(dishesItem: self.items.value, categoryName: self.category.value.name)
                 
             case .failure(let error):                
-                print(error.localizedDescription)                
+                print(error.localizedDescription)
                 break
             }
         })
     }
     
     func loadByDB() {
-        let realm = try! Realm()
-        print(category.value.name)
-        let dishes = realm.objects(DishDB.self).filter("categoryName == %@",category.value.name)
-        
-        dishes.forEach{ dishDB in
-            let dish = Dish(id: dishDB.id, name: dishDB.name, description: dishDB.contents, imageURL: dishDB.imageURL, prices: Array(dishDB.prices), badges: Array(dishDB.badges))
-            self.items.value.append(DishesItemViewModel(dish: dish))
-        }
+        let realmManager = RealmManager()
+        self.items.value = realmManager.get(categryName: self.category.value.name)
     }
     
     func getNumberOfItems() -> Int {
