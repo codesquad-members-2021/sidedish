@@ -7,7 +7,7 @@ import com.codesquad.sidedish.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/categories/{type:main|soup|side}")
+@RequestMapping("/categories/{type}")
 public class CategoryController {
 
     private CategoryService categoryService;
