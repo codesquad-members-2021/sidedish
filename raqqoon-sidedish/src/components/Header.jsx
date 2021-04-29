@@ -58,6 +58,11 @@ const NavRight = styled.div`
     width: 15.5rem;
     height: 2.5rem;
     font-size: 1.5rem;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #f5f5f7;
+    background: #f5f5f7;
 
     ::placeholder {
       text-align: right;
@@ -69,5 +74,7 @@ const NavRight = styled.div`
     padding-left: 1.5rem;
     font-family: Noto Sans KR;
     font-size: 1rem;
+    font-weight: 400;
+    color: #333;
   }
 `;

@@ -5,7 +5,7 @@ const Price = ({ normal, discount, type, cardSize }) => {
   return (
     <PriceBoxDiv {...{ cardSize }}>
       <Normal {...{ normal, type, cardSize }} />
-      <Discount {...{ discount, type, cardSize }} />
+      <Discount {...{ normal, discount, type, cardSize }} />
     </PriceBoxDiv>
   );
 };
@@ -13,9 +13,13 @@ const Price = ({ normal, discount, type, cardSize }) => {
 const Normal = ({ normal, type, cardSize }) => {
   return <NormalDiv {...{ type, cardSize }}>{normal}</NormalDiv>;
 };
-const Discount = ({ discount, type, cardSize }) => {
+const Discount = ({ normal, discount, type, cardSize }) => {
   if (!discount) return null;
-  return <DiscountDiv {...{ type, cardSize }}>{discount}</DiscountDiv>;
+  return (
+    <DiscountDiv {...{ normal, discount, type, cardSize }}>
+      {discount}
+    </DiscountDiv>
+  );
 };
 
 export default Price;
@@ -68,5 +72,21 @@ const DiscountDiv = styled.div`
     css`
       font-size: 16px;
       line-height: 23px;
+    `}
+  ${({ cardSize }) =>
+    cardSize === SIZE_SMALL &&
+    css`
+      font-size: 14px;
+      line-height: 20px;
+      color: #010101;
+      font-weight: 800;
+      text-decoration: none;
+    `}
+  ${({ cardSize, normal, discount }) =>
+    cardSize === SIZE_SMALL &&
+    normal &&
+    discount &&
+    css`
+      color: #f5f5f7;
     `}
 `;

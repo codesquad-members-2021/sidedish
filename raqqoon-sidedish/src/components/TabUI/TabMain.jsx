@@ -9,17 +9,8 @@ const TabMain = ({ tabItemList, setModalState, modalData, setModalData }) => {
     []
   );
 
-  const randomIndex = (list) =>
-    Math.floor(Math.random() * (list.length - 0) + 0);
-
   if (!tabItemList.items) return <div>No data...</div>;
   if (!imgData) return <div>No data...</div>;
-
-  // const imgList = [
-  //   imgData[randomIndex(imgData)].image,
-  //   imgData[randomIndex(imgData)].image,
-  //   imgData[randomIndex(imgData)].image,
-  // ];
 
   return (
     <TabMainBoxDiv>

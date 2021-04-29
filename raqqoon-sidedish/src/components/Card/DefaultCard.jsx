@@ -37,7 +37,7 @@ const DefaultCard = ({
           badge,
         }}
       />
-      <Info name={title} body={description} />
+      <Info name={title} body={description} cardSize={cardSize} />
       <Price normal={s_price} discount={n_price} />
       {badge && (
         <TagBoxDiv>

@@ -3,6 +3,7 @@ import { DEFAULT, SIZE_MEDIUM } from 'const';
 import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 import Carousel from 'components/carousel/Carousel';
+import styled from 'styled-components';
 
 const CarouselMain = ({
   path,
@@ -29,17 +30,24 @@ const CarouselMain = ({
     ));
 
   return dishList ? (
-    <Carousel
-      options={{
-        panelCount: 4,
-        animation: { target: 'transform', time: 0.5, effect: 'ease-in-out' },
-      }}
-    >
-      {dishList}
-    </Carousel>
+    <CarousleBox>
+      <Carousel
+        options={{
+          panelCount: 4,
+          animation: { target: 'transform', time: 0.5, effect: 'ease-in-out' },
+          type: 'main',
+        }}
+      >
+        {dishList}
+      </Carousel>
+    </CarousleBox>
   ) : (
     <div>로딩중입니다!!!!!!!</div>
   );
 };
 
 export default CarouselMain;
+
+const CarousleBox = styled.div`
+  margin-bottom: 1.5rem;
+`;
