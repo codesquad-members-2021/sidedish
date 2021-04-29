@@ -1,10 +1,12 @@
 package com.codesquad.sidedish.SideDish.dto;
 
 
+import com.codesquad.sidedish.SideDish.domain.Delivery;
 import com.codesquad.sidedish.SideDish.domain.Dish;
+import com.codesquad.sidedish.SideDish.domain.Sale;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DishDto {
     private final String detailHash;
@@ -27,16 +29,16 @@ public class DishDto {
         this.badges = builder.badges;
     }
 
-    public static DishDto from(Dish dish) {
+    public static DishDto from(Dish dish, List<Delivery> deliveries, List<Sale> sales) {
         return new Builder()
                 .detailHash(dish.getDetailHash())
                 .image(dish.getImage())
                 .title(dish.getTitle())
                 .description(dish.getDescription())
-                .deliveryTypes(Arrays.asList("", "")) // TODO:
+                .deliveryTypes(deliveries.stream().map(Delivery::getDeliveryType).collect(Collectors.toList()))
                 .price(dish.getPrice())
                 .salePrice(dish.getSalePrice())
-                .badges(Arrays.asList("", "")) // TODO:
+                .badges(sales.stream().map(Sale::getBadge).collect(Collectors.toList()))
                 .build();
     }
 

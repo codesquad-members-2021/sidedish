@@ -1,9 +1,6 @@
 package com.codesquad.sidedish.SideDish.service;
 
-import com.codesquad.sidedish.SideDish.domain.Dish;
-import com.codesquad.sidedish.SideDish.domain.DishRepository;
-import com.codesquad.sidedish.SideDish.domain.Image;
-import com.codesquad.sidedish.SideDish.domain.ImageRepository;
+import com.codesquad.sidedish.SideDish.domain.*;
 import com.codesquad.sidedish.SideDish.dto.DishDetailDto;
 import com.codesquad.sidedish.SideDish.dto.DishDto;
 import com.codesquad.sidedish.SideDish.dto.QuantityDto;
@@ -19,16 +16,28 @@ import java.util.stream.Collectors;
 public class DishService {
     private final DishRepository dishRepository;
     private final ImageRepository imageRepository;
+    private final DeliveryRepository deliveryRepository;
+    private final SaleRepository saleRepository;
 
-    public DishService(DishRepository dishRepository, ImageRepository imageRepository) {
+    public DishService(DishRepository dishRepository, ImageRepository imageRepository, DeliveryRepository deliveryRepository, SaleRepository saleRepository) {
         this.dishRepository = dishRepository;
         this.imageRepository = imageRepository;
+        this.deliveryRepository = deliveryRepository;
+        this.saleRepository = saleRepository;
     }
 
     public List<DishDto> getList(Long categoryId) {
         return dishRepository.findAllByCategoryId(categoryId)
-                .stream().map(DishDto::from)
+                .stream().map(this::convert)
                 .collect(Collectors.toList());
+    }
+
+    // FIXME: N+1 문제를 해결해야한다.
+    private DishDto convert(Dish dish) {
+        String detailHash = dish.getDetailHash();
+        List<Delivery> deliveries = deliveryRepository.findAllByDish(detailHash);
+        List<Sale> sales = saleRepository.findAllByDish(detailHash);
+        return DishDto.from(dish, deliveries, sales);
     }
 
 
@@ -42,14 +51,12 @@ public class DishService {
         return QuantityDto.from(getDish(detailHash));
     }
 
-    //
     public DishDetailDto getDetail(String detailHash) {
         Dish dish = dishRepository.findByDetailHash(detailHash);
         List<Image> thumbImages = imageRepository.findThumbImagesByDish(detailHash);
         List<Image> detailImages = imageRepository.findDetailImagesByDish(detailHash);
         return DishDetailDto.from(dish, thumbImages, detailImages);
     }
-//
 
     private Dish getDish(String detailHash) {
         Dish dish = dishRepository.findByDetailHash(detailHash);
