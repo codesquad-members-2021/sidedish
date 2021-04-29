@@ -7,29 +7,18 @@ import sidedish.service.ConvertUtils;
 
 import java.util.List;
 
-@JsonPropertyOrder({"id", "name","top_image", "description", "prices", "badges",
-        "stock" , "point", "delivery_info", "thumb_images", "detail_images", "category"})
 public class RequestDishDTO {
 
     private Long id;
     private String name;
-
-    @JsonProperty("top_image")
     private String topImage;
-
     private String description;
     private List<Integer> prices;
     private List<String> badges;
     private Long stock;
     private Integer point;
-
-    @JsonProperty("delivery_info")
     private String deliveryInfo;
-
-    @JsonProperty("thumb_images")
     private List<String> thumbImages;
-
-    @JsonProperty("detail_images")
     private List<String> detailImages;
 
     @JsonProperty("category")
