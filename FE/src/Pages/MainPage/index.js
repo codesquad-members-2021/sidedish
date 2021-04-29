@@ -1,20 +1,20 @@
-import { useReducer } from 'react';
 import styled from 'styled-components';
 import { FlexContainer, Container } from 'Components/commons/base.js';
 import Header from 'Components/Header/Header.js';
 import Tabs from 'Components/Tabs/Tabs';
 import DetailProductModal from 'Components/Modal/DetailProductModal';
 import MainDish from 'Pages/MainPage/MainDish';
-import { reducer, reducerInitialState } from 'util/reducer';
+import useAsync from 'util/hooks/useAsync';
+import API from 'util/API';
 
 const MainPage = () => {
-  const [modalState, dispatchModal] = useReducer(reducer, reducerInitialState);
+  const [modalState, refetchModal] = useAsync(API.get.detail, [], true);
 
   return (
     <MainPageLayout>
       <DetailProductModal {...{ modalState }} />
       <Header />
-      <Tabs  {...{ dispatchModal }} />
+      <Tabs  {...{ refetchModal }} />
       <MainDishSection>
         <MainDish />
       </MainDishSection>
