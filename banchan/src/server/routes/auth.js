@@ -20,7 +20,7 @@ router.post("/auth", async (req, res) => {
     }
   );
 
-  conosle.log(`response: ${response}`);
+  console.log(`response: ${response}`);
 
   const token = response.data.access_token;
 
