@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `sidedish`.`dish` (
     `normal_price` DECIMAL(6,0) NULL,
     `special_price` DECIMAL(6,0) NOT NULL,
     `section_name` VARCHAR(255) NULL,
-    `stock` INT NOT NULL,
+    `stock` INT UNSIGNED NOT NULL,
     PRIMARY KEY (`hash`))
     ENGINE = InnoDB;
 
