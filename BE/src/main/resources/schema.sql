@@ -19,11 +19,11 @@ USE `side_dish`;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `side_dish`.`user`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`user` (
-    `id` INT AUTO_INCREMENT NOT NULL,
+    `id` INT AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL,
     `email` VARCHAR(45) NOT NULL,
     `user_id` VARCHAR(45) NOT NULL,
-    `token` VARCHAR(255) NOT NULL,
+    `token` VARCHAR(255),
     PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
