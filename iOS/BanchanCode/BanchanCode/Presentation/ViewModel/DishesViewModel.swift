@@ -19,7 +19,7 @@ protocol DishesViewModelInput {
 }
 
 protocol DishesViewModelOutput {
-    var category: Observable<Categorizable> { get }
+    var category: Categorizable { get }
     var items: Observable<[DishesItemViewModel]> { get }
 }
 
@@ -30,12 +30,12 @@ final class DefaultDishesViewModel: DishesViewModel {
     private let actions: DishesListViewModelActions?
     
     //MARK: - Output
-    var category: Observable<Categorizable>
+    var category: Categorizable
     var items: Observable<[DishesItemViewModel]> = Observable([])
     
     //MARK: - Init
     init(fetchDishesUseCase: FetchDishesUseCase,
-         category: Observable<Categorizable>,
+         category: Categorizable,
          actions: DishesListViewModelActions? = nil) {
         self.fetchDishesUseCase = fetchDishesUseCase
         self.category = category
@@ -47,13 +47,13 @@ final class DefaultDishesViewModel: DishesViewModel {
 extension DefaultDishesViewModel {
     func load() {
         let realmManager = RealmManager()
-        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { (result) in
+        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.name), completion: { (result) in
             switch result {
             
             case .success(let items):
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
                 //이곳에서 DB에 add를 할것이다.
-                realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.value.name)
+                realmManager.addDishes(dishesItem: self.items.value, categoryName: self.category.name)
                 
             case .failure(let error):                
                 print(error.localizedDescription)
@@ -64,7 +64,7 @@ extension DefaultDishesViewModel {
     
     func loadByDB() {
         let realmManager = RealmManager()
-        self.items.value = realmManager.getDishes(by: self.category.value.name)
+        self.items.value = realmManager.getDishes(by: self.category.name)
     }
     
     func getNumberOfItems() -> Int {
@@ -72,6 +72,6 @@ extension DefaultDishesViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.goToDishDetail(category.value.name, items.value[index].dish)
+        actions?.goToDishDetail(category.name, items.value[index].dish)
     }
 }
