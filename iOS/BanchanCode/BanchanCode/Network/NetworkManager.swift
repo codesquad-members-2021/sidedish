@@ -14,22 +14,43 @@ class NetworkManager {
         return Alamofire.NetworkReachabilityManager()?.isReachable ?? false
     }
     
-    func performRequest(urlString: String, completionHandler: @escaping (DishesResponseDTO) -> ()) {
-        AF.request(urlString, method: .get)
-            .validate(statusCode: 200..<300)
-            .responseDecodable(of: DishesResponseDTO.self) { (response) in
-                switch response.result {
-                case .success(let dishes):
-                    completionHandler(dishes)
-                case .failure(let error):
-                    print(error)
-                    //아이폰 네트워크 종료 후 돌릴 시 이 곳에서 error가 체크된다.
-                    //URLSessionTask failed with error: A data connection is not currently allowed.
-//                    let dish = self.realm.object(ofType: DishDB.self, forPrimaryKey: 1)                
-//                    print("에러에러",error.localizedDescription, dish?.categoryName, dish?.id, dish?.name)
+    
+//     func performRequest(urlString: String, completionHandler: @escaping (DishesResponseDTO) -> ()) {
+//             AF.request(urlString, method: .get)
+//                 .validate(statusCode: 200..<300)
+//                 .responseDecodable(of: DishesResponseDTO.self) { (response) in
+//                     switch response.result {
+//                     case .success(let dishes):
+//                         completionHandler(dishes)
+//                     case .failure(let error):
+//                        print("에러에러",error.localizedDescription)
+//                         //아이폰 네트워크 종료 후 돌릴 시 이 곳에서 error가 체크된다.
+//                         //URLSessionTask failed with error: A data connection is not currently allowed.
+//     //                    let dish = self.realm.object(ofType: DishDB.self, forPrimaryKey: 1)
+//     //                    print("에러에러",error.localizedDescription, dish?.categoryName, dish?.id, dish?.name)
+//                     }
+//                 }
+//         }
+     
+
+    func performRequest(urlString: String, completionHandler: @escaping (Result<DishesResponseDTO,AFError>) -> Void) {
+            AF.request(urlString, method: .get)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: DishesResponseDTO.self) { response in
+                    switch response.result {
+                    case .success(let dishes):
+                        completionHandler(.success(dishes))
+                    case .failure(let error):
+                        completionHandler(.failure(error))
+//                       print("에러에러",error.localizedDescription)
+                    
+                        //아이폰 네트워크 종료 후 돌릴 시 이 곳에서 error가 체크된다.
+                        //URLSessionTask failed with error: A data connection is not currently allowed.
+    //                    let dish = self.realm.object(ofType: DishDB.self, forPrimaryKey: 1)
+    //                    print("에러에러",error.localizedDescription, dish?.categoryName, dish?.id, dish?.name)
+                    }
                 }
-            }
-    }
+        }
     
     func performRequestDishDetail(urlString: String, completionHandler: @escaping (DishDetailResponseDTO) -> ()) {
         AF.request(urlString, method: .get)

@@ -11,7 +11,7 @@ import Foundation
 private protocol RealmOperations {
     func addDishes(dishesItem: [DishesItemViewModel], categoryName: String)
     func addDishDetail(disheDetail: DishDetail)
-    func getDishes(by categryName: String) -> [DishesItemViewModel]
+    func getDishes(categryName: String) -> [DishesItemViewModel]
     func getDishesID(by id: Int) -> DishDetail?
     
 }
@@ -59,7 +59,7 @@ class RealmManager: RealmOperations {
         }
     }
     
-    func getDishes(by categryName: String) -> [DishesItemViewModel] {
+    func getDishes(categryName: String) -> [DishesItemViewModel] {
         var dishItems = [DishesItemViewModel]()
         let dishes = realm.objects(DishDB.self).filter("categoryName == %@",categryName)
         

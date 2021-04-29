@@ -46,11 +46,11 @@ class MainPageViewController: UIViewController {
         let networkManager = NetworkManager()
                 
         viewModels.forEach { viewModel in
-            if networkManager.isConnectedToInternet() {
+//            if networkManager.isConnectedToInternet() {
                 viewModel.load()
-            }else{
-                viewModel.loadByDB() //realm에 있는 db를 불러오기.
-            }
+//            }else{
+//                viewModel.loadByDB() //realm에 있는 db를 불러오기.
+//            }
             bind(to: viewModel)
         }
         print(Realm.Configuration.defaultConfiguration.fileURL!)

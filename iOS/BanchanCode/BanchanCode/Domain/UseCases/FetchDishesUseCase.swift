@@ -8,7 +8,7 @@
 import Foundation
 
 /*
-이곳에서 DB를 연결해야 하지 않을까 싶다.
+ 이곳에서 DB를 연결해야 하지 않을까 싶다.
  */
 
 protocol FetchDishesUseCase {
@@ -24,11 +24,9 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
                  completion: @escaping (Result<Dishes, Error>) -> Void) {
         return fetchDishes(categoryName: requestValue.categoryName, completion: { result in
             switch result {
-            
-            case .success(let items):
-                self.realmManager.addDishes(dishesItem: items.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
-            case .failure(_):
-                //get data from DB
+            case .success(let responseDTO):
+                self.realmManager.addDishes(dishesItem: responseDTO.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
+            case .failure:
                 break
             }
             completion(result)
@@ -36,12 +34,46 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     }
     
     private func fetchDishes(categoryName: String,
-                     completion: @escaping (Result<Dishes, Error>) -> Void) {
+                             completion: @escaping (Result<Dishes, Error>) -> Void) {
         let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)"
-        networkManager.performRequest(urlString: url) { (responseDTO) in
-            completion(.success(responseDTO.toDomain()))
-            //이 쪽에서 RealmManager를 불러줘야 하네.
+        //        networkManager.performRequest(urlString: url) { (responseDTO) in
+        //            completion(.success(responseDTO.toDomain()))
+        ////            completion(.failure(Error))
+        //        }
+        
+        networkManager.performRequest(urlString: url) { result in
+            
+            switch result {
+            case .success(let responseDTO) :
+                completion(.success(responseDTO.toDomain()))
+            case .failure(let error) :
+                completion(.failure(error))
+            }
         }
+        
+        //        networkManager.performRequest(urlString: url) { result in
+        
+        //            switch result {
+        //            case .success() {
+        //
+        //            }
+        //            }
+        //            completion(.success(responseDTO.toDomain()))
+        
+        
+        
+        //            switch result {
+        //
+        //            case .success(let responseDTO) :
+        //                completion(responseDTO.toDomain())
+        //
+        //            case .failure(let _) :
+        //getDataFromDB
+        //            }
+        
+        //            completion(.success(responseDTO.toDomain()))
+        //        }
+        
     }
 }
 
