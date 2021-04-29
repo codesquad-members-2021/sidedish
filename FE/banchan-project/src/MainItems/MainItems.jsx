@@ -66,7 +66,6 @@ const MainItems = (props) => {
     return (
       <S.CategoryItemsWrapper>
         <CategoryItemsTitle categoryTitle={categoryData.dish_category_name} />
-
         <Slider
           sliderWidth={1280}
           cardWidth={324}
@@ -77,17 +76,6 @@ const MainItems = (props) => {
           leftButton={<CS.Button.LEFT_BUTTON />}
           rightButton={<CS.Button.RIGHT_BUTTON />}
         />
-        {/* <S.CategoryItemsCardScrollWrapper>
-          <S.CategoryLeftButtonWrapper>
-            <CS.Button.LEFT_BUTTON />
-          </S.CategoryLeftButtonWrapper>
-
-          {cards}
-
-          <S.CategoryRightButtonWrapper>
-            <CS.Button.RIGHT_BUTTON />
-          </S.CategoryRightButtonWrapper>
-        </S.CategoryItemsCardScrollWrapper> */}
       </S.CategoryItemsWrapper>
     );
   };

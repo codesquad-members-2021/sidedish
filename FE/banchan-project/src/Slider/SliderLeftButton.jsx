@@ -8,8 +8,10 @@ const SliderLeftButton = ({
   leftRemainingCards,
   setLeftRemainingCards,
   setRightRemainingCards,
+  optionalFn,
 }) => {
   let buttonFlag;
+  let opacity;
 
   const onClick = (direction) => {
     let moveNumber;
@@ -23,10 +25,23 @@ const SliderLeftButton = ({
     setRightRemainingCards((x) => x + moveNumber);
   };
 
-  leftRemainingCards === 0 ? (buttonFlag = true) : (buttonFlag = false);
+  if (leftRemainingCards === 0) {
+    buttonFlag = true;
+    opacity = 0.5;
+  } else {
+    buttonFlag = false;
+    opacity = 1;
+  }
 
   return (
-    <S.LeftButtonWrapper onClick={() => onClick(1)}>
+    <S.LeftButtonWrapper
+      disabled={buttonFlag}
+      _opacity={opacity}
+      onClick={() => {
+        onClick(1);
+        optionalFn((v) => v - 1);
+      }}
+    >
       {leftButton}
     </S.LeftButtonWrapper>
   );

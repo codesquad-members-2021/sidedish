@@ -90,6 +90,7 @@ const DetailModalWindow = (props) => {
               count={manageCountLimit({
                 countNumber: count,
               })}
+              item_id={data.item_id}
               price={data.s_price}
               stockOverFlag={stockOverFlag}
               handleModalFlag={props.handleModalFlag}

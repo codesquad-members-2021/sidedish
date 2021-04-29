@@ -11,6 +11,7 @@ const SliderButtons = ({
   setRightRemainingCards,
   leftRemainingCards,
   setLeftRemainingCards,
+  optionalFn,
 }) => {
   return (
     <>
@@ -23,6 +24,7 @@ const SliderButtons = ({
           leftRemainingCards,
           setLeftRemainingCards,
           setRightRemainingCards,
+          optionalFn,
         }}
       />
       <SliderRightButton
@@ -34,6 +36,7 @@ const SliderButtons = ({
           rightRemainingCards,
           setRightRemainingCards,
           setLeftRemainingCards,
+          optionalFn,
         }}
       />
     </>
