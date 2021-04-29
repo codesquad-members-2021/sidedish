@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import MenuList from 'components/nav/MenuList';
+import Login from 'components/nav/Login';
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
         </NavLeft>
         <NavRight>
           <input type="text" placeholder="🔍" />
-          <span>로그인</span>
+          <Login />
           <span>장바구니</span>
         </NavRight>
       </Nav>
@@ -50,10 +51,18 @@ const Logo = styled.div`
 `;
 
 const NavRight = styled.div`
+  display: flex;
+  align-items: center;
+
   input {
     width: 15.5rem;
     height: 2.5rem;
     font-size: 1.5rem;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #f5f5f7;
+    background: #f5f5f7;
 
     ::placeholder {
       text-align: right;
@@ -64,9 +73,7 @@ const NavRight = styled.div`
   span {
     padding-left: 1.5rem;
     font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
     font-size: 1rem;
-    line-height: 23px;
+    font-weight: 400;
   }
 `;

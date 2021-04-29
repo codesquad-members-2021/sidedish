@@ -1,14 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import Carousel from 'components/carousel/Carousel';
+import CarouselMain from 'components/carousel/CarouselMain';
 import CarouselContainer from 'components/carousel/CarouselContainer';
+import CategoryButton from 'components/carousel/CategoryBtn';
 
-const CarouselSection = () => {
-  const paths = ['main', 'soup', 'side'];
-  const firstPath = paths[0];
-  const firstCarousel = <Carousel key={uuidv4()} path={firstPath} />;
+const CarouselSection = ({
+  modalData,
+  modalState,
+  setModalState,
+  setModalData,
+}) => {
+  const categories = ['main', 'soup', 'side'];
+  const firstCategory = categories[0];
+  const firstCarousel = (
+    <CarouselMain
+      key={uuidv4()}
+      path={firstCategory}
+      {...{ modalData, modalState, setModalState, setModalData }}
+    />
+  );
   const [categoryContents, setCategoryContents] = useState([firstCarousel]);
+  const [isFolded, setIsFolded] = useState(false);
 
   const handleClickMoreBtn = () => {
     if (categoryContents.length === 1) return updateCarouselList();
@@ -16,23 +29,32 @@ const CarouselSection = () => {
   };
 
   const updateCarouselList = () => {
-    const allCategories = paths
-      .filter((_, i) => i !== 0)
-      .map((path) => <Carousel key={uuidv4()} path={path} />);
-    setCategoryContents([categoryContents[0], ...allCategories]);
+    const allCategories = categories
+      .filter((_, idx) => idx !== 0)
+      .map((path) => (
+        <CarouselMain
+          key={uuidv4()}
+          path={path}
+          {...{ modalData, modalState, setModalState, setModalData }}
+        />
+      ));
+    setCategoryContents([...categoryContents, ...allCategories]);
   };
 
   const resetCategoryList = () => {
     setCategoryContents([categoryContents[0]]);
   };
 
+  useEffect(() => {
+    setIsFolded((foldStatus) => !foldStatus);
+  }, [categoryContents]);
   return (
     <CarouselWrapper>
-      <h2>모두가 좋아하는 든든한 메인요리</h2>
+      <CarouselTitleDiv>
+        <h2>모두가 좋아하는 든든한 메인요리</h2>
+      </CarouselTitleDiv>
       <CarouselContainer categoryContents={categoryContents} />
-      <button onClick={handleClickMoreBtn}>
-        <span>모든 카테고리 보기</span>
-      </button>
+      <CategoryButton onClick={handleClickMoreBtn} isFolded={isFolded} />
     </CarouselWrapper>
   );
 };
@@ -43,6 +65,11 @@ const CarouselWrapper = styled.section`
   margin: 5rem 0 2rem;
   width: 1280px;
   position: relative;
+`;
+
+const CarouselTitleDiv = styled.div`
+  margin-bottom: 2rem;
+
   h2 {
     font-family: Noto Sans KR;
     font-style: normal;

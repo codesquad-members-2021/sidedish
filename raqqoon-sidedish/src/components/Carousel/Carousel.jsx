@@ -1,39 +1,70 @@
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
-import { SIZE_MEDIUM } from 'const';
-import useFetch from 'customHooks/useFetch';
-import Card from 'components/card/Card';
 import Arrow from 'components/icons/Arrow';
 
-const Carousel = ({ path }) => {
-  const dishData = useFetch(
-    `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/${path}`
-  );
-  const dishList =
-    dishData &&
-    dishData.map((item) => (
-      <Card key={uuidv4()} item={item} cardSize={SIZE_MEDIUM} />
-    ));
+const Carousel = ({
+  children,
+  options: {
+    panelCount,
+    animation: { target, time, effect },
+    type,
+  },
+}) => {
+  const [position, setPosition] = useState(0);
+  const outBoxRef = useRef();
+  const [restCardCount, setRestCardCount] = useState(null);
 
-  const handleClickArrowBtn = () => {
-    moveRight();
-    moveLeft();
+  const handleClickArrowBtn = ({ currentTarget }) => {
+    const direction = currentTarget.getAttribute('direction');
+    const outBoxWidth = outBoxRef.current.clientWidth;
+    if (direction === 'RIGHT') return moveRight(outBoxWidth);
+    if (direction === 'LEFT') return moveLeft(outBoxWidth);
   };
 
-  const moveRight = () => {};
+  const moveRight = (outBoxWidth) => {
+    if (restCardCount === 0) return;
+    if (restCardCount < panelCount) {
+      setRestCardCount(0);
+      return setPosition(position - (outBoxWidth / panelCount) * restCardCount);
+    }
+    setRestCardCount((cardCount) => cardCount - panelCount);
+    setPosition(position - outBoxWidth);
+  };
 
-  const moveLeft = () => {};
+  const moveLeft = (outBoxWidth) => {
+    if (position >= 0) return;
+    const defaultCardCount = children.length - panelCount;
+    if (restCardCount + panelCount > defaultCardCount) {
+      setRestCardCount(defaultCardCount);
+      return setPosition(0);
+    }
+    setRestCardCount((cardCount) => cardCount + panelCount);
+    setPosition(position + outBoxWidth);
+  };
 
-  return dishList ? (
+  useEffect(() => {
+    if (restCardCount !== null) return;
+    setRestCardCount(children.length - panelCount);
+  }, [children, panelCount, restCardCount]);
+
+  return (
     <CarouselStyled>
-      <OutBox>
-        <CategoryContents position={1}>{dishList}</CategoryContents>
+      <OutBox ref={outBoxRef} type={type}>
+        <Items position={position} animation={{ time, effect, target }}>
+          {children}
+        </Items>
       </OutBox>
-      <Arrow size={'L'} direction={'RIGHT'} />
-      <Arrow size={'L'} direction={'LEFT'} />
+      <Arrow
+        size={'L'}
+        direction={'RIGHT'}
+        onClick={(e) => handleClickArrowBtn(e)}
+      />
+      <Arrow
+        size={'L'}
+        direction={'LEFT'}
+        onClick={(e) => handleClickArrowBtn(e)}
+      />
     </CarouselStyled>
-  ) : (
-    <div>로딩중입니다!!!!!!!</div>
   );
 };
 
@@ -41,18 +72,19 @@ export default Carousel;
 
 const CarouselStyled = styled.div`
   position: relative;
-  width: 100%;
 `;
 
 const OutBox = styled.div`
-  margin-top: 2rem;
   overflow: hidden;
+  width: ${({ type }) => (type === 'main' ? '1275px' : '850px')};
   position: relative;
 `;
 
-const CategoryContents = styled.div`
+const Items = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: fit-content;
   position: relative;
+  transition: ${({ animation: { target, time, effect } }) =>
+    `${target} ${time}s ${effect}`};
   transform: ${({ position }) => `translateX(${position}px)`};
 `;

@@ -19,8 +19,21 @@ export const MSG_BOTTOM = '전국택배';
 // Size
 export const SIZE_LARGE = 'large';
 export const SIZE_MEDIUM = 'medium';
+export const SIZE_SMALL = 'small';
+
+// Location
+export const LOCATION_TOP = 'top';
+export const LOCATION_THUMB = 'thumb';
 
 // State
 export const ACTIVE = 'active';
 export const DEACTIVE = 'deactive';
 export const INITIAL = 'initial';
+export const NONE = 'none';
+export const FLEX = 'flex';
+export const BLOCK = 'block';
+
+// Type
+export const DETAIL = 'detail';
+export const DEFAULT = 'default';
+export const CAROUSEL = 'carousel';

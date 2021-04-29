@@ -1,34 +1,31 @@
 import styled from 'styled-components';
-import { COLOR_LIGHTYELLOW, SIZE_LARGE } from 'const';
+import { COLOR_LIGHTYELLOW, DEFAULT, SIZE_LARGE } from 'const';
 import useFetch from 'customHooks/useFetch';
 import Card from 'components/card/Card';
 
-const TabMain = ({ tabItemList }) => {
+const TabMain = ({ tabItemList, setModalState, modalData, setModalData }) => {
   const imgData = useFetch(
     `https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main`,
     []
   );
 
-  const randomIndex = (list) =>
-    Math.floor(Math.random() * (list.length - 0) + 0);
-
   if (!tabItemList.items) return <div>No data...</div>;
   if (!imgData) return <div>No data...</div>;
 
-  // const imgList = [
-  //   imgData[randomIndex(imgData)].image,
-  //   imgData[randomIndex(imgData)].image,
-  //   imgData[randomIndex(imgData)].image,
-  // ];
   return (
     <TabMainBoxDiv>
-      {tabItemList.items.map((item, idx) => {
+      {tabItemList.items.map((item) => {
         return (
           <Card
-            type={SIZE_LARGE}
             item={item}
+            cardSize={SIZE_LARGE}
+            detail_hash={item.detail_hash}
             key={item.detail_hash}
             imgUrl={item.image}
+            setModalState={setModalState}
+            modalData={modalData}
+            setModalData={setModalData}
+            cardType={DEFAULT}
           />
         );
       })}
