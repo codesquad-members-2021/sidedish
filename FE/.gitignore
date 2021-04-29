@@ -22,8 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-package.json
-package-lock.json
-yarn.lock
+/**/package.json
+/**/package-lock.json
+/**/yarn.lock
 public
 README.old.md
