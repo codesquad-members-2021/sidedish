@@ -7,10 +7,11 @@ import Best from "./Components/Best/Best";
 const App = () => {
   const [modal, setModal] = useState(false);
   const [ModalData, setModalData] = useState([]);
+  const [loginModal, setLoginModal] = useState(false);
 
   return (
     <div>
-      <Header />
+      <Header loginModal={loginModal} setLoginModal={setLoginModal} />
       <Best
         modal={modal}
         setModal={setModal}

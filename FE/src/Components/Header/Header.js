@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import Login from "./login";
+
 const HeaderMain = styled.div`
   display: flex;
   align-items: center;
@@ -16,6 +18,10 @@ const MainNav = styled.ul`
   align-items: center;
 `;
 const HeaderList = styled.li`
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
   margin-left: 20px;
   font-size: 20px;
 `;
@@ -87,10 +93,14 @@ const DropBtn = styled.button`
 `;
 const DropList = styled.li``;
 
-const Header = () => {
+const Header = ({ loginModal, setLoginModal }) => {
   const [isShownDrop1, setIsShownDrop1] = useState(false);
   const [isShownDrop2, setIsShownDrop2] = useState(false);
   const [isShownDrop3, setIsShownDrop3] = useState(false);
+
+  const openLoginModal = () => {
+    setLoginModal(true);
+  };
 
   return (
     <HeaderMain>
@@ -162,7 +172,8 @@ const Header = () => {
             </SearchBtn>
           </Search>
         </HeaderList>
-        <HeaderList>로그인</HeaderList>
+        {loginModal && <Login setLoginModal={setLoginModal} />}
+        <HeaderList onClick={openLoginModal}>로그인</HeaderList>
         <HeaderList>장바구니</HeaderList>
       </MainNav>
     </HeaderMain>
