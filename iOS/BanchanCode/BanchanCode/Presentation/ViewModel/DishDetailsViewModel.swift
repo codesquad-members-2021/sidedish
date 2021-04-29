@@ -12,7 +12,7 @@ protocol DishDetailsViewModelInput {
 }
 
 protocol DishDetailsViewModelOutput {
-    var dishDetail: Observable<DishDetail?> { get }
+    var dishDetail: Observable<DishDetail> { get }
 }
 
 protocol DishDetailsViewModel: DishDetailsViewModelInput, DishDetailsViewModelOutput { }
@@ -28,7 +28,7 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     private let id: Int
     
     //MARK: - Output
-    var dishDetail: Observable<DishDetail?> = Observable(nil)
+    var dishDetail: Observable<DishDetail>
     
     init(fetchDishDetailsUseCaseFactory: @escaping FetchDishDetailsUseCaseFactory,
          categoryName: String,
@@ -36,6 +36,7 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
         self.fetchDishDetailsUseCaseFactory = fetchDishDetailsUseCaseFactory
         self.categoryName = categoryName
         self.id = id
+        self.dishDetail = Observable(DishDetail(id: id))
     }
 }
 
