@@ -19,7 +19,6 @@ const SlideDish = ({ category: { path, title } }) => {
     slideToScroll: 2,
     speed: 500,
     defaultArrow: true,
-    defaultPaging: true,
   };
 
   if (error) throw Error(error);
