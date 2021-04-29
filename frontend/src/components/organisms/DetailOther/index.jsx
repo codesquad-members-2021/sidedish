@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
 import Span from '../../atoms/Span';
 import OtherCard from '../../molecules/OtherCard';
 import loadData from '../../../util/loadData';
-import Carousel from '../Carousel';
 import Icon from '../../atoms/Icon';
 
 const OtherWrapper = styled.div`
@@ -20,7 +20,13 @@ const TitleStyles = styled.div`
 `;
 
 const DetailOther = props => {
+  const directionRef = useRef(false);
   const [details, setDetails] = useState([]);
+
+  const SLIDES = 5;
+  const LENGTH = (imageWidth, margin) => {
+    return imageWidth * SLIDES + margin * (SLIDES + 4);
+  };
 
   useEffect(() => {
     loadData(setDetails, props._dishType);
@@ -36,6 +42,30 @@ const DetailOther = props => {
       ></OtherCard>
     ));
   };
+
+  const setStyle = (duration, move) => {
+    directionRef.current.style.transition = duration;
+    directionRef.current.style.transform = move;
+  };
+
+  const moveSlide = type => {
+    if (type === 'RightIcon') {
+      setStyle('all 0.5s', `translate(-${LENGTH(160, 16)}px)`);
+    } else {
+      setStyle('all 0.5s', `translate(${LENGTH(160, 16)}px)`);
+    }
+  };
+
+  const onTransitionEnd = type => {
+    if (type === 'RightIcon') {
+      setDetails(details.slice(SLIDES).concat(details.slice(0, SLIDES)));
+    } else {
+      setDetails(details.slice(-SLIDES).concat(details.slice(0, -SLIDES)));
+    }
+    directionRef.current.style.transform = 'translate(0)';
+    directionRef.current.style.transition = 'none';
+  };
+
   const Button = type => {
     return (
       <>
@@ -44,7 +74,7 @@ const DetailOther = props => {
           _height="12px"
           _color="#333333"
           _type={type}
-          // _margin="130px 25px 0 25px"
+          moveSlide={moveSlide}
         />
       </>
     );
@@ -55,22 +85,17 @@ const DetailOther = props => {
       <TitleStyles>
         <Span className="_tabAct">함께하면 더욱 맛있는 상품</Span>
       </TitleStyles>
-      <Carousel
-        data={details}
-        setData={setDetails}
-        visibleSlides={5}
-        imageWidth={160}
-        imageHeight={160}
-        imageMargin={16}
-        ButtonLeft={() => {
-          return Button('LeftIcon');
-        }}
-        ButtonRight={() => {
-          return Button('RightIcon');
-        }}
-      >
-        <Cards />
-      </Carousel>
+      <WrapMain>
+        <WrapCarousal>
+          <Button type={'LeftIcon'} />
+          <WrapCard _slideWidth={944}>
+            <CardStyle onTransitionEnd={onTransitionEnd} ref={directionRef}>
+              <Cards />
+            </CardStyle>
+          </WrapCard>
+          <Button type={'RightIcon'} />
+        </WrapCarousal>
+      </WrapMain>
     </OtherWrapper>
   );
 };

@@ -40,7 +40,7 @@ const ModalStyles = styled.div`
 const Modal = ({ open, onClose, ...props }) => {
   if (!open) return null;
 
-  return ReactDom.createPortal(
+  return ReactDom.render(
     <>
       <OverlayStyle />
       <ModalStyles>
