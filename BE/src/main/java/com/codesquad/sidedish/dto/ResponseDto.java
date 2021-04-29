@@ -5,20 +5,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ResponseDto {
 
+    @JsonIgnore
+    private Status status;
     private String message;
 
-    public ResponseDto(String message) {
-        this.message = message;
+    public ResponseDto(Status status) {
+        this.status = status;
+        this.message = status.getMessage();
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public String getMessage() {
         return message;
-    }
-
-    @Override
-    public String toString() {
-        return "ResponseDto{" +
-                "message='" + message + '\'' +
-                '}';
     }
 }
