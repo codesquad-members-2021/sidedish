@@ -82,10 +82,11 @@ const DiscountDiv = styled.div`
       font-weight: 800;
       text-decoration: none;
     `}
-  ${({ normal, discount }) =>
+  ${({ cardSize, normal, discount }) =>
+    cardSize === SIZE_SMALL &&
     normal &&
     discount &&
     css`
-      color: #fff;
+      color: #f5f5f7;
     `}
 `;
