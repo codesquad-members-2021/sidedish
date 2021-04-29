@@ -16,6 +16,8 @@ protocol DishDetailsViewModelInput {
 
 protocol DishDetailsViewModelOutput {
     var basicInformation: Observable<BasicInformation> { get }
+    var lastPrice: Int { get }
+    var originalPrice: Int? { get }
     var thumbImages: Observable<[Data]> { get }
     var detailImages: Observable<[Data]> { get }
     var currentQuantity: Observable<Int> { get }
@@ -40,6 +42,8 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     
     //MARK: - Output
     var basicInformation: Observable<BasicInformation>
+    var lastPrice: Int = 0
+    var originalPrice: Int? = nil
     var thumbImages: Observable<[Data]> = Observable([])
     var detailImages: Observable<[Data]> = Observable([])
     var currentQuantity: Observable<Int> = Observable(1)
@@ -52,6 +56,10 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
         self.categoryName = categoryName
         self.id = id
         self.basicInformation = Observable(BasicInformation(id: id))
+    }
+    
+    private func getOriginalPrice(from prices: [Int]) -> Int? {
+        return prices.count > 1 ? prices.first : nil
     }
     
     private func updateThumbnailImages() {
@@ -79,6 +87,10 @@ extension DefaultDishDetailsViewModel {
             switch result {
             case .success(let dishDetail):
                 self.basicInformation.value = dishDetail.basicInformation
+                guard let prices = dishDetail.basicInformation.prices else { return }
+                self.lastPrice = prices.last ?? 0
+                self.originalPrice = self.getOriginalPrice(from: prices)
+                self.updateTotalPrice()
                 guard let thumbImagePaths = dishDetail.thumbImages else { return }
                 guard let detailImagePaths = dishDetail.detailImages else { return }
                 self.thumbImagePaths = thumbImagePaths
@@ -92,12 +104,6 @@ extension DefaultDishDetailsViewModel {
         useCase.start()
     }
     
-<<<<<<< HEAD
-    func loadbyDB() {
-        let realmManager = RealmManager()
-        /*상세보기로 저장되지 않은 뷰를 보러갈때 이슈가 난다.*/
-//        self.dishDetail.value = realmManager.getDishesID(by: self.id)!
-=======
     func increaseQuantity() {
         currentQuantity.value += 1
     }
@@ -107,7 +113,6 @@ extension DefaultDishDetailsViewModel {
     }
     
     func updateTotalPrice() {
-        totalPrice.value = currentQuantity.value * (basicInformation.value.prices?[0] ?? 0)
->>>>>>> b5c3d21 (refactor : move currentQuantity and totalPrice to ViewModel)
+        totalPrice.value = currentQuantity.value * lastPrice
     }
 }

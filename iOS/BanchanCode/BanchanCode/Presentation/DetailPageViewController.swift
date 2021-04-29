@@ -74,19 +74,20 @@ class DetailPageViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         viewModel.increaseQuantity()
-        viewModel.updateTotalPrice()
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
         viewModel.decreaseQuantity()
-        viewModel.updateTotalPrice()
     }
     
     private func bind(to viewModel: DishDetailsViewModel) {
         viewModel.basicInformation.observe(on: self) { [weak self] _ in self?.refreshView() }
         viewModel.thumbImages.observe(on: self) { [weak self] _ in self?.refreshThumbImages() }
         viewModel.detailImages.observe(on: self) { [weak self] _ in self?.refreshDetailImages() }
-        viewModel.currentQuantity.observe(on: self) { [weak self] in self?.quantityLabel.text = "\($0)" }
+        viewModel.currentQuantity.observe(on: self) { [weak self] in
+            self?.quantityLabel.text = "\($0)"
+            self?.viewModel.updateTotalPrice()
+        }
         viewModel.totalPrice.observe(on: self) { [weak self] in
             self?.totalPriceLabel.text = String().format(price: $0)
             self?.removeButton.isEnabled = $0 > 0
@@ -99,20 +100,12 @@ class DetailPageViewController: UIViewController {
         self.nameLabel.text = basicInfo.name
         self.descriptionLabel.text = basicInfo.description
         
-        guard let prices = basicInfo.prices else { return }
-        let originalPrice = prices[0]
-        if prices.count > 1 {
-            let lastPrice = prices[1]
-            lastPriceLabel.text = String().format(price: lastPrice)
-            originalPriceLabel.isHidden = false
+        lastPriceLabel.text = String().format(price: viewModel.lastPrice)
+        if let originalPrice = viewModel.originalPrice {
             originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
-            //totalPrice = currentQuantity * lastPrice
-            viewModel.updateTotalPrice()
+            originalPriceLabel.isHidden = false
         } else {
-            lastPriceLabel.text = String().format(price: originalPrice)
             originalPriceLabel.isHidden = true
-            //totalPrice = currentQuantity * originalPrice
-            viewModel.updateTotalPrice()
         }
         
         let badges = basicInfo.badges
