@@ -8,29 +8,27 @@
 import Foundation
 import RealmSwift
 
-//Dish가 이미 Entitiy안에 있고 struct로 되어있어서 @objc dynamic var을 쓰지 못합니다.
-//따라서 DishDB를 먼저 이용해보았습니다.
-
 class DishDB: Object {
     
-    //primary key
-    @objc dynamic var id: Int = -1 //나중에 쓸 예정
+    @objc dynamic var id: Int = -1 //primary key
     @objc dynamic var name: String = ""
     @objc dynamic var contents: String = ""
     @objc dynamic var imageURL: String = ""
+    @objc dynamic var categoryName: String = "" //db에 저장하여서 만약 네트워크 통신이 안될 경우에 디비의 내용을 카테고리별로 넘겨야해서.
     
     let prices = List<Int>()
     let badges = List<String>()
 
-    convenience init(id: Int, name: String, contents: String, imageURL: String) {
+    convenience init(id: Int, name: String, contents: String, imageURL: String, categoryName: String) {
         self.init()
         self.id = id
         self.name = name
         self.contents = contents
         self.imageURL = imageURL
+        self.categoryName = categoryName
     }
+    
     override class func primaryKey() -> String? {
         return "id"
     }
-    
 }

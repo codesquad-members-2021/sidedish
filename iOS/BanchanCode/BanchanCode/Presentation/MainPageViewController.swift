@@ -16,6 +16,7 @@ class MainPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
         
@@ -30,15 +31,21 @@ class MainPageViewController: UIViewController {
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
         
+        let networkManager = NetworkManager()
+                
         viewModels.forEach { viewModel in
-            viewModel.load()
+            if networkManager.isConnectedToInternet() {
+                viewModel.load()
+            }else{
+                viewModel.loadByDB() //realm에 있는 db를 저장하기.
+            }
             bind(to: viewModel)
         }
         
         registerXib()
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-
+        
         
     }
     
