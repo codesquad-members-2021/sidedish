@@ -100,12 +100,6 @@ insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, men
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7334', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF35', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7336', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF35', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7336', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF35', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7336', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBDEF35', '[미노리키친] 규동 250g', '[미노리키친] 규동 250g','일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6000, 50, 2);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HDF7336', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g', '[빅마마의밥친구] 아삭 고소한 연근고기조림 250g','편식하는 아이도 좋아하는 건강한 연근조림', 5500, 5000, 50, 2);
 
 -- -----------------------------------------------------
 -- soup
@@ -116,10 +110,6 @@ insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, men
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE44', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C345', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE46', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C341', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE42', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C343', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE44', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H72C345', '[수하동] 특곰탕 850g', '[수하동] 특곰탕 850g','100% 한우양지로 끓여낸 70년전통의 서울식곰탕', 15000, 14000, 100, 3);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HA6EE46', '[빅마마의밥친구] 된장찌개 900g', '[빅마마의밥친구] 된장찌개 900g','항아리에서 숙성시킨 집된장으로만 맛을내 짜지 않은 된장찌개', 10000, 8000, 50, 3);
 
@@ -134,10 +124,9 @@ insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, men
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193956', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC51', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193952', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC53', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193954', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
-insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC55', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
 insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193956', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('HBBCC51', '[마샐미디쉬] 유자소스 연근무침 250g', '[마샐미디쉬] 유자소스 연근무침 250g','향긋한 유자향과 아삭한 연근', 6000, 5000, 10, 4);
+insert into dish(`hash`, alt, title, description, n_price, s_price, `point`, menu_category_id) values ('H193952', '[동네부엌] 쇠고기야채장조림 200g', '[동네부엌] 쇠고기야채장조림 200g','부드러운 고기부터 밥비벼먹기 딱좋은 국물까지', 8000, 7000, 15, 4);
 
 -- -----------------------------------------------------
 -- badge
