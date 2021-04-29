@@ -29,7 +29,7 @@ class DishCell: UICollectionViewCell {
     
     func fill(with viewModel: DishesItemViewModel) {
         let dish = viewModel.dish
-        networkManager.updateThumbImage(imageURL: dish.imageURL) { imageData in
+        networkManager.performDataRequest(urlString: dish.imageURL) { imageData in
             DispatchQueue.main.async {
                 self.thumbnailImageView.image = UIImage(data: imageData)
             }

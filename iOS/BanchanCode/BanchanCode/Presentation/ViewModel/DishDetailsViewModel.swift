@@ -51,7 +51,7 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     
     private func updateThumbnailImages() {
         thumbImagePaths.forEach { path in
-            networkManager.updateThumbImage(imageURL: path) { imageData in
+            networkManager.performDataRequest(urlString: path) { imageData in
                 self.thumbImages.value.append(imageData)
             }
         }
@@ -59,7 +59,7 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     
     private func updateDetailImages() {
         detailImagePaths.forEach { path in
-            networkManager.updateThumbImage(imageURL: path) { imageData in
+            networkManager.performDataRequest(urlString: path) { imageData in
                 self.detailImages.value.append(imageData)
             }
         }
