@@ -1,13 +1,13 @@
 package com.codesquad.sidedish.SideDish.dto;
 
 public class RefreshDto {
-    private final boolean refreshable;
+    private final Boolean refreshable;
 
-    public RefreshDto(boolean refreshable) {
+    public RefreshDto(Boolean refreshable) {
         this.refreshable = refreshable;
     }
 
-    public boolean isRefreshable() {
+    public Boolean isRefreshable() {
         return refreshable;
     }
 }

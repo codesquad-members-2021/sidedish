@@ -27,6 +27,4 @@ public class DishImage {
     public Long getImage() {
         return image;
     }
-
-
 }

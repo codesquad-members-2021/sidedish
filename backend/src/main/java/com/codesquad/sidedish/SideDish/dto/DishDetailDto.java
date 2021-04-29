@@ -1,15 +1,16 @@
 package com.codesquad.sidedish.SideDish.dto;
 
 import com.codesquad.sidedish.SideDish.domain.Dish;
+import com.codesquad.sidedish.SideDish.domain.Image;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DishDetailDto {
     private final List<String> thumbImages;
-    private final int point;
+    private final Integer point;
     private final String deliveryInfo;
-    private int deliveryFee;
+    private Integer deliveryFee;
     private final List<String> detailImages;
 
     private DishDetailDto(Builder builder) {
@@ -22,19 +23,19 @@ public class DishDetailDto {
 
     public static DishDetailDto from(Dish dish) {
         return new Builder()
-                .thumbImages(Arrays.asList("", "")) // TODO:
+                .thumbImages(dish.getImages().stream().map(Image::getImageUrl).collect(Collectors.toList())) // TODO:
                 .point(dish.getPoint())
                 .deliveryInfo(dish.getDeliveryInfo())
                 .deliveryFee(dish.getDeliveryFee())
-                .detailImages(Arrays.asList("", "")) // TODO:
+                .detailImages(dish.getImages().stream().map(Image::getImageUrl).collect(Collectors.toList())) // TODO:
                 .build();
     }
 
     private static class Builder {
         private List<String> thumbImages;
-        private int point;
+        private Integer point;
         private String deliveryInfo;
-        private int deliveryFee;
+        private Integer deliveryFee;
         private List<String> detailImages;
 
         public DishDetailDto build() {
@@ -47,7 +48,7 @@ public class DishDetailDto {
             return this;
         }
 
-        public Builder point(int point) {
+        public Builder point(Integer point) {
             this.point = point;
             return this;
         }
@@ -57,7 +58,7 @@ public class DishDetailDto {
             return this;
         }
 
-        public Builder deliveryFee(int deliveryFee) {
+        public Builder deliveryFee(Integer deliveryFee) {
             this.deliveryFee = deliveryFee;
             return this;
         }
@@ -72,7 +73,7 @@ public class DishDetailDto {
         return thumbImages;
     }
 
-    public int getPoint() {
+    public Integer getPoint() {
         return point;
     }
 
@@ -80,7 +81,7 @@ public class DishDetailDto {
         return deliveryInfo;
     }
 
-    public int getDeliveryFee() {
+    public Integer getDeliveryFee() {
         return deliveryFee;
     }
 

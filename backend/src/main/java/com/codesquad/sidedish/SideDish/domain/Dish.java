@@ -1,6 +1,5 @@
 package com.codesquad.sidedish.SideDish.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
@@ -14,22 +13,38 @@ public class Dish {
     private final String image;
     private final String title;
     private final String description;
-    private final int price;
-    private final int salePrice;
-    private final int point;
+    private final Integer price;
+    private final Integer salePrice;
+    private final Integer point;
     private final String deliveryInfo;
-    private final int deliveryFee;
-    private final long categoryId;
-    private final int quantity;
+    private final Integer deliveryFee;
+    private final Long categoryId;
+    private final Integer quantity;
+    private final LocalDateTime currentDateTime;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
-    private LocalDateTime currentDateTime;
+    private final Set<Sale> sales = new HashSet<>();
+    private final Set<Delivery> deliveries = new HashSet<>();
+    private final Set<Image> images = new HashSet<>();
 
-    private Set<DishSale> dishSales = new HashSet<>();
-    private Set<DishDelivery> dishDeliveries = new HashSet<>();
-    private Set<DishImage> dishImages = new HashSet<>();
+    public void addSale(Sale... sales) {
+        for (Sale sale : sales) {
+            this.sales.add(sale);
+        }
+    }
 
-    public Dish(String detailHash, String image, String title, String description, int price, int salePrice, int point, String deliveryInfo, int deliveryFee, long categoryId, int quantity) {
+    public void addDelivery(Delivery... deliveries) {
+        for (Delivery delivery : deliveries) {
+            this.deliveries.add(delivery);
+        }
+    }
+
+    public void addImage(Image... images) {
+        for (Image image : images) {
+            this.images.add(image);
+        }
+    }
+
+    public Dish(String detailHash, String image, String title, String description, Integer price, Integer salePrice, Integer point, String deliveryInfo, Integer deliveryFee, Long categoryId, Integer quantity, LocalDateTime currentDateTime) {
         this.detailHash = detailHash;
         this.image = image;
         this.title = title;
@@ -41,13 +56,7 @@ public class Dish {
         this.deliveryFee = deliveryFee;
         this.categoryId = categoryId;
         this.quantity = quantity;
-        this.currentDateTime = LocalDateTime.now();
-    }
-
-    public void addImage(DishImage... dishImages) {
-        for (DishImage dishImage : dishImages) {
-            this.dishImages.add(dishImage);
-        }
+        this.currentDateTime = currentDateTime;
     }
 
     public String getDetailHash() {
@@ -66,15 +75,15 @@ public class Dish {
         return description;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public int getSalePrice() {
+    public Integer getSalePrice() {
         return salePrice;
     }
 
-    public int getPoint() {
+    public Integer getPoint() {
         return point;
     }
 
@@ -82,50 +91,35 @@ public class Dish {
         return deliveryInfo;
     }
 
-    public int getDeliveryFee() {
+    public Integer getDeliveryFee() {
         return deliveryFee;
     }
 
-    public long getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
-    }
-
-    public Set<DishImage> getDishImages() {
-        return dishImages;
-    }
-
-    public Set<DishSale> getDishSales() {
-        return dishSales;
-    }
-
-    public Set<DishDelivery> getDishDeliveries() {
-        return dishDeliveries;
     }
 
     public LocalDateTime getCurrentDateTime() {
         return currentDateTime;
     }
 
-    @Override
-    public String toString() {
-        return "Dish{" +
-                "detailHash='" + detailHash + '\'' +
-                ", image='" + image + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", salePrice=" + salePrice +
-                ", point=" + point +
-                ", deliveryInfo='" + deliveryInfo + '\'' +
-                ", deliveryFee=" + deliveryFee +
-                ", categoryId=" + categoryId +
-                ", quantity=" + quantity +
-                ", currentDateTime=" + currentDateTime +
-                '}';
+    public Set<Sale> getSales() {
+        return sales;
     }
 
+    public Set<Delivery> getDeliveries() {
+        return deliveries;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public boolean refreshable(long lastUpdated) {
+        return false;
+    }
 }

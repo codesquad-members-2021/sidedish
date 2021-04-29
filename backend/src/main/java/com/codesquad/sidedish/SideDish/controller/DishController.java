@@ -1,13 +1,15 @@
 package com.codesquad.sidedish.SideDish.controller;
 
-import com.codesquad.sidedish.SideDish.dto.CategoryDto;
-import com.codesquad.sidedish.SideDish.dto.DishDto;
+import com.codesquad.sidedish.SideDish.dto.*;
 import com.codesquad.sidedish.SideDish.service.CategoryService;
 import com.codesquad.sidedish.SideDish.service.DishService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,27 +32,27 @@ public class DishController {
         return ResponseEntity.ok().body(categories);
     }
 
-    //    @GetMapping("/detail/{detailHash}")
-//    @ApiOperation(value = "요리 상세", notes = "요리의 상세 정보를 반환합니다.")
-//    public ResponseEntity<DishDetailDto> getDetail(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash) {
-//        DishDetailDto dishDetailDto = dishService.getDetail(detailHash);
-//        return ResponseEntity.ok().body(dishDetailDto);
-//    }
-//
-//    @GetMapping("/detail/{detailHash}/refreshable")
-//    @ApiOperation(value = "요리 상세 갱신", notes = "요리의 상세 정보를 갱신할 필요가 있는지 여부를 반환합니다.")
-//    public ResponseEntity<RefreshDto> getDetailRefreshable(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash, @ApiParam("프론트에서 마지막으로 업데이트 한 날짜. 데이터 형식: yyMMddhhmm") @RequestParam("lastUpdated") int lastUpdated) {
-//        RefreshDto refreshDto = dishService.getDetailRefreshable(detailHash, lastUpdated);
-//        return ResponseEntity.ok().body(refreshDto);
-//    }
-//
-//    @GetMapping("/detail/{detailHash}/quantity")
-//    @ApiOperation(value = "요리 수량", notes = "요리의 주문 가능한 수량을 반환합니다.")
-//    public ResponseEntity<QuantityDto> getDetailQuantity(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash) {
-//        QuantityDto quantityDto = dishService.getDetailQuantity(detailHash);
-//        return ResponseEntity.ok().body(quantityDto);
-//    }
-//
+    @GetMapping("/detail/{detailHash}")
+    @ApiOperation(value = "요리 상세", notes = "요리의 상세 정보를 반환합니다.")
+    public ResponseEntity<DishDetailDto> getDetail(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash) {
+        DishDetailDto dishDetailDto = dishService.getDetail(detailHash);
+        return ResponseEntity.ok().body(dishDetailDto);
+    }
+
+    @GetMapping("/detail/{detailHash}/refreshable")
+    @ApiOperation(value = "요리 상세 갱신", notes = "요리의 상세 정보를 갱신할 필요가 있는지 여부를 반환합니다.")
+    public ResponseEntity<RefreshDto> getDetailRefreshable(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash, @ApiParam("프론트에서 마지막으로 업데이트 한 날짜. 데이터 형식: yyMMddhhmm") @RequestParam("lastUpdated") int lastUpdated) {
+        RefreshDto refreshDto = dishService.getDetailRefreshable(detailHash, lastUpdated);
+        return ResponseEntity.ok().body(refreshDto);
+    }
+
+    @GetMapping("/detail/{detailHash}/quantity")
+    @ApiOperation(value = "요리 수량", notes = "요리의 주문 가능한 수량을 반환합니다.")
+    public ResponseEntity<QuantityDto> getDetailQuantity(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash) {
+        QuantityDto quantityDto = dishService.getDetailQuantity(detailHash);
+        return ResponseEntity.ok().body(quantityDto);
+    }
+
     @GetMapping("/main")
     @ApiOperation(value = "메인 요리", notes = "메인 요리의 목록을 반환합니다.")
     public ResponseEntity<List<DishDto>> getMainList() {
