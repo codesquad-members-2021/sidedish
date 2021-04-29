@@ -1,17 +1,14 @@
 import React, { useRef } from 'react';
-import Icon from '../../atoms/Icon';
 import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
 
 const Carousel = ({ children, ...props }) => {
   const directionRef = useRef(false);
 
   const SLIDES = props.visibleSlides;
-  const LENGTH = () => {
-    return props.imageWidth * SLIDES + props.imageMargin * (SLIDES + 4);
-    //slide + 개수 이유 확인
-  };
+  const LENGTH = props.imageWidth * SLIDES + props.imageMargin * (SLIDES + 4);
+  //slide + 개수 이유 확인
 
-  const Foo = () => {
+  const Slides = () => {
     return <>{children}</>;
   };
 
@@ -44,27 +41,32 @@ const Carousel = ({ children, ...props }) => {
 
   return (
     <div>
-      <WrapMain>
-        <WrapCarousal>
-          <Icon
-            moveSlide={moveSlide}
-            _width="32px"
-            _color="#BDBDBD"
-            _type="LeftIcon"
-            _margin="130px 25px 0 25px"
-          />
-          <WrapCard>
+      <WrapMain marginTop={10}>
+        <WrapCarousal marginTop={40}>
+          <div
+            onClick={() => {
+              moveSlide('LeftIcon');
+            }}
+          >
+            <props.ButtonLeft />
+          </div>
+          <WrapCard
+            _imgMargin={props.imageMargin}
+            _slides={props.visibleSlides}
+            _slideWidth={LENGTH}
+            _imgHeight={props.imageHeight}
+          >
             <CardStyle onTransitionEnd={onTransitionEnd} ref={directionRef}>
-              <Foo />
+              <Slides />
             </CardStyle>
           </WrapCard>
-          <Icon
-            moveSlide={moveSlide}
-            _width="32px"
-            _color="#BDBDBD"
-            _type="RightIcon"
-            _margin="130px 25px 0 25px"
-          />
+          <div
+            onClick={() => {
+              moveSlide('RightIcon');
+            }}
+          >
+            <props.ButtonRight />
+          </div>
         </WrapCarousal>
       </WrapMain>
     </div>

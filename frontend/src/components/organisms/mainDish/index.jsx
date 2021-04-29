@@ -27,13 +27,13 @@ const MainDish = props => {
     ));
   };
 
-  const Foo = () => {
+  const Button = type => {
     return (
       <>
         <Icon
           _width="32px"
           _color="#BDBDBD"
-          _type="LeftIcon"
+          _type={type}
           _margin="130px 25px 0 25px"
         />
       </>
@@ -50,8 +50,14 @@ const MainDish = props => {
         setData={setData}
         visibleSlides={4}
         imageWidth={308}
+        imageHeight={479}
         imageMargin={8}
-        Foo={Foo}
+        ButtonLeft={() => {
+          return Button('LeftIcon');
+        }}
+        ButtonRight={() => {
+          return Button('RightIcon');
+        }}
       >
         <Cards />
       </Carousel>
