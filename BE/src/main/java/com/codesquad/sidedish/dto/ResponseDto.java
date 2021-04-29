@@ -1,5 +1,8 @@
 package com.codesquad.sidedish.dto;
 
+import com.codesquad.sidedish.util.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class ResponseDto {
 
     private String message;
