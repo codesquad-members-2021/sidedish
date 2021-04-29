@@ -17,12 +17,11 @@ const API = {
       const response = await fetch(`${END_POINT}/side`);
       return response.json();
     },
-
     detail: ({ hash }) => {
-      return customFetch(`/develop/baminchan/detail/${hash}`);
+      return customFetch(`/banchan/detail/${hash}`);
     },
     best: () => {
-      return customFetch(`/develop/baminchan/best`);
+      return customFetch(`/banchan/best`);
     }
   },
   post: {}
