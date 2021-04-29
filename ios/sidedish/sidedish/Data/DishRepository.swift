@@ -18,15 +18,22 @@ final class DishRepository {
     private var cancelBag = Set<AnyCancellable>()
     
     private let networkManager: AFNetworkManagable!
+    private let imageDownloadManager: ImageDownloadManager!
     
     init(with url: String) {
         self.context = coreData.persistentContainer.viewContext
         self.sideDishEntity = NSEntityDescription.entity(forEntityName: SaveSideDish.Properties.entity, in: context)
         self.categoryEntity = NSEntityDescription.entity(forEntityName: SaveSideDishes.Properties.entity, in: context)
         self.networkManager = NetworkManager(with: url)
+        self.imageDownloadManager = ImageDownloadManager()
     }
 
+    //MARK: - category
     func getCategories(completionHandler: @escaping (Just<[SideDishesCategoryManageable]>) -> ()) {
+        
+        if let categorySaved = loadCategories() {
+            return completionHandler(Just(categorySaved))
+        }
         
         let categories = networkManager.get(decodingType: [SideDishesCategory].self,
                                             endPoint: EndPoint.categories)
@@ -41,7 +48,7 @@ final class DishRepository {
                     sideDishCategory.setValue($0.endPoint, forKey: SaveSideDishes.Properties.endPoint)
                 }
                 self.save()
-                completionHandler(self.loadCategories())
+                completionHandler(Just(self.loadCategories() ?? []))
             }
         }.store(in: &cancelBag)
     }
@@ -54,66 +61,75 @@ final class DishRepository {
         }
     }
     
-    private func loadCategories() -> Just<[SideDishesCategoryManageable]> {
-        let sideDishes = try! context.fetch(SaveSideDishes.fetchRequest()) as! [SideDishesCategoryManageable]
-        let publisher = Just(sideDishes)
-        return publisher
+    private func loadCategories() -> [SideDishesCategoryManageable]? {
+        let categories = try? context.fetch(SaveSideDishes.fetchRequest()) as? [SideDishesCategoryManageable]
+        
+        if let categories = categories, categories.isEmpty {
+            return nil
+        }
+
+        return categories
     }
     
+    
+    //MARK: - sidedishes
     func getSideDishes(endPoint: String, completionHandler: @escaping (Just<[SideDishManageable]>) -> ()) {
+        
+        if let sideDishesSaved = loadSideDishes(of: endPoint) {
+            return completionHandler(Just(sideDishesSaved))
+        }
         
         let mainSideDishes = networkManager.get(decodingType: [SideDish].self, endPoint: endPoint)
         
         mainSideDishes.sink { (_) in
         } receiveValue: { (dishes) in
-            if let sideDishEntity = self.sideDishEntity {
-                
-                var sideDishes = [NSManagedObject]()
-                dishes.forEach {
-                    let sideDish = NSManagedObject(entity: sideDishEntity, insertInto: self.context)
-                    sideDish.setValue($0.id, forKey: SaveSideDish.Properties.id)
-                    sideDish.setValue($0.image, forKey: SaveSideDish.Properties.image)
-                    sideDish.setValue($0.title, forKey: SaveSideDish.Properties.title)
-                    sideDish.setValue($0.description, forKey: SaveSideDish.Properties.subtitle)
-                    sideDish.setValue($0.price, forKey: SaveSideDish.Properties.price)
-                    sideDish.setValue($0.salePrice, forKey: SaveSideDish.Properties.salePrice)
-                    sideDish.setValue($0.deliveryTypes, forKey: SaveSideDish.Properties.deliveryTypes)
-                    sideDish.setValue($0.badges, forKey: SaveSideDish.Properties.badges)
-                    sideDishes.append(sideDish)
-                }
-                
-                self.updateCategory(of: endPoint, with: sideDishes)
-                self.save()
-
-                completionHandler(self.loadSideDishes(of: endPoint))
-            }
+            self.updateCategory(of: endPoint, with: dishes)
+            self.save()
+            completionHandler(Just(self.loadSideDishes(of: endPoint) ?? []))
         }.store(in: &cancelBag)
     }
     
-    private func updateCategory(of endPoint: String, with sideDishes: [NSManagedObject]) {
-        let fetchRequest = findCategoryForEndPoint(endPoint)
+    private func updateCategory(of endPoint: String, with sideDishes: [SideDish]) {
+        let fetchRequest = findSideDishes(query: Query.endPoint, match: endPoint)
         let objectToUpdate = try! self.context.fetch(fetchRequest).first!
-        objectToUpdate.setValue(sideDishes, forKey: SaveSideDishes.Properties.sideDish)
+        objectToUpdate.setValue(sideDishes, forKey: "sideDish")
+        
     }
 
-    private func loadSideDishes(of endPoint: String) -> Just<[SideDishManageable]> {
-        let fetchRequest = findCategoryForEndPoint(endPoint)
-        let targetCategory = try! context.fetch(fetchRequest).first!
-        let sideDishes = targetCategory.sideDish! as [SideDishManageable]
-        let publisher = Just(sideDishes)
-        return publisher
+    private func loadSideDishes(of endPoint: String) -> [SideDishManageable]? {
+        let fetchRequest = findSideDishes(query: Query.endPoint, match: endPoint)
+        
+        guard let targetCategory = try? context.fetch(fetchRequest) else {
+            return nil
+        }
+        
+        return targetCategory[0].sideDish
     }
     
-    private func findCategoryForEndPoint(_ endPoint: String) -> NSFetchRequest<SaveSideDishes> {
+    private func findSideDishes(query: Query, match: String) -> NSFetchRequest<SaveSideDishes> {
         let fetchRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "endPoint == %@", endPoint)
+        fetchRequest.predicate = NSPredicate(format: query.value, match)
         return fetchRequest
     }
     
+    enum Query: String {
+        case endPoint = "endPoint == %@"
+        
+        var value: String {
+            return rawValue
+        }
+    }
+    
+    //MARK: - thumbnail path
+    func getSideDishThumbnailPath(from url: String, id: String, completionHandler: @escaping (Just<String>) -> ()) {
+        imageDownloadManager.download(from: url, fileName: id) { (cachePath) in
+            completionHandler(Just(cachePath))
+        }
+    }
+ 
+    //MARK: - delete
     func deleteAllInCoreData(){
         let saveSideDishesRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
-        let saveSideDishRequest: NSFetchRequest<SaveSideDish> = SaveSideDish.fetchRequest()
-        self.deleteAll(request: saveSideDishRequest)
         self.deleteAll(request: saveSideDishesRequest)
     }
     

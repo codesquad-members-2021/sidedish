@@ -9,5 +9,6 @@ import Foundation
 
 enum EndPoint {
     static let categories = "/categories"
+    static let detail = "/detail"
     static var sideDishes = [String]()
 }
