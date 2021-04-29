@@ -2,9 +2,7 @@ package com.team15.sidedish.controller;
 
 import com.team15.sidedish.dto.DetailDTO;
 import com.team15.sidedish.service.DetailService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DetailController {
@@ -18,5 +16,10 @@ public class DetailController {
     @GetMapping("/detail/{hash}")
     public DetailDTO showDetailInfo(@PathVariable String hash) {
         return detailService.showDetailInfo(hash);
+    }
+
+    @PutMapping("/order/{hash}/{orderAmount}")
+    public void orderDish(@PathVariable String hash, @PathVariable Integer orderAmount) {
+        detailService.orderDish(hash, orderAmount);
     }
 }

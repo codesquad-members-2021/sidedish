@@ -2,6 +2,7 @@ package com.team15.sidedish.service;
 
 import com.team15.sidedish.domain.DishRepository;
 import com.team15.sidedish.dto.DishDAO;
+import com.team15.sidedish.exception.CannotFoundDishException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,11 @@ public class DishService {
     }
 
     public List<DishDAO> showDishes() {
-        return dishRepository.findAll();
+        return dishRepository.findAllDishes();
     }
 
     public DishDAO showSingleDish(String hash) {
-        return dishRepository.findById(hash).orElseThrow(IllegalArgumentException::new);
+        return dishRepository.findByHash(hash).orElseThrow(CannotFoundDishException::new);
     }
 
     public List<DishDAO> showDishsBySection(String section) {

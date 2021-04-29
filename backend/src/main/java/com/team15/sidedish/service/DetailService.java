@@ -4,7 +4,9 @@ import com.team15.sidedish.domain.*;
 import com.team15.sidedish.dto.DataDTO;
 import com.team15.sidedish.dto.DetailDTO;
 import com.team15.sidedish.dto.DishDAO;
+import com.team15.sidedish.exception.CannotFoundDishException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,12 +24,19 @@ public class DetailService {
     }
 
     public DetailDTO showDetailInfo(String hash) {
-        DishDAO dishDAO = dishRepository.findById(hash).orElseThrow(IllegalArgumentException::new);
+        DishDAO dishDAO = dishRepository.findByHash(hash).orElseThrow(CannotFoundDishException::new);
         List<Image> thumbImages = imageRepository.findAllByDishHashAndIsThumbTrue(hash);
         List<Image> detailImages = imageRepository.findAllByDishHashAndIsThumbFalse(hash);
-        Delivery delivery = deliveryRepository.findByDishHash(hash).orElseThrow(IllegalArgumentException::new);
+        Delivery delivery = deliveryRepository.findByDishHash(hash).orElseThrow(CannotFoundDishException::new);
         DataDTO dataDTO = DataDTO.of(dishDAO, delivery, thumbImages, detailImages);
         return new DetailDTO(hash, dataDTO);
 
+    }
+
+    @Transactional
+    public void orderDish(String hash, Integer orderAmount) {
+        Dish dish = dishRepository.findById(hash).orElseThrow(CannotFoundDishException::new);
+        dish.update(orderAmount);
+        dishRepository.save(dish);
     }
 }
