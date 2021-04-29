@@ -19,9 +19,14 @@ class BanchanSceneDIContainer: BanchanSceneFlowCoordinatorDependencies {
         self.dependencies = dependencies
     }
     
+    // MARK: - Persistent Storages
+    private func makeBanchanListStroage() -> CoreDataBanchanListStorage {
+        return CoreDataBanchanListStorage()
+    }
+    
     // MARK: - Repositories
     private func makeBanchanListRepository() -> BanchanListRepository {
-        return DefaultBanchanListRepository(network: dependencies.apiNetworkService)
+        return DefaultBanchanListRepository(network: dependencies.apiNetworkService, storage: makeBanchanListStroage())
     }
 
     // MARK: - Use Cases

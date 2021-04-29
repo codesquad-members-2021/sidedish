@@ -47,7 +47,6 @@ class CoreDataBanchanListStorage {
                 let entities = requestDTO.toEntity(with: context)
                 let sectionEntity = try context.fetch(request)
                 
-                print(sectionEntity.count)
                 entities.forEach { entity in
                     sectionEntity[section.rawValue].addToEntities(entity)
                 }
