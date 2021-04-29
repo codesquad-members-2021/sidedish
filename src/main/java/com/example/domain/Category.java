@@ -16,7 +16,7 @@ public class Category {
 
     private final String name;
 
-    @MappedCollection(idColumn = "CATEGORY_ID", keyColumn = "ITEM_ID")
+    @MappedCollection(idColumn = "CATEGORY_ID", keyColumn = "ID")
     private Map<String, Item> items = new HashMap<>();
 
     @PersistenceConstructor
