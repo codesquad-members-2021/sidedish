@@ -63,10 +63,7 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
                 let accessToken = config.accessToken ?? ""
                 self.keychain.clear()
                 self.keychain.set(accessToken, forKey: "myToken")
-                DispatchQueue.main.async {
-                    let targetVC = self.storyboard?.instantiateViewController(identifier: "ViewController") as? SideDishViewController
-                    self.navigationController?.pushViewController(targetVC!, animated: true)
-                }
+                self.navigationController?.popViewController(animated: true)
             case .failure(let error):
                 print(error)
             }

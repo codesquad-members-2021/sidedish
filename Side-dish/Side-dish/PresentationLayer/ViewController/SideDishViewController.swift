@@ -19,9 +19,6 @@ class SideDishViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
-        sideDishViewModel = SideDishViewModel(sideDishUseCase: usecase)
-        
         sideDishCollectionView.delegate = self
         configureDataSource()
         bind()
