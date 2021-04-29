@@ -14,15 +14,15 @@ class NetworkManager {
         return Alamofire.NetworkReachabilityManager()?.isReachable ?? false
     }
     
-    func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (T) -> ()) {
+    func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
         AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
-            .responseDecodable(of: T.self) { (response) in
+            .responseDecodable(of: T.self) { response in
                 switch response.result {
-                case .success(let dto):
-                    completionHandler(dto)
+                case .success(let responseDTO):
+                    completionHandler(.success(responseDTO))
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    completionHandler(.failure(error))
                 }
             }
     }

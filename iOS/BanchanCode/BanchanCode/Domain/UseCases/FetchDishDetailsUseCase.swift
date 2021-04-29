@@ -30,8 +30,14 @@ final class FetchDishDetailsUseCase: UseCase {
     
     private func fetchDishDetails(categoryName: String, id: Int, completion: @escaping (Result<DishDetail, Error>) -> Void) {
         let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)/\(id)"
-        networkManager.performRequest(urlString: url) { (responseDTO: DishDetailResponseDTO) in
-            self.completion(.success(responseDTO.toDomain()))
+        
+        networkManager.performRequest(urlString: url) { (result: Result<DishDetailResponseDTO,Error>) in
+            switch result {
+            case .success(let responseDTO) :
+                completion(.success(responseDTO.toDomain()))
+            case .failure(let error) :
+                completion(.failure(error))
+            }
         }
     }
 }
