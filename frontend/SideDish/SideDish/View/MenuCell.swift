@@ -42,7 +42,7 @@ class MenuCell: UICollectionViewCell {
     func configure(menu: MenuViewModel) {
         self.titleLabel.text = menu.title
         self.bodyLabel.text = menu.body
-        self.currentPriceLabel.text = menu.sPrice
+        self.currentPriceLabel.text = "\(menu.sPrice)원"
         self.pastPriceLabel.attributedText = menu.nPrice
         guard let url = URL(string: menu.image) else { return }
         self.thumbnailImage.kf.setImage(with: url)

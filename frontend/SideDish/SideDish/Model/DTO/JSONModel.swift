@@ -2,11 +2,11 @@
 import Foundation
 
 struct MenuResponse: Decodable {
-    let statusCode: Int
-    let body: [Menu]
+    let categoryId: Int
+    let name: String
+    let items: [Menu]
 }
 
 struct DetailMenuResponse: Decodable {
-    let hash: String
     let data: DetailMenu
 }

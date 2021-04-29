@@ -13,10 +13,10 @@ class DataTaskManager {
     static let session = URLSession(configuration: .default)
     
     enum Url: String {
-        case main = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
-        case soup = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/soup"
-        case side = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
-        case detail = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail"
+        case main = "http://13.209.36.131:8080/17011000"
+        case soup = "http://13.209.36.131:8080/17011100"
+        case side = "http://13.209.36.131:8080/17011200"
+        case detail = "http://13.209.36.131:8080/detail"
     }
     
     static func sendRequest(url: Url, completion: @escaping (Result<MenuResponse, Error>) -> Void) {
@@ -35,14 +35,14 @@ class DataTaskManager {
         }.resume()
     }
   
-    static func sendDetailRequest(detailHash: String, completion: @escaping (Result<DetailMenuResponse, Error>) -> Void) {
-        guard let url = URL(string: "\(Url.detail.rawValue)/\(detailHash)") else {
+    static func sendDetailRequest(categoryId: Int, detailHash: String, completion: @escaping (Result<DetailMenu, Error>) -> Void) {
+        guard let url = URL(string: "\(Url.detail.rawValue)/\(categoryId)/\(detailHash)") else {
             print("The URL is inappropriate.")
             return
         }
         session.dataTask(with: url) { data, response, error in
             if let data = data {
-                guard let detailMenuList = ParsingManager.decodeData(type: DetailMenuResponse.self, data: data) else { return }
+                guard let detailMenuList = ParsingManager.decodeData(type: DetailMenu.self, data: data) else { return }
                 completion(.success(detailMenuList))
             } else {
                 guard let error = error?.localizedDescription as? Error else { return }

@@ -15,19 +15,19 @@ class Menu: Decodable {
     private var deliveryType: [String]
     private(set) var title: String
     private(set) var description: String
-    private(set) var nPrice: String?
-    private(set) var sPrice: String
-    private(set) var badge: [String]?
+    private(set) var normalPrice: Int?
+    private(set) var salePrice: Int
+    private(set) var badge: [String?]
     
-    init(detailHash: String, image: String, alt: String, deliveryType: [String], title: String, description: String, nPrice: String?, sPrice: String, badge: [String]?) {
+    init(detailHash: String, image: String, alt: String, deliveryType: [String], title: String, description: String, normalPrice: Int?, salePrice: Int, badge: [String?]) {
         self.detailHash = detailHash
         self.image = image
         self.alt = alt
         self.deliveryType = deliveryType
         self.title = title
         self.description = description
-        self.nPrice = nPrice
-        self.sPrice = sPrice
+        self.normalPrice = normalPrice
+        self.salePrice = salePrice
         self.badge = badge
     }
 }

@@ -38,10 +38,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let detailViewController = self.storyboard?.instantiateViewController(identifier: "detailMenuViewController") as? DetailMenuViewController, let detailHash = menusViewModel.returnHash(indexPath: indexPath)  else { return }
+        guard let detailViewController = self.storyboard?.instantiateViewController(identifier: "detailMenuViewController") as? DetailMenuViewController, let detailHash = menusViewModel.returnHash(indexPath: indexPath), let categoryId = menusViewModel.returnCategoryId(indexPath: indexPath)  else { return }
         navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(detailViewController, animated: true)
 
-        detailViewController.receive(detailHash: detailHash)
+        detailViewController.receive(categoryId: categoryId, detailHash: detailHash)
     }
 }

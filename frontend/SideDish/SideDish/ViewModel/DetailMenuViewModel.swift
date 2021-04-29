@@ -7,9 +7,9 @@ class DetailMenuViewModel {
     private(set) var title: String
     private(set) var productDescription: String
     private(set) var salePrice: NSAttributedString
-    private(set) var normalPrice: NSAttributedString
+    private(set) var normalPrice: String
     private(set) var badges: [Bool]
-    private(set) var point: String
+    private(set) var point: Int
     private(set) var deliveryInfo: String
     private(set) var deliveryFee: String
     private(set) var stock: Int
@@ -22,17 +22,17 @@ class DetailMenuViewModel {
         self.title = ""
         self.productDescription = ""
         self.salePrice = NSMutableAttributedString(string: "")
-        self.normalPrice = NSMutableAttributedString(string: "")
+        self.normalPrice = ""
         self.badges = []
-        self.point = ""
+        self.point = 0
         self.deliveryInfo = ""
         self.deliveryFee = ""
         self.stock = 0
         self.detailSection = []
     }
     
-    func send(detailHash: String) {
-        self.fetchDetailDataUseCase.loadDetailMenu(detailHash: detailHash) { data in
+    func send(categoryId: Int, detailHash: String) {
+        self.fetchDetailDataUseCase.loadDetailMenu(categoryId: categoryId, detailHash: detailHash) { data in
             self.configure(data: data)
             NotificationCenter.default.post(name: Notification.Name.fetchDetailMenu, object: self)
         }
@@ -42,9 +42,9 @@ class DetailMenuViewModel {
         self.thumbImages = data.thumbImages
         self.title = data.title
         self.productDescription = data.productDescription
-        self.salePrice = NSMutableAttributedString(string: convertDecimal(string: data.prices[0]))
-        self.normalPrice = NSMutableAttributedString(string: convertDecimal(string: data.prices[0]))
-        self.badges = verifyBadges(badges: data.badges)
+        self.salePrice = stringToAttributedString(data.prices)
+        self.normalPrice = convertDecimal(string: data.prices[0])
+        self.badges = verifyBadges(badges: data.badge)
         self.point = data.point
         self.deliveryInfo = data.deliveryInfo
         self.deliveryFee = data.deliveryFee
@@ -52,20 +52,16 @@ class DetailMenuViewModel {
         self.detailSection = data.detailSection
     }
     
-//    func stringToAttributedString(_ price: String) -> NSAttributedString {
-//        let priceArray = convertDecimal(string: price)
-//
-//        if priceArray.count == 1 {
-//            resultStringArray.append(NSMutableAttributedString(string: "\(price[0])원"))
-//        } else {
-//            resultStringArray.append(NSMutableAttributedString(string: "\(price[0])원"))
-//            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(price[1])원")
-//            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-//            resultStringArray.append(attributeString)
-//        }
-//        
-//        return resultStringArray
-//    }
+    func stringToAttributedString(_ prices: [String]) -> NSAttributedString {
+        if prices.count == 2 {
+            let convertedPrice = convertDecimal(string: prices[1])
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(convertedPrice)원")
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            return attributeString
+        } else {
+            return NSAttributedString(string: "")
+        }
+    }
     
     func convertDecimal(string: String) -> String {
         let numberFormatter = NumberFormatter()

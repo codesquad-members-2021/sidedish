@@ -55,4 +55,5 @@ class DetailScrollView: UIScrollView {
         self.decreaseButton.layer.borderWidth = 1
         self.decreaseButton.layer.borderColor = gray
     }
+    
 }
