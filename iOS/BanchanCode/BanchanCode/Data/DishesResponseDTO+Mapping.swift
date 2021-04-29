@@ -31,7 +31,6 @@ extension DishesResponseDTO {
         let prices: [Int]
         let badges: [String]
     }
-    
 }
 
 extension DishesResponseDTO {
