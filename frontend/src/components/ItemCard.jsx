@@ -7,10 +7,8 @@ import DetailPage from './detail/DetailPage';
 import useFetch from './useFetch';
 
 const Card = styled.div`
-	margin-top: 40px;
-	width: ${(props) => {
-		return props.size === 'L' ? '384px' : '308px';
-	}};
+	width: ${(props) => props.size === 'L' ? '384px' : '308px'};
+	padding: 0 ${(props) => `${props.padding}px`};
 	overflow: hidden;
 `;
 const ItemTitle = styled.div`
@@ -64,7 +62,7 @@ const ClickArea = styled.div`
 	cursor: pointer;
 `;
 
-function ItemCard({ data, size }) {
+function ItemCard({ data, size, xpadding }) {
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
 	const [modalMode, setModalState] = useState(false);
@@ -86,7 +84,7 @@ function ItemCard({ data, size }) {
 					badges={data.badges}
 				></DetailPage>
 			)}
-			<Card size={size}>
+			<Card size={size} padding = {xpadding}>
 				<ClickArea onClick={() => handleClick(data.detailHash, data.badges)}>
 					<IMG size={size} image={data.image} alt={data.alt}>
 						<DeliveryBlock>

@@ -5,6 +5,7 @@ import DetailPage from './detail/DetailPage';
 import useFetch from './useFetch';
 
 const Card = styled.div`
+	padding: 0 ${props => `${props.padding}px`};	
 	width: ${(props) => {
 		return props.size === 'L' ? '384px' : props.size;
 	}}px;
@@ -56,9 +57,11 @@ const ItemInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin-top: 10px;
+
 `;
 
-function ItemCardSmall({ data, size, height }) {
+function ItemCardSmall({ data, size, height, xpadding }) {
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
 	const [modalMode, setModalState] = useState(false);
@@ -81,6 +84,7 @@ function ItemCardSmall({ data, size, height }) {
 				></DetailPage>
 			)}
 			<Card
+			padding={xpadding}
 				className="Card"
 				size={size}
 				height={height}

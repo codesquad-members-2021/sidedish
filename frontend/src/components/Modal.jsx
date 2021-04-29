@@ -23,9 +23,13 @@ const StyledModal = styled.div`
 
 const Xstyle = {
 	color: theme.colors.white,
-	position: 'relative',
-	top: '-320px',
 };
+
+const BtnStyle = {
+	position: 'absolute',
+    top: '5%',
+    right: '28%',
+}
 
 function Modal({ children, modalMode, setModalState }) {
 	const handleClick = () => setModalState(!modalMode);
@@ -34,7 +38,7 @@ function Modal({ children, modalMode, setModalState }) {
 		<ModalPortal>
 			<DarkBackground className="DARK">
 				<StyledModal>{children}</StyledModal>
-				<Button onClick={handleClick}>
+				<Button onClick={handleClick} style={BtnStyle}>
 					<BiX style={Xstyle} />
 				</Button>
 			</DarkBackground>

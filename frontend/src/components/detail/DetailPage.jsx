@@ -109,9 +109,13 @@ function DetailPage({
 	const button = useRef();
 	const handleLeft = () => {
 		button.current.slideToLeft();
+		console.log(button.current.pageNumber);
+		console.log(button.current.totalPage);
 	};
 	const handleRight = () => {
 		button.current.slideToRight();
+		console.log(button.current.pageNumber);
+		console.log(button.current.totalPage);
 	};
 	const [randomMenu, randomLoadingState] = useFetch(
 		process.env.REACT_APP_API_URL + 'recommend/10/',
@@ -173,7 +177,7 @@ function DetailPage({
 							></input>
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<DetailText>총 주문금액</DetailText>
-							<ItemPrice nPrice={orderPrice * orderCount}></ItemPrice>
+							<ItemPrice nPrice={`${orderPrice * orderCount} 원`}></ItemPrice>
 							<OrderBtn
 								onClick={() => setModalState(!modalMode)}
 								disabled={!Boolean(detailData.stock)}
@@ -182,11 +186,6 @@ function DetailPage({
 							</OrderBtn>
 						</ItemDetailInfo>
 					</RepresentativeBlock>
-					{/* <ItemDetailCards>
-						{detailData.detailSection.map((card, idx) => (
-							<DetailCard card={card} key={idx}></DetailCard>
-						))}
-					</ItemDetailCards> */}
 					{!randomLoadingState && (
 						<FooterSection>
 							<Upper>
@@ -203,7 +202,6 @@ function DetailPage({
 
 							<Carousel
 								width={864}
-								height={242}
 								count={5}
 								duration={'.5s'}
 								ref={button}
@@ -215,6 +213,7 @@ function DetailPage({
 										height={242}
 										key={idx}
 										data={el}
+										xpadding={10}
 									></ItemCardSmall>
 								))}
 							</Carousel>
