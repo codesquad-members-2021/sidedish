@@ -9,8 +9,10 @@ const SliderButtons = ({
   setX,
   cardQuantity,
   cardShown,
-  remainingCards,
-  setRemainingCards,
+  rightRemainingCards,
+  setRightRemainingCards,
+  leftRemainingCards,
+  setLeftRemainingCards,
 }) => {
   //버튼 가져와서 보여줘야함
   return (
@@ -18,13 +20,13 @@ const SliderButtons = ({
       <SliderLeftButton
         {...{
           leftButton,
-          rightButton,
           totalWidth,
           setX,
           cardQuantity,
           cardShown,
-          remainingCards,
-          setRemainingCards,
+          leftRemainingCards,
+          setLeftRemainingCards,
+          setRightRemainingCards,
         }}
       >
         <leftButton />
@@ -35,8 +37,9 @@ const SliderButtons = ({
           totalWidth,
           setX,
           cardShown,
-          remainingCards,
-          setRemainingCards,
+          rightRemainingCards,
+          setLeftRemainingCards,
+          setRightRemainingCards,
         }}
       >
         <rightButton />

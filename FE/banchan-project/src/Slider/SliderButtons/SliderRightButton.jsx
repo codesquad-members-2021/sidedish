@@ -8,24 +8,32 @@ const SliderRightButton = ({
   totalWidth,
   setX,
   cardShown,
-  remainingCards,
-  setRemainingCards,
+  rightRemainingCards,
+  setLeftRemainingCards,
+  setRightRemainingCards,
 }) => {
   const onClick = direction => {
-    setX(x => x + totalWidth * direction * cardShown);
-    setRemainingCards(x => x - cardShown);
+    if (rightRemainingCards < cardShown) {
+      setX(x => x + totalWidth * direction * rightRemainingCards);
+      setRightRemainingCards(x => x - rightRemainingCards);
+      setLeftRemainingCards(x => x + rightRemainingCards);
+    } else {
+      //처음에 여기로 들어옴
+      setX(x => x + totalWidth * direction * cardShown);
+      setRightRemainingCards(x => x - cardShown);
+      setLeftRemainingCards(x => x + cardShown);
+    }
   };
 
-  remainingCards < cardShown ? (isDisabledBtn = true) : (isDisabledBtn = false);
+  rightRemainingCards === 0 ? (isDisabledBtn = true) : (isDisabledBtn = false);
 
-  console.log(remainingCards);
-  console.log(isDisabledBtn);
   return (
     <Style.RightButtonWrapper
       disabled={isDisabledBtn}
       onClick={() => onClick(-1)}
     >
       <CS.Button.RIGHT_BUTTON />
+      {/* 추후 프롭스로 받은 버튼이 들어갈 예정입니다. */}
     </Style.RightButtonWrapper>
   );
 };

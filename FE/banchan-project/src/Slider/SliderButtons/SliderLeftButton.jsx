@@ -9,17 +9,24 @@ const SliderLeftButton = ({
   setX,
   cardQuantity,
   cardShown,
-  remainingCards,
-  setRemainingCards,
+  leftRemainingCards,
+  setLeftRemainingCards,
+  setRightRemainingCards,
 }) => {
   const onClick = direction => {
-    setX(x => x + totalWidth * direction * cardShown);
-    setRemainingCards(x => x + cardShown);
+    if (leftRemainingCards < cardShown) {
+      setX(x => x + totalWidth * direction * leftRemainingCards);
+      setLeftRemainingCards(x => x - leftRemainingCards);
+      setRightRemainingCards(x => x + leftRemainingCards);
+    } else {
+      //cardshown= 4 remain=5
+      setX(x => x + totalWidth * direction * cardShown);
+      setLeftRemainingCards(x => x - cardShown);
+      setRightRemainingCards(x => x + cardShown);
+    }
   };
 
-  remainingCards >= cardQuantity
-    ? (isDisabledBtn = true)
-    : (isDisabledBtn = false);
+  leftRemainingCards === 0 ? (isDisabledBtn = true) : (isDisabledBtn = false);
 
   return (
     <Style.LeftButtonWrapper
