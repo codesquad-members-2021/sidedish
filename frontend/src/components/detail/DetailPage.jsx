@@ -4,9 +4,12 @@ import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import React from 'react';
 import Error from '../state/Error';
+import Carousel from '../category/Carousel';
+import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
+
 const RepresentativeBlock = styled.div`
 	display: flex;
 	margin: 48px;
@@ -84,6 +87,10 @@ const DetailCard = styled.div`
 	height: 100%;
 	background-image: url(${(props) => props.card});
 `;
+const FooterSection = styled.div`
+	width: 100%;
+	background-color: ${theme.colors.green};
+`;
 
 function DetailPage({
 	loadingState,
@@ -97,7 +104,13 @@ function DetailPage({
 	const [orderCount, setOrderCount] = useState(1);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
 	// const orderCount = useMemo(() => setOrderCount(orderCount로직), [orderCount ])
-
+	const button = useRef();
+	const handleLeft = () => {
+		button.current.slideToLeft();
+	};
+	const handleRight = () => {
+		button.current.slideToRight();
+	};
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
@@ -165,6 +178,29 @@ function DetailPage({
 							<DetailCard card={card} key={idx}></DetailCard>
 						))}
 					</ItemDetailCards>
+					<FooterSection>
+						<ButtonLeft onClick={handleLeft}>
+							<VscChevronLeft />
+						</ButtonLeft>
+
+						<Carousel
+							width={960}
+							count={5}
+							duration={'.5s'}
+							ref={button}
+							effect={'ease-in-out'}
+						>
+							<div>1</div>
+							<div>2</div>
+							<div>3</div>
+							<div>4</div>
+							<div>5</div>
+						</Carousel>
+
+						<ButtonRight onClick={handleRight}>
+							<VscChevronRight />
+						</ButtonRight>
+					</FooterSection>
 				</>
 			)}
 		</Modal>
@@ -176,3 +212,5 @@ export default React.memo(DetailPage);
 // : categoryData === 400 ? (
 // 	<Error></Error>
 // )
+const ButtonLeft = styled(Button)``;
+const ButtonRight = styled(Button)``;

@@ -6,7 +6,7 @@ const Oauth = (props) => {
 	const code = result.code;
 	console.log(result);
 	console.log(props);
-	useFetch(`localhost:8080/login?code=${code}`, 'post', code);
+	useFetch(`http://15.164.68.136:8080/login?code=${code}`, 'post', code);
 	useEffect(() => {
 		props.history.push('/');
 	});

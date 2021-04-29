@@ -11,6 +11,7 @@ const Card = styled.div`
 	width: ${(props) => {
 		return props.size === 'L' ? '384px' : '308px';
 	}};
+	overflow: hidden;
 `;
 const ItemTitle = styled.div`
 	font-size: ${theme.fontSize.medium};
