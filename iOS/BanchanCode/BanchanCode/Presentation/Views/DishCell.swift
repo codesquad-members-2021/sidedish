@@ -88,4 +88,8 @@ class DishCell: UICollectionViewCell {
         badgeLabel.translatesAutoresizingMaskIntoConstraints = false
         return badgeLabel
     }
+    
+    override func prepareForReuse() {
+        thumbnailImageView.image = nil
+    }
 }
