@@ -1,11 +1,13 @@
 // 모든 카테고리 보기 or 데이터 처리하여 SubContents Section 생성
 import _ from "../ref";
-import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch2";
+import { useEffect, useState, useContext } from "react";
+import useFetch from "../hooks/useFetch";
 import SubContentsSection from "./partial/SubContentsSection";
 import AllSubContentsView from "./partial/AllSubContentsView";
+import { SideDishContext } from "../utilComponent/SideDishStore";
 
 const SubContents = () => {
+  const { setSlideData } = useContext(SideDishContext);
   const [contentData, setContentData] = useState({});
   const [allLoading, setAllLoading] = useState(true);
   const [contentsSections, setContentsSections] = useState([]);
@@ -16,12 +18,14 @@ const SubContents = () => {
 
   useEffect(() => {
     if (mainLoading || soupLoading || sideLoading) return;
-    setContentData({
+    const aContentData = {
       ...contentData,
       main: mainError || mainResponse.body,
       soup: soupError || soupResponse.body,
       side: sideError || sideResponse.body,
-    });
+    };
+    setContentData(aContentData);
+    setSlideData(aContentData);
     setAllLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainLoading, soupLoading, sideLoading]);

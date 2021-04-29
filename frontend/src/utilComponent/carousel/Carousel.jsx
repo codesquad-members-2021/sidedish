@@ -1,6 +1,7 @@
 // Carousel Slider
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { changeAllToNumbers } from "../../util/util";
 import CarouselArrowBtn from "./CarouselArrowBtn";
 
 const Carousel = ({
@@ -106,7 +107,7 @@ const Carousel = ({
 
       <ContentItemsWrap>
         {arrowLocation === "top" ? (
-          <ArrowButtons>{arrowBtns}</ArrowButtons>
+          <ArrowButtons fontSize={btnSize}>{arrowBtns}</ArrowButtons>
         ) : (
           arrowBtns
         )}
@@ -164,7 +165,15 @@ const ContentItem = styled.li`
 // 화살표 버튼 Wrapper용 (arrowLocation가 top 옵션일때만 쓰임)
 const ArrowButtons = styled.div`
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  position: absolute;
+  right: 0;
+  top: -10%;
+
+  span {
+    font-size: ${({ fontSize, theme }) =>
+      `calc(${fontSize} - (${
+        Math.floor(changeAllToNumbers(fontSize) * 0.5) + "px"
+      }))` || theme.fontSize.MM};
+  }
 `;

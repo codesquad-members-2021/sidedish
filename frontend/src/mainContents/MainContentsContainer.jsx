@@ -12,7 +12,7 @@ const MainContentsContainer = () => {
         const initial = json.body[0].category_id;
         setClickedTabId(initial)
     }
-    const {response: data, loading} = useFetch(_.URL + "best", parse)
+    const {response: data, loading} = useFetch(_.URL + "best", { callback: parse } );
 
     return (
         <>  
