@@ -16,15 +16,23 @@ public class DishService {
         this.categoryRepository = categoryRepository;
     }
 
+    public Category findByDishId(String dishId){
+        return categoryRepository.findByDishId(dishId).orElseThrow(() ->
+                new NotFoundException(Status.NOTFOUND_DISH.getMessage()));
+    }
+
     public Dish findDishByDishId(String dishId) {
-        Category category = categoryRepository.findByDishId(dishId).orElseThrow(() -> new NotFoundException(Status.NOTFOUND_DISH.getMessage()));
+        Category category = findByDishId(dishId);
         return category.getDishByDishId(dishId);
     }
 
     public boolean orderDish(String dishId, int orderSize) {
+        Category category = findByDishId(dishId);
         Dish dish = findDishByDishId(dishId);
         if (dish.checkStock(orderSize)) {
             dish.updateStock(orderSize);
+            category.addDish(dish);
+            categoryRepository.save(category);
             return true;
         }
         return false;
