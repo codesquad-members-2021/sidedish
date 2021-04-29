@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledBadges } from 'component/DishItem/DishItem';
 import Counter from 'component/ItemDetail/Counter';
-import { StyledCarousel } from 'component/Carousel/Carousel';
+import Carousel from 'react-cool-kyle-carousel/dist/Carousel';
+import RecommendItem from 'component/ItemDetail/RecommendItem';
 
 const DetailModal = ({ detailData, loading, title, badge }) => {
   const [count, setCount] = useState(1);
@@ -40,6 +41,16 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
       (totalPrice + '').replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',') + '원';
     return parsedTotalPrice;
   };
+
+  const carouselSettings = {
+    speed: 500,
+    slideToScroll: 1,
+    defaultArrow: true,
+    defaultPaging: true
+  }
+
+  const recommendData = new Array(10).fill();   // API에 데이터가 없어서 1~10 임시 데이터를 넣었습니다.
+  const recommendList = recommendData.map((v, idx) => <RecommendItem key={idx} value ={idx+1} />);
 
   if (loading) return <ModalStyle>Loading...</ModalStyle>;
   else if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
@@ -99,7 +110,11 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
             <span>함께하면 더욱 맛있는 상품</span>
             <span>화살표들어갈자리</span>
           </div>
-          {/* carousel 들어갈 자리 */}
+          <div className="carousel_container">
+            <Carousel {...carouselSettings}>
+            {recommendList}
+            </Carousel>
+          </div>
         </div>
       </Bottom>
     </ModalStyle>
@@ -109,11 +124,12 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
 export default DetailModal;
 
 export const ModalStyle = styled.div`
-  width: 50%;
+  width: 960px;
   height: 95%;
   background-color: white;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 
   .error_center {
     justify-content: center;
@@ -253,14 +269,21 @@ const TopRight = styled.div`
 
 const Bottom = styled.div`
   background-color: ${({ theme: { colors } }) => colors.lightGray};
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
+  padding: 48px;
+  
+  .carousel_container {
+    width: 100%;
+  }
 
   .bottom_contents_wrapper {
     width: 100%;
     padding: 26px 0px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
   }
   .header {

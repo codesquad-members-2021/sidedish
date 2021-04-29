@@ -23,8 +23,8 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
     <StyleModal>
       {detailData ? (
         <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
-      ) : (
-        <ModalStyle>
+        ) : (
+          <ModalStyle>
           <ErrorStyle>😢불러올 데이터가 없습니다😢</ErrorStyle>
         </ModalStyle>
       )}
@@ -58,10 +58,10 @@ const StyleModal = styled.div`
 
   .closeBtn {
     position: fixed;
-    left: 75.3%;
+    right: 15%;
     font-size: 2rem;
     top: 20px;
-    color: white;
+    color: black;
     cursor: pointer;
   }
   .closeBtn:hover {
