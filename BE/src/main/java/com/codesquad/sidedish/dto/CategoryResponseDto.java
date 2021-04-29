@@ -41,6 +41,7 @@ public class CategoryResponseDto {
 
     private static List<DishResponseDto> dishesMapToDishResponseDtoList(Map<String, Dish> dishes) {
         List<DishResponseDto> dishResponseDto = new ArrayList<>();
+
         for (String key : dishes.keySet()) {
             dishResponseDto.add(DishResponseDto.of(dishes.get(key)));
         }
