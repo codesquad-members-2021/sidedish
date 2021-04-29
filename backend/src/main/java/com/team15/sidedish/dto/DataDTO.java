@@ -1,5 +1,7 @@
 package com.team15.sidedish.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.team15.sidedish.domain.Delivery;
 import com.team15.sidedish.domain.Image;
 
@@ -17,10 +19,24 @@ public class DataDTO {
 
     private String description;
     private int point;
+
+    @JsonProperty("delivery_info")
     private String deliveryInfo;
+
+    @JsonProperty("devlivery_fee")
     private Integer deliveryFee;
+
+    @JsonProperty("delivery_condition")
     private Integer deliveryCondition;
-    private Integer[] prices;
+
+    @JsonProperty("normal_price")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer normalPrice;
+
+    @JsonProperty("special_price")
+    private Integer specialPrice;
+
+    @JsonProperty("detail_images")
     private List<String> detailImages;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -42,10 +58,14 @@ public class DataDTO {
     }
 
     public static DataDTO of(DishDTO dishDTO, Delivery delivery, List<Image> thumbImages, List<Image> detailImages) {
-        return new DataDTO(dishDTO.getImage(), thumbImages, dishDTO.getDescription(), (int) Math.round(dishDTO.getSpecialPrice() * 0.01),
+        return new DataDTO(dishDTO.getTitle(), dishDTO.getImage(), thumbImages, dishDTO.getDescription(), (int) Math.round(dishDTO.getSpecialPrice() * 0.01),
                 delivery.makeDeliveryInfo(delivery.isMonday()), delivery.getDeliveryFee(), delivery.getDeliveryCondition(),
                 dishDTO.getNormalPrice(), dishDTO.getSpecialPrice(), detailImages, dishDTO.getBadge()
         );
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getTopImage() {
@@ -76,13 +96,19 @@ public class DataDTO {
         return deliveryCondition;
     }
 
-    public Integer[] getPrices() {
-        return prices;
+    public Integer getNormalPrice() {
+        return normalPrice;
+    }
+
+    public Integer getSpecialPrice() {
+        return specialPrice;
     }
 
     public List<String> getDetailImages() {
         return detailImages;
     }
 
-
+    public String[] getBadge() {
+        return badge;
+    }
 }
