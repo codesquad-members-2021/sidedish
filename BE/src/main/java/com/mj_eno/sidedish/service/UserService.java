@@ -7,13 +7,12 @@ import com.mj_eno.sidedish.exception.ErrorMessage;
 import com.mj_eno.sidedish.web.dto.EmailDTO;
 import com.mj_eno.sidedish.web.dto.TokenDTO;
 import com.mj_eno.sidedish.web.dto.UserInfoDTO;
+import com.mj_eno.sidedish.web.dto.UserResponseDTO;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -34,7 +33,7 @@ public class UserService {
         this.environment = environment;
     }
 
-    public User login(String code) {
+    public UserResponseDTO login(String code) {
         TokenDTO tokenDTO = tokenRequestApi(code);
         UserInfoDTO userInfoDTO = userInfoRequestApi(tokenDTO.getAccess_token());
         EmailDTO emailDTO = emailRequestApi(tokenDTO.getAccess_token());
@@ -42,10 +41,10 @@ public class UserService {
         if (verifyUser(userInfoDTO)) {
             User user = findByUserId(userInfoDTO);
             user.update(userInfoDTO, emailDTO, tokenDTO);
-            return userRepository.save(user);
+            return new UserResponseDTO(userRepository.save(user));
         }
         User user = new User(userInfoDTO, emailDTO, tokenDTO);
-        return userRepository.save(user);
+        return new UserResponseDTO(userRepository.save(user));
     }
 
     private TokenDTO tokenRequestApi(String code) {
@@ -76,8 +75,7 @@ public class UserService {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(HttpHeaders.AUTHORIZATION, "token " + token);
         HttpEntity<?> httpEntity3 = new HttpEntity<>(httpHeaders);
-        List<EmailDTO> emailDTOList = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, httpEntity3, List.class).getBody();
-        // 문제있음
+        List<EmailDTO> emailDTOList = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, httpEntity3, new ParameterizedTypeReference<List<EmailDTO>>() {}).getBody();
         return emailDTOList.get(0);
     }
 
