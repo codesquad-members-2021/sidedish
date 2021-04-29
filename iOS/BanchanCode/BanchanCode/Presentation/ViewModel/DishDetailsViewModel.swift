@@ -9,6 +9,8 @@ import Foundation
 
 protocol DishDetailsViewModelInput {
     func load()
+    func loadbyDB()
+    
 }
 
 protocol DishDetailsViewModelOutput {
@@ -23,6 +25,7 @@ typealias FetchDishDetailsUseCaseFactory = (
 ) -> UseCase
 
 final class DefaultDishDetailsViewModel: DishDetailsViewModel {
+    
     private let fetchDishDetailsUseCaseFactory: FetchDishDetailsUseCaseFactory
     private let categoryName: String
     private let id: Int
@@ -48,10 +51,18 @@ extension DefaultDishDetailsViewModel {
             switch result {
             case .success(let dishDetail):
                 self.dishDetail.value = dishDetail
+                let realmManager = RealmManager()
+                realmManager.addDishDetail(disheDetail: self.dishDetail.value)
             case .failure: break
             }
         }
         let useCase = fetchDishDetailsUseCaseFactory(request, completion)
         useCase.start()
+    }
+    
+    func loadbyDB() {
+        let realmManager = RealmManager()
+        /*상세보기로 저장되지 않은 뷰를 보러갈때 이슈가 난다.*/
+        self.dishDetail.value = realmManager.getDishesID(by: self.id)!
     }
 }

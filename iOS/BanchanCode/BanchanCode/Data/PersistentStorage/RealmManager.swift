@@ -10,7 +10,10 @@ import Foundation
 
 private protocol RealmOperations {
     func addDishes(dishesItem: [DishesItemViewModel], categoryName: String)
+    func addDishDetail(disheDetail: DishDetail)
     func getDishes(by categryName: String) -> [DishesItemViewModel]
+    func getDishesID(by id: Int) -> DishDetail?
+    
 }
 
 class RealmManager: RealmOperations {
@@ -35,6 +38,27 @@ class RealmManager: RealmOperations {
         }
     }
     
+    func addDishDetail(disheDetail: DishDetail) {
+        if (realm.object(ofType: DishDetailDB.self, forPrimaryKey: disheDetail.id) == nil) {
+        
+            let dishDetailDB = DishDetailDB(id: disheDetail.id, name: disheDetail.name!, contents: disheDetail.description!, stock: disheDetail.stock!, point: disheDetail.point!, deliveryInfro: disheDetail.deliveryInfo!)
+
+            disheDetail.badges?.forEach {
+                dishDetailDB.badges.append($0)
+            }
+            disheDetail.detailImages?.forEach {
+                dishDetailDB.detailImages.append($0)
+            }
+            disheDetail.prices?.forEach {
+                dishDetailDB.prices.append($0)
+            }
+            
+            try! realm.write {
+                realm.add(dishDetailDB)
+            }
+        }
+    }
+    
     func getDishes(by categryName: String) -> [DishesItemViewModel] {
         var dishItems = [DishesItemViewModel]()
         let dishes = realm.objects(DishDB.self).filter("categoryName == %@",categryName)
@@ -45,6 +69,12 @@ class RealmManager: RealmOperations {
         }
         return dishItems
 
+    }
+    
+    func getDishesID(by id: Int) -> DishDetail? {
+        let disheDetail = realm.object(ofType: DishDetailDB.self, forPrimaryKey: id)
+        print(disheDetail)
+        return DishDetail(id: disheDetail!.id, name: disheDetail?.name, description: disheDetail?.contents, prices: Array(disheDetail!.prices), badges: Array(disheDetail!.badges), stock: disheDetail?.stock, point: disheDetail?.point, deliveryInfo: disheDetail?.deliveryInfo, thumbImages: Array(disheDetail!.thumbImages), detailImages: Array(disheDetail!.detailImages))
     }
     
     
