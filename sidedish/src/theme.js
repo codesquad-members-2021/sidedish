@@ -7,6 +7,14 @@ const theme = {
     darkGray: '#828282',
     white: '#ffffff',
   },
+  cardWidth: {
+    L: '384px',
+    M: '308px',
+  },
+  cardHeight: {
+    L: '540px',
+    M: '456px',
+  },
 };
 
 export default theme;

@@ -23,7 +23,10 @@ const DishItem = ({
 
   const handleMouseLeave = () => setIsHover(false);
 
-  const getImgSize = (size) => (size === 'L' ? '384px' : '308px');
+  const IMG_SIZE = {
+    L: '384px',
+    M: '308px',
+  };
 
   return (
     <>
@@ -38,8 +41,8 @@ const DishItem = ({
           <img
             src={image}
             alt={alt}
-            width={getImgSize(size)}
-            height={getImgSize(size)}
+            width={IMG_SIZE[size]}
+            height={IMG_SIZE[size]}
             onError={handleErrorImg}
           />
         </div>
@@ -66,8 +69,8 @@ const DishItem = ({
 export default DishItem;
 
 const StyledDishItem = styled.div`
-  width: ${({ size }) => (size === 'L' ? '384px' : '308px')};
-  height: ${({ size }) => (size === 'L' ? '540px' : '456px')};
+  width: ${({ size, theme: { cardWidth } }) => cardWidth[size]};
+  height: ${({ size, theme: { cardHeight } }) => cardHeight[size]};
   .imgContainer {
     position: relative;
   }
