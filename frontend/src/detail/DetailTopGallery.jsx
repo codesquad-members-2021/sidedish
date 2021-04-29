@@ -6,12 +6,12 @@ const DetailTopGallery = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
   const [galleryItems, setGalleryItems] = useState(null);
   const [loadingImages, setLoadingImages] = useState(true);
-  const selectedTarget = useRef(null);
+  const imagesRef = useRef(null);
 
-  // 작은 이미지 (GalleryItems) 업데이트 
+  // 1) 작은 이미지 (GalleryItems) 렌더링
   useEffect(() => {
     if (!images || images.length <= 0) return;
-    const aGalleryItems = 
+    const aGalleryItems =
       images.map((image, i) => (
         <GalleryItem key={i} onClick={handleItemClick}>
           <img src={image} alt={"image" + (i+1)} />
@@ -27,11 +27,11 @@ const DetailTopGallery = ({ images }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
-  // 메인 이미지 (SelectedGalleryItem) 업데이트
+  // 2) 메인 이미지 (SelectedGalleryItem) 렌더링
   useEffect(() => {
     if (loadingImages) return;
 
-    const firstItem = selectedTarget.current.children[0];
+    const firstItem = imagesRef.current.children[0];
     if (!firstItem || firstItem.tagName !== "LI") return;
 
     const itemImage = firstItem.children[0];
@@ -47,12 +47,14 @@ const DetailTopGallery = ({ images }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadingImages]);
 
+  // ------------------
+
+  // 작은 이미지 클릭 시, 메인 이미지 업데이트
   const handleItemClick = ({ target }) => {
     const closestTarget = target.closest("li");
     if (!closestTarget) return;
 
-    selectedTarget.current = closestTarget;
-    const selected = selectedTarget.current.children[0];
+    const selected = closestTarget.children[0];
     if (!selected || selected.tagName !== "IMG") return;
 
     const { src, alt } = selected;
@@ -68,8 +70,7 @@ const DetailTopGallery = ({ images }) => {
         <img src={selectedImage.src} alt={selectedImage.alt} />
       </SelectedGalleryItem>
 
-      {/* 처음 렌더시에만 ref(selectedTarget)는 GalleryItems */}
-      <GalleryItems ref={selectedTarget}>{galleryItems}</GalleryItems>
+      <GalleryItems ref={imagesRef}>{galleryItems}</GalleryItems>
 
     </StyledDetailTopGallery>
   );

@@ -68,7 +68,7 @@ const SubContents = () => {
       {allLoading || !contentsSections ? ("loading...") : (
         <ul>
           {contentsSections.map((section, i) => (
-            <SectionItem first={i === 0} visible={allView}>
+            <SectionItem key={i} first={i === 0} visible={allView}>
               {section}
             </SectionItem>
           ))}
