@@ -6,17 +6,13 @@ const BestTabNavigatorStyle = styled.div`
   grid-template-columns: repeat(5,13rem);
 `;
 
-const BestTabNavigatorItemStyle = styled.div.attrs(props => ({
-  weight: props.active ? 600 : 400,
-  color: props.active ? "#333" : "#828282",
-  bgColor: props.active ? "#EEF4FA" : "#F5F5F5"
-}))`
+const BestTabNavigatorItemStyle = styled.div`
   font-size: 1.125rem;
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props) => props.active ? "#EEF4FA" : "#F5F5F5"};
   padding: 1rem 2rem;
   text-align: center;
-  font-weight: ${(props) => props.weight};
-  color: ${(props) => props.color};
+  font-weight: ${(props) => props.active ? 600 : 400};
+  color: ${(props) => props.active ? "#333" : "#828282"};
   cursor: pointer;
   &:hover {
     color: #333;

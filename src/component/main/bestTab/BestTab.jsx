@@ -17,10 +17,14 @@ export default function BestTab() {
 
   useEffect(() => {
     if (!bestItems) {
-      (async () => {
-        const data = await api("/best");
-        setBestItems(data);
-      })();
+      try {
+        (async () => {
+          const data = await api("/best");
+          setBestItems(data);
+        })();
+      } catch (e) {
+        console.log(e);
+      }
     }
     return;
   }, [bestItems]);
