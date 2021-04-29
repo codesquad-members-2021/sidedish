@@ -67,7 +67,7 @@ const DetailModalWindow = (props) => {
         <S.DetailWrapper>
           <S.DetailModalPropWrapper>
             <CS.Box.FLEX_COLUMN_BOX>
-              <DetailMainImage props={mainImg} />
+              <DetailMainImage mainImg={mainImg} />
               <ThumbNails
                 thumbNails={data.thumb_images}
                 handleMainImg={handleMainImg}
@@ -84,7 +84,6 @@ const DetailModalWindow = (props) => {
               })}
               setCount={setCount}
               stock={data.stock}
-              stockOverFlag={stockOverFlag}
               handleStockOver={handleStockOver}
             />
             <Prices

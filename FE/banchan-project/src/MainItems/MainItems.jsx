@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import CategoryItemsTitle from "./MainItemsTitle";
 import CategoryItemsCard from "./MainItemsCard/MainItemsCard";
 import TotalCategoryButton from "./TotalCategoryButton";
+import getData from "../utils/getData";
+import Slider from "../Slider/Slider";
 import * as S from "./MainItemsStyles";
 import * as CS from "../Styles/commonStyles";
 
-const MainItems = props => {
+const MainItems = (props) => {
   const [mainDishData, setMainDishData] = useState(null);
   const [soupDishData, setSoupDishData] = useState(null);
   const [sideDishData, setSideDishData] = useState(null);
@@ -21,26 +23,11 @@ const MainItems = props => {
       "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/side",
   };
 
-  const getData = (url, setFn) => {
-    try {
-      fetch(url)
-        .then((res) => res.json())
-        .then((json) => {
-          if (json) {
-            setFn(json);
-          }
-        });
-    } catch (err) {
-      alert("에러가 발생했습니다");
-      setError(true);
-    }
-  };
-
   const handleClickTotalButton = () => {
     if (totalButtonFlag) {
       setTotalButtonFlag(false);
-      getData(URL.SOUPDISH, setSoupDishData);
-      getData(URL.SIDEDISH, setSideDishData);
+      getData(URL.SOUPDISH, setSoupDishData, setError);
+      getData(URL.SIDEDISH, setSideDishData, setError);
     } else {
       setTotalButtonFlag(true);
       setSoupDishData(null);
@@ -49,30 +36,58 @@ const MainItems = props => {
   };
 
   useEffect(() => {
-    getData(URL.MAINDISH, setMainDishData);
+    getData(URL.MAINDISH, setMainDishData, setError);
+    // const url =
+    //   "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/detail/123";
+
+    // try {
+    //   fetch(url)
+    //     .then((res) => res.json())
+    //     .then((json) => {
+    //       console.log(json);
+    //     });
+    // } catch (err) {
+    //   console.error(err);
+    //   alert("에러가 발생했습니다");
+    // }
   }, []);
 
-  const Category = categoryData => {
+  const Category = (categoryData) => {
     if (categoryData === null) return null;
+
+    const cards = categoryData.items.map((item, index) => (
+      <CategoryItemsCard
+        key={index}
+        item={item}
+        handleClickCard={props.handleClickCard}
+      />
+    ));
 
     return (
       <S.CategoryItemsWrapper>
         <CategoryItemsTitle categoryTitle={categoryData.dish_category_name} />
-        <S.CategoryItemsCardScrollWrapper>
+
+        <Slider
+          sliderWidth={1280}
+          cardWidth={324}
+          cardShown={4}
+          totalCardCount={cards.length}
+          transition={"all 0.5s"}
+          cards={cards}
+          leftButton={<CS.Button.LEFT_BUTTON />}
+          rightButton={<CS.Button.RIGHT_BUTTON />}
+        />
+        {/* <S.CategoryItemsCardScrollWrapper>
           <S.CategoryLeftButtonWrapper>
             <CS.Button.LEFT_BUTTON />
           </S.CategoryLeftButtonWrapper>
-          {categoryData.items.map((item, index) => (
-            <CategoryItemsCard
-              key={index}
-              item={item}
-              handleClickCard={props.handleClickCard}
-            />
-          ))}
+
+          {cards}
+
           <S.CategoryRightButtonWrapper>
             <CS.Button.RIGHT_BUTTON />
           </S.CategoryRightButtonWrapper>
-        </S.CategoryItemsCardScrollWrapper>
+        </S.CategoryItemsCardScrollWrapper> */}
       </S.CategoryItemsWrapper>
     );
   };

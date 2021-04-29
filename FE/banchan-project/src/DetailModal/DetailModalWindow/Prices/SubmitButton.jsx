@@ -7,7 +7,19 @@ const SubmitButton = ({ count, stockOverFlag, handleModalFlag }) => {
     disabledFlag = true;
   }
 
+  const order = () => {
+    fetch(
+      "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080/dish/1/order",
+      {
+        method: "PUT",
+        header: { "Content-Type": "application/json" },
+        body: { order_amount: 1 },
+      }
+    ).then((res) => console.log(res.json()));
+  };
+
   const onClick = () => {
+    // order();
     handleModalFlag();
   };
   return (
