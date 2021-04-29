@@ -7,10 +7,6 @@
 
 import Foundation
 
-/*
- 이곳에서 DB를 연결해야 하지 않을까 싶다.
- */
-
 protocol FetchDishesUseCase {
     func execute(requestValue: FetchDishesUseCaseRequestValue,
                  completion: @escaping (Result<Dishes, Error>) -> Void)
@@ -36,10 +32,8 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     private func fetchDishes(categoryName: String,
                              completion: @escaping (Result<Dishes, Error>) -> Void) {
         let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)"
-        
-        
+                
         networkManager.performRequest(urlString: url) { result in
-            
             switch result {
             case .success(let responseDTO) :
                 completion(.success(responseDTO.toDomain()))

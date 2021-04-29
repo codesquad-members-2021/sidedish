@@ -12,8 +12,7 @@ struct DishesListViewModelActions {
 }
 
 protocol DishesViewModelInput {
-    func load()
-    func loadByDB()
+    func load()    
     func getNumberOfItems() -> Int
     func didSelectItem(at index: Int)
 }
@@ -55,11 +54,6 @@ extension DefaultDishesViewModel {
                 break
             }
         })
-    }
-    
-    func loadByDB() {
-        let realmManager = RealmManager()
-//        self.items.value = realmManager.getDishes(categryName: self.category.name)
     }
     
     func getNumberOfItems() -> Int {
