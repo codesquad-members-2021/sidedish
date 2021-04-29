@@ -12,7 +12,9 @@ protocol DishDetailsViewModelInput {
 }
 
 protocol DishDetailsViewModelOutput {
-    var dishDetail: Observable<DishDetail> { get }
+    var basicInformation: Observable<BasicInformation> { get }
+    var thumbImages: Observable<[String]> { get }
+    var detailImages: Observable<[String]> { get }
 }
 
 protocol DishDetailsViewModel: DishDetailsViewModelInput, DishDetailsViewModelOutput { }
@@ -28,7 +30,9 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     private let id: Int
     
     //MARK: - Output
-    var dishDetail: Observable<DishDetail>
+    var basicInformation: Observable<BasicInformation>
+    var thumbImages: Observable<[String]> = Observable([])
+    var detailImages: Observable<[String]> = Observable([])
     
     init(fetchDishDetailsUseCaseFactory: @escaping FetchDishDetailsUseCaseFactory,
          categoryName: String,
@@ -36,7 +40,7 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
         self.fetchDishDetailsUseCaseFactory = fetchDishDetailsUseCaseFactory
         self.categoryName = categoryName
         self.id = id
-        self.dishDetail = Observable(DishDetail(id: id))
+        basicInformation = Observable(BasicInformation(id: id))
     }
 }
 
@@ -47,7 +51,11 @@ extension DefaultDishDetailsViewModel {
         let completion: (FetchDishDetailsUseCase.ResultValue) -> Void = { result in
             switch result {
             case .success(let dishDetail):
-                self.dishDetail.value = dishDetail
+                self.basicInformation.value = dishDetail.basicInformation
+                guard let thumbImages = dishDetail.thumbImages else { return }
+                guard let detailImages = dishDetail.detailImages else { return }
+                self.thumbImages.value = thumbImages
+                self.detailImages.value = detailImages
             case .failure: break
             }
         }
