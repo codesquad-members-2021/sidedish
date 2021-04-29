@@ -85,7 +85,7 @@ class DetailPageViewController: UIViewController {
         currentQuantity += 1
         totalPrice = currentQuantity * (dishDetail.prices?[0] ?? 0)
         quantityLabel.text = "\(currentQuantity)"
-        totalPriceLabel.text = "\(totalPrice)원"
+        totalPriceLabel.text = String().format(price: totalPrice)
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
@@ -93,7 +93,7 @@ class DetailPageViewController: UIViewController {
         currentQuantity -= 1
         totalPrice = currentQuantity * (dishDetail.prices?[0] ?? 0)
         quantityLabel.text = "\(currentQuantity)"
-        totalPriceLabel.text = "\(totalPrice)원"
+        totalPriceLabel.text = String().format(price: totalPrice)
     }
     
     func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
@@ -126,11 +126,11 @@ class DetailPageViewController: UIViewController {
         let originalPrice = prices[0]
         if prices.count > 1 {
             let lastPrice = prices[1]
-            lastPriceLabel.text = "\(lastPrice)원"
+            lastPriceLabel.text = String().format(price: lastPrice)
             originalPriceLabel.isHidden = false
-            originalPriceLabel.attributedText = "\(originalPrice)원".strikethrough()
+            originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
         } else {
-            lastPriceLabel.text = "\(originalPrice)원"
+            lastPriceLabel.text = String().format(price: originalPrice)
             originalPriceLabel.isHidden = true
         }
         
@@ -148,10 +148,10 @@ class DetailPageViewController: UIViewController {
             }
         }
         guard let point = dishDetail.point else { return }
-        pointLabel.text = "\(point)원"
+        pointLabel.text = String().format(price: point)
         deliveryInfoLabel.text = dishDetail.deliveryInfo
         deliveryFeeLabel.attributedText = attributedText(withString: "2,500원 (40,000원 이상 구매 시 무료)", boldString: "(40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
-        totalPriceLabel.text = "\(totalPrice)원"
+        totalPriceLabel.text = String().format(price: totalPrice)
     }
     
     private func updateThumbnailImages() {
