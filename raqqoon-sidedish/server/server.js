@@ -11,6 +11,8 @@ const authRouter = require('./routes/auth.js');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/auth', authRouter);
 
@@ -22,7 +24,6 @@ passport.use(
       callbackURL: 'http://localhost:3000/auth/github/callback',
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
       return done(null, profile);
     }
   )

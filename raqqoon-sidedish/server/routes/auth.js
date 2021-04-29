@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
         },
       }
     )
-    .catch((error) => console.error('error'));
+    .catch((error) => console.error('error in /auth'));
   const token = response.data.access_token;
 
   const { data } = await axios.get('https://api.github.com/user', {
@@ -38,18 +38,16 @@ router.post('/', async (req, res) => {
     },
   });
 
-  const access_token = jwt.sign(
-    { login: data.login, id: data.id },
-    client_secret,
-    {
-      expiresIn: '1d',
-      issuer: 'Raqqoon',
-      subject: 'userInfo',
-    }
-  );
+  const access_token = jwt.sign({ login: data.login, id: data.id }, client_id, {
+    expiresIn: '1d',
+    issuer: 'Raqqoon',
+    subject: 'userInfo',
+  });
+
+  const { login } = data;
 
   // db logic
-  return res.json({ access_token });
+  return res.json({ access_token, login });
 });
 
 module.exports = router;
