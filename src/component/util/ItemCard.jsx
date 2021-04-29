@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Label from "./Label";
 import { useOnFetchDetailDataContext } from "../Context";
-import { addCommaToNumber } from '../../common/util.js';
+import { addCommaToNumber } from "../../common/util.js";
 
 const ItemCardStyle = styled.div``;
 
@@ -16,10 +16,10 @@ const ImgContainerStyle = styled.div`
 const ImgStyle = styled.div.attrs((props) => ({
   src: props.src,
 }))`
-  background-image: url(${props => props.src});
+  background-image: url(${(props) => props.src});
   background-size: cover;
   width: 100%;
-  height: 25rem;
+  height: 20rem;
   &:hover + div {
     display: flex;
   }
@@ -38,7 +38,7 @@ const HoverStyle = styled.div`
   display: none;
   align-items: center;
   justify-content: center;
-  flex-flow : column;
+  flex-flow: column;
   div {
     margin: 1rem;
     line-height: 1rem;
