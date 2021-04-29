@@ -11,7 +11,7 @@ public class SidedishCategory {
     private Long id;
 
     private String categoryName;
-    private  List<SidedishItem> sidedishItemList = new ArrayList<>();
+    private List<SidedishItem> sidedishItemList = new ArrayList<>();
 
     protected SidedishCategory() {
     }

@@ -9,9 +9,9 @@ import java.util.Base64;
 import java.util.Date;
 
 public class JwtUtil {
-    private static String serverSecretKey;
     private static final String issuer = "sidedish";
     private static final long tokenValidTime = 6 * 60 * 60 * 1000L;
+    private static String serverSecretKey;
 
     private JwtUtil() {
     }
