@@ -3,7 +3,7 @@ import Carousel from "../utilComponent/carousel/Carousel";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import ProductCard from "../utilComponent/ProductCard";
 
-const DetailBottom = ({ sildeData }) => {
+const DetailBottom = ({ slideDataObject }) => {
   const carouselOptions = {
     itemsPerCnt: 5,
     arrowOption: {
@@ -15,11 +15,11 @@ const DetailBottom = ({ sildeData }) => {
   };
 
   return (
-    sildeData && (
+    slideDataObject && (
       <StyledDetailBottom>
         <BottomCaption>함께하면 더욱 맛있는 상품</BottomCaption>
         <Carousel {...carouselOptions}>
-          {sildeData['side'].map((item, i) => (
+          {slideDataObject['side']['data'].map((item, i) => (
             <ProductCard key={i} size="x-small" item={item} />
           ))}
         </Carousel>

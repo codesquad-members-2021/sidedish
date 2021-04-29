@@ -35,7 +35,7 @@ const StyledArrowButton = styled.button`
 
       cursor: ${(direction === "L" && startPos <= 1) ||
       (direction === "R" && endPos >= itemLength)
-        ? "not-allowed"
+        ? "default"
         : "pointer"};
     `}
 `;

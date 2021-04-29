@@ -11,7 +11,7 @@ const Detail = () => {
   const {
     isModalVisible, setIsModalVisible,
     currProductData, setCurrProductData,
-    sildeData
+    slideDataObject
   } = useContext(SideDishContext);
 
   // useFetch 사용안함 --
@@ -66,7 +66,7 @@ const Detail = () => {
       <Modal visibleOptions={visibleOptions}>
         <StyledDetail>
           <DetailTop {...detailData} />
-          <DetailBottom sildeData = {sildeData} />
+          <DetailBottom slideDataObject = {slideDataObject} />
         </StyledDetail>
       </Modal>
   );
