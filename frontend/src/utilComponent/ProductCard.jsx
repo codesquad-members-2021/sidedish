@@ -1,5 +1,5 @@
 import { useRef, useContext } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Tag from "./Tag";
 import { SideDishContext } from "./SideDishStore";
 
@@ -16,8 +16,8 @@ const ProductCard = ({ size, item }) => {
   const handleProductClick = () => {
     setIsModalVisible(true);
     if (item) {
-      const { alt, detail_hash } = item;
-      setCurrProductData({ alt, detail_hash });
+      const { alt, badge, detail_hash } = item;
+      setCurrProductData({ alt, badge, detail_hash });
     }
   };
   return (
@@ -29,29 +29,42 @@ const ProductCard = ({ size, item }) => {
         onError={handleErrorImg}
       />
       <div className="card__title">{item.title}</div>
-      <div className="card__description">{item.description}</div>
+      {(size !== "x-small") && <div className="card__description">{item.description}</div> }
       <div className="card__price">
         <span>{item.s_price}</span>
-        {item.n_price && (<span className="card__sale_price">{item.n_price}원</span>)}
+        {item.n_price && (
+          <span className="card__sale_price">{item.n_price}원</span>
+        )}
       </div>
-      {item.badge && item.badge.map((type) => <Tag key={item.detail_hash} type={type} />)}
+      {(size !== "x-small") && item.badge &&
+        item.badge.map((type, i) => <Tag key={i} type={type} />)}
       <div
         className="card__hover inactive"
         ref={cardHover}
         onMouseLeave={handleMouseLeave}
       >
         <div className="hover__txtBox">
-          {item.delivery_type.map((txt, i) => (<div key={i}>{txt}</div>))}
+          {item.delivery_type.map((txt, i) => (
+            <div key={i}>{txt}</div>
+          ))}
         </div>
       </div>
     </StyledCard>
   );
 };
 
+const cssXSSize = css`
+  max-width: 160px;
+  width: auto;
+  height: auto;
+`;
+
 const StyledCard = styled.div`
   width: ${({ size }) => (size === "large" ? "384px" : "308px")};
   position: relative;
   cursor: pointer;
+
+  ${({ size }) => size === "x-small" && cssXSSize};
 
   img {
     border-radius: 5px;
@@ -60,6 +73,7 @@ const StyledCard = styled.div`
   .card__hover {
     width: ${({ size }) => (size === "large" ? "384px" : "308px")};
     height: ${({ size }) => (size === "large" ? "384px" : "308px")};
+    ${({ size }) => size === "x-small" && cssXSSize};
   }
   .card__title {
     margin-top: 16px;
@@ -101,6 +115,14 @@ const StyledCard = styled.div`
     position: absolute;
     top: 0;
     left: 0;
+
+    ${({ size }) =>
+      size === "x-small" &&
+      css`
+        padding: 13px;
+        right: 0;
+      `};
+
     background: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     display: flex;

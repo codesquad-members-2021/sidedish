@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import { SideDishContext } from "../utilComponent/SideDishStore";
 
@@ -10,6 +11,7 @@ const Detail = () => {
   const {
     isModalVisible, setIsModalVisible,
     currProductData, setCurrProductData,
+    sildeData
   } = useContext(SideDishContext);
 
   // useFetch 사용안함 --
@@ -17,17 +19,18 @@ const Detail = () => {
   const [ detailData, setDetailData ] = useState(initialDetail);
   const [ loading, setLoading ] = useState(true);
 
-  const executeFetch = async (url, subject = null) => {
+  const executeFetch = async (url, addProps = { subject: null, badge: null } ) => {
     try {
       const res = await fetch(url);
       const json = await res.json();
+      const { subject, badge } = addProps;
       setDetailData({
         ...detailData,
         result: {
           ...json,
           data: {
             ...json['data'],
-            subject
+            subject, badge
           }
         }
       });
@@ -38,8 +41,8 @@ const Detail = () => {
 
   useEffect(() => {
     if (!currProductData) return;
-    const { alt: subject, detail_hash } = currProductData;
-    executeFetch(_.URL + `detail/${detail_hash}`, subject);
+    const { alt: subject, badge, detail_hash } = currProductData;
+    executeFetch(_.URL + `detail/${detail_hash}`, {subject, badge});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currProductData]);
 
@@ -61,10 +64,17 @@ const Detail = () => {
   return (
     !loading && 
       <Modal visibleOptions={visibleOptions}>
-        <DetailTop {...detailData} />
-        <DetailBottom />
+        <StyledDetail>
+          <DetailTop {...detailData} />
+          <DetailBottom sildeData = {sildeData} />
+        </StyledDetail>
       </Modal>
   );
 };
 
 export default Detail;
+
+// --- Styled Components ---
+const StyledDetail = styled.div`
+  max-width: 960px;
+`;

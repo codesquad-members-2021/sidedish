@@ -15,7 +15,7 @@ export default DetailTop;
 
 // --- Styled Components ---
 const StyledDetailTop = styled.div`
-  padding: 48px 48px 0;
+  padding: 32px 48px 0;
   border-radius: 5px 5px 0 0;
   background-color: ${({ theme }) => theme.colors.white || "#FFF"};
 
