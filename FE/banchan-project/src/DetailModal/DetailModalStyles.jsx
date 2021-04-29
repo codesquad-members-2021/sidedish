@@ -30,6 +30,7 @@ const CloseButtonWrapper = styled.div`
   top: 30%;
   left: 85%;
   z-index: 1;
+  cursor: pointer;
 `;
 
 const DetailWrapper = styled(CS.Box.FLEX_ROW_BOX)`
@@ -60,6 +61,7 @@ const CountButtonWrapper = styled(CS.Box.FLEX_ROW_BOX)`
   padding: 4px 8px;
   align-items: center;
   border: 1px solid ${theme.boxColors.GRAY5};
+  cursor: pointer;
 `;
 
 const DeliveryWrapper = styled(CS.Box.FLEX_COLUMN_BOX)`
@@ -122,7 +124,7 @@ const SubmitButton = styled.button`
   width: 440px;
   height: 58px;
 
-  background: ${(props) =>
+  background: ${props =>
     props.stockOverFlag !== true
       ? `${theme.boxColors.GREEN}`
       : `${theme.boxColors.GRAY5}`};
@@ -132,10 +134,12 @@ const SubmitButton = styled.button`
   backdrop-filter: blur(4px);
 
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 const ThumbNailsImageWrapper = styled.div`
   margin: 8px 8px 0px 0px;
+  cursor: pointer;
 `;
 
 const ThumbNailsEmptyImage = styled.div`
@@ -164,6 +168,7 @@ const RecommendedItemsHeaderWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
 
 const RecommendedItemsCardImageWrapper = styled.div`
   margin-right: 16px;
+  cursor: pointer;
 `;
 
 const RecommendedItemsCardTitleWrapper = styled.div`
