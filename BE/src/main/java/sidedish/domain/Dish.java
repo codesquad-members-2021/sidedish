@@ -5,6 +5,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import sidedish.service.ConvertUtils;
 import sidedish.service.dto.DetailDishDTO;
 
+import java.util.List;
 import java.util.Objects;
 
 @Table("DISH")
@@ -16,46 +17,26 @@ public class Dish {
     private String name;
     private String topImage;
     private String description;
-    private String prices;
-    private String badges;
+    private List<Price> prices;
+    private List<Badge> badges;
     private Long stock;
     private Integer point;
     private String deliveryInfo;
-    private String thumbImages;
-    private String detailImages;
+    private List<ThumbImage> thumbImages;
+    private List<DetailImage> detailImages;
 
-    public Dish() { }
-
-    public Dish(String name, String topImage, String description, String prices,
-                String badges, Long stock, String deliveryInfo, String thumbImages, String detailImages) {
+    public Dish(String name, String topImage, String description, List<Price> prices, List<Badge> badges, Long stock, Integer point,
+                String deliveryInfo, List<ThumbImage> thumbImages, List<DetailImage> detailImages) {
         this.name = name;
         this.topImage = topImage;
         this.description = description;
         this.prices = prices;
         this.badges = badges;
         this.stock = stock;
-        this.point = createPoint(prices);
+        this.point = point;
         this.deliveryInfo = deliveryInfo;
         this.thumbImages = thumbImages;
         this.detailImages = detailImages;
-    }
-
-    public Dish(DetailDishDTO dto) {
-        this.name = dto.getName();
-        this.topImage = dto.getTopImage();
-        this.description = dto.getDescription();
-        this.prices = ConvertUtils.convertToString(dto.getPrices());
-        this.badges = ConvertUtils.convertToString(dto.getBadges());
-        this.stock = dto.getStock();
-        this.point = dto.getPoint();
-        this.deliveryInfo = dto.getDeliveryInfo();
-        this.thumbImages = ConvertUtils.convertToString(dto.getThumbImages());
-        this.detailImages = ConvertUtils.convertToString(dto.getDetailImages());
-    }
-
-    private Integer createPoint(String prices) {
-        String[] priceArr = prices.split(",");
-        return Integer.parseInt(priceArr[0].trim()) / 100;
     }
 
     public Long getId() {
@@ -74,11 +55,11 @@ public class Dish {
         return description;
     }
 
-    public String getPrices() {
+    public List<Price> getPrices() {
         return prices;
     }
 
-    public String getBadges() {
+    public List<Badge> getBadges() {
         return badges;
     }
 
@@ -94,11 +75,11 @@ public class Dish {
         return deliveryInfo;
     }
 
-    public String getThumbImages() {
+    public List<ThumbImage> getThumbImages() {
         return thumbImages;
     }
 
-    public String getDetailImages() {
+    public List<DetailImage> getDetailImages() {
         return detailImages;
     }
 
