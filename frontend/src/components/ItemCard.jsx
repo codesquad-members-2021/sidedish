@@ -82,6 +82,7 @@ function ItemCard({ data, size }) {
 				<DetailPage
 					{...{ loadingState, modalMode, setModalState }}
 					detailData={detailData.data}
+					hash={data.detailHash}
 					item={data.alt}
 					badges={data.badges}
 				></DetailPage>

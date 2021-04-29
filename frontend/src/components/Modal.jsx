@@ -19,12 +19,15 @@ const StyledModal = styled.div`
 	width: 960px;
 	height: auto;
 	background-color: ${theme.colors.white};
+	display: relative;
 `;
 
 const Xstyle = {
 	color: theme.colors.white,
 	position: 'relative',
-	top: '-320px',
+	top: '-450px',
+	right: '-10px',
+	display: 'absolute',
 };
 
 function Modal({ children, modalMode, setModalState }) {

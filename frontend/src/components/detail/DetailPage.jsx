@@ -84,6 +84,7 @@ const OrderBtn = styled(Button)`
 `;
 
 const FooterSection = styled.div`
+	height: 396px;
 	box-sizing: border-box;
 	padding: 48px;
 	width: 100%;
@@ -101,10 +102,19 @@ function DetailPage({
 	setModalState,
 	item,
 	badges,
+	hash,
 }) {
 	const [topImg, setTopImg] = useState(detailData.topImage);
 	const [orderCount, setOrderCount] = useState(1);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
+	const orderUrl = process.env.REACT_APP_API_URL + 'order';
+	const [stockData, loadingStockState] = useFetch(
+		orderUrl,
+		'PATCH',
+		hash,
+		+orderCount,
+	);
+
 	// const orderCount = useMemo(() => setOrderCount(orderCount로직), [orderCount ])
 	const button = useRef();
 	const handleLeft = () => {
@@ -112,6 +122,10 @@ function DetailPage({
 	};
 	const handleRight = () => {
 		button.current.slideToRight();
+	};
+	const handleOrderClick = () => {
+		setModalState(!modalMode);
+		!loadingStockState && console.log(stockData);
 	};
 	const [randomMenu, randomLoadingState] = useFetch(
 		process.env.REACT_APP_API_URL + 'recommend/10/',
@@ -175,7 +189,7 @@ function DetailPage({
 							<DetailText>총 주문금액</DetailText>
 							<ItemPrice nPrice={orderPrice * orderCount}></ItemPrice>
 							<OrderBtn
-								onClick={() => setModalState(!modalMode)}
+								onClick={handleOrderClick}
 								disabled={!Boolean(detailData.stock)}
 							>
 								{detailData.stock ? '주문하기' : '상품 준비중'}

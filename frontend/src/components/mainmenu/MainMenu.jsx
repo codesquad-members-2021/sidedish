@@ -6,39 +6,6 @@ import Title from '../atomic/Title';
 import { useState } from 'react';
 import Loading from '../state/Loading';
 
-const MainBlock = styled.div`
-	margin-top: 40px;
-	width: 100%;
-	padding: ${theme.padding.globalPadding};
-	box-sizing: border-box;
-`;
-const TabBlock = styled.div`
-	display: flex;
-`;
-
-const Tab = styled(AlignTextCenter)`
-	width: 201px;
-	height: 58px;
-	color: ${({ clickedID, id }) =>
-		clickedID === id ? theme.colors.black : theme.colors.grey_text};
-	background-color: ${({ clickedID, id }) =>
-		clickedID === id ? theme.colors.skyblue : theme.colors.grey_css};
-	font-weight: ${({ clickedID, id }) =>
-		clickedID === id ? theme.fontWeight.bold : theme.fontWeight.normal};
-	margin-right: 5px;
-	font-size: ${theme.fontSize.large};
-	cursor: pointer;
-`;
-const MainColumn = styled.div`
-	width: 1280px;
-	height: 620px;
-	background-color: ${theme.colors.skyblue};
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 30px;
-	padding: 40px;
-`;
-
 function MainMenu() {
 	const basicUrl = process.env.REACT_APP_API_URL + 'best/';
 	//5개: 탭 전체 데이터 요청
@@ -85,3 +52,36 @@ function MainMenu() {
 }
 
 export default MainMenu;
+
+const MainBlock = styled.div`
+	margin-top: 40px;
+	width: 100%;
+	padding: ${theme.padding.globalPadding};
+	box-sizing: border-box;
+`;
+const TabBlock = styled.div`
+	display: flex;
+`;
+
+const Tab = styled(AlignTextCenter)`
+	width: 201px;
+	height: 58px;
+	color: ${({ clickedID, id }) =>
+		clickedID === id ? theme.colors.black : theme.colors.grey_text};
+	background-color: ${({ clickedID, id }) =>
+		clickedID === id ? theme.colors.skyblue : theme.colors.grey_css};
+	font-weight: ${({ clickedID, id }) =>
+		clickedID === id ? theme.fontWeight.bold : theme.fontWeight.normal};
+	margin-right: 5px;
+	font-size: ${theme.fontSize.large};
+	cursor: pointer;
+`;
+const MainColumn = styled.div`
+	width: 1280px;
+	height: 620px;
+	background-color: ${theme.colors.skyblue};
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 30px;
+	padding: 40px;
+`;

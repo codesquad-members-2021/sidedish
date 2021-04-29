@@ -1,35 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 
-const CatgoryWrapper = styled.div`
-	width: ${(props) => `${props.width}px`};
-	height: ${(props) => `${props.height}px`};
-	padding: 0px;
-	overflow: hidden;
-	border: 1px solid blue;
-`;
-const CategoryColumn = styled.div`
-	display: flex;
-`;
-const CategorySlideBlock = styled.div`
-	margin: 0 auto;
-	margin-bottom: 80px;
-`;
-
-const CardWrapper = styled.div`
-	display: flex;
-	justify-content: center;
-	width: ${(props) => {
-		return props.width;
-	}}px;
-	height: ${(props) => {
-		return props.height;
-	}}px;
-`;
-const Block = styled.div`
-	display: flex;
-`;
-
 function Carousel({ width, height, count, duration, children, effect }, ref) {
 	const transitionDefault = `all ${effect} ${duration}`;
 	const panelWidth = width / count; //320
@@ -132,3 +103,31 @@ function Carousel({ width, height, count, duration, children, effect }, ref) {
 	);
 }
 export default forwardRef(Carousel);
+
+const CatgoryWrapper = styled.div`
+	width: ${(props) => `${props.width}px`};
+	height: ${(props) => `${props.height}px`};
+	padding: 0px;
+	overflow: hidden;
+	border: 1px solid blue;
+`;
+const CategoryColumn = styled.div`
+	display: flex;
+`;
+const CategorySlideBlock = styled.div`
+	margin: 0 auto;
+	margin-bottom: 80px;
+`;
+const CardWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	width: ${(props) => {
+		return props.width;
+	}}px;
+	height: ${(props) => {
+		return props.height;
+	}}px;
+`;
+const Block = styled.div`
+	display: flex;
+`;
