@@ -1,11 +1,11 @@
 package sidedish.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import sidedish.domain.Dish;
-import sidedish.service.ConvertUtils;
+import sidedish.service.TypeConvertUtils;
 
 import java.util.List;
+
+import static sidedish.service.TypeConvertUtils.*;
 
 public class MainPageDishDTO {
 
@@ -21,8 +21,8 @@ public class MainPageDishDTO {
         this.name = dish.getName();
         this.topImage = dish.getTopImage();
         this.description = dish.getDescription();
-        this.prices = ConvertUtils.convertToIntegerList(dish.getPrices());
-        this.badges = ConvertUtils.convertToStringList(dish.getBadges());
+        this.prices = convertPriceList(dish.getPrices());
+        this.badges = convertBadgeList(dish.getBadges());
     }
 
     public Long getId() {

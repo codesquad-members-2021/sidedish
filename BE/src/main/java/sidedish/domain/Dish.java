@@ -2,8 +2,6 @@ package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
-import sidedish.service.ConvertUtils;
-import sidedish.service.dto.DetailDishDTO;
 
 import java.util.List;
 import java.util.Objects;
