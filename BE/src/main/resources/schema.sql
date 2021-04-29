@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`dish` (
     `n_price` INT NOT NULL,
     `s_price` INT NULL DEFAULT 0,
     `point` INT NULL DEFAULT 0,
-    `stock` INT NOT NULL DEFAULT 2,
+    `stock` INT NOT NULL DEFAULT 10,
     `delivery_type` VARCHAR(45) NOT NULL DEFAULT '새벽배송, 전국택배',
     `delivery_info` VARCHAR(255) NOT NULL DEFAULT '서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.',
     `delivery_fee` VARCHAR(45) NOT NULL DEFAULT '2,500원 (40,000원 이상 구매 시 무료)',
