@@ -15,8 +15,8 @@ protocol DishDetailsViewModelInput {
 
 protocol DishDetailsViewModelOutput {
     var basicInformation: Observable<BasicInformation> { get }
-    var thumbImages: Observable<[String]> { get }
-    var detailImages: Observable<[String]> { get }
+    var thumbImages: Observable<[Data]> { get }
+    var detailImages: Observable<[Data]> { get }
 }
 
 protocol DishDetailsViewModel: DishDetailsViewModelInput, DishDetailsViewModelOutput { }
@@ -31,11 +31,14 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     private let fetchDishDetailsUseCaseFactory: FetchDishDetailsUseCaseFactory
     private let categoryName: String
     private let id: Int
+    private var thumbImagePaths: [String] = []
+    private var detailImagePaths: [String] = []
+    private let networkManager: NetworkManager = NetworkManager()
     
     //MARK: - Output
     var basicInformation: Observable<BasicInformation>
-    var thumbImages: Observable<[String]> = Observable([])
-    var detailImages: Observable<[String]> = Observable([])
+    var thumbImages: Observable<[Data]> = Observable([])
+    var detailImages: Observable<[Data]> = Observable([])
     
     init(fetchDishDetailsUseCaseFactory: @escaping FetchDishDetailsUseCaseFactory,
          categoryName: String,
@@ -44,6 +47,22 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
         self.categoryName = categoryName
         self.id = id
         basicInformation = Observable(BasicInformation(id: id))
+    }
+    
+    private func updateThumbnailImages() {
+        thumbImagePaths.forEach { path in
+            networkManager.updateThumbImage(imageURL: path) { imageData in
+                self.thumbImages.value.append(imageData)
+            }
+        }
+    }
+    
+    private func updateDetailImages() {
+        detailImagePaths.forEach { path in
+            networkManager.updateThumbImage(imageURL: path) { imageData in
+                self.detailImages.value.append(imageData)
+            }
+        }
     }
 }
 
@@ -55,10 +74,12 @@ extension DefaultDishDetailsViewModel {
             switch result {
             case .success(let dishDetail):
                 self.basicInformation.value = dishDetail.basicInformation
-                guard let thumbImages = dishDetail.thumbImages else { return }
-                guard let detailImages = dishDetail.detailImages else { return }
-                self.thumbImages.value = thumbImages
-                self.detailImages.value = detailImages
+                guard let thumbImagePaths = dishDetail.thumbImages else { return }
+                guard let detailImagePaths = dishDetail.detailImages else { return }
+                self.thumbImagePaths = thumbImagePaths
+                self.detailImagePaths = detailImagePaths
+                self.updateThumbnailImages()
+                self.updateDetailImages()
             case .failure: break
             }
         }
