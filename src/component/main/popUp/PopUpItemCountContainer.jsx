@@ -3,7 +3,7 @@ import { FaAngleUp, FaAngleDown } from 'react-icons/fa';
 import { useState } from 'react';
 import PopUpItemOrderResult from "./PopUpItemOrderResult";
 import API from "../../../common/api.js";
-
+import { addCommaToNumber } from '../../../common/util.js';
 
 const PopUpItemCountContainerStyle = styled.div`
     display: flex;
@@ -109,7 +109,7 @@ export default function PopUpItemCountContainer ({ price, id }) {
             </PopUpItemCountContainerStyle>
                 <PopUpItemTotalPriceContainer>
                 <PopUpItemTotalPriceTitle>총 주문금액</PopUpItemTotalPriceTitle>
-                <PopUpTotalPrice>{price * count}원</PopUpTotalPrice>
+                <PopUpTotalPrice>{addCommaToNumber(price * count)}원</PopUpTotalPrice>
             </PopUpItemTotalPriceContainer>
             <PopUpItemOrderBtn onClick={onMakeOrder}>주문하기</PopUpItemOrderBtn>
             { orderResult !== null ? <PopUpItemOrderResult result={orderResult} /> : null}

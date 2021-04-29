@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDetailContext } from "../../Context";
 
 const PopUpImagesStyle = styled.div``;
@@ -34,20 +34,25 @@ export default function PopUpImages() {
   const detailData = useDetailContext();
   const { main_image, thumbnail_images } = detailData;
   const images = [main_image, ...thumbnail_images];
-  const [activeImage, setActiveImage] = useState(images[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const onChangeMainImage = (idx) => {
-    setActiveImage(images[idx]);
+    setActiveIndex(idx);
   };
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [detailData]);
 
   return (
     <PopUpImagesStyle>
-      <PopUpMainImageStyle src={activeImage} />
+      <PopUpMainImageStyle src={images[activeIndex]} />
       <PopUpThumbnailImagesStyle>
         {images.map((URL, idx) => (
           <PopUpThumbnailImageStyle
-            active={activeImage === URL}
+            active={images[activeIndex] === URL}
             src={URL}
+            key={idx}
             onClick={() => onChangeMainImage(idx)}
           />
         ))}
