@@ -57,36 +57,12 @@ class DishCell: UICollectionViewCell {
         } else {
             badgeStackView.isHidden = false
             badges.forEach { badgeString in
-                let badgeView = createBadgeView(with: badgeString)
+                let badgeView = BadgeView()
+                badgeView.badgeLabel.text = badgeString
+                badgeView.backgroundColor = badgeString == "이벤트특가" ? #colorLiteral(red: 0.5098039216, green: 0.8274509804, blue: 0.1764705882, alpha: 1) : #colorLiteral(red: 0.5254901961, green: 0.7764705882, blue: 1, alpha: 1)
                 badgeStackView.addArrangedSubview(badgeView)
             }
         }
-    }
-    
-    private func createBadgeView(with text: String) -> UIView {
-        let badgeBackgroundView = UIView(frame: CGRect.zero)
-        badgeBackgroundView.backgroundColor = text == "이벤트특가" ? #colorLiteral(red: 0.5098039216, green: 0.8274509804, blue: 0.1764705882, alpha: 1) : #colorLiteral(red: 0.5254901961, green: 0.7764705882, blue: 1, alpha: 1)
-        badgeBackgroundView.layer.masksToBounds = true
-        badgeBackgroundView.layer.cornerRadius = 5.0
-        badgeBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let badgeLabel = createBadgeLabel(with: text)
-        badgeBackgroundView.addSubview(badgeLabel)
-        
-        badgeLabel.centerXAnchor.constraint(equalTo: badgeBackgroundView.centerXAnchor).isActive = true
-        badgeBackgroundView.leadingAnchor.constraint(equalTo: badgeLabel.leadingAnchor, constant: -8.0).isActive = true
-        badgeBackgroundView.trailingAnchor.constraint(equalTo: badgeLabel.trailingAnchor, constant: 8.0).isActive = true
-        badgeLabel.centerYAnchor.constraint(equalTo: badgeBackgroundView.centerYAnchor).isActive = true
-        return badgeBackgroundView
-    }
-    
-    private func createBadgeLabel(with text: String) -> UILabel {
-        let badgeLabel = UILabel(frame: CGRect.zero)
-        badgeLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .bold)
-        badgeLabel.textColor = .white
-        badgeLabel.text = text
-        badgeLabel.translatesAutoresizingMaskIntoConstraints = false
-        return badgeLabel
     }
     
     override func prepareForReuse() {
