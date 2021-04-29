@@ -5,7 +5,6 @@
 //  Created by 심영민 on 2021/04/27.
 //
 
-import Foundation
 import Combine
 
 protocol FetchBanchanDetailUseCase {

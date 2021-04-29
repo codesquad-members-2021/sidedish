@@ -5,7 +5,6 @@
 //  Created by 지북 on 2021/04/21.
 //
 
-import Foundation
 import Combine
 
 protocol FetchBanchanListUseCase {

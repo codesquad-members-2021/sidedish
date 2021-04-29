@@ -55,6 +55,7 @@ class BanchanCustomCell: UICollectionViewCell {
 
         badges.forEach { (badge) in
             let badgeLabel = BadgeLabel()
+            print(badge)
             badgeLabel.configure(text: badge)
             badgeStackView.addArrangedSubview(badgeLabel)
         }

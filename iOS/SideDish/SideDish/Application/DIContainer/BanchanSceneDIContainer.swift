@@ -56,13 +56,13 @@ extension BanchanSceneDIContainer {
     }
     
     // MARK: - ViewModel
-    private func makeBanchanDetailViewModel(hash: Int) -> BanchanDetailViewModel {
-        return BanchanDetailViewModel(hash: hash, fetchBanchanDetailUseCase: makeFetchBanchanDetailUseCase() )
+    private func makeBanchanDetailViewModel(hash: Int, action: BanchanDetailViewModelAction) -> BanchanDetailViewModel {
+        return BanchanDetailViewModel(hash: hash, fetchBanchanDetailUseCase: makeFetchBanchanDetailUseCase(), action: action)
     }
     
     // MARK: - ViewController
-    internal func makeBanchanDetailViewController(hash: Int) -> BanchanDetailViewController {
-        return BanchanDetailViewController.create(with: makeBanchanDetailViewModel(hash: hash))
+    internal func makeBanchanDetailViewController(hash: Int, action: BanchanDetailViewModelAction) -> BanchanDetailViewController {
+        return BanchanDetailViewController.create(with: makeBanchanDetailViewModel(hash: hash, action: action))
     }
 }
 

@@ -22,10 +22,10 @@ extension BanchanListDTO {
         private let title: String
         private var nPrice: String?
         private let sPrice: String
-        private let badge: [String]?
+        private let badges: [String]?
         
         func toDomain() -> Banchan {
-            return .init(detailHash: detailHash, image: image, alt: alt, title: title, description: description, nPrice: nPrice, sPrice: sPrice, badges: badge, deliveryType: deliveryType)
+            return .init(detailHash: detailHash, image: image, alt: alt, title: title, description: description, nPrice: nPrice, sPrice: sPrice, badges: badges, deliveryType: deliveryType)
         }
         
         func toEntity(with context: NSManagedObjectContext) -> BanchanEntity {
@@ -40,7 +40,7 @@ extension BanchanListDTO {
             entity.title = title
             entity.nPrice = nPrice
             entity.sPrice = sPrice
-            entity.badges = badge
+            entity.badges = badges
             
             sectionEntity.addToEntities(entity)
             return entity
