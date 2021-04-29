@@ -60,7 +60,6 @@ const Span = styled.span`
   ${logInStyle};
   padding-left: 1.5rem;
   text-decoration: none;
-  color: #333;
   margin: 0 0.6rem;
   :visited {
     text-decoration: none;
@@ -68,5 +67,4 @@ const Span = styled.span`
   :hover {
     text-decoration: underline;
   }
-
 `;

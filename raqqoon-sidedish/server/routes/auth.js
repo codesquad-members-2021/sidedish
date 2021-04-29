@@ -46,7 +46,6 @@ router.post('/', async (req, res) => {
 
   const { login } = data;
 
-  // db logic
   return res.json({ access_token, login });
 });
 
