@@ -28,7 +28,6 @@ enum Endpoint {
         components.path = basicPath + detailPath + "\(detailHash)"
         return components.url
     }
-    
 }
 
 enum Menu: CaseIterable {

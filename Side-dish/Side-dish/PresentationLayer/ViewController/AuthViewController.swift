@@ -8,6 +8,7 @@
 import UIKit
 import OctoKit
 import AuthenticationServices
+import KeychainSwift
 
 extension URL {
     func appending(_ queryItems: [URLQueryItem]) -> URL? {
@@ -20,8 +21,9 @@ extension URL {
 }
 
 class AuthViewController: UIViewController, ASWebAuthenticationPresentationContextProviding {
-    let config = OAuthConfiguration.init(token: "7f32a79b176298db2f2f", secret: "44930e822d299cf812b25f6cfe56273b8ce8aad6", scopes: ["repo", "read:org"])
-    var tokenConfig : TokenConfiguration? = nil
+    let keychain = KeychainSwift()
+    let config = OAuthConfiguration(token: "7f32a79b176298db2f2f", secret: "44930e822d299cf812b25f6cfe56273b8ce8aad6", scopes: ["repo", "read:org"])
+    var tokenConfig: TokenConfiguration? = nil
     var webAuthSession: ASWebAuthenticationSession?
     
     override func viewDidLoad() {
@@ -44,7 +46,6 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
         })
         webAuthSession?.presentationContextProvider = self
         webAuthSession?.start()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,10 +57,12 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
     }
     
     func loadCurrentUser(config: TokenConfiguration) {
-//        print(config.accessToken ?? "accessToken has not been found")
         Octokit(config).me() { response in
             switch response {
             case .success(let user):
+                let accessToken = config.accessToken ?? ""
+                self.keychain.clear()
+                self.keychain.set(accessToken, forKey: "myToken")
                 DispatchQueue.main.async {
                     let targetVC = self.storyboard?.instantiateViewController(identifier: "ViewController") as? SideDishViewController
                     self.navigationController?.pushViewController(targetVC!, animated: true)

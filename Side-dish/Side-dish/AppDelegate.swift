@@ -9,7 +9,7 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     private func registerDependencies() {
         DIContainer.shared.register(NetworkManager())
         let networkManager : NetworkManager = DIContainer.shared.resolve()

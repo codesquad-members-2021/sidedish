@@ -21,13 +21,11 @@ class SideDishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
-        print("asdf")
         sideDishViewModel = SideDishViewModel(sideDishUseCase: usecase)
         
         sideDishCollectionView.delegate = self
         configureDataSource()
         bind()
-        print("sdf")
     }
     
     override func viewWillAppear(_ animated: Bool) {
