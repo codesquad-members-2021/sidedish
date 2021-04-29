@@ -4,14 +4,16 @@ import ThumbNail from "./ModalThumbNail";
 import Sum from "./ModalSum";
 import Button from "./ModalButton";
 import Info from "./ModalInfo";
+import Yummy from "./ModalYummy";
 
-const Modal = ({ data, isModalOn, setModalOn }) => {
+const Modal = ({ data, isModalOn, setModalData, setModalOn }) => {
 	const [count, setCount] = useState(1);
 	const [isButtonAvailable, setButtonAvailable] = useState(true);
 	useEffect(() => {
 		setCount(1);
 		setButtonAvailable(true);
 	}, [data]);
+	if (data) console.log(data.sibling);
 	return data ? (
 		<ModalWrapper isOn={isModalOn} yLocation={data.y}>
 			<Box>
@@ -25,6 +27,7 @@ const Modal = ({ data, isModalOn, setModalOn }) => {
 			<CloseButtonWrapper>
 				<Button type="close" onClick={() => setModalOn(false)} />
 			</CloseButtonWrapper>
+			<Yummy sibling={data.sibling} setModalData={setModalData} />
 		</ModalWrapper>
 	) : (
 		<ModalWrapper isOn={isModalOn} yLocation={0} />

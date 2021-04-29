@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Price from "./CardPrice";
 import Badge from "./Badge";
 
-const Card = ({ data, size, setModalOn, setModalData }) => {
+const Card = ({ data, sibling, size, setModalOn, setModalData }) => {
 	const { detail_hash, image, title, description, n_price, s_price, badge, delivery_type } = data;
 	const [isHover, setHover] = useState(false);
 	const [src, setSrc] = useState(image);
@@ -14,22 +14,15 @@ const Card = ({ data, size, setModalOn, setModalData }) => {
 				if (!json.hash) return console.log("error!! : card click - ", json);
 				json.data.name = title;
 				json.data.badge = badge;
-				const modalHeight = 680;
+				json.data.sibling = sibling;
+				const modalHeight = 1050;
 				json.data.y = Math.round(e.pageY - e.clientY + (window.innerHeight - modalHeight) / 2);
 				setModalData(() => json.data);
-				setModalOn(true);
+				if (setModalOn) setModalOn(true);
 			})
 			.catch((response) => console.log("error!! :", response));
 	};
-	return size === "SMALL" ? (
-		<ThemeProvider theme={theme}>
-			<CardWrapper>
-				<CardImage src={src} size={size} isHover={isHover} onError={() => setSrc("https://codesquad.kr/img/company/codesquad2.png")} />
-				<CardName size={size}>{title}</CardName>
-				<Price n_price={n_price} s_price={s_price} size={size}/>
-			</CardWrapper>
-		</ThemeProvider>
-	) : (
+	return (
 		<ThemeProvider theme={theme}>
 			<CardWrapper>
 				<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={clickImage}>
@@ -38,10 +31,10 @@ const Card = ({ data, size, setModalOn, setModalData }) => {
 				</div>
 				<CardInfo size={size}>
 					<CardName>{title}</CardName>
-					<CardBody>{description}</CardBody>
+					{size === "SMALL" || <CardBody>{description}</CardBody>}
 				</CardInfo>
 				<Price n_price={n_price} s_price={s_price} size={size} />
-				{badge && <Badge badge={badge} />}
+				{badge && size !== "SMALL" && <Badge badge={badge} />}
 			</CardWrapper>
 		</ThemeProvider>
 	);
@@ -56,10 +49,12 @@ const theme = {
 	hoverTop: {
 		LARGE: "140px",
 		MEDIUM: "102px",
+		SMALL: "31px",
 	},
 	hoverLeft: {
 		LARGE: "144px",
 		MEDIUM: "106px",
+		SMALL: "38px",
 	},
 };
 
@@ -89,7 +84,6 @@ const CardInfo = styled.div`
 `;
 const CardName = styled.div`
 	position: static;
-	width: ${({ theme: { sizes }, size }) => sizes[size]};
 	font-size: 16px;
 	line-height: 23px;
 	color: #333;
