@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledBadges } from 'component/DishItem/DishItem';
 import Counter from 'component/ItemDetail/Counter';
-import Carousel from 'react-cool-kyle-carousel/dist/Carousel';
 import RecommendItem from 'component/ItemDetail/RecommendItem';
 import DetailCarousel from './DetailCarousel/DetailCarousel';
 
@@ -43,9 +42,8 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
     return parsedTotalPrice;
   };
 
-
-  const recommendData = new Array(10).fill();   // API에 데이터가 없어서 1~10 임시 데이터를 넣었습니다.
-  const recommendList = recommendData.map((v, idx) => <RecommendItem key={idx} value ={idx+1} />);
+  const recommendData = new Array(10).fill(); // API에 데이터가 없어서 1~10 임시 데이터를 넣었습니다.
+  const recommendList = recommendData.map((v, idx) => <RecommendItem key={idx} value={idx + 1} />);
 
   if (loading) return <ModalStyle>Loading...</ModalStyle>;
   else if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
@@ -100,7 +98,7 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
         </TopRight>
       </Top>
       <Bottom>
-        <DetailCarousel recommendList = {recommendList} />
+        <DetailCarousel recommendList={recommendList} />
       </Bottom>
     </ModalStyle>
   );
@@ -252,5 +250,4 @@ const TopRight = styled.div`
   }
 `;
 
-const Bottom = styled.div`
-`;
+const Bottom = styled.div``;

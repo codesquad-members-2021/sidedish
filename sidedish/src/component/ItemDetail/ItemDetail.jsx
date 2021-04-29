@@ -23,8 +23,8 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
     <StyleModal>
       {detailData ? (
         <DetailModal detailData={detailData} loading={loading} title={title} badge={badge} />
-        ) : (
-          <ModalStyle>
+      ) : (
+        <ModalStyle>
           <ErrorStyle>😢불러올 데이터가 없습니다😢</ErrorStyle>
         </ModalStyle>
       )}

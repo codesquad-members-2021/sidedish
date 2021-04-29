@@ -1,55 +1,64 @@
-import React, {useRef} from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import Carousel from 'react-cool-kyle-carousel/dist/Carousel';
+import Carousel from 'component/Carousel/Carousel';
 import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 import DetailCarouselPaging from './DetailCarouselPaging';
 
-
-const DetailCarousel = ({recommendList}) => {
+const DetailCarousel = ({ recommendList }) => {
   const carouselRef = useRef();
+  const [currentIndex, setCurrentIndex] = useState();
 
-    const carouselSettings = {
-        ref : carouselRef,
-        speed: 500,
-        slideToScroll: 1,
-        PagingComp: DetailCarouselPaging,
-      }
+  const carouselSettings = {
+    ref: carouselRef,
+    speed: 500,
+    slideToScroll: 1,
+    setCurrentIndex,
+  };
 
-    return (
-      <StyleDetailCarousel>        
-        <div className="bottom_contents_wrapper">
-          <div className="header">
-              <div>함께하면 더욱 맛있는 상품</div>
-              <div> 
-                <ArrowContainer>
-                  <IoChevronBackSharp onClick= {() => carouselRef.current.handleClickPrev()} className="left_arrow" />
-                  <IoChevronForwardSharp onClick= {() => carouselRef.current.handleClickNext()} className="right_arrow"/>
-                   </ArrowContainer>
-                   </div>
-           </div>
+  return (
+    <StyleDetailCarousel>
+      <div className="bottom_contents_wrapper">
+        <div className="header">
+          <div className="header_title">함께하면 더욱 맛있는 상품</div>
+          <div>
+            <ArrowContainer>
+              <IoChevronBackSharp
+                onClick={() => carouselRef.current.handleClickPrev()}
+                className="left_arrow"
+              />
+              <DetailCarouselPaging
+                current={currentIndex}
+                total={carouselRef.current && carouselRef.current.getTotal()}
+              />
+              <IoChevronForwardSharp
+                onClick={() => carouselRef.current.handleClickNext()}
+                className="right_arrow"
+              />
+            </ArrowContainer>
+          </div>
+        </div>
         <div className="carousel_container">
-          <Carousel {...carouselSettings}>
-          {recommendList}
-          </Carousel>
+          <Carousel {...carouselSettings}>{recommendList}</Carousel>
         </div>
       </div>
-      </StyleDetailCarousel>
-    );
-}
-
+    </StyleDetailCarousel>
+  );
+};
 
 export default DetailCarousel;
 
-
 const StyleDetailCarousel = styled.div`
-background-color: ${({ theme: { colors } }) => colors.lightGray};
+  background-color: ${({ theme: { colors } }) => colors.lightGray};
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   padding: 48px;
   position: relative;
-
+  .header_title {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
   .carousel_container {
     width: 100%;
   }
@@ -68,22 +77,12 @@ background-color: ${({ theme: { colors } }) => colors.lightGray};
     justify-content: space-between;
     margin-bottom: 10px;
   }
-
-  .detail_paging {
-    position: absolute;
-    top: -32px;
-    right: 25px;
-  }
-`
+`;
 
 const ArrowContainer = styled.div`
- display: flex;
- justify-content: space-between;
- width: 80px;
- .arrow-left {
-
- } 
- .arrow-right {
-   
-  } 
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+  height: 100%;
+`;
