@@ -27,4 +27,24 @@ public class User {
         this.userId = userInfoDTO.getLogin();
         this.token = tokenDTO.getAccess_token();
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getToken() {
+        return token;
+    }
 }
