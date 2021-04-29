@@ -5,7 +5,7 @@ import { SideDishContext } from "./SideDishStore";
 
 const ProductCard = ({ size, item }) => {
   const { setIsModalVisible, setCurrProductData } = useContext(SideDishContext);
-  const [isHovering, setIsHovering] = useState(false)
+  const [isHovering, setIsHovering] = useState(false);
 
   const crossClass = () => `card__hover ${isHovering ? "" : "hidden"}`
   const handleErrorImg = ({ target }) => {
@@ -16,8 +16,8 @@ const ProductCard = ({ size, item }) => {
   const handleProductClick = () => {
     setIsModalVisible(true);
     if (item) {
-      const { alt, badge, detail_hash } = item;
-      setCurrProductData({ alt, badge, detail_hash });
+      const { alt, badge, detail_hash, type } = item;
+      setCurrProductData({ alt, badge, detail_hash, type });
     }
   };
 
@@ -36,8 +36,11 @@ const ProductCard = ({ size, item }) => {
           <span className="card__sale_price">{item.n_price}원</span>
         )}
       </div>
-      {(size !== "x-small") && item.badge &&
-        item.badge.map((type, i) => <Tag key={i} type={type} />)}
+      {size !== "x-small" &&
+        item.badge &&
+        item.badge
+          .filter((type) => type)
+          .map((type, i) => <Tag key={i} type={type} />)}
       <div
         className={crossClass()}
         onMouseEnter={() => setIsHovering(true)}

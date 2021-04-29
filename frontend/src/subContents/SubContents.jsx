@@ -20,20 +20,12 @@ const SubContents = () => {
   // 1) SubContents에 필요한 데이터 요청
   useEffect(() => {
     if (mainLoading || soupLoading || sideLoading) return;
+
     const aContentObject = {
       ...contentObject,
-      main: mainError || {
-        data: mainResponse.body,
-        type: "main",
-      },
-      soup: soupError || {
-        data: soupResponse.body,
-        type: "soup",
-      },
-      side: sideError || {
-        data: sideResponse.body,
-        type: "side",
-      },
+      main: mainError || mainResponse.body.map((item) => ({...item, type: "main"})),
+      soup: soupError || soupResponse.body.map((item) => ({...item, type: "soup"})),
+      side: sideError || sideResponse.body.map((item) => ({...item, type: "side"})),
     };
 
     setContentObject(aContentObject);
@@ -48,11 +40,10 @@ const SubContents = () => {
 
     const aContentsSections = [];
     let nIdx = 0;
-    for (const key in contentObject) {
-      const aData = contentObject[key];
-      const { data, type } = aData;
+    for (const typeKey in contentObject) {
+      const aData = contentObject[typeKey];
       aContentsSections.push(
-        <SubContentsSection key={nIdx} type={type} data={data}/>
+        <SubContentsSection key={nIdx} type={typeKey} data={aData}/>
       );
       nIdx++;
     }

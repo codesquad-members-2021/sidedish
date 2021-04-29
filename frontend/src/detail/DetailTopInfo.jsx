@@ -47,7 +47,10 @@ const DetailTopInfo = ({ data }) => {
         <Name>{data.subject || "상품명"}</Name>
         <Desc>{data.product_description || "상품 설명"}</Desc>
         <ProductPrice>
-          {data.badge && data.badge.map((type, i) => <Tag key={i} type={type} />)}
+          {data.badge &&
+              data.badge
+                .filter((type) => type)
+                .map((type, i) => <Tag key={i} type={type} />)}
           {priceInfo && (
             <>
               {priceInfo.price && <Price>{threeDigitsComma(priceInfo.price)}원</Price>}

@@ -1,9 +1,18 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Carousel from "../utilComponent/carousel/Carousel";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import ProductCard from "../utilComponent/ProductCard";
 
-const DetailBottom = ({ slideDataObject }) => {
+const DetailBottom = ({ result, slideDataObject }) => {
+  const [bottomSlideData, setBottomSlideData] = useState(null);
+
+  useEffect(() => {
+    if (!result || !result.data || !slideDataObject) return;
+    const thisType = result.data.type;
+    setBottomSlideData(slideDataObject[thisType]);
+  }, [result, slideDataObject]);
+
   const carouselOptions = {
     itemsPerCnt: 5,
     arrowOption: {
@@ -15,13 +24,14 @@ const DetailBottom = ({ slideDataObject }) => {
   };
 
   return (
-    slideDataObject && (
+    bottomSlideData && (
       <StyledDetailBottom>
         <BottomCaption>함께하면 더욱 맛있는 상품</BottomCaption>
         <Carousel {...carouselOptions}>
-          {slideDataObject['side']['data'].map((item, i) => (
-            <ProductCard key={i} size="x-small" item={item} />
-          ))}
+          {bottomSlideData.length > 0 &&
+            bottomSlideData.map((item, i) => (
+              <ProductCard key={i} size="x-small" item={item} />
+            ))}
         </Carousel>
       </StyledDetailBottom>
     )
@@ -38,8 +48,8 @@ const StyledDetailBottom = styled.div`
 `;
 
 const BottomCaption = styled.div`
-  font-weight: ${({theme}) => theme.fontWeight.bold || 700};
-  font-size: ${({theme}) => theme.fontSize.MM || "18px"};
-  color: ${({theme}) => theme.colors.gray1 || "gray"};
+  font-weight: ${({ theme }) => theme.fontWeight.bold || 700};
+  font-size: ${({ theme }) => theme.fontSize.MM || "18px"};
+  color: ${({ theme }) => theme.colors.gray1 || "gray"};
   margin: 0px 0px 10px 4px;
 `;

@@ -18,18 +18,18 @@ const Detail = () => {
   const [ detailData, setDetailData ] = useState(initialDetail);
   const [ loading, setLoading ] = useState(true);
 
-  const executeFetch = async (url, addProps = { subject: null, badge: null } ) => {
+  const executeFetch = async (url, addProps = { subject: null, badge: null, type: null } ) => {
     try {
       const res = await fetch(url);
       const json = await res.json();
-      const { subject, badge } = addProps;
+      const { subject, badge, type } = addProps;
       setDetailData({
         ...detailData,
         result: {
           ...json,
           data: {
             ...json['data'],
-            subject, badge
+            subject, badge, type
           }
         }
       });
@@ -40,8 +40,8 @@ const Detail = () => {
 
   useEffect(() => {
     if (!currProductData) return;
-    const { alt: subject, badge, detail_hash } = currProductData;
-    executeFetch(`/api/detail/${detail_hash}`, {subject, badge});
+    const { alt: subject, badge, detail_hash, type } = currProductData;
+    executeFetch(`/api/detail/${detail_hash}`, {subject, badge, type});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currProductData]);
 
@@ -65,7 +65,7 @@ const Detail = () => {
       <Modal visibleOptions={visibleOptions}>
         <StyledDetail>
           <DetailTop {...detailData} />
-          <DetailBottom slideDataObject = {slideDataObject} />
+          <DetailBottom {...detailData} slideDataObject = {slideDataObject} />
         </StyledDetail>
       </Modal>
   );
