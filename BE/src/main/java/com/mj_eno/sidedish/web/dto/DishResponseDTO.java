@@ -16,9 +16,9 @@ public class DishResponseDTO {
     private final int sPrice;
     private final List<String> badges;
 
-    public DishResponseDTO(Dish dish, String image, List<String> badges) {
+    public DishResponseDTO(Dish dish, List<String> badges) {
         this.detailHash = dish.getHash();
-        this.image = image;
+        this.image = dish.getTopImageUrl();
         this.alt = dish.getAlt();
         this.deliveryType = dish.getDeliveryType();
         this.title = dish.getTitle();

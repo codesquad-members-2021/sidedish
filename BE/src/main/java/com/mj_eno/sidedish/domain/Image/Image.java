@@ -8,7 +8,6 @@ public class Image {
     private Long id;
     private String url;
     private boolean top;
-    private int dishId;
 
     public Long getId() {
         return id;
@@ -20,9 +19,5 @@ public class Image {
 
     public boolean isTop() {
         return top;
-    }
-
-    public int getDishId() {
-        return dishId;
     }
 }
