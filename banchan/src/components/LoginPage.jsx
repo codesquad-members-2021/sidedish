@@ -5,7 +5,7 @@ const LoginPage = () => {
   return (
     <>
       <LoginDiv>
-        <GithubBtn href="https://github.com/login/oauth/authorize?client_id=a330856c90f83a69a3ea&redirect_uri=http://localhost:3000/callback">
+        <GithubBtn href="https://github.com/login/oauth/authorize?client_id=a330856c90f83a69a3ea&redirect_uri=http://34.64.120.145:3000/callback">
           깃허브로 로그인
           <svg
             xmlns="http://www.w3.org/2000/svg"
