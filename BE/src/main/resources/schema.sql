@@ -88,13 +88,14 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`badge` (
 DROP TABLE IF EXISTS `side_dish`.`dish_badge`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`dish_badge` (
     `id` INT AUTO_INCREMENT,
-    `dish_id` INT NOT NULL,
+    `dish` INT NOT NULL,
+    `dish_key` INT,
     `badge_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_dish_badge_dish_idx` (`dish_id` ASC) VISIBLE,
+    INDEX `fk_dish_badge_dish_idx` (`dish` ASC) VISIBLE,
     INDEX `fk_dish_badge_badge1_idx` (`badge_id` ASC) VISIBLE,
     CONSTRAINT `fk_dish_badge_dish`
-    FOREIGN KEY (`dish_id`)
+    FOREIGN KEY (`dish`)
     REFERENCES `side_dish`.`dish` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -114,11 +115,12 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`image` (
     `id` INT AUTO_INCREMENT,
     `url` VARCHAR(255) NOT NULL,
     `top` TINYINT(1) NULL,
-    `dish_id` INT NOT NULL,
+    `dish` INT NOT NULL,
+    `dish_key` INT,
     PRIMARY KEY (`id`),
-    INDEX `fk_image_dish1_idx` (`dish_id` ASC) VISIBLE,
+    INDEX `fk_image_dish1_idx` (`dish` ASC) VISIBLE,
     CONSTRAINT `fk_image_dish1`
-    FOREIGN KEY (`dish_id`)
+    FOREIGN KEY (`dish`)
     REFERENCES `side_dish`.`dish` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -132,11 +134,12 @@ DROP TABLE IF EXISTS `side_dish`.`detail_image`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`detail_image` (
     `id` INT AUTO_INCREMENT,
     `url` VARCHAR(255) NOT NULL,
-    `dish_id` INT NOT NULL,
+    `dish` INT NOT NULL,
+    `dish_key` INT,
     PRIMARY KEY (`id`),
-    INDEX `fk_detail_image_dish1_idx` (`dish_id` ASC) VISIBLE,
+    INDEX `fk_detail_image_dish1_idx` (`dish` ASC) VISIBLE,
     CONSTRAINT `fk_detail_image_dish1`
-    FOREIGN KEY (`dish_id`)
+    FOREIGN KEY (`dish`)
     REFERENCES `side_dish`.`dish` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

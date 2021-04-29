@@ -1,7 +1,12 @@
 package com.mj_eno.sidedish.service;
 
+import com.mj_eno.sidedish.domain.badge.Badge;
+import com.mj_eno.sidedish.domain.badge.BadgeRepository;
+import com.mj_eno.sidedish.domain.bestMenuCategory.BestMenuCategory;
+import com.mj_eno.sidedish.domain.bestMenuCategory.BestMenuCategoryRepository;
 import com.mj_eno.sidedish.domain.dish.Dish;
 import com.mj_eno.sidedish.domain.dish.DishRepository;
+import com.mj_eno.sidedish.domain.menuCategory.MenuCategoryRepository;
 import com.mj_eno.sidedish.exception.EntityNotFoundException;
 import com.mj_eno.sidedish.exception.ErrorMessage;
 import com.mj_eno.sidedish.exception.OrderFailedException;
@@ -16,20 +21,20 @@ import java.util.stream.Collectors;
 public class DishService {
 
     public final DishRepository dishRepository;
-    public final ImageService imageService;
-    public final BadgeService badgeService;
-    public final CategoryService categoryService;
+    public final BadgeRepository badgeRepository;
+    public final MenuCategoryRepository menuCategoryRepository;
+    public final BestMenuCategoryRepository bestMenuCategoryRepository;
 
-    public DishService(DishRepository dishRepository, ImageService imageService, BadgeService badgeService, CategoryService categoryService) {
+    public DishService(DishRepository dishRepository, BadgeRepository badgeRepository, MenuCategoryRepository menuCategoryRepository, BestMenuCategoryRepository bestMenuCategoryRepository) {
         this.dishRepository = dishRepository;
-        this.imageService = imageService;
-        this.badgeService = badgeService;
-        this.categoryService = categoryService;
+        this.badgeRepository = badgeRepository;
+        this.menuCategoryRepository = menuCategoryRepository;
+        this.bestMenuCategoryRepository = bestMenuCategoryRepository;
     }
 
     // 모든 베스트 메뉴 요청
     public List<BestDishResponseDTO> findAllBestDish() {
-        return categoryService.findAllBestMenuCategory().stream()
+        return bestMenuCategoryRepository.findAll().stream()
                 .map(bestMenuCategory -> findAllBestDishByCategoryIdAndRandom(bestMenuCategory.getId()))
                 .collect(Collectors.toList());
     }
@@ -37,7 +42,7 @@ public class DishService {
     // 베스트 메뉴 카테고리 id에 해당하는 메뉴 중 랜덤 3개 요청
     public BestDishResponseDTO findAllBestDishByCategoryIdAndRandom(Long BestMenuCategoryId) {
         return new BestDishResponseDTO(
-                categoryService.findBestMenuCategoryById(BestMenuCategoryId),
+                findBestMenuCategoryById(BestMenuCategoryId),
                 findByBestMenuCategoryIdAndRandomAndLimit(BestMenuCategoryId)
         );
     }
@@ -45,36 +50,34 @@ public class DishService {
     private List<DishResponseDTO> findByBestMenuCategoryIdAndRandomAndLimit(Long categoryId) {
         return makeRandomId(dishRepository.findIdAllByBestMenuCategoryId(categoryId), 3).stream()
                 .map(this::findById)
-                .map(dish -> new DishResponseDTO(dish, imageService.getTopImageUrlByDish(dish), badgeService.getBadgesByDish(dish)))
+                .map(dish -> new DishResponseDTO(dish, getBadgesByDish(dish)))
+                .collect(Collectors.toList());
+    }
+
+    private List<String> getBadgesByDish(Dish dish) {
+        return dish.getBadgesId().stream()
+                .map(this::findBadgeById)
+                .map(Badge::getName)
                 .collect(Collectors.toList());
     }
 
     // main, soup, side 메뉴 요청
     public List<DishResponseDTO> findAllDishByCategory(String dishCategory) {
-        return dishRepository.findAllByMenuCategoryId(categoryService.getMenuCategoryIdByDishCategory(dishCategory)).stream()
-                .map(dish -> new DishResponseDTO(dish, imageService.getTopImageUrlByDish(dish), badgeService.getBadgesByDish(dish)))
+        return dishRepository.findAllByMenuCategoryId(getMenuCategoryIdByDishCategory(dishCategory)).stream()
+                .map(dish -> new DishResponseDTO(dish, getBadgesByDish(dish)))
                 .collect(Collectors.toList());
     }
 
     // 메뉴의 디테일 정보 요청
     public DetailDishResponseDTO getDetailMenu(String hash) {
-        return new DetailDishResponseDTO(hash, makeDetailDishDTO(findDishByHash(hash)));
-    }
-
-    private DetailDishDTO makeDetailDishDTO(Dish dish) {
-        return new DetailDishDTO(
-                dish,
-                imageService.getTopImageUrlByDish(dish),
-                imageService.findAllImageUrlByDish(dish),
-                imageService.getAllDetailImageUrlByDish(dish)
-        );
+        return new DetailDishResponseDTO(hash, new DetailDishDTO(findDishByHash(hash)));
     }
 
     // 모든 메뉴에 대해 limit 만큼 램덤 요청
     public List<DishResponseDTO> findDishByRandomLimit(int limit) {
         return makeRandomId(dishRepository.findIdAllByDish(), limit).stream()
                 .map(this::findById)
-                .map(dish -> new DishResponseDTO(dish, imageService.getTopImageUrlByDish(dish), badgeService.getBadgesByDish(dish)))
+                .map(dish -> new DishResponseDTO(dish, getBadgesByDish(dish)))
                 .collect(Collectors.toList());
     }
 
@@ -105,5 +108,23 @@ public class DishService {
         return dishRepository.findByHash(hash).orElseThrow(
                 () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
         );
+    }
+
+    private Badge findBadgeById(int id) {
+        return badgeRepository.findById((long) id).orElseThrow(
+                () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
+        );
+    }
+
+    private BestMenuCategory findBestMenuCategoryById(Long id) {
+        return bestMenuCategoryRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
+        );
+    }
+
+    private Long getMenuCategoryIdByDishCategory(String dishCategory) {
+        return menuCategoryRepository.findByName(dishCategory).orElseThrow(
+                () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
+        ).getId();
     }
 }
