@@ -37,7 +37,7 @@ class MainPageViewController: UIViewController {
             if networkManager.isConnectedToInternet() {
                 viewModel.load()
             }else{
-                viewModel.loadByDB() //realm에 있는 db를 저장하기.
+                viewModel.loadByDB() //realm에 있는 db를 불러오기.
             }
             bind(to: viewModel)
         }
@@ -45,7 +45,6 @@ class MainPageViewController: UIViewController {
         registerXib()
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
         
     }
     

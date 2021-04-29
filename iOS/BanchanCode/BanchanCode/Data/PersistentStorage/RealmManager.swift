@@ -9,15 +9,15 @@ import RealmSwift
 import Foundation
 
 private protocol RealmOperations {
-    func add(dishesItem: [DishesItemViewModel], categoryName: String)
-    func get(categryName: String) -> [DishesItemViewModel]
+    func addDishes(dishesItem: [DishesItemViewModel], categoryName: String)
+    func getDishes(by categryName: String) -> [DishesItemViewModel]
 }
 
 class RealmManager: RealmOperations {
     
     let realm = try! Realm()
     
-    func add(dishesItem: [DishesItemViewModel], categoryName: String) { //dish 정보를 받아와서 dto?작업 후 데이터베이스에 저장한다.
+    func addDishes(dishesItem: [DishesItemViewModel], categoryName: String) { //dish 정보를 받아와서 dto?작업 후 데이터베이스에 저장한다.
         dishesItem.forEach{ item in
             //이미 primaryKey가 존재한다면 write를 할 시 에러가 난다.
             if (realm.object(ofType: DishDB.self, forPrimaryKey: item.dish.id) == nil) {
@@ -35,7 +35,7 @@ class RealmManager: RealmOperations {
         }
     }
     
-    func get(categryName: String) -> [DishesItemViewModel] {
+    func getDishes(by categryName: String) -> [DishesItemViewModel] {
         var dishItems = [DishesItemViewModel]()
         let dishes = realm.objects(DishDB.self).filter("categoryName == %@",categryName)
         
@@ -44,7 +44,7 @@ class RealmManager: RealmOperations {
             dishItems.append(DishesItemViewModel(dish: dish))
         }
         return dishItems
-        
+
     }
     
     
