@@ -13,16 +13,17 @@ const SliderRightButton = ({
   let buttonFlag;
   let opacity;
 
-  const onClick = (direction) => {
+  const onClick = direction => {
     let moveNumber;
 
+    optionalFn && optionalFn(v => v + 1);
     rightRemainingCards < cardShown
       ? (moveNumber = rightRemainingCards)
       : (moveNumber = cardShown);
 
-    setX((x) => x + cardWidth * direction * moveNumber);
-    setRightRemainingCards((x) => x - moveNumber);
-    setLeftRemainingCards((x) => x + moveNumber);
+    setX(x => x + cardWidth * direction * moveNumber);
+    setRightRemainingCards(x => x - moveNumber);
+    setLeftRemainingCards(x => x + moveNumber);
   };
 
   if (rightRemainingCards === 0) {
@@ -39,7 +40,6 @@ const SliderRightButton = ({
       _opacity={opacity}
       onClick={() => {
         onClick(-1);
-        optionalFn((v) => v + 1);
       }}
     >
       {rightButton}
