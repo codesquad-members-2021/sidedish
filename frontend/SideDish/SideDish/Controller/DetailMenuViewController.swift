@@ -24,6 +24,30 @@ class DetailMenuViewController: UIViewController {
         configureThumbnailImageSize()
         configureViewModel()
         
+        
+        guard let url1 = URL(string: "http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/9bd9158fb5ffbc46708b7928ee50708e.jpg") else { return }
+        let imageView1 = UIImageView()
+        imageView1.widthAnchor.constraint(equalTo: imageView1.heightAnchor, multiplier: 0.5).isActive = true
+        imageView1.kf.setImage(with: url1)
+        
+        guard let url2 = URL(string:  "http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/0253cdebc4972fefd6b94458024fe765.jpg") else { return }
+        let imageView2 = UIImageView()
+        imageView2.widthAnchor.constraint(equalTo: imageView2.heightAnchor, multiplier: 0.5).isActive = true
+        imageView2.kf.setImage(with: url2)
+        
+        guard let url3 = URL(string:   "http://public.codesquad.kr/jk/storeapp/data/detail/HDF73/0642265b65dcc2490ab164ff428cbfe2.jpg") else { return }
+        let imageView3 = UIImageView()
+        imageView3.widthAnchor.constraint(equalTo: imageView3.heightAnchor, multiplier: 0.5).isActive = true
+        imageView3.kf.setImage(with: url3)
+        
+        
+        let arr = [imageView1, imageView2, imageView3]
+        for image in arr {
+        
+            self.detailScrollView.detailStackView.addArrangedSubview(image)
+        }
+    
+        
     }
 
     func receive(detailHash: String) {
@@ -72,5 +96,13 @@ class DetailMenuViewController: UIViewController {
             self.detailScrollView.thumbnailScrollView.addSubview(imageView)
         }
     }
+    
+//    func configureDetailStackViewImage(imageArray: [String]) {
+//        for image in imageArray {
+//            guard let url = URL(string: image) else { return }
+//            imageView.kf.setImage(with: url)
+//            self.detailScrollView.thumbnailScrollView.addSubview(imageView)
+//        }
+//    }
 }
 

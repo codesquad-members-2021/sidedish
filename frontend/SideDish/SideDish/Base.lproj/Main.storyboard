@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ceg-t2-XKc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ceg-t2-XKc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -68,14 +68,14 @@
             <objects>
                 <viewController storyboardIdentifier="detailMenuViewController" id="yeW-HK-zLk" customClass="DetailMenuViewController" customModule="SideDish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NMa-I3-SjC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAA-oR-r2w" customClass="DetailScrollView" customModule="SideDish" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1456"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="1156"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itj-TL-8yP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1076"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L2j-eG-g0y">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -387,38 +387,35 @@
                                                     <constraint firstAttribute="trailing" secondItem="ebY-9K-vct" secondAttribute="trailing" constant="16" id="zEo-xB-WSj"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TlP-kH-Gm3">
-                                                <rect key="frame" x="0.0" y="1076" width="414" height="424"/>
-                                                <color key="backgroundColor" red="0.7990633774" green="0.5669471009" blue="0.95900639799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="414" id="6g4-pC-Nae"/>
-                                                </constraints>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TlP-kH-Gm3">
+                                                <rect key="frame" x="0.0" y="1076" width="414" height="0.0"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Udr-vn-8It" firstAttribute="leading" secondItem="itj-TL-8yP" secondAttribute="leading" constant="16" id="2eA-S2-JAl"/>
-                                            <constraint firstItem="TlP-kH-Gm3" firstAttribute="leading" secondItem="itj-TL-8yP" secondAttribute="leading" id="4Cu-V6-H77"/>
+                                            <constraint firstAttribute="trailing" secondItem="TlP-kH-Gm3" secondAttribute="trailing" id="5LW-h0-7cb"/>
                                             <constraint firstItem="egS-Co-7Fy" firstAttribute="leading" secondItem="itj-TL-8yP" secondAttribute="leading" constant="16" id="6gG-hx-eIe"/>
                                             <constraint firstItem="L2j-eG-g0y" firstAttribute="leading" secondItem="itj-TL-8yP" secondAttribute="leading" id="Ad8-0F-4kW"/>
                                             <constraint firstAttribute="trailing" secondItem="OGC-Gd-lGu" secondAttribute="trailing" id="Bgt-oV-Juw"/>
+                                            <constraint firstAttribute="height" priority="250" constant="818" id="J5u-FW-gLB"/>
                                             <constraint firstItem="OGC-Gd-lGu" firstAttribute="top" secondItem="egS-Co-7Fy" secondAttribute="bottom" id="KUe-Mb-KJQ"/>
                                             <constraint firstItem="OGC-Gd-lGu" firstAttribute="leading" secondItem="itj-TL-8yP" secondAttribute="leading" id="KgL-x1-fvL"/>
                                             <constraint firstAttribute="trailing" secondItem="Udr-vn-8It" secondAttribute="trailing" constant="16" id="Off-ID-qQ0"/>
                                             <constraint firstItem="Udr-vn-8It" firstAttribute="top" secondItem="L2j-eG-g0y" secondAttribute="bottom" constant="24" id="QVg-DY-cSb"/>
-                                            <constraint firstAttribute="height" constant="1500" id="VLS-D9-ztp"/>
+                                            <constraint firstItem="TlP-kH-Gm3" firstAttribute="leading" secondItem="itj-TL-8yP" secondAttribute="leading" id="VD6-5D-Ua5"/>
                                             <constraint firstItem="L2j-eG-g0y" firstAttribute="top" secondItem="itj-TL-8yP" secondAttribute="top" id="YQR-0i-MPI"/>
                                             <constraint firstAttribute="trailing" secondItem="egS-Co-7Fy" secondAttribute="trailing" constant="16" id="Ym6-Ev-ho2"/>
-                                            <constraint firstAttribute="trailing" secondItem="TlP-kH-Gm3" secondAttribute="trailing" id="hKD-wU-a16"/>
-                                            <constraint firstAttribute="bottom" secondItem="TlP-kH-Gm3" secondAttribute="bottom" id="iIr-HU-hUb"/>
-                                            <constraint firstItem="TlP-kH-Gm3" firstAttribute="top" secondItem="OGC-Gd-lGu" secondAttribute="bottom" constant="40" id="mcN-XE-o93"/>
+                                            <constraint firstItem="TlP-kH-Gm3" firstAttribute="top" secondItem="OGC-Gd-lGu" secondAttribute="bottom" constant="40" id="cFT-IG-C9Y"/>
                                             <constraint firstAttribute="trailing" secondItem="L2j-eG-g0y" secondAttribute="trailing" id="obl-5T-0n4"/>
                                             <constraint firstItem="egS-Co-7Fy" firstAttribute="top" secondItem="Udr-vn-8It" secondAttribute="bottom" constant="24" id="tib-0l-Cuj"/>
+                                            <constraint firstAttribute="bottom" secondItem="TlP-kH-Gm3" secondAttribute="bottom" id="uEq-p3-ldh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="itj-TL-8yP" firstAttribute="trailing" secondItem="GSV-oo-4Zn" secondAttribute="trailing" id="Je9-am-JzN"/>
+                                    <constraint firstItem="itj-TL-8yP" firstAttribute="centerX" secondItem="IAA-oR-r2w" secondAttribute="centerX" id="RSB-Er-Ehh"/>
                                     <constraint firstItem="itj-TL-8yP" firstAttribute="width" secondItem="kAS-4F-mq9" secondAttribute="width" id="SRU-Mu-Rc2"/>
                                     <constraint firstItem="itj-TL-8yP" firstAttribute="top" secondItem="GSV-oo-4Zn" secondAttribute="top" id="UU1-CD-6qE"/>
                                     <constraint firstItem="itj-TL-8yP" firstAttribute="bottom" secondItem="GSV-oo-4Zn" secondAttribute="bottom" id="pX0-2f-CRS"/>
@@ -459,14 +456,14 @@
                             <constraint firstItem="IAA-oR-r2w" firstAttribute="top" secondItem="4qU-Jv-Ajl" secondAttribute="top" id="pOo-VW-orV"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="1500"/>
+                    <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="detailScrollView" destination="IAA-oR-r2w" id="kCE-gm-Cfh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sa-5u-cUP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1998.5507246376812" y="109.82142857142857"/>
+            <point key="canvasLocation" x="1994" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e2Z-P9-dPP">
