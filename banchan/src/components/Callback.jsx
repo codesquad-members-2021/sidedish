@@ -4,7 +4,7 @@ import qs from "qs";
 import { URLS } from "../utils/variables";
 
 const Callback = ({ history, location }) => {
-  const authUri = `http://${URLS.gcphost}:5000/auth`;
+  const authUri = `http://${URLS.gcphost}:8080/auth`;
 
   useEffect(() => {
     const getToken = async () => {
