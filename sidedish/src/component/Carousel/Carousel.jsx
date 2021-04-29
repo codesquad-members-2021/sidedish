@@ -1,11 +1,14 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IoChevronBackSharp, IoChevronForwardSharp } from 'react-icons/io5';
 import CarouselItem from './CarouselItem';
 import CarouselPage from './CarouselPage';
 
 const Carousel = forwardRef(
-  ({ children, slideToScroll, speed, defaultArrow, defaultPaging, PagingComp }, ref) => {
+  (
+    { children, slideToScroll, speed, defaultArrow, defaultPaging, PagingComp, setCurrentIndex },
+    ref
+  ) => {
     const [locationX, setLocationX] = useState(0);
     const [currIdx, setCurrIdx] = useState(0);
     const [leftItem, setLeftItem] = useState();
@@ -18,9 +21,14 @@ const Carousel = forwardRef(
     const marginRigthForItem =
       isCarouselWidth() && (containerWidth - slideToShow * itemWidth) / (slideToShow - 1);
 
+    useEffect(() => {
+      setCurrentIndex && setCurrentIndex(slideToShow);
+    }, [slideToShow]);
+
     const handleClickPrev = () => {
       const possibleMove = currIdx >= slideToScroll ? slideToScroll : currIdx;
       setLocationX(locationX + (itemWidth + marginRigthForItem) * possibleMove);
+      setCurrentIndex && setCurrentIndex(currIdx - possibleMove + slideToShow);
       setCurrIdx(currIdx - possibleMove);
       setLeftItem(leftItem + possibleMove);
     };
@@ -30,6 +38,7 @@ const Carousel = forwardRef(
       const newLeftItem = totalItemCount - (currIdx + slideToShow);
       const possibleMove = newLeftItem >= slideToScroll ? slideToScroll : newLeftItem;
       setLocationX(locationX - (itemWidth + marginRigthForItem) * possibleMove);
+      setCurrentIndex && setCurrentIndex(currIdx + possibleMove + slideToShow);
       setCurrIdx(currIdx + possibleMove);
       setLeftItem(newLeftItem - possibleMove);
     };
@@ -37,7 +46,7 @@ const Carousel = forwardRef(
     useImperativeHandle(ref, () => ({
       handleClickPrev,
       handleClickNext,
-      currentIdx: currIdx,
+      getTotal: () => (children ? children.length : 0),
     }));
 
     const carouselItemList =
@@ -93,6 +102,7 @@ export const StyledCarousel = styled.div`
     position: absolute;
     font-size: 2rem;
     top: 40%;
+    cursor: pointer;
   }
   .leftArrow {
     left: -50px;

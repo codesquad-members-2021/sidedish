@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledBadges } from 'component/DishItem/DishItem';
 import Counter from 'component/ItemDetail/Counter';
-import { StyledCarousel } from 'component/Carousel/Carousel';
+import RecommendItem from 'component/ItemDetail/RecommendItem';
+import DetailCarousel from './DetailCarousel/DetailCarousel';
 
 const DetailModal = ({ detailData, loading, title, badge }) => {
   const [count, setCount] = useState(1);
@@ -40,6 +41,9 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
       (totalPrice + '').replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',') + '원';
     return parsedTotalPrice;
   };
+
+  const recommendData = new Array(10).fill(); // API에 데이터가 없어서 1~10 임시 데이터를 넣었습니다.
+  const recommendList = recommendData.map((v, idx) => <RecommendItem key={idx} value={idx + 1} />);
 
   if (loading) return <ModalStyle>Loading...</ModalStyle>;
   else if (!detailData) return <ModalStyle>데이터가 없습니다.</ModalStyle>;
@@ -94,13 +98,7 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
         </TopRight>
       </Top>
       <Bottom>
-        <div className="bottom_contents_wrapper">
-          <div className="header">
-            <span>함께하면 더욱 맛있는 상품</span>
-            <span>화살표들어갈자리</span>
-          </div>
-          {/* carousel 들어갈 자리 */}
-        </div>
+        <DetailCarousel recommendList={recommendList} />
       </Bottom>
     </ModalStyle>
   );
@@ -109,11 +107,12 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
 export default DetailModal;
 
 export const ModalStyle = styled.div`
-  width: 50%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 
   .error_center {
     justify-content: center;
@@ -251,22 +250,4 @@ const TopRight = styled.div`
   }
 `;
 
-const Bottom = styled.div`
-  background-color: ${({ theme: { colors } }) => colors.lightGray};
-  height: 100%;
-  display: flex;
-  justify-content: center;
-
-  .bottom_contents_wrapper {
-    width: 100%;
-    padding: 26px 0px;
-    display: flex;
-    justify-content: center;
-  }
-  .header {
-    font-size: 18px;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-  }
-`;
+const Bottom = styled.div``;
