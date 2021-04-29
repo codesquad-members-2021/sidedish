@@ -16,6 +16,7 @@
 		1E5053C82636F504005615F5 /* DishesEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */; };
 		1E5053C92636F504005615F5 /* DishesEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */; };
 		1E50540B26395ADB005615F5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E50540A26395ADB005615F5 /* LoadingViewController.swift */; };
+		1E505418263A97EB005615F5 /* MenuDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E505417263A97EB005615F5 /* MenuDetailController.swift */; };
 		1ECD5F62262F256000DC56C0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F61262F256000DC56C0 /* Endpoint.swift */; };
 		1ECD5F66262F2E1E00DC56C0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */; };
 		1ECD5F6A262F3B6500DC56C0 /* DishNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */; };
@@ -45,6 +46,7 @@
 		1E5053C52636F504005615F5 /* DishesEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DishesEntity+CoreDataClass.swift"; path = "/Users/ohking/Desktop/masters_codesquad/sidedish/SideDishApp/SideDishApp/Data/Persistence/DishesEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		1E5053C72636F504005615F5 /* DishesEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DishesEntity+CoreDataProperties.swift"; path = "/Users/ohking/Desktop/masters_codesquad/sidedish/SideDishApp/SideDishApp/Data/Persistence/DishesEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1E50540A26395ADB005615F5 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		1E505417263A97EB005615F5 /* MenuDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailController.swift; sourceTree = "<group>"; };
 		1ECD5F61262F256000DC56C0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		1ECD5F65262F2E1E00DC56C0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1ECD5F69262F3B6500DC56C0 /* DishNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishNetworkManager.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				1E1DBAD5262DDDFC0050FE6C /* ViewController.swift */,
 				B0911EA32631AF3400D5EBEC /* DiffableProvider.swift */,
 				B0911EA72632B7A000D5EBEC /* DishCollectionViewDelegate.swift */,
+				1E505417263A97EB005615F5 /* MenuDetailController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				1ECD5F6D262F3C1700DC56C0 /* Dish.swift in Sources */,
 				B0911EA026316B9A00D5EBEC /* String+Extension.swift in Sources */,
 				1ECF2EC02635DE65006982BE /* CoreData.xcdatamodeld in Sources */,
+				1E505418263A97EB005615F5 /* MenuDetailController.swift in Sources */,
 				1ECF2EBC2635D6FD006982BE /* MenuRepository.swift in Sources */,
 				1E1DBAD6262DDDFC0050FE6C /* ViewController.swift in Sources */,
 				1ECD5F70262F3F1C00DC56C0 /* MenuListUseCase.swift in Sources */,
