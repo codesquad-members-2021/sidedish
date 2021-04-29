@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface CategoryRepository extends CrudRepository<Category, Long> {
     Optional<Category> findByType(String categoryType);
 
-    @Query("SELECT id,type,name FROM category JOIN dish on dish.category_id = category.id ")
+    @Query("SELECT category.id, category.type, category.name FROM category " +
+            "INNER JOIN dish ON dish.category_id = category.id " +
+            "WHERE dish.id = :dishId")
     Optional<Category> findByDishId(String dishId);
 }
