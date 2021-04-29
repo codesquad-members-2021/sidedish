@@ -39,8 +39,12 @@ const CarouselCard = ({
           <Badge badge={badge}>{badge}</Badge>
         ) : (
           <BadgeBox>
-            <Badge badge={badge[0]}>{badge[0]}</Badge>
-            <Badge badge={badge[1]}>{badge[1]}</Badge>
+            <Badge PopUp={PopUp} badge={badge[0]}>
+              {badge[0]}
+            </Badge>
+            <Badge PopUp={PopUp} badge={badge[1]}>
+              {badge[1]}
+            </Badge>
           </BadgeBox>
         ))}
     </ContentMain>
@@ -134,12 +138,13 @@ const SPrice = styled.span`
 `;
 
 const Badge = styled.span`
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding: 4px 16px;
-  width: 100px;
+  padding: ${({ PopUp }) => (PopUp ? `0` : `4px 16px`)};
+  width: ${({ PopUp }) => (PopUp ? `80px` : `100px`)};
   height: 25px;
   background-color: ${({ badge }) =>
     badge == "이벤트특가" ? "#82d32d" : "#86C6FF"};
@@ -147,7 +152,7 @@ const Badge = styled.span`
   color: white;
   font-size: 14px;
   line-height: 20px;
-  margin-right: 10px;
+  margin: ${({ PopUp }) => (PopUp ? `0` : `0 10px 0 0`)};
   font-weight: bold;
 `;
 const BadgeBox = styled.div`

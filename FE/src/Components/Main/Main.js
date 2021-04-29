@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Carousel from "./Carousel";
+import Carousel from "../Carousel/Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
-import CarouselButton from "./CarouselButton";
+import CarouselButton from "../Carousel/CarouselButton";
 const Main = ({ modal, setModal, ModalData, setModalData }) => {
   const [Food, setFood] = useState([]);
   const mainRef = useRef(null);

@@ -9,10 +9,17 @@ import {
   AfterUp,
 } from "../../Svg/Button";
 import axios from "axios";
-import CarouselButton from "../Main/CarouselButton";
-import Carousel from "../Main/Carousel";
+import CarouselButton from "../Carousel/CarouselButton";
+import Carousel from "../Carousel/Carousel";
 
-const PopUpModal = ({ MainTitle, Food, setModal, ModalData, setModalData }) => {
+const PopUpModal = ({
+  MainTitle,
+  Food,
+  setModal,
+  ModalData,
+  setModalData,
+  best,
+}) => {
   const [PopUpCarousel, setPopUpCarousel] = useState(Food);
   const [close, setClose] = useState(BeforeX);
   const [detail, setDetail] = useState();
@@ -21,7 +28,6 @@ const PopUpModal = ({ MainTitle, Food, setModal, ModalData, setModalData }) => {
   const [quantity, setQuantity] = useState(0);
   const [toggleState, setToggleState] = useState();
   const [imgState, setState] = useState(1);
-
   const PopUpRef = useRef(null);
   const PopUpCardRef = useRef();
 
@@ -92,7 +98,7 @@ const PopUpModal = ({ MainTitle, Food, setModal, ModalData, setModalData }) => {
 
   return (
     <ModalBackground>
-      <ModalCard>
+      <ModalCard best={best}>
         <Card>
           <Content>
             {detail && (
@@ -186,28 +192,34 @@ const PopUpModal = ({ MainTitle, Food, setModal, ModalData, setModalData }) => {
               </>
             )}
           </Content>
-          <CarouselSlide>
-            <Button>
-              <CarouselButton Name={"Left"} Slide={leftSlider} PopUp={"pop"} />
-              <CarouselButton
-                Name={"Right"}
-                Slide={rightSlider}
-                PopUp={"pop"}
-              />
-            </Button>
-            {Food && (
-              <Carousel
-                PopUp={"pop"}
-                MainTitle={MainTitle}
-                Food={PopUpCarousel}
-                setFood={setPopUpCarousel}
-                setModal={setModal}
-                setModalData={setModalData}
-                Ref={PopUpRef}
-                ref={PopUpCardRef}
-              />
-            )}
-          </CarouselSlide>
+          {best ? null : (
+            <CarouselSlide>
+              <Button>
+                <CarouselButton
+                  Name={"Left"}
+                  Slide={leftSlider}
+                  PopUp={"pop"}
+                />
+                <CarouselButton
+                  Name={"Right"}
+                  Slide={rightSlider}
+                  PopUp={"pop"}
+                />
+              </Button>
+              {Food && (
+                <Carousel
+                  PopUp={"pop"}
+                  MainTitle={MainTitle}
+                  Food={PopUpCarousel}
+                  setFood={setPopUpCarousel}
+                  setModal={setModal}
+                  setModalData={setModalData}
+                  Ref={PopUpRef}
+                  ref={PopUpCardRef}
+                />
+              )}
+            </CarouselSlide>
+          )}
         </Card>
         <CloseButton
           className="close"
@@ -221,6 +233,7 @@ const PopUpModal = ({ MainTitle, Food, setModal, ModalData, setModalData }) => {
     </ModalBackground>
   );
 };
+
 const Button = styled.div`
   position: absolute;
   display: flex;
@@ -465,10 +478,10 @@ const ModalBackground = styled.div`
 `;
 const ModalCard = styled.div`
   position: fixed;
-  top: 100px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 1000px;
-  height: 660px;
   background-color: transparent;
 `;
 const Card = styled.div`
@@ -487,11 +500,10 @@ const Content = styled.div`
 const CloseButton = styled.button`
   position: absolute;
   height: 30px;
-  right: 4px;
+  right: -5px;
+  top: 0px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-items: top;
   &:active {
     transform: translateY(2px);
   }
@@ -499,7 +511,6 @@ const CloseButton = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
-  font-weight: bold;
 `;
 
 export default PopUpModal;

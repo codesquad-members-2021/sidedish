@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Carousel from "../Main/Carousel";
+import Carousel from "../Carousel/Carousel";
 import PopUpModal from "../PopUpModal/PopUpModal";
-import CarouselButton from "../Main/CarouselButton";
+import CarouselButton from "../Carousel/CarouselButton";
 const All = ({ modal, setModal, ModalData, setModalData }) => {
-  const [soup, setSoup] = useState([]);
-  const [side, setSide] = useState([]);
+  const [Soup, setSoup] = useState([]);
+  const [Side, setSide] = useState([]);
   const [rander, setRander] = useState(false);
   const soupImageRef = useRef();
   const sideImageRef = useRef();
@@ -44,12 +44,12 @@ const All = ({ modal, setModal, ModalData, setModalData }) => {
   };
 
   const PopUpCarousel = () => {
-    for (const i of soup) {
+    for (const i of Soup) {
       if (i.detailHash === ModalData[0]) {
         return (
           <PopUpModal
             MainTitle={"정성이 담긴 뜨끈한 국물요리"}
-            Food={soup}
+            Food={Soup}
             setModal={setModal}
             ModalData={ModalData}
             setModalData={setModalData}
@@ -60,7 +60,7 @@ const All = ({ modal, setModal, ModalData, setModalData }) => {
     return (
       <PopUpModal
         MainTitle={"식탁을 풍성하게 하는 정갈한 밑반찬"}
-        Food={side}
+        Food={Side}
         setModal={setModal}
         ModalData={ModalData}
         setModalData={setModalData}
@@ -77,7 +77,7 @@ const All = ({ modal, setModal, ModalData, setModalData }) => {
             <CarouselButton Name={"Left"} Slide={soupSlide} />
             <Carousel
               MainTitle={"정성이 담긴 뜨끈한 국물요리"}
-              Food={soup}
+              Food={Soup}
               setFood={setSoup}
               Ref={soupImageRef}
               setModal={setModal}
@@ -90,7 +90,7 @@ const All = ({ modal, setModal, ModalData, setModalData }) => {
             <CarouselButton Name={"Left"} Slide={sideSlide} />
             <Carousel
               MainTitle={"식탁을 풍성하게 하는 정갈한 밑반찬"}
-              Food={side}
+              Food={Side}
               setFood={setSide}
               Ref={sideImageRef}
               setModal={setModal}
