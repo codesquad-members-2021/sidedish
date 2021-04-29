@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { FlexContainer, Container } from 'Components/commons/base.js';
@@ -12,22 +13,38 @@ import API from 'util/API';
 
 const MainPage = () => {
   const [modalState, refetchModal] = useAsync(API.get.detail, [], true);
+  const [hasMoreCategory, setHasMoreCategory] = useState(true);
+
+  // useEffect(() => {
+  //   const fetchRemainDish = async () => {
+  //     setRemainDish({side: await API.get.side(), soup: await API.get.soup()});
+  //     console.log("fetchMainDish!", mainDishes)
+  //   }
+  //   fetchRemainDish();
+  // }, [])
 
   return (
     <MainPageLayout>
-      <DetailProductModal {...{ modalState }} />
       <Header />
       <Tabs  {...{ refetchModal }} />
       <MainDishSection>
         <MainDish />
       </MainDishSection>
-      <FoooterSection>
-        <Button type={"viewAll"}> 더보기</Button>
-      </FoooterSection>
-      {/* <MainDishSection>
-        <MainDish />
-      </MainDishSection> */}
-
+      { !hasMoreCategory 
+        ? <>
+            <MainDishSection>
+              <MainDish />
+            </MainDishSection>
+            <MainDishSection>
+              <MainDish />
+            </MainDishSection>
+          </>
+        : <FoooterSection> 
+            <Button type={"viewAll"} onClick={setHasMoreCategory}> 더보기 </Button>
+          </FoooterSection> 
+      }
+      
+      <DetailProductModal {...{ modalState }} />
     </MainPageLayout>
   )
 }
