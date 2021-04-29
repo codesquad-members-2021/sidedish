@@ -1,21 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
-import Span from '../../atoms/Span';
+import React from "react";
+import styled from "styled-components";
+import Span from "../../atoms/Span";
 
-const InfosWrapper = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   padding: 0px;
-
   width: 440px;
-  height: 124px;
+  /* height: 124px; */
 `;
 
 const SingleInfoWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
-
+  /* align-items: flex-start; */
   width: 440px;
   height: 46px;
   margin: 16px 0px;
@@ -23,10 +21,10 @@ const SingleInfoWrapper = styled.div`
 
 const InfoGeneral = ({ children, ...props }) => {
   return (
-    <InfosWrapper>
+    <InfoWrapper>
       <SingleInfoWrapper>
         <Span className="_detailLabel">적립금</Span>
-        <Span className="_detailText">{props._point}</Span>
+        <Span className="_detailText">{props.point}</Span>
       </SingleInfoWrapper>
       <SingleInfoWrapper>
         <Span className="_detailLabel">배송정보</Span>
@@ -36,7 +34,7 @@ const InfoGeneral = ({ children, ...props }) => {
         <Span className="_detailLabel">배송비</Span>
         <Span className="_detailText">{props.delivery_fee}</Span>
       </SingleInfoWrapper>
-    </InfosWrapper>
+    </InfoWrapper>
   );
 };
 

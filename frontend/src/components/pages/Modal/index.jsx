@@ -23,10 +23,8 @@ const ModalStyles = styled.div`
   transform: translate(-50%, -50%);
   width: 960px;
   height: 680px;
-
   background: #ffffff;
   border-radius: 5px 5px 0px 0px;
-
   z-index: 1000;
 `;
 
