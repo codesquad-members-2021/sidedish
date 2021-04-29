@@ -40,6 +40,7 @@ function CategoryRender({ title, url }) {
 
 					<Carousel
 						width={1280}
+						height={242}
 						count={5}
 						duration={'.5s'}
 						ref={button}

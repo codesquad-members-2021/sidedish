@@ -58,8 +58,7 @@ function MainMenu() {
 		<MainBlock>
 			<Title>후기가 증명하는 베스트 반찬</Title>
 			<TabBlock>
-				{
-					(!bestDishLoading && console.log(bestDishLoading, bestDishMenu),
+				{!bestDishLoading &&
 					bestDishMenu.map((data, idx) => (
 						<Tab
 							onClick={({ target }) => handleClick(target, data.bestCategoryId)}
@@ -69,8 +68,7 @@ function MainMenu() {
 						>
 							{data.name}
 						</Tab>
-					)))
-				}
+					))}
 			</TabBlock>
 
 			<MainColumn>

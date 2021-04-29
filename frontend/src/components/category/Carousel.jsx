@@ -3,6 +3,7 @@ import { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 
 const CatgoryWrapper = styled.div`
 	width: ${(props) => `${props.width}px`};
+	height: ${(props) => `${props.height}px`};
 	padding: 0px;
 	overflow: hidden;
 	border: 1px solid blue;
@@ -19,23 +20,25 @@ const CardWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	width: ${(props) => {
-		return props.size;
+		return props.width;
+	}}px;
+	height: ${(props) => {
+		return props.height;
 	}}px;
 `;
 const Block = styled.div`
 	display: flex;
 `;
 
-function Carousel({ width, count, duration, children, effect }, ref) {
+function Carousel({ width, height, count, duration, children, effect }, ref) {
 	const transitionDefault = `all ${effect} ${duration}`;
 	const panelWidth = width / count; //320
 
 	let block = [];
 	for (let i = 0; i < children.length; i += count) {
-		block.push(children.slice(i, i + count)); //4-8:4567 //8-12: 891011
+		block.push(children.slice(i, i + count));
 	}
 	const lastBlockCount = block[block.length - 1].length;
-
 	const startX = -width - lastBlockCount * panelWidth;
 
 	const [x, setX] = useState(startX);
@@ -98,7 +101,8 @@ function Carousel({ width, count, duration, children, effect }, ref) {
 				{el.map((e, idx) => (
 					<CardWrapper
 						className="CardWrapper"
-						size={panelWidth}
+						width={panelWidth}
+						height={height}
 						key={idx + 'a'}
 					>
 						{e}
@@ -111,7 +115,7 @@ function Carousel({ width, count, duration, children, effect }, ref) {
 	return (
 		<>
 			<CategorySlideBlock>
-				<CatgoryWrapper width={width}>
+				<CatgoryWrapper width={width} height={height}>
 					<CategoryColumn style={ulStyles} onTransitionEnd={onTransitionEnd}>
 						{[
 							block.length === 1
