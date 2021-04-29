@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TabContent from "./TabContent";
 import TabButton from "./TabButton";
@@ -34,13 +34,12 @@ const Best = ({ modal, setModal, ModalData, setModalData }) => {
   };
 
   //fetch
-  const [Food, setFood] = useState([]);
-  const mainRef = useRef(null);
+  const [Best, setBest] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios("/products/best").then((res) => res.data.data);
-      setFood(data);
+      setBest(data);
     };
     fetchData();
   }, []); // eslint-disable-line
@@ -50,8 +49,8 @@ const Best = ({ modal, setModal, ModalData, setModalData }) => {
       <BestTitle>후기가 증명한 베스트 반찬</BestTitle>
       <TabCotainer>
         <TabButton
-          Food={Food}
-          setFood={setFood}
+          Food={Best}
+          setBest={setBest}
           toggleTab={toggleTab}
           toggleState={toggleState}
         />
@@ -60,10 +59,8 @@ const Best = ({ modal, setModal, ModalData, setModalData }) => {
           setModal={setModal}
           ModalData={ModalData}
           setModalData={setModalData}
-          Food={Food}
-          setFood={setFood}
-          Ref={mainRef}
-          toggleTab={toggleTab}
+          Food={Best}
+          setBest={setBest}
           toggleState={toggleState}
         />
       </TabCotainer>

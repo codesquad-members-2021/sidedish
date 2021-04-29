@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CarouselCard from "../Main/CarouselCard";
+import CarouselCard from "../Carousel/CarouselCard";
 import PopUpModal from "../PopUpModal/PopUpModal";
 
 const ContentWrapper = styled.div`
@@ -27,17 +27,27 @@ const ContentContainer = styled.div`
 const TabContent = ({
   Food,
   toggleState,
-  URL,
   modal,
   setModal,
   ModalData,
   setModalData,
 }) => {
+  const Modal = () => {
+    let result = Food.map((v) => v.items).reduce(
+      (acc, cur) => (acc = acc.concat(cur))
+    );
+    for (const i of result) {
+      if (i.detailHash === ModalData[0]) {
+        return (
+          <PopUpModal setModal={setModal} ModalData={ModalData} best={"best"} />
+        );
+      }
+    }
+    return null;
+  };
   return (
     <ContentContainer>
-      {modal && (
-        <PopUpModal setModal={setModal} ModalData={ModalData} URL={URL} />
-      )}
+      {modal && Modal()}
       {Food.map((_, idx) => {
         return (
           <ContentWrapper
