@@ -2,9 +2,6 @@ package com.codesquad.sidedish.SideDish.domain;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Sale {
 
     @Id
@@ -13,8 +10,6 @@ public class Sale {
     private String badge;
     private String saleType;
     private int saleValue;
-
-    private Set<DishSale> dishSales = new HashSet<>();
 
 
     public Sale(String badge, String saleType, int saleValue) {
@@ -38,9 +33,6 @@ public class Sale {
     public int getSaleValue() {
         return saleValue;
     }
-
-    public Set<DishSale> getDishSales() {
-        return dishSales;
-    }
+    
 
 }

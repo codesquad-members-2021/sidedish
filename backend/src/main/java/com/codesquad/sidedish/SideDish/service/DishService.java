@@ -2,6 +2,8 @@ package com.codesquad.sidedish.SideDish.service;
 
 import com.codesquad.sidedish.SideDish.domain.Dish;
 import com.codesquad.sidedish.SideDish.domain.DishRepository;
+import com.codesquad.sidedish.SideDish.domain.Image;
+import com.codesquad.sidedish.SideDish.domain.ImageRepository;
 import com.codesquad.sidedish.SideDish.dto.DishDetailDto;
 import com.codesquad.sidedish.SideDish.dto.DishDto;
 import com.codesquad.sidedish.SideDish.dto.QuantityDto;
@@ -16,9 +18,11 @@ import java.util.stream.Collectors;
 @Service
 public class DishService {
     private final DishRepository dishRepository;
+    private final ImageRepository imageRepository;
 
-    public DishService(DishRepository dishRepository) {
+    public DishService(DishRepository dishRepository, ImageRepository imageRepository) {
         this.dishRepository = dishRepository;
+        this.imageRepository = imageRepository;
     }
 
     public List<DishDto> getList(Long categoryId) {
@@ -41,9 +45,9 @@ public class DishService {
     //
     public DishDetailDto getDetail(String detailHash) {
         Dish dish = dishRepository.findByDetailHash(detailHash);
-//        List<Image> tumb = imageRepository.findImagesByType("thum");
-//        List<Image> detail = imageRepository.findImagesByType("detail");
-        return DishDetailDto.from(dish);
+        List<Image> thumbImages = imageRepository.findThumbImagesByDish(detailHash);
+        List<Image> detailImages = imageRepository.findDetailImagesByDish(detailHash);
+        return DishDetailDto.from(dish, thumbImages, detailImages);
     }
 //
 

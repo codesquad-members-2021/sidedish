@@ -21,14 +21,18 @@ public class DishDetailDto {
         this.detailImages = builder.detailImages;
     }
 
-    public static DishDetailDto from(Dish dish) {
+    public static DishDetailDto from(Dish dish, List<Image> thumbImages, List<Image> detailImages) {
         return new Builder()
-                .thumbImages(dish.getImages().stream().map(Image::getImageUrl).collect(Collectors.toList())) // TODO:
+                .thumbImages(imagesToUrls(thumbImages))
                 .point(dish.getPoint())
                 .deliveryInfo(dish.getDeliveryInfo())
                 .deliveryFee(dish.getDeliveryFee())
-                .detailImages(dish.getImages().stream().map(Image::getImageUrl).collect(Collectors.toList())) // TODO:
+                .detailImages(imagesToUrls(detailImages))
                 .build();
+    }
+
+    private static List<String> imagesToUrls(List<Image> images) {
+        return images.stream().map(Image::getImageUrl).collect(Collectors.toList());
     }
 
     private static class Builder {
