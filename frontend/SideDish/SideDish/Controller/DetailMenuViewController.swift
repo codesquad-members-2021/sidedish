@@ -22,9 +22,11 @@ class DetailMenuViewController: UIViewController {
         
         self.detailScrollView.setCornerRadius()
         self.detailScrollView.setBorderWidth()
-        configureThumbnailImageSize()
-        configureViewModel()
-        
+        configureThumbnailImageSize() 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     func receive(categoryId: Int, detailHash: String) {
@@ -33,6 +35,9 @@ class DetailMenuViewController: UIViewController {
     
     @objc func configureViewModel() {
         DispatchQueue.main.async {
+            self.checkStock()
+            self.navigationItem.title = self.detailMenuViewModel.title
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 100))))
             self.detailScrollView.title.text = self.detailMenuViewModel.title
             self.detailScrollView.body.text = self.detailMenuViewModel.productDescription
             self.configureBadges(verified: self.detailMenuViewModel.badges)
@@ -44,6 +49,15 @@ class DetailMenuViewController: UIViewController {
             self.detailScrollView.totalPrice.text = self.detailMenuViewModel.normalPrice
             self.configureThumbnailImage(imageStringArr: self.detailMenuViewModel.thumbImages)
             self.configureDetailStackViewImage(imageStringArr: self.detailMenuViewModel.detailSection)
+        }
+    }
+    
+    func checkStock() {
+        if self.detailMenuViewModel.stock == 0 {
+            self.detailScrollView.orderButton.setTitle("일시 품절", for: .normal)
+            self.detailScrollView.orderButton.setTitleColor(.systemGray2, for: .normal)
+            self.detailScrollView.orderButton.backgroundColor = UIColor.systemGray5
+            self.detailScrollView.orderButton.isEnabled = false
         }
     }
     
@@ -73,7 +87,7 @@ class DetailMenuViewController: UIViewController {
         
         for index in 0..<imageStringArr.count {
             guard let url = URL(string: imageStringArr[index]) else { return }
-            let xPos: CGFloat = self.detailScrollView.thumbnailImageWidthConstraint.constant * CGFloat(index)
+            let xPos: CGFloat = width * CGFloat(index)
             let imageView = UIImageView(frame: CGRect(x: xPos, y: self.detailScrollView.thumbnailScrollView.bounds.minY, width: width, height: width))
             imageView.kf.setImage(with: url)
             self.detailScrollView.thumbnailScrollView.addSubview(imageView)
@@ -103,5 +117,21 @@ class DetailMenuViewController: UIViewController {
         let calculatedPrice = String(detailMenuViewModel.normalPriceToInt() * self.orderViewModel.orderCount)
         self.detailScrollView.totalPrice.text = "\(self.detailMenuViewModel.convertDecimal(string: calculatedPrice))원"
     }
+    
+    @IBAction func pressedOrderButton(_ sender: UIButton) {
+        if self.orderViewModel.isOrderAvailable(stock: self.detailMenuViewModel.stock) {
+            let alert = UIAlertController(title: "주문 확인", message: "주문이 완료 되었습니다.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        } else {
+            let message = "현재 주문하신 상품의 재고 수량이 \n \(self.detailMenuViewModel.stock)개 남았습니다.\n주문 수량을 다시 확인해 주시기 바랍니다."
+            let alert = UIAlertController(title: "주문 실패", message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
 }
 
