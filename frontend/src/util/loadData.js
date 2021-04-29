@@ -1,5 +1,7 @@
-const loadData = async (setState, type, hash) => {
-  const getUrl = (type) => {
+
+const loadData = async (setState, type, hash = '') => {
+  const getUrl = type => {
+
     let url =
       "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/";
     switch (type) {

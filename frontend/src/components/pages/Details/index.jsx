@@ -48,6 +48,7 @@ const Details = ({ ...props }) => {
           _thumb_images={detailDish.thumb_images}
         />
       </ImageWrapper>
+
       <ContentWrapper>
         <InfoProduct
           title="미노리키친]규동 250g"
@@ -65,6 +66,7 @@ const Details = ({ ...props }) => {
         <Button _default />
       </ContentWrapper>
     </DetailWrapper>
+
   );
 };
 

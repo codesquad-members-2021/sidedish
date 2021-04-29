@@ -111,6 +111,7 @@ const StyledSpan = styled.span`
     font-weight: 400;
     color: #828282;
   }
+
   &._description {
     margin: 16px 0;
     font-size: 16px;
@@ -120,8 +121,11 @@ const StyledSpan = styled.span`
   &._tPriceTitle {
     margin: 10px 24px 0 0;
     font-size: 18px;
+
+  &._otherPrice {
     font-weight: 700;
-    color: #828282;
+    font-size: 14px;
+    color: #333;
   }
   &._tPriceUnit {
     font-size: 32px;
