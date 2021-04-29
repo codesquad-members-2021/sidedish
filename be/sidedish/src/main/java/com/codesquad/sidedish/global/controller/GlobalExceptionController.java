@@ -5,6 +5,8 @@ import com.codesquad.sidedish.category.exception.ItemNotFoundException;
 import com.codesquad.sidedish.category.exception.OutOfStockException;
 import com.codesquad.sidedish.event.exception.EventNotFoundException;
 import com.codesquad.sidedish.global.domain.dto.ErrorResponseDTO;
+import com.codesquad.sidedish.global.exception.InvalidJwtTokenException;
+import com.codesquad.sidedish.global.exception.NoJwtTokenException;
 import com.codesquad.sidedish.global.exception.NotFoundException;
 import com.codesquad.sidedish.image.exception.ImageNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,18 @@ public class GlobalExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ImageNotFoundException.class)
     public ErrorResponseDTO handleImageNotFoundException(ImageNotFoundException exception) {
+        return new ErrorResponseDTO(exception.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NoJwtTokenException.class)
+    public ErrorResponseDTO handleNoJwtTokenException(NoJwtTokenException exception) {
+        return new ErrorResponseDTO(exception.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(InvalidJwtTokenException.class)
+    public ErrorResponseDTO handleInvalidJwtTokenException(InvalidJwtTokenException exception) {
         return new ErrorResponseDTO(exception.getMessage());
     }
 }
