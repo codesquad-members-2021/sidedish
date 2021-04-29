@@ -18,7 +18,7 @@ protocol DishesViewModelInput {
 }
 
 protocol DishesViewModelOutput {
-    var category: Observable<Categorizable> { get }
+    var category: Categorizable { get }
     var items: Observable<[DishesItemViewModel]> { get }
 }
 
@@ -29,12 +29,12 @@ final class DefaultDishesViewModel: DishesViewModel {
     private let actions: DishesListViewModelActions?
     
     //MARK: - Output
-    var category: Observable<Categorizable>
+    var category: Categorizable
     var items: Observable<[DishesItemViewModel]> = Observable([])
     
     //MARK: - Init
     init(fetchDishesUseCase: FetchDishesUseCase,
-         category: Observable<Categorizable>,
+         category: Categorizable,
          actions: DishesListViewModelActions? = nil) {
         self.fetchDishesUseCase = fetchDishesUseCase
         self.category = category
@@ -45,7 +45,7 @@ final class DefaultDishesViewModel: DishesViewModel {
 //MARK: - Input
 extension DefaultDishesViewModel {
     func load() {
-        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { (result) in
+        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.name), completion: { (result) in
             switch result {
             case .success(let items):
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
@@ -61,6 +61,6 @@ extension DefaultDishesViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.goToDishDetail(category.value.name, items.value[index].dish)
+        actions?.goToDishDetail(category.name, items.value[index].dish)
     }
 }
