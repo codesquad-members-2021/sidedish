@@ -15,8 +15,7 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var lastPriceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
-    @IBOutlet weak var badgeBackgroundView: UIView!
-    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var badgeStackView: UIStackView!
     
     static let reuseIdentifier = String(describing: DishCell.self)
     let networkManager = NetworkManager()
@@ -26,32 +25,71 @@ class DishCell: UICollectionViewCell {
         
         thumbnailImageView.layer.masksToBounds = true
         thumbnailImageView.layer.cornerRadius = 5.0
-        
-        badgeBackgroundView.layer.masksToBounds = true
-        badgeBackgroundView.layer.cornerRadius = 5.0
     }
     
     func fill(with viewModel: DishesItemViewModel) {
-        networkManager.updateThumbImage(imageURL: viewModel.imageURL) { imageData in
+        let dish = viewModel.dish
+        networkManager.updateThumbImage(imageURL: dish.imageURL) { imageData in
             DispatchQueue.main.async {
                 self.thumbnailImageView.image = UIImage(data: imageData)
             }
         }
-        nameLabel.text = viewModel.name
-        descriptionLabel.text = viewModel.description
-        let prices = viewModel.prices
+        nameLabel.text = dish.name
+        descriptionLabel.text = dish.description
+        
+        let prices = dish.prices
         let originalPrice = prices[0]
         if prices.count > 1 {
             let lastPrice = prices[1]
-            originalPriceLabel.attributedText = "\(originalPrice)원".strikethrough()
-            lastPriceLabel.text = "\(lastPrice)원"
+            lastPriceLabel.text = String().format(price: lastPrice)
+            originalPriceLabel.isHidden = false
+            originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
         } else {
-            lastPriceLabel.text = "\(originalPrice)원"
-            originalPriceLabel.text = ""
+            lastPriceLabel.text = String().format(price: originalPrice)
+            originalPriceLabel.isHidden = true
         }
-        let badges = viewModel.badges
-        if badges.count > 0 {
-            badgeLabel.text = badges[0]
+        let badges = dish.badges
+        badgeStackView.arrangedSubviews.forEach { subview in
+            subview.removeFromSuperview()
         }
+        if badges.count == 0 {
+            badgeStackView.isHidden = true
+        } else {
+            badgeStackView.isHidden = false
+            badges.forEach { badgeString in
+                let badgeView = createBadgeView(with: badgeString)
+                badgeStackView.addArrangedSubview(badgeView)
+            }
+        }
+    }
+    
+    private func createBadgeView(with text: String) -> UIView {
+        let badgeBackgroundView = UIView(frame: CGRect.zero)
+        badgeBackgroundView.backgroundColor = text == "이벤트특가" ? #colorLiteral(red: 0.5098039216, green: 0.8274509804, blue: 0.1764705882, alpha: 1) : #colorLiteral(red: 0.5254901961, green: 0.7764705882, blue: 1, alpha: 1)
+        badgeBackgroundView.layer.masksToBounds = true
+        badgeBackgroundView.layer.cornerRadius = 5.0
+        badgeBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let badgeLabel = createBadgeLabel(with: text)
+        badgeBackgroundView.addSubview(badgeLabel)
+        
+        badgeLabel.centerXAnchor.constraint(equalTo: badgeBackgroundView.centerXAnchor).isActive = true
+        badgeBackgroundView.leadingAnchor.constraint(equalTo: badgeLabel.leadingAnchor, constant: -8.0).isActive = true
+        badgeBackgroundView.trailingAnchor.constraint(equalTo: badgeLabel.trailingAnchor, constant: 8.0).isActive = true
+        badgeLabel.centerYAnchor.constraint(equalTo: badgeBackgroundView.centerYAnchor).isActive = true
+        return badgeBackgroundView
+    }
+    
+    private func createBadgeLabel(with text: String) -> UILabel {
+        let badgeLabel = UILabel(frame: CGRect.zero)
+        badgeLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        badgeLabel.textColor = .white
+        badgeLabel.text = text
+        badgeLabel.translatesAutoresizingMaskIntoConstraints = false
+        return badgeLabel
+    }
+    
+    override func prepareForReuse() {
+        thumbnailImageView.image = nil
     }
 }
