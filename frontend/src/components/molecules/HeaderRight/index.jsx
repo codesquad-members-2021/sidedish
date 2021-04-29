@@ -1,7 +1,7 @@
-import React from 'react';
-import { WrapDiv, Li } from './index.style';
-import SearchBar from '../../atoms/Searchbar';
-import Span from '../../atoms/Span';
+import React from "react";
+import { WrapDiv, Li } from "./index.style";
+import SearchBar from "../../atoms/SearchBar";
+import Span from "../../atoms/Span";
 
 const HeaderRight = ({ children, ...props }) => {
   return (

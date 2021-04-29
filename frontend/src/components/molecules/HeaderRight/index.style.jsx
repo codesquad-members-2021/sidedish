@@ -14,6 +14,7 @@ const Li = styled.li`
   list-style-type: none;
   float: left;
   padding: 11px 0;
+  cursor: pointer;
 `;
 
 export { WrapDiv, Li };

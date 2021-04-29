@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const WrapDiv = styled.div`
   display: flex;
@@ -6,7 +6,7 @@ const WrapDiv = styled.div`
   position: relative;
   width: 380px;
   height: 380px;
-  margin: 0px 12px;
+  margin: 0px 10px;
 `;
 
 const WrapContent = styled.div`

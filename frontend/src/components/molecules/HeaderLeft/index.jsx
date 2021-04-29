@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { WrapDiv, Ul, Li } from "./index.style";
 import Span from "../../atoms/Span";
 import HeaderDrop from "../../molecules/HeaderDrop";
@@ -22,14 +22,15 @@ const HeaderLeft = ({ children, ...props }) => {
         BANCHAN
       </Span>
       <Ul>
-        <Li>
+        <Li
+          onMouseEnter={(event) => displayDrop(event, "Menu1")}
+          onMouseOut={(event) => (event.target.style.fontWeight = "400")}
+        >
           <Span
             // ref={headMenuRef}
             _headMenu
             key={1}
-            onMouseEnter={(event) => displayDrop(event, "Menu1")}
             onMouseLeave={(event) => setIsDrop("None")}
-            onMouseOut={(event) => (event.target.style.fontWeight = "400")}
           >
             든든한 메인요리
             <HeaderDrop isDrop={isDrop} menuNum={1}></HeaderDrop>

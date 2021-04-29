@@ -5,18 +5,18 @@ import Span from "../../atoms/Span";
 const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
-  padding: 0px;
   width: 440px;
-  /* height: 124px; */
 `;
-
 const SingleInfoWrapper = styled.div`
   display: flex;
-  /* align-items: flex-start; */
   width: 440px;
-  height: 46px;
-  margin: 16px 0px;
+  margin-bottom: 16px;
+`;
+const LineDiv = styled.div`
+  width: 440px;
+  height: 1px;
+  margin: 8px 0 24px 0;
+  background: #e0e0e0;
 `;
 
 const InfoGeneral = ({ children, ...props }) => {
@@ -34,6 +34,7 @@ const InfoGeneral = ({ children, ...props }) => {
         <Span className="_detailLabel">배송비</Span>
         <Span className="_detailText">{props.delivery_fee}</Span>
       </SingleInfoWrapper>
+      <LineDiv />
     </InfoWrapper>
   );
 };
