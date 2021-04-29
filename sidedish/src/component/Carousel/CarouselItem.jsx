@@ -1,18 +1,22 @@
-import React, { useRef, forwardRef, useEffect, useState, useImperativeHandle } from 'react';
-// import styled from 'styled-components';
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 
-const CarouselItem = ({ item, setItemWidth }) => {
-  const targetRef = useRef();
+const CarouselItem = ({ item, idx, setItemWidth, marginRigthForItem }) => {
+  const childRef = useRef();
 
   useEffect(() => {
-    setItemWidth(targetRef.current.offsetWidth);
+    if (idx === 0) setItemWidth(childRef.current.offsetWidth);
   }, []);
 
   return (
-    <>
-      <div ref={targetRef}>{item}</div>
-    </>
+    <StyledCarouselItem ref={childRef} marginRigthForItem={marginRigthForItem}>
+      {item}
+    </StyledCarouselItem>
   );
 };
+
+const StyledCarouselItem = styled.div`
+  margin-right: ${({ marginRigthForItem }) => `${marginRigthForItem}px`};
+`;
 
 export default CarouselItem;
