@@ -6,7 +6,6 @@ import Carousel from '../Carousel';
 import Icon from '../../atoms/Icon';
 
 const MainDish = props => {
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ const MainDish = props => {
     ));
   };
 
-
   const Button = type => {
     return (
       <>
@@ -40,7 +38,6 @@ const MainDish = props => {
         />
       </>
     );
-
   };
 
   return (
