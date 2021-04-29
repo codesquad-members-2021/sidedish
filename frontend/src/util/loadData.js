@@ -1,18 +1,17 @@
-
-const loadData = async (setState, type, hash = '') => {
-  const getUrl = type => {
-
+const loadData = async (setState, type, hash = "") => {
+  const getUrl = (type) => {
     let url =
-      "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/";
+      // "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/";
+      "http://ec2-52-79-64-179.ap-northeast-2.compute.amazonaws.com:8080/";
     switch (type) {
       case "mainDish":
-        return (url += "main");
+        return (url += "section/main");
       case "bestDish":
         return (url += "best");
       case "soupDish":
-        return (url += "soup");
+        return (url += "section/soup");
       case "sideDish":
-        return (url += "side");
+        return (url += "section/side");
       case "detailDish":
         return (url += `detail/${hash}`);
       default:
@@ -28,10 +27,10 @@ const loadData = async (setState, type, hash = '') => {
     return setState(dataBody);
   }
   if (type !== "bestDish") {
-    const dataBody = initialData.body;
+    const dataBody = initialData.dishes;
     return setState([...dataBody, ...dataBody]);
   }
-  const dataBody = initialData.body;
+  const dataBody = initialData.best_dishes;
   setState(dataBody);
 };
 

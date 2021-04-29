@@ -54,19 +54,18 @@ const Details = ({ ...props }) => {
           title="미노리키친]규동 250g"
           description={detailDish.product_description}
           badge="['이벤트특가','론칭특가']"
-          _sPrice="5200"
-          _nPrice="6500"
+          _sPrice={detailDish.special_price}
+          _nPrice={detailDish.normal_price}
         ></InfoProduct>
         <InfoGeneral
           point={detailDish.point}
           delivery_info={detailDish.delivery_info}
           delivery_fee={detailDish.delivery_fee}
         ></InfoGeneral>
-        <InfoQuantity t_price={5200}></InfoQuantity>
+        <InfoQuantity t_price={detailDish.special_price}></InfoQuantity>
         <Button _default />
       </ContentWrapper>
     </DetailWrapper>
-
   );
 };
 

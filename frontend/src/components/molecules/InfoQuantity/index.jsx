@@ -100,7 +100,7 @@ const InfoQuantity = ({ children, ...props }) => {
       <SpanWrapper>
         <Span className="_tPriceTitle">총 주문금액</Span>
         <Span className="_tPrice">{getComma(props.t_price * number)}</Span>
-        <Span className="_tPriceUnit">원</Span>
+        <Span className="_otherPrice">원</Span>
       </SpanWrapper>
     </PriceWrapper>
   );
