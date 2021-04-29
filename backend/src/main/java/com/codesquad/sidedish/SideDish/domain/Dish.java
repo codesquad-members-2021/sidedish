@@ -1,12 +1,9 @@
 package com.codesquad.sidedish.SideDish.domain;
 
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table("DISH")
 public class Dish {
 
     private final String detailHash;
@@ -22,27 +19,27 @@ public class Dish {
     private final Integer quantity;
     private final LocalDateTime currentDateTime;
 
-    private final Set<Sale> sales = new HashSet<>();
-    private final Set<Delivery> deliveries = new HashSet<>();
-    private final Set<Image> images = new HashSet<>();
+//    private final Set<Sale> sales = new HashSet<>();
+//    private final Set<Delivery> deliveries = new HashSet<>();
+//    private final Set<Image> images = new HashSet<>();
 
-    public void addSale(Sale... sales) {
-        for (Sale sale : sales) {
-            this.sales.add(sale);
-        }
-    }
-
-    public void addDelivery(Delivery... deliveries) {
-        for (Delivery delivery : deliveries) {
-            this.deliveries.add(delivery);
-        }
-    }
-
-    public void addImage(Image... images) {
-        for (Image image : images) {
-            this.images.add(image);
-        }
-    }
+//    public void addSale(Sale... sales) {
+//        for (Sale sale : sales) {
+//            this.sales.add(sale);
+//        }
+//    }
+//
+//    public void addDelivery(Delivery... deliveries) {
+//        for (Delivery delivery : deliveries) {
+//            this.deliveries.add(delivery);
+//        }
+//    }
+//
+//    public void addImage(Image... images) {
+//        for (Image image : images) {
+//            this.images.add(image);
+//        }
+//    }
 
     public Dish(String detailHash, String image, String title, String description, Integer price, Integer salePrice, Integer point, String deliveryInfo, Integer deliveryFee, Long categoryId, Integer quantity, LocalDateTime currentDateTime) {
         this.detailHash = detailHash;
@@ -108,15 +105,15 @@ public class Dish {
     }
 
     public Set<Sale> getSales() {
-        return sales;
+        return new HashSet<>();
     }
 
     public Set<Delivery> getDeliveries() {
-        return deliveries;
+        return new HashSet<>();
     }
 
     public Set<Image> getImages() {
-        return images;
+        return new HashSet<>();
     }
 
     public boolean refreshable(long lastUpdated) {
