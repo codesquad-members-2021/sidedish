@@ -7,8 +7,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DataDTO {
+    private String title;
+
+    @JsonProperty("top_image")
     private String topImage;
+
+    @JsonProperty("thumb_images")
     private List<String> thumbImages;
+
     private String description;
     private int point;
     private String deliveryInfo;
@@ -17,7 +23,11 @@ public class DataDTO {
     private Integer[] prices;
     private List<String> detailImages;
 
-    private DataDTO(String topImage, List<Image> thumbImages, String description, int point, String deliveryInfo, Integer deliveryFee, Integer deliveryCondition, Integer[] prices, List<Image> detailImages) {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String[] badge;
+
+    private DataDTO(String title, String topImage, List<Image> thumbImages, String description, int point, String deliveryInfo, Integer deliveryFee, Integer deliveryCondition, Integer normalPrice, Integer specialPrice, List<Image> detailImages, String[] badge) {
+        this.title = title;
         this.topImage = topImage;
         this.thumbImages = thumbImages.stream().map(image -> image.getImageUrl()).collect(Collectors.toList());
         this.description = description;
@@ -25,14 +35,16 @@ public class DataDTO {
         this.deliveryInfo = deliveryInfo;
         this.deliveryFee = deliveryFee;
         this.deliveryCondition = deliveryCondition;
-        this.prices = prices;
+        this.normalPrice = normalPrice;
+        this.specialPrice = specialPrice;
         this.detailImages = detailImages.stream().map(image -> image.getImageUrl()).collect(Collectors.toList());
+        this.badge = badge;
     }
 
     public static DataDTO of(DishDTO dishDTO, Delivery delivery, List<Image> thumbImages, List<Image> detailImages) {
         return new DataDTO(dishDTO.getImage(), thumbImages, dishDTO.getDescription(), (int) Math.round(dishDTO.getSpecialPrice() * 0.01),
                 delivery.makeDeliveryInfo(delivery.isMonday()), delivery.getDeliveryFee(), delivery.getDeliveryCondition(),
-                dishDTO.makePriceArray(), detailImages
+                dishDTO.getNormalPrice(), dishDTO.getSpecialPrice(), detailImages, dishDTO.getBadge()
         );
     }
 
