@@ -43,7 +43,7 @@ class MainPageViewController: UIViewController {
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
         
-        let networkManager = NetworkManager()
+//        let networkManager = NetworkManager()
                 
         viewModels.forEach { viewModel in
 //            if networkManager.isConnectedToInternet() {

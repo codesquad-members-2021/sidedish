@@ -59,7 +59,7 @@ extension DefaultDishesViewModel {
     
     func loadByDB() {
         let realmManager = RealmManager()
-        self.items.value = realmManager.getDishes(categryName: self.category.name)
+//        self.items.value = realmManager.getDishes(categryName: self.category.name)
     }
     
     func getNumberOfItems() -> Int {
