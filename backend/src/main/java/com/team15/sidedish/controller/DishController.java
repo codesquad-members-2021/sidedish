@@ -1,6 +1,6 @@
 package com.team15.sidedish.controller;
 
-import com.team15.sidedish.dto.DishDTO;
+import com.team15.sidedish.dto.DishDAO;
 import com.team15.sidedish.dto.SectionDishesDTO;
 import com.team15.sidedish.service.DishService;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class DishController {
     }
 
     @GetMapping("/dish/{hash}")
-    public DishDTO showSingleDish(@PathVariable String hash) {
+    public DishDAO showSingleDish(@PathVariable String hash) {
         return dishService.showSingleDish(hash);
     }
 

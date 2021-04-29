@@ -3,7 +3,7 @@ package com.team15.sidedish.service;
 import com.team15.sidedish.domain.*;
 import com.team15.sidedish.dto.DataDTO;
 import com.team15.sidedish.dto.DetailDTO;
-import com.team15.sidedish.dto.DishDTO;
+import com.team15.sidedish.dto.DishDAO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,11 +22,11 @@ public class DetailService {
     }
 
     public DetailDTO showDetailInfo(String hash) {
-        DishDTO dishDTO = dishRepository.findById(hash).orElseThrow(IllegalArgumentException::new);
+        DishDAO dishDAO = dishRepository.findById(hash).orElseThrow(IllegalArgumentException::new);
         List<Image> thumbImages = imageRepository.findAllByDishHashAndIsThumbTrue(hash);
         List<Image> detailImages = imageRepository.findAllByDishHashAndIsThumbFalse(hash);
         Delivery delivery = deliveryRepository.findByDishHash(hash).orElseThrow(IllegalArgumentException::new);
-        DataDTO dataDTO = DataDTO.of(dishDTO, delivery, thumbImages, detailImages);
+        DataDTO dataDTO = DataDTO.of(dishDAO, delivery, thumbImages, detailImages);
         return new DetailDTO(hash, dataDTO);
 
     }

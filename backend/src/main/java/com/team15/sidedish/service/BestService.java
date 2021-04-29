@@ -3,7 +3,7 @@ package com.team15.sidedish.service;
 import com.team15.sidedish.domain.Best;
 import com.team15.sidedish.domain.BestRepository;
 import com.team15.sidedish.dto.BestDTO;
-import com.team15.sidedish.dto.DishDTO;
+import com.team15.sidedish.dto.DishDAO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class BestService {
         List<String> bestDish = bestRepository.findByCategoryId(categoryId);
         Best best = bestRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
 
-        List<DishDTO> items = bestDish
+        List<DishDAO> items = bestDish
                 .stream()
                 .map(hash -> dishService.showSingleDish(hash))
                 .collect(Collectors.toList());

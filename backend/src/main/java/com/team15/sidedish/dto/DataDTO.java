@@ -60,7 +60,7 @@ public class DataDTO {
     public static DataDTO of(DishDTO dishDTO, Delivery delivery, List<Image> thumbImages, List<Image> detailImages) {
         return new DataDTO(dishDTO.getTitle(), dishDTO.getImage(), thumbImages, dishDTO.getDescription(), (int) Math.round(dishDTO.getSpecialPrice() * 0.01),
                 delivery.makeDeliveryInfo(delivery.isMonday()), delivery.getDeliveryFee(), delivery.getDeliveryCondition(),
-                dishDTO.getNormalPrice(), dishDTO.getSpecialPrice(), detailImages, dishDTO.getBadge()
+                dishDAO.getNormalPrice(), dishDAO.getSpecialPrice(), detailImages, dishDAO.getBadge()
         );
     }
 

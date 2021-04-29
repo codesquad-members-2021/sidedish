@@ -9,15 +9,15 @@ public class BestDTO {
     @JsonProperty("category_id")
     private Long categoryId;
     private String name;
-    private List<DishDTO> dishes;
+    private List<DishDAO> dishes;
 
-    private BestDTO(Long categoryId, String name, List<DishDTO> dishes) {
+    private BestDTO(Long categoryId, String name, List<DishDAO> dishes) {
         this.categoryId = categoryId;
         this.name = name;
         this.dishes = dishes;
     }
 
-    public static BestDTO of(Best best, List<DishDTO> items){
+    public static BestDTO of(Best best, List<DishDAO> items){
         return new BestDTO(best.getCategoryId(), best.getName(), items);
     }
 
@@ -29,7 +29,7 @@ public class BestDTO {
         return name;
     }
 
-    public List<DishDTO> getDishes() {
+    public List<DishDAO> getDishes() {
         return dishes;
     }
 

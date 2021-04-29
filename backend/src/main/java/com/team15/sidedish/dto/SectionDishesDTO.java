@@ -5,14 +5,14 @@ import java.util.List;
 public class SectionDishesDTO {
 
     private String section;
-    private List<DishDTO> dishes;
+    private List<DishDAO> dishes;
 
-    private SectionDishesDTO(String section, List<DishDTO> dishes) {
+    private SectionDishesDTO(String section, List<DishDAO> dishes) {
         this.section = section;
         this.dishes = dishes;
     }
 
-    public static SectionDishesDTO of(String section, List<DishDTO> dishes) {
+    public static SectionDishesDTO of(String section, List<DishDAO> dishes) {
         return new SectionDishesDTO(section, dishes);
     }
 
@@ -20,7 +20,7 @@ public class SectionDishesDTO {
         return section;
     }
 
-    public List<DishDTO> getDishes() {
+    public List<DishDAO> getDishes() {
         return dishes;
     }
 
