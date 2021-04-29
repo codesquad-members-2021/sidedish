@@ -4,6 +4,7 @@ import com.codesquad.sidedish.category.domain.dto.DetailItemDtoWrapper;
 import com.codesquad.sidedish.category.domain.dto.OrderDTO;
 import com.codesquad.sidedish.category.domain.dto.PreviewListDtoWrapper;
 import com.codesquad.sidedish.category.service.SidedishItemService;
+import com.codesquad.sidedish.global.annotation.Auth;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class SidedishCategoryController {
         return new ResponseEntity<>(detailDTO, HttpStatus.OK);
     }
 
+    @Auth
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public void orderItem(@PathVariable String category, @PathVariable Long id, @RequestBody OrderDTO orderDTO, HttpServletRequest request) {
