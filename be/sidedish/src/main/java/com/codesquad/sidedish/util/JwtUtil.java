@@ -1,10 +1,8 @@
 package com.codesquad.sidedish.util;
 
+import com.codesquad.sidedish.global.exception.InvalidJwtTokenException;
 import com.codesquad.sidedish.user.domain.User;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -36,7 +34,19 @@ public class JwtUtil {
     }
 
     public static boolean validateToken(String jwtToken) {
-        Jws<Claims> claims = Jwts.parser().setSigningKey(serverSecretKey).parseClaimsJws(jwtToken);
-        return !claims.getBody().getExpiration().before(new Date());
+        try {
+            Jws<Claims> claims = Jwts.parser().setSigningKey(serverSecretKey).parseClaimsJws(jwtToken);
+            return !claims.getBody().getExpiration().before(new Date());
+        } catch (ExpiredJwtException e) {
+            throw new InvalidJwtTokenException(InvalidJwtTokenException.EXPIRED_JWT_EXCEPTION);
+        } catch (UnsupportedJwtException e) {
+            throw new InvalidJwtTokenException(InvalidJwtTokenException.UNSUPPORTED_JWT_EXCEPTION);
+        } catch (MalformedJwtException e) {
+            throw new InvalidJwtTokenException(InvalidJwtTokenException.MALFORMED_JWT_EXCEPTION);
+        } catch (SignatureException e) {
+            throw new InvalidJwtTokenException(InvalidJwtTokenException.SIGNATURE_EXCEPTION);
+        } catch (IllegalArgumentException e) {
+            throw new InvalidJwtTokenException(InvalidJwtTokenException.ILLEGAL_ARGUMENT_EXCEPTION);
+        }
     }
 }
