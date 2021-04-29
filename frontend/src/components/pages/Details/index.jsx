@@ -4,9 +4,9 @@ import Image from "../../atoms/Image";
 import loadData from "../../../util/loadData";
 import InfoImages from "../../molecules/InfoImages";
 import InfoGeneral from "../../molecules/InfoGeneral";
-import InfoPrice from "../../molecules/InfoPrice";
 import InfoProduct from "../../molecules/InfoProduct";
 import InfoQuantity from "../../molecules/InfoQuantity";
+import Button from "../../atoms/Button";
 
 const Details = ({ ...props }) => {
   const [detailDish, setDetailDish] = useState([]);
@@ -14,7 +14,7 @@ const Details = ({ ...props }) => {
 
   useEffect(() => {
     loadData(setDetailDish, props._dishType, props._hash);
-  }, []);
+  }, [props._dishType, props._hash]);
 
   const DetailWrapper = styled.div`
     display: flex;
@@ -27,11 +27,12 @@ const Details = ({ ...props }) => {
   const ImageWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 48px;
+    margin-right: 32px;
   `;
   const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    width: 440px;
   `;
 
   const TopImage = () => {
@@ -60,8 +61,8 @@ const Details = ({ ...props }) => {
           delivery_info={detailDish.delivery_info}
           delivery_fee={detailDish.delivery_fee}
         ></InfoGeneral>
-        <InfoQuantity></InfoQuantity>
-        <InfoPrice t_price="5200"></InfoPrice>
+        <InfoQuantity t_price={5200}></InfoQuantity>
+        <Button _default />
       </ContentWrapper>
     </DetailWrapper>
   );

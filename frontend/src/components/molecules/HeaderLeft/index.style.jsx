@@ -15,6 +15,7 @@ const Li = styled.li`
   float: left;
   margin-left: 24px;
   padding: 11px 0;
+  cursor: pointer;
 `;
 
 export { WrapDiv, Ul, Li };

@@ -12,17 +12,18 @@ const WrapDiv = styled.div`
 const LineDiv = styled.div`
   width: 89px;
   height: 1px;
-  flex-grow: 0;
-  margin: 16px 110px;
+  margin: 16px;
   background: #ffffff;
 `;
 const WrapTitle = styled.div`
   display: flex;
+  position: relative;
+  top: 40%;
   flex-direction: column;
-  width: 89px;
-  height: 103px;
   align-items: center;
-  margin: 140px 148px;
+  justify-content: center;
+  /* align-items: center; */
+  /* margin: 140px 148px; */
 `;
 
 export { WrapDiv, LineDiv, WrapTitle };

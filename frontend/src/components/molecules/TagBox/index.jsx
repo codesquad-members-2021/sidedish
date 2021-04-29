@@ -1,15 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import Tag from '../../atoms/Tag';
+import React from "react";
+import styled from "styled-components";
+import Tag from "../../atoms/Tag";
 
 const TagWrapper = styled.div`
   display: flex;
 `;
 
-const TagBox = props => {
+const TagBox = (props) => {
   const tagType = {
-    이벤트특가: '_event',
-    론칭특가: '_new',
+    이벤트특가: "_event",
+    론칭특가: "_new",
+    베스트: "_best",
   };
 
   if (props._badge) {

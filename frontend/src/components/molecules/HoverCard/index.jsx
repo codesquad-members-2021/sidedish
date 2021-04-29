@@ -1,6 +1,6 @@
-import React from 'react';
-import { WrapDiv, LineDiv, WrapTitle } from './index.style';
-import Span from '../../atoms/Span';
+import React from "react";
+import { WrapDiv, LineDiv, WrapTitle } from "./index.style";
+import Span from "../../atoms/Span";
 
 const HoverCard = ({ children, ...props }) => {
   if (props.isHover) {

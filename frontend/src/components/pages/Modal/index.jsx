@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import styled from 'styled-components';
-import Details from '../Details';
-import Icon from '../../atoms/Icon';
+import React from "react";
+import ReactDom from "react-dom";
+import styled from "styled-components";
+import Details from "../Details";
+import Icon from "../../atoms/Icon";
 
 const OverlayStyle = styled.div`
   position: fixed;
@@ -19,6 +19,7 @@ const ModalStyles = styled.div`
   display: flex;
   top: 50%;
   left: 50%;
+  padding: 48px;
   transform: translate(-50%, -50%);
   width: 960px;
   height: 680px;
@@ -39,14 +40,14 @@ const Modal = ({ open, onClose, ...props }) => {
           onClose={onClose}
           _type="CloseIcon"
           _color="#FFFFFF"
-          _width="16px"
+          _width="20px"
           _position="absolute"
-          _right="-20px"
-          _top="0"
+          _right="-26px"
+          _top="2px"
         />
       </ModalStyles>
     </>,
-    document.getElementById('detail')
+    document.getElementById("detail")
   );
 };
 

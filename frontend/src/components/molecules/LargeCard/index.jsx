@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { WrapDiv, WrapContent } from './index.style';
-import HoverCard from '../../molecules/HoverCard';
-import Image from '../../atoms/Image';
-import Span from '../../atoms/Span';
-import TagBox from '../../molecules/TagBox';
-import Modal from '../../pages/Modal';
+import React, { useState } from "react";
+import { WrapDiv, WrapContent } from "./index.style";
+import HoverCard from "../../molecules/HoverCard";
+import Image from "../../atoms/Image";
+import Span from "../../atoms/Span";
+import TagBox from "../../molecules/TagBox";
 
 const LargeCard = ({ children, ...props }) => {
   const [isHover, setIsHover] = useState(false);
