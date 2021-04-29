@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import * as Carousel from 'Components/Carousel';
 import Card from 'Components/commons/Cards';
 
-const BottomSide = ({ isHide }) => {
-
-  useEffect(() => {
-    console.log(isHide)
-  }, [isHide])
+const BottomSide = () => {
 
   return (
     <BottomSideWrapper>

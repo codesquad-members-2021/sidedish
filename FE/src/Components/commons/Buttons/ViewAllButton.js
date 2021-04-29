@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 // import 
 
-const ViewAllButton = ({}) => {
+const ViewAllButton = ({ onClick }) => {
   
   const handleViewAllButtonClick = () => {
     console.log("handleViewAllButtonClick");
+    onClick();
   }
   return (
     <Button onClick={handleViewAllButtonClick}> 모든 카테고리 보기 </Button>
