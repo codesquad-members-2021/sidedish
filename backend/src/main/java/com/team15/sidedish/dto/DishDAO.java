@@ -1,5 +1,6 @@
 package com.team15.sidedish.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
@@ -16,9 +17,13 @@ public class DishDAO {
     private String description;
 
     @JsonProperty("normal_price")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer normalPrice;
+
     @JsonProperty("special_price")
     private Integer specialPrice;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String[] badge;
 
     public DishDAO(String detailHash, String image, String deliveryType, String title, String description, Integer normalPrice, Integer specialPrice, String[] badge) {
