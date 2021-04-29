@@ -1,11 +1,6 @@
-package com.codesquad.sidedish.SideDish.domain.dish;
+package com.codesquad.sidedish.SideDish.domain;
 
-import com.codesquad.sidedish.SideDish.domain.delivery.DishDelivery;
-import com.codesquad.sidedish.SideDish.domain.image.DishImage;
-import com.codesquad.sidedish.SideDish.domain.sale.DishSale;
-import com.codesquad.sidedish.SideDish.dto.SaleDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
@@ -49,8 +44,8 @@ public class Dish {
         this.currentDateTime = LocalDateTime.now();
     }
 
-    public void addImage(DishImage... dishImages){
-        for(DishImage dishImage: dishImages) {
+    public void addImage(DishImage... dishImages) {
+        for (DishImage dishImage : dishImages) {
             this.dishImages.add(dishImage);
         }
     }
@@ -130,9 +125,6 @@ public class Dish {
                 ", categoryId=" + categoryId +
                 ", quantity=" + quantity +
                 ", currentDateTime=" + currentDateTime +
-//                ", dishSales=" + dishSales +
-//                ", dishDeliveries=" + dishDeliveries +
-//                ", dishImages=" + dishImages +
                 '}';
     }
 

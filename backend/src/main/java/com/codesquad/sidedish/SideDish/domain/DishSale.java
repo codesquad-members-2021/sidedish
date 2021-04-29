@@ -1,21 +1,20 @@
-package com.codesquad.sidedish.SideDish.domain.delivery;
+package com.codesquad.sidedish.SideDish.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 
-public class DishDelivery {
+public class DishSale {
 
     @Id
     private Long id;
 
     private String dish;
 
-    private Long delivery;
+    private Long sale;
 
     @PersistenceConstructor
-    public DishDelivery(Long delivery) {
-        this.delivery = delivery;
+    public DishSale(Long sale) {
+        this.sale = sale;
     }
 
     public Long getId() {
@@ -26,8 +25,8 @@ public class DishDelivery {
         return dish;
     }
 
-    public Long getDelivery() {
-        return delivery;
+    public Long getSale() {
+        return sale;
     }
 
 }

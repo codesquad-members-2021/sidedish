@@ -1,4 +1,4 @@
-package com.codesquad.sidedish.SideDish.domain.image;
+package com.codesquad.sidedish.SideDish.domain;
 
 import org.springframework.data.annotation.Id;
 

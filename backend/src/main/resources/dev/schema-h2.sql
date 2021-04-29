@@ -1,4 +1,5 @@
 SET MODE MySQL;
+DROP ALL OBJECTS;
 
 -- -----------------------------------------------------
 -- Schema mydb

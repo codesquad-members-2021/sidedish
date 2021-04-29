@@ -1,4 +1,4 @@
-package com.codesquad.sidedish.SideDish.domain.sale;
+package com.codesquad.sidedish.SideDish.domain;
 
 import org.springframework.data.annotation.Id;
 

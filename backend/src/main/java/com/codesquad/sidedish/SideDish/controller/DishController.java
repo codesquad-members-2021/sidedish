@@ -1,15 +1,13 @@
 package com.codesquad.sidedish.SideDish.controller;
 
-import com.codesquad.sidedish.SideDish.domain.dish.Dish;
-import com.codesquad.sidedish.SideDish.dto.*;
+import com.codesquad.sidedish.SideDish.dto.CategoryDto;
+import com.codesquad.sidedish.SideDish.dto.DishDto;
 import com.codesquad.sidedish.SideDish.service.CategoryService;
 import com.codesquad.sidedish.SideDish.service.DishService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,7 +30,7 @@ public class DishController {
         return ResponseEntity.ok().body(categories);
     }
 
-//    @GetMapping("/detail/{detailHash}")
+    //    @GetMapping("/detail/{detailHash}")
 //    @ApiOperation(value = "요리 상세", notes = "요리의 상세 정보를 반환합니다.")
 //    public ResponseEntity<DishDetailDto> getDetail(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash) {
 //        DishDetailDto dishDetailDto = dishService.getDetail(detailHash);
@@ -59,42 +57,18 @@ public class DishController {
         List<DishDto> dishes = dishService.getList(1L);
         return ResponseEntity.ok().body(dishes);
     }
-//
-//    @GetMapping("/side")
-//    @ApiOperation(value = "반찬 요리", notes = "반찬 요리의 목록을 반환합니다.")
-//    public ResponseEntity<List<DishDto>> getSideList() {
-//        List<DishDto> dishes = dishService.getList(3);
-//        return ResponseEntity.ok().body(dishes);
-//    }
-//
-//    @GetMapping("/soup")
-//    @ApiOperation(value = "국물 요리", notes = "국물 요리의 목록을 반환합니다.")
-//    public ResponseEntity<List<DishDto>> getSoupList() {
-//        List<DishDto> dishes = dishService.getList(2);
-//        return ResponseEntity.ok().body(dishes);
-//    }
 
-//    @GetMapping("/main")
-//    @ApiOperation(value = "메인 요리", notes = "메인 요리의 목록을 반환합니다.")
-//    public ResponseEntity<List<Dish>> getMainList() {
-//        List<Dish> dishes = dishService.getList(1L);
-//        return ResponseEntity.ok().body(dishes);
-//    }
-//
-//    @GetMapping("/side")
-//    @ApiOperation(value = "반찬 요리", notes = "반찬 요리의 목록을 반환합니다.")
-//    public ResponseEntity<List<Dish>> getSideList() {
-//        List<Dish> dishes = dishService.getList(3L);
-//        return ResponseEntity.ok().body(dishes);
-//    }
-//
-//    @GetMapping("/soup")
-//    @ApiOperation(value = "국물 요리", notes = "국물 요리의 목록을 반환합니다.")
-//    public ResponseEntity<List<Dish>> getSoupList() {
-//        List<Dish> dishes = dishService.getList(2L);
-//        return ResponseEntity.ok().body(dishes);
-//    }
-//
+    @GetMapping("/soup")
+    @ApiOperation(value = "국물 요리", notes = "국물 요리의 목록을 반환합니다.")
+    public ResponseEntity<List<DishDto>> getSoupList() {
+        List<DishDto> dishes = dishService.getList(2L);
+        return ResponseEntity.ok().body(dishes);
+    }
 
-
+    @GetMapping("/side")
+    @ApiOperation(value = "반찬 요리", notes = "반찬 요리의 목록을 반환합니다.")
+    public ResponseEntity<List<DishDto>> getSideList() {
+        List<DishDto> dishes = dishService.getList(3L);
+        return ResponseEntity.ok().body(dishes);
+    }
 }
