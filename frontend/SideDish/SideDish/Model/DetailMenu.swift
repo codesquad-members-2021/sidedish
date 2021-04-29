@@ -19,11 +19,11 @@ class DetailMenu: Decodable {
     private(set) var deliveryFee: String
     private(set) var stock: Int
     private(set) var prices: [String]
-    private(set) var badge: [String]
+    private(set) var badge: [String?]
     private(set) var detailSection: [String]
     
     
-    init(detailHash: String, topImage: String, thumbImages: [String], title: String, productDescription: String, point: Int, deliveryInfo: String, deliveryFee: String, stock: Int, prices: [String], badges: [String], detailSection: [String]) {
+    init(detailHash: String, topImage: String, thumbImages: [String], title: String, productDescription: String, point: Int, deliveryInfo: String, deliveryFee: String, stock: Int, prices: [String], badges: [String?], detailSection: [String]) {
         self.detailHash = detailHash
         self.topImage = topImage
         self.thumbImages = thumbImages

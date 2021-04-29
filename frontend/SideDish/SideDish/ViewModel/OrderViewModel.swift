@@ -3,7 +3,7 @@ import Foundation
 
 class OrderViewModel {
     
-    private var orderCount: Int
+    private(set) var orderCount: Int
     private var detailHash: String
     
     init() {
@@ -27,4 +27,7 @@ class OrderViewModel {
         self.detailHash = detailHash
     }
     
+    func isOrderAvailable(stock: Int) -> Bool {
+        return stock > self.orderCount
+    }
 }

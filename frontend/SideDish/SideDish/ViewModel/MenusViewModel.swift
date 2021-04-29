@@ -59,16 +59,25 @@ class MenusViewModel {
             let price = menu.normalPrice == nil ? nil : String(menu.normalPrice!)
             let nPrice = stringToAttributedString(price)
             let badges = menu.badge == [nil] ? [] : menu.badge.map{ $0! }
-            let viewModel = MenuViewModel(hash: menu.detailHash, image: menu.image, title: menu.title, body: menu.description, sPrice: String(menu.salePrice), nPrice: nPrice, badges: badges)
+            let viewModel = MenuViewModel(hash: menu.detailHash, image: menu.image, title: menu.title, body: menu.description, sPrice: convertDecimal(string: String(menu.salePrice)), nPrice: nPrice, badges: badges)
             return viewModel
             
         }
         return viewModelList
     }
     
+    func convertDecimal(string: String) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let stringToInt = Int(string)!
+        return numberFormatter.string(from: NSNumber(value: stringToInt))!
+    }
+    
     func stringToAttributedString(_ price: String?) -> NSAttributedString {
         if let pastPrice = price {
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(pastPrice)원")
+            let convertedPrice = convertDecimal(string: pastPrice)
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(convertedPrice)원")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             return attributeString
         } else {

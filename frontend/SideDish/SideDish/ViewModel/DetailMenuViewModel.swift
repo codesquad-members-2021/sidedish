@@ -43,8 +43,8 @@ class DetailMenuViewModel {
         self.title = data.title
         self.productDescription = data.productDescription
         self.salePrice = stringToAttributedString(data.prices)
-        self.normalPrice = convertDecimal(string: data.prices[0])
-        self.badges = verifyBadges(badges: data.badge)
+        self.normalPrice = "\(convertDecimal(string: data.prices[0]))원"
+        self.badges = verifyBadges(badges: data.badge != [nil] ? data.badge.map() { $0! } : [])
         self.point = data.point
         self.deliveryInfo = data.deliveryInfo
         self.deliveryFee = data.deliveryFee
@@ -69,6 +69,10 @@ class DetailMenuViewModel {
         
         let stringToInt = Int(string)!
         return numberFormatter.string(from: NSNumber(value: stringToInt))!
+    }
+    
+    func normalPriceToInt() -> Int {
+        return Int(self.normalPrice.components(separatedBy: [",", "원"]).joined())!        
     }
     
     func verifyBadges(badges: [String]) -> [Bool] {

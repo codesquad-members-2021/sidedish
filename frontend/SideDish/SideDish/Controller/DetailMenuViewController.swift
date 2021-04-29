@@ -37,8 +37,11 @@ class DetailMenuViewController: UIViewController {
             self.detailScrollView.body.text = self.detailMenuViewModel.productDescription
             self.configureBadges(verified: self.detailMenuViewModel.badges)
             self.detailScrollView.point.text = String(self.detailMenuViewModel.point)
+            self.detailScrollView.salePrice.text = self.detailMenuViewModel.normalPrice
+            self.detailScrollView.normalPrice.attributedText = self.detailMenuViewModel.salePrice
             self.detailScrollView.deliveryInfo.text = self.detailMenuViewModel.deliveryInfo
             self.detailScrollView.deliveryFee.text = self.detailMenuViewModel.deliveryFee
+            self.detailScrollView.totalPrice.text = self.detailMenuViewModel.normalPrice
             self.configureThumbnailImage(imageStringArr: self.detailMenuViewModel.thumbImages)
             self.configureDetailStackViewImage(imageStringArr: self.detailMenuViewModel.detailSection)
         }
@@ -87,5 +90,18 @@ class DetailMenuViewController: UIViewController {
         }
     }
     
+    @IBAction func pressIncreaseButton(_ sender: UIButton) {
+        self.orderViewModel.increaseOrderCount()
+        self.detailScrollView.orderCount.text = "\(self.orderViewModel.orderCount)"
+        let calculatedPrice = String(detailMenuViewModel.normalPriceToInt() * self.orderViewModel.orderCount)
+        self.detailScrollView.totalPrice.text = "\(self.detailMenuViewModel.convertDecimal(string: calculatedPrice))원"
+    }
+    
+    @IBAction func pressdecreaseButton(_ sender: UIButton) {
+        self.orderViewModel.decreaseOrderCount()
+        self.detailScrollView.orderCount.text = "\(self.orderViewModel.orderCount)"
+        let calculatedPrice = String(detailMenuViewModel.normalPriceToInt() * self.orderViewModel.orderCount)
+        self.detailScrollView.totalPrice.text = "\(self.detailMenuViewModel.convertDecimal(string: calculatedPrice))원"
+    }
 }
 
