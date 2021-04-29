@@ -11,9 +11,9 @@ import Alamofire
 class ImageDownloadManager {
     
     private let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-    
+
     func download(from imageURL: String, fileName: String, completionHandler: @escaping (String) -> ()){
-        let request = downloadRequest(of: imageURL, fileName: "\(fileName).png")
+        let request = downloadRequest(of: imageURL, fileName: fileName)
         request.responseURL { response in
             if response.error == nil, let filePath = response.fileURL?.path {
                 completionHandler(filePath)

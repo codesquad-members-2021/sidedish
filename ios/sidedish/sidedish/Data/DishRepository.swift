@@ -96,25 +96,33 @@ final class DishRepository {
     }
     
     private func updateCategory(of endPoint: String, with sideDishes: [NSManagedObject]) {
-        let fetchRequest = findCategoryForEndPoint(endPoint)
+        let fetchRequest = findSideDishes(query: Query.endPoint, match: endPoint)
         let objectToUpdate = try! self.context.fetch(fetchRequest).first!
         objectToUpdate.setValue(sideDishes, forKey: SaveSideDishes.Properties.sideDish)
     }
 
     private func loadSideDishes(of endPoint: String) -> Just<[SideDishManageable]> {
-        let fetchRequest = findCategoryForEndPoint(endPoint)
+        let fetchRequest = findSideDishes(query: Query.endPoint, match: endPoint)
         let targetCategory = try! context.fetch(fetchRequest).first!
         let sideDishes = targetCategory.sideDish! as [SideDishManageable]
         let publisher = Just(sideDishes)
         return publisher
     }
     
-    private func findCategoryForEndPoint(_ endPoint: String) -> NSFetchRequest<SaveSideDishes> {
+    private func findSideDishes(query: Query, match: String) -> NSFetchRequest<SaveSideDishes> {
         let fetchRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "endPoint == %@", endPoint)
+        fetchRequest.predicate = NSPredicate(format: query.value, match)
         return fetchRequest
     }
     
+    enum Query: String {
+        case endPoint = "endPoint == %@"
+        case sideDishID = "ANY sideDish.id == %@"
+        
+        var value: String {
+            return rawValue
+        }
+    }
     
     //MARK: - thumbnail path
     func getSideDishThumbnailPath(from url: String, id: String, completionHandler: @escaping (Just<String?>) -> ()) {
@@ -127,7 +135,7 @@ final class DishRepository {
     }
     
     private func updateThumbnailPath(of id: String, with path: String) {
-        let fetchRequest = findSideDishForHash(id)
+        let fetchRequest = findSideDishes(query: Query.sideDishID, match: id)
         
         guard let objectToUpdate = try! self.context.fetch(fetchRequest).first,
               let targetDish = objectToUpdate.sideDish?.first(where: { (dish) -> Bool in
@@ -137,14 +145,8 @@ final class DishRepository {
         targetDish.setValue(path, forKeyPath: SaveSideDish.Properties.thumbnailPath)
     }
     
-    private func findSideDishForHash(_ hash: String) -> NSFetchRequest<SaveSideDishes> {
-        let fetchRequest: NSFetchRequest<SaveSideDishes> = SaveSideDishes.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "ANY sideDish.id == %@", hash)
-        return fetchRequest
-    }
-    
     private func loadThumbnailPath(of id: String) -> Just<String?> {
-        let fetchRequest = findSideDishForHash(id)
+        let fetchRequest = findSideDishes(query: Query.sideDishID, match: id)
         
         guard let targetSideDish = try? context.fetch(fetchRequest).first else {
             return Just(nil)
