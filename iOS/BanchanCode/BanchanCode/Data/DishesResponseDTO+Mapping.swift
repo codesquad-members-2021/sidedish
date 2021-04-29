@@ -51,23 +51,3 @@ extension DishesResponseDTO.DishDTO {
                      badges: badges)
     }
 }
-
-////DB연결
-//extension DishesResponseDTO {
-//    func getDomainByDB() -> Dishes {
-//        let realm = try! Realm()
-//        return .init(dishes: dishes.map { $0.toDomain() })
-//    }
-//}
-//
-//extension DishesResponseDTO.DishDTO {
-//    func toDomainDB() -> Dish {
-//        return .init(id: id,
-//                     name: name,
-//                     description: description,
-//                     imageURL: topImage,
-//                     prices: prices,
-//                     badges: badges)
-//    }
-//}
-
