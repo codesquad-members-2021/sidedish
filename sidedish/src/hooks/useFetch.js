@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const useFetch = ({ url, parse, target = [] }) => {
+const useFetch = ({ url, parse, target = [], initEffect = [] }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,6 +21,12 @@ const useFetch = ({ url, parse, target = [] }) => {
   useEffect(() => {
     fetchData(url);
   }, [...target]);
+
+  useEffect(() => {
+    initEffect.forEach((fn) => {
+      if (data) fn(data);
+    });
+  }, [data]);
 
   return { data, loading, error };
 };
