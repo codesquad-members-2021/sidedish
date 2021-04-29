@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ItemDetails: Codable {
+struct ItemDetails: Decodable {
     let hash: String
     let data: ItemData
 }

@@ -8,8 +8,15 @@
 import Foundation
 import Combine
 
-class SideDishViewModel {
-    
+protocol SideDishViewModelProcotol {
+    func didFetchSideDishes(completion: @escaping ((Menu,[Item])) -> ())
+    func didFetchHeaderRowCount(with path: Menu) -> Int
+    func didFetchItemDatailHash(with path: Menu, sequence: Int) -> Item?
+    func except() -> AnyPublisher<String, Never>
+}
+
+class SideDishViewModel: SideDishViewModelProcotol {
+        
     private let sideDishUseCase: SideDishProtocol
     private var sideDishManager: SideDishManager
     private var cancellable = Set<AnyCancellable>()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ItemData: Codable {
+struct ItemData: Decodable {
     let topImage: String
     let thumbImages: [String]
     let productDescription, point, deliveryInfo, deliveryFee: String

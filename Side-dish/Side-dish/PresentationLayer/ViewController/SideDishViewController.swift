@@ -11,8 +11,8 @@ import Combine
 class SideDishViewController: UIViewController {
     
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
-    @Dependency private var sideDishViewModel: SideDishViewModel
     
+    private var sideDishViewModel: SideDishViewModelProcotol!
     private var cancellable = Set<AnyCancellable>()
     private var dataSource : UICollectionViewDiffableDataSource<Menu, Item>!
     private var cellSize: CGFloat = 130
@@ -71,6 +71,10 @@ class SideDishViewController: UIViewController {
         }.store(in: &cancellable)
     }
     
+    func dependInjectionViewModel(to viewModel:SideDishViewModelProcotol) {
+        self.sideDishViewModel = viewModel
+    }
+    
     private func triggerAlert(by error : String) {
         DispatchQueue.main.async { [weak self] in
             self?.present(Alert.create(title : error),animated: true)
@@ -99,7 +103,7 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
             return
         }
         
-        targetVC.dependDetail(detailViewModel: DIContainer.createDI2())
+        targetVC.dependInjectionViewModel(to: DetailViewModel(sideDishUseCase: UsecaseGenerator.create(), hash: itemDetail.detailHash))
         targetVC.setItemInfo(from: itemDetail)
         
         self.navigationController?.pushViewController(targetVC, animated: true)

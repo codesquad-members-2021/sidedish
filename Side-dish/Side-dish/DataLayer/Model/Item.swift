@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Item: Codable, Hashable {
+struct Item: Decodable, Hashable {
     let detailHash: String
     let image: String
     let alt: String
@@ -29,12 +29,12 @@ struct Item: Codable, Hashable {
     }
 }
 
-enum DeliveryType: String, Codable {
+enum DeliveryType: String, Decodable {
     case dawnDelivery = "새벽배송"
     case nationDelivery = "전국택배"
 }
 
-enum Badge: String, Codable {
+enum Badge: String, Decodable {
     case eventPrice = "이벤트특가"
     case launchingPrice = "론칭특가"
 }

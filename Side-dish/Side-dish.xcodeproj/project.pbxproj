@@ -21,11 +21,11 @@
 		BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */; };
 		BFAE1BC126301CF300C0625E /* FoodCardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFAE1BBF26301CF300C0625E /* FoodCardHeaderView.xib */; };
 		BFAE1BC426302DB600C0625E /* Imagloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAE1BC326302DB600C0625E /* Imagloader.swift */; };
-		BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F97F2635BBFA006C9DCA /* Dependency.swift */; };
 		BFC2F9892636A65E006C9DCA /* DetailContenetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9882636A65E006C9DCA /* DetailContenetView.swift */; };
 		BFC2F9912636BED4006C9DCA /* NPriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9902636BED4006C9DCA /* NPriceLabel.swift */; };
 		BFC2F9952637B51F006C9DCA /* Int-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9942637B51F006C9DCA /* Int-extension.swift */; };
 		BFC2F9982637B55C006C9DCA /* String-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9972637B55C006C9DCA /* String-extension.swift */; };
+		BFC2FA08263A975C006C9DCA /* UsecaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
 		BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* SideDishViewController.swift */; };
@@ -38,7 +38,6 @@
 		BFCE4980262DC3F2006C0882 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE497F262DC3F2006C0882 /* NetworkManager.swift */; };
 		BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */; };
 		BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */; };
-		BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE49C1262E8918006C0882 /* DIContainer.swift */; };
 		BFDBECCB2632956300628672 /* SideDishAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */; };
 		BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */; };
 		BFDBECD526329C9000628672 /* AmountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBECD426329C9000628672 /* AmountState.swift */; };
@@ -60,11 +59,11 @@
 		BFAE1BBE26301CF300C0625E /* FoodCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardHeaderView.swift; sourceTree = "<group>"; };
 		BFAE1BBF26301CF300C0625E /* FoodCardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCardHeaderView.xib; sourceTree = "<group>"; };
 		BFAE1BC326302DB600C0625E /* Imagloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagloader.swift; sourceTree = "<group>"; };
-		BFC2F97F2635BBFA006C9DCA /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		BFC2F9882636A65E006C9DCA /* DetailContenetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContenetView.swift; sourceTree = "<group>"; };
 		BFC2F9902636BED4006C9DCA /* NPriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPriceLabel.swift; sourceTree = "<group>"; };
 		BFC2F9942637B51F006C9DCA /* Int-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-extension.swift"; sourceTree = "<group>"; };
 		BFC2F9972637B55C006C9DCA /* String-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-extension.swift"; sourceTree = "<group>"; };
+		BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseGenerator.swift; sourceTree = "<group>"; };
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +78,6 @@
 		BFCE497F262DC3F2006C0882 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFCE49B6262E751E006C0882 /* SideDishUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishUseCase.swift; sourceTree = "<group>"; };
 		BFCE49BC262E7759006C0882 /* SideDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishViewModel.swift; sourceTree = "<group>"; };
-		BFCE49C1262E8918006C0882 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		BFDBECCA2632956200628672 /* SideDishAmountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishAmountViewModel.swift; sourceTree = "<group>"; };
 		BFDBECD1263299EE00628672 /* AmountButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButtonViewModel.swift; sourceTree = "<group>"; };
 		BFDBECD426329C9000628672 /* AmountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountState.swift; sourceTree = "<group>"; };
@@ -193,8 +191,7 @@
 				BFC2F9932637B4EC006C9DCA /* Extension */,
 				BFCE4952262D4891006C0882 /* AppDelegate.swift */,
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
-				BFCE49C1262E8918006C0882 /* DIContainer.swift */,
-				BFC2F97F2635BBFA006C9DCA /* Dependency.swift */,
+				BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */,
 				8844B7CD262DB62C00FA49E9 /* DataLayer */,
 				BFCE49B4262E74FF006C0882 /* DomainLayer */,
 				BFCE49BB262E7742006C0882 /* PresentationLayer */,
@@ -330,18 +327,17 @@
 				BFDBECCB2632956300628672 /* SideDishAmountViewModel.swift in Sources */,
 				BFC2F9912636BED4006C9DCA /* NPriceLabel.swift in Sources */,
 				BFCE49B7262E751F006C0882 /* SideDishUseCase.swift in Sources */,
+				BFC2FA08263A975C006C9DCA /* UsecaseGenerator.swift in Sources */,
 				8844B8582631AB1300FA49E9 /* DetailViewModel.swift in Sources */,
 				BFC2F9892636A65E006C9DCA /* DetailContenetView.swift in Sources */,
 				BFDBECD526329C9000628672 /* AmountState.swift in Sources */,
 				BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */,
-				BFCE49C2262E8918006C0882 /* DIContainer.swift in Sources */,
 				BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */,
 				8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */,
 				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
 				BFC2F9982637B55C006C9DCA /* String-extension.swift in Sources */,
 				BFCE4976262DBFE2006C0882 /* EndPoint.swift in Sources */,
 				BFCE49BD262E7759006C0882 /* SideDishViewModel.swift in Sources */,
-				BFC2F9802635BBFA006C9DCA /* Dependency.swift in Sources */,
 				BFAE1BBA26301B8000C0625E /* AlertFactory.swift in Sources */,
 				BFDBECD2263299EE00628672 /* AmountButtonViewModel.swift in Sources */,
 				BFAE1BC426302DB600C0625E /* Imagloader.swift in Sources */,

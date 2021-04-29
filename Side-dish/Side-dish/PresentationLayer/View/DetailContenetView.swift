@@ -98,5 +98,4 @@ class DetailContenetView: UIView {
         sPriceLabel.text = sPrice
         nPriceLabel.configure(price: nPrice)
     }
-    
 }

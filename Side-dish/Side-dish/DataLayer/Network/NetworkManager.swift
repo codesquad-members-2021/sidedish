@@ -13,7 +13,7 @@ protocol NetworkManageable {
     func requestDetails(detailHash: String, method: HTTPMethod) -> AnyPublisher<ItemDetails, NetworkError>
 }
 
-class NetworkManager: NetworkManageable {
+final class NetworkManager: NetworkManageable {
     
     func requestDetails(detailHash: String, method: HTTPMethod) -> AnyPublisher<ItemDetails, NetworkError> {
         guard let urlRequest = makeURLRequest(detailHash: detailHash, method: method) else {
@@ -29,7 +29,7 @@ class NetworkManager: NetworkManageable {
         return request(urlRequest: urlRequest, type: SideDishes.self)
     }
     
-    private func request<T>(urlRequest: URLRequest, type : T.Type) -> AnyPublisher<T, NetworkError>  where T: Decodable {
+    private func request<T : Decodable>(urlRequest: URLRequest, type : T.Type) -> AnyPublisher<T, NetworkError> {
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
             .mapError { _ in
                 NetworkError.invalidRequest

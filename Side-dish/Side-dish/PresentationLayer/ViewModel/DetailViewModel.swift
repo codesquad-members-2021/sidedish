@@ -8,16 +8,22 @@
 import Foundation
 import Combine
 
-class DetailViewModel {
+protocol DetailViewModelProtocol {
+    func didFetchDetails() -> AnyPublisher<ItemData, Never>
+    func except() -> AnyPublisher<String, Never>
+}
+
+class DetailViewModel: DetailViewModelProtocol {
     
     private let sideDishUseCase: SideDishProtocol
     private var cancellable = Set<AnyCancellable>()
     
-    @Published var itemDetails: ItemData?
-    @Published var errorMessage = ""
+    @Published private var itemDetails: ItemData?
+    @Published private var errorMessage = ""
     
-    init(sideDishUseCase: SideDishProtocol) {
+    init(sideDishUseCase: SideDishProtocol, hash: String) {
         self.sideDishUseCase = sideDishUseCase
+        request(with: hash)
     }
     
     func request(with detailHash: String) {

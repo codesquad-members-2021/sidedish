@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SideDishes: Codable {
+struct SideDishes: Decodable {
     let statusCode: Int
     let body: [Item]
 }

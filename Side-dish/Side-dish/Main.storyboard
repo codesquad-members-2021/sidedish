@@ -725,8 +725,6 @@
                     <connections>
                         <outlet property="amountButtomViewModel" destination="9vc-Bu-b8G" id="bKA-A4-0qq"/>
                         <outlet property="detailContentView" destination="1zV-0h-Sg5" id="b36-i5-nPo"/>
-                        <outlet property="detailSectionStackView" destination="PRa-Wd-Hdo" id="85T-dn-pp3"/>
-                        <outlet property="thumbScrollView" destination="d1u-0F-8UB" id="pk8-BS-VKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14d-Kb-WIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

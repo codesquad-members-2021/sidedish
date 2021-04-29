@@ -12,15 +12,12 @@ class DetailViewController: UIViewController {
     
     private var detailItem : Item!
     private var cancellable = Set<AnyCancellable>()
-    private var detailViewModel: DetailViewModel!
+    private var detailViewModel: DetailViewModelProtocol!
     private var sideDishAmountViewModel:SideDishAmountViewModel!
     
     @IBOutlet weak var amountButtomViewModel: AmountButtonViewModel!
-    @IBOutlet weak var thumbScrollView: UIScrollView!
-    @IBOutlet weak var detailSectionStackView: UIStackView!
     @IBOutlet weak var detailContentView: DetailContenetView!
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = detailItem.title
@@ -61,13 +58,12 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func dependDetail(detailViewModel: DetailViewModel) {
-        self.detailViewModel = detailViewModel
+    func dependInjectionViewModel(to viewModel: DetailViewModelProtocol) {
+        self.detailViewModel = viewModel
     }
     
     func setItemInfo(from item: Item) {
         self.detailItem = item
-        self.detailViewModel.request(with: item.detailHash)
     }
     
 }
