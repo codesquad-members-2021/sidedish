@@ -5,7 +5,7 @@ import { logInStyle, LoginModal } from 'components/nav/LoginModal';
 
 const Login = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false);
-  const [USER_ID, SetUSER_ID] = useState(null);
+  const [USER_ID, setUSER_ID] = useState(null);
   const [isShowModal, setIsShowModal] = useState(false);
 
   const handleModalToggle = () => {
@@ -30,9 +30,9 @@ const Login = () => {
 
         const { access_token, login } = await res.json();
         localStorage.setItem('access_token', access_token);
-        SetUSER_ID(login);
+
+        setUSER_ID(login);
         setIsLoggedIn(true);
-        window.close();
       } catch (error) {
         console.error(error);
       }

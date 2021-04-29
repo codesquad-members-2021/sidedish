@@ -38,15 +38,11 @@ router.post('/', async (req, res) => {
     },
   });
 
-  const access_token = jwt.sign(
-    { login: data.login, id: data.id },
-    client_secret,
-    {
-      expiresIn: '1d',
-      issuer: 'Raqqoon',
-      subject: 'userInfo',
-    }
-  );
+  const access_token = jwt.sign({ login: data.login, id: data.id }, client_id, {
+    expiresIn: '1d',
+    issuer: 'Raqqoon',
+    subject: 'userInfo',
+  });
 
   const { login } = data;
 
