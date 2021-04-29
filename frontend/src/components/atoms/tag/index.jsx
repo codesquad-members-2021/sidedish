@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledTag = styled.button`
   display: flex;
@@ -19,6 +19,11 @@ const StyledTag = styled.button`
     width: 84px;
     height: 28px;
     background: #86c6ff;
+  }
+  &._best {
+    width: 84px;
+    height: 28px;
+    background: #fccd40;
   }
 `;
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledSpan = styled.span`
   display: block;
+  /* width: ${(props) => props._width}; */
   color: ${(props) => props._color};
   margin: ${(props) => props._margin};
   font-size: ${(props) => props._fontSize};
@@ -37,9 +38,11 @@ const StyledSpan = styled.span`
     text-decoration: line-through;
   }
   &._tPrice {
+    width: 110px;
     font-size: 32px;
     font-weight: 700;
     color: #010101;
+    text-align: right;
   }
 
   &._logo {
@@ -70,6 +73,9 @@ const StyledSpan = styled.span`
   }
 
   &._detailLabel {
+    width: 60px;
+    white-space: nowrap;
+    margin-right: 16px;
     font-size: 16px;
     font-weight: 400;
     color: #828282;
@@ -78,6 +84,7 @@ const StyledSpan = styled.span`
   &._detailText {
     font-size: 16px;
     font-weight: 400;
+    line-height: 24px;
     color: #4f4f4f;
   }
 
@@ -104,10 +111,26 @@ const StyledSpan = styled.span`
     font-weight: 400;
     color: #828282;
   }
+
+  &._description {
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #828282;
+  }
+  &._tPriceTitle {
+    margin: 10px 24px 0 0;
+    font-size: 18px;
+
   &._otherPrice {
     font-weight: 700;
     font-size: 14px;
     color: #333;
+  }
+  &._tPriceUnit {
+    font-size: 32px;
+    font-weight: 700;
+    color: #010101;
   }
 `;
 

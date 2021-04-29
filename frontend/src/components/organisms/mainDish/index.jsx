@@ -6,11 +6,12 @@ import Carousel from '../Carousel';
 import Icon from '../../atoms/Icon';
 
 const MainDish = props => {
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
     loadData(setData, props._dishType);
-  }, []);
+  }, [props._dishType]);
 
   const Cards = () => {
     return data.map((card, i) => (
@@ -27,6 +28,7 @@ const MainDish = props => {
     ));
   };
 
+
   const Button = type => {
     return (
       <>
@@ -38,6 +40,7 @@ const MainDish = props => {
         />
       </>
     );
+
   };
 
   return (
