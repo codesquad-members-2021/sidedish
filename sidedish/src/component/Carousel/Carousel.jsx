@@ -93,6 +93,7 @@ export const StyledCarousel = styled.div`
     position: absolute;
     font-size: 2rem;
     top: 40%;
+    cursor: pointer;
   }
   .leftArrow {
     left: -50px;

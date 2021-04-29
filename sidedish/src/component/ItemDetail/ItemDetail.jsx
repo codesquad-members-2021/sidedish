@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import usePortal from 'hooks/usePortal';
 import { createPortal } from 'react-dom/cjs/react-dom.development';
 import useFetch from 'hooks/useFetch';
 import { URL } from 'util/data';
 import DetailModal, { ModalStyle } from 'component/ItemDetail/DetailModal';
-
+import { IoClose } from 'react-icons/io5';
 const ItemDetail = ({ id, toggleModal, title, badge }) => {
   const portalElem = usePortal('root');
 
@@ -28,9 +28,7 @@ const ItemDetail = ({ id, toggleModal, title, badge }) => {
           <ErrorStyle>😢불러올 데이터가 없습니다😢</ErrorStyle>
         </ModalStyle>
       )}
-      <div className="closeBtn" onClick={toggleModal}>
-        X
-      </div>
+      <IoClose className="closeBtn" onClick={toggleModal}></IoClose>
     </StyleModal>,
     portalElem
   );
@@ -60,9 +58,13 @@ const StyleModal = styled.div`
 
   .closeBtn {
     position: fixed;
-    left: 76%;
-    font-size: 24px;
+    left: 75.3%;
+    font-size: 2rem;
     top: 20px;
     color: white;
+    cursor: pointer;
+  }
+  .closeBtn:hover {
+    color: red;
   }
 `;
