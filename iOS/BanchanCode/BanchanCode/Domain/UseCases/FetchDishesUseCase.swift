@@ -23,6 +23,14 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     func execute(requestValue: FetchDishesUseCaseRequestValue,
                  completion: @escaping (Result<Dishes, Error>) -> Void) {
         return fetchDishes(categoryName: requestValue.categoryName, completion: { result in
+            switch result {
+            
+            case .success(let items):
+                self.realmManager.addDishes(dishesItem: items.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
+            case .failure(_):
+                //get data from DB
+                break
+            }
             completion(result)
         })
     }
