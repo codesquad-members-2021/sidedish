@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol SideDishManageable {
     func getTitle() -> String
@@ -20,27 +21,93 @@ protocol SideDishManageable {
     func getThumbnailPath() -> String?
 }
 
-
-struct SideDish: Decodable {
+public class SideDish: NSObject, NSCoding, Codable, SideDishManageable {
+    
+    public required init?(coder: NSCoder) {
+        self.id = coder.decodeObject(of: NSString.self, forKey: CodingKeys.id.rawValue) as String? ?? ""
+        self.image = coder.decodeObject(of: NSString.self, forKey: CodingKeys.image.rawValue) as String? ?? ""
+        self.title = coder.decodeObject(of: NSString.self, forKey: CodingKeys.title.rawValue) as String? ?? ""
+        self.subtitle = coder.decodeObject(of: NSString.self, forKey: CodingKeys.subtitle.rawValue) as String? ?? ""
+        self.price = coder.decodeInteger(forKey: CodingKeys.price.rawValue)
+        self.salePrice = coder.decodeInteger(forKey: CodingKeys.salePrice.rawValue)
+        self.deliveryTypes = coder.decodeObject(of: [NSString.self], forKey: CodingKeys.deliveryTypes.rawValue) as? [String]
+        self.badges = coder.decodeObject(of: [NSString.self], forKey: CodingKeys.badges.rawValue) as? [String]
+    }
+    
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: CodingKeys.id.rawValue)
+        coder.encode(image, forKey: CodingKeys.image.rawValue)
+        coder.encode(title, forKey: CodingKeys.title.rawValue)
+        coder.encode(subtitle, forKey: CodingKeys.subtitle.rawValue)
+        coder.encode(price, forKey: CodingKeys.price.rawValue)
+        coder.encode(salePrice, forKey: CodingKeys.salePrice.rawValue)
+        coder.encode(deliveryTypes, forKey: CodingKeys.deliveryTypes.rawValue)
+        coder.encode(badges, forKey: CodingKeys.badges.rawValue)
+        coder.encode(thumbnailPath, forKey: CodingKeys.thumbnailPath.rawValue)
+    }
+    
+    
+    func getTitle() -> String {
+        self.title
+    }
+    
+    func getImageURL() -> String {
+        self.image
+    }
+    
+    func getdescription() -> String {
+        self.subtitle
+    }
+    
+    func getPrice() -> Int {
+        self.price
+    }
+    
+    func getSalePrice() -> Int {
+        self.salePrice
+    }
+    
+    func getDeliveryTypes() -> [String]? {
+        self.deliveryTypes
+    }
+    
+    func getbadge() -> [String]? {
+        self.badges
+    }
+    
+    func getID() -> String {
+        self.id
+    }
+    
+    func updateThumbnailPath(_ path: String) {
+        self.thumbnailPath = path
+    }
+    
+    func getThumbnailPath() -> String? {
+        self.thumbnailPath
+    }
 
     let id: String
     let image: String //library/cache의 파일명
     let title: String //"[소중한식사] 골뱅이무침 195g"
-    let description: String //"매콤새콤달콤, 반찬으로도 안주로도 좋은"
+    let subtitle: String //"매콤새콤달콤, 반찬으로도 안주로도 좋은"
     let price: Int //7,000
     let salePrice: Int //6,300
     let deliveryTypes: [String]? //["새벽배송","전국택배"]
     let badges: [String]? //["이벤트특가", "런칭특가"]
+    var thumbnailPath: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "detailHash"
         case image
         case title
-        case description
+        case subtitle = "description"
         case price
         case salePrice
         case deliveryTypes
         case badges
+        case thumbnailPath
     }
 }
 

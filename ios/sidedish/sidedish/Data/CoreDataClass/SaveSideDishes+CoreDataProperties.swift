@@ -19,7 +19,7 @@ extension SaveSideDishes: SideDishesCategoryManageable {
     @NSManaged public var categoryName: String
     @NSManaged public var endPoint: String
     @NSManaged public var id: Int16
-    @NSManaged public var sideDish: [SaveSideDish]?
+    @NSManaged public var sideDish: [SideDish]?
     
     enum Properties {
         static let entity = "SaveSideDishes"

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension SaveSideDish: SideDishManageable {
+extension SaveSideDish {
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SaveSideDish> {
         return NSFetchRequest<SaveSideDish>(entityName: Properties.entity)

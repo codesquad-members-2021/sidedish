@@ -16,7 +16,7 @@ protocol ManufactureDataforViewModel {
                                           completionHandler: @escaping (Just<[SideDishManageable]>) -> ())
     
     func thumbnailForMainiewSideDishes(url: String, id: String,
-                                       completionHandler: @escaping (Just<String?>) -> ())
+                                       completionHandler: @escaping (Just<String>) -> ())
     
 }
 
@@ -26,7 +26,7 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
     
     init(repository: DishRepository) {
         self.repository = repository
-        self.repository.deleteAllInCoreData()
+        //self.repository.deleteAllInCoreData()
     }
     
     convenience init(baseUrl: String = "http://3.37.26.82:8080"){
@@ -48,7 +48,7 @@ class TurnonAppUsecase: ManufactureDataforViewModel {
     }
     
     func thumbnailForMainiewSideDishes(url: String, id: String,
-                                       completionHandler: @escaping (Just<String?>) -> ()) {
+                                       completionHandler: @escaping (Just<String>) -> ()) {
         return repository.getSideDishThumbnailPath(from: url, id: id) { (publisher) in
             completionHandler(publisher)
         }

@@ -70,9 +70,7 @@ class MenuCellViewModel {
     private func loadThumbnails(for sideDish: SideDishManageable, section: Int, row: Int) {
         turnonAppUsecase.thumbnailForMainiewSideDishes(url: sideDish.getImageURL(), id: sideDish.getID()) { (publisher) in
             publisher.sink { (thumbnailPath) in
-                if let thumbnailPath = thumbnailPath {
-                    self.dishes[section][row].updateThumbnailPath(thumbnailPath)
-                }
+                self.dishes[section][row].updateThumbnailPath(thumbnailPath)
             }.store(in: &self.cancelBag)
         }
     }
