@@ -6,25 +6,26 @@
 //
 
 import Foundation
+import Alamofire
 
 class DataTaskManager {
     
     static let session = URLSession(configuration: .default)
     
-    enum url: String {
+    enum Url: String {
         case main = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
         case soup = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/soup"
         case side = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
     }
     
-    static func get(url: url ,completion: @escaping (Result<GetMenu, Error>) -> Void) {
+    static func sendRequest(url: Url ,completion: @escaping (Result<MenuResponse, Error>) -> Void) {
         guard let url = URL(string: url.rawValue) else {
             print("The URL is inappropriate.")
             return
         }
-        session.dataTask(with: url){ data, response, error in
+        session.dataTask(with: url) { data, response, error in
             if let data = data {
-                guard let menuList = ParsingManager.decodeData(type: GetMenu.self, data: data) else { return }
+                guard let menuList = ParsingManager.decodeData(type: MenuResponse.self, data: data) else { return }
                 completion(.success(menuList))
             } else {
                 guard let error = error?.localizedDescription as? Error else { return }

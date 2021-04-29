@@ -2,17 +2,31 @@
 import Foundation
 
 class MenusViewModel {
-    private var mainViewModel: [MenuViewModel]?
-    private var soupViewModel: [MenuViewModel]?
-    private var sideViewModel: [MenuViewModel]?
+    private(set) var mainViewModel: [MenuViewModel]
+    private(set) var soupViewModel: [MenuViewModel]
+    private(set) var sideViewModel: [MenuViewModel]
+    private var fetchMenuUseCase: FetchMenuUseCase
     
     init() {
-        self.mainViewModel = nil
-        self.soupViewModel = nil
-        self.sideViewModel = nil
+        self.mainViewModel = []
+        self.soupViewModel = []
+        self.sideViewModel = []
+        self.fetchMenuUseCase = FetchDataUseCase()
     }
     
-    func add(menuList: [Menu]?, section:MainDiffableDataSource.sectionTitle) {
+    func fetchData() {
+        self.fetchMenuUseCase.loadMenu(of: .main) { menuList in
+            self.add(menuList: menuList, section: .main)
+        }
+        self.fetchMenuUseCase.loadMenu(of: .soup) { menuList in
+            self.add(menuList: menuList, section: .soup)
+        }
+        self.fetchMenuUseCase.loadMenu(of: .side) { menuList in
+            self.add(menuList: menuList, section: .side)
+        }
+    }
+    
+    func add(menuList: [Menu], section:MainDiffableDataSource.sectionTitle) {
         let viewModelList = matchingViewModel(menuList: menuList)
         switch section {
         case .main:
@@ -22,9 +36,10 @@ class MenusViewModel {
         case .side:
             self.sideViewModel = viewModelList
         }
+        NotificationCenter.default.post(name: MenusViewModel.changeMenu, object: self)
     }
     
-    func giveMenus(section: MainDiffableDataSource.sectionTitle) -> [MenuViewModel]? {
+    func giveMenus(section: MainDiffableDataSource.sectionTitle) -> [MenuViewModel] {
         switch section {
         case .main:
             return mainViewModel
@@ -35,19 +50,16 @@ class MenusViewModel {
         }
     }
     
-    func matchingViewModel(menuList: [Menu]?) -> [MenuViewModel] {
-        guard let menuList = menuList else { return [] }
+    func matchingViewModel(menuList: [Menu]) -> [MenuViewModel] {
         let viewModelList: [MenuViewModel] = menuList.map() { menu in
-            let viewModel = MenuViewModel()
-            let n_price = setPrice(menu.n_price)
-            let badges = setBadges(menu.badge)
-            viewModel.configure(image: menu.image, title: menu.title, body: menu.description, s_price: menu.s_price, n_price: n_price, badges: badges)
+            let nPrice = stringToAttributedString(menu.nPrice)
+            let viewModel = MenuViewModel(image: menu.image, title: menu.title, body: menu.description, sPrice: menu.sPrice, nPrice: nPrice, badges: menu.badge ?? [])
             return viewModel
         }
         return viewModelList
     }
     
-    func setPrice(_ price: String?) -> NSAttributedString {
+    func stringToAttributedString(_ price: String?) -> NSAttributedString {
         if let pastPrice = price {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(pastPrice)원")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
@@ -57,21 +69,8 @@ class MenusViewModel {
         }
     }
     
-    func validate(pastPrice: String?) -> NSMutableAttributedString {
-        if let pastPrice = pastPrice {
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(pastPrice)원")
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            return attributeString
-        } else {
-            return NSMutableAttributedString(string: "")
-        }
-    }
-    
-    func setBadges(_ badges: [String]?) -> [String] {
-        if let badges = badges {
-            return badges
-        } else {
-            return []
-        }
-    }
+}
+
+extension MenusViewModel {
+    static let changeMenu = Notification.Name("changeMenu")
 }
