@@ -6,7 +6,7 @@ const Button = ({type, onClick}) => {
   const selectButton = () => {
     switch (type) {
       case "viewAll":
-        return <ViewAllButton />;
+        return <ViewAllButton onClick={onClick} />;
       default:
         return <></>;
     }
