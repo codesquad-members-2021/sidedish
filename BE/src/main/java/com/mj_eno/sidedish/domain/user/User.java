@@ -14,6 +14,8 @@ public class User {
     private String userId;
     private String token;
 
+    public User() {}
+
     public User(UserInfoDTO userInfoDTO, EmailDTO emailDTO, TokenDTO tokenDTO) {
         this.name = userInfoDTO.getName();
         this.email = emailDTO.getEmail();
@@ -26,6 +28,10 @@ public class User {
         this.email = emailDTO.getEmail();
         this.userId = userInfoDTO.getLogin();
         this.token = tokenDTO.getAccess_token();
+    }
+
+    public void removeToken() {
+        this.token = null;
     }
 
     public Long getId() {
@@ -46,5 +52,16 @@ public class User {
 
     public String getToken() {
         return token;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", userId='" + userId + '\'' +
+                ", token='" + token + '\'' +
+                '}';
     }
 }
