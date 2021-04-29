@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Label from "./Label";
 import { useOnFetchDetailDataContext } from "../Context";
+import { addCommaToNumber } from "../../common/util.js";
 
 const ItemCardStyle = styled.div``;
 
@@ -12,13 +13,15 @@ const ImgContainerStyle = styled.div`
   overflow: hidden;
 `;
 
-const ImgStyle = styled.img.attrs((props) => ({
+const ImgStyle = styled.div.attrs((props) => ({
   src: props.src,
 }))`
+  background-image: url(${(props) => props.src});
+  background-size: cover;
   width: 100%;
-  height: 25rem;
+  height: 20rem;
   &:hover + div {
-    display: block;
+    display: flex;
   }
 `;
 
@@ -32,18 +35,22 @@ const HoverStyle = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  padding: calc(50% - 3rem) calc(50% - 4rem);
   display: none;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
   div {
     margin: 1rem;
     line-height: 1rem;
   }
   div:first-child {
+    display: inline-block;
     padding-bottom: 1rem;
+    margin-bottom: 0;
     border-bottom: 1px solid #fff;
   }
   &:hover {
-    display: block;
+    display: flex;
   }
 `;
 
@@ -101,8 +108,8 @@ export default function ItemCard({
         <TitleStyle>{title}</TitleStyle>
         <DescriptionStyle>{description}</DescriptionStyle>
         <PricesStyle>
-          <SalePriceStyle>{salePrice}원</SalePriceStyle>
-          <NormalPriceStyle>{normalPrice}원</NormalPriceStyle>
+          <SalePriceStyle>{addCommaToNumber(salePrice)}원</SalePriceStyle>
+          <NormalPriceStyle>{addCommaToNumber(normalPrice)}원</NormalPriceStyle>
         </PricesStyle>
         {labels.map((label, idx) => (
           <Label text={label} key={idx} />

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Label from "../../util/Label";
 import PopUpItemCountContainer from "./PopUpItemCountContainer";
 import { useDetailContext } from "../../Context";
+import { addCommaToNumber } from '../../../common/util.js';
 
 const PopUpInformationsStyle = styled.div``;
 
@@ -59,42 +60,6 @@ const PopUpItemBuyingInformationContent = styled.div`
   line-height: 1.5rem;
 `;
 
-// const PopUpItemTotalPriceContainer = styled.div`
-//   display: flex;
-//   justify-content: flex-end;
-//   padding: 2rem 0;
-// `;
-
-// const PopUpItemTotalPriceTitle = styled.div`
-//   margin-right: 1.5rem;
-//   color: #828282;
-//   font-size: 1.125rem;
-//   align-self: center;
-// `;
-
-// const PopUpTotalPrice = styled.div`
-//   font-size: 2rem;
-//   font-weight: 600;
-// `;
-
-// const PopUpItemOrderBtn = styled.button`
-//   background-color: #82d32d;
-//   color: #fff;
-//   font-size: 1.125rem;
-//   font-weight: 600;
-//   border-radius: 0.3125rem;
-//   border: 1px solid #82d32d;
-//   padding: 1rem;
-//   text-align: center;
-//   cursor: pointer;
-//   width: 100%;
-//   transition: all 0.2s ease-in-out;
-//   &:hover {
-//     background-color: #fff;
-//     color: #82d32d;
-//   }
-// `;
-
 export default function PopUpInformations() {
   const detailData = useDetailContext();
   const {
@@ -116,9 +81,9 @@ export default function PopUpInformations() {
       <PopUpItemPriceContainer>
         <Label text="이벤트특가" />
         <SalePriceStyle>
-          {Math.floor(price - price * (discount / 100))}원
+          {addCommaToNumber(Math.floor(price - price * (discount / 100)))}원
         </SalePriceStyle>
-        <NormalPriceStyle>{price}원</NormalPriceStyle>
+        <NormalPriceStyle>{addCommaToNumber(price)}원</NormalPriceStyle>
       </PopUpItemPriceContainer>
       <PopUpItemBuyingInformations>
         <PopUpItemBuyingInformation>

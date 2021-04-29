@@ -10,7 +10,7 @@ const SliderArrowBtnStyle = styled.button`
     cursor: pointer;
     color: #555;
     &:hover {
-      color #333;
+      color: #333;
     }
   }
 `;
