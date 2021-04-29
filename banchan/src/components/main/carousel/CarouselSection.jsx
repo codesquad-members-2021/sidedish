@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import styled from "styled-components";
 import Card from "../../componentUtils/card/Card";
 import { CenterContainer } from "../../componentUtils/styles/common";
