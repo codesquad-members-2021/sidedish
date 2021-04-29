@@ -29,6 +29,7 @@ public class DishService {
     public boolean orderDish(String dishId, int orderSize) {
         Category category = findByDishId(dishId);
         Dish dish = findDishByDishId(dishId);
+
         if (dish.checkStock(orderSize)) {
             dish.updateStock(orderSize);
             category.addDish(dish);
