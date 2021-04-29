@@ -42,7 +42,7 @@ const BestItems = ({ handleClickCard }) => {
   return (
     <S.BestItems>
       <BestItemsTitle />
-      <BestItemsTab {...{ titleList, setBestItemsData }}></BestItemsTab>
+      <BestItemsTab {...{ titleList, setBestItemsData, URL }}></BestItemsTab>
       <BestItemsCardWrapper
         {...{ bestItemsData, handleClickCard }}
       ></BestItemsCardWrapper>

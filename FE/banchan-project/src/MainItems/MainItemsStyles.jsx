@@ -20,6 +20,7 @@ const TotalCategoryButton = styled.button`
 const CategoryItemsWrapper = styled.div`
   position: relative;
   width: 1280px;
+  outline: red solid;
 `;
 
 const CategoryItemsTitleWrapper = styled.div`
