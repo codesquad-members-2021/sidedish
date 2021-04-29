@@ -13,11 +13,7 @@ const Delivery = ({ data }) => {
 
       <CS.Box.FLEX_ROW_BOX>
         <DeliveryTitle title={"배송정보"} />
-        <DeliveryContents
-          contents={
-            "서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다."
-          }
-        />
+        <DeliveryContents contents={data.delivery_info} />
       </CS.Box.FLEX_ROW_BOX>
 
       <CS.Box.FLEX_ROW_BOX>

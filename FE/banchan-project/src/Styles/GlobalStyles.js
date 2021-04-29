@@ -125,7 +125,6 @@ textarea {
 }
 
   .App{
-    
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -135,7 +134,6 @@ textarea {
     .container{
       position:relative;
       width:1440px;
-      // height: 2847px;
       display:flex;
       flex-direction:column;
       align-items:center;
