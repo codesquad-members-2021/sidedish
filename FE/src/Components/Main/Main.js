@@ -28,19 +28,26 @@ const Main = ({ modal, setModal, ModalData, setModalData }) => {
     foodRef.current.Slider(-1);
   };
 
+  const PopUpCarousel = () => {
+    for (const i of Food) {
+      if (i.detailHash === ModalData[0]) {
+        return (
+          <PopUpModal
+            setModal={setModal}
+            MainTitle={"모두가 좋아하는 든든한 메인요리"}
+            Food={Food}
+            setModalData={setModalData}
+            ModalData={ModalData}
+          />
+        );
+      }
+    }
+    return null;
+  };
+
   return (
     <CarouselSlide>
-      {modal && (
-        <PopUpModal
-          modal={modal}
-          setModal={setModal}
-          MainTitle={"모두가 좋아하는 든든한 메인요리"}
-          Food={Food}
-          setFood={setFood}
-          setModalData={setModalData}
-          ModalData={ModalData}
-        />
-      )}
+      {modal && PopUpCarousel()}
       <CarouselButton Name={"Left"} Slide={leftSlider} />
       <Carousel
         MainTitle={"모두가 좋아하는 든든한 메인요리"}

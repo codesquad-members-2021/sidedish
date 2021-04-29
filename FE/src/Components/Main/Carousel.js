@@ -10,7 +10,7 @@ const Carousel = (
   { PopUp, MainTitle, Food, setFood, Ref, setModal, setModalData },
   ref
 ) => {
-  const virtualImage = Food.slice(Food.length - 4, Food.length); // 마지막부분 4개의 사진을 복사하여 0~4번 이미지를 만들어준다.
+  const virtualImage = PopUp ? Food : Food.slice(Food.length - 4, Food.length); // 마지막부분 4개의 사진을 복사하여 0~4번 이미지를 만들어준다.
   const transitionDefault = `all 0.5s ease-in-out`;
   const panelWidth = PopUp ? 180 : 325;
   const panelCount = PopUp ? 5 : 4;
@@ -27,22 +27,34 @@ const Carousel = (
   }, [X]); // eslint-disable-line
 
   const Slider = (direction) => {
-    if (moving) return;
-    setX((prevX) =>
-      prevX
-        ? prevX + direction * panelWidth * panelCount
-        : direction * panelWidth * panelCount
-    );
-    setMoving(true);
+    if (PopUp) {
+      if (moving) return;
+      setX((prevX) =>
+        prevX
+          ? prevX + direction * panelWidth * panelCount
+          : direction * panelWidth * panelCount
+      );
+      setMoving(true);
+    } else {
+      if (moving) return;
+      setX((prevX) =>
+        prevX
+          ? prevX + direction * panelWidth * panelCount
+          : direction * panelWidth * panelCount
+      );
+      setMoving(true);
+    }
   };
 
   const onTransitionEnd = () => {
-    setMoving(false);
-    setTransitionValue("none");
-    const first = Food.slice(4, Food.length);
-    const result = first.concat(Food.slice(0, 4));
-    setFood(result);
-    setX(0);
+    if (!PopUp) {
+      setMoving(false);
+      setTransitionValue("none");
+      const first = Food.slice(4, Food.length);
+      const result = first.concat(Food.slice(0, 4));
+      setFood(result);
+      setX(0);
+    }
   };
 
   return (
@@ -58,7 +70,7 @@ const Carousel = (
             onTransitionEnd={onTransitionEnd}
           >
             {virtualImage
-              .concat(Food)
+              .concat(PopUp ? [] : Food)
               .map(
                 (
                   {
@@ -110,7 +122,7 @@ const CarouselTitle = styled.div`
   width: 350px;
   height: 35px;
   margin: ${({ PopUp }) => (PopUp ? `10px 0` : `0 0 40px 0 `)};
-  font-family: Noto Sans KR;
+
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -125,7 +137,7 @@ const CarouselImage = styled.div`
 
 const Image = styled.div`
   transform: ${({ PopUp, X }) =>
-    PopUp ? `translateX(${-100}px)` : `translateX(${X}px)`};
+    PopUp ? `translateX(${X - 100}px)` : `translateX(${X}px)`};
   transition: ${({ transitionValue }) => transitionValue};
   display: flex;
 `;
