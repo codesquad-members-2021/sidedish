@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
 
+const localhost = "localhost";
+const gcphost = "34.64.120.145";
+
 const Callback = ({ history, location }) => {
   useEffect(() => {
     const getToken = async () => {
@@ -10,7 +13,7 @@ const Callback = ({ history, location }) => {
       });
 
       try {
-        const { data } = await axios.post("http://localhost:5000/auth", {
+        const { data } = await axios.post(`http://${gcphost}:5000/auth`, {
           code,
         });
 
