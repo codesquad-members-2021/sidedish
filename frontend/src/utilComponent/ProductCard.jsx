@@ -1,13 +1,13 @@
-import { useRef, useContext } from "react";
+import { useContext, useState } from "react";
 import styled, { css } from "styled-components";
 import Tag from "./Tag";
 import { SideDishContext } from "./SideDishStore";
 
 const ProductCard = ({ size, item }) => {
   const { setIsModalVisible, setCurrProductData } = useContext(SideDishContext);
-  const cardHover = useRef();
-  const handleMouseEnter = () => cardHover.current.classList.remove("inactive");
-  const handleMouseLeave = () => cardHover.current.classList.add("inactive");
+  const [isHovering, setIsHovering] = useState(false)
+
+  const crossClass = () => `card__hover ${isHovering ? "" : "hidden"}`
   const handleErrorImg = ({ target }) => {
     // 임시로 일단 넣어놓음!!!
     target.src =
@@ -20,12 +20,12 @@ const ProductCard = ({ size, item }) => {
       setCurrProductData({ alt, badge, detail_hash });
     }
   };
+
   return (
     <StyledCard size={size} onClick={handleProductClick}>
       <img
         src={item.image}
         alt={item.alt}
-        onMouseEnter={handleMouseEnter}
         onError={handleErrorImg}
       />
       <div className="card__title">{item.title}</div>
@@ -39,9 +39,9 @@ const ProductCard = ({ size, item }) => {
       {(size !== "x-small") && item.badge &&
         item.badge.map((type, i) => <Tag key={i} type={type} />)}
       <div
-        className="card__hover inactive"
-        ref={cardHover}
-        onMouseLeave={handleMouseLeave}
+        className={crossClass()}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
       >
         <div className="hover__txtBox">
           {item.delivery_type.map((txt, i) => (
@@ -107,8 +107,8 @@ const StyledCard = styled.div`
       text-decoration: none;
     }
   }
-  .inactive {
-    visibility: hidden;
+  .hidden {
+    /* visibility: hidden; */
     opacity: 0;
   }
   .card__hover {
