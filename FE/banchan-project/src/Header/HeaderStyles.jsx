@@ -39,8 +39,10 @@ const MenuList = styled.li`
 
 const MenuWrapper = styled.div`
   display: ${props => props._display};
+  padding: 16px;
   position: absolute;
-  width: 140px;
+  width: 112px;
+
   background: ${theme.boxColors.WHITE};
   box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
     0px 2px 4px rgba(0, 0, 0, 0.25);
