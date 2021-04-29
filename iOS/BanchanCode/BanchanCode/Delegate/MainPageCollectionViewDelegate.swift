@@ -23,4 +23,8 @@ class MainPageCollectionViewDelegate: NSObject, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModels[indexPath.section].didSelectItem(at: indexPath.row)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 24.0, left: 16.0, bottom: 24.0, right: 16.0)
+    }
 }
