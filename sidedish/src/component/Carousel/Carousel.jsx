@@ -90,6 +90,7 @@ export default Carousel;
 
 export const StyledCarousel = styled.div`
   position: relative;
+
   .carouselWrapper {
     overflow: hidden;
   }

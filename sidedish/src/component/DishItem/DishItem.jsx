@@ -15,6 +15,7 @@ const DishItem = ({
       'https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
   };
 
+
   const toggleModal = () => {
     setShowDetail((showDetail) => !showDetail);
   };
@@ -63,6 +64,7 @@ const DishItem = ({
         <ItemDetail id={detail_hash} toggleModal={toggleModal} title={title} badge={badge} />
       )}
     </>
+
   );
 };
 

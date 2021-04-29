@@ -7,9 +7,7 @@ import Carousel from 'component/Carousel/Carousel';
 
 const SlideDish = ({ category: { path, title } }) => {
   const carouselRef = useRef();
-
   const { data: slideData, loading, error } = useFetch({ url: URL[path]() });
-
   const slideCategory =
     slideData &&
     slideData.body.map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
@@ -37,6 +35,9 @@ export default SlideDish;
 const SlideContainer = styled.div`
   min-width: 1280px;
   position: relative;
+  .carouselWrapper {
+    min-width: 1280px;
+  }
 `;
 
 const Header = styled.div`

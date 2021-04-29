@@ -11,7 +11,6 @@ const Tab = ({ item: { title, subMenu } }) => {
   const handleMouseLeave = () => {
     setIsHover(false);
   };
-
   const subMenuList = subMenu.map((item, i) => (
     <div className="subMenuItem" key={i}>
       {item}
