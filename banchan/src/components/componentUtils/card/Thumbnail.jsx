@@ -51,6 +51,7 @@ const HoverLayer = styled(CenterContainer)`
   &:hover {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     opacity: 1;
+    cursor: pointer;
   }
 `;
 
