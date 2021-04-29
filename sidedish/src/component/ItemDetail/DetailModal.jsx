@@ -107,12 +107,12 @@ const DetailModal = ({ detailData, loading, title, badge }) => {
 export default DetailModal;
 
 export const ModalStyle = styled.div`
-  width: 960px;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-y: scroll;
 
   .error_center {
     justify-content: center;
