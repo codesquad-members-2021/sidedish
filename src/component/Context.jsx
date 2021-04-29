@@ -1,29 +1,51 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import API from "../common/api.js";
 
 const DetailDataContext = createContext();
 const PopUpToggleContext = createContext();
 const OnFetchDetailDataContext = createContext();
 const SetPopUpToggleContext = createContext();
+const MainItemsContext = createContext();
+const MainItemsActiveContext = createContext();
+const SetMainItemsActiveContext = createContext();
 
 export function ContextProvider({ children }) {
   const [detailData, setDetailData] = useState(null);
   const [popUpToggle, setPopUpToggle] = useState(false);
+  const [mainItems, setMainItems] = useState(null);
+  const [mainItemsActive, setMainItemsActive] = useState(false);
 
-  const onFetchDetailData = async (id) => {
+  useEffect(() => {
+    if (!mainItems) {
+      (async () => {
+        const data = await API("/main");
+        setMainItems(data); // 8, 5, 4
+      })();
+    }
+    return;
+  }, [mainItems]);
+  
+  const onFetchDetailData = async (id) => { 
     const data = await API(`/detail/${id}`);
     if(data) {
       setDetailData(data);
-      setPopUpToggle(!popUpToggle);
+      setPopUpToggle(true);
     }
   }
 
+  // if(!mainItems) return null;
   return (
     <DetailDataContext.Provider value={detailData}>
       <OnFetchDetailDataContext.Provider value={onFetchDetailData}>
         <PopUpToggleContext.Provider value={popUpToggle}>
           <SetPopUpToggleContext.Provider value={setPopUpToggle}>
-            {children}
+            <MainItemsContext.Provider value={mainItems}>
+              <MainItemsActiveContext.Provider value={mainItemsActive}>
+                <SetMainItemsActiveContext.Provider value={setMainItemsActive}>
+                  {children}
+                </SetMainItemsActiveContext.Provider>
+              </MainItemsActiveContext.Provider>
+            </MainItemsContext.Provider>
           </SetPopUpToggleContext.Provider>
         </PopUpToggleContext.Provider>
       </OnFetchDetailDataContext.Provider>
@@ -45,4 +67,16 @@ export function usePopUpToggleContext() {
 
 export function useSetPopUpToggleContext() {
   return useContext(SetPopUpToggleContext);
+}
+
+export function useMainItemsContext() {
+  return useContext(MainItemsContext);
+}
+
+export function useMainItemsActiveContext() {
+  return useContext(MainItemsActiveContext);
+}
+
+export function useSetMainItemsActiveContext() {
+  return useContext(SetMainItemsActiveContext);
 }

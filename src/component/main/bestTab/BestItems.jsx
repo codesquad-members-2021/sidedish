@@ -34,6 +34,7 @@ export default function BestItems({ childs }) {
           labels={childs[idx].label}
           key={idx}
           id={childs[idx]._id}
+          large={true}
         />
       ))}
     </BestItemsStyle>
