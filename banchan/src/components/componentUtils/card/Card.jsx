@@ -68,8 +68,8 @@ const Card = ({ product, cardSize, margin = 0, type, onModal }) => {
 };
 
 const StyledLi = styled.li`
-  width: ${(props) => props.cardSize};
-  margin: 0 ${(props) => props.margin}px;
+  width: ${({ cardSize }) => cardSize};
+  margin: 0 ${({ margin }) => margin}px;
   list-style: none;
 `;
 

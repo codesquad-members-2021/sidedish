@@ -5,7 +5,12 @@ import { BUTTON_TYPE } from "../../../utils/variables";
 
 const IconButton = ({ type, fn, disabled = false, margin = 0 }) => {
   return (
-    <StyledIconButton type={type} onClick={fn} disabled={disabled} margin={margin}>
+    <StyledIconButton
+      type={type}
+      onClick={fn}
+      disabled={disabled}
+      margin={margin}
+    >
       {BUTTON_TYPE[type]}
     </StyledIconButton>
   );
@@ -13,12 +18,13 @@ const IconButton = ({ type, fn, disabled = false, margin = 0 }) => {
 
 const StyledIconButton = styled(Button)`
   cursor: pointer;
-  color: ${(props) => {
-    if (props.type === "CLOSE") return props.theme.colors.white;
-    if (props.disabled || props.type === "SEARCH") return props.theme.colors.lightGray;
-    return props.theme.colors.darkGray;
+  color: ${({ type, disabled, theme }) => {
+    if (type === "CLOSE") return theme.colors.white;
+    if (disabled || type === "SEARCH") return theme.colors.lightGray;
+    return theme.colors.darkGray;
   }};
-  font-size: ${({ type }) => (type === "UP" || type === "DOWN" ? theme.fontSizes.M : "30px")};
+  font-size: ${({ type }) =>
+    type === "UP" || type === "DOWN" ? theme.fontSizes.M : "30px"};
   margin: ${({ margin }) => `${margin}px`};
 `;
 

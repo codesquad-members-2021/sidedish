@@ -26,7 +26,7 @@ const CarouselSection = ({ url, title }) => {
               <Card
                 key={product.detail_hash}
                 product={product}
-                cardSize={(props) => props.theme.cardSizes.M}
+                cardSize={({ theme }) => theme.cardSizes.M}
                 margin={5}
               />
             ))}
@@ -47,9 +47,9 @@ const SectionBox = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.XL};
+  font-size: ${({ theme }) => theme.fontSizes.XL};
   font-weight: bold;
-  color: ${(props) => props.theme.darkGray};
+  color: ${({ theme }) => theme.darkGray};
   margin: 20px 5em;
 `;
 

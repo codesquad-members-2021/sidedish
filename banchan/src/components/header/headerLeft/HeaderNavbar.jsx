@@ -26,8 +26,8 @@ const HeaderNavbar = (props) => {
 };
 const NavUL = styled.ul`
   display: flex;
-  color: ${(props) => props.theme.colors.darkGray};
-  font-size: ${(props) => props.theme.fontSizes.S};
+  color: ${({ theme }) => theme.colors.darkGray};
+  font-size: ${({ theme }) => theme.fontSizes.S};
 `;
 
 export default HeaderNavbar;

@@ -1,7 +1,9 @@
 import { CenterContainer } from "../styles/common";
 import styled from "styled-components";
+import theme from "../styles/theme.js";
 
-const mockImage = "https://recipe1.ezmember.co.kr/cache/recipe/2020/09/23/5e308abb30b00ecb9c1b9b398db5b4451.jpg";
+const mockImage =
+  "https://recipe1.ezmember.co.kr/cache/recipe/2020/09/23/5e308abb30b00ecb9c1b9b398db5b4451.jpg";
 
 const Thumbnail = ({ product, cardSize, type }) => {
   return (
@@ -19,7 +21,11 @@ const Thumbnail = ({ product, cardSize, type }) => {
           }, [])}
         </DeliveryTypeList>
       </HoverLayer>
-      <StyledImg cardSize={cardSize} src={type === "베스트" ? mockImage : product.image} alt="card-image" />
+      <StyledImg
+        cardSize={cardSize}
+        src={type === "베스트" ? mockImage : product.image}
+        alt="card-image"
+      />
     </StyledThumbnail>
   );
 };
@@ -31,15 +37,15 @@ const StyledThumbnail = styled.div`
 `;
 
 const HoverLayer = styled(CenterContainer)`
-  color: ${(props) => props.theme.colors.white};
+  color: ${theme.colors.white};
   opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
-  width: ${(props) => props.cardSize};
-  height: ${(props) => props.cardSize};
-  border-radius: ${(props) => props.theme.borders.radius};
-  font-size: ${(props) => props.theme.fontSizes.XL};
+  width: ${({ cardSize }) => cardSize};
+  height: ${({ cardSize }) => cardSize};
+  border-radius: ${theme.borders.radius};
+  font-size: ${theme.fontSizes.XL};
   font-weight: bold;
 
   &:hover {
@@ -51,14 +57,14 @@ const HoverLayer = styled(CenterContainer)`
 const DeliveryTypeList = styled.div``;
 
 const Divider = styled.div`
-  border: 1px solid ${(props) => props.theme.colors.white};
+  border: 1px solid ${theme.colors.white};
   width: 90px;
   margin: 16px 0;
 `;
 
 const StyledImg = styled.img`
-  border-radius: ${(props) => props.theme.borders.radius};
+  border-radius: ${theme.borders.radius};
   margin-bottom: 16px;
-  width: ${(props) => props.cardSize};
-  height: ${(props) => props.cardSize};
+  width: ${({ cardSize }) => cardSize};
+  height: ${({ cardSize }) => cardSize};
 `;

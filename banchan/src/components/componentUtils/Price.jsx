@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import theme from '../componentUtils/styles/theme.js';
-import { CenterContainer } from './styles/common.jsx';
+import styled from "styled-components";
+import theme from "../componentUtils/styles/theme.js";
+import { CenterContainer } from "./styles/common.jsx";
 
 const Price = ({ product }) => {
   const isOnSale = !!product.n_price;
@@ -20,15 +20,15 @@ const StyledPriceWrapper = styled(CenterContainer)`
 `;
 
 const StyledFinalPriceSpan = styled.span`
-  font-size: ${theme.fontSizes.L};
+  font-size: ${({ theme }) => theme.fontSizes.L};
   font-weight: bold;
   margin-right: 8px;
 `;
 
 const StyledOriginalPriceSpan = styled.span`
-  font-size: ${theme.fontSizes.XS};
+  font-size: ${({ theme }) => theme.fontSizes.XS};
   text-decoration: line-through;
-  color: ${theme.colors.lightGray};
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
 
 export default Price;

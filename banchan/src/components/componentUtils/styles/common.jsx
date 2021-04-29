@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import theme from "./theme.js";
 
 const Button = styled.button`
   all: unset;
-  border-radius: ${theme.borders.radius};
+  border-radius: ${({ theme }) => theme.borders.radius};
 `;
 
 const CenterContainer = styled.div`
@@ -13,9 +12,9 @@ const CenterContainer = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.XL};
+  font-size: ${({ theme }) => theme.fontSizes.XL};
   font-weight: bold;
-  color: ${(props) => props.theme.darkGray};
+  color: ${({ theme }) => theme.darkGray};
   margin: 28px 0;
 `;
 
@@ -25,13 +24,13 @@ const CardList = styled.ul`
 `;
 
 const StyledTitle = styled.div`
-  font-size: ${theme.fontSizes.S};
-  color: ${theme.colors.darkGray};
+  font-size: ${({ theme }) => theme.fontSizes.S};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 const StyledDescription = styled.div`
-  font-size: ${theme.fontSizes.XS};
-  color: ${theme.colors.gray};
+  font-size: ${({ theme }) => theme.fontSizes.XS};
+  color: ${({ theme }) => theme.colors.gray};
   margin: 8px 0px;
 `;
 
@@ -42,13 +41,13 @@ const LabelList = styled(CenterContainer)`
 const ProductBuyInfoTitle = styled.div`
   min-width: 60px;
   margin-right: 16px;
-  color: ${(props) => props.theme.colors.gray};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 const ProductTotalTitle = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.XL};
+  font-size: ${({ theme }) => theme.fontSizes.XL};
   font-weight: bold;
-  color: ${(props) => props.theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   margin-right: 24px;
 `;
 

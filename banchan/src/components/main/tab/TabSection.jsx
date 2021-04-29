@@ -12,7 +12,7 @@ import {
 const tempUrl =
   "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best";
 
-const TabSection = (props) => {
+const TabSection = ({ onModal }) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const { products, loading, error } = useFetch({ url: tempUrl });
@@ -47,9 +47,9 @@ const TabSection = (props) => {
                 <Card
                   type="베스트"
                   product={item}
-                  cardSize={(props) => props.theme.cardSizes.L}
+                  cardSize={({ theme }) => theme.cardSizes.L}
                   margin={12}
-                  onModal={props.onModal}
+                  onModal={onModal}
                 />
               ))}
           </CardList>
@@ -62,13 +62,11 @@ const TabSection = (props) => {
 const TabContainer = styled.div``;
 
 const TabButton = styled(Button)`
-  background: ${(props) =>
-    props.activated
-      ? props.theme.colors.whiteBlue
-      : props.theme.colors.lightGrayBG};
-  color: ${(props) =>
-    props.activated ? props.theme.colors.darkGray : props.theme.colors.gray};
-  font-weight: ${(props) => props.activated && "bold"};
+  background: ${({ activated, theme }) =>
+    activated ? theme.colors.whiteBlue : theme.colors.lightGrayBG};
+  color: ${({ activated, theme }) =>
+    activated ? theme.colors.darkGray : theme.colors.gray};
+  font-weight: ${({ activated }) => activated && "bold"};
   width: 201px;
   height: 58px;
   margin-right: 8px;
@@ -81,7 +79,8 @@ const TabButton = styled(Button)`
 const TabList = styled.ul``;
 
 const TabContent = styled.div`
-  background-color: ${(props) => props.theme.colors.whiteBlue};
+  background-color: ${({ theme }) => theme.colors.whiteBlue};
+  border-radius: ${({ theme }) => theme.borders.radius};
   padding: 40px 0;
   width: 1280px;
 `;

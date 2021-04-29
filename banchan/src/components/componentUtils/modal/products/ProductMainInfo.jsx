@@ -10,7 +10,10 @@ const ProductMainInfo = ({ product }) => {
       <ProductTitle>{product.title}</ProductTitle>
       <ProductDescription>{product.description}</ProductDescription>
       <ProductLabelInfo>
-        <LabelList>{product.badge && product.badge.map((label) => <Label badgeName={label} />)}</LabelList>
+        <LabelList>
+          {product.badge &&
+            product.badge.map((label) => <Label badgeName={label} />)}
+        </LabelList>
         <Price product={product} />
       </ProductLabelInfo>
     </MainInfo>
@@ -20,14 +23,14 @@ const ProductMainInfo = ({ product }) => {
 const MainInfo = styled.div``;
 
 const ProductTitle = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.XL};
+  font-size: ${({ theme }) => theme.fontSizes.XL};
   font-weight: bold;
-  color: ${(props) => props.theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 const ProductDescription = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.L};
-  color: ${(props) => props.theme.colors.gray};
+  font-size: ${({ theme }) => theme.fontSizes.L};
+  color: ${({ theme }) => theme.colors.gray};
   margin: 8px 0px;
 `;
 

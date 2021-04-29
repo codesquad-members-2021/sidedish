@@ -1,7 +1,7 @@
 import CarouselSectionList from "./carousel/CarouselSectionList";
 import TabSection from "./tab/TabSection";
 
-const MainPage = (props) => {
+const MainPage = () => {
   return (
     <>
       <TabSection />

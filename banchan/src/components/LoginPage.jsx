@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginPage = (props) => {
+const LoginPage = () => {
   return (
     <>
       <LoginDiv>
@@ -27,10 +27,10 @@ const GithubBtn = styled.a`
   font-size: 30px;
   display: flex;
   align-items: center;
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borders.radius};
   padding: 10px;
-  color: white;
-  background: #000;
+  color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.darkGray};
   text-decoration: none;
   gap: 10px;
 `;
@@ -39,8 +39,8 @@ const LoginDiv = styled.div`
   width: 400px;
   height: 400px;
   border: 1px solid #e2e2e2;
-  box-shadow: 1px 1px 1px 1px #f5f5f7;
-  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px ${({ theme }) => theme.colors.lightGrayBG};
+  border-radius: ${({ theme }) => theme.borders.radius};
   display: flex;
   align-items: center;
   justify-content: center;

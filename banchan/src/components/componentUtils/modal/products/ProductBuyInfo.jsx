@@ -29,7 +29,7 @@ const BuyInfo = styled.ul`
 const ProductBuyInfoLi = styled.li`
   list-style: none;
   display: flex;
-  font-size: ${(props) => props.theme.fontSizes.S};
+  font-size: ${({ theme }) => theme.fontSizes.S};
 `;
 
 export default ProductBuyInfo;
