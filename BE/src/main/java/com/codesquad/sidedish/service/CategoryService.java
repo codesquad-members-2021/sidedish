@@ -17,7 +17,7 @@ public class CategoryService {
     }
 
     public Category findCategoryByType(String type) {
-        return categoryRepository.findCategoryByType(type).orElseThrow(() -> new NotFoundException(Status.NOTFOUND_CATEGORY.getMessage()));
+        return categoryRepository.findByType(type).orElseThrow(() -> new NotFoundException(Status.NOTFOUND_CATEGORY.getMessage()));
     }
 
     public void addDishToCategory(String type, Dish dish) {

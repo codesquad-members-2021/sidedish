@@ -17,7 +17,7 @@ public class DishService {
     }
 
     public Dish findDishByDishId(String dishId) {
-        Category category = categoryRepository.findCategoryByDishId(dishId).orElseThrow(() -> new NotFoundException(Status.NOTFOUND_DISH.getMessage()));
+        Category category = categoryRepository.findByDishId(dishId).orElseThrow(() -> new NotFoundException(Status.NOTFOUND_DISH.getMessage()));
         return category.getDishByDishId(dishId);
     }
 
