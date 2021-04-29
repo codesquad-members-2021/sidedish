@@ -43,14 +43,8 @@ class MainPageViewController: UIViewController {
         dishCollectionView.delegate = mainPageDelegate
         dishCollectionView.dataSource = mainPageDataSource
         
-//        let networkManager = NetworkManager()
-                
         viewModels.forEach { viewModel in
-//            if networkManager.isConnectedToInternet() {
-                viewModel.load()
-//            }else{
-//                viewModel.loadByDB() //realm에 있는 db를 불러오기.
-//            }
+            viewModel.load()
             bind(to: viewModel)
         }
         print(Realm.Configuration.defaultConfiguration.fileURL!)

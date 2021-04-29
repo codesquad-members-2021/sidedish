@@ -39,8 +39,7 @@ class RealmManager: RealmOperations {
                 }
             }
         }
-    }
-    
+    }    
     
     func getDishes(categryName: String) -> Dishes {
         
