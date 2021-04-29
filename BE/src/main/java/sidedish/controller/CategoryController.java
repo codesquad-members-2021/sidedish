@@ -20,7 +20,7 @@ public class CategoryController {
 
     @GetMapping("/{title}")
     public ResponseEntity<CategoryDTO> mainPage(@PathVariable String title) {
-        CategoryDTO categoryDTO = categoryService.convertToCategoryDTO(title);
+        CategoryDTO categoryDTO = categoryService.createCategoryDTO(title);
         return ResponseEntity.ok(categoryDTO);
     }
 }

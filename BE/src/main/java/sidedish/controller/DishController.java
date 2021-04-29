@@ -20,7 +20,7 @@ public class DishController {
 
     @GetMapping("/{title}/{id}")
     public ResponseEntity<DetailDishDTO> detailPage(@PathVariable String title, @PathVariable Long id) {
-        DetailDishDTO detailDishDTO = dishService.convertToDetailDishDTO(title, id);
+        DetailDishDTO detailDishDTO = dishService.createDetailDishDTO(title, id);
         return ResponseEntity.ok(detailDishDTO);
     }
 

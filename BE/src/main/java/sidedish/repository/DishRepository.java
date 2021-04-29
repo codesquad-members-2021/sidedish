@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public interface DishRepository extends CrudRepository<Dish, Long> {
 
-    Optional<Dish> findById(Long id);
 }

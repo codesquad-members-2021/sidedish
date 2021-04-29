@@ -16,7 +16,8 @@ public class CategoryService {
     }
 
     public Category findById(Long id) {
-        Category category = categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(CategoryNotFoundException::new);
         return category;
     }
 
@@ -26,12 +27,9 @@ public class CategoryService {
         return category;
     }
 
-    public Category save(Category category) {
-        return categoryRepository.save(category);
-    }
-
-    public CategoryDTO convertToCategoryDTO(String title) {
+    public CategoryDTO createCategoryDTO(String title) {
         Category category = findByTitle(title);
+        categoryRepository.save(category);
         return new CategoryDTO(category);
     }
 }

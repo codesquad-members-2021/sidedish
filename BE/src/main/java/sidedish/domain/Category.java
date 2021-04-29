@@ -2,6 +2,7 @@ package sidedish.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import sidedish.exception.DishNotFoundException;
 
 import java.util.List;
 
@@ -35,6 +36,8 @@ public class Category {
     }
 
     public boolean hasDish(Dish dish) {
-        return dishes.contains(dish);
+       if(!dishes.contains(dish)) {
+           throw new DishNotFoundException();
+       } return true;
     }
 }

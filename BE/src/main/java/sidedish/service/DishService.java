@@ -3,7 +3,9 @@ package sidedish.service;
 import org.springframework.stereotype.Service;
 import sidedish.domain.Category;
 import sidedish.domain.Dish;
+import sidedish.exception.CategoryNotFoundException;
 import sidedish.exception.DishNotFoundException;
+import sidedish.repository.CategoryRepository;
 import sidedish.repository.DishRepository;
 import sidedish.service.dto.DetailDishDTO;
 import sidedish.service.dto.RequestDishDTO;
@@ -14,11 +16,11 @@ import java.util.List;
 public class DishService {
 
     private final DishRepository dishRepository;
-    private final CategoryService categoryService;
+    private final CategoryRepository categoryRepository;
 
-    public DishService(DishRepository dishRepository, CategoryService categoryService) {
+    public DishService(DishRepository dishRepository, CategoryRepository categoryRepository) {
         this.dishRepository = dishRepository;
-        this.categoryService = categoryService;
+        this.categoryRepository = categoryRepository;
     }
 
     public Dish findById(Long id) {
@@ -26,25 +28,19 @@ public class DishService {
         return dish;
     }
 
-    public DetailDishDTO convertToDetailDishDTO(String title, Long id) {
-        Category category = categoryService.findByTitle(title);
+    public DetailDishDTO createDetailDishDTO(String title, Long id) {
+        Category category = categoryRepository.findCategoryByTitle(title).orElseThrow(CategoryNotFoundException::new);
         Dish dish = findById(id);
-        isDishInCategory(category, dish);
+        category.hasDish(dish);
         return new DetailDishDTO(dish);
     }
 
     public void saveDishes(List<RequestDishDTO> dishDTOs) {
         for (RequestDishDTO dishDTO : dishDTOs) {
-            Category category = categoryService.findById(dishDTO.getCategoryId());
+            Category category = categoryRepository.findById(dishDTO.getCategoryId()).orElseThrow(CategoryNotFoundException::new);
             Dish dish = dishDTO.createDish();
             category.addDish(dish);
-            categoryService.save(category);
-        }
-    }
-
-    private void isDishInCategory(Category category, Dish dish) {
-        if (!category.hasDish(dish)) {
-            throw new DishNotFoundException();
+            categoryRepository.save(category);
         }
     }
 }
