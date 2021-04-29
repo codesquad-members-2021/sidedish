@@ -43,12 +43,6 @@ const Details = ({ ...props }) => {
           _thumb_images={detailDish.thumb_images}
         />
       </ImageWrapper>
-      {/* <ContentWrapper>
-        <InfoGeneral></InfoGeneral>
-        <InfoPrice></InfoPrice>
-        <InfoProduct></InfoProduct>
-        <InfoQuantity></InfoQuantity>
-      </ContentWrapper> */}
     </>
   );
 };

@@ -99,6 +99,11 @@ const StyledSpan = styled.span`
     font-weight: 400;
     color: #828282;
   }
+  &._otherPrice {
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+  }
 `;
 
 const Span = ({ children, ...props }) => (
