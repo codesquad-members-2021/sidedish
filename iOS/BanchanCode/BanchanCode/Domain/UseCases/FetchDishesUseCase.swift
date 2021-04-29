@@ -36,43 +36,15 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     private func fetchDishes(categoryName: String,
                              completion: @escaping (Result<Dishes, Error>) -> Void) {
         let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)"
-        //        networkManager.performRequest(urlString: url) { (responseDTO) in
-        //            completion(.success(responseDTO.toDomain()))
-        ////            completion(.failure(Error))
-        //        }
-        
         networkManager.performRequest(urlString: url) { result in
             
             switch result {
             case .success(let responseDTO) :
                 completion(.success(responseDTO.toDomain()))
-            case .failure(let error) :
-                completion(.failure(error))
+            case .failure(_) :
+                completion(.success(self.realmManager.getDishes(categryName: categoryName))) //fail이 되었을 때 RealmDB에서 가져온 데이터를 보여준다.
             }
         }
-        
-        //        networkManager.performRequest(urlString: url) { result in
-        
-        //            switch result {
-        //            case .success() {
-        //
-        //            }
-        //            }
-        //            completion(.success(responseDTO.toDomain()))
-        
-        
-        
-        //            switch result {
-        //
-        //            case .success(let responseDTO) :
-        //                completion(responseDTO.toDomain())
-        //
-        //            case .failure(let _) :
-        //getDataFromDB
-        //            }
-        
-        //            completion(.success(responseDTO.toDomain()))
-        //        }
         
     }
 }

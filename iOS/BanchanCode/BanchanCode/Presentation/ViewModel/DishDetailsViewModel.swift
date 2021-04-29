@@ -52,7 +52,7 @@ extension DefaultDishDetailsViewModel {
             case .success(let dishDetail):
                 self.dishDetail.value = dishDetail
                 let realmManager = RealmManager()
-                realmManager.addDishDetail(disheDetail: self.dishDetail.value)
+//                realmManager.addDishDetail(disheDetail: self.dishDetail.value)
             case .failure: break
             }
         }
@@ -63,6 +63,6 @@ extension DefaultDishDetailsViewModel {
     func loadbyDB() {
         let realmManager = RealmManager()
         /*상세보기로 저장되지 않은 뷰를 보러갈때 이슈가 난다.*/
-        self.dishDetail.value = realmManager.getDishesID(by: self.id)!
+//        self.dishDetail.value = realmManager.getDishesID(by: self.id)!
     }
 }
