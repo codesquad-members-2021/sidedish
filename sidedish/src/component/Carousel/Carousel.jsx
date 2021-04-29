@@ -28,7 +28,7 @@ const Carousel = forwardRef(
     const handleClickPrev = () => {
       const possibleMove = currIdx >= slideToScroll ? slideToScroll : currIdx;
       setLocationX(locationX + (itemWidth + marginRigthForItem) * possibleMove);
-      setCurrentIndex(currIdx - possibleMove + slideToShow);
+      setCurrentIndex && setCurrentIndex(currIdx - possibleMove + slideToShow);
       setCurrIdx(currIdx - possibleMove);
       setLeftItem(leftItem + possibleMove);
     };
@@ -38,7 +38,7 @@ const Carousel = forwardRef(
       const newLeftItem = totalItemCount - (currIdx + slideToShow);
       const possibleMove = newLeftItem >= slideToScroll ? slideToScroll : newLeftItem;
       setLocationX(locationX - (itemWidth + marginRigthForItem) * possibleMove);
-      setCurrentIndex(currIdx + possibleMove + slideToShow);
+      setCurrentIndex && setCurrentIndex(currIdx + possibleMove + slideToShow);
       setCurrIdx(currIdx + possibleMove);
       setLeftItem(newLeftItem - possibleMove);
     };
