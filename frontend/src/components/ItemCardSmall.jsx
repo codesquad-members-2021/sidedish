@@ -1,42 +1,34 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { theme, AlignTextCenter } from './style/Theme';
-import ItemPrice from './atomic/ItemPrice';
-import Badge from './atomic/Badge';
 import DetailPage from './detail/DetailPage';
 import useFetch from './useFetch';
 
 const Card = styled.div`
-	margin-top: 40px;
 	width: ${(props) => {
-		return props.size === 'L' ? '384px' : '308px';
-	}};
+		return props.size === 'L' ? '384px' : props.size;
+	}}px;
+	height: ${(props) => props.height}px;
 	overflow: hidden;
 `;
 const ItemTitle = styled.div`
-	font-size: ${theme.fontSize.medium};
-	font-weight: Bold;
-	margin-bottom: 16px;
+	font-size: ${theme.fontSize.small}px;
 	&:hover {
 		text-decoration: underline;
 	}
 `;
-const ItemDesc = styled.div`
+const ItemPrice = styled.div`
 	font-size: ${theme.fontSize.small};
-	color: ${theme.colors.grey_text};
-	margin-bottom: 16px;
-	&:hover {
-		text-decoration: underline;
-	}
+	font-weight: Bold;
 `;
 const IMG = styled(AlignTextCenter)`
 	width: ${(props) => {
-		return props.size === 'L' ? '384px' : '308px';
-	}};
+		return props.size === 'L' ? '384px' : props.size;
+	}}px;
 	height: ${(props) => {
-		return props.size === 'L' ? '384px' : '308px';
-	}};
-	margin-bottom: 32px;
+		return props.size === 'L' ? '384px' : props.size;
+	}}px;
+
 	background-image: url(${(props) => props.image});
 	background-size: cover;
 	&:hover {
@@ -60,11 +52,13 @@ const imgPosition = {
 	top: '-7px',
 	left: '2px',
 };
-const ClickArea = styled.div`
-	cursor: pointer;
+const ItemInfo = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
-function ItemCard({ data, size }) {
+function ItemCardSmall({ data, size, height }) {
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
 	const [modalMode, setModalState] = useState(false);
@@ -86,25 +80,26 @@ function ItemCard({ data, size }) {
 					badges={data.badges}
 				></DetailPage>
 			)}
-			<Card size={size}>
-				<ClickArea onClick={() => handleClick(data.detailHash, data.badges)}>
-					<IMG size={size} image={data.image} alt={data.alt}>
-						<DeliveryBlock>
-							<div>새벽배송</div>
-							<img style={imgPosition} src="./line.png" alt="line"></img>
-							<div>전국택배</div>
-						</DeliveryBlock>
-					</IMG>
-
-					<ItemTitle>{data.alt}</ItemTitle>
-					<ItemDesc>{data.description}</ItemDesc>
-				</ClickArea>
-				<ItemPrice sPrice={data.sPrice} nPrice={data.nPrice}></ItemPrice>
-
-				<Badge data={data.badges}></Badge>
+			<Card
+				className="Card"
+				size={size}
+				height={height}
+				onClick={() => handleClick(data.detailHash, data.badges)}
+			>
+				<IMG size={size} image={data.image} alt={data.alt}>
+					<DeliveryBlock>
+						<div>새벽배송</div>
+						<img style={imgPosition} src="./line.png" alt="line"></img>
+						<div>전국택배</div>
+					</DeliveryBlock>
+				</IMG>
+				<ItemInfo>
+					<ItemTitle>{data.title}</ItemTitle>
+					<ItemPrice>{data.sPrice ? data.sPrice : data.nPrice}원</ItemPrice>
+				</ItemInfo>
 			</Card>
 		</>
 	);
 }
 
-export default ItemCard;
+export default ItemCardSmall;

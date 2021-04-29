@@ -4,8 +4,14 @@ import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import React from 'react';
+import Error from '../state/Error';
+import Carousel from '../category/Carousel';
+import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
+import useFetch from '../useFetch';
+import ItemCardSmall from '../ItemCardSmall';
+import Title from '../atomic/Title';
 const RepresentativeBlock = styled.div`
 	display: flex;
 	margin: 48px;
@@ -77,11 +83,15 @@ const OrderBtn = styled(Button)`
 	cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
 `;
 
-const ItemDetailCards = styled.div``;
-const DetailCard = styled.div`
-	width: 900px;
-	height: 100%;
-	background-image: url(${(props) => props.card});
+const FooterSection = styled.div`
+	box-sizing: border-box;
+	padding: 48px;
+	width: 100%;
+	background-color: ${theme.colors.grey_css};
+`;
+const Upper = styled.div`
+	display: flex;
+	justify-content: space-between;
 `;
 
 function DetailPage({
@@ -96,13 +106,27 @@ function DetailPage({
 	const [orderCount, setOrderCount] = useState(1);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
 	// const orderCount = useMemo(() => setOrderCount(orderCount로직), [orderCount ])
-
+	const button = useRef();
+	const handleLeft = () => {
+		button.current.slideToLeft();
+	};
+	const handleRight = () => {
+		button.current.slideToRight();
+	};
+	const [randomMenu, randomLoadingState] = useFetch(
+		process.env.REACT_APP_API_URL + 'recommend/10/',
+		'get',
+	);
+	const ButtonBlock = styled.div`
+		display: flex;
+	`;
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
 				<Loading width="960px" height="568px" />
+			) : detailData === 400 ? (
+				<Error></Error>
 			) : (
-				//에러처리해보기
 				<>
 					<RepresentativeBlock className="MODAL">
 						<ImageBlock>
@@ -158,11 +182,44 @@ function DetailPage({
 							</OrderBtn>
 						</ItemDetailInfo>
 					</RepresentativeBlock>
-					<ItemDetailCards>
+					{/* <ItemDetailCards>
 						{detailData.detailSection.map((card, idx) => (
 							<DetailCard card={card} key={idx}></DetailCard>
 						))}
-					</ItemDetailCards>
+					</ItemDetailCards> */}
+					{!randomLoadingState && (
+						<FooterSection>
+							<Upper>
+								<Title>함께하면 더욱 맛있는 상품</Title>
+								<ButtonBlock>
+									<ButtonLeft onClick={handleLeft}>
+										<VscChevronLeft />
+									</ButtonLeft>
+									<ButtonRight onClick={handleRight}>
+										<VscChevronRight />
+									</ButtonRight>
+								</ButtonBlock>
+							</Upper>
+
+							<Carousel
+								width={864}
+								height={242}
+								count={5}
+								duration={'.5s'}
+								ref={button}
+								effect={'ease-in-out'}
+							>
+								{randomMenu.map((el, idx) => (
+									<ItemCardSmall
+										size={864 / 5}
+										height={242}
+										key={idx}
+										data={el}
+									></ItemCardSmall>
+								))}
+							</Carousel>
+						</FooterSection>
+					)}
 				</>
 			)}
 		</Modal>
@@ -171,6 +228,5 @@ function DetailPage({
 
 export default React.memo(DetailPage);
 
-// : categoryData === 400 ? (
-// 	<Error></Error>
-// )
+const ButtonLeft = styled(Button)``;
+const ButtonRight = styled(Button)``;

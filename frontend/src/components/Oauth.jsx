@@ -1,10 +1,12 @@
 import queryString from 'query-string';
 import { useEffect } from 'react';
+import useFetch from './useFetch';
 const Oauth = (props) => {
 	const result = queryString.parse(props.location.search);
+	const code = result.code;
 	console.log(result);
 	console.log(props);
-	//localhost:8080/login?code={result.code} put 요청
+	useFetch(`http://15.164.68.136:8080/login?code=${code}`, 'post', code);
 	useEffect(() => {
 		props.history.push('/');
 	});
