@@ -18,16 +18,11 @@ const TotalCategoryButton = styled.button`
 `;
 
 const CategoryItemsWrapper = styled.div`
-  position: relative;
   width: 1280px;
 `;
 
 const CategoryItemsTitleWrapper = styled.div`
   margin: 40px 0px;
-`;
-
-const CategoryItemsCardScrollWrapper = styled(CS.Box.FLEX_ROW_BOX)`
-  overflow: auto;
 `;
 
 const CategoryItemsCardImageWrapper = styled.div`
@@ -51,20 +46,6 @@ const CategoryItemsCardNPriceWrapper = styled.div`
   color: ${theme.fontColors.GRAY4};
   text-decoration-line: line-through;
   margin: 0px 8px;
-`;
-
-const CategoryLeftButtonWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: -5%;
-  cursor: pointer;
-`;
-
-const CategoryRightButtonWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  right: -5%;
-  cursor: pointer;
 `;
 
 const ItemsHoverBox = styled.div`
@@ -95,14 +76,11 @@ export {
   TotalCategoryButton,
   CategoryItemsWrapper,
   CategoryItemsTitleWrapper,
-  CategoryItemsCardScrollWrapper,
   CategoryItemsCardImageWrapper,
   CategoryItemsCardDescriptionWrapper,
   CategoryItemsPriceWrapper,
   CategoryItemsCardSPriceWrapper,
   CategoryItemsCardNPriceWrapper,
-  CategoryLeftButtonWrapper,
-  CategoryRightButtonWrapper,
   ItemsHoverBox,
   ItemsHoverTopText,
   ItemsHoverBottomText,

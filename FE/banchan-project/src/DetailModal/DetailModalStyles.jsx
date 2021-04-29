@@ -162,10 +162,6 @@ const RecommendedItemsHeaderWrapper = styled(CS.Box.FLEX_ROW_CENTER_BOX)`
   margin-bottom: 32px;
 `;
 
-const RecommendedItemsCardWrapper = styled(CS.Box.FLEX_ROW_BOX)`
-  overflow: auto;
-`;
-
 const RecommendedItemsCardImageWrapper = styled.div`
   margin-right: 16px;
 `;
@@ -204,7 +200,6 @@ export {
   ThumbNailsEmptyImage,
   RecommendedItems,
   RecommendedItemsHeaderWrapper,
-  RecommendedItemsCardWrapper,
   RecommendedItemsCardImageWrapper,
   RecommendedItemsCardTitleWrapper,
   RecommendedItemsPaginationWrapper,

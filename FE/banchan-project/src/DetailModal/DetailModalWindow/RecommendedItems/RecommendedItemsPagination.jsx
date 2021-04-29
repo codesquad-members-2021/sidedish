@@ -4,7 +4,9 @@ import * as CS from "../../../Styles/commonStyles";
 const RecommendedItemsPagination = ({ page }) => {
   return (
     <S.RecommendedItemsPaginationWrapper>
-      <CS.ColorFont.GRAY1_XS_NORMAL>{page}/2</CS.ColorFont.GRAY1_XS_NORMAL>
+      <CS.ColorFont.GRAY1_XS_NORMAL>
+        Page : {page}/2
+      </CS.ColorFont.GRAY1_XS_NORMAL>
     </S.RecommendedItemsPaginationWrapper>
   );
 };

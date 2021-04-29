@@ -12,6 +12,7 @@ const Slider = ({
   cards,
   leftButton,
   rightButton,
+  optionalFn,
 }) => {
   const [X, setX] = useState(0);
   const [rightRemainingCards, setRightRemainingCards] = useState(
@@ -34,6 +35,7 @@ const Slider = ({
           setRightRemainingCards,
           leftRemainingCards,
           setLeftRemainingCards,
+          optionalFn,
         }}
       />
     </S.Slider>
