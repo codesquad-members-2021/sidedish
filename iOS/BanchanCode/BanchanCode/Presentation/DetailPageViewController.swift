@@ -51,7 +51,6 @@ class DetailPageViewController: UIViewController {
         orderButton.layer.masksToBounds = true
         orderButton.layer.cornerRadius = 5.0
         quantityLabel.text = "\(currentQuantity)"
-        
         quantityLabel.layer.borderWidth = 1.0
         quantityLabel.layer.borderColor = UIColor(named: "LineSeparatorColor")?.cgColor
         setupUI(of: addButton)
@@ -66,18 +65,18 @@ class DetailPageViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        let dishDetail = viewModel.dishDetail.value
+        let basicInfo = viewModel.basicInformation.value
         currentQuantity += 1
-        totalPrice = currentQuantity * (dishDetail.prices?[0] ?? 0)
+        totalPrice = currentQuantity * (basicInfo.prices?[0] ?? 0)
         quantityLabel.text = "\(currentQuantity)"
         totalPriceLabel.text = String().format(price: totalPrice)
         updateRemoveButtonState()
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
-        let dishDetail = viewModel.dishDetail.value
+        let basicInfo = viewModel.basicInformation.value
         currentQuantity -= 1
-        totalPrice = currentQuantity * (dishDetail.prices?[0] ?? 0)
+        totalPrice = currentQuantity * (basicInfo.prices?[0] ?? 0)
         quantityLabel.text = "\(currentQuantity)"
         totalPriceLabel.text = String().format(price: totalPrice)
         updateRemoveButtonState()
@@ -98,18 +97,18 @@ class DetailPageViewController: UIViewController {
     }
     
     private func bind(to viewModel: DishDetailsViewModel) {
-        viewModel.dishDetail.observe(on: self) { [weak self] _ in self?.updateView() }
-        viewModel.dishDetail.observe(on: self) { [weak self] _ in self?.updateThumbnailImages() }
-        viewModel.dishDetail.observe(on: self) { [weak self] _ in self?.updateDetailImages() }
+        viewModel.basicInformation.observe(on: self) { [weak self] _ in self?.updateView() }
+        viewModel.thumbImages.observe(on: self) { [weak self] _ in self?.updateThumbnailImages() }
+        viewModel.detailImages.observe(on: self) { [weak self] _ in self?.updateDetailImages() }
     }
     
     private func updateView() {
-        let dishDetail = viewModel.dishDetail.value
-        self.title = dishDetail.name
-        self.nameLabel.text = dishDetail.name
-        self.descriptionLabel.text = dishDetail.description
+        let basicInfo = viewModel.basicInformation.value
+        self.title = basicInfo.name
+        self.nameLabel.text = basicInfo.name
+        self.descriptionLabel.text = basicInfo.description
         
-        guard let prices = dishDetail.prices else { return }
+        guard let prices = basicInfo.prices else { return }
         let originalPrice = prices[0]
         if prices.count > 1 {
             let lastPrice = prices[1]
@@ -123,7 +122,7 @@ class DetailPageViewController: UIViewController {
             totalPrice = currentQuantity * originalPrice
         }
         
-        let badges = dishDetail.badges
+        let badges = basicInfo.badges
         badgeStackView.arrangedSubviews.forEach { subview in
             subview.removeFromSuperview()
         }
@@ -138,20 +137,20 @@ class DetailPageViewController: UIViewController {
                 badgeStackView.addArrangedSubview(badgeView)
             }
         }
-        guard let point = dishDetail.point else { return }
+        guard let point = basicInfo.point else { return }
         pointLabel.text = String().format(price: point)
-        deliveryInfoLabel.text = dishDetail.deliveryInfo
+        deliveryInfoLabel.text = basicInfo.deliveryInfo
         deliveryFeeLabel.attributedText = attributedText(withString: "2,500원 (40,000원 이상 구매 시 무료)", boldString: "(40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
         totalPriceLabel.text = String().format(price: totalPrice)
     }
     
     private func updateThumbnailImages() {
-        let thumbImageURLs = viewModel.dishDetail.value.thumbImages
-        thumbImageURLs?.enumerated().forEach { (index, imageURL) in
+        let thumbImageURLs = viewModel.thumbImages.value
+        thumbImageURLs.enumerated().forEach { (index, imageURL) in
             NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
                 let image = UIImage(data: imageData)
                 let imageView = UIImageView(image: image)
-                self.thumbnailImagesScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(thumbImageURLs?.count ?? 0),
+                self.thumbnailImagesScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(thumbImageURLs.count),
                                                                     height: self.view.frame.width)
                 imageView.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0,
                                          width: self.view.frame.width, height: self.view.frame.width)
@@ -170,7 +169,8 @@ class DetailPageViewController: UIViewController {
     }
     
     private func updateDetailImages() {
-        viewModel.dishDetail.value.detailImages?.forEach { imageURL in
+        let detailImageURLs = viewModel.detailImages.value
+        detailImageURLs.forEach { imageURL in
             NetworkManager().updateThumbImage(imageURL: imageURL) { imageData in
                 guard let image = UIImage(data: imageData) else { return }
                 let ratio = image.size.height / image.size.width
