@@ -75,6 +75,5 @@ const NavRight = styled.div`
     font-family: Noto Sans KR;
     font-size: 1rem;
     font-weight: 400;
-    color: #333;
   }
 `;
