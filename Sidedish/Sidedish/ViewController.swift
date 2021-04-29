@@ -92,10 +92,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return header
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row, indexPath.section)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? ItemCollectionViewCell, let indexPath = self.collectionView.indexPath(for: cell) {
             guard let items = self.indexItemBySection(of: indexPath.section) else { return }

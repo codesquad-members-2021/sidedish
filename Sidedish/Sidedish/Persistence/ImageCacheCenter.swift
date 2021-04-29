@@ -36,10 +36,8 @@ class ImageCacheCenter: ImageCacheable {
     
     func loadImageCache(fileName: String, completion: @escaping (Data) -> ()) {
         let url = cacheURL.appendingPathComponent(fileName)
-        print(url)
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data else { return }
-            print("load!!!!")
             completion(data)
         }.resume()
     }
@@ -51,7 +49,6 @@ class ImageCacheCenter: ImageCacheable {
             fileManager.createFile(atPath: path,
                                    contents: jpegData,
                                    attributes: nil)
-            print("saved!!!!")
         }
     }
 }
