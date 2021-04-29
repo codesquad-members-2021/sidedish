@@ -57,8 +57,8 @@ public class DataDTO {
         this.badge = badge;
     }
 
-    public static DataDTO of(DishDTO dishDTO, Delivery delivery, List<Image> thumbImages, List<Image> detailImages) {
-        return new DataDTO(dishDTO.getTitle(), dishDTO.getImage(), thumbImages, dishDTO.getDescription(), (int) Math.round(dishDTO.getSpecialPrice() * 0.01),
+    public static DataDTO of(DishDAO dishDAO, Delivery delivery, List<Image> thumbImages, List<Image> detailImages) {
+        return new DataDTO(dishDAO.getTitle(), dishDAO.getImage(), thumbImages, dishDAO.getDescription(), (int) Math.round(dishDAO.getSpecialPrice() * 0.01),
                 delivery.makeDeliveryInfo(delivery.isMonday()), delivery.getDeliveryFee(), delivery.getDeliveryCondition(),
                 dishDAO.getNormalPrice(), dishDAO.getSpecialPrice(), detailImages, dishDAO.getBadge()
         );
