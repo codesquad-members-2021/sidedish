@@ -19,7 +19,12 @@ router.post("/auth", async (req, res) => {
       },
     }
   );
+
+  conosle.log(`response: ${response}`);
+
   const token = response.data.access_token;
+
+  console.log(`token: ${token}`);
 
   const { data } = await axios.get("https://api.github.com/user", {
     headers: {
@@ -27,7 +32,12 @@ router.post("/auth", async (req, res) => {
     },
   });
 
+  console.log(`data: ${data}`);
+
   const jwt_token = jwt.sign({ login: data.login, id: data.id }, "ajaAJA");
+
+  console.log(`jwt_token: ${jwt_token}`);
+
   return res.json({ jwt_token });
 });
 

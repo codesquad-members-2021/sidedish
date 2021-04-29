@@ -26,7 +26,12 @@ const LABEL_TYPE = {
 };
 
 const URLS = {
-  base: "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/",
+  base:
+    "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/",
+  localhost: "localhost",
+  gcphost: "34.64.120.145",
 };
 
-export { BUTTON_TYPE, LABEL_TYPE, URLS };
+const clientId = "a330856c90f83a69a3ea";
+
+export { BUTTON_TYPE, LABEL_TYPE, URLS, clientId };

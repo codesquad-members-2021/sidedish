@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
-
-const localhost = "localhost";
-const gcphost = "34.64.120.145";
+import { URLS } from "../utils/variables";
 
 const Callback = ({ history, location }) => {
+  const authUri = `http://${URLS.gcphost}:5000/auth`;
+
   useEffect(() => {
     const getToken = async () => {
       const { code } = qs.parse(location.search, {
@@ -13,7 +13,7 @@ const Callback = ({ history, location }) => {
       });
 
       try {
-        const { data } = await axios.post(`http://${gcphost}:5000/auth`, {
+        const { data } = await axios.post(authUri, {
           code,
         });
 

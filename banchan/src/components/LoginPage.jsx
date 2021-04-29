@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { clientId, URLS } from "../utils/variables";
 
 const LoginPage = () => {
+  const loginUri = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=http://${URLS.gcphost}:3000/callback`;
+
   return (
     <>
       <LoginDiv>
-        <GithubBtn href="https://github.com/login/oauth/authorize?client_id=a330856c90f83a69a3ea&redirect_uri=http://34.64.120.145:3000/callback">
+        <GithubBtn href={loginUri}>
           깃허브로 로그인
           <svg
             xmlns="http://www.w3.org/2000/svg"
