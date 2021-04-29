@@ -1,5 +1,6 @@
 package com.team15.sidedish.domain;
 
+import com.team15.sidedish.exception.CannotOrderException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -70,5 +71,17 @@ public class Dish {
                 ", sectionName='" + sectionName + '\'' +
                 ", stock=" + stock +
                 '}';
+    }
+
+    public void update(Integer orderAmount) {
+        if(orderAmount < 0) {
+            throw new CannotOrderException("0개 보다 많은 수량만 주문할 수 있습니다.");
+        }
+        if(stock >= orderAmount) {
+            this.stock = stock - orderAmount;
+        }
+        else {
+            throw new CannotOrderException();
+        }
     }
 }
