@@ -38,13 +38,19 @@ public class UserService {
         UserInfoDTO userInfoDTO = userInfoRequestApi(tokenDTO.getAccess_token());
         EmailDTO emailDTO = emailRequestApi(tokenDTO.getAccess_token());
 
-        if (verifyUser(userInfoDTO)) {
-            User user = findByUserId(userInfoDTO);
+        if (verifyUser(emailDTO)) {
+            User user = findByEmail(emailDTO);
             user.update(userInfoDTO, emailDTO, tokenDTO);
             return new UserResponseDTO(userRepository.save(user));
         }
         User user = new User(userInfoDTO, emailDTO, tokenDTO);
         return new UserResponseDTO(userRepository.save(user));
+    }
+
+    public void logout(String token) {
+        User user = findByToken(token);
+        user.removeToken();
+        userRepository.save(user);
     }
 
     private TokenDTO tokenRequestApi(String code) {
@@ -79,12 +85,18 @@ public class UserService {
         return emailDTOList.get(0);
     }
 
-    private boolean verifyUser(UserInfoDTO userInfoDTO) {
-        return userRepository.findByUserId(userInfoDTO.getLogin()).isPresent();
+    private boolean verifyUser(EmailDTO emailDTO) {
+        return userRepository.findByEmail(emailDTO.getEmail()).isPresent();
     }
 
-    private User findByUserId(UserInfoDTO userInfoDTO) {
-        return userRepository.findByUserId(userInfoDTO.getLogin()).orElseThrow(
+    private User findByEmail(EmailDTO emailDTO) {
+        return userRepository.findByEmail(emailDTO.getEmail()).orElseThrow(
+                () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
+        );
+    }
+
+    private User findByToken(String token) {
+        return userRepository.findByToken(token).orElseThrow(
                 () -> new EntityNotFoundException(ErrorMessage.ENTITY_NOT_FOUND)
         );
     }
