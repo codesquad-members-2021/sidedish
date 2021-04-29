@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Image from '../../atoms/Image';
-import loadData from '../../../util/loadData';
-import InfoImages from '../../molecules/InfoImages';
-import InfoGeneral from '../../molecules/InfoGeneral';
-import InfoPrice from '../../molecules/InfoPrice';
-import InfoProduct from '../../molecules/InfoProduct';
-import InfoQuantity from '../../molecules/InfoQuantity';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Image from "../../atoms/Image";
+import loadData from "../../../util/loadData";
+import InfoImages from "../../molecules/InfoImages";
+import InfoGeneral from "../../molecules/InfoGeneral";
+import InfoPrice from "../../molecules/InfoPrice";
+import InfoProduct from "../../molecules/InfoProduct";
+import InfoQuantity from "../../molecules/InfoQuantity";
 
 const Details = ({ ...props }) => {
   const [detailDish, setDetailDish] = useState([]);
@@ -18,11 +18,11 @@ const Details = ({ ...props }) => {
 
   const DetailWrapper = styled.div`
     display: flex;
+  `;
 
   useEffect(() => {
     setTopImage(detailDish.top_image);
   }, [detailDish.top_image]);
-
 
   const ImageWrapper = styled.div`
     display: flex;
@@ -39,7 +39,7 @@ const Details = ({ ...props }) => {
   };
 
   return (
-    <>
+    <DetailWrapper>
       <ImageWrapper>
         <TopImage />
         <InfoImages
