@@ -8,17 +8,49 @@
 import Foundation
 import CoreData
 
+enum CoreDataError: Error {
+    case fetError
+}
+
 class CoreDataBanchanListStorage {
     private let coreDataManager: CoreDataManager
     
     init(manager: CoreDataManager = CoreDataManager.shared) {
         self.coreDataManager = manager
+        setSectionEntity()
     }
     
-    func save(requestDTO: BanchanListDTO) {
+    func setSectionEntity() {
+        let requset: NSFetchRequest = BanchanSectionEntity.fetchRequest()
+        
+        coreDataManager.performBackgroundTask { context in
+            do {
+                let sectionEntities = try context.fetch(requset)
+                if sectionEntities.count >= 3 { return }
+                else {
+                    try Section.allCases.forEach { section in
+                        let banchanSectionEntity = BanchanSectionEntity.init(context: context)
+                        banchanSectionEntity.section = Int16(section.rawValue)
+                        try context.save()
+                    }
+                }
+            } catch {
+                print("error in sectionEntity")
+            }
+        }
+    }
+    func save(section: Section, requestDTO: BanchanListDTO) {
+        let request: NSFetchRequest = BanchanSectionEntity.fetchRequest()
+        
         coreDataManager.performBackgroundTask { context in
             do{
-                _ = requestDTO.toEntity(with: context)
+                let entities = requestDTO.toEntity(with: context)
+                let sectionEntity = try context.fetch(request)
+                
+                print(sectionEntity.count)
+                entities.forEach { entity in
+                    sectionEntity[section.rawValue].addToEntities(entity)
+                }
                 try context.save()
             } catch {
                 fatalError()
@@ -26,21 +58,42 @@ class CoreDataBanchanListStorage {
         }
     }
     
-    func fetch(section: Section, handler: @escaping ([BanchanListDTO]) -> Void) {
+    func fetch(section: Section, handler: @escaping (Result<[Banchan],CoreDataError>) -> Void) {
         coreDataManager.performBackgroundTask { context in
             do {
                 let fetchResult: NSFetchRequest = BanchanSectionEntity.fetchRequest()
                 let requestEntity = try context.fetch(fetchResult)
                 
-                let sectionEntity = requestEntity.filter { sectionEntity in
-                    Int(sectionEntity.section) == section.rawValue
-                }
+                var sectionEntity: BanchanSectionEntity
+                let index = section.rawValue
                 
-                let entities = sectionEntity.forEach { section in
-                    section.entities?.array as! [BanchanEntity]
+                if requestEntity[section.rawValue].entities?.array.count == 0 {
+                    handler(.failure(.fetError))
+                    return
                 }
+
+                sectionEntity = requestEntity[index]
+//                print(requestEntity.count)
+                let entities = sectionEntity.entities?.array as! [BanchanEntity]
+                print(entities.count)
+                let newEntities = entities.map { entity in
+                    entity.toDomain()
+                }
+                handler(.success(newEntities))
             } catch {
-                
+                handler(.failure(.fetError))
+            }
+        }
+    }
+    
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) {
+        coreDataManager.performBackgroundTask { context in
+            let request: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
+            let delete = NSBatchDeleteRequest(fetchRequest: request)
+            do {
+                try context.execute(delete)
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }

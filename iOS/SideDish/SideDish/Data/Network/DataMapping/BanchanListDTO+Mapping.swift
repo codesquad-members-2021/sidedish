@@ -30,8 +30,6 @@ extension BanchanListDTO {
         
         func toEntity(with context: NSManagedObjectContext) -> BanchanEntity {
             let entity = BanchanEntity.init(context: context)
-            let sectionEntity = BanchanSectionEntity.init(context: context)
-            
             entity.detailHash = Int16(detailHash)
             entity.image = image
             entity.alt = alt
@@ -42,7 +40,6 @@ extension BanchanListDTO {
             entity.sPrice = sPrice
             entity.badges = badges
             
-            sectionEntity.addToEntities(entity)
             return entity
         }
     }
