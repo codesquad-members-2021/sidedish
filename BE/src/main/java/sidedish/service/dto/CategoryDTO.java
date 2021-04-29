@@ -1,10 +1,9 @@
 package sidedish.service.dto;
 
 import sidedish.domain.Category;
-import sidedish.domain.Dish;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CategoryDTO {
 
@@ -13,16 +12,9 @@ public class CategoryDTO {
 
     public CategoryDTO(Category category) {
         this.title = category.getTitle();
-        this.dishes = convertToMainPageDishDTO(category);
-    }
-
-    private List<MainPageDishDTO> convertToMainPageDishDTO(Category category) {
-        List<Dish> dishes = category.getDishes();
-        List<MainPageDishDTO> mainPageDishDTOs = new ArrayList<>();
-        for (Dish dish : dishes) {
-            mainPageDishDTOs.add(new MainPageDishDTO(dish));
-        }
-        return mainPageDishDTOs;
+        this.dishes = category.getDishes().stream()
+                .map(MainPageDishDTO::new)
+                .collect(Collectors.toList());
     }
 
     public String getTitle() {
@@ -32,5 +24,4 @@ public class CategoryDTO {
     public List<MainPageDishDTO> getDishes() {
         return dishes;
     }
-
 }
