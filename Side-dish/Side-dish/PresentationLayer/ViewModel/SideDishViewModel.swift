@@ -8,52 +8,59 @@
 import Foundation
 import Combine
 
-class SideDishViewModel {
-    
+protocol SideDishViewModelProcotol {
+    func didFetchSideDishes(completion: @escaping ((Menu,[Item])) -> ())
+    func didFetchHeaderRowCount(with path: Menu) -> Int
+    func didFetchItemDatailHash(with path: Menu, sequence: Int) -> Item?
+    func except() -> AnyPublisher<String, Never>
+}
+
+class SideDishViewModel: SideDishViewModelProcotol {
+        
     private let sideDishUseCase: SideDishProtocol
-    private var sidedishManager : SideDishManager
+    private var sideDishManager: SideDishManager
     private var cancellable = Set<AnyCancellable>()
     
-    @Published var errorMessage = ""
+    @Published private var errorMessage = ""
     
     init(sideDishUseCase: SideDishProtocol) {
         self.sideDishUseCase = sideDishUseCase
-        self.sidedishManager = SideDishManager()
+        self.sideDishManager = SideDishManager()
         request()
     }
     
     private func request() {
-        Path.allCases.forEach { (path) in
-            sideDishUseCase.execute(path: path)
+        Menu.allCases.forEach { (path) in
+            sideDishUseCase.requestSideDishes(path: path)
                 .sink { (complete) in
                     if case .failure(let error) = complete {
                         self.errorMessage = error.message
                     }
                 } receiveValue: { (SideDishes) in
-                    self.sidedishManager.insert(path: path, items: SideDishes.body)
+                    self.sideDishManager.insert(path: path, items: SideDishes.body)
                 }.store(in: &cancellable)
         }
     }
 
-    func didFetchSideDishes(completion: @escaping ((Path,[Item])) -> ()) {
-        NotificationCenter.default
-            .publisher(for: SideDishManager.NotificationName.updatePath)
-            .map{ ($0.userInfo?["path"] as! Path) }
-            .sink { path in
-                completion((path,
-                            self.sidedishManager.getSideDishes(with: path)))
-            }.store(in: &cancellable)
-    }
-    
-    func didFetchHeaderRowCount(with path: Path) -> Int {
-        return sidedishManager.getRowCount(path: path)
-    }
-    
-    func except(completion: @escaping ((String) ->())) {
-        $errorMessage
-            .dropFirst()
-            .sink { (message) in
-            completion(message)
+    func didFetchSideDishes(completion: @escaping ((Menu,[Item])) -> ()) {
+        self.sideDishManager.arriveMenuType.sink { (menu) in
+            completion((menu,
+                        self.sideDishManager.getSideDishes(with: menu)))
         }.store(in: &cancellable)
     }
+    
+    func didFetchHeaderRowCount(with path: Menu) -> Int {
+        return sideDishManager.getRowCount(path: path)
+    }
+    
+    func didFetchItemDatailHash(with path: Menu, sequence: Int) -> Item? {
+        return sideDishManager.getItemDetailHash(with: path, sequence: sequence)
+    }
+    
+    func except() -> AnyPublisher<String, Never> {
+        return $errorMessage
+            .dropFirst()
+            .eraseToAnyPublisher()
+    }
 }
+

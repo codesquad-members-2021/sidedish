@@ -6,27 +6,27 @@
 //
 
 import Foundation
+import Combine
 
 class SideDishManager {
     
-    enum NotificationName {
-        static let updatePath = Notification.Name("updatePath")
-    }
+    private var sideDishesInfo : [Menu : [Item]] = [:]
+    private(set) var arriveMenuType = PassthroughSubject<Menu, Never>()
     
-    private var sideDishesInfo : [Path : [Item]] = [:]
-    
-    func insert(path: Path, items: [Item]) {
+    func insert(path: Menu, items: [Item]) {
         sideDishesInfo[path] = items
-        NotificationCenter.default.post(name: NotificationName.updatePath,
-                                        object: self,
-                                        userInfo: ["path": path])
+        arriveMenuType.send(path)
     }
     
-    func getSideDishes(with path: Path) -> [Item] {
+    func getSideDishes(with path: Menu) -> [Item] {
         return sideDishesInfo[path] ?? []
     }
  
-    func getRowCount(path : Path) -> Int {
+    func getRowCount(path : Menu) -> Int {
         return sideDishesInfo[path]?.count ?? 0
+    }
+    
+    func getItemDetailHash(with path: Menu, sequence: Int) -> Item? {
+        return sideDishesInfo[path]?[sequence]
     }
 }
