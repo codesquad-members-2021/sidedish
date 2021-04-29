@@ -6,7 +6,13 @@ import ProductBuyInfo from "./ProductBuyInfo";
 import ProductCount from "./ProductCount";
 import styled from "styled-components";
 
-const ProductInformation = ({ product, getTotalPrice, increaseCount, decreaseCount, count }) => {
+const ProductInformation = ({
+  product,
+  getTotalPrice,
+  increaseCount,
+  decreaseCount,
+  count,
+}) => {
   return (
     <Information>
       <ProductMainInfo product={product} />
@@ -14,7 +20,9 @@ const ProductInformation = ({ product, getTotalPrice, increaseCount, decreaseCou
       <ProductCount {...{ count, increaseCount, decreaseCount }}></ProductCount>
       <ProductPrice>
         <ProductTotalTitle>총 주문금액</ProductTotalTitle>
-        <ProductTotalMoney>{getTotalPrice(product.s_price)}</ProductTotalMoney>
+        <ProductTotalMoney>
+          {getTotalPrice(product.s_price)}원
+        </ProductTotalMoney>
       </ProductPrice>
       <TextButton type="ORDER"></TextButton>
     </Information>

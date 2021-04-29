@@ -1,40 +1,37 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Card from '../../componentUtils/card/Card';
-import { CenterContainer } from '../../componentUtils/styles/common';
+import { useState } from "react";
+import styled from "styled-components";
+import useFetch from "../../../hooks/useFetch";
+import Card from "../../componentUtils/card/Card";
+import { CenterContainer } from "../../componentUtils/styles/common";
 import {
   Button,
   SectionTitle,
   CardList,
-} from '../../componentUtils/styles/common';
+} from "../../componentUtils/styles/common";
 
 const tempUrl =
-  'https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best';
+  "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best";
 
 const TabSection = (props) => {
   const [activeTab, setActiveTab] = useState(0);
-  const [bestSidedishes, setBestSidedishes] = useState([]);
 
-  useEffect(() => {
-    const request = async () => {
-      const response = await fetch(tempUrl);
-      const json = await response.json();
-      setBestSidedishes(json.body);
-    };
-    request();
-  }, []);
+  const { products, loading, error } = useFetch({ url: tempUrl });
 
   const handleTab = (id) => {
     setActiveTab(id);
   };
 
-  return (
+  if (error) return <div>error</div>;
+
+  return loading ? (
+    <div>로딩중..</div>
+  ) : (
     <CenterContainer>
       <TabContainer>
         <SectionTitle>후기가 증명하는 베스트 반찬</SectionTitle>
         <TabList>
-          {bestSidedishes.length &&
-            bestSidedishes.map((item, i) => (
+          {products &&
+            products.body.map((item, i) => (
               <TabButton
                 onClick={() => handleTab(i)}
                 activated={i === activeTab}
@@ -45,8 +42,8 @@ const TabSection = (props) => {
         </TabList>
         <TabContent>
           <CardList>
-            {bestSidedishes.length &&
-              bestSidedishes[activeTab].items.map((item) => (
+            {products &&
+              products.body[activeTab].items.map((item) => (
                 <Card
                   type="베스트"
                   product={item}
@@ -71,7 +68,7 @@ const TabButton = styled(Button)`
       : props.theme.colors.lightGrayBG};
   color: ${(props) =>
     props.activated ? props.theme.colors.darkGray : props.theme.colors.gray};
-  font-weight: ${(props) => props.activated && 'bold'};
+  font-weight: ${(props) => props.activated && "bold"};
   width: 201px;
   height: 58px;
   margin-right: 8px;
