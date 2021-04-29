@@ -1,27 +1,15 @@
 import styled from 'styled-components';
 import preparingImage from 'images/preparingImage.jpg';
 import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
-import API from 'util/API';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
-const TabCard = ({ item, dispatchModal }) => {
-
+const TabCard = ({ item, refetchModal }) => {
   const { detail_hash, delivery_type, title,
     description, n_price, s_price, badge } = item;
 
-  const fetchModalState = ({ hash }) => async () => {
-    dispatchModal({ type: 'LOADING' });
-    try {
-      const { data } = await API.get.detail({ hash });
-      dispatchModal({ type: 'SUCCESS', data: { title, badge, ...data } });
-    } catch (e) {
-      dispatchModal({ type: 'ERROR', error: e });
-    }
-  };
-
   return (
     <CardWrapper>
-      <ImageWrapper onClick={fetchModalState({ hash: detail_hash })}>
+      <ImageWrapper onClick={refetchModal({ hash: detail_hash }, { title, badge })}>
         <Image src={preparingImage} alt="" />
         <Overlay>
           <OverlayText>

@@ -1,36 +1,24 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import API from 'util/API.js';
 import { Container } from 'Components/commons/base.js';
 import Card from 'Components/commons/Cards';
-import { reducer, reducerInitialState } from 'util/reducer';
 import loadingImage from 'images/loading.gif';
 import errorImage from 'images/preparingProduct.png';
+import useAsync from 'util/hooks/useAsync';
 
-const Tabs = ({ dispatchModal }) => {
-  const [tabItemState, dispatchTabItem] = useReducer(reducer, reducerInitialState);
+const Tabs = ({ refetchModal }) => {
+  const [tabItemState] = useAsync(API.get.best);
   const [currentTabItems, setCurrentTabItems] = useState([]);
   const { loading, data, error } = tabItemState;
+  const tabData = data?.body;
 
   const handleChangeTabs = ({ idx }) => () => {
-    setCurrentTabItems(data[idx].items);
+    setCurrentTabItems(tabData[idx].items);
   };
 
   useEffect(() => {
-    const fetchBestProduct = async () => {
-      dispatchTabItem({ type: 'LOADING' });
-      try {
-        const { body } = await API.get.best();
-        dispatchTabItem({ type: 'SUCCESS', data: body });
-      } catch (e) {
-        dispatchTabItem({ type: 'ERROR', error: e });
-      }
-    };
-    fetchBestProduct();
-  }, []);
-
-  useEffect(() => {
-    if (data) setCurrentTabItems(data[0].items);
+    if (data) setCurrentTabItems(tabData[0].items);
   }, [data]);
 
   return (
@@ -44,7 +32,7 @@ const Tabs = ({ dispatchModal }) => {
       {data && <>
         <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
         <FlexWrapper>
-          {data?.map(({ name }, idx) => {
+          {tabData.map(({ name }, idx) => {
             return (
               <label key={`label-${idx}`}>
                 <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
@@ -55,7 +43,7 @@ const Tabs = ({ dispatchModal }) => {
         </FlexWrapper>
         <CardListWrapper>
           {currentTabItems.map((item, idx) => {
-            return (<Card key={`card-${idx}`} type={"tabs"}  {...{ item, dispatchModal }} />);
+            return (<Card key={`card-${idx}`} type={"tabs"}  {...{ item, refetchModal }} />);
           })}
         </CardListWrapper>
       </>}
