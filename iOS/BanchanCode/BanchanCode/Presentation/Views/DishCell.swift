@@ -41,11 +41,11 @@ class DishCell: UICollectionViewCell {
         let originalPrice = prices[0]
         if prices.count > 1 {
             let lastPrice = prices[1]
-            lastPriceLabel.text = "\(lastPrice)원"
+            lastPriceLabel.text = String().format(price: lastPrice)
             originalPriceLabel.isHidden = false
-            originalPriceLabel.attributedText = "\(originalPrice)원".strikethrough()
+            originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
         } else {
-            lastPriceLabel.text = "\(originalPrice)원"
+            lastPriceLabel.text = String().format(price: originalPrice)
             originalPriceLabel.isHidden = true
         }
         let badges = dish.badges
