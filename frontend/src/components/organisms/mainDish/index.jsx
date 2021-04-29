@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import MediumCard from '../../molecules/MediumCard';
-import Span from '../../atoms/Span';
-import loadData from '../../../util/loadData';
-import Carousel from '../Carousel';
-import Icon from '../../atoms/Icon';
+import React, { useState, useEffect } from "react";
+import MediumCard from "../../molecules/MediumCard";
+import Span from "../../atoms/Span";
+import loadData from "../../../util/loadData";
+import Carousel from "../Carousel";
+import Icon from "../../atoms/Icon";
 
-const MainDish = props => {
-
+const MainDish = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,16 +19,15 @@ const MainDish = props => {
         _image={card.image}
         _title={card.title}
         _description={card.description}
-        _nPrice={card.n_price}
-        _sPrice={card.s_price}
+        _nPrice={card.normal_price}
+        _sPrice={card.special_price}
         _badge={card.badge}
         _hash={card.detail_hash}
       ></MediumCard>
     ));
   };
 
-
-  const Button = type => {
+  const Button = (type) => {
     return (
       <>
         <Icon
@@ -40,7 +38,6 @@ const MainDish = props => {
         />
       </>
     );
-
   };
 
   return (
@@ -56,10 +53,10 @@ const MainDish = props => {
         imageHeight={479}
         imageMargin={8}
         ButtonLeft={() => {
-          return Button('LeftIcon');
+          return Button("LeftIcon");
         }}
         ButtonRight={() => {
-          return Button('RightIcon');
+          return Button("RightIcon");
         }}
       >
         <Cards />

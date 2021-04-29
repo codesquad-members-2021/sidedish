@@ -51,9 +51,9 @@ const Details = ({ ...props }) => {
 
       <ContentWrapper>
         <InfoProduct
-          title="미노리키친]규동 250g"
+          title={detailDish.title}
           description={detailDish.product_description}
-          badge="['이벤트특가','론칭특가']"
+          badge={detailDish.badge}
           _sPrice={detailDish.special_price}
           _nPrice={detailDish.normal_price}
         ></InfoProduct>

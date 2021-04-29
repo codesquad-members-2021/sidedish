@@ -37,7 +37,7 @@ const StyledSpan = styled.span`
     text-decoration: line-through;
   }
   &._tPrice {
-    width: 110px;
+    width: 124px;
     font-size: 32px;
     font-weight: 700;
     color: #010101;
@@ -73,11 +73,11 @@ const StyledSpan = styled.span`
 
   &._detailLabel {
     width: 60px;
-    white-space: nowrap;
-    margin-right: 16px;
+    margin: 3px 16px 0 0;
     font-size: 16px;
     font-weight: 400;
     color: #828282;
+    white-space: nowrap;
   }
 
   &._detailText {
@@ -120,7 +120,7 @@ const StyledSpan = styled.span`
   &._tPriceTitle {
     margin: 10px 24px 0 0;
     font-size: 18px;
-
+  }
   &._otherPrice {
     font-weight: 700;
     font-size: 14px;

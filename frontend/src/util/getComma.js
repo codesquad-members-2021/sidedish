@@ -1,6 +1,8 @@
 const getComma = (number) => {
-  const a = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return a;
+  if (!number) {
+    return null;
+  }
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 export default getComma;
