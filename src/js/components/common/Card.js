@@ -21,7 +21,15 @@ const Card = ({ data, size, setModalOn, setModalData }) => {
 			})
 			.catch((response) => console.log("error!! :", response));
 	};
-	return (
+	return size === "SMALL" ? (
+		<ThemeProvider theme={theme}>
+			<CardWrapper>
+				<CardImage src={src} size={size} isHover={isHover} onError={() => setSrc("https://codesquad.kr/img/company/codesquad2.png")} />
+				<CardName size={size}>{title}</CardName>
+				<Price n_price={n_price} s_price={s_price} size={size}/>
+			</CardWrapper>
+		</ThemeProvider>
+	) : (
 		<ThemeProvider theme={theme}>
 			<CardWrapper>
 				<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={clickImage}>
@@ -32,7 +40,7 @@ const Card = ({ data, size, setModalOn, setModalData }) => {
 					<CardName>{title}</CardName>
 					<CardBody>{description}</CardBody>
 				</CardInfo>
-				<Price n_price={n_price} s_price={s_price} />
+				<Price n_price={n_price} s_price={s_price} size={size} />
 				{badge && <Badge badge={badge} />}
 			</CardWrapper>
 		</ThemeProvider>
@@ -43,6 +51,7 @@ const theme = {
 	sizes: {
 		LARGE: "384px",
 		MEDIUM: "308px",
+		SMALL: "160px",
 	},
 	hoverTop: {
 		LARGE: "140px",
@@ -80,6 +89,7 @@ const CardInfo = styled.div`
 `;
 const CardName = styled.div`
 	position: static;
+	width: ${({ theme: { sizes }, size }) => sizes[size]};
 	font-size: 16px;
 	line-height: 23px;
 	color: #333;
