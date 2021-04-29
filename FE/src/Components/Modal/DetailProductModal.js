@@ -11,7 +11,6 @@ import loadingImage from 'images/loading.gif';
 const DetailProductModal = ({ modalState }) => {
   const [isHide, setHide] = useToggle(true);
   const { loading, data, error } = modalState;
-  const modalData = data?.data;
 
   useEffect(() => {
     if (loading) setHide.toggle();
@@ -29,9 +28,9 @@ const DetailProductModal = ({ modalState }) => {
         {data &&
           <div>
             <TopSide>
-              {modalState && (
-                <><LeftSide {...modalData} />
-                  <RightSide {...modalData} /></>
+              {data && (
+                <><LeftSide {...data} />
+                  <RightSide {...data} /></>
               )}
             </TopSide>
             {!isHide && <BottomSide />}

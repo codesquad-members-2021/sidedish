@@ -11,14 +11,13 @@ const Tabs = ({ refetchModal }) => {
   const [tabItemState] = useAsync(API.get.best);
   const [currentTabItems, setCurrentTabItems] = useState([]);
   const { loading, data, error } = tabItemState;
-  const tabData = data?.body;
 
   const handleChangeTabs = ({ idx }) => () => {
-    setCurrentTabItems(tabData[idx].items);
+    setCurrentTabItems(data[idx].items);
   };
 
   useEffect(() => {
-    if (data) setCurrentTabItems(tabData[0].items);
+    if (data) setCurrentTabItems(data[0].items);
   }, [data]);
 
   return (
@@ -32,7 +31,7 @@ const Tabs = ({ refetchModal }) => {
       {data && <>
         <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
         <FlexWrapper>
-          {tabData.map(({ name }, idx) => {
+          {Object.entries(data)?.map(([_, { name }], idx) => {
             return (
               <label key={`label-${idx}`}>
                 <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />

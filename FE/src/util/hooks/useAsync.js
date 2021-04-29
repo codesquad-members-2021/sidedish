@@ -38,7 +38,7 @@ const useAsync = (apiFunction, deps = [], skip = false) => {
     dispatch({ type: 'LOADING' });
     try {
       const data = await apiFunction(addParam);
-      dispatch({ type: 'SUCCESS', data: { ...addData, ...data } });
+      dispatch({ type: 'SUCCESS', data: { ...data.data, ...data.body, ...addData } });
     } catch (e) {
       dispatch({ type: 'ERROR', error: e });
     }
