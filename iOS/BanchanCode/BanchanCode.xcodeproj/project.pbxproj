@@ -21,6 +21,7 @@
 		E4B254A526397CEF00F522A6 /* DishDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B254A426397CEF00F522A6 /* DishDetailsViewModel.swift */; };
 		E4BD2E6D263A9E0E008E9404 /* String+FormattingPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD2E6C263A9E0E008E9404 /* String+FormattingPrice.swift */; };
 		E4BD2E71263ACC54008E9404 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD2E70263ACC54008E9404 /* BadgeView.swift */; };
+		E4BD2E73263B72DF008E9404 /* NSAttributedString+PartiallyBoldText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD2E72263B72DF008E9404 /* NSAttributedString+PartiallyBoldText.swift */; };
 		E4D5D7F7263276120077DF97 /* DishesItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */; };
 		E4D5D8342632ECFF0077DF97 /* DishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */; };
 		E4D5D83C2632ED5C0077DF97 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D83B2632ED5C0077DF97 /* Observable.swift */; };
@@ -83,6 +84,7 @@
 		E4B254A426397CEF00F522A6 /* DishDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailsViewModel.swift; sourceTree = "<group>"; };
 		E4BD2E6C263A9E0E008E9404 /* String+FormattingPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FormattingPrice.swift"; sourceTree = "<group>"; };
 		E4BD2E70263ACC54008E9404 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		E4BD2E72263B72DF008E9404 /* NSAttributedString+PartiallyBoldText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+PartiallyBoldText.swift"; sourceTree = "<group>"; };
 		E4D5D7F6263276120077DF97 /* DishesItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesItemViewModel.swift; sourceTree = "<group>"; };
 		E4D5D8332632ECFF0077DF97 /* DishesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewModel.swift; sourceTree = "<group>"; };
 		E4D5D83B2632ED5C0077DF97 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				E463432C263178E10001D87A /* String+StrikeThrough.swift */,
 				E4BD2E6C263A9E0E008E9404 /* String+FormattingPrice.swift */,
+				E4BD2E72263B72DF008E9404 /* NSAttributedString+PartiallyBoldText.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				E49F172F2638CF39006C2108 /* DetailPageViewController.swift in Sources */,
 				E4E3BF4B26354F6E0041BA5B /* FetchDishesUseCase.swift in Sources */,
 				E4D5D7F7263276120077DF97 /* DishesItemViewModel.swift in Sources */,
+				E4BD2E73263B72DF008E9404 /* NSAttributedString+PartiallyBoldText.swift in Sources */,
 				E4B254A12639544B00F522A6 /* UseCase.swift in Sources */,
 				E49F173D26393964006C2108 /* FetchDishDetailsUseCase.swift in Sources */,
 				FA88E9E3262E7F50001C3E53 /* MainPageViewController.swift in Sources */,

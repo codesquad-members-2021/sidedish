@@ -138,7 +138,7 @@ class DetailPageViewController: UIViewController {
         guard let point = basicInfo.point else { return }
         pointLabel.text = String().format(price: point)
         deliveryInfoLabel.text = basicInfo.deliveryInfo
-        deliveryFeeLabel.attributedText = attributedText(withString: "2,500원 (40,000원 이상 구매 시 무료)", boldString: "(40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
+        deliveryFeeLabel.attributedText = NSAttributedString().makeBold("(40,000원 이상 구매 시 무료)", within: "2,500원 (40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
         totalPriceLabel.text = String().format(price: totalPrice)
     }
     
@@ -172,14 +172,14 @@ class DetailPageViewController: UIViewController {
         }
     }
     
-    private func attributedText(withString string: String, boldString: String, font: UIFont) -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: string,
-                                                         attributes: [NSAttributedString.Key.font: font])
-        let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
-        let range = (string as NSString).range(of: boldString)
-        attributedString.addAttributes(boldFontAttribute, range: range)
-        return attributedString
-    }
+    //private func attributedText(withString string: String, boldString: String, font: UIFont) -> NSAttributedString {
+    //    let attributedString = NSMutableAttributedString(string: string,
+    //                                                     attributes: [NSAttributedString.Key.font: font])
+    //    let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
+    //    let range = (string as NSString).range(of: boldString)
+    //    attributedString.addAttributes(boldFontAttribute, range: range)
+    //    return attributedString
+    //}
     
     private func updateRemoveButtonState() {
         removeButton.isEnabled = totalPrice > 0
