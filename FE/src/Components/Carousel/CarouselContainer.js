@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 import CarouselItem from 'Components/Carousel/CarouselItem.js';
@@ -11,17 +11,23 @@ const CarouselContainer = ({ navigator = "default", unit = 1, ...props }) => {
 
   const $CarouselAreaWrapper = useRef(null);
   const $CarouselArea = useRef(null);
+  const [mountStatus, setMountStatus] = useState(false);
 
   const {
     useNavigator, useEventModal,
     calculatedMovableRange, itemWidth
   } = useCarousel({ $CarouselAreaWrapper, $CarouselArea, unit, itemLength: props.children.length })
 
+  useEffect(() => {
+    console.log("carouselContainer mount or update", unit)
+    setMountStatus(true);
+  }, [])
+
   return (
     <CarouselLayout navigator={navigator}>
       <CarouselAreaWrapper className={"carousel-area-wrapper"} ref={$CarouselAreaWrapper}>
         <CarouselArea ref={$CarouselArea} calculatedMovableRange={calculatedMovableRange}>
-          {[...props.children].map((child, i) => {
+          {mountStatus && [...props.children].map((child, i) => {
             return <CarouselItem key={`Carousel-Item-${i}`} width={itemWidth} children={child} />
           })}
         </CarouselArea>

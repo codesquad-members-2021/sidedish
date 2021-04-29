@@ -13,16 +13,15 @@ const useCarousel = ({ $CarouselAreaWrapper, $CarouselArea, itemLength, unit }) 
   useLayoutEffect(() => {
     window.addEventListener('resize', debounced(handleResize));
     return () => { // cleanup 
-      window.removeEventListener('resize', debounced(handleResize));
+      window.removeEventListener('resize', debounced(handleResize), false);
     }
   }, [])
 
   useEffect(() => {
-
     const $CarouselAreaDOM = $CarouselArea.current; // 리액트에서 내주는 warning에 대한 가이드 반영
     $CarouselAreaDOM.classList.add("carousel-start")
     return () => { $CarouselAreaDOM.classList.remove("carousel-start"); }
-  });
+  }, [slideCount]);
 
   useEffect(() => {
     handleResize();
@@ -36,6 +35,7 @@ const useCarousel = ({ $CarouselAreaWrapper, $CarouselArea, itemLength, unit }) 
   }
 
   const handleResize = () => {
+    if (!$CarouselAreaWrapper.current) return;
     setItemWidth($CarouselAreaWrapper.current.offsetWidth / unit);
     setCarouselNavigatorAreaSize({
       width: $CarouselAreaWrapper.current.offsetWidth,

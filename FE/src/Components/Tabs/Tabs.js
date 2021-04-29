@@ -60,17 +60,26 @@ const TabsWrapper = styled(Container)``;
 
 const FlexWrapper = styled.div`
   display:flex;
+
+  label + label {
+    margin-left: 10px;
+  }
+
 `;
 
 const LabelBelongSpan = styled.span`
-  display: inline-flex;
+  height: 100%;
   padding: 16px 32px;
-  margin: 0 10px 0 0;
   background:#F5F5F7;
+  box-sizing: border-box;
+  
   font-size: 18px;
   line-height: 26px;
-  align-items: center;
+  
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  
   cursor: pointer;
 `;
 
