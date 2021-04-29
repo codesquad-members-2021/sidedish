@@ -1,18 +1,33 @@
 import styled from "styled-components";
 import IconButton from "../../componentUtils/button/IconButton";
 import { CenterContainer } from "../../componentUtils/styles/common";
+import { Link } from "react-router-dom";
 
-const HeaderRight = () => {
+const HeaderRight = ({ loginState, setLoginState }) => {
   const tempFn = () => {
     console.log("hello");
   };
+
+  const onClickLogOut = () => {
+    //
+    localStorage.removeItem("token");
+    setLoginState(false);
+  };
+
   return (
     <HeaderRightDiv>
       <SearchBox>
         <input />
         <IconButton type="SEARCH" fn={tempFn} />
       </SearchBox>
-      <StyledSpan>로그인</StyledSpan>
+      {loginState ? (
+        <StyledSpan onClick={onClickLogOut}>로그아웃</StyledSpan>
+      ) : (
+        <Link to="/login">
+          <StyledSpan>로그인</StyledSpan>
+        </Link>
+      )}
+
       <StyledSpan>장바구니</StyledSpan>
     </HeaderRightDiv>
   );
