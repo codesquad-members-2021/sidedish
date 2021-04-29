@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DishResponseDto {
 
+    @JsonProperty("dishId")
     private String id;
 
     @JsonProperty("image")
