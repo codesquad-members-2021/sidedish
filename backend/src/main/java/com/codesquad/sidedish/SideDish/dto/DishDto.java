@@ -1,8 +1,12 @@
 package com.codesquad.sidedish.SideDish.dto;
 
+
+import com.codesquad.sidedish.SideDish.domain.Delivery;
 import com.codesquad.sidedish.SideDish.domain.Dish;
+import com.codesquad.sidedish.SideDish.domain.Sale;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DishDto {
     private final String detailHash;
@@ -10,8 +14,8 @@ public class DishDto {
     private final String title;
     private final String description;
     private final List<String> deliveryTypes;
-    private final int price;
-    private final int salePrice;
+    private final Integer price;
+    private final Integer salePrice;
     private final List<String> badges;
 
     private DishDto(Builder builder) {
@@ -25,16 +29,16 @@ public class DishDto {
         this.badges = builder.badges;
     }
 
-    public static DishDto from(Dish dish) {
+    public static DishDto from(Dish dish, List<Delivery> deliveries, List<Sale> sales) {
         return new Builder()
                 .detailHash(dish.getDetailHash())
                 .image(dish.getImage())
                 .title(dish.getTitle())
                 .description(dish.getDescription())
-                .deliveryTypes(dish.getDeliveryTypes())
+                .deliveryTypes(deliveries.stream().map(Delivery::getDeliveryType).collect(Collectors.toList()))
                 .price(dish.getPrice())
                 .salePrice(dish.getSalePrice())
-                .badges(dish.getBadges())
+                .badges(sales.stream().map(Sale::getBadge).collect(Collectors.toList()))
                 .build();
     }
 
@@ -44,8 +48,8 @@ public class DishDto {
         private String title;
         private String description;
         private List<String> deliveryTypes;
-        private int price;
-        private int salePrice;
+        private Integer price;
+        private Integer salePrice;
         private List<String> badges;
 
         public DishDto build() {
@@ -78,12 +82,12 @@ public class DishDto {
             return this;
         }
 
-        public Builder price(int price) {
+        public Builder price(Integer price) {
             this.price = price;
             return this;
         }
 
-        public Builder salePrice(int salePrice) {
+        public Builder salePrice(Integer salePrice) {
             this.salePrice = salePrice;
             return this;
         }
@@ -114,11 +118,11 @@ public class DishDto {
         return description;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public int getSalePrice() {
+    public Integer getSalePrice() {
         return salePrice;
     }
 
