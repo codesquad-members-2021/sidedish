@@ -1,18 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { LABEL_TYPE } from "../../utils/variables.js";
-import theme from "./styles/theme.js";
+// import theme from "./styles/theme.js";
 
-const Label = ({ badgeName }) => <StyledLabel type={LABEL_TYPE[badgeName]}>{badgeName}</StyledLabel>;
+const Label = ({ badgeName }) => (
+  <StyledLabel type={LABEL_TYPE[badgeName]}>{badgeName}</StyledLabel>
+);
 
 const StyledLabel = styled.span`
   padding: 4px 16px;
-  border-radius: ${theme.borders.radius};
-  color: ${theme.colors.white};
-  font-size: ${theme.fontSizes.XS};
+  border-radius: ${({ theme }) => theme.borders.radius};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.fontSizes.XS};
   font-weight: bold;
-  background: ${({ type }) =>
-    type === "EVENT" ? theme.colors.green : type === "BEST" ? theme.colors.pink : theme.colors.lightBlue};
+  background: ${({ type, theme }) =>
+    type === "EVENT"
+      ? theme.colors.green
+      : type === "BEST"
+      ? theme.colors.pink
+      : theme.colors.lightBlue};
   margin-right: 10px;
   margin-top: 20px;
 `;

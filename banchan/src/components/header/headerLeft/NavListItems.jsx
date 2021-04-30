@@ -52,9 +52,9 @@ const SubElementsLI = styled.li`
   &:first-child {
     font-weight: bold;
     text-decoration: underline;
-    color: ${(props) => props.theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.darkGray};
   }
-  color: ${(props) => props.theme.colors.gray};
+  color: ${({ theme }) => theme.colors.gray};
   font-weight: "400";
 `;
 

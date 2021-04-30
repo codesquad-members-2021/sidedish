@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextButton from "../../button/TextButton";
 import { CenterContainer, ProductTotalTitle } from "../../styles/common";
 import ProductMainInfo from "./ProductMainInfo";
@@ -6,17 +6,23 @@ import ProductBuyInfo from "./ProductBuyInfo";
 import ProductCount from "./ProductCount";
 import styled from "styled-components";
 
-const ProductInformation = ({ product, getTotalPrice, increaseCount, decreaseCount, count }) => {
+const ProductInformation = ({ product }) => {
+  let initialPrice = Number(product.s_price.replace(/[^0-9]/g, ""));
+
+  const [totalPrice, setTotalPrice] = useState(initialPrice);
+
+  const getTotalPrice = (count) => setTotalPrice(initialPrice * count);
+
   return (
     <Information>
       <ProductMainInfo product={product} />
-      <ProductBuyInfo product={product}></ProductBuyInfo>
-      <ProductCount {...{ count, increaseCount, decreaseCount }}></ProductCount>
+      <ProductBuyInfo product={product} />
+      <ProductCount getTotalPrice={getTotalPrice} />
       <ProductPrice>
         <ProductTotalTitle>총 주문금액</ProductTotalTitle>
-        <ProductTotalMoney>{getTotalPrice(product.s_price)}</ProductTotalMoney>
+        <ProductTotalMoney>{totalPrice}원</ProductTotalMoney>
       </ProductPrice>
-      <TextButton type="ORDER"></TextButton>
+      <TextButton type="ORDER" />
     </Information>
   );
 };
@@ -33,5 +39,5 @@ const ProductPrice = styled(CenterContainer)`
 const ProductTotalMoney = styled.div`
   font-size: 32px;
   font-weight: bold;
-  color: ${(props) => props.theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;

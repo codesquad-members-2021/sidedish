@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import CarouselSection from './CarouselSection.jsx';
-import styled from 'styled-components';
-import { CenterContainer } from '../../componentUtils/styles/common.jsx';
-import { URLS } from '../../../utils/variables.js';
+import { useState } from "react";
+import CarouselSection from "./CarouselSection.jsx";
+import styled from "styled-components";
+import { CenterContainer } from "../../componentUtils/styles/common.jsx";
+import { URLS } from "../../../utils/variables.js";
 
 const CarouselSectionList = (props) => {
   const [sections, setSections] = useState([
-    { id: 0, kind: 'main', title: '모두가 좋아하는 든든한 메인요리' },
-    { id: 1, kind: 'soup', title: '정성이 담긴 뜨끈한 국물요리' },
-    { id: 2, kind: 'side', title: '식탁을 풍성하게 하는 정갈한 밑반찬' },
+    { id: 0, kind: "main", title: "모두가 좋아하는 든든한 메인요리" },
+    { id: 1, kind: "soup", title: "정성이 담긴 뜨끈한 국물요리" },
+    { id: 2, kind: "side", title: "식탁을 풍성하게 하는 정갈한 밑반찬" },
   ]);
 
   const [viewMoreState, setViewMoreState] = useState(false);
@@ -47,14 +47,14 @@ const CarouselContainer = styled(CenterContainer)`
 
 const ViewMoreButton = styled.button`
   border: none;
-  background: ${(props) => props.theme.colors.lightGrayBG};
+  background: ${({ theme }) => theme.colors.lightGrayBG};
   width: 100%;
   padding: 37px 0;
-  font-size: ${(props) => props.theme.fontSizes.M};
-  color: ${(props) => props.theme.colors.darkGray};
+  font-size: ${({ theme }) => theme.fontSizes.M};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-weight: bold;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.05);
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   cursor: pointer;
 `;
 

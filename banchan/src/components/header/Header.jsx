@@ -1,13 +1,13 @@
-import HeaderLeft from './headerLeft/HeaderLeft';
-import HeaderRight from './headerRight/HeaderRight';
-import styled from 'styled-components';
-import { CenterContainer } from '../componentUtils/styles/common';
+import HeaderLeft from "./headerLeft/HeaderLeft";
+import HeaderRight from "./headerRight/HeaderRight";
+import styled from "styled-components";
+import { CenterContainer } from "../componentUtils/styles/common";
 
-const Header = () => {
+const Header = ({ loginState, setLoginState }) => {
   return (
     <HeaderContainer>
       <HeaderLeft />
-      <HeaderRight />
+      <HeaderRight loginState={loginState} setLoginState={setLoginState} />
     </HeaderContainer>
   );
 };
