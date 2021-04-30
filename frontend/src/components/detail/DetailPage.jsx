@@ -4,14 +4,14 @@ import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
-import { useState, useRef } from 'react';
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Error from '../state/Error';
 import Carousel from '../category/Carousel';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import useFetch from '../useFetch';
 import ItemCardSmall from '../ItemCardSmall';
 import Title from '../atomic/Title';
+
 function DetailPage({
 	loadingState,
 	detailData,
@@ -19,38 +19,42 @@ function DetailPage({
 	setModalState,
 	item,
 	badges,
-	hash,
 }) {
 	const [topImg, setTopImg] = useState(detailData.topImage);
 	const [orderCount, setOrderCount] = useState(1);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
-	const [orderUrl, setOrderUrl] = useState(null);
-
-	const [stockData, loadingStockState] = useFetch(
-		orderUrl,
-		'PATCH',
-		hash,
-		+orderCount,
-	);
+	const [pageNumer, setPageNumer] = useState({ page: 1, total: 1 });
 
 	// const orderCount = useMemo(() => setOrderCount(orderCount로직), [orderCount ])
 	const button = useRef();
+
 	const handleLeft = () => {
 		button.current.slideToLeft();
+		setPageNumer({
+			page: button.current.pageNumber,
+			total: button.current.totalPage,
+		});
 	};
 	const handleRight = () => {
 		button.current.slideToRight();
-	};
-	const handleOrderClick = () => {
-		setOrderUrl(process.env.REACT_APP_API_URL + 'order');
-		setModalState(!modalMode);
+		setPageNumer({
+			page: button.current.pageNumber,
+			total: button.current.totalPage,
+		});
 	};
 	const [randomMenu, randomLoadingState] = useFetch(
 		process.env.REACT_APP_API_URL + 'recommend/10/',
 		'get',
 	);
+
 	const ButtonBlock = styled.div`
 		display: flex;
+	`;
+
+	const PageBlock = styled.div`
+		padding: 0 0 17px 0;
+		display: flex;
+		align-items: center;
 	`;
 	return (
 		<Modal {...{ modalMode, setModalState }}>
@@ -93,32 +97,32 @@ function DetailPage({
 								<DetailText>{detailData.deliveryFee}</DetailText>
 							</PointDeliveryInfoBlock>
 							<img src="./longUnderLine.png" alt="underline"></img>
-
-							<ItemDescDetails>수량</ItemDescDetails>
-							<input
-								type="number"
-								value={orderCount}
-								placeholder="1"
-								min="1"
-								max={detailData.stock}
-								onChange={(e) => setOrderCount(e.target.value)}
-							></input>
+							<FlexBlock>
+								<ItemDescDetails>수량</ItemDescDetails>
+								<NumInput
+									type="number"
+									value={orderCount}
+									placeholder="1"
+									min="1"
+									max={detailData.stock}
+									onChange={(e) => setOrderCount(e.target.value)}
+								></NumInput>
+							</FlexBlock>
 							<img src="./longUnderLine.png" alt="underline"></img>
-							<DetailText>총 주문금액</DetailText>
-							<ItemPrice nPrice={orderPrice * orderCount}></ItemPrice>
+							<FlexBlock>
+								<DetailText>총 주문금액</DetailText>
+								<ItemPrice nPrice={`${orderPrice * orderCount}`}></ItemPrice>
+							</FlexBlock>
+
 							<OrderBtn
-								onClick={handleOrderClick}
+								onClick={() => setModalState(!modalMode)}
 								disabled={!Boolean(detailData.stock)}
 							>
 								{detailData.stock ? '주문하기' : '상품 준비중'}
 							</OrderBtn>
 						</ItemDetailInfo>
 					</RepresentativeBlock>
-					{/* <ItemDetailCards>
-						{detailData.detailSection.map((card, idx) => (
-							<DetailCard card={card} key={idx}></DetailCard>
-						))}
-					</ItemDetailCards> */}
+
 					{!randomLoadingState && (
 						<FooterSection>
 							<Upper>
@@ -127,6 +131,9 @@ function DetailPage({
 									<ButtonLeft onClick={handleLeft}>
 										<VscChevronLeft />
 									</ButtonLeft>
+
+									<PageBlock>{`${pageNumer.page} / ${pageNumer.total}`}</PageBlock>
+
 									<ButtonRight onClick={handleRight}>
 										<VscChevronRight />
 									</ButtonRight>
@@ -135,7 +142,6 @@ function DetailPage({
 
 							<Carousel
 								width={864}
-								height={242}
 								count={5}
 								duration={'.5s'}
 								ref={button}
@@ -147,6 +153,7 @@ function DetailPage({
 										height={242}
 										key={idx}
 										data={el}
+										xpadding={10}
 									></ItemCardSmall>
 								))}
 							</Carousel>
@@ -159,13 +166,14 @@ function DetailPage({
 }
 
 export default React.memo(DetailPage);
-
-const ButtonLeft = styled(Button)``;
-const ButtonRight = styled(Button)``;
-
 const RepresentativeBlock = styled.div`
 	display: flex;
 	margin: 48px;
+`;
+const FlexBlock = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
 `;
 
 const ImageBlock = styled.div`
@@ -235,13 +243,19 @@ const OrderBtn = styled(Button)`
 `;
 
 const FooterSection = styled.div`
-	height: 396px;
 	box-sizing: border-box;
 	padding: 48px;
 	width: 100%;
+	height: 450px;
 	background-color: ${theme.colors.grey_css};
 `;
 const Upper = styled.div`
 	display: flex;
 	justify-content: space-between;
 `;
+const NumInput = styled.input`
+	padding: 5px 0 5px 5px;
+	height: 14px;
+`;
+const ButtonLeft = styled(Button)``;
+const ButtonRight = styled(Button)``;

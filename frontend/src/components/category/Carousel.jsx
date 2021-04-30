@@ -40,10 +40,13 @@ function Carousel({ width, height, count, duration, children, effect }, ref) {
 		}
 		setMoving(true);
 	};
+	const page = () => (blockNumber ? blockNumber : 1);
 
 	useImperativeHandle(ref, () => ({
 		slideToLeft: onMove.bind(undefined, +1),
 		slideToRight: onMove.bind(undefined, -1),
+		pageNumber: page(),
+		totalPage: block.length,
 	}));
 
 	const onTransitionEnd = () => {
@@ -73,7 +76,7 @@ function Carousel({ width, height, count, duration, children, effect }, ref) {
 					<CardWrapper
 						className="CardWrapper"
 						width={panelWidth}
-						height={height}
+						// height={height}
 						key={idx + 'a'}
 					>
 						{e}
@@ -86,7 +89,7 @@ function Carousel({ width, height, count, duration, children, effect }, ref) {
 	return (
 		<>
 			<CategorySlideBlock>
-				<CatgoryWrapper width={width} height={height}>
+				<CatgoryWrapper width={width}>
 					<CategoryColumn style={ulStyles} onTransitionEnd={onTransitionEnd}>
 						{[
 							block.length === 1

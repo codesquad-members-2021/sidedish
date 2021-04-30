@@ -1,11 +1,16 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 import Home from './components/Home';
 import { Route, BrowserRouter } from 'react-router-dom';
 import Oauth from './components/Oauth';
 function App() {
-	const loggedInfo = localStorage.getItem('isLogIn');
-	const userId = localStorage.getItem('userId');
-	console.log(loggedInfo);
+	const [loginState, setLoginState] = useState(false);
+	useEffect(() => {
+		const isLogin = localStorage.getItem('isLogin');
+		console.log(isLogin);
+		isLogin === true && setLoginState(true);
+	}, []);
+
 	// eslint-disable-next-line no-unused-expressions
 
 	return (
@@ -13,7 +18,8 @@ function App() {
 			<div>
 				<Route
 					path="/"
-					isLogin={loggedInfo || null}
+					isLogin={loginState}
+					setLoginState={setLoginState}
 					component={Home}
 					exact={true}
 				/>

@@ -5,6 +5,7 @@ import ItemPrice from './atomic/ItemPrice';
 import Badge from './atomic/Badge';
 import DetailPage from './detail/DetailPage';
 import useFetch from './useFetch';
+import Error from './state/Error';
 
 const Card = styled.div`
 	margin-top: 40px;
@@ -70,7 +71,7 @@ function ItemCard({ data, size }) {
 	const [modalMode, setModalState] = useState(false);
 
 	const handleClick = (hash) => {
-		setModalState(!modalMode); //작업중
+		setModalState(!modalMode);
 		setDetailFetchUrl(detailUrl + hash);
 	};
 

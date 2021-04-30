@@ -2,6 +2,24 @@ import styled from 'styled-components';
 import { BiX } from 'react-icons/bi';
 import { theme, Button } from './style/Theme';
 import ModalPortal from '../ModalPortal';
+
+function Modal({ children, modalMode, setModalState }) {
+	const handleClick = () => setModalState(!modalMode);
+
+	return (
+		<ModalPortal>
+			<DarkBackground className="DARK">
+				<StyledModal>{children}</StyledModal>
+				<Button onClick={handleClick}>
+					<BiX style={Xstyle} />
+				</Button>
+			</DarkBackground>
+		</ModalPortal>
+	);
+}
+
+export default Modal;
+
 const DarkBackground = styled.div`
 	position: fixed;
 	left: 0;
@@ -29,20 +47,3 @@ const Xstyle = {
 	right: '-10px',
 	display: 'absolute',
 };
-
-function Modal({ children, modalMode, setModalState }) {
-	const handleClick = () => setModalState(!modalMode);
-
-	return (
-		<ModalPortal>
-			<DarkBackground className="DARK">
-				<StyledModal>{children}</StyledModal>
-				<Button onClick={handleClick}>
-					<BiX style={Xstyle} />
-				</Button>
-			</DarkBackground>
-		</ModalPortal>
-	);
-}
-
-export default Modal;

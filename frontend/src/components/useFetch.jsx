@@ -16,7 +16,6 @@ function useFetch(
 	};
 
 	async function fetchUrl() {
-		console.log(hash);
 		if (!url || url === undefined) return;
 		try {
 			// headers: 'Access-Control-Allow-Origin',

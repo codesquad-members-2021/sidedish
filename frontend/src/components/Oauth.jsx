@@ -14,20 +14,23 @@ const Oauth = (props) => {
 	);
 
 	useEffect(() => {
-		localStorage.setItem('isLogIn', 'true');
-		localStorage.setItem('userId', JSON.stringfy(userInfo.userId));
-		localStorage.setItem('token', JSON.stringfy(userInfo.token));
+		if (!loadingUserState) {
+			localStorage.setItem('isLogIn', 'true');
+			localStorage.setItem('userId', userInfo.userId);
+			localStorage.setItem('token', userInfo.token);
+		}
 	});
 
 	return (
-		<Route>
-			<Redirect
-				to={{
-					pathname: '/',
-					state: { code },
-				}}
-			/>
-		</Route>
+		<div>ggg</div>
+		// <Route>
+		// 	<Redirect
+		// 		to={{
+		// 			pathname: '/',
+		// 			state: { code },
+		// 		}}
+		// 	/>
+		// </Route>
 	);
 };
 export default Oauth;

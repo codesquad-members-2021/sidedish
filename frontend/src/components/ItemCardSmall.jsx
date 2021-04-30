@@ -4,7 +4,7 @@ import { theme, AlignTextCenter } from './style/Theme';
 import DetailPage from './detail/DetailPage';
 import useFetch from './useFetch';
 
-function ItemCardSmall({ data, size, height }) {
+function ItemCardSmall({ data, size, height, xpadding }) {
 	const { alt, badges, title, nPrice, sPrice, detailHash, image } = data;
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
@@ -27,6 +27,7 @@ function ItemCardSmall({ data, size, height }) {
 				></DetailPage>
 			)}
 			<Card
+				padding={xpadding}
 				className="Card"
 				size={size}
 				height={height}
@@ -50,6 +51,37 @@ function ItemCardSmall({ data, size, height }) {
 
 export default ItemCardSmall;
 
+const Card = styled.div`
+	padding: 0 ${(props) => `${props.padding}px`};
+`;
+const ItemTitle = styled.div`
+	font-size: ${theme.fontSize.small}px;
+	&:hover {
+		text-decoration: underline;
+	}
+	margin-bottom: 10px;
+`;
+const ItemPrice = styled.div`
+	font-size: ${theme.fontSize.small};
+	font-weight: Bold;
+`;
+const IMG = styled(AlignTextCenter)`
+	width: auto;
+	height: ${(props) => {
+		return props.size === 'L' ? '384px' : props.size;
+	}}px;
+
+	background-image: url(${(props) => props.image});
+	background-size: cover;
+	&:hover {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+			url(${(props) => props.image});
+		div {
+			opacity: 1;
+		}
+	}
+`;
+
 const DeliveryBlock = styled.div`
 	position: relative;
 	color: ${theme.colors.white};
@@ -66,38 +98,6 @@ const ItemInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-`;
-const Card = styled.div`
-	width: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
-	height: ${(props) => props.height}px;
-	overflow: hidden;
-`;
-const ItemTitle = styled.div`
-	font-size: ${theme.fontSize.small}px;
-	&:hover {
-		text-decoration: underline;
-	}
-`;
-const ItemPrice = styled.div`
-	font-size: ${theme.fontSize.small};
-	font-weight: Bold;
-`;
-const IMG = styled(AlignTextCenter)`
-	width: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
-	height: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-	&:hover {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(${(props) => props.image});
-		div {
-			opacity: 1;
-		}
-	}
+	margin-top: 8px;
+	height: 95px;
 `;
