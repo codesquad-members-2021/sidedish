@@ -12,7 +12,6 @@ const BottomSide = ({ refetchModal }) => {
   useEffect(() => {
     const fetchRandomDishes = async () => {
       setRandomDishes(await API.get.random10());
-      console.log("fetchRandomDishes!", randomDishes)
     }
     fetchRandomDishes();
   }, [])
@@ -22,7 +21,7 @@ const BottomSide = ({ refetchModal }) => {
       <Carousel.Container navigator={"upper"} unit={5}>
         {/* for test */}
         {randomDishes.map((dish, i) => {
-          return <Card key={`test-${i}`} number={i} type={"responsive"} payload={dish} refetchModal={refetchModal}/>;
+          return <Card key={`test-${i}`} number={i} type={"responsive"} payload={dish} refetchModal={refetchModal} />;
         })}
 
       </Carousel.Container>
@@ -32,7 +31,7 @@ const BottomSide = ({ refetchModal }) => {
 
 const BottomSideWrapper = styled.div`
   width: 960px;
-  padding: 48px;
+  padding: 24px 48px;
   box-sizing: border-box;
   background: #F5F5F7;
   border-radius: 0px 0px 5px 5px;

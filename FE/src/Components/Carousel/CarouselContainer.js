@@ -19,7 +19,6 @@ const CarouselContainer = ({ navigator = "default", unit = 1, ...props }) => {
   } = useCarousel({ $CarouselAreaWrapper, $CarouselArea, unit, itemLength: props.children.length })
 
   useEffect(() => {
-    console.log("carouselContainer mount or update", unit)
     setMountStatus(true);
   }, [])
 
