@@ -64,15 +64,13 @@ class CoreDataBanchanListStorage {
                 
                 var sectionEntity: BanchanSectionEntity
                 let index = section.rawValue
-                print(requestEntity.count)
+
                 if requestEntity[section.rawValue].entities?.array.count == 0 {
                     handler(.failure(.fetError))
                     return
                 }
-
                 sectionEntity = requestEntity[index]
                 let entities = sectionEntity.entities?.array as! [BanchanEntity]
-                print(entities.count)
                 let newEntities = entities.map { entity in
                     entity.toDomain()
                 }
