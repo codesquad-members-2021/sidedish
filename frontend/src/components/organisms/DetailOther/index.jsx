@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 import {
   CardStyle,
   WrapCard,
   WrapMain,
   WrapCarousal,
   PageWrapper,
-} from './index.style';
-import Span from '../../atoms/Span';
-import OtherCard from '../../molecules/OtherCard';
-import loadData from '../../../util/loadData';
-import Icon from '../../atoms/Icon';
+} from "./index.style";
+import Span from "../../atoms/Span";
+import OtherCard from "../../molecules/OtherCard";
+import loadData from "../../../util/loadData";
+import Icon from "../../atoms/Icon";
 
 const OtherWrapper = styled.div`
   position: relative;
@@ -26,7 +26,7 @@ const TitleStyles = styled.div`
   padding: 48px 0 0 48px;
 `;
 
-const DetailOther = props => {
+const DetailOther = (props) => {
   const directionRef = useRef(false);
   const [details, setDetails] = useState([]);
   const [page, setPage] = useState(1);
@@ -48,7 +48,7 @@ const DetailOther = props => {
         key={i}
         _image={card.image}
         _title={card.title}
-        _price={card.s_price}
+        _price={card.special_price}
       ></OtherCard>
     ));
   };
@@ -58,15 +58,15 @@ const DetailOther = props => {
     directionRef.current.style.transform = move;
   };
 
-  const moveSlide = type => {
-    if (type === 'RightIcon') {
+  const moveSlide = (type) => {
+    if (type === "RightIcon") {
       if (page === totalPages) return null;
-      setStyle('all 0.5s', `translate(${Xaxis - LENGTH(160, 16)}px)`);
+      setStyle("all 0.5s", `translate(${Xaxis - LENGTH(160, 16)}px)`);
       setXaxis(Xaxis - LENGTH(160, 16));
       setPage(page + 1);
     } else {
       if (page === 1) return null;
-      setStyle('all 0.5s', `translate(${Xaxis + LENGTH(160, 16)}px)`);
+      setStyle("all 0.5s", `translate(${Xaxis + LENGTH(160, 16)}px)`);
       setXaxis(Xaxis + LENGTH(160, 16));
       setPage(page - 1);
     }
