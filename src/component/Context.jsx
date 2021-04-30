@@ -19,21 +19,21 @@ export function ContextProvider({ children }) {
     if (!mainItems) {
       (async () => {
         const data = await API("/main");
-        setMainItems(data); // 8, 5, 4
+        setMainItems(data);
       })();
     }
     return;
   }, [mainItems]);
-  
-  const onFetchDetailData = async (id) => { 
-    const data = await API(`/detail/${id}`);
-    if(data) {
-      setDetailData(data);
-      setPopUpToggle(true);
-    }
-  }
 
-  // if(!mainItems) return null;
+  const onFetchDetailData = async (id) => {
+    setPopUpToggle(true);
+    setDetailData(null);
+    const data = await API(`/detail/${id}`);
+    if (data) {
+      setTimeout(() => setDetailData(data), 1000);
+    }
+  };
+
   return (
     <DetailDataContext.Provider value={detailData}>
       <OnFetchDetailDataContext.Provider value={onFetchDetailData}>

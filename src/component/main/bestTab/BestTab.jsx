@@ -22,7 +22,6 @@ export default function BestTab() {
         (async () => {
           const data = await api("/best");
           setTimeout(() => setBestItems(data), 1000);
-          // setBestItems(data);
         })();
       } catch (e) {
         console.log(e);
@@ -30,8 +29,6 @@ export default function BestTab() {
     }
     return;
   }, [bestItems]);
-
-  // if (!bestItems) return null;
 
   return (
     <>

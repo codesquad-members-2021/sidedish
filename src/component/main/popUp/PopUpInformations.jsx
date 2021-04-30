@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Label from "../../util/Label";
 import PopUpItemCountContainer from "./PopUpItemCountContainer";
 import { useDetailContext } from "../../Context";
-import { addCommaToNumber } from '../../../common/util.js';
+import { addCommaToNumber } from "../../../common/util.js";
 
 const PopUpInformationsStyle = styled.div``;
 
@@ -111,7 +111,10 @@ export default function PopUpInformations() {
           </PopUpItemBuyingInformationContent>
         </PopUpItemBuyingInformation>
       </PopUpItemBuyingInformations>
-      <PopUpItemCountContainer price={Math.floor(price - price * (discount / 100))} id={_id}/>
+      <PopUpItemCountContainer
+        price={Math.floor(price - price * (discount / 100))}
+        id={_id}
+      />
     </PopUpInformationsStyle>
   );
 }
