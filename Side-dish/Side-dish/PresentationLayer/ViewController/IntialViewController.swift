@@ -12,7 +12,7 @@ import Combine
 
 class IntialViewController: UIViewController {
     private let keychain = KeychainSwift()
-    private var subject = PassthroughSubject<ControllerType, Never>()
+    private var viewStateSubject = PassthroughSubject<ControllerType, Never>()
     private var cancell: AnyCancellable?
     
     enum ControllerType {
@@ -29,7 +29,7 @@ class IntialViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let validToken = keychain.get("myToken") else {
-            subject.send(.auth)
+            viewStateSubject.send(.auth)
             return
         }
         
@@ -38,15 +38,15 @@ class IntialViewController: UIViewController {
         Octokit(config).me() { [weak self] (response) in
             switch response {
             case .success(_):
-                self?.subject.send(.main)
+                self?.viewStateSubject.send(.main)
             case .failure(_):
-                self?.subject.send(.fail)
+                self?.viewStateSubject.send(.fail)
             }
         }
     }
     
     private func bind() {
-        cancell = subject
+        cancell = viewStateSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] (type) in
                 switch type {
