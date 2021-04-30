@@ -54,6 +54,7 @@ const CarouselLayout = styled.div`
 
 const CarouselAreaWrapper = styled.div`
   width: 100%;
+  z-index: 1;
   overflow: hidden;
 `;
 
