@@ -3,7 +3,6 @@ import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import Details from '../Details';
 import Icon from '../../atoms/Icon';
-import Span from '../../atoms/Span';
 import DetailOther from '../../organisms/DetailOther';
 
 const OverlayStyle = styled.div`

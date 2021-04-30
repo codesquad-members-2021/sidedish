@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
+import {
+  CardStyle,
+  WrapCard,
+  WrapMain,
+  WrapCarousal,
+  PageWrapper,
+} from './index.style';
 import Span from '../../atoms/Span';
 import OtherCard from '../../molecules/OtherCard';
 import loadData from '../../../util/loadData';
 import Icon from '../../atoms/Icon';
 
 const OtherWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 960px;
@@ -22,10 +29,13 @@ const TitleStyles = styled.div`
 const DetailOther = props => {
   const directionRef = useRef(false);
   const [details, setDetails] = useState([]);
+  const [page, setPage] = useState(1);
+  const [Xaxis, setXaxis] = useState(0);
 
   const SLIDES = 5;
+  let totalPages = Math.ceil(details.length / SLIDES);
   const LENGTH = (imageWidth, margin) => {
-    return imageWidth * SLIDES + margin * (SLIDES + 4);
+    return imageWidth * SLIDES + margin * SLIDES;
   };
 
   useEffect(() => {
@@ -50,34 +60,16 @@ const DetailOther = props => {
 
   const moveSlide = type => {
     if (type === 'RightIcon') {
-      setStyle('all 0.5s', `translate(-${LENGTH(160, 16)}px)`);
+      if (page === totalPages) return null;
+      setStyle('all 0.5s', `translate(${Xaxis - LENGTH(160, 16)}px)`);
+      setXaxis(Xaxis - LENGTH(160, 16));
+      setPage(page + 1);
     } else {
-      setStyle('all 0.5s', `translate(${LENGTH(160, 16)}px)`);
+      if (page === 1) return null;
+      setStyle('all 0.5s', `translate(${Xaxis + LENGTH(160, 16)}px)`);
+      setXaxis(Xaxis + LENGTH(160, 16));
+      setPage(page - 1);
     }
-  };
-
-  const onTransitionEnd = type => {
-    if (type === 'RightIcon') {
-      setDetails(details.slice(SLIDES).concat(details.slice(0, SLIDES)));
-    } else {
-      setDetails(details.slice(-SLIDES).concat(details.slice(0, -SLIDES)));
-    }
-    directionRef.current.style.transform = 'translate(0)';
-    directionRef.current.style.transition = 'none';
-  };
-
-  const Button = type => {
-    return (
-      <>
-        <Icon
-          _width="12px"
-          _height="12px"
-          _color="#333333"
-          _type={type}
-          moveSlide={moveSlide}
-        />
-      </>
-    );
   };
 
   return (
@@ -87,15 +79,30 @@ const DetailOther = props => {
       </TitleStyles>
       <WrapMain>
         <WrapCarousal>
-          <Button type={'LeftIcon'} />
-          <WrapCard _slideWidth={944}>
-            <CardStyle onTransitionEnd={onTransitionEnd} ref={directionRef}>
+          <WrapCard _slideWidth={880}>
+            <CardStyle ref={directionRef}>
               <Cards />
             </CardStyle>
           </WrapCard>
-          <Button type={'RightIcon'} />
         </WrapCarousal>
       </WrapMain>
+      <PageWrapper>
+        <Icon
+          moveSlide={moveSlide}
+          _width="20px"
+          _color="#333333"
+          _type="LeftIcon"
+        />
+        <Span className="_page">
+          {page}/{totalPages}
+        </Span>
+        <Icon
+          moveSlide={moveSlide}
+          _width="20px"
+          _color="#333333"
+          _type="RightIcon"
+        />
+      </PageWrapper>
     </OtherWrapper>
   );
 };

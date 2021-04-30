@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Image from '../../atoms/Image';
 import Span from '../../atoms/Span';
 
@@ -10,7 +9,7 @@ const WrapDiv = styled.div`
   align-items: flex-start;
   width: 160px;
   height: 242px;
-  margin: 0px 8px;
+  margin: 0px 16px 0 0;
   div,
   span {
     cursor: pointer;

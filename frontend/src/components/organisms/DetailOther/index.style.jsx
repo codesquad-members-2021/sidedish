@@ -11,11 +11,12 @@ const WrapCarousal = styled.div`
 
 const WrapCard = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   min-width: ${props => props._slideWidth}px;
   width: ${props => props._slideWidth}px;
   height: ${props => props._imgHeight}px;
   overflow: hidden;
+  margin: 48px;
 `;
 
 const CardStyle = styled.div`
@@ -24,4 +25,13 @@ const CardStyle = styled.div`
   padding: 0px;
 `;
 
-export { CardStyle, WrapCard, WrapMain, WrapCarousal };
+const PageWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 80px;
+  top: 51px;
+  right: 40px;
+`;
+
+export { CardStyle, WrapCard, WrapMain, WrapCarousal, PageWrapper };
