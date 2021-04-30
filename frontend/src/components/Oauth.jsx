@@ -1,39 +1,33 @@
 import queryString from 'query-string';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { Redirect, Route } from 'react-router-dom';
 import useFetch from './useFetch';
 const Oauth = (props) => {
 	const result = queryString.parse(props.location.search);
 	const code = result.code;
-	console.log(result);
-	console.log(props);
+
 	const [userInfo, loadingUserState] = useFetch(
 		`http://15.164.68.136:8080/login?code=${code}`,
 		'post',
 		code,
 	);
 
-	if (!loadingUserState) {
+	useEffect(() => {
 		localStorage.setItem('isLogIn', 'true');
-		localStorage.setItem('userId', userInfo.userId);
-		localStorage.setItem('token', userInfo.token);
-	}
-
-	const [logOutPath, setLogOutUrl] = useState(null);
-	const handleClick = () => {
-		!loadingUserState && setLogOutUrl('http://15.164.68.136:8080/logout');
-	};
-	const [logout, loadingLogOutState] = useFetch(logOutPath, token);
-	// useEffect(() => {
-	// 	props.history.push('/');
-	// });
+		localStorage.setItem('userId', JSON.stringfy(userInfo.userId));
+		localStorage.setItem('token', JSON.stringfy(userInfo.token));
+	});
 
 	return (
-		<>
-			<Logout onClick={handleClick}>로그아웃</Logout>
-		</>
+		<Route>
+			<Redirect
+				to={{
+					pathname: '/',
+					state: { code },
+				}}
+			/>
+		</Route>
 	);
 };
 export default Oauth;
-
-const Logout = styled.div``;
