@@ -8,6 +8,20 @@
 import Foundation
 
 struct DishDetail {
+    let basicInformation: BasicInformation
+    let thumbImages: [String]?
+    let detailImages: [String]?
+    
+    init(basicInformation: BasicInformation,
+         thumbImages: [String]?,
+         detailImages: [String]?) {
+        self.basicInformation = basicInformation
+        self.thumbImages = thumbImages
+        self.detailImages = detailImages
+    }
+}
+
+struct BasicInformation {
     let id: Int
     let name: String?
     let description: String?
@@ -16,8 +30,6 @@ struct DishDetail {
     let stock: Int?
     let point: Int?
     let deliveryInfo: String?
-    let thumbImages: [String]?
-    let detailImages: [String]?
     
     init(id: Int,
          name: String?,
@@ -26,9 +38,7 @@ struct DishDetail {
          badges: [String]?,
          stock: Int?,
          point: Int?,
-         deliveryInfo: String?,
-         thumbImages: [String]?,
-         detailImages: [String]?) {
+         deliveryInfo: String?) {
         self.id = id
         self.name = name
         self.description = description
@@ -37,20 +47,9 @@ struct DishDetail {
         self.stock = stock
         self.point = point
         self.deliveryInfo = deliveryInfo
-        self.thumbImages = thumbImages
-        self.detailImages = detailImages
     }
     
     init(id: Int) {
-        self.init(id: id,
-                  name: nil,
-                  description: nil,
-                  prices: nil,
-                  badges: nil,
-                  stock: nil,
-                  point: nil,
-                  deliveryInfo: nil,
-                  thumbImages: nil,
-                  detailImages: nil)
+        self.init(id: id, name: nil, description: nil, prices: nil, badges: nil, stock: nil, point: nil, deliveryInfo: nil)
     }
 }

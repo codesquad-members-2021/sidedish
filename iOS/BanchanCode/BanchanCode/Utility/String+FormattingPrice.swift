@@ -8,10 +8,11 @@
 import Foundation
 
 extension String {
-    func format(price: Int) -> String? {
+    func format(price: Int?) -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 0
+        guard let price = price else { return nil }
         let number = NSNumber(value: price)
         guard let formattedPrice = formatter.string(from: number) else { return nil }
         return "\(formattedPrice)원"

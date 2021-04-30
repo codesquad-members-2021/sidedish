@@ -40,6 +40,10 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
             case .failure(_) :
                 completion(.success(self.realmManager.getDishes(categryName: categoryName))) //fail이 되었을 때 RealmDB에서 가져온 데이터를 보여준다.
             }
+        //        let url = "httpadad://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)"
+        
+        networkManager.performRequest(urlString: url) { (responseDTO: DishesResponseDTO) in
+            completion(.success(responseDTO.toDomain()))
         }
         
     }
