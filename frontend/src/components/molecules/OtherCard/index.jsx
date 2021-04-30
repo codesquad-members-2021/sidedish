@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import Image from '../../atoms/Image';
-import Span from '../../atoms/Span';
+import React from "react";
+import styled from "styled-components";
+import Image from "../../atoms/Image";
+import Span from "../../atoms/Span";
 
 const WrapDiv = styled.div`
   display: flex;

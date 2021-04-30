@@ -26,7 +26,7 @@ const TitleStyles = styled.div`
   padding: 48px 0 0 48px;
 `;
 
-const DetailOther = (props) => {
+const DetailLower = (props) => {
   const directionRef = useRef(false);
   const [details, setDetails] = useState([]);
   const [page, setPage] = useState(1);
@@ -46,6 +46,7 @@ const DetailOther = (props) => {
     return details.map((card, i) => (
       <OtherCard
         key={i}
+        w
         _image={card.image}
         _title={card.title}
         _price={card.special_price}
@@ -107,4 +108,4 @@ const DetailOther = (props) => {
   );
 };
 
-export default DetailOther;
+export default DetailLower;

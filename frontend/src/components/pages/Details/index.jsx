@@ -1,71 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import ReactDom from "react-dom";
 import styled from "styled-components";
-import Image from "../../atoms/Image";
-import loadData from "../../../util/loadData";
-import InfoImages from "../../molecules/InfoImages";
-import InfoGeneral from "../../molecules/InfoGeneral";
-import InfoProduct from "../../molecules/InfoProduct";
-import InfoQuantity from "../../molecules/InfoQuantity";
-import Button from "../../atoms/Button";
+import DetailUpper from "../../organisms/DetailUpper";
+import DetailLower from "../../organisms/DetailLower";
+import Icon from "../../atoms/Icon";
 
-const Details = ({ ...props }) => {
-  const [detailDish, setDetailDish] = useState([]);
-  const [topImage, setTopImage] = useState();
+const OverlayStyle = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+`;
 
-  useEffect(() => {
-    loadData(setDetailDish, props._dishType, props._hash);
-  }, [props._dishType, props._hash]);
+const DetailStyles = styled.div`
+  padding: 48px;
+  width: 960px;
+  display: flex;
+`;
 
-  const DetailWrapper = styled.div`
-    display: flex;
-  `;
+const ModalStyles = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
 
-  useEffect(() => {
-    setTopImage(detailDish.top_image);
-  }, [detailDish.top_image]);
+  transform: translate(-50%, -50%);
+  width: 960px;
+  height: 1038px;
+  background: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+  z-index: 1000;
+`;
 
-  const ImageWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-right: 32px;
-  `;
-  const ContentWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 440px;
-  `;
+const Details = ({ open, onClose, ...props }) => {
+  if (!open) return null;
 
-  const TopImage = () => {
-    return <Image src={topImage} _width="392px" />;
-  };
-
-  return (
-    <DetailWrapper>
-      <ImageWrapper>
-        <TopImage />
-        <InfoImages
-          setTopImage={setTopImage}
-          _thumb_images={detailDish.thumb_images}
+  return ReactDom.createPortal(
+    <>
+      <OverlayStyle />
+      <ModalStyles>
+        <DetailStyles>
+          <DetailUpper _dishType="detailDish" _hash={props._hash} />
+        </DetailStyles>
+        <DetailLower _dishType="details" />
+        <Icon
+          onClose={onClose}
+          _type="CloseIcon"
+          _color="#FFFFFF"
+          _width="20px"
+          _position="absolute"
+          _right="-26px"
+          _top="2px"
         />
-      </ImageWrapper>
-
-      <ContentWrapper>
-        <InfoProduct
-          title={detailDish.title}
-          description={detailDish.product_description}
-          badge={detailDish.badge}
-          _sPrice={detailDish.special_price}
-          _nPrice={detailDish.normal_price}
-        ></InfoProduct>
-        <InfoGeneral
-          point={detailDish.point}
-          delivery_info={detailDish.delivery_info}
-          delivery_fee={detailDish.delivery_fee}
-        ></InfoGeneral>
-        <InfoQuantity t_price={detailDish.special_price}></InfoQuantity>
-        <Button _default />
-      </ContentWrapper>
-    </DetailWrapper>
+      </ModalStyles>
+    </>,
+    document.getElementById("detail")
   );
 };
 

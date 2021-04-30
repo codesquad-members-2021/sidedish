@@ -1,13 +1,11 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WrapDiv, WrapContent } from "./index.style";
 import getComma from "../../../util/getComma";
 import HoverCard from "../../molecules/HoverCard";
 import Image from "../../atoms/Image";
 import Span from "../../atoms/Span";
 import TagBox from "../../molecules/TagBox";
-import Modal from "../../pages/Modal";
-
+import Details from "../../pages/Details";
 
 const MediumCard = ({ children, ...props }) => {
   const [isHover, setIsHover] = useState(false);
@@ -17,9 +15,13 @@ const MediumCard = ({ children, ...props }) => {
   const onClose = () => {
     setIsOpen(false);
   };
+  console.log(2);
+  useEffect(() => {
+    console.log(1);
+  }, [isOpen]);
   return (
     <>
-      <Modal open={isOpen} onClose={onClose} _hash={props._hash} />
+      <Details open={isOpen} onClose={onClose} _hash={props._hash} />
       <WrapDiv onClick={onClick}>
         <Image
           src={props._image}

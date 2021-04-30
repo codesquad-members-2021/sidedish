@@ -1,13 +1,11 @@
+import React, { useState, useEffect } from "react";
+import MediumCard from "../../molecules/MediumCard";
+import Span from "../../atoms/Span";
+import loadData from "../../../util/loadData";
+import Carousel from "../Carousel";
+import Icon from "../../atoms/Icon";
 
-import React, { useState, useEffect } from 'react';
-import MediumCard from '../../molecules/MediumCard';
-import Span from '../../atoms/Span';
-import loadData from '../../../util/loadData';
-import Carousel from '../Carousel';
-import Icon from '../../atoms/Icon';
-
-const MainDish = props => {
-
+const MainDish = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,8 +27,7 @@ const MainDish = props => {
     ));
   };
 
-  const Button = type => {
-
+  const Button = (type) => {
     return (
       <>
         <Icon
