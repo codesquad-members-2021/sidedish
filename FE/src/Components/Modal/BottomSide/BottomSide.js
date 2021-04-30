@@ -1,16 +1,28 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
 import * as Carousel from 'Components/Carousel';
 import Card from 'Components/commons/Cards';
 
-const BottomSide = () => {
+import API from 'util/API';
 
+const BottomSide = ({ refetchModal }) => {
+  const [randomDishes, setRandomDishes] = useState();
+
+  useEffect(() => {
+    const fetchRandomDishes = async () => {
+      setRandomDishes(await API.get.random10());
+      console.log("fetchRandomDishes!", randomDishes)
+    }
+    fetchRandomDishes();
+  }, [])
+  if (!randomDishes) return <></>
   return (
     <BottomSideWrapper>
       <Carousel.Container navigator={"upper"} unit={5}>
         {/* for test */}
-        {[...new Array(22).keys()].map((_, i) => {
-          return <Card key={`test-${i}`} number={i} type={"responsive"} />;
+        {randomDishes.map((dish, i) => {
+          return <Card key={`test-${i}`} number={i} type={"responsive"} payload={dish} refetchModal={refetchModal}/>;
         })}
 
       </Carousel.Container>
