@@ -3,23 +3,20 @@ import styled from 'styled-components';
 import preparingImage from 'images/preparingImage.jpg';
 
 const ResponsiveCard = ({ payload, refetchModal }) => {
-  
-  const {id, topImage, deliveryTypes, title, description, salePrice, normalPrice, badges} = payload;
-  
-  console.log("ResponsiveCard", payload)
-  
+
+  const { id, topImage, deliveryTypes, title, description, salePrice, normalPrice, badges } = payload;
+
   return (
     <CardWrapper onClick={refetchModal({ hash: id }, { title, badges })}>
       <ImageWrapper>
-        {/* <Image src={topImage?.slice(1, topImage.length)} alt="" /> */}
-        <Image src={preparingImage} alt="" />
+        <Image src={topImage} onError={e => e.target.src = preparingImage} alt="" />
         <Overlay>
           <OverlayText>
-            {deliveryTypes?.slice(1, deliveryTypes.length-1).split(", ").map((type, i) => {
+            {deliveryTypes?.slice(1, deliveryTypes.length - 1).split(", ").map((type, i) => {
               if (i === 0) return (<><div>{type}</div> <hr /></>);
-              return ( <div>{type}</div>);
+              return (<div>{type}</div>);
             })}
-            
+
           </OverlayText>
         </Overlay>
       </ImageWrapper>
@@ -45,7 +42,6 @@ const CardWrapper = styled.div`
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  margin: 0 0 16px 0;
   &:hover{
     cursor:pointer;
   }
@@ -89,7 +85,6 @@ const DescriptionDiv = styled.div`
 
   font-size: 14px;
   color: #828282;
-  margin: 0 0 16px 0;
   line-height: 20px;
 `;
 

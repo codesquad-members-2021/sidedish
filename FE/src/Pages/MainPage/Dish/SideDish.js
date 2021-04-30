@@ -12,14 +12,13 @@ const SideDish = ({ refetchModal }) => {
   useEffect(() => {
     const fetchSideDish = async () => {
       setSideDishes(await API.get.side());
-      console.log("fetchSideDish!", sideDishes)
     }
     fetchSideDish();
   }, [])
 
   const carouselOption = {
     navigator: "default",
-    unit : 4
+    unit: 4
   }
 
   if (!sideDishes)

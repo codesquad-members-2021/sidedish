@@ -12,14 +12,13 @@ const MainDish = ({ refetchModal }) => {
   useEffect(() => {
     const fetchMainDish = async () => {
       setMainDishes(await API.get.main());
-      console.log("fetchMainDish!", mainDishes)
     }
     fetchMainDish();
   }, [])
 
   const carouselOption = {
     navigator: "default",
-    unit : 4
+    unit: 4
   }
 
   if (!mainDishes)

@@ -12,14 +12,13 @@ const SoupDish = ({ refetchModal }) => {
   useEffect(() => {
     const fetchSoupDish = async () => {
       setSoupDishes(await API.get.soup());
-      console.log("fetchSoupDish!", soupDishes)
     }
     fetchSoupDish();
   }, [])
 
   const carouselOption = {
     navigator: "default",
-    unit : 4
+    unit: 4
   }
 
   if (!soupDishes)

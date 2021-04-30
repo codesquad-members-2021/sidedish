@@ -2,9 +2,8 @@ import styled from 'styled-components';
 // import 
 
 const ViewAllButton = ({ onClick }) => {
-  
+
   const handleViewAllButtonClick = () => {
-    console.log("handleViewAllButtonClick");
     onClick();
   }
   return (
