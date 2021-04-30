@@ -3,7 +3,6 @@ package codsquad.team17.sidedish.controller;
 import codsquad.team17.sidedish.dto.DishCategoryDto;
 import codsquad.team17.sidedish.dto.ExceptionResponseDto;
 import codsquad.team17.sidedish.exception.DishCategoryNotFoundException;
-import codsquad.team17.sidedish.exception.ImageNotFoundException;
 import codsquad.team17.sidedish.service.DishCategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +37,7 @@ public class DishCategoryController {
     }
 
     @ExceptionHandler(DishCategoryNotFoundException.class)
-    public ResponseEntity handleDishCategoryNotFoundException(Exception e){
-        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()),HttpStatus.NOT_FOUND);
+    public ResponseEntity handleDishCategoryNotFoundException(Exception e) {
+        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()), HttpStatus.NOT_FOUND);
     }
 }

@@ -6,6 +6,7 @@ public class BestCategory {
 
     @Id
     private Long bestCategoryId;
+
     private String bestCategoryName;
 
     public BestCategory() {

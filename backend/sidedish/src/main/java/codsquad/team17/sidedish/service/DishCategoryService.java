@@ -12,8 +12,8 @@ import java.util.List;
 
 @Service
 public class DishCategoryService {
-    private final DishCategoryRepository dishCategoryRepository;
 
+    private final DishCategoryRepository dishCategoryRepository;
     private final ItemService itemService;
 
     public DishCategoryService(DishCategoryRepository dishCategoryRepository, ItemService itemService) {

@@ -8,6 +8,7 @@ import java.util.List;
 
 @JsonPropertyOrder({"best_category_id", "best_category_name", "items"})
 public class BestCategoryDto {
+
     @JsonProperty("best_category_id")
     private final Long bestCategoryId;
 

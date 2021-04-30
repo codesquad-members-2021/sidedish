@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("dish/detail")
 public class ItemDetailController {
+
     private final ItemDetailService itemDetailService;
 
     public ItemDetailController(ItemDetailService itemDetailService) {
@@ -22,7 +23,7 @@ public class ItemDetailController {
     }
 
     @ExceptionHandler(ImageNotFoundException.class)
-    public ResponseEntity handleImageNotFoundException(Exception e){
-        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()),HttpStatus.NOT_FOUND);
+    public ResponseEntity handleImageNotFoundException(Exception e) {
+        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()), HttpStatus.NOT_FOUND);
     }
 }

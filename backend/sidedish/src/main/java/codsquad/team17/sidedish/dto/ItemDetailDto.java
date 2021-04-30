@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price", "badge", "main_image", "thumb_images", "point", "delivery_info"
-, "delivery_fee", "delivery_description", "stock", "recommended"})
+@JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price", "badge", "main_image", "thumb_images",
+        "point", "delivery_info", "delivery_fee", "delivery_description", "stock", "recommended"})
 public class ItemDetailDto {
 
     @JsonProperty("item_id")
     private Long itemId;
 
     private String title;
+
     private String description;
 
     @JsonProperty("n_price")

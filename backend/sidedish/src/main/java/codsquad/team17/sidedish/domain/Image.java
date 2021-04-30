@@ -6,7 +6,9 @@ public class Image {
 
     @Id
     private Long imageId;
+
     private String url;
+
     private Long itemId;
 
     public Image() {

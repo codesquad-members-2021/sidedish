@@ -6,6 +6,7 @@ public class DishCategory {
 
     @Id
     private Long dishCategoryId;
+
     private String dishCategoryName;
 
     public DishCategory() {

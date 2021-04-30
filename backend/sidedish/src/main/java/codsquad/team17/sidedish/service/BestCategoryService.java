@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class BestCategoryService {
-    private final BestCategoryRepository bestCategoryRepository;
 
+    private final BestCategoryRepository bestCategoryRepository;
     private final ItemService itemService;
 
     public BestCategoryService(BestCategoryRepository bestCategoryRepository,

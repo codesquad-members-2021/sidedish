@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
-@JsonPropertyOrder({"item_id", "title", "image", "price","detail_url"})
+@JsonPropertyOrder({"item_id", "title", "image", "price", "detail_url"})
 public class RecommendedItemDto {
+
     private static final String URL = "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080";
 
     @JsonProperty("item_id")

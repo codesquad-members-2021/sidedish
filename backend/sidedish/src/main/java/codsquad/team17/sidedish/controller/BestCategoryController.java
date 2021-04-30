@@ -2,7 +2,6 @@ package codsquad.team17.sidedish.controller;
 
 import codsquad.team17.sidedish.dto.ExceptionResponseDto;
 import codsquad.team17.sidedish.exception.BestCategoryNotFoundException;
-import codsquad.team17.sidedish.exception.DishCategoryNotFoundException;
 import codsquad.team17.sidedish.service.BestCategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/dish/best")
 public class BestCategoryController {
+
     private final BestCategoryService bestCategoryService;
 
     public BestCategoryController(BestCategoryService bestCategoryService) {
@@ -28,7 +28,7 @@ public class BestCategoryController {
     }
 
     @ExceptionHandler(BestCategoryNotFoundException.class)
-    public ResponseEntity handleBestCategoryNotFoundException(Exception e){
-        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()),HttpStatus.NOT_FOUND);
+    public ResponseEntity handleBestCategoryNotFoundException(Exception e) {
+        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()), HttpStatus.NOT_FOUND);
     }
 }

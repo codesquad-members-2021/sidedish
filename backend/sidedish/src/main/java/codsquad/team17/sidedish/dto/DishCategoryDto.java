@@ -8,6 +8,7 @@ import java.util.List;
 
 @JsonPropertyOrder({"dish_category_id", "dish_category_name", "items"})
 public class DishCategoryDto {
+
     @JsonProperty("dish_category_id")
     private final Long dishCategoryId;
 

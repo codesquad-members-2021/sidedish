@@ -1,7 +1,6 @@
 package codsquad.team17.sidedish.controller;
 
 import codsquad.team17.sidedish.dto.ExceptionResponseDto;
-import codsquad.team17.sidedish.exception.ImageNotFoundException;
 import codsquad.team17.sidedish.exception.ItemStockEmptyException;
 import codsquad.team17.sidedish.service.OrderService;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,8 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/dish")
 public class OrderController {
-    private OrderService orderService;
+
+    private final OrderService orderService;
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
@@ -25,7 +25,7 @@ public class OrderController {
     }
 
     @ExceptionHandler(ItemStockEmptyException.class)
-    public ResponseEntity handleItemStockEmptyException(Exception e){
-        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()),HttpStatus.BAD_REQUEST);
+    public ResponseEntity handleItemStockEmptyException(Exception e) {
+        return new ResponseEntity(new ExceptionResponseDto(e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 }
