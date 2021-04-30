@@ -3,9 +3,11 @@ import { FaTimes } from "react-icons/fa";
 import PopUpImages from "./PopUpImages";
 import PopUpInformations from "./PopUpInformations";
 import PopUpItemsSlide from "./PopUpItemsSlide";
+import SkeletonPopUpContainerBody from "./SkeletonPopUpContainerBody";
 import {
   usePopUpToggleContext,
   useSetPopUpToggleContext,
+  useDetailContext,
 } from "../../Context";
 
 const PopUpContainerStyle = styled.div`
@@ -30,8 +32,8 @@ const PopUpContainerStyle = styled.div`
     width: 60rem;
     margin: 6vh auto;
   }
-  `;
-  
+`;
+
 const PopUpContainerBody = styled.div`
   background-color: #fff;
   width: 100%;
@@ -51,7 +53,7 @@ const PopUpContainerBody = styled.div`
     background-color: #eee;
   }
 `;
-  
+
 const PopUpDetailContainerStyle = styled.div`
   padding: 3rem;
   display: grid;
@@ -75,8 +77,9 @@ const CloseBtnStyle = styled.button`
 export default function PopUpContainer() {
   const toggle = usePopUpToggleContext();
   const dispatch = useSetPopUpToggleContext();
+  const detailData = useDetailContext();
   const onClick = () => {
-    dispatch();
+    dispatch(false);
   };
   if (!toggle) return null;
   return (
@@ -85,13 +88,17 @@ export default function PopUpContainer() {
         <CloseBtnStyle onClick={onClick}>
           <FaTimes></FaTimes>
         </CloseBtnStyle>
-        <PopUpContainerBody>
-          <PopUpDetailContainerStyle>
-            <PopUpImages />
-            <PopUpInformations />
-          </PopUpDetailContainerStyle>
-          <PopUpItemsSlide />
-        </PopUpContainerBody>
+        {detailData ? (
+          <PopUpContainerBody>
+            <PopUpDetailContainerStyle>
+              <PopUpImages />
+              <PopUpInformations />
+            </PopUpDetailContainerStyle>
+            <PopUpItemsSlide />
+          </PopUpContainerBody>
+        ) : (
+          <SkeletonPopUpContainerBody />
+        )}
       </div>
     </PopUpContainerStyle>
   );
