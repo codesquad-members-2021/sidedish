@@ -6,7 +6,7 @@ import { formatPriceAsNumber } from 'util/serviceUtils';
 const Prices = ({ badges, salePrice, normalPrice }) => {
   return (
     <PriceWrapper>
-      {badges?.split(', ').map((badge, idx) => {
+      {badges?.slice(1, -1).split(', ').map((badge, idx) => {
         return (<SpecialLabelTag key={`modalSpacialLabel-${idx}`} badge={badge} />);
       })}
       {salePrice !== normalPrice

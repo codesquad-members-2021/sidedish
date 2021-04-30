@@ -7,17 +7,16 @@ const TabCard = ({ item, refetchModal }) => {
   const { id, deliveryTypes, title, description,
     normalPrice, salePrice, badges, topImage } = item;
 
-  const [DOMESTIC_POST, NEXT_DAY] = deliveryTypes.split(', ');
-
+  const [DOMESTIC_POST, NEXT_DAY] = deliveryTypes.slice(1, -1).split(', ');
   return (
     <CardWrapper>
       <ImageWrapper onClick={refetchModal({ hash: id }, { title, badges })}>
-        <Image src={preparingImage} alt="" />
+        <Image src={topImage} onError={e => e.target.src = preparingImage} alt="" />
         <Overlay>
           <OverlayText>
-            <div>{DOMESTIC_POST && '새벽배송'}</div>
+            <div>{DOMESTIC_POST}</div>
             <hr />
-            <div>{NEXT_DAY && '전국택배'}</div>
+            <div>{NEXT_DAY}</div>
           </OverlayText>
         </Overlay>
       </ImageWrapper>
@@ -31,7 +30,7 @@ const TabCard = ({ item, refetchModal }) => {
           <SalePriceSpan>{formatPriceAsNumber(salePrice)}</SalePriceSpan>}
       </PriceWrapper>
 
-      {badges?.split(', ').map((badge, idx) => {
+      {badges?.slice(1, -1).split(', ').map((badge, idx) => {
         return (<SpecialLabelTag key={`TabSpecialLabel-${idx}`} badge={badge} />);
       })}
     </CardWrapper>
