@@ -6,26 +6,20 @@ import useFetch from './useFetch';
 
 const Card = styled.div`
 	padding: 0 ${props => `${props.padding}px`};	
-	width: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
-	height: ${(props) => props.height}px;
-	overflow: hidden;
 `;
 const ItemTitle = styled.div`
 	font-size: ${theme.fontSize.small}px;
 	&:hover {
 		text-decoration: underline;
 	}
+	margin-bottom: 10px;
 `;
 const ItemPrice = styled.div`
 	font-size: ${theme.fontSize.small};
 	font-weight: Bold;
 `;
 const IMG = styled(AlignTextCenter)`
-	width: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
+	width: auto;
 	height: ${(props) => {
 		return props.size === 'L' ? '384px' : props.size;
 	}}px;
@@ -57,7 +51,8 @@ const ItemInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	margin-top: 10px;
+	margin-top: 8px;
+	height: 95px;
 
 `;
 

@@ -64,11 +64,13 @@ function Carousel({ width, count, duration, children, effect }, ref) {
 		}
 		setMoving(true);
 	};
+const page = () => blockNumber? blockNumber : 1
+
 
 	useImperativeHandle(ref, () => ({
 		slideToLeft: onMove.bind(undefined, +1),
 		slideToRight: onMove.bind(undefined, -1),
-		pageNumber: blockNumber,
+		pageNumber: page(),
 		totalPage: block.length 
 	}));
 
