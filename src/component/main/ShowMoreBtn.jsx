@@ -9,8 +9,9 @@ const ShowMoreBtnStyle = styled.div`
   background-color: #F5F5F7;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+  display: ${props => props.active ? 'none' : 'block'};
 `;
 
-export default function ShowMoreBtn() {
-  return <ShowMoreBtnStyle>모든 카테고리 보기</ShowMoreBtnStyle>;
+export default function ShowMoreBtn({ active, onShowMoreItems }) {
+  return <ShowMoreBtnStyle active={active} onClick={onShowMoreItems}>모든 카테고리 보기</ShowMoreBtnStyle>;
 }

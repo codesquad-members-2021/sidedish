@@ -111,7 +111,7 @@ export default function PopUpInformations() {
           </PopUpItemBuyingInformationContent>
         </PopUpItemBuyingInformation>
       </PopUpItemBuyingInformations>
-      <PopUpItemCountContainer price={price} id={_id}/>
+      <PopUpItemCountContainer price={Math.floor(price - price * (discount / 100))} id={_id}/>
     </PopUpInformationsStyle>
   );
 }

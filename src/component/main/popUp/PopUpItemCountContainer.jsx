@@ -5,7 +5,6 @@ import PopUpItemOrderResult from "./PopUpItemOrderResult";
 import API from "../../../common/api.js";
 import { addCommaToNumber } from '../../../common/util.js';
 
-
 const PopUpItemCountContainerStyle = styled.div`
     display: flex;
     align-items: center;
