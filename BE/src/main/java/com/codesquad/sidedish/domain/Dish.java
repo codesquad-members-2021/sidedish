@@ -1,7 +1,6 @@
 package com.codesquad.sidedish.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Embedded;
 
 public class Dish {
@@ -101,6 +100,13 @@ public class Dish {
 
     public Image getImage() {
         return image;
+    }
+
+    public boolean checkStock(int orderSize) {
+        return stock >= orderSize;
+    }
+    public void updateStock(int orderSize){
+        stock -= orderSize;
     }
 
     @Override
