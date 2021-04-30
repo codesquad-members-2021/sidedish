@@ -10,6 +10,7 @@ import Kingfisher
 
 class MenuCell: UICollectionViewCell {
 
+    @IBOutlet weak var launchingBadgeConstraint: NSLayoutConstraint!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,15 +22,17 @@ class MenuCell: UICollectionViewCell {
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var badgeView: UIView!
     
-    private let menuCellValidater = MenuCellValidater()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupBadgeShape()
     }
     
-    private func setupBadgeLabelConstraint() {
-        
+    override func prepareForReuse() {
+        self.eventLabel.isHidden = false
+        self.launchingLabel.isHidden = false
+        self.badgeView.isHidden = false
+        self.eventLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
+        self.launchingBadgeConstraint.constant = 76
     }
     
     private func setupBadgeShape() {
@@ -42,20 +45,11 @@ class MenuCell: UICollectionViewCell {
     func configure(menu: MenuViewModel) {
         self.titleLabel.text = menu.title
         self.bodyLabel.text = menu.body
-        self.currentPriceLabel.text = menu.sPrice
+        self.currentPriceLabel.text = "\(menu.sPrice)원"
         self.pastPriceLabel.attributedText = menu.nPrice
         guard let url = URL(string: menu.image) else { return }
         self.thumbnailImage.kf.setImage(with: url)
-        badgeViewInitialSetup()
         setBadge(menu: menu)
-    }
-    
-    private func badgeViewInitialSetup() {
-        self.eventLabel.isHidden = false
-        self.launchingLabel.isHidden = false
-        self.badgeView.isHidden = false
-        self.eventLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
-        self.launchingLabel.leftAnchor.constraint(equalTo: self.contentStackView.leftAnchor, constant: 76).isActive = true
     }
     
     func setBadge(menu: MenuViewModel) {
@@ -63,7 +57,7 @@ class MenuCell: UICollectionViewCell {
             self.launchingLabel.isHidden = true
         } else if menu.verifyBadges(badges: menu.badges) == [false, true] {
             self.eventLabel.isHidden = true
-            self.launchingLabel.leftAnchor.constraint(equalTo: contentStackView.leftAnchor, constant: 0).isActive = true
+            self.launchingBadgeConstraint.constant = 0
         } else if menu.verifyBadges(badges: menu.badges) == [false, false] {
             self.badgeView.isHidden = true
         } else {
