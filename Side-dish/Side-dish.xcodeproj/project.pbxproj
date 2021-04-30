@@ -31,6 +31,8 @@
 		BFC2F9982637B55C006C9DCA /* String-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9972637B55C006C9DCA /* String-extension.swift */; };
 		BFC2FA08263A975C006C9DCA /* UsecaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */; };
 		BFC2FA10263BA66F006C9DCA /* GitHubApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC2FA0F263BA66E006C9DCA /* GitHubApiKey.plist */; };
+		BFC2FA14263BE0AC006C9DCA /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2FA13263BE0AC006C9DCA /* Encoder.swift */; };
+		BFC2FA18263BE152006C9DCA /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2FA17263BE152006C9DCA /* OrderModel.swift */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
 		BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* SideDishViewController.swift */; };
@@ -72,6 +74,8 @@
 		BFC2F9972637B55C006C9DCA /* String-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-extension.swift"; sourceTree = "<group>"; };
 		BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseGenerator.swift; sourceTree = "<group>"; };
 		BFC2FA0F263BA66E006C9DCA /* GitHubApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GitHubApiKey.plist; sourceTree = "<group>"; };
+		BFC2FA13263BE0AC006C9DCA /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		BFC2FA17263BE152006C9DCA /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				8844B7D3262DBA3F00FA49E9 /* SideDishes.swift */,
 				8844B84E2631A94000FA49E9 /* ItemData.swift */,
 				8844B8512631A97300FA49E9 /* ItemDetails.swift */,
+				BFC2FA17263BE152006C9DCA /* OrderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				BFCE4952262D4891006C0882 /* AppDelegate.swift */,
 				BFCE4954262D4891006C0882 /* SceneDelegate.swift */,
 				BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */,
+				BFC2FA13263BE0AC006C9DCA /* Encoder.swift */,
 				8844B7CD262DB62C00FA49E9 /* DataLayer */,
 				BFCE49B4262E74FF006C0882 /* DomainLayer */,
 				BFCE49BB262E7742006C0882 /* PresentationLayer */,
@@ -336,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC2FA18263BE152006C9DCA /* OrderModel.swift in Sources */,
 				8844B7D0262DB6A500FA49E9 /* Item.swift in Sources */,
 				BFAE1BC026301CF300C0625E /* FoodCardHeaderView.swift in Sources */,
 				BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */,
@@ -356,6 +363,7 @@
 				BFAE1BB4262FF79600C0625E /* SideDishManager.swift in Sources */,
 				BFCE497A262DC205006C0882 /* HTTPMethod.swift in Sources */,
 				8844B7BF262D6C3000FA49E9 /* FoodCardCell.swift in Sources */,
+				BFC2FA14263BE0AC006C9DCA /* Encoder.swift in Sources */,
 				BFCE497D262DC22A006C0882 /* NetworkError.swift in Sources */,
 				8872EB8C263AB57000EDB038 /* IntialViewController.swift in Sources */,
 				BFC2F9982637B55C006C9DCA /* String-extension.swift in Sources */,

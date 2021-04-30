@@ -19,7 +19,6 @@ class DetailContenetView: UIView {
     @IBOutlet weak var nPriceLabel: NPriceLabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
-    @IBOutlet weak var orderButton: OrderButton!
     @IBOutlet weak var thumbnailStackView: UIStackView!
     @IBOutlet weak var detailSectionStackView: UIStackView!
     
