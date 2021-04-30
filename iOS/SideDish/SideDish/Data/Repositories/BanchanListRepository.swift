@@ -14,17 +14,15 @@ protocol BanchanListRepository {
 
 class DefaultBanchanListRepository: BanchanListRepository {
     private let network: NetworkService
-    private let banchanListStorage = CoreDataBanchanListStorage()
+    private let banchanListStorage: CoreDataBanchanListStorage
     private var subscriptions = Set<AnyCancellable>()
     
-    init(network: NetworkService) {
+    init(network: NetworkService, storage: CoreDataBanchanListStorage) {
         self.network = network
+        self.banchanListStorage = storage
     }
     
     func fetchBanchanList(section: Section, completion: @escaping ([Banchan]?) -> Void) {
-//        let request: NSFetchRequest = BanchanSectionEntity.fetchRequest()
-//        banchanListStorage.deleteAll(request: request)
-
         banchanListStorage.fetch(section: section) { result in
             switch result {
             case .success(let banchans):
