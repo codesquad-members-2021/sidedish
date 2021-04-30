@@ -23,7 +23,7 @@ function CategoryRender({ title, url }) {
 	);
 
 	return (
-		<>
+		<MarginBlock>
 			<TitleBlock>
 				<Title>{title}</Title>
 			</TitleBlock>
@@ -40,14 +40,14 @@ function CategoryRender({ title, url }) {
 
 					<Carousel
 						width={1280}
-						height={242}
-						count={5}
+						// height={242}
+						count={4}
 						duration={'.5s'}
 						ref={button}
 						effect={'ease-in-out'}
 					>
 						{categoryData.map((data, idx) => (
-							<ItemCard key={idx} data={data} size={'S'} />
+							<ItemCard key={idx} data={data} size={'S'} xpadding={10} />
 						))}
 					</Carousel>
 
@@ -56,7 +56,7 @@ function CategoryRender({ title, url }) {
 					</ButtonRight>
 				</FlexBlock>
 			)}
-		</>
+		</MarginBlock>
 	);
 }
 
@@ -78,4 +78,7 @@ const ButtonLeft = styled(Button)``;
 const ButtonRight = styled(Button)``;
 const FlexBlock = styled.div`
 	display: flex;
+`;
+const MarginBlock = styled.div`
+	margin-bottom: 80px;
 `;

@@ -7,7 +7,7 @@ function CategoryEntry() {
 	const category = toggle ? (
 		<>
 			<CategoryRender title={'모두가 좋아하는 든든한 메인요리'} url={'main'} />
-			<CategoryRender title={'정성이 담긴 뜨끈한 국물요리'} url={'soup'} />
+			<CategoryRender title={'정성이 담긴 뜨끈한 국물요리'} url={'sop'} />
 			<CategoryRender
 				title={'식탁을 풍성하게 하는 정갈한 밑반찬'}
 				url={'side'}

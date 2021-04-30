@@ -13,11 +13,11 @@ const HeaderBlock = styled.div`
 	box-sizing: border-box;
 `;
 
-function Header() {
+function Header(isLogin) {
 	return (
 		<HeaderBlock>
 			<HeaderLeft />
-			<HeaderRight />
+			<HeaderRight isLogin={isLogin} />
 		</HeaderBlock>
 	);
 }
