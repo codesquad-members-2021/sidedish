@@ -1,24 +1,33 @@
 package com.codesquad.sidedish.SideDish.domain;
 
-import org.springframework.data.annotation.Id;
+import java.util.Objects;
 
 public class Delivery {
-
-    @Id
-    private Long id;
-
     private String deliveryType;
 
     public Delivery(String deliveryType) {
         this.deliveryType = deliveryType;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public String getDeliveryType() {
         return deliveryType;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Delivery delivery = (Delivery) o;
+        return Objects.equals(deliveryType, delivery.deliveryType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(deliveryType);
+    }
 }
