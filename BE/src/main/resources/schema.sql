@@ -20,7 +20,7 @@ USE `side_dish`;
 DROP TABLE IF EXISTS `side_dish`.`user`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`user` (
     `id` INT AUTO_INCREMENT,
-    `name` VARCHAR(45) NOT NULL,
+    `name` VARCHAR(45),
     `email` VARCHAR(45) NOT NULL,
     `user_id` VARCHAR(45) NOT NULL,
     `token` VARCHAR(255),
