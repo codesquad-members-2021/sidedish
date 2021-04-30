@@ -23,11 +23,15 @@ class LoadingViewController: UIViewController {
     }
     
     private func nextPage() {
-        guard let nextPage = self.storyboard?.instantiateViewController(identifier: "ViewController") as? ViewController else {
+        guard let nextPage = self.storyboard?.instantiateViewController(identifier: "MainNavigationController") as? UINavigationController else {
             return
         }
-        nextPage.menuListViewModel = self.menuListViewModel
-        nextPage.bind()
+
+        guard let mainView = nextPage.viewControllers[0] as? ViewController else {
+            return
+        }
+        
+        mainView.menuListViewModel = self.menuListViewModel
         nextPage.modalPresentationStyle = .fullScreen
         self.present(nextPage, animated: false, completion: nil)
     }
