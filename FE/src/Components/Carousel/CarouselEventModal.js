@@ -59,7 +59,7 @@ const CarouselEventModalArea = styled.div`
   
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export default CarouselEventModal;
