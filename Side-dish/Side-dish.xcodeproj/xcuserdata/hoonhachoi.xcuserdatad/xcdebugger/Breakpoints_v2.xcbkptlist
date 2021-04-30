@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2B292E23-88CF-4BC2-A4C0-F0FC8CB4CACA"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96F5F7CF-0E43-4E3A-A4FC-079C87DAA3D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Side-dish/PresentationLayer/View/DetailContenetView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "desctionImageLoad(desctionImage:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "96F5F7CF-0E43-4E3A-A4FC-079C87DAA3D6 - aab7d9cc9159b2d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Side_dish.DetailContenetView.desctionImageLoad(desctionImage: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Side-dish"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonhachoi/Documents/swift/swift-sidedish/sidedish/Side-dish/Side-dish/PresentationLayer/View/DetailContenetView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "96F5F7CF-0E43-4E3A-A4FC-079C87DAA3D6 - e9ab47a86bea2151"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in Side_dish.DetailContenetView.desctionImageLoad(desctionImage: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Side-dish"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonhachoi/Documents/swift/swift-sidedish/sidedish/Side-dish/Side-dish/PresentationLayer/View/DetailContenetView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "96F5F7CF-0E43-4E3A-A4FC-079C87DAA3D6 - 421a93be3f22e4cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIImage) -&gt; () in closure #1 (Swift.String) -&gt; () in Side_dish.DetailContenetView.desctionImageLoad(desctionImage: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Side-dish"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonhachoi/Documents/swift/swift-sidedish/sidedish/Side-dish/Side-dish/PresentationLayer/View/DetailContenetView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC45E391-3B3C-44C5-BF29-F70F7C078B7E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Side-dish/PresentationLayer/ViewController/SideDishViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

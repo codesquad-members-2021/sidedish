@@ -9,10 +9,12 @@ import Foundation
 import Combine
 
 protocol SideDishProtocol {
-    func execute(path: Path) -> AnyPublisher<SideDishes, NetworkError>
+    func requestSideDishes(path: Menu) -> AnyPublisher<SideDishes, NetworkError>
+    func requestItemDetails(detailHash: String) -> AnyPublisher<ItemDetails, NetworkError>
+    func requestOrder(body: Data) -> AnyPublisher<Int, NetworkError>
 }
 
-class SideDishUseCase: SideDishProtocol {
+final class SideDishUseCase: SideDishProtocol {
     
     private let networkManager: NetworkManageable
     
@@ -20,7 +22,15 @@ class SideDishUseCase: SideDishProtocol {
         self.networkManager = networkManager
     }
     
-    func execute(path: Path) -> AnyPublisher<SideDishes, NetworkError> {
-        return networkManager.requestResource(path: path, method: .get)
+    func requestSideDishes(path: Menu) -> AnyPublisher<SideDishes, NetworkError> {
+        return networkManager.requestResource(path: path, method: .get, deocdeType: SideDishes.self)
+    }
+    
+    func requestItemDetails(detailHash: String) -> AnyPublisher<ItemDetails, NetworkError> {
+        return networkManager.requestResource(path: detailHash, method: .get, deocdeType: ItemDetails.self)
+    }
+    
+    func requestOrder(body: Data) -> AnyPublisher<Int, NetworkError> {
+        return networkManager.requestOrder(method: .post, body: body)
     }
 }
