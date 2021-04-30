@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Price = ({ n_price, s_price }) => (
+const Price = ({ n_price, s_price, size }) => (
 	<PriceWrapper>
-		<SaledPrice>{n_price <= s_price ? n_price + "원" : s_price}</SaledPrice>
-		<OriginPrice>{n_price && (n_price <= s_price ? s_price : n_price + "원")}</OriginPrice>
+		<SaledPrice size={size}>{n_price <= s_price ? n_price + "원" : s_price}</SaledPrice>
+		{size !== "SMALL" && <OriginPrice>{n_price && (n_price <= s_price ? s_price : n_price + "원")}</OriginPrice>}
 	</PriceWrapper>
 );
 
@@ -21,6 +21,7 @@ const PriceWrapper = styled.div`
 const SaledPrice = styled.div`
 	font-weight: bold;
 	font-size: 20px;
+	font-size: ${(props) => (props.size==="SMALL" ? "14px" : "20px")};
 	line-height: 29px;
 	color: #010101;
 	margin-right: 8px;

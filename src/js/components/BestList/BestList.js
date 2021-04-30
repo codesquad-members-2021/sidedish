@@ -27,7 +27,7 @@ const BestList = (props) => {
 			</TabList>
 			<Box>
 				{bestList[index].items.map((e) => (
-					<Card key={e.detail_hash} setModalData={props.setModalData} setModalOn={props.setModalOn} size="LARGE" data={e} />
+					<Card key={e.detail_hash} sibling={bestList[index].items} setModalData={props.setModalData} setModalOn={props.setModalOn} size="LARGE" data={e} />
 				))}
 			</Box>
 		</BestListWrapper>

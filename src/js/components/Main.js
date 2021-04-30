@@ -15,7 +15,7 @@ const Main = () => {
 				<BestList setModalData={setModalData} setModalOn={setModalOn} />
 				<Section setModalData={setModalData} setModalOn={setModalOn} />
 			</Wrapper>
-			<Modal data={modalData} isModalOn={isModalOn} setModalOn={setModalOn} />
+			<Modal data={modalData} isModalOn={isModalOn} setModalData={setModalData} setModalOn={setModalOn} />
 		</>
 	);
 };
