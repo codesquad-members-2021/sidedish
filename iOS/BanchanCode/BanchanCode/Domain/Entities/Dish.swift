@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Dish {
+struct Dish{
     let id: Int
     let name: String
     let description: String

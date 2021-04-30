@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import RealmSwift
 
 class MainPageViewController: UIViewController {
     
@@ -31,10 +32,9 @@ class MainPageViewController: UIViewController {
         mainPageDataSource = MainPageCollectionViewDataSource()
         
         let categories: [Categorizable] = [MainCategory(), SoupCategory(), SideCategory()]
-        
         let viewModels = categories.map { category in
             makeDishesViewModel(category: category)
-        }
+        }                
         
         mainPageDataSource?.viewModels = viewModels
         mainPageDelegate?.viewModels = viewModels
@@ -43,9 +43,12 @@ class MainPageViewController: UIViewController {
         dishCollectionView.dataSource = mainPageDataSource
         
         viewModels.forEach { viewModel in
-            viewModel.load()
             bind(to: viewModel)
-        }
+            viewModel.load()            
+        }            
+        
+        //App에 저장된 RealmDB파일의 위치를 알 수 있는 함수.
+        //print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func makeFetchDishesUseCase() -> FetchDishesUseCase {
@@ -75,7 +78,6 @@ class MainPageViewController: UIViewController {
     }
     
     private func updateItems(_ items: [DishesItemViewModel]) {
-        //dishCollectionView.reloadData()
         dishCollectionView.reloadSections(IndexSet(integersIn: 0...2))
     }
     

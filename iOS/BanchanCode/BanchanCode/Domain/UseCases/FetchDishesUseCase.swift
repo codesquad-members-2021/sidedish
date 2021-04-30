@@ -14,19 +14,32 @@ protocol FetchDishesUseCase {
 
 final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     let networkManager = NetworkManager()
+    let realmManager = RealmManager()
     
     func execute(requestValue: FetchDishesUseCaseRequestValue,
                  completion: @escaping (Result<Dishes, Error>) -> Void) {
         return fetchDishes(categoryName: requestValue.categoryName, completion: { result in
-            completion(result)
+            switch result {
+            case .success(let response):
+                self.realmManager.addDishes(items: response.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         })
     }
     
     private func fetchDishes(categoryName: String,
-                     completion: @escaping (Result<Dishes, Error>) -> Void) {
+                             completion: @escaping (Result<Dishes, Error>) -> Void) {
         let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)"
-        networkManager.performRequest(urlString: url) { (responseDTO) in
-            completion(.success(responseDTO.toDomain()))
+        
+        networkManager.performRequest(urlString: url) { (result : Result<DishesResponseDTO, Error>) in 
+            switch result {
+            case .success(let responseDTO):
+                completion(.success(responseDTO.toDomain()))
+            case .failure(_):
+                completion(.success(self.realmManager.getDishes(categryName: categoryName)))
+            }
         }
     }
 }

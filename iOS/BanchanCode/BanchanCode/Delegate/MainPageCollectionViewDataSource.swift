@@ -27,8 +27,7 @@ class MainPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.reuseIdentifier, for: indexPath) as! SectionHeaderView
         headerView.fill(with: viewModels[indexPath.section])
-        headerView.countOfMenus = viewModels[indexPath.section].getNumberOfItems()
-        
+        headerView.countOfMenus = viewModels[indexPath.section].getNumberOfItems()        
         return headerView
     }
 }

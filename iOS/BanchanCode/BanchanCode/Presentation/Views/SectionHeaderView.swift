@@ -10,10 +10,8 @@ import Toaster
 
 class SectionHeaderView: UICollectionReusableView {
     
-    @IBOutlet weak var sectionTitleLabel: UILabel!
-    
+    @IBOutlet weak var sectionTitleLabel: UILabel!    
     static let reuseIdentifier = String(describing: SectionHeaderView.self)
-    var viewModel: DishesViewModel!
     var countOfMenus: Int = 0
     
     override func awakeFromNib() {
@@ -25,7 +23,6 @@ class SectionHeaderView: UICollectionReusableView {
     }
     
     func fill(with viewModel: DishesViewModel) {
-        self.viewModel = viewModel
         sectionTitleLabel.text = viewModel.category.sectionTitle
     }
 }

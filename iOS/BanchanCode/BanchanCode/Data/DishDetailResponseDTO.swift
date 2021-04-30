@@ -34,15 +34,17 @@ struct DishDetailResponseDTO: Decodable {
 
 extension DishDetailResponseDTO {
     func toDomain() -> DishDetail {
-        return .init(id: id,
-                     name: name,
-                     description: description,
-                     prices: prices,
-                     badges: badges,
-                     stock: stock,
-                     point: point,
-                     deliveryInfo: deliveryInfo,
-                     thumbImages: thumbImages,
-                     detailImages: detailImages)
+        return .init(basicInformation: BasicInformation(
+            id: id,
+            name: name,
+            description: description,
+            prices: prices,
+            badges: badges,
+            stock: stock,
+            point: point,
+            deliveryInfo: deliveryInfo
+        ),
+        thumbImages: thumbImages,
+        detailImages: detailImages)
     }
 }

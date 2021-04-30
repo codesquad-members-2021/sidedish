@@ -25,6 +25,6 @@ class MainPageCollectionViewDelegate: NSObject, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 24.0, left: 16.0, bottom: 24.0, right: 16.0)
+        return UIEdgeInsets(top: 24.0, left: 16.0, bottom: 24.0, right: 16.0)
     }
 }
