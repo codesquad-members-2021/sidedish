@@ -46,9 +46,7 @@ class MainPageViewController: UIViewController {
         viewModels.forEach { viewModel in
             viewModel.load()
             bind(to: viewModel)
-        }
-        
-        registerXib()
+        }            
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
