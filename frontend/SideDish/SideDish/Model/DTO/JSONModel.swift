@@ -2,6 +2,11 @@
 import Foundation
 
 struct MenuResponse: Decodable {
-    let statusCode: Int
-    let body: [Menu]
+    let categoryId: Int
+    let name: String
+    let items: [Menu]
+}
+
+struct OrderMenuRequest: Encodable {
+    let count: Int
 }

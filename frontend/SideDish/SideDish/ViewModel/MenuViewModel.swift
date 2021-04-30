@@ -2,6 +2,9 @@
 import Foundation
 
 class MenuViewModel {
+    
+    private(set) var categoryId: Int
+    private(set) var hash: String
     private(set) var image: String
     private(set) var title: String
     private(set) var body: String
@@ -9,7 +12,9 @@ class MenuViewModel {
     private(set) var nPrice: NSAttributedString
     private(set) var badges: [String]
     
-    init(image: String, title: String, body: String, sPrice: String, nPrice: NSAttributedString, badges: [String]) {
+    init(hash: String, image: String, title: String, body: String, sPrice: String, nPrice: NSAttributedString, badges: [String]) {
+        self.categoryId = 0
+        self.hash = hash
         self.image = image
         self.title = title
         self.body = body
@@ -31,6 +36,10 @@ class MenuViewModel {
         default:
             return [false, false]
         }
+    }
+    
+    func configureCategoryId(categoryId: Int) {
+        self.categoryId = categoryId
     }
 }
 

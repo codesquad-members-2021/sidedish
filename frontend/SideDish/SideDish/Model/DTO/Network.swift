@@ -8,19 +8,12 @@
 import Foundation
 import Alamofire
 
-class DataTaskManager {
+class APIRequestManager {
     
     static let session = URLSession(configuration: .default)
     
-    enum Url: String {
-        case main = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
-        case soup = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/soup"
-        case side = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
-    }
-    
-    static func sendRequest(url: Url ,completion: @escaping (Result<MenuResponse, Error>) -> Void) {
-        guard let url = URL(string: url.rawValue) else {
-            print("The URL is inappropriate.")
+    static func sendRequest(url: URL?, completion: @escaping (Result<MenuResponse, Error>) -> Void) {
+        guard let url = url else {
             return
         }
         session.dataTask(with: url) { data, response, error in
@@ -34,4 +27,41 @@ class DataTaskManager {
         }.resume()
     }
   
+    static func sendDetailRequest(url: URL?, completion: @escaping (Result<DetailMenu, Error>) -> Void) {
+        guard let url = url else {
+            print("The URL is inappropriate.")
+            return
+        }
+        session.dataTask(with: url) { data, response, error in
+            if let data = data {
+                guard let detailMenuList = ParsingManager.decodeData(type: DetailMenu.self, data: data) else { return }
+                completion(.success(detailMenuList))
+            } else {
+                guard let error = error?.localizedDescription as? Error else { return }
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    static func orderPost(orderCount: OrderMenuRequest, url: URL?, completion: @escaping (Bool) -> Void) {
+        guard let url = url else {
+            print("The URL is inappropriate.")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        guard let encodingData = ParsingManager.encodeData(data: orderCount) else { return }
+        request.httpBody = encodingData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        session.dataTask(with: request){ (_, response, _) in
+            guard let response = response as? HTTPURLResponse else { return }
+            if (200 ..< 299) ~= response.statusCode {
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }.resume()
+    }
+    
 }
