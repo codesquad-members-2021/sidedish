@@ -9,12 +9,17 @@ import Foundation
 
 protocol DishDetailsViewModelInput {
     func load()
+    func increaseQuantity()
+    func decreaseQuantity()
+    func updateTotalPrice()
 }
 
 protocol DishDetailsViewModelOutput {
     var basicInformation: Observable<BasicInformation> { get }
     var thumbImages: Observable<[Data]> { get }
     var detailImages: Observable<[Data]> { get }
+    var currentQuantity: Observable<Int> { get }
+    var totalPrice: Observable<Int> { get }
 }
 
 protocol DishDetailsViewModel: DishDetailsViewModelInput, DishDetailsViewModelOutput { }
@@ -36,6 +41,8 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
     var basicInformation: Observable<BasicInformation>
     var thumbImages: Observable<[Data]> = Observable([])
     var detailImages: Observable<[Data]> = Observable([])
+    var currentQuantity: Observable<Int> = Observable(1)
+    var totalPrice: Observable<Int> = Observable(0)
     
     init(fetchDishDetailsUseCaseFactory: @escaping FetchDishDetailsUseCaseFactory,
          categoryName: String,
@@ -43,7 +50,7 @@ final class DefaultDishDetailsViewModel: DishDetailsViewModel {
         self.fetchDishDetailsUseCaseFactory = fetchDishDetailsUseCaseFactory
         self.categoryName = categoryName
         self.id = id
-        basicInformation = Observable(BasicInformation(id: id))
+        self.basicInformation = Observable(BasicInformation(id: id))
     }
     
     private func updateThumbnailImages() {
@@ -82,5 +89,17 @@ extension DefaultDishDetailsViewModel {
         }
         let useCase = fetchDishDetailsUseCaseFactory(request, completion)
         useCase.start()
+    }
+    
+    func increaseQuantity() {
+        currentQuantity.value += 1
+    }
+    
+    func decreaseQuantity() {
+        currentQuantity.value -= 1
+    }
+    
+    func updateTotalPrice() {
+        totalPrice.value = currentQuantity.value * (basicInformation.value.prices?[0] ?? 0)
     }
 }

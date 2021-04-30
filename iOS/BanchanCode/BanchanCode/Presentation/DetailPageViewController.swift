@@ -32,8 +32,6 @@ class DetailPageViewController: UIViewController {
     var categoryName: String?
     var id: Int?
     var viewModel: DishDetailsViewModel!
-    var currentQuantity: Int = 1
-    var totalPrice: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +41,26 @@ class DetailPageViewController: UIViewController {
         viewModel.load()
         
         setupViews()
-        updateRemoveButtonState()
+    }
+    
+    func makeDishDetailsViewModel() -> DishDetailsViewModel? {
+        guard let categoryName = categoryName else { return nil }
+        guard let id = id else { return nil }
+        return DefaultDishDetailsViewModel(fetchDishDetailsUseCaseFactory: makeFetchDishDetailsUseCase,
+                                           categoryName: categoryName,
+                                           id: id)
+    }
+    
+    func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
+                                     completion: @escaping (FetchDishDetailsUseCase.ResultValue) -> Void) -> UseCase {
+        return FetchDishDetailsUseCase(requestValue: requestValue,
+                                       completion: completion)
     }
     
     private func setupViews() {
         self.thumbnailImagesScrollView.isPagingEnabled = true
         orderButton.layer.masksToBounds = true
         orderButton.layer.cornerRadius = 5.0
-        quantityLabel.text = "\(currentQuantity)"
         quantityLabel.layer.borderWidth = 1.0
         quantityLabel.layer.borderColor = KeyColors.lineSeparatorColor?.cgColor
         setupUI(of: addButton)
@@ -63,41 +73,24 @@ class DetailPageViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        let basicInfo = viewModel.basicInformation.value
-        currentQuantity += 1
-        totalPrice = currentQuantity * (basicInfo.prices?[0] ?? 0)
-        quantityLabel.text = "\(currentQuantity)"
-        totalPriceLabel.text = String().format(price: totalPrice)
-        updateRemoveButtonState()
+        viewModel.increaseQuantity()
+        viewModel.updateTotalPrice()
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
-        let basicInfo = viewModel.basicInformation.value
-        currentQuantity -= 1
-        totalPrice = currentQuantity * (basicInfo.prices?[0] ?? 0)
-        quantityLabel.text = "\(currentQuantity)"
-        totalPriceLabel.text = String().format(price: totalPrice)
-        updateRemoveButtonState()
-    }
-    
-    func makeFetchDishDetailsUseCase(requestValue: FetchDishDetailsUseCase.RequestValue,
-                                     completion: @escaping (FetchDishDetailsUseCase.ResultValue) -> Void) -> UseCase {
-        return FetchDishDetailsUseCase(requestValue: requestValue,
-                                       completion: completion)
-    }
-    
-    func makeDishDetailsViewModel() -> DishDetailsViewModel? {
-        guard let categoryName = categoryName else { return nil }
-        guard let id = id else { return nil }
-        return DefaultDishDetailsViewModel(fetchDishDetailsUseCaseFactory: makeFetchDishDetailsUseCase,
-                                           categoryName: categoryName,
-                                           id: id)
+        viewModel.decreaseQuantity()
+        viewModel.updateTotalPrice()
     }
     
     private func bind(to viewModel: DishDetailsViewModel) {
         viewModel.basicInformation.observe(on: self) { [weak self] _ in self?.refreshView() }
         viewModel.thumbImages.observe(on: self) { [weak self] _ in self?.refreshThumbImages() }
         viewModel.detailImages.observe(on: self) { [weak self] _ in self?.refreshDetailImages() }
+        viewModel.currentQuantity.observe(on: self) { [weak self] in self?.quantityLabel.text = "\($0)" }
+        viewModel.totalPrice.observe(on: self) { [weak self] in
+            self?.totalPriceLabel.text = String().format(price: $0)
+            self?.removeButton.isEnabled = $0 > 0
+        }
     }
     
     private func refreshView() {
@@ -113,11 +106,13 @@ class DetailPageViewController: UIViewController {
             lastPriceLabel.text = String().format(price: lastPrice)
             originalPriceLabel.isHidden = false
             originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
-            totalPrice = currentQuantity * lastPrice
+            //totalPrice = currentQuantity * lastPrice
+            viewModel.updateTotalPrice()
         } else {
             lastPriceLabel.text = String().format(price: originalPrice)
             originalPriceLabel.isHidden = true
-            totalPrice = currentQuantity * originalPrice
+            //totalPrice = currentQuantity * originalPrice
+            viewModel.updateTotalPrice()
         }
         
         let badges = basicInfo.badges
@@ -138,8 +133,9 @@ class DetailPageViewController: UIViewController {
         guard let point = basicInfo.point else { return }
         pointLabel.text = String().format(price: point)
         deliveryInfoLabel.text = basicInfo.deliveryInfo
-        deliveryFeeLabel.attributedText = NSAttributedString().makeBold("(40,000원 이상 구매 시 무료)", within: "2,500원 (40,000원 이상 구매 시 무료)", font: .systemFont(ofSize: 14.0))
-        totalPriceLabel.text = String().format(price: totalPrice)
+        deliveryFeeLabel.attributedText = NSAttributedString().makeBold("(40,000원 이상 구매 시 무료)",
+                                                                        within: "2,500원 (40,000원 이상 구매 시 무료)",
+                                                                        font: .systemFont(ofSize: 14.0))
     }
     
     private func refreshThumbImages() {
@@ -170,18 +166,5 @@ class DetailPageViewController: UIViewController {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.heightAnchor.constraint(equalToConstant: ratio * self.view.frame.width).isActive = true
         }
-    }
-    
-    //private func attributedText(withString string: String, boldString: String, font: UIFont) -> NSAttributedString {
-    //    let attributedString = NSMutableAttributedString(string: string,
-    //                                                     attributes: [NSAttributedString.Key.font: font])
-    //    let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
-    //    let range = (string as NSString).range(of: boldString)
-    //    attributedString.addAttributes(boldFontAttribute, range: range)
-    //    return attributedString
-    //}
-    
-    private func updateRemoveButtonState() {
-        removeButton.isEnabled = totalPrice > 0
     }
 }
