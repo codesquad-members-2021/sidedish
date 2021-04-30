@@ -9,7 +9,7 @@ public class ResponseDto {
     private Status status;
     private String message;
 
-    public ResponseDto(Status status) {
+    private ResponseDto(Status status) {
         this.status = status;
         this.message = status.getMessage();
     }
@@ -20,5 +20,9 @@ public class ResponseDto {
 
     public String getMessage() {
         return message;
+    }
+
+    public static ResponseDto of (Status status){
+        return new ResponseDto(status);
     }
 }

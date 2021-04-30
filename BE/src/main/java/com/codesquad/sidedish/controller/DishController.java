@@ -19,16 +19,16 @@ public class DishController {
     }
 
     @GetMapping("/{dishId}")
-    public DishDetailResponseDto readDish(@PathVariable String dishId) {
+    public ResponseEntity<DishDetailResponseDto> readDish(@PathVariable String dishId) {
         Dish dish = dishService.findDishByDishId(dishId);
-        return DishDetailResponseDto.of(dish);
+        return ResponseEntity.ok().body(DishDetailResponseDto.of(dish));
     }
 
     @PutMapping("/{dishId}")
     public ResponseEntity<ResponseDto> orderDish(@PathVariable String dishId, @RequestParam("count") int orderSize) {
         if (dishService.orderDish(dishId, orderSize)) {
-            return ResponseEntity.ok().body(new ResponseDto(Status.OK));
+            return ResponseEntity.ok().body(ResponseDto.of(Status.OK));
         }
-        return ResponseEntity.badRequest().body(new ResponseDto(Status.OUT_OF_STOCK));
+        return ResponseEntity.badRequest().body(ResponseDto.of(Status.OUT_OF_STOCK));
     }
 }

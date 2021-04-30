@@ -3,7 +3,10 @@ package com.codesquad.sidedish.controller;
 import com.codesquad.sidedish.domain.Category;
 import com.codesquad.sidedish.domain.Dish;
 import com.codesquad.sidedish.dto.CategoryResponseDto;
+import com.codesquad.sidedish.dto.ResponseDto;
 import com.codesquad.sidedish.service.CategoryService;
+import com.codesquad.sidedish.util.Status;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,15 +23,14 @@ public class CategoryController {
     }
 
     @PostMapping
-    public void addDish(@PathVariable String type, @RequestBody Dish dish) {
+    public ResponseEntity<ResponseDto> addDish(@PathVariable String type, @RequestBody Dish dish) {
         categoryService.addDishToCategory(type, dish);
+        return ResponseEntity.ok().body(ResponseDto.of(Status.OK));
     }
 
     @GetMapping
-    public List<CategoryResponseDto> readDishes(@PathVariable String type) {
+    public ResponseEntity<CategoryResponseDto> readDishes(@PathVariable String type) {
         Category category = categoryService.findCategoryByType(type);
-        List<CategoryResponseDto> dishList = new ArrayList<>();
-        dishList.add(CategoryResponseDto.of(category));
-        return dishList;
+        return ResponseEntity.ok().body(CategoryResponseDto.of(category));
     }
 }
