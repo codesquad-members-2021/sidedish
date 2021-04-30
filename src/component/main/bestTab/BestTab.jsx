@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BestTabContainer from "./BestTabContainer";
 import BestTabNavigator from "./BestTabNavigator";
 import api from "../../../common/api.js";
+import SkeletonTab from "./SkeletonTab";
 
 const BestTabStyle = styled.div`
   h2 {
@@ -20,7 +21,8 @@ export default function BestTab() {
       try {
         (async () => {
           const data = await api("/best");
-          setBestItems(data);
+          setTimeout(() => setBestItems(data), 1000);
+          // setBestItems(data);
         })();
       } catch (e) {
         console.log(e);
@@ -29,19 +31,23 @@ export default function BestTab() {
     return;
   }, [bestItems]);
 
-  if (!bestItems) return null;
+  // if (!bestItems) return null;
 
   return (
-    <BestTabStyle>
-      <h2>후기가 증명하는 베스트 반찬</h2>
-      <BestTabNavigator
-        bestItems={bestItems}
-        active={active}
-        setActive={setActive}
-      />
-      <BestTabContainer
-        bestItem={bestItems[active]}
-      />
-    </BestTabStyle>
+    <>
+      {bestItems ? (
+        <BestTabStyle>
+          <h2>후기가 증명하는 베스트 반찬</h2>
+          <BestTabNavigator
+            bestItems={bestItems}
+            active={active}
+            setActive={setActive}
+          />
+          <BestTabContainer bestItem={bestItems[active]} />
+        </BestTabStyle>
+      ) : (
+        <SkeletonTab />
+      )}
+    </>
   );
 }

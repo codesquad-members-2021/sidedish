@@ -10,7 +10,7 @@ import styled from "styled-components";
 import {
   useMainItemsContext,
   useMainItemsActiveContext,
-  useSetMainItemsActiveContext
+  useSetMainItemsActiveContext,
 } from "../Context";
 
 const CarouselContainer = styled.div`
@@ -24,62 +24,55 @@ export default function Main() {
 
   const onShowMoreItems = () => {
     setActive(true);
-  }
+  };
   const getSalePrice = (price, discountRate) => {
     return price - price * (discountRate / 100);
   };
-  if(!mainItems) return null;
+  if (!mainItems) return null;
   return (
     <>
-      <BestTab/>
-        {
-          active 
-          ? (mainItems.map(mainItem => 
-              <CarouselContainer>
-                <h2>{mainItem.title}</h2>
-                <DicoJsonCarousel>
-                  {
-                    mainItem.childs.map((item, idx) => 
-                      <ItemCard
-                        src={item.main_image}
-                        title={item.title}
-                        description={item.description}
-                        salePrice={getSalePrice(item.price, item.discount)}
-                        normalPrice={item.price}
-                        labels={item.label}
-                        key={idx}
-                        id={item._id}
-                      />
-                    )
-                  }
-                </DicoJsonCarousel>
-              </CarouselContainer>
-            )) 
-          :
-            (
-              <CarouselContainer>
-                <h2>{mainItems[0].title}</h2>
-                <DicoJsonCarousel>
-                  {
-                    mainItems[0].childs.map((item, idx) => 
-                      <ItemCard
-                        src={item.main_image}
-                        title={item.title}
-                        description={item.description}
-                        salePrice={getSalePrice(item.price, item.discount)}
-                        normalPrice={item.price}
-                        labels={item.label}
-                        key={idx}
-                        id={item._id}
-                      />
-                    )
-                  }
-                </DicoJsonCarousel>
-              </CarouselContainer>
-            )
-        }
-      <ShowMoreBtn active={active} onShowMoreItems={onShowMoreItems}/>
-      <PopUpContainer/>
+      <BestTab />
+      {active ? (
+        mainItems.map((mainItem, id) => (
+          <CarouselContainer key={id}>
+            <h2>{mainItem.title}</h2>
+            <DicoJsonCarousel options={{ loop: id === 0 }}>
+              {mainItem.childs.map((item, idx) => (
+                <ItemCard
+                  src={item.main_image}
+                  title={item.title}
+                  description={item.description}
+                  salePrice={getSalePrice(item.price, item.discount)}
+                  normalPrice={item.price}
+                  labels={item.label}
+                  key={idx}
+                  id={item._id}
+                />
+              ))}
+            </DicoJsonCarousel>
+          </CarouselContainer>
+        ))
+      ) : (
+        <CarouselContainer>
+          <h2>{mainItems[0].title}</h2>
+          <DicoJsonCarousel options={{ loop: true }}>
+            {mainItems[0].childs.map((item, idx) => (
+              <ItemCard
+                src={item.main_image}
+                title={item.title}
+                description={item.description}
+                salePrice={getSalePrice(item.price, item.discount)}
+                normalPrice={item.price}
+                labels={item.label}
+                key={idx}
+                id={item._id}
+              />
+            ))}
+          </DicoJsonCarousel>
+        </CarouselContainer>
+      )}
+      <ShowMoreBtn active={active} onShowMoreItems={onShowMoreItems} />
+      <PopUpContainer />
     </>
   );
 }
