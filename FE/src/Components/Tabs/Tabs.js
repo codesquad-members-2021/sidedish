@@ -41,7 +41,7 @@ const Tabs = ({ refetchModal }) => {
           })}
         </FlexWrapper>
         <CardListWrapper>
-          {currentTabItems.map((item, idx) => {
+          {currentTabItems?.map((item, idx) => {
             return (<Card key={`card-${idx}`} type={"tabs"}  {...{ item, refetchModal }} />);
           })}
         </CardListWrapper>
