@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { WrapDiv, WrapTab, WrapCard } from "./index.style";
+import getComma from "../../../util/getComma";
 import loadData from "../../../util/loadData";
 import Span from "../../atoms/Span";
 import Tab from "../../molecules/Tab";
@@ -47,14 +48,14 @@ const BestDish = ({ children, ...props }) => {
         })}
       </WrapTab>
       <WrapCard>
-        {currentItem.items.map((card, i) => (
+        {currentItem.dishes.map((card, i) => (
           <LargeCard
             key={card.detail_hash}
             _image={tempImgUrl}
             _title={card.title}
             _description={card.description}
-            _nPrice={card.n_price}
-            _sPrice={card.s_price}
+            _nPrice={getComma(card.normal_price)}
+            _sPrice={getComma(card.special_price)}
             _badge={card.badge}
           ></LargeCard>
         ))}

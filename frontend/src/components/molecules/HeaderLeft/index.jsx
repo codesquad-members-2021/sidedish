@@ -5,16 +5,10 @@ import HeaderDrop from "../../molecules/HeaderDrop";
 
 const HeaderLeft = ({ children, ...props }) => {
   const [isDrop, setIsDrop] = useState("None");
-  // const headMenuRef = useRef(null);
-
   const displayDrop = (ele, menuNum) => {
     setIsDrop(menuNum);
     ele.target.style.fontWeight = "700";
   };
-  // const undisplayDrop = (ele, menuNum) => {
-  //   setIsDrop(menuNum);
-  //   ele.target.style.fontWeight = "400";
-  // };
 
   return (
     <WrapDiv>
@@ -22,14 +16,12 @@ const HeaderLeft = ({ children, ...props }) => {
         BANCHAN
       </Span>
       <Ul>
-        <Li
-          onMouseEnter={(event) => displayDrop(event, "Menu1")}
-          onMouseOut={(event) => (event.target.style.fontWeight = "400")}
-        >
+        <Li>
           <Span
-            // ref={headMenuRef}
             _headMenu
             key={1}
+            onMouseEnter={(event) => displayDrop(event, "Menu1")}
+            onMouseOut={(event) => (event.target.style.fontWeight = "400")}
             onMouseLeave={(event) => setIsDrop("None")}
           >
             든든한 메인요리
