@@ -3,10 +3,8 @@ import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
 
 const Carousel = ({ children, ...props }) => {
   const directionRef = useRef(false);
-
   const SLIDES = props.visibleSlides;
   const LENGTH = props.imageWidth * SLIDES + props.imageMargin * (SLIDES + 4);
-  //slide + 개수 이유 확인
 
   const Slides = () => {
     return <>{children}</>;
