@@ -3,6 +3,16 @@
     {
       "filename" : "github.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "github_negative.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

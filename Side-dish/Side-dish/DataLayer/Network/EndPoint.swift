@@ -30,6 +30,19 @@ enum Endpoint {
     }
 }
 
+extension URL {
+    func addQueryItem(key: String, value: String) -> URL?{
+        guard var components = URLComponents(url: self, resolvingAgainstBaseURL: true) else {
+             return nil
+        }
+        components.queryItems = [
+            URLQueryItem(name: key, value: value)
+        ]
+        return components.url
+    }
+}
+
+
 enum Menu: CaseIterable {
     case main
     case soup

@@ -8,45 +8,80 @@
 import UIKit
 import OctoKit
 import KeychainSwift
+import Combine
 
 class IntialViewController: UIViewController {
-    let keychain = KeychainSwift()
+    private let keychain = KeychainSwift()
+    private var subject = PassthroughSubject<ControllerType, Never>()
+    private var cancell: AnyCancellable?
+    
+    enum ControllerType {
+        case main
+        case auth
+        case fail
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
+        bind()
     }
     
-
     override func viewWillAppear(_ animated: Bool) {
-        guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? SideDishViewController else {
+        guard let validToken = keychain.get("myToken") else {
+            subject.send(.auth)
             return
         }
         
-        mainViewController.dependInjectionViewModel(to: SideDishViewModel(sideDishUseCase: UsecaseGenerator.create()))
-        
-        if let validToken = keychain.get("myToken") {
-            var config = TokenConfiguration(validToken)
-            
-            print("confing")
-            config.accessToken = validToken
-            Octokit(config).me() { (response) in
-                switch response {
-                case .success(_):
-                    DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(mainViewController, animated: false)
-                    }
-                case .failure(_):
-                    break
-                }
-            }
-        } else {
-            DispatchQueue.main.async {
-                guard let authViewController = self.storyboard?.instantiateViewController(identifier: "AuthViewController") as? AuthViewController else {
-                    return
-                }
-                
-                self.navigationController?.pushViewController(authViewController, animated: true)
+        var config = TokenConfiguration(validToken)
+        config.accessToken = validToken
+        Octokit(config).me() { [weak self] (response) in
+            switch response {
+            case .success(_):
+                self?.subject.send(.main)
+            case .failure(_):
+                self?.subject.send(.fail)
             }
         }
+    }
+    
+    private func bind() {
+        cancell = subject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] (type) in
+                switch type {
+                case .main:
+                    self?.moveViewController(viewController: self?.setSideDishViewController() ?? UIViewController())
+                case .auth:
+                    self?.moveViewController(viewController: self?.setAuthController() ?? UIViewController())
+                case .fail:
+                    self?.setFailMessage()
+                }
+            }
+    }
+    
+    private func setSideDishViewController() -> UIViewController {
+        guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? SideDishViewController else {
+            return UIViewController()
+        }
+        mainViewController.dependInjectionViewModel(to: SideDishViewModel(sideDishUseCase: UsecaseGenerator.create()))
+        return mainViewController
+    }
+    
+    private func setAuthController() -> UIViewController {
+        guard let authViewController = self.storyboard?.instantiateViewController(identifier: "AuthViewController") as? AuthViewController else {
+            return UIViewController()
+        }
+        return authViewController
+    }
+    
+    private func setFailMessage() {
+        DispatchQueue.main.async { [weak self] in
+            self?.present(Alert.create(title: "인증에 실패하였습니다."), animated: true)
+        }
+    }
+    
+    private func moveViewController(viewController: UIViewController) {
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
 }

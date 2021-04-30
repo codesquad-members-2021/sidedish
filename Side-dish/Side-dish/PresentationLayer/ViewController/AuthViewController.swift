@@ -10,63 +10,80 @@ import OctoKit
 import AuthenticationServices
 import KeychainSwift
 
-extension URL {
-    func appending(_ queryItems: [URLQueryItem]) -> URL? {
-        guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true) else {
-            return nil
-        }
-        urlComponents.queryItems = (urlComponents.queryItems ?? []) + queryItems
-        return urlComponents.url
-    }
-}
-
 class AuthViewController: UIViewController, ASWebAuthenticationPresentationContextProviding {
-    let keychain = KeychainSwift()
-    let config = OAuthConfiguration(token: "7f32a79b176298db2f2f", secret: "44930e822d299cf812b25f6cfe56273b8ce8aad6", scopes: ["repo", "read:org"])
-    var tokenConfig: TokenConfiguration? = nil
-    var webAuthSession: ASWebAuthenticationSession?
+    private let keychain = KeychainSwift()
+    private var webAuthSession: ASWebAuthenticationSession?
+    
+    private let callbackUrlScheme = "side-dish"
+    private let redirectURL = "redirect_uri"
+    private let redirectValue = "side-dish://side-dish"
+    private let accessToken = "7f32a79b176298db2f2f"
+    private let secretToken = "44930e822d299cf812b25f6cfe56273b8ce8aad6"
+    private let scopes = ["repo", "read:org"]
+    private var config: OAuthConfiguration!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        config = OAuthConfiguration(token: accessToken, secret: secretToken, scopes: scopes)
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
-        let callbackUrlScheme = "side-dish"
-        let url = config.authenticate()?.appending([URLQueryItem(name: "redirect_uri", value: "side-dish://side-dish")])
+        guard let url = config.authenticate()?.addQueryItem(key: redirectURL, value: redirectValue) else {
+            return
+        }
         
-        webAuthSession = ASWebAuthenticationSession.init(url: url!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
+        webAuthSession = ASWebAuthenticationSession.init(url: url, callbackURLScheme: callbackUrlScheme, completionHandler: { [weak self] (callBack:URL?, error:Error?) in
             
-            guard error == nil else { return }
-            guard let successURL = callBack else { return }
+            guard error == nil else {
+                self?.authenticateFail(message: error?.localizedDescription ?? "")
+                return
+            }
+            guard let successURL = callBack else {
+                self?.authenticateFail(message: error?.localizedDescription ?? "")
+                return
+            }
 
-            self.config.handleOpenURL(url: successURL) { config in
-                self.loadCurrentUser(config: config)
+            self?.config.handleOpenURL(url: successURL) { config in
+                self?.loadCurrentUser(config: config)
             }
         })
         webAuthSession?.presentationContextProvider = self
         webAuthSession?.start()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+    internal func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return self.view.window ?? ASPresentationAnchor()
     }
     
-    func loadCurrentUser(config: TokenConfiguration) {
-        Octokit(config).me() { response in
+    private func loadCurrentUser(config: TokenConfiguration) {
+        Octokit(config).me() { [weak self] response in
             switch response {
-            case .success(let user):
-                let accessToken = config.accessToken ?? ""
-                self.keychain.clear()
-                self.keychain.set(accessToken, forKey: "myToken")
-                self.navigationController?.popViewController(animated: true)
+            case .success(_):
+                self?.saveKeyChainToken(config: config)
+                self?.popViewController()
             case .failure(let error):
-                print(error)
+                self?.authenticateFail(message: error.localizedDescription)
             }
+        }
+    }
+    
+    private func saveKeyChainToken(config: TokenConfiguration){
+        let accessToken = config.accessToken ?? ""
+        self.keychain.clear()
+        self.keychain.set(accessToken, forKey: "myToken")
+    }
+    
+    private func popViewController() {
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func authenticateFail(message: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.present(Alert.create(title: "인증에 실패하였습니다. \(message)"), animated: true)
         }
     }
 }

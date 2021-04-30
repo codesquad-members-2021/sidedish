@@ -19,6 +19,7 @@ class SideDishViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideDishViewModel.request()
         sideDishCollectionView.delegate = self
         configureDataSource()
         bind()

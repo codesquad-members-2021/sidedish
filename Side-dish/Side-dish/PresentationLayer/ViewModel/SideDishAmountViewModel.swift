@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class SideDishAmountViewModel {
+final class SideDishAmountViewModel {
         
     private(set) var amountState: AmountState
     private var cancellable = Set<AnyCancellable>()

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class AmountState {
+final class AmountState {
     
     @Published var amount: Int = 1
     

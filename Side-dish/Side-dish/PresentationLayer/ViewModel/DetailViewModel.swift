@@ -13,7 +13,7 @@ protocol DetailViewModelProtocol {
     func except() -> AnyPublisher<String, Never>
 }
 
-class DetailViewModel: DetailViewModelProtocol {
+final class DetailViewModel: DetailViewModelProtocol {
     
     private let sideDishUseCase: SideDishProtocol
     private var cancellable = Set<AnyCancellable>()
@@ -26,7 +26,7 @@ class DetailViewModel: DetailViewModelProtocol {
         request(with: hash)
     }
     
-    func request(with detailHash: String) {
+    private func request(with detailHash: String) {
         sideDishUseCase.requestItemDetails(detailHash: detailHash)
             .sink { (complete) in
                 if case .failure(let error) = complete {
