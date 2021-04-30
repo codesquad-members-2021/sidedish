@@ -58,7 +58,7 @@ class DetailMenuViewModel {
         self.detailSection = data.detailSection
     }
     
-    func stringToAttributedString(_ prices: [String]) -> NSAttributedString {
+    private func stringToAttributedString(_ prices: [String]) -> NSAttributedString {
         if prices.count == 2 {
             let convertedPrice = convertDecimal(string: prices[1])
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(convertedPrice)원")

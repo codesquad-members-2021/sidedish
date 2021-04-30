@@ -53,7 +53,7 @@ class MenusViewModel {
         }
     }
     
-    func matchingViewModel(menuList: [Menu]) -> [MenuViewModel] {
+    private func matchingViewModel(menuList: [Menu]) -> [MenuViewModel] {
         
         let viewModelList: [MenuViewModel] = menuList.map() { menu in
             let price = menu.normalPrice == nil ? nil : String(menu.normalPrice!)
@@ -74,7 +74,7 @@ class MenusViewModel {
         return numberFormatter.string(from: NSNumber(value: stringToInt))!
     }
     
-    func stringToAttributedString(_ price: String?) -> NSAttributedString {
+    private func stringToAttributedString(_ price: String?) -> NSAttributedString {
         if let pastPrice = price {
             let convertedPrice = convertDecimal(string: pastPrice)
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(convertedPrice)원")

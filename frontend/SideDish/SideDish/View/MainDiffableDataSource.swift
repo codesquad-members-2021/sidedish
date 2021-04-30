@@ -23,7 +23,7 @@ class MainDiffableDataSource {
         setHeaderSnapShot()
     }
     
-    func setHeaderSnapShot() {
+    private func setHeaderSnapShot() {
         self.dataSource.supplementaryViewProvider = setupHeader(collectionView: kind: indexPath:)
         var snapshot = self.dataSource.snapshot()
         snapshot.appendSections(sectionTitle.allCases)
@@ -39,7 +39,7 @@ class MainDiffableDataSource {
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func setupHeader(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
+    private func setupHeader(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
         guard let menuHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuHeaderView", for: indexPath) as? MenuHeaderView else {
             return MenuHeaderView()
         }

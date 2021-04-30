@@ -22,8 +22,6 @@ class MenuCell: UICollectionViewCell {
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var badgeView: UIView!
     
-    private let menuCellValidater = MenuCellValidater()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupBadgeShape()
