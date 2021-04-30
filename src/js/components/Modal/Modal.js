@@ -13,7 +13,6 @@ const Modal = ({ data, isModalOn, setModalData, setModalOn }) => {
 		setCount(1);
 		setButtonAvailable(true);
 	}, [data]);
-	if (data) console.log(data.sibling);
 	return data ? (
 		<ModalWrapper isOn={isModalOn} yLocation={data.y}>
 			<Box>

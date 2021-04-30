@@ -9,6 +9,7 @@ const Yummy = ({ sibling, setModalData }) => {
 	useEffect(() => {
 		setCardList(() => sibling);
 	}, [sibling]);
+	console.log(cardList)
 	return (
 		<YummyWrapper>
 			<YummyHeader>
@@ -21,6 +22,7 @@ const Yummy = ({ sibling, setModalData }) => {
 			<YummyCarousel>
 				<Carousel itemsPerPeice={5} customMode carouselId={4}>
 					{cardList.map((el) => {
+						console.log("in carousel ",cardList)
 						return <Card sibling={sibling} setModalData={setModalData} key={el.detail_hash} size="SMALL" data={el} />;
 					})}
 				</Carousel>
@@ -53,7 +55,8 @@ const ControllerWrapper = styled.div`
 
 const YummyCarousel = styled.div`
 	display: flex;
-    /* margin-left:10px; */
+	/* justify-content:center; */
+    margin-left:10px;
 `;
 
 export default Yummy;

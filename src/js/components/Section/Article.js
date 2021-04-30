@@ -1,5 +1,4 @@
-import Carousel2 from "../../Carousel/Carousel";
-// import Carousel from "@jjunyjjuny/react-carousel";
+import Carousel2 from "@jjunyjjuny/react-carousel";
 import styled from "styled-components";
 import Card from "../common/Card";
 const { Carousel, Controller } = Carousel2;
@@ -17,7 +16,7 @@ const Ariticle = ({ ariticle, index, setModalData, setModalOn }) => {
 					<Controller next carouselId={index + 1} />
 				</NextButton>
 				{ariticle.length > 0 && (
-					<Carousel itemsPerPeice={4} customMode carouselId={index + 1} gap={"10px"}>
+					<Carousel itemsPerPeice={4} customMode autoFit carouselId={index + 1} gap={"0px"}>
 						{ariticle.map((el) => (
 							<Card sibling={ariticle} setModalData={setModalData} setModalOn={setModalOn} key={el.detail_hash} size="MEDIUM" data={el} />
 						))}
@@ -40,11 +39,13 @@ const PrevButton = styled.div`
 	position: absolute;
 	top: 230px;
 	left: -40px;
+	z-index: 2;
 `;
 const NextButton = styled.div`
 	position: absolute;
 	top: 230px;
 	left: 1320px;
+	z-index: 2;
 `;
 const Title = styled.div`
 	width: 1280px;
