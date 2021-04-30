@@ -8,6 +8,7 @@ import com.codesquad.sidedish.SideDish.dto.RefreshDto;
 import com.codesquad.sidedish.SideDish.exception.DishNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,27 +19,32 @@ public class DishService {
     private final ImageRepository imageRepository;
     private final DeliveryRepository deliveryRepository;
     private final SaleRepository saleRepository;
+    private final DishDao dishDao;
 
-    public DishService(DishRepository dishRepository, ImageRepository imageRepository, DeliveryRepository deliveryRepository, SaleRepository saleRepository) {
+    public DishService(DishRepository dishRepository, ImageRepository imageRepository, DeliveryRepository deliveryRepository, SaleRepository saleRepository, DishDao dishDao) {
         this.dishRepository = dishRepository;
         this.imageRepository = imageRepository;
         this.deliveryRepository = deliveryRepository;
         this.saleRepository = saleRepository;
+        this.dishDao = dishDao;
     }
 
     public List<DishDto> getList(Long categoryId) {
-        return dishRepository.findAllByCategoryId(categoryId)
-                .stream().map(this::convert)
+        DishList dishList = dishDao.findAllByCategoryId(categoryId);
+        return dishList.getDishes().stream()
+                .map(dish -> DishDto.from(dish, new ArrayList<>(dishList.getDeliveries(dish)), new ArrayList<>(dishList.getSales(dish))))
                 .collect(Collectors.toList());
+//        return dishRepository.findAllByCategoryId(categoryId)
+//                .stream().map(this::convert)
+//                .collect(Collectors.toList());
     }
 
-    // FIXME: N+1 문제를 해결해야한다.
-    DishDto convert(Dish dish) {
-        String detailHash = dish.getDetailHash();
-        List<Delivery> deliveries = deliveryRepository.findAllByDish(detailHash);
-        List<Sale> sales = saleRepository.findAllByDish(detailHash);
-        return DishDto.from(dish, deliveries, sales);
-    }
+//    private DishDto convert(Dish dish) {
+//        String detailHash = dish.getDetailHash();
+//        List<Delivery> deliveries = deliveryRepository.findAllByDish(detailHash);
+//        List<Sale> sales = saleRepository.findAllByDish(detailHash);
+//        return DishDto.from(dish, deliveries, sales);
+//    }
 
 
     public RefreshDto getDetailRefreshable(String detailHash, long lastUpdated) {

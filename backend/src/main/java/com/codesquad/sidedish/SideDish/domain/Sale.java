@@ -1,12 +1,8 @@
 package com.codesquad.sidedish.SideDish.domain;
 
-import org.springframework.data.annotation.Id;
+import java.util.Objects;
 
 public class Sale {
-
-    @Id
-    private Long id;
-
     private String badge;
     private String saleType;
     private int saleValue;
@@ -16,10 +12,6 @@ public class Sale {
         this.badge = badge;
         this.saleType = saleType;
         this.saleValue = saleValue;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getBadge() {
@@ -33,6 +25,21 @@ public class Sale {
     public int getSaleValue() {
         return saleValue;
     }
-    
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Sale sale = (Sale) o;
+        return saleValue == sale.saleValue && Objects.equals(badge, sale.badge) && Objects.equals(saleType, sale.saleType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(badge, saleType, saleValue);
+    }
 }

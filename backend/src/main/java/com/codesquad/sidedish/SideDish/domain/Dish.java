@@ -1,9 +1,9 @@
 package com.codesquad.sidedish.SideDish.domain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Dish {
-
     private final String detailHash;
     private final String image;
     private final String title;
@@ -86,5 +86,22 @@ public class Dish {
 
     public boolean refreshable(long lastUpdated) {
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Dish dish = (Dish) o;
+        return Objects.equals(detailHash, dish.detailHash) && Objects.equals(image, dish.image) && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && Objects.equals(price, dish.price) && Objects.equals(salePrice, dish.salePrice) && Objects.equals(point, dish.point) && Objects.equals(deliveryInfo, dish.deliveryInfo) && Objects.equals(deliveryFee, dish.deliveryFee) && Objects.equals(categoryId, dish.categoryId) && Objects.equals(quantity, dish.quantity) && Objects.equals(currentDateTime, dish.currentDateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(detailHash, image, title, description, price, salePrice, point, deliveryInfo, deliveryFee, categoryId, quantity, currentDateTime);
     }
 }
