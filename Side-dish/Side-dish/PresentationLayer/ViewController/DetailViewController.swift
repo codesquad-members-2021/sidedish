@@ -55,6 +55,7 @@ class DetailViewController: UIViewController {
         detailViewModel.successOrderBind()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
+                self?.triggerAlert(by: "주문이 완료되었습니다")
                 self?.navigationController?.popViewController(animated: true)
             }.store(in: &cancellable)
     }
