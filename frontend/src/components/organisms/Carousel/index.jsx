@@ -1,12 +1,10 @@
-import React, { useRef } from 'react';
-import { CardStyle, WrapCard, WrapMain, WrapCarousal } from './index.style';
+import { useRef, useState } from "react";
+import { CardStyle, WrapCard, WrapMain, WrapCarousal } from "./index.style";
 
 const Carousel = ({ children, ...props }) => {
   const directionRef = useRef(false);
-
   const SLIDES = props.visibleSlides;
   const LENGTH = props.imageWidth * SLIDES + props.imageMargin * (SLIDES + 4);
-  //slide + 개수 이유 확인
 
   const Slides = () => {
     return <>{children}</>;
@@ -17,16 +15,17 @@ const Carousel = ({ children, ...props }) => {
     directionRef.current.style.transform = move;
   };
 
-  const moveSlide = type => {
-    if (type === 'RightIcon') {
-      setStyle('all 0.5s', `translate(-${LENGTH}px)`);
+  const moveSlide = (type) => {
+    if (type === "RightIcon") {
+      setStyle("all 0.5s", `translate(-${LENGTH}px)`);
     } else {
-      setStyle('all 0.5s', `translate(${LENGTH}px)`);
+      setStyle("all 0.5s", `translate(${LENGTH}px)`);
     }
   };
 
-  const onTransitionEnd = type => {
-    if (type === 'RightIcon') {
+  const onTransitionEnd = (type) => {
+    if (!type.target.classList.contains("iAPLbH")) return;
+    if (type === "RightIcon") {
       props.setData(
         props.data.slice(SLIDES).concat(props.data.slice(0, SLIDES))
       );
@@ -35,8 +34,8 @@ const Carousel = ({ children, ...props }) => {
         props.data.slice(-SLIDES).concat(props.data.slice(0, -SLIDES))
       );
     }
-    directionRef.current.style.transform = 'translate(0)';
-    directionRef.current.style.transition = 'none';
+    directionRef.current.style.transform = "translate(0)";
+    directionRef.current.style.transition = "none";
   };
 
   return (
@@ -45,7 +44,7 @@ const Carousel = ({ children, ...props }) => {
         <WrapCarousal marginTop={40}>
           <div
             onClick={() => {
-              moveSlide('LeftIcon');
+              moveSlide("LeftIcon");
             }}
           >
             <props.ButtonLeft />
@@ -62,7 +61,7 @@ const Carousel = ({ children, ...props }) => {
           </WrapCard>
           <div
             onClick={() => {
-              moveSlide('RightIcon');
+              moveSlide("RightIcon");
             }}
           >
             <props.ButtonRight />

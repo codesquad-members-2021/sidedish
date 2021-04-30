@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WrapDiv, WrapContent } from "./index.style";
+import getComma from "../../../util/getComma";
 import HoverCard from "../../molecules/HoverCard";
 import Image from "../../atoms/Image";
 import Span from "../../atoms/Span";
 import TagBox from "../../molecules/TagBox";
-import Modal from "../../pages/Modal";
+import Details from "../../pages/Details";
 
 const MediumCard = ({ children, ...props }) => {
   const [isHover, setIsHover] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const onClick = () => setIsOpen(true);
-  const onClose = () => setIsOpen(false);
-
+  const onClose = () => {
+    setIsOpen(false);
+  };
+  console.log(2);
+  useEffect(() => {
+    console.log(1);
+  }, [isOpen]);
   return (
     <>
-      <Modal open={isOpen} onClose={onClose} _hash={props._hash} />
+      <Details open={isOpen} onClose={onClose} _hash={props._hash} />
       <WrapDiv onClick={onClick}>
         <Image
           src={props._image}
@@ -31,8 +37,8 @@ const MediumCard = ({ children, ...props }) => {
         <Span className="_title">{props._title}</Span>
         <Span className="_description">{props._description}</Span>
         <WrapContent>
-          <Span className="_sPrice">{props._sPrice}</Span>
-          <Span className="_nPrice">{props._nPrice}</Span>
+          <Span className="_sPrice">{getComma(props._sPrice)}원</Span>
+          <Span className="_nPrice">{getComma(props._nPrice)}</Span>
         </WrapContent>
         <TagBox _badge={props._badge} />
       </WrapDiv>

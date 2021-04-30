@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledImage = styled.img`
   width: ${(props) => props._width};
+  height: ${(props) => props._height};
   margin: ${(props) => props._margin};
   border-radius: 5px;
   display: relative;

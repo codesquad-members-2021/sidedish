@@ -1,13 +1,15 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledSpan = styled.span`
   display: block;
-  color: ${(props) => props._color};
-  margin: ${(props) => props._margin};
-  font-size: ${(props) => props._fontSize};
-  font-weight: ${(props) => props._fontWeight};
-  font-family: "Noto Sans KR";
+
+  color: ${props => props._color};
+  margin: ${props => props._margin};
+  font-size: ${props => props._fontSize};
+  font-weight: ${props => props._fontWeight};
+  font-family: 'Noto Sans KR';
+
 
   &._title {
     margin: 16px 0 0 0;
@@ -37,7 +39,7 @@ const StyledSpan = styled.span`
     text-decoration: line-through;
   }
   &._tPrice {
-    width: 110px;
+    width: 124px;
     font-size: 32px;
     font-weight: 700;
     color: #010101;
@@ -73,11 +75,11 @@ const StyledSpan = styled.span`
 
   &._detailLabel {
     width: 60px;
-    white-space: nowrap;
-    margin-right: 16px;
+    margin: 3px 16px 0 0;
     font-size: 16px;
     font-weight: 400;
     color: #828282;
+    white-space: nowrap;
   }
 
   &._detailText {
@@ -120,7 +122,7 @@ const StyledSpan = styled.span`
   &._tPriceTitle {
     margin: 10px 24px 0 0;
     font-size: 18px;
-
+  }
   &._otherPrice {
     font-weight: 700;
     font-size: 14px;
@@ -130,6 +132,11 @@ const StyledSpan = styled.span`
     font-size: 32px;
     font-weight: 700;
     color: #010101;
+  }
+  &._page {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
   }
 `;
 
