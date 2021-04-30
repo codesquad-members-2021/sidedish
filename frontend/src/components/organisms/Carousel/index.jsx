@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { CardStyle, WrapCard, WrapMain, WrapCarousal } from "./index.style";
 
 const Carousel = ({ children, ...props }) => {
-  const [cadata, setcaData] = useState([...props.data]);
   const directionRef = useRef(false);
   const SLIDES = props.visibleSlides;
   const LENGTH = props.imageWidth * SLIDES + props.imageMargin * (SLIDES + 4);
@@ -27,9 +26,13 @@ const Carousel = ({ children, ...props }) => {
   const onTransitionEnd = (type) => {
     if (!type.target.classList.contains("iAPLbH")) return;
     if (type === "RightIcon") {
-      setcaData(cadata.slice(SLIDES).concat(cadata.slice(0, SLIDES)));
+      props.setData(
+        props.data.slice(SLIDES).concat(props.data.slice(0, SLIDES))
+      );
     } else {
-      setcaData(cadata.slice(-SLIDES).concat(cadata.slice(0, -SLIDES)));
+      props.setData(
+        props.data.slice(-SLIDES).concat(props.data.slice(0, -SLIDES))
+      );
     }
     directionRef.current.style.transform = "translate(0)";
     directionRef.current.style.transition = "none";
