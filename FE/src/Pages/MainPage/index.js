@@ -7,7 +7,9 @@ import Tabs from 'Components/Tabs/Tabs';
 import DetailProductModal from 'Components/Modal/DetailProductModal';
 import Button from 'Components/commons/Buttons';
 
-import MainDish from 'Pages/MainPage/MainDish';
+import * as Dish from 'Pages/MainPage/Dish';
+// import Dish from 'Pages/MainPage/Dish';
+
 import useAsync from 'util/hooks/useAsync';
 import API from 'util/API';
 
@@ -15,36 +17,31 @@ const MainPage = () => {
   const [modalState, refetchModal] = useAsync(API.get.detail, [], true);
   const [hasMoreCategory, setHasMoreCategory] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchRemainDish = async () => {
-  //     setRemainDish({side: await API.get.side(), soup: await API.get.soup()});
-  //     console.log("fetchMainDish!", mainDishes)
-  //   }
-  //   fetchRemainDish();
-  // }, [])
-
   return (
     <MainPageLayout>
       <Header />
       <Tabs  {...{ refetchModal }} />
-      <MainDishSection>
-        <MainDish />
-      </MainDishSection>
+      <DishSection>
+        {/* <Dish type={"main"}/> */}
+        <Dish.Main refetchModal={refetchModal}/>
+      </DishSection>
       { !hasMoreCategory 
         ? <>
-            <MainDishSection>
-              <MainDish />
-            </MainDishSection>
-            <MainDishSection>
-              <MainDish />
-            </MainDishSection>
+            <DishSection>
+              <Dish.Side refetchModal={refetchModal} />
+              {/* <Dish type={"side"}/> */}
+            </DishSection>
+            <DishSection>
+              <Dish.Soup refetchModal={refetchModal} />
+              {/* <Dish type={"soup"}/> */}
+            </DishSection>
           </>
         : <FoooterSection> 
             <Button type={"viewAll"} onClick={setHasMoreCategory}> 더보기 </Button>
           </FoooterSection> 
       }
       
-      <DetailProductModal {...{ modalState }} />
+      <DetailProductModal {...{ modalState, refetchModal }} />
     </MainPageLayout>
   )
 }
@@ -54,7 +51,7 @@ const MainPageLayout = styled(FlexContainer)`
   /* margin-bottom: 100px; */
 `;
 
-const MainDishSection = styled(Container)`
+const DishSection = styled(Container)`
 `
 
 const FoooterSection = styled.section`

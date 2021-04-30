@@ -6,9 +6,9 @@ import Card from 'Components/commons/Cards';
 
 import API from 'util/API.js';
 
-const MainDish = () => {
+const MainDish = ({ refetchModal }) => {
   const [mainDishes, setMainDishes] = useState();
-  
+
   useEffect(() => {
     const fetchMainDish = async () => {
       setMainDishes(await API.get.main());
@@ -19,7 +19,7 @@ const MainDish = () => {
 
   const carouselOption = {
     navigator: "default",
-    unit : 3
+    unit : 4
   }
 
   if (!mainDishes)
@@ -29,8 +29,8 @@ const MainDish = () => {
     <CarouselLayout>
       <Carousel.Container {...carouselOption}>
         {/* for test */}
-        {mainDishes.body.map((_, i) => {
-          return <Card key={`test-${i}`} number={i} type={"responsive"} />;
+        {mainDishes.map((dish, i) => {
+          return <Card key={`test-${i}`} number={i} type={"responsive"} payload={dish} refetchModal={refetchModal} />;
         })}
 
       </Carousel.Container>
