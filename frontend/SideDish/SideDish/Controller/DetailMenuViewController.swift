@@ -120,7 +120,7 @@ class DetailMenuViewController: UIViewController {
     
     @IBAction func pressedOrderButton(_ sender: UIButton) {
         if self.orderViewModel.isOrderAvailable(stock: self.detailMenuViewModel.stock) {
-            DataTaskManager.orderPost(orderCount: OrderMenuRequest(count: self.orderViewModel.orderCount), categoryId: self.detailMenuViewModel.categoryId, detailHash: self.detailMenuViewModel.detailHash, completion: { result in
+            APIRequestManager.orderPost(orderCount: OrderMenuRequest(count: self.orderViewModel.orderCount), url: URLManager.detailMenu(categoryId: self.detailMenuViewModel.categoryId, detailHash: self.detailMenuViewModel.detailHash), completion: { result in
                 DispatchQueue.main.async {
                     if result {
                         let alert = UIAlertController(title: "주문 확인", message: "주문이 완료 되었습니다.", preferredStyle: .alert)

@@ -1,10 +1,10 @@
 
 import Foundation
 
-class FetchDetailDataUseCase {
+class FetchDetailMenuUseCase {
     
-    func loadDetailMenu(categoryId: Int, detailHash: String, closure: @escaping (DetailMenu) -> (Void)) {
-        DataTaskManager.sendDetailRequest(categoryId: categoryId, detailHash: detailHash, completion: { (result) in
+    func loadDetailMenu(url: URL?, closure: @escaping (DetailMenu) -> (Void)) {
+        APIRequestManager.sendDetailRequest(url: url, completion: { (result) in
             switch result {
             case .success(let data):
                 closure(data)

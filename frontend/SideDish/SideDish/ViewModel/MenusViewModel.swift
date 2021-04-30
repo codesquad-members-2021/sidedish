@@ -11,17 +11,17 @@ class MenusViewModel {
         self.mainViewModel = []
         self.soupViewModel = []
         self.sideViewModel = []
-        self.fetchMenuUseCase = FetchDataUseCase()
+        self.fetchMenuUseCase = FetchMenuResponseUseCase()
     }
     
     func fetchData() {
-        self.fetchMenuUseCase.loadMenu(of: .main) { menuList, categoryId in
+        self.fetchMenuUseCase.loadMenu(of: URLManager.menu(of: .main)) { menuList, categoryId in
             self.add(menuList: menuList, categoryId: categoryId, section: .main)
         }
-        self.fetchMenuUseCase.loadMenu(of: .soup) { menuList, categoryId in
+        self.fetchMenuUseCase.loadMenu(of: URLManager.menu(of: .soup)) { menuList, categoryId in
             self.add(menuList: menuList, categoryId: categoryId, section: .soup)
         }
-        self.fetchMenuUseCase.loadMenu(of: .side) { menuList, categoryId in
+        self.fetchMenuUseCase.loadMenu(of: URLManager.menu(of: .side)) { menuList, categoryId in
             self.add(menuList: menuList, categoryId: categoryId, section: .side)
         }
     }

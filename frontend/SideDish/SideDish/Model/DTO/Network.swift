@@ -8,20 +8,12 @@
 import Foundation
 import Alamofire
 
-class DataTaskManager {
+class APIRequestManager {
     
     static let session = URLSession(configuration: .default)
     
-    enum Url: String {
-        case main = "http://13.209.36.131:8080/17011000"
-        case soup = "http://13.209.36.131:8080/17011100"
-        case side = "http://13.209.36.131:8080/17011200"
-        case detail = "http://13.209.36.131:8080/detail"
-    }
-    
-    static func sendRequest(url: Url, completion: @escaping (Result<MenuResponse, Error>) -> Void) {
-        guard let url = URL(string: url.rawValue) else {
-            print("The URL is inappropriate.")
+    static func sendRequest(url: URL?, completion: @escaping (Result<MenuResponse, Error>) -> Void) {
+        guard let url = url else {
             return
         }
         session.dataTask(with: url) { data, response, error in
@@ -35,8 +27,8 @@ class DataTaskManager {
         }.resume()
     }
   
-    static func sendDetailRequest(categoryId: Int, detailHash: String, completion: @escaping (Result<DetailMenu, Error>) -> Void) {
-        guard let url = URL(string: "\(Url.detail.rawValue)/\(categoryId)/\(detailHash)") else {
+    static func sendDetailRequest(url: URL?, completion: @escaping (Result<DetailMenu, Error>) -> Void) {
+        guard let url = url else {
             print("The URL is inappropriate.")
             return
         }
@@ -51,8 +43,8 @@ class DataTaskManager {
         }.resume()
     }
     
-    static func orderPost(orderCount: OrderMenuRequest, categoryId: Int, detailHash: String, completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: "\(Url.detail.rawValue)/\(categoryId)/\(detailHash)") else {
+    static func orderPost(orderCount: OrderMenuRequest, url: URL?, completion: @escaping (Bool) -> Void) {
+        guard let url = url else {
             print("The URL is inappropriate.")
             return
         }

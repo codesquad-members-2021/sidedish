@@ -2,12 +2,12 @@
 import Foundation
 
 protocol FetchMenuUseCase {
-    func loadMenu(of: DataTaskManager.Url ,closure: @escaping ([Menu], Int) -> (Void))
+    func loadMenu(of: URL? ,closure: @escaping ([Menu], Int) -> (Void))
 }
 
-class FetchDataUseCase: FetchMenuUseCase {
-    func loadMenu(of url: DataTaskManager.Url, closure: @escaping ([Menu], Int) -> (Void)) {
-        DataTaskManager.sendRequest(url: url, completion: { (result) in
+class FetchMenuResponseUseCase: FetchMenuUseCase {
+    func loadMenu(of url: URL?, closure: @escaping ([Menu], Int) -> (Void)) {
+        APIRequestManager.sendRequest(url: url, completion: { (result) in
             switch result {
             case .success(let data):
                 closure(data.items, data.categoryId)

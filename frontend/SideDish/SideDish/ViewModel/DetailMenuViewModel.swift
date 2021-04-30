@@ -17,7 +17,7 @@ class DetailMenuViewModel {
     private(set) var stock: Int
     private(set) var detailSection: [String]
     
-    private let fetchDetailDataUseCase = FetchDetailDataUseCase()
+    private let fetchDetailDataUseCase = FetchDetailMenuUseCase()
     
     init() {
         self.categoryId = 0
@@ -38,7 +38,7 @@ class DetailMenuViewModel {
     func send(categoryId: Int, detailHash: String) {
         self.categoryId = categoryId
         self.detailHash = detailHash
-        self.fetchDetailDataUseCase.loadDetailMenu(categoryId: categoryId, detailHash: detailHash) { data in
+        self.fetchDetailDataUseCase.loadDetailMenu(url: URLManager.detailMenu(categoryId: categoryId, detailHash: detailHash)) { data in
             self.configure(data: data)
             NotificationCenter.default.post(name: Notification.Name.fetchDetailMenu, object: self)
         }

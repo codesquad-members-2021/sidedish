@@ -40,7 +40,9 @@ class MainDiffableDataSource {
     }
     
     func setupHeader(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
-        let menuHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuHeaderView", for: indexPath) as! MenuHeaderView
+        guard let menuHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuHeaderView", for: indexPath) as? MenuHeaderView else {
+            return MenuHeaderView()
+        }
         
         let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
         menuHeader.configureLabelName(text: section.rawValue)

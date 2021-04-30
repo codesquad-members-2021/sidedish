@@ -29,8 +29,12 @@ class MenuCell: UICollectionViewCell {
         setupBadgeShape()
     }
     
-    private func setupBadgeLabelConstraint() {
-        
+    override func prepareForReuse() {
+        self.eventLabel.isHidden = false
+        self.launchingLabel.isHidden = false
+        self.badgeView.isHidden = false
+        self.eventLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
+        self.launchingBadgeConstraint.constant = 76
     }
     
     private func setupBadgeShape() {
@@ -47,16 +51,7 @@ class MenuCell: UICollectionViewCell {
         self.pastPriceLabel.attributedText = menu.nPrice
         guard let url = URL(string: menu.image) else { return }
         self.thumbnailImage.kf.setImage(with: url)
-        badgeViewInitialSetup()
         setBadge(menu: menu)
-    }
-    
-    private func badgeViewInitialSetup() {
-        self.eventLabel.isHidden = false
-        self.launchingLabel.isHidden = false
-        self.badgeView.isHidden = false
-        self.eventLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
-        self.launchingBadgeConstraint.constant = 76
     }
     
     func setBadge(menu: MenuViewModel) {
