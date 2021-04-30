@@ -33,7 +33,7 @@ public class DishService {
     }
 
     // FIXME: N+1 문제를 해결해야한다.
-    private DishDto convert(Dish dish) {
+    DishDto convert(Dish dish) {
         String detailHash = dish.getDetailHash();
         List<Delivery> deliveries = deliveryRepository.findAllByDish(detailHash);
         List<Sale> sales = saleRepository.findAllByDish(detailHash);
@@ -63,4 +63,17 @@ public class DishService {
         return Optional.ofNullable(dish)
                 .orElseThrow(() -> new DishNotFoundException(detailHash));
     }
+
+    public boolean order(String detailHash, int count) {
+        Dish dish = getDish(detailHash);
+        QuantityDto quantityDto = getDetailQuantity(detailHash);
+        if (quantityDto.getQuantity() > count) {
+            int upqua = quantityDto.getQuantity() - count;
+            dish.order(count);
+            dishRepository.updateDish(upqua, detailHash);
+            return true;
+        }
+        return false;
+    }
+
 }
