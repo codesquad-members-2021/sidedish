@@ -71,7 +71,6 @@ class CoreDataBanchanListStorage {
                 }
 
                 sectionEntity = requestEntity[index]
-//                print(requestEntity.count)
                 let entities = sectionEntity.entities?.array as! [BanchanEntity]
                 print(entities.count)
                 let newEntities = entities.map { entity in

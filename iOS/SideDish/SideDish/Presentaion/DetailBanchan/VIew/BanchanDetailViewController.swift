@@ -131,7 +131,7 @@ class BanchanDetailViewController: UIViewController {
         setDeliveryFee(text: "\(banchanDetail.deliveryFee) (40,000원 이상 구매 시 무료)")
         configureThumbImage(images: banchanDetail.thumbImages)
         configureDescriptionImage(images: banchanDetail.detailSection)
-
+        configureOrderButton(stock: banchanDetail.inStock)
     }
     
     private func setNPrice(text: String?) {
@@ -192,6 +192,15 @@ class BanchanDetailViewController: UIViewController {
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0/1.0).isActive = true
             imageView.contentMode = .scaleAspectFit
             detailDescriptionStackView.addArrangedSubview(imageView)
+        }
+    }
+    
+    private func configureOrderButton(stock: Bool) {
+        guard stock else {
+            orderButton.isUserInteractionEnabled = false
+            orderButton.backgroundColor = UIColor.systemGray4
+            orderButton.setTitle("일시 품절", for: .normal)
+            return
         }
     }
 }

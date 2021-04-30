@@ -45,6 +45,5 @@ class DefaultBanchanListRepository: BanchanListRepository {
                     .store(in: &self.subscriptions)
             }
         }
-
     }
 }
