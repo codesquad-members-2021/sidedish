@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface CategoryRepository extends CrudRepository<Category, Long> {
+
     Optional<Category> findByType(String categoryType);
 
     @Query("SELECT category.id, category.type, category.name FROM category " +
