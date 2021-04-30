@@ -705,6 +705,9 @@
                                                 <state key="normal" title="주문하기">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="OrderButtonTouched:" destination="QQm-9c-HfQ" eventType="touchUpInside" id="sqV-he-SYb"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-Wd-Hdo">
                                                 <rect key="frame" x="0.0" y="985" width="414" height="0.0"/>
@@ -751,7 +754,6 @@
                                             <outlet property="descriptionLabel" destination="DdD-zL-wHL" id="Wx5-5M-R3C"/>
                                             <outlet property="detailSectionStackView" destination="PRa-Wd-Hdo" id="J2X-9S-ZY2"/>
                                             <outlet property="nPriceLabel" destination="mW1-Lm-w9A" id="0QG-mC-FX4"/>
-                                            <outlet property="orderButton" destination="A5M-Fj-7th" id="hge-Pn-Ic3"/>
                                             <outlet property="pointLabel" destination="Qv3-5a-RDh" id="nXl-Ds-LLm"/>
                                             <outlet property="sPriceLabel" destination="iG5-hu-IUt" id="xWp-Zb-KDm"/>
                                             <outlet property="thumbnailStackView" destination="55P-Dl-YRU" id="nPw-wd-AM4"/>

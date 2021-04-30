@@ -17,16 +17,18 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
     private let callbackUrlScheme = "side-dish"
     private let redirectURL = "redirect_uri"
     private let redirectValue = "side-dish://side-dish"
-    private let accessToken = "7f32a79b176298db2f2f"
-    private let secretToken = "44930e822d299cf812b25f6cfe56273b8ce8aad6"
     private let scopes = ["repo", "read:org"]
     private var config: OAuthConfiguration!
     
-    
+    enum KeyType {
+        case clientKey
+        case secretKey
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        config = OAuthConfiguration(token: accessToken, secret: secretToken, scopes: scopes)
+        config = OAuthConfiguration(token: getGitHubKey(type: .clientKey), secret: getGitHubKey(type: .secretKey), scopes: scopes)
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
@@ -44,7 +46,7 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
                 self?.authenticateFail(message: error?.localizedDescription ?? "")
                 return
             }
-
+            
             self?.config.handleOpenURL(url: successURL) { config in
                 self?.loadCurrentUser(config: config)
             }
@@ -85,5 +87,16 @@ class AuthViewController: UIViewController, ASWebAuthenticationPresentationConte
         DispatchQueue.main.async { [weak self] in
             self?.present(Alert.create(title: "인증에 실패하였습니다. \(message)"), animated: true)
         }
+    }
+    
+    private func getGitHubKey(type: KeyType) -> String {
+        guard let filePath = Bundle.main.path(forResource: "GitHubApiKey", ofType: "plist") else {
+            return ""
+        }
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "\(type)") as? String else {
+            return ""
+        }
+        return value
     }
 }

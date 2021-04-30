@@ -11,12 +11,15 @@ import Combine
 protocol DetailViewModelProtocol {
     func didFetchDetails() -> AnyPublisher<ItemData, Never>
     func except() -> AnyPublisher<String, Never>
+    func orderSideDish(title: String, sPrice: String)
+    func successOrderBind() -> AnyPublisher<Void, Never>
 }
 
 final class DetailViewModel: DetailViewModelProtocol {
     
     private let sideDishUseCase: SideDishProtocol
     private var cancellable = Set<AnyCancellable>()
+    private var orderSuccessSubject = PassthroughSubject<Void, Never>()
     
     @Published private var itemDetails: ItemData?
     @Published private var errorMessage = ""
@@ -48,5 +51,20 @@ final class DetailViewModel: DetailViewModelProtocol {
         return $errorMessage
             .dropFirst()
             .eraseToAnyPublisher()
+    }
+    
+    func orderSideDish(title: String, sPrice: String)  {
+        let data = Encoder.endcode(title: title, sPrice: sPrice)
+        sideDishUseCase.requestOrder(body: data).sink { (complete) in
+            if case .failure(let error) = complete {
+                self.errorMessage = error.message
+            }
+        } receiveValue: { (_) in
+            self.orderSuccessSubject.send()
+        }.store(in: &cancellable)
+    }
+    
+    func successOrderBind() -> AnyPublisher<Void, Never> {
+        return orderSuccessSubject.eraseToAnyPublisher()
     }
 }

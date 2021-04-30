@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     private var detailViewModel: DetailViewModelProtocol!
     private var sideDishAmountViewModel:SideDishAmountViewModel!
     
+    @IBOutlet weak var orderButton: OrderButton!
     @IBOutlet weak var amountButtomViewModel: AmountButtonViewModel!
     @IBOutlet weak var detailContentView: DetailContenetView!
         
@@ -50,6 +51,12 @@ class DetailViewController: UIViewController {
         sideDishAmountViewModel.bind(sPrice: detailItem.sPrice).sink { [weak self] (totalPrice, amount) in
             self?.detailContentView.amountConfigure(amount: amount, total: totalPrice)
         }.store(in: &cancellable)
+        
+        detailViewModel.successOrderBind()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }.store(in: &cancellable)
     }
     
     private func triggerAlert(by error : String) {
@@ -66,4 +73,8 @@ class DetailViewController: UIViewController {
         self.detailItem = item
     }
     
+    @IBAction func OrderButtonTouched(_ sender: UIButton) {
+        self.detailViewModel.orderSideDish(title: detailItem.title,
+                                           sPrice: detailItem.sPrice)
+    }
 }
