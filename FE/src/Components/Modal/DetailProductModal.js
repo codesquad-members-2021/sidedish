@@ -7,13 +7,14 @@ import BottomSide from 'Components/Modal/BottomSide/BottomSide';
 import useToggle from 'util/hooks/useToggle';
 import preparingProduct from 'images/preparingProduct.png';
 import loadingImage from 'images/loading.gif';
-
-const DetailProductModal = ({ modalState }) => {
+// refetchModal
+const DetailProductModal = ({ modalState, refetchModal }) => {
   const [isHide, setHide] = useToggle(true);
   const { loading, data, error } = modalState;
 
   useEffect(() => {
     if (loading) setHide.toggle();
+    return () => { setHide.set(false); }
   }, [modalState]);
 
   return (
@@ -33,7 +34,7 @@ const DetailProductModal = ({ modalState }) => {
                   <RightSide {...data} /></>
               )}
             </TopSide>
-            {!isHide && <BottomSide />}
+            {!isHide && <BottomSide refetchModal={refetchModal}/>}
           </div>
         }
 
