@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { BsSearch } from 'react-icons/bs';
-
-function HeaderRight({ loginState, setLoginState }) {
+import { theme } from '../style/Theme';
+function HeaderRight({ loginState, setLoginState, userName, userIMG }) {
+	console.log(userName, userIMG);
 	const loginUrl = `https://github.com/login/oauth/authorize?client_id=e1541c566570ff3e0151&redirect_uri=http://localhost:3000/logIn&scope=user`;
 	const handleClick = () => {
 		localStorage.setItem('isLogin', false);
@@ -18,7 +19,10 @@ function HeaderRight({ loginState, setLoginState }) {
 			</SearchBarIcon>
 			<button>장바구니</button>
 			{loginState ? (
-				<button onClick={handleClick}>로그아웃</button>
+				<>
+					<Profile url={userIMG}></Profile>
+					<button onClick={handleClick}>로그아웃</button>
+				</>
 			) : (
 				<button>
 					<a href={loginUrl}>로그인</a>
@@ -29,13 +33,21 @@ function HeaderRight({ loginState, setLoginState }) {
 }
 
 export default HeaderRight;
-
+const Profile = styled.div`
+	width: 50px;
+	height: 50px;
+	background-image: url(${(props) => props.url});
+	background-size: cover;
+	border: 1px solid ${theme.colors.grey_css};
+	border-radius: 50px;
+`;
 const HeaderRightBlock = styled.div`
 	button {
 		font-size: 16px;
 		margin-left: 24px;
 	}
 	position: relative;
+	display: flex;
 `;
 
 const HeaderSeachBar = styled.input`
@@ -49,6 +61,7 @@ const HeaderSeachBar = styled.input`
 	&:focus {
 		outline: none;
 	}
+	position: relative;
 `;
 const SearchBarIcon = styled.div`
 	position: absolute;

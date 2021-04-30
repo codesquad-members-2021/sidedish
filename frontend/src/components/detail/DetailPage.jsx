@@ -18,12 +18,21 @@ function DetailPage({
 	badges,
 	hash,
 }) {
-	const [topImg, setTopImg] = useState(detailData.topImage);
+	const {
+		topImage,
+		stock,
+		nPrice,
+		sPrice,
+		thumbImages,
+		productDescription,
+		point,
+		deliveryInfo,
+		deliveryFee,
+	} = detailData;
+	const [topImgUrl, setTopImg] = useState(topImage);
 	const [order, setOrderCount] = useState(1);
-	const [dbstock, setDBstock] = useState(detailData.stock);
-	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
-
-	const [orderUrl, setOrderUrl] = useState(null);
+	const [dbstock, setDBstock] = useState(stock);
+	const orderPrice = sPrice ? sPrice : nPrice;
 	const handleOrderClick = () => {
 		const orderFetch = () => {
 			fetch(process.env.REACT_APP_API_URL + 'order', {
@@ -35,11 +44,8 @@ function DetailPage({
 				.then((res) => setDBstock(res.stock));
 		};
 		orderFetch();
-		setOrderUrl(process.env.REACT_APP_API_URL + 'order/');
 		setModalState(!modalMode);
 	};
-	const [stock, loadingStockState] = useFetch(orderUrl, 'patch', +order);
-	if (!loadingStockState) console.log(stock);
 
 	return (
 		<Modal {...{ modalMode, setModalState }}>
@@ -51,40 +57,36 @@ function DetailPage({
 				<>
 					<RepresentativeBlock className="MODAL">
 						<ImageBlock>
-							<MainIMG image={topImg} size="L" />
+							<IMG image={topImgUrl} size="L" />
 							<DetailBlock>
-								{detailData.thumbImages.map((el, idx) => (
-									<DetailIMG
-										key={idx}
-										image={el}
-										onClick={() => setTopImg(el)}
-									></DetailIMG>
+								{thumbImages.map((el, idx) => (
+									<IMG key={idx} image={el} onClick={() => setTopImg(el)}></IMG>
 								))}
 							</DetailBlock>
 						</ImageBlock>
 						<ItemDetailInfo>
-							<ItemTitleDetails>{item}</ItemTitleDetails>
-							<ItemDescDetails>{detailData.productDescription}</ItemDescDetails>
+							<ItemTitle>{item}</ItemTitle>
+							<ItemDesc>{productDescription}</ItemDesc>
 							<FlexBox>
 								<Badge data={badges}></Badge>
 								<ItemPrice
 									type={'basic'}
-									sPrice={detailData.sPrice}
-									nPrice={detailData.nPrice}
+									sPrice={sPrice}
+									nPrice={nPrice}
 								></ItemPrice>
 							</FlexBox>
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<PointDeliveryInfoBlock>
-								<ItemDescDetails>적립</ItemDescDetails>
-								<DetailText>{detailData.point}</DetailText>
-								<ItemDescDetails>배송정보</ItemDescDetails>
-								<DetailText>{detailData.deliveryInfo}</DetailText>
-								<ItemDescDetails>배송비</ItemDescDetails>
-								<DetailText>{detailData.deliveryFee}</DetailText>
+								<ItemDesc>적립</ItemDesc>
+								<DetailText>{point}</DetailText>
+								<ItemDesc>배송정보</ItemDesc>
+								<DetailText>{deliveryInfo}</DetailText>
+								<ItemDesc>배송비</ItemDesc>
+								<DetailText>{deliveryFee}</DetailText>
 							</PointDeliveryInfoBlock>
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<FlexBlock>
-								<ItemDescDetails>수량</ItemDescDetails>
+								<ItemDesc>수량</ItemDesc>
 								<NumInput
 									type="number"
 									value={order}
@@ -103,11 +105,8 @@ function DetailPage({
 								></ItemPrice>
 							</FlexBlock>
 
-							<OrderBtn
-								onClick={handleOrderClick}
-								disabled={!Boolean(detailData.stock)}
-							>
-								{detailData.stock ? '주문하기' : '상품 준비중'}
+							<OrderBtn onClick={handleOrderClick} disabled={!Boolean(stock)}>
+								{stock ? '주문하기' : '상품 준비중'}
 							</OrderBtn>
 						</ItemDetailInfo>
 					</RepresentativeBlock>
@@ -131,7 +130,7 @@ const FlexBlock = styled.div`
 const ImageBlock = styled.div`
 	margin-right: 32px;
 `;
-const MainIMG = styled.div`
+const IMG = styled.div`
 	width: ${(props) => {
 		return props.size === 'L' ? '392px' : '72px';
 	}};
@@ -148,12 +147,6 @@ const DetailBlock = styled.div`
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-gap: 8px;
 `;
-const DetailIMG = styled.div`
-	width: 72px;
-	height: 72px;
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-`;
 const ItemDetailInfo = styled.div``;
 const FlexBox = styled.div`
 	display: flex;
@@ -164,7 +157,7 @@ const PointDeliveryInfoBlock = styled.div`
 	grid-template-columns: 60px 364px;
 	grid-gap: 16px;
 `;
-const ItemTitleDetails = styled.span`
+const ItemTitle = styled.span`
 	font-size: ${theme.fontSize.large};
 	font-weight: Bold;
 	margin-bottom: 16px;
@@ -175,7 +168,7 @@ const ItemTitleDetails = styled.span`
 const DetailText = styled.div`
 	color: ${theme.colors.deep_grey_text};
 `;
-const ItemDescDetails = styled.div`
+const ItemDesc = styled.div`
 	font-size: ${theme.fontSize.medium};
 	color: ${theme.colors.grey_text};
 	margin-bottom: 16px;

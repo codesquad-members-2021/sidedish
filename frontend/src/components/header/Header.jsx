@@ -3,11 +3,11 @@ import HeaderLeft from './HeaderLeft';
 import HeaderRight from './headerRight';
 import { theme } from '../style/Theme';
 
-function Header({ loginState, setLoginState }) {
+function Header({ loginState, setLoginState, userName, userIMG }) {
 	return (
 		<HeaderBlock>
 			<HeaderLeft />
-			<HeaderRight {...{ loginState, setLoginState }} />
+			<HeaderRight {...{ loginState, setLoginState, userName, userIMG }} />
 		</HeaderBlock>
 	);
 }
