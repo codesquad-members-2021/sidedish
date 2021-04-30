@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { theme, AlignTextCenter } from './style/Theme';
-import DetailPage from './detail/DetailPage';
-import useFetch from './useFetch';
+import { theme, AlignTextCenter } from '../style/Theme';
+import DetailPage from '../detail/DetailPage';
+import useFetch from '../useFetch';
+import ItemTitle from '../atomic/ItemTitle';
+import ItemPrice from '../atomic/ItemPrice';
 
 function ItemCardSmall({ data, size, height, xpadding }) {
 	const { alt, badges, title, nPrice, sPrice, detailHash, image } = data;
@@ -41,8 +43,10 @@ function ItemCardSmall({ data, size, height, xpadding }) {
 					</DeliveryBlock>
 				</IMG>
 				<ItemInfo>
-					<ItemTitle>{title}</ItemTitle>
-					<ItemPrice>{sPrice ? sPrice : nPrice}원</ItemPrice>
+					<ItemTitle type={'small'}>{title}</ItemTitle>
+					<ItemPrice type={'small'} nPrice={nPrice} sPrice={sPrice}>
+						{sPrice ? sPrice : nPrice}원
+					</ItemPrice>
 				</ItemInfo>
 			</Card>
 		</>
@@ -54,17 +58,7 @@ export default ItemCardSmall;
 const Card = styled.div`
 	padding: 0 ${(props) => `${props.padding}px`};
 `;
-const ItemTitle = styled.div`
-	font-size: ${theme.fontSize.small}px;
-	&:hover {
-		text-decoration: underline;
-	}
-	margin-bottom: 10px;
-`;
-const ItemPrice = styled.div`
-	font-size: ${theme.fontSize.small};
-	font-weight: Bold;
-`;
+
 const IMG = styled(AlignTextCenter)`
 	width: auto;
 	height: ${(props) => {
@@ -81,7 +75,6 @@ const IMG = styled(AlignTextCenter)`
 		}
 	}
 `;
-
 const DeliveryBlock = styled.div`
 	position: relative;
 	color: ${theme.colors.white};

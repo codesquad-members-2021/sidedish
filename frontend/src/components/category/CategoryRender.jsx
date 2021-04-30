@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Title from '../atomic/Title';
 import Carousel from './Carousel';
 import useFetch from '../useFetch';
-import ItemCard from '../ItemCard';
+import ItemCard from '../card/ItemCard';
 import Loading from '../state/Loading';
 import Error from '../state/Error';
 import { useRef } from 'react';

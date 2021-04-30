@@ -1,30 +1,6 @@
 import styled from 'styled-components';
 import MenuTab from './MenuTab';
 import Logo from '../atomic/Logo';
-const HeaderLeftBlock = styled.div`
-	display: flex;
-	align-items: center;
-`;
-
-const HeaderMenu = styled.ul`
-	width: 393px;
-	height: 23px;
-	margin-left: 47px;
-	display: grid;
-	grid-gap: 20px;
-	grid-template-columns: 1fr 1fr 1fr;
-	font-size: 16px;
-	li {
-		position: relative;
-		cursor: pointer;
-		padding-bottom: 16px;
-		&:hover {
-			ul {
-				display: flex;
-			}
-		}
-	}
-`;
 
 function HeaderLeft() {
 	return (
@@ -51,3 +27,27 @@ function HeaderLeft() {
 }
 
 export default HeaderLeft;
+const HeaderLeftBlock = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+const HeaderMenu = styled.ul`
+	width: 393px;
+	height: 23px;
+	margin-left: 47px;
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr;
+	font-size: 16px;
+	li {
+		position: relative;
+		cursor: pointer;
+		padding-bottom: 16px;
+		&:hover {
+			ul {
+				display: flex;
+			}
+		}
+	}
+`;

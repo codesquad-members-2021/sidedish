@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BiX } from 'react-icons/bi';
-import { theme, Button } from './style/Theme';
+import { theme, Button, AlignTextCenter } from './style/Theme';
 import ModalPortal from '../ModalPortal';
 
 function Modal({ children, modalMode, setModalState }) {
@@ -20,15 +20,12 @@ function Modal({ children, modalMode, setModalState }) {
 
 export default Modal;
 
-const DarkBackground = styled.div`
+const DarkBackground = styled(AlignTextCenter)`
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 9999;
 `;

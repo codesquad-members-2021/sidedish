@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Carousel from '../category/Carousel';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import React, { useState, useRef } from 'react';
-import ItemCardSmall from '../ItemCardSmall';
+import ItemCardSmall from '../card/ItemCardSmall';
 import { theme, Button } from '../style/Theme';
 import Title from '../atomic/Title';
 function Recommend() {

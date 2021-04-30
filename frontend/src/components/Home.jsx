@@ -2,13 +2,18 @@ import MainMenu from './mainmenu/MainMenu';
 import CategoryEntry from './category/CategoryEntry';
 import Header from './header/Header';
 import GlobalStyle from './style/GlobalStyle';
+import { useState, useEffect } from 'react';
+const Home = () => {
+	const [loginState, setLoginState] = useState(null);
+	useEffect(() => {
+		const token = localStorage.getItem('token');
+		token !== null && setLoginState(true);
+	}, []);
 
-const Home = (isLogin) => {
-	console.log(isLogin);
 	return (
 		<>
 			<GlobalStyle />
-			<Header isLogin={isLogin} />
+			<Header {...{ loginState, setLoginState }} />
 			<MainMenu />
 			<CategoryEntry />
 		</>

@@ -68,6 +68,7 @@ function DetailPage({
 							<FlexBox>
 								<Badge data={badges}></Badge>
 								<ItemPrice
+									type={'basic'}
 									sPrice={detailData.sPrice}
 									nPrice={detailData.nPrice}
 								></ItemPrice>
@@ -84,7 +85,6 @@ function DetailPage({
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<FlexBlock>
 								<ItemDescDetails>수량</ItemDescDetails>
-								{console.log(dbstock)}
 								<NumInput
 									type="number"
 									value={order}
@@ -97,7 +97,10 @@ function DetailPage({
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<FlexBlock>
 								<DetailText>총 주문금액</DetailText>
-								<ItemPrice nPrice={`${orderPrice * order}`}></ItemPrice>
+								<ItemPrice
+									type={'basic'}
+									nPrice={`${orderPrice * order}`}
+								></ItemPrice>
 							</FlexBlock>
 
 							<OrderBtn
@@ -184,6 +187,7 @@ const OrderBtn = styled(Button)`
 		props.disabled ? theme.colors.grey_text : theme.colors.green};
 	width: 440px;
 	height: 58px;
+	margin-top: 20px;
 	box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
 		0px 2px 4px rgba(0, 0, 0, 0.25);
 	backdrop-filter: blur(4px);

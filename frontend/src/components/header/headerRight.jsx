@@ -1,32 +1,29 @@
 import styled from 'styled-components';
 import { BsSearch } from 'react-icons/bs';
-import { useState } from 'react';
-import useFetch from '../useFetch';
 
-function HeaderRight(isLogin) {
-	console.log(isLogin);
-	const logInUrl = `https://github.com/login/oauth/authorize?client_id=e1541c566570ff3e0151&redirect_uri=http://localhost:3000/logIn&scope=user
-`;
-	const [logOutPath, setLogOutUrl] = useState(null);
-	const token = localStorage.getItem('token');
-	const [logout, loadingLogOutState] = useFetch(logOutPath, token);
+function HeaderRight({ loginState, setLoginState }) {
+	const loginUrl = `https://github.com/login/oauth/authorize?client_id=e1541c566570ff3e0151&redirect_uri=http://localhost:3000/logIn&scope=user`;
 	const handleClick = () => {
-		setLogOutUrl('http://15.164.68.136:8080/logout');
+		localStorage.setItem('isLogin', false);
+		localStorage.removeItem('userId');
+		localStorage.removeItem('token');
+		setLoginState(false);
 	};
+
 	return (
 		<HeaderRightBlock>
 			<HeaderSeachBar />
 			<SearchBarIcon>
 				<BsSearch />
 			</SearchBarIcon>
-			{isLogin === null ? (
-				<HeaderLonIn onClick={handleClick}>로그아웃</HeaderLonIn>
+			<button>장바구니</button>
+			{loginState ? (
+				<button onClick={handleClick}>로그아웃</button>
 			) : (
-				<HeaderLonIn>
-					<a href={logInUrl}>로그인</a>
-				</HeaderLonIn>
+				<button>
+					<a href={loginUrl}>로그인</a>
+				</button>
 			)}
-			<HeaderCart>장바구니</HeaderCart>
 		</HeaderRightBlock>
 	);
 }
@@ -58,5 +55,9 @@ const SearchBarIcon = styled.div`
 	left: 51%;
 	top: 23.38%;
 `;
-const HeaderLonIn = styled.button``;
-const HeaderCart = styled.button``;
+
+// import { useState } from 'react';
+// import useFetch from '../useFetch';
+// const [logoutPath, setLogoutUrl] = useState(null);
+// const [logout, loadingLogOutState] = useFetch(logoutPath, token);
+// const logoutUrl = `'http://15.164.68.136:8080/logout'`;

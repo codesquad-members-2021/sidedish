@@ -1,12 +1,10 @@
 import queryString from 'query-string';
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import useFetch from './useFetch';
+
 const Oauth = (props) => {
 	const result = queryString.parse(props.location.search);
 	const code = result.code;
-
 	const [userInfo, loadingUserState] = useFetch(
 		`http://15.164.68.136:8080/login?code=${code}`,
 		'post',
@@ -14,23 +12,18 @@ const Oauth = (props) => {
 	);
 
 	useEffect(() => {
-		if (!loadingUserState) {
-			localStorage.setItem('isLogIn', 'true');
-			localStorage.setItem('userId', userInfo.userId);
-			localStorage.setItem('token', userInfo.token);
+		try {
+			if (!loadingUserState) {
+				localStorage.setItem('isLogin', 'true');
+				localStorage.setItem('userId', userInfo.userId);
+				localStorage.setItem('token', userInfo.token);
+				props.history.push('/');
+			}
+		} catch (err) {
+			console.error('요청주소에 문제가 있어요😯', err.response.status);
+			props.history.push('/error');
 		}
 	});
-
-	return (
-		<div>ggg</div>
-		// <Route>
-		// 	<Redirect
-		// 		to={{
-		// 			pathname: '/',
-		// 			state: { code },
-		// 		}}
-		// 	/>
-		// </Route>
-	);
+	return null;
 };
 export default Oauth;

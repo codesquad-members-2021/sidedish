@@ -2,6 +2,21 @@ import styled from 'styled-components';
 import { AlignTextCenter, theme } from '../style/Theme';
 import Logo from '../atomic/Logo';
 
+function Error() {
+	return (
+		<ErrorWapper>
+			<div onClick={() => window.location.replace('/')}>
+				<Logo>BANCHAN</Logo>
+			</div>
+			<Biggest>😧</Biggest>
+			<Big>404 ERROR</Big>
+			<Big>Oops, something went wrong...</Big>
+		</ErrorWapper>
+	);
+}
+
+export default Error;
+
 const ErrorWapper = styled(AlignTextCenter)`
 	flex-direction: column;
 	position: fixed;
@@ -21,17 +36,3 @@ const Biggest = styled.div`
 	font-size: 180px;
 	margin-bottom: 60px;
 `;
-function Error() {
-	return (
-		<ErrorWapper>
-			<div onClick={() => window.location.replace('/')}>
-				<Logo>BANCHAN</Logo>
-			</div>
-			<Biggest>😧</Biggest>
-			<Big>404 ERROR</Big>
-			<Big>Oops, something went wrong...</Big>
-		</ErrorWapper>
-	);
-}
-
-export default Error;
