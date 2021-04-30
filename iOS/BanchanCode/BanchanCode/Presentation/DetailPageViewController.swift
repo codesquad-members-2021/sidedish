@@ -38,8 +38,6 @@ class DetailPageViewController: UIViewController {
         
         viewModel = makeDishDetailsViewModel()
         bind(to: viewModel)
-        
-        
         viewModel.load()
         
         setupViews()

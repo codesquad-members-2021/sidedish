@@ -10,25 +10,7 @@ import Alamofire
 
 class NetworkManager {
     
-    func isConnectedToInternet() -> Bool {        
-        return Alamofire.NetworkReachabilityManager()?.isReachable ?? false
-    }
-    
-//    func performRequest(urlString: String, completionHandler: @escaping (Result<DishesResponseDTO,AFError>) -> Void) {
-//        AF.request(urlString, method: .get)
-//            .validate(statusCode: 200..<300)
-//            .responseDecodable(of: DishesResponseDTO.self) { response in
-//                switch response.result {
-//                case .success(let dishes):
-//                    completionHandler(.success(dishes))
-//                case .failure(let error):
-//                    completionHandler(.failure(error))
-//                }
-//            }
-//    }
-    
-    
-    func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T,Error>) -> Void) {
+    func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
         AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: T.self) { response in
@@ -50,7 +32,6 @@ class NetworkManager {
                     completion(data)
                 case .failure(let error):
                     print(error.localizedDescription)
-                    break
                 }
             }
     }

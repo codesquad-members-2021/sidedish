@@ -20,12 +20,12 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
                  completion: @escaping (Result<Dishes, Error>) -> Void) {
         return fetchDishes(categoryName: requestValue.categoryName, completion: { result in
             switch result {
-            case .success(let responseDTO):
-                self.realmManager.addDishes(dishesItem: responseDTO.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
-            case .failure:
-                break
+            case .success(let response):
+                self.realmManager.addDishes(items: response.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
             }
-            completion(result)
         })
     }
     
@@ -35,15 +35,15 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
         
         networkManager.performRequest(urlString: url) { (result : Result<DishesResponseDTO, Error>) in 
             switch result {
-            case .success(let responseDTO) :
+            case .success(let responseDTO):
                 completion(.success(responseDTO.toDomain()))
-            case .failure(_) :
-                completion(.success(self.realmManager.getDishes(categryName: categoryName))) //fail이 되었을 때 RealmDB에서 가져온 데이터를 보여준다.
+            case .failure(_):
+                completion(.success(self.realmManager.getDishes(categryName: categoryName)))
             }
         }
     }
-    
 }
+
 struct FetchDishesUseCaseRequestValue {
     let categoryName: String
 }

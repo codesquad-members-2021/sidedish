@@ -28,14 +28,14 @@ final class FetchDishDetailsUseCase: UseCase {
         fetchDishDetails(categoryName: requestValue.categoryName, id: requestValue.id, completion: completion)
     }
     
-    private func fetchDishDetails(categoryName: String, id: Int, completion: @escaping (Result<DishDetail, Error>) -> Void) {
+    private func fetchDishDetails(categoryName: String, id: Int, completion: @escaping (ResultValue) -> Void) {
         let url = "http://ec2-3-36-241-44.ap-northeast-2.compute.amazonaws.com:8080/banchan-code/\(categoryName)/\(id)"
         
-        networkManager.performRequest(urlString: url) { (result: Result<DishDetailResponseDTO,Error>) in
+        networkManager.performRequest(urlString: url) { (result: Result<DishDetailResponseDTO, Error>) in
             switch result {
-            case .success(let responseDTO) :
+            case .success(let responseDTO):
                 completion(.success(responseDTO.toDomain()))
-            case .failure(let error) :
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
