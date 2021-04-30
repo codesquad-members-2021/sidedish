@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Dish;
+import com.codesquad.sidedish.domain.Image;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DishResponseDto {
@@ -71,7 +72,8 @@ public class DishResponseDto {
 
 
     public static DishResponseDto of(Dish dish) {
-        return new DishResponseDto(dish.getId(), dish.getMainImage(), dish.getAlt(),
+        Image image = dish.getImage();
+        return new DishResponseDto(dish.getId(), image.getMainImage(), dish.getAlt(),
                 dish.getDeliveryType(), dish.getTitle(), dish.getDescription(),
                 dish.getNormalPrice(), dish.getSellingPrice(), dish.getBadge());
     }

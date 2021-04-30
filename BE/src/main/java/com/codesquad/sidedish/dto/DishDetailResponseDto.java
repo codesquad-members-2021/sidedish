@@ -1,6 +1,7 @@
 package com.codesquad.sidedish.dto;
 
 import com.codesquad.sidedish.domain.Dish;
+import com.codesquad.sidedish.domain.Image;
 
 public class DishDetailResponseDto {
 
@@ -71,9 +72,10 @@ public class DishDetailResponseDto {
     }
 
     public static DishDetailResponseDto of(Dish dish) {
-        return new DishDetailResponseDto(dish.getId(), dish.getTopImage(), dish.getThumbImages(),
+        Image image = dish.getImage();
+        return new DishDetailResponseDto(dish.getId(), image.getTopImage(), image.getThumbImages(),
                 dish.getDescription(), dish.getPoint(), dish.getDeliveryInfo(), dish.getDeliveryFee(),
-                dish.getNormalPrice(), dish.getSellingPrice(), dish.getDetailSection());
+                dish.getNormalPrice(), dish.getSellingPrice(), image.getDetailSection());
     }
 
     @Override
