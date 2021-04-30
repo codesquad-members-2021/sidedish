@@ -15,8 +15,8 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void createOrder(Order order) {
-        orderRepository.save(order);
+    public Order createOrder(Order order) {
+        return orderRepository.save(order);
     }
 
     public Optional<Order> findById(Long id) {

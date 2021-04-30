@@ -6,30 +6,30 @@ public class Order {
     @Id
     private Long id;
 
-    private String github_id;
+    private String client_id;
     private String detail_hash;
-    private int qty;
+    private int quantity;
 
-    public Order(Long id, String github_id, String detail_hash, int qty) {
+    public Order(Long id, String client_id, String detail_hash, int quantity) {
         this.id = id;
-        this.github_id = github_id;
+        this.client_id = client_id;
         this.detail_hash = detail_hash;
-        this.qty = qty;
+        this.quantity = quantity;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getGithub_id() {
-        return github_id;
+    public String getClient_id() {
+        return client_id;
     }
 
     public String getDetail_hash() {
         return detail_hash;
     }
 
-    public int getQty() {
-        return qty;
+    public int getQuantity() {
+        return quantity;
     }
 }

@@ -2,6 +2,8 @@ package develop.baminchan.controller;
 
 import develop.baminchan.entity.Order;
 import develop.baminchan.service.OrderService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -22,8 +24,8 @@ public class OrderController {
     }
 
     @PostMapping("/order")
-    public String createOrder(@RequestBody Order order) {
-       orderService.createOrder(order);
-       return "success";
+    public ResponseEntity createOrder(@RequestBody Order order) {
+        orderService.createOrder(order);
+        return new ResponseEntity("success", HttpStatus.OK);
     }
 }
