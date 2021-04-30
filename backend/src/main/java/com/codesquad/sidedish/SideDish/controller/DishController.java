@@ -50,7 +50,7 @@ public class DishController {
         return ResponseEntity.ok().body(quantityDto);
     }
 
-    @PostMapping("/detail/{detailHash}/{count}")
+    @PatchMapping("/detail/{detailHash}/{count}")
     @ApiOperation(value = "주문하기", notes = "주문하기")
     public ResponseEntity<String> orderDish(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash, @PathVariable("count") int count) {
         if (dishService.order(detailHash, count)) {
