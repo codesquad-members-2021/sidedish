@@ -5,7 +5,7 @@ import DetailTopInfo from "./DetailTopInfo";
 const DetailTop = ({ result }) => {
   return result && result.data && (
     <StyledDetailTop>
-      <DetailTopGallery images={result.data.thumb_images}  />
+      <DetailTopGallery {...result.data}  />
       <DetailTopInfo data={result.data} />
     </StyledDetailTop>
   );

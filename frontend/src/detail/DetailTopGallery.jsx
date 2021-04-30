@@ -1,18 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { cssFlexCenter } from "../style/CommonStyledCSS";
 
-const DetailTopGallery = ({ images }) => {
+const DetailTopGallery = ({ top_image, thumb_images }) => {
   const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
   const [galleryItems, setGalleryItems] = useState(null);
-  const [loadingImages, setLoadingImages] = useState(true);
-  const imagesRef = useRef(null);
 
   // 1) 작은 이미지 (GalleryItems) 렌더링
   useEffect(() => {
-    if (!images || images.length <= 0) return;
+    if (!thumb_images || thumb_images.length <= 0) return;
     const aGalleryItems =
-      images.map((image, i) => (
+      thumb_images.map((image, i) => (
         <GalleryItem key={i} onClick={handleItemClick}>
           <img src={image} alt={"image" + (i+1)} />
         </GalleryItem>
@@ -22,30 +20,20 @@ const DetailTopGallery = ({ images }) => {
       aGalleryItems.push(<GalleryItem key={aGalleryItems.length} empty />);
 
     setGalleryItems(aGalleryItems);
-    setLoadingImages(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [images]);
+  }, [thumb_images]);
 
   // 2) 메인 이미지 (SelectedGalleryItem) 렌더링
   useEffect(() => {
-    if (loadingImages) return;
-
-    const firstItem = imagesRef.current.children[0];
-    if (!firstItem || firstItem.tagName !== "LI") return;
-
-    const itemImage = firstItem.children[0];
-    if (!itemImage || itemImage.tagName !== "IMG") return;
-
-    const { src, alt } = itemImage;
+    if (!top_image) return;
 
     setSelectedImage({
       ...selectedImage,
-      src, alt
+      src: top_image, alt: "image1"
     });
-    setLoadingImages(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loadingImages]);
+  }, [top_image]);
 
   // ------------------
 
@@ -70,7 +58,7 @@ const DetailTopGallery = ({ images }) => {
         <img src={selectedImage.src} alt={selectedImage.alt} />
       </SelectedGalleryItem>
 
-      <GalleryItems ref={imagesRef}>{galleryItems}</GalleryItems>
+      <GalleryItems>{galleryItems}</GalleryItems>
 
     </StyledDetailTopGallery>
   );
