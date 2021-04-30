@@ -13,7 +13,7 @@ protocol SideDishProtocol {
     func requestItemDetails(detailHash: String) -> AnyPublisher<ItemDetails, NetworkError>
 }
 
-class SideDishUseCase: SideDishProtocol {
+final class SideDishUseCase: SideDishProtocol {
     
     private let networkManager: NetworkManageable
     

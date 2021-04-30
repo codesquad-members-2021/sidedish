@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class SideDishManager {
+final class SideDishManager {
     
     private var sideDishesInfo : [Menu : [Item]] = [:]
     private(set) var arriveMenuType = PassthroughSubject<Menu, Never>()

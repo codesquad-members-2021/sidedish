@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class AmountButtonViewModel: NSObject {
+final class AmountButtonViewModel: NSObject {
     enum Action {
         case plus
         case minus

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hGp-I0-H3m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HW5-If-6Pr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -9,6 +9,65 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Intial View Controller-->
+        <scene sceneID="C9u-pu-Ofs">
+            <objects>
+                <viewController storyboardIdentifier="InitialViewController" id="HW5-If-6Pr" customClass="IntialViewController" customModule="Side_dish" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a1V-uc-aew">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="q6S-YY-9Iy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIu-MF-OmV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="82"/>
+        </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="OWS-DL-0Ma">
+            <objects>
+                <viewController storyboardIdentifier="AuthViewController" id="YOD-fq-ofc" customClass="AuthViewController" customModule="Side_dish" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8hX-WJ-zB3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-Bx-BpN">
+                                <rect key="frame" x="50" y="418.5" width="314" height="59"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" name="LabelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="YOD-fq-ofc" eventType="touchUpInside" id="5OR-aA-wkt"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="mCS-cX-WRh">
+                                <rect key="frame" x="157" y="198.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="hWC-xd-URR"/>
+                                    <constraint firstAttribute="width" constant="100" id="phj-XV-c0k"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XUb-RX-6QP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dNt-Bx-BpN" firstAttribute="top" secondItem="mCS-cX-WRh" secondAttribute="bottom" constant="120" id="1Zj-gC-Ebt"/>
+                            <constraint firstItem="XUb-RX-6QP" firstAttribute="trailing" secondItem="dNt-Bx-BpN" secondAttribute="trailing" constant="50" id="8lW-Ey-XJZ"/>
+                            <constraint firstItem="dNt-Bx-BpN" firstAttribute="centerX" secondItem="8hX-WJ-zB3" secondAttribute="centerX" id="GYs-Bz-7rq"/>
+                            <constraint firstItem="dNt-Bx-BpN" firstAttribute="leading" secondItem="XUb-RX-6QP" secondAttribute="leading" constant="50" id="O7E-p5-vKs"/>
+                            <constraint firstItem="dNt-Bx-BpN" firstAttribute="centerY" secondItem="8hX-WJ-zB3" secondAttribute="centerY" id="SwT-6b-3P4"/>
+                            <constraint firstItem="dNt-Bx-BpN" firstAttribute="centerX" secondItem="8hX-WJ-zB3" secondAttribute="centerX" id="ihD-OD-aB4"/>
+                            <constraint firstItem="mCS-cX-WRh" firstAttribute="centerX" secondItem="8hX-WJ-zB3" secondAttribute="centerX" id="jme-6Q-ZX4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PY0-GV-FIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="79"/>
+        </scene>
         <!--Side Dish View Controller-->
         <scene sceneID="d8q-YB-ASa">
             <objects>
@@ -734,6 +793,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="github" width="512" height="512"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="DescriptionColor">

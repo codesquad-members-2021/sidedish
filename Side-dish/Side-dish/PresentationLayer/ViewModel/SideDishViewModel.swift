@@ -13,9 +13,10 @@ protocol SideDishViewModelProcotol {
     func didFetchHeaderRowCount(with path: Menu) -> Int
     func didFetchItemDatailHash(with path: Menu, sequence: Int) -> Item?
     func except() -> AnyPublisher<String, Never>
+    func request()
 }
 
-class SideDishViewModel: SideDishViewModelProcotol {
+final class SideDishViewModel: SideDishViewModelProcotol {
         
     private let sideDishUseCase: SideDishProtocol
     private var sideDishManager: SideDishManager
@@ -26,10 +27,9 @@ class SideDishViewModel: SideDishViewModelProcotol {
     init(sideDishUseCase: SideDishProtocol) {
         self.sideDishUseCase = sideDishUseCase
         self.sideDishManager = SideDishManager()
-        request()
     }
     
-    private func request() {
+    func request() {
         Menu.allCases.forEach { (path) in
             sideDishUseCase.requestSideDishes(path: path)
                 .sink { (complete) in
@@ -46,7 +46,7 @@ class SideDishViewModel: SideDishViewModelProcotol {
         self.sideDishManager.arriveMenuType.sink { (menu) in
             completion((menu,
                         self.sideDishManager.getSideDishes(with: menu)))
-        }.store(in: &cancellable)
+        }.store(in: &cancellable)   
     }
     
     func didFetchHeaderRowCount(with path: Menu) -> Int {

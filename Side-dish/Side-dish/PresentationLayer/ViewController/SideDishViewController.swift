@@ -11,7 +11,6 @@ import Combine
 class SideDishViewController: UIViewController {
     
     @IBOutlet weak var sideDishCollectionView: UICollectionView!
-    
     private var sideDishViewModel: SideDishViewModelProcotol!
     private var cancellable = Set<AnyCancellable>()
     private var dataSource : UICollectionViewDiffableDataSource<Menu, Item>!
@@ -20,6 +19,7 @@ class SideDishViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideDishViewModel.request()
         sideDishCollectionView.delegate = self
         configureDataSource()
         bind()
@@ -108,5 +108,4 @@ extension SideDishViewController: UICollectionViewDelegateFlowLayout {
         
         self.navigationController?.pushViewController(targetVC, animated: true)
     }
-    
 }

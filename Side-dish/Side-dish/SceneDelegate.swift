@@ -8,20 +8,17 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let screen = (scene as? UIWindowScene) else { return }
         
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyBoard.instantiateViewController(withIdentifier: "InitialViewController")
         
-        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? SideDishViewController else {
-            return
-        }
-        viewController.dependInjectionViewModel(to: SideDishViewModel(sideDishUseCase: UsecaseGenerator.create()))
         window = UIWindow(frame: screen.coordinateSpace.bounds)
         window?.windowScene = screen
-        window?.rootViewController = UINavigationController(rootViewController: viewController)
+        window?.rootViewController = UINavigationController(rootViewController: initialViewController)
         window?.makeKeyAndVisible()
     }
 }
