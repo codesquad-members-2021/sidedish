@@ -8,6 +8,7 @@
 import UIKit
 
 class DetailScrollView: UIScrollView {
+    
     @IBOutlet weak var thumbnailImageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var thumbnailImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var thumbnailScrollView: UIScrollView!

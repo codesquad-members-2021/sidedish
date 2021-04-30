@@ -8,5 +8,5 @@ struct MenuResponse: Decodable {
 }
 
 struct OrderMenuRequest: Encodable {
-    let orderCount: Int
+    let count: Int
 }

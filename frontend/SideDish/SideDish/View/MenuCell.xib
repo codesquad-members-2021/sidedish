@@ -104,12 +104,12 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="1u4-0I-sBE" firstAttribute="top" secondItem="reM-yI-0EF" secondAttribute="top" id="HA1-dC-4eE"/>
-                                            <constraint firstItem="1u4-0I-sBE" firstAttribute="leading" secondItem="xbN-zw-VuX" secondAttribute="trailing" constant="4" id="Lbv-wZ-FD2"/>
                                             <constraint firstItem="xbN-zw-VuX" firstAttribute="leading" secondItem="reM-yI-0EF" secondAttribute="leading" id="SCE-a5-JRW"/>
                                             <constraint firstAttribute="bottom" secondItem="xbN-zw-VuX" secondAttribute="bottom" id="STS-tE-KJw"/>
                                             <constraint firstAttribute="bottom" secondItem="1u4-0I-sBE" secondAttribute="bottom" id="U7d-Ic-941"/>
                                             <constraint firstAttribute="width" constant="205" id="abx-s8-Sc0"/>
                                             <constraint firstItem="xbN-zw-VuX" firstAttribute="top" secondItem="reM-yI-0EF" secondAttribute="top" id="yKK-dS-JRi"/>
+                                            <constraint firstItem="1u4-0I-sBE" firstAttribute="leading" secondItem="reM-yI-0EF" secondAttribute="leading" constant="76" id="z0E-OL-FCE"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -147,6 +147,7 @@
                 <outlet property="contentStackView" destination="9jA-re-mCh" id="TJz-4x-2Pk"/>
                 <outlet property="currentPriceLabel" destination="9nT-TS-EgJ" id="1HB-Jf-9PG"/>
                 <outlet property="eventLabel" destination="xbN-zw-VuX" id="8St-GU-Lrf"/>
+                <outlet property="launchingBadgeConstraint" destination="z0E-OL-FCE" id="ExM-xG-UNl"/>
                 <outlet property="launchingLabel" destination="1u4-0I-sBE" id="Q8J-cf-hLr"/>
                 <outlet property="pastPriceLabel" destination="qYD-RR-LB2" id="mXj-0b-kuW"/>
                 <outlet property="thumbnailImage" destination="gQH-M3-TqH" id="aNC-0z-qj3"/>

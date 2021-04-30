@@ -10,6 +10,7 @@ import Kingfisher
 
 class MenuCell: UICollectionViewCell {
 
+    @IBOutlet weak var launchingBadgeConstraint: NSLayoutConstraint!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,7 +56,7 @@ class MenuCell: UICollectionViewCell {
         self.launchingLabel.isHidden = false
         self.badgeView.isHidden = false
         self.eventLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
-        self.launchingLabel.leftAnchor.constraint(equalTo: self.contentStackView.leftAnchor, constant: 76).isActive = true
+        self.launchingBadgeConstraint.constant = 76
     }
     
     func setBadge(menu: MenuViewModel) {
@@ -63,7 +64,7 @@ class MenuCell: UICollectionViewCell {
             self.launchingLabel.isHidden = true
         } else if menu.verifyBadges(badges: menu.badges) == [false, true] {
             self.eventLabel.isHidden = true
-            self.launchingLabel.leftAnchor.constraint(equalTo: contentStackView.leftAnchor, constant: 0).isActive = true
+            self.launchingBadgeConstraint.constant = 0
         } else if menu.verifyBadges(badges: menu.badges) == [false, false] {
             self.badgeView.isHidden = true
         } else {

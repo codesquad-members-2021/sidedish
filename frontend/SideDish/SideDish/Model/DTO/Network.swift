@@ -64,7 +64,6 @@ class DataTaskManager {
 
         session.dataTask(with: request){ (_, response, _) in
             guard let response = response as? HTTPURLResponse else { return }
-            print(response)
             if (200 ..< 299) ~= response.statusCode {
                 completion(true)
             }else{
@@ -72,4 +71,5 @@ class DataTaskManager {
             }
         }.resume()
     }
+    
 }
