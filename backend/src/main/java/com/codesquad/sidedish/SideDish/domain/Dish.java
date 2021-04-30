@@ -14,7 +14,7 @@ public class Dish {
     private final String deliveryInfo;
     private final Integer deliveryFee;
     private final Long categoryId;
-    private final Integer quantity;
+    private Integer quantity;
     private final LocalDateTime currentDateTime;
 
     public Dish(String detailHash, String image, String title, String description, Integer price, Integer salePrice, Integer point, String deliveryInfo, Integer deliveryFee, Long categoryId, Integer quantity, LocalDateTime currentDateTime) {
@@ -30,6 +30,10 @@ public class Dish {
         this.categoryId = categoryId;
         this.quantity = quantity;
         this.currentDateTime = currentDateTime;
+    }
+
+    public void order(int count) {
+        this.quantity -= count;
     }
 
     public String getDetailHash() {
