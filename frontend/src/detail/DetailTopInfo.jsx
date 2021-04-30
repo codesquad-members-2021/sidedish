@@ -7,7 +7,7 @@ import { changeAllToNumbers, threeDigitsComma } from "../util/util";
 
 const DetailTopInfo = ({ data }) => {
   const [priceInfo, setPriceInfo] = useState({ prevPrice: null, price: null });
-  const [volume, setVolume] = useState(1); // 수량
+  const [quantity, setQuantity] = useState(1); // 수량
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -28,14 +28,14 @@ const DetailTopInfo = ({ data }) => {
 
   useEffect(() => {
     if (!priceInfo || !priceInfo.price) return;
-    setTotalPrice(volume * priceInfo.price);
+    setTotalPrice(quantity * priceInfo.price);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [priceInfo]);
 
-  const handleInputVolumeChange = ({ target }) => {
+  const handleInputQuantityChange = ({ target }) => {
     if (target.value < 1) target.value = 1;
     else if (target.value > 20) target.value = 20;
-    setVolume(target.value);
+    setQuantity(target.value);
     if (priceInfo && priceInfo.price)
       setTotalPrice(target.value * priceInfo.price);
   };
@@ -47,7 +47,10 @@ const DetailTopInfo = ({ data }) => {
         <Name>{data.subject || "상품명"}</Name>
         <Desc>{data.product_description || "상품 설명"}</Desc>
         <ProductPrice>
-          {data.badge && data.badge.map((type, i) => <Tag key={i} type={type} />)}
+          {data.badge &&
+              data.badge
+                .filter((type) => type)
+                .map((type, i) => <Tag key={i} type={type} />)}
           {priceInfo && (
             <>
               {priceInfo.price && <Price>{threeDigitsComma(priceInfo.price)}원</Price>}
@@ -94,11 +97,11 @@ const DetailTopInfo = ({ data }) => {
         {/* 수량 */}
         <AdditionalInfo>
           <span className="label">수량</span>
-          <InputVolume
-            name="volume"
+          <InputQuantity
+            name="quantity"
             type="number"
-            onChange={handleInputVolumeChange}
-            value={volume}
+            onChange={handleInputQuantityChange}
+            value={quantity}
           />
         </AdditionalInfo>
 
@@ -218,7 +221,7 @@ const AdditionalInfo = styled.div`
 // ----
 
 // 4. 수량 (AdditionalInfo안에 child로 들어감)
-const InputVolume = styled.input`
+const InputQuantity = styled.input`
   ${cssTranslate};
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {

@@ -1,5 +1,4 @@
 // 모든 카테고리 보기 or 데이터 처리하여 SubContents Section 생성
-import _ from "../ref";
 import styled, { css } from "styled-components";
 import { useEffect, useState, useContext } from "react";
 import useFetch from "../hooks/useFetch";
@@ -14,27 +13,19 @@ const SubContents = () => {
   const [contentsSections, setContentsSections] = useState(null);
   const [allView, setAllView] = useState(false);
 
-  const { response: mainResponse, loading: mainLoading, error: mainError } = useFetch(_.URL + "main");
-  const { response: soupResponse, loading: soupLoading, error: soupError } = useFetch(_.URL + "soup");
-  const { response: sideResponse, loading: sideLoading, error: sideError } = useFetch(_.URL + "side");
+  const { response: mainResponse, loading: mainLoading, error: mainError } = useFetch("/api/main");
+  const { response: soupResponse, loading: soupLoading, error: soupError } = useFetch("/api/soup");
+  const { response: sideResponse, loading: sideLoading, error: sideError } = useFetch("/api/side");
 
   // 1) SubContents에 필요한 데이터 요청
   useEffect(() => {
     if (mainLoading || soupLoading || sideLoading) return;
+
     const aContentObject = {
       ...contentObject,
-      main: mainError || {
-        data: mainResponse.body,
-        type: "main",
-      },
-      soup: soupError || {
-        data: soupResponse.body,
-        type: "soup",
-      },
-      side: sideError || {
-        data: sideResponse.body,
-        type: "side",
-      },
+      main: mainError || mainResponse.body.map((item) => ({...item, type: "main"})),
+      soup: soupError || soupResponse.body.map((item) => ({...item, type: "soup"})),
+      side: sideError || sideResponse.body.map((item) => ({...item, type: "side"})),
     };
 
     setContentObject(aContentObject);
@@ -49,11 +40,10 @@ const SubContents = () => {
 
     const aContentsSections = [];
     let nIdx = 0;
-    for (const key in contentObject) {
-      const aData = contentObject[key];
-      const { data, type } = aData;
+    for (const typeKey in contentObject) {
+      const aData = contentObject[typeKey];
       aContentsSections.push(
-        <SubContentsSection key={nIdx} type={type} data={data}/>
+        <SubContentsSection key={nIdx} type={typeKey} data={aData}/>
       );
       nIdx++;
     }
