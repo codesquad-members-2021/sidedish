@@ -1,4 +1,5 @@
-const loadData = async (setState, type, hash = "") => {
+
+const loadData = async (setState, type, hash) => {
   const getUrl = (type) => {
     let url =
       // "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/";
@@ -13,7 +14,10 @@ const loadData = async (setState, type, hash = "") => {
       case "sideDish":
         return (url += "section/side");
       case "detailDish":
+
         return (url += `detail/${hash}`);
+      case 'details':
+        return (url += 'side');
       default:
         return;
     }
@@ -22,12 +26,18 @@ const loadData = async (setState, type, hash = "") => {
   const response = await fetch(getUrl(type));
   const initialData = await response.json();
 
-  if (type === "detailDish") {
+  if (type === 'detailDish') {
     const dataBody = initialData.data;
     return setState(dataBody);
   }
   if (type !== "bestDish") {
     const dataBody = initialData.dishes;
+
+  if (type === 'details') {
+    const dataBody = initialData.body;
+    return setState(dataBody);
+  }
+
     return setState([...dataBody, ...dataBody]);
   }
   const dataBody = initialData.best_dishes;

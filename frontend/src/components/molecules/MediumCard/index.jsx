@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { WrapDiv, WrapContent } from "./index.style";
 import getComma from "../../../util/getComma";
@@ -7,13 +8,15 @@ import Span from "../../atoms/Span";
 import TagBox from "../../molecules/TagBox";
 import Modal from "../../pages/Modal";
 
+
 const MediumCard = ({ children, ...props }) => {
   const [isHover, setIsHover] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const onClick = () => setIsOpen(true);
-  const onClose = () => setIsOpen(false);
-
+  const onClose = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <Modal open={isOpen} onClose={onClose} _hash={props._hash} />
