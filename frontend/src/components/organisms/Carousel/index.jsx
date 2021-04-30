@@ -25,13 +25,14 @@ const Carousel = ({ children, ...props }) => {
   };
 
   const onTransitionEnd = (type) => {
-    // if (type === "RightIcon") {
-    //   setcaData(cadata.slice(SLIDES).concat(cadata.slice(0, SLIDES)));
-    // } else {
-    //   setcaData(cadata.slice(-SLIDES).concat(cadata.slice(0, -SLIDES)));
-    // }
-    // directionRef.current.style.transform = "translate(0)";
-    // directionRef.current.style.transition = "none";
+    if (!type.target.classList.contains("iAPLbH")) return;
+    if (type === "RightIcon") {
+      setcaData(cadata.slice(SLIDES).concat(cadata.slice(0, SLIDES)));
+    } else {
+      setcaData(cadata.slice(-SLIDES).concat(cadata.slice(0, -SLIDES)));
+    }
+    directionRef.current.style.transform = "translate(0)";
+    directionRef.current.style.transition = "none";
   };
 
   return (
