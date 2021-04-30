@@ -50,4 +50,26 @@ class DataTaskManager {
             }
         }.resume()
     }
+    
+    static func orderPost(orderCount: OrderMenuRequest, categoryId: Int, detailHash: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: "\(Url.detail.rawValue)/\(categoryId)/\(detailHash)") else {
+            print("The URL is inappropriate.")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        guard let encodingData = ParsingManager.encodeData(data: orderCount) else { return }
+        request.httpBody = encodingData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        session.dataTask(with: request){ (_, response, _) in
+            guard let response = response as? HTTPURLResponse else { return }
+            print(response)
+            if (200 ..< 299) ~= response.statusCode {
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }.resume()
+    }
 }

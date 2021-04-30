@@ -7,6 +7,6 @@ struct MenuResponse: Decodable {
     let items: [Menu]
 }
 
-struct DetailMenuResponse: Decodable {
-    let data: DetailMenu
+struct OrderMenuRequest: Encodable {
+    let orderCount: Int
 }

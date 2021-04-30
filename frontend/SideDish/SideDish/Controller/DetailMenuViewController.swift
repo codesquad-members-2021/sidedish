@@ -119,11 +119,26 @@ class DetailMenuViewController: UIViewController {
     }
     
     @IBAction func pressedOrderButton(_ sender: UIButton) {
+        print(self.orderViewModel.orderCount)
+        print(self.detailMenuViewModel.stock)
+        print(self.detailMenuViewModel.categoryId)
+        print(self.detailMenuViewModel.detailHash)
         if self.orderViewModel.isOrderAvailable(stock: self.detailMenuViewModel.stock) {
-            let alert = UIAlertController(title: "주문 확인", message: "주문이 완료 되었습니다.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            DataTaskManager.orderPost(orderCount: OrderMenuRequest(orderCount: self.orderViewModel.orderCount), categoryId: self.detailMenuViewModel.categoryId, detailHash: self.detailMenuViewModel.detailHash, completion: { result in
+                DispatchQueue.main.async {
+                    if result {
+                        let alert = UIAlertController(title: "주문 확인", message: "주문이 완료 되었습니다.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let alert = UIAlertController(title: "통신 오류", message: "인터넷 접속 상태를 확인해 주세요.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            })
         } else {
             let message = "현재 주문하신 상품의 재고 수량이 \n \(self.detailMenuViewModel.stock)개 남았습니다.\n주문 수량을 다시 확인해 주시기 바랍니다."
             let alert = UIAlertController(title: "주문 실패", message: message, preferredStyle: .alert)
@@ -132,6 +147,6 @@ class DetailMenuViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
-
 }
+
 

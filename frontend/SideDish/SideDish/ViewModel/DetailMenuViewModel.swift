@@ -3,6 +3,8 @@ import Foundation
 
 class DetailMenuViewModel {
     
+    private(set) var categoryId: Int
+    private(set) var detailHash: String
     private(set) var thumbImages: [String]
     private(set) var title: String
     private(set) var productDescription: String
@@ -18,6 +20,8 @@ class DetailMenuViewModel {
     private let fetchDetailDataUseCase = FetchDetailDataUseCase()
     
     init() {
+        self.categoryId = 0
+        self.detailHash = ""
         self.thumbImages = []
         self.title = ""
         self.productDescription = ""
@@ -32,6 +36,8 @@ class DetailMenuViewModel {
     }
     
     func send(categoryId: Int, detailHash: String) {
+        self.categoryId = categoryId
+        self.detailHash = detailHash
         self.fetchDetailDataUseCase.loadDetailMenu(categoryId: categoryId, detailHash: detailHash) { data in
             self.configure(data: data)
             NotificationCenter.default.post(name: Notification.Name.fetchDetailMenu, object: self)

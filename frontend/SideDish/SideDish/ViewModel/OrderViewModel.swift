@@ -28,6 +28,6 @@ class OrderViewModel {
     }
     
     func isOrderAvailable(stock: Int) -> Bool {
-        return stock > self.orderCount
+        return stock >= self.orderCount
     }
 }
