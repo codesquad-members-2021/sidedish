@@ -12,89 +12,6 @@ import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import useFetch from '../useFetch';
 import ItemCardSmall from '../ItemCardSmall';
 import Title from '../atomic/Title';
-const RepresentativeBlock = styled.div`
-	display: flex;
-	margin: 48px;
-`;
-
-const ImageBlock = styled.div`
-	margin-right: 32px;
-`;
-const MainIMG = styled.div`
-	width: ${(props) => {
-		return props.size === 'L' ? '392px' : '72px';
-	}};
-	height: ${(props) => {
-		return props.size === 'L' ? '392px' : '72px';
-	}};
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-	margin-bottom: 8px;
-`;
-const DetailBlock = styled.div`
-	width: 392px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-gap: 8px;
-`;
-const DetailIMG = styled.div`
-	width: 72px;
-	height: 72px;
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-`;
-const ItemDetailInfo = styled.div``;
-const FlexBox = styled.div`
-	display: flex;
-	align-items: flex-end;
-`;
-const PointDeliveryInfoBlock = styled.div`
-	display: grid;
-	grid-template-columns: 60px 364px;
-	grid-gap: 16px;
-`;
-const ItemTitleDetails = styled.span`
-	font-size: ${theme.fontSize.large};
-	font-weight: Bold;
-	margin-bottom: 16px;
-	&:hover {
-		text-decoration: underline;
-	}
-`;
-const DetailText = styled.div`
-	color: ${theme.colors.deep_grey_text};
-`;
-const ItemDescDetails = styled.div`
-	font-size: ${theme.fontSize.medium};
-	color: ${theme.colors.grey_text};
-	margin-bottom: 16px;
-`;
-const OrderBtn = styled(Button)`
-	color: ${theme.colors.white};
-	font-size: ${theme.fontSize.large};
-	background-color: ${(props) =>
-		props.disabled ? theme.colors.grey_text : theme.colors.green};
-	width: 440px;
-	height: 58px;
-	box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
-		0px 2px 4px rgba(0, 0, 0, 0.25);
-	backdrop-filter: blur(4px);
-	border-radius: 5px;
-	cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
-`;
-
-const FooterSection = styled.div`
-	height: 396px;
-	box-sizing: border-box;
-	padding: 48px;
-	width: 100%;
-	background-color: ${theme.colors.grey_css};
-`;
-const Upper = styled.div`
-	display: flex;
-	justify-content: space-between;
-`;
-
 function DetailPage({
 	loadingState,
 	detailData,
@@ -107,7 +24,8 @@ function DetailPage({
 	const [topImg, setTopImg] = useState(detailData.topImage);
 	const [orderCount, setOrderCount] = useState(1);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
-	const orderUrl = process.env.REACT_APP_API_URL + 'order';
+	const [orderUrl, setOrderUrl] = useState(null);
+
 	const [stockData, loadingStockState] = useFetch(
 		orderUrl,
 		'PATCH',
@@ -124,8 +42,8 @@ function DetailPage({
 		button.current.slideToRight();
 	};
 	const handleOrderClick = () => {
+		setOrderUrl(process.env.REACT_APP_API_URL + 'order');
 		setModalState(!modalMode);
-		!loadingStockState && console.log(stockData);
 	};
 	const [randomMenu, randomLoadingState] = useFetch(
 		process.env.REACT_APP_API_URL + 'recommend/10/',
@@ -244,3 +162,86 @@ export default React.memo(DetailPage);
 
 const ButtonLeft = styled(Button)``;
 const ButtonRight = styled(Button)``;
+
+const RepresentativeBlock = styled.div`
+	display: flex;
+	margin: 48px;
+`;
+
+const ImageBlock = styled.div`
+	margin-right: 32px;
+`;
+const MainIMG = styled.div`
+	width: ${(props) => {
+		return props.size === 'L' ? '392px' : '72px';
+	}};
+	height: ${(props) => {
+		return props.size === 'L' ? '392px' : '72px';
+	}};
+	background-image: url(${(props) => props.image});
+	background-size: cover;
+	margin-bottom: 8px;
+`;
+const DetailBlock = styled.div`
+	width: 392px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 8px;
+`;
+const DetailIMG = styled.div`
+	width: 72px;
+	height: 72px;
+	background-image: url(${(props) => props.image});
+	background-size: cover;
+`;
+const ItemDetailInfo = styled.div``;
+const FlexBox = styled.div`
+	display: flex;
+	align-items: flex-end;
+`;
+const PointDeliveryInfoBlock = styled.div`
+	display: grid;
+	grid-template-columns: 60px 364px;
+	grid-gap: 16px;
+`;
+const ItemTitleDetails = styled.span`
+	font-size: ${theme.fontSize.large};
+	font-weight: Bold;
+	margin-bottom: 16px;
+	&:hover {
+		text-decoration: underline;
+	}
+`;
+const DetailText = styled.div`
+	color: ${theme.colors.deep_grey_text};
+`;
+const ItemDescDetails = styled.div`
+	font-size: ${theme.fontSize.medium};
+	color: ${theme.colors.grey_text};
+	margin-bottom: 16px;
+`;
+const OrderBtn = styled(Button)`
+	color: ${theme.colors.white};
+	font-size: ${theme.fontSize.large};
+	background-color: ${(props) =>
+		props.disabled ? theme.colors.grey_text : theme.colors.green};
+	width: 440px;
+	height: 58px;
+	box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
+		0px 2px 4px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(4px);
+	border-radius: 5px;
+	cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+`;
+
+const FooterSection = styled.div`
+	height: 396px;
+	box-sizing: border-box;
+	padding: 48px;
+	width: 100%;
+	background-color: ${theme.colors.grey_css};
+`;
+const Upper = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
