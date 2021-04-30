@@ -30,7 +30,6 @@ class CoreDataBanchanListStorage {
                 else {
                     try Section.allCases.forEach { section in
                         let banchanSectionEntity = BanchanSectionEntity.init(context: context)
-                        banchanSectionEntity.section = Int16(section.rawValue)
                         try context.save()
                     }
                 }
@@ -66,7 +65,7 @@ class CoreDataBanchanListStorage {
                 
                 var sectionEntity: BanchanSectionEntity
                 let index = section.rawValue
-                
+                print(requestEntity.count)
                 if requestEntity[section.rawValue].entities?.array.count == 0 {
                     handler(.failure(.fetError))
                     return

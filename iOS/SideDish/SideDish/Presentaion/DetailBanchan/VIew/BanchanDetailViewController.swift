@@ -79,10 +79,21 @@ class BanchanDetailViewController: UIViewController {
                 orderCountLabel.text = "\(quantity)"
             }
         }
-        let price = viewModel.banchanDetail.sPrice
         
-        totalPriceLabel.text = "\(Int(viewModel.banchanDetail.sPrice) ?? 0 * quantity)원"
+        totalPriceLabel.text = decimalWon(value: viewModel.banchanDetail.sPrice)
+        
     }
+    
+    func decimalWon(value: String) -> String {
+        let price = Int(value.replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "원", with: "")) ?? 0
+        let totalPrice = price * quantity
+        
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let result = numberFormatter.string(from: NSNumber(value: totalPrice))! + "원"
+            
+            return result
+        }
     
     @IBAction func orderButtonTouched(_ sender: UIButton) {
         viewModel.didTappedOrderButton(quantity: quantity) { result, error in

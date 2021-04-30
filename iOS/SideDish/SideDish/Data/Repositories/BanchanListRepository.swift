@@ -30,6 +30,7 @@ class DefaultBanchanListRepository: BanchanListRepository {
             case .success(let banchans):
                 completion(banchans)
             case .failure(_):
+                print("coredata Failure")
                 let endPoint = BanchanAPIEndpoint(path: section.path(), httpMethod: .get)
                 self.network.request(with: endPoint, dataType: BanchanListDTO.self)
                     .sink(receiveCompletion: { result in
@@ -46,5 +47,6 @@ class DefaultBanchanListRepository: BanchanListRepository {
                     .store(in: &self.subscriptions)
             }
         }
+
     }
 }
