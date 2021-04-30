@@ -6,15 +6,19 @@ import codsquad.team17.sidedish.exception.ItemStockEmptyException;
 import java.math.BigDecimal;
 
 public class OrderDto {
+
     private Long itemId;
 
     private String description;
 
     private BigDecimal normalPrice;
+
     private BigDecimal salePrice;
+
     private int stock;
 
     private Long dishCategoryId;
+
     private Long bestCategoryId;
 
     public OrderDto(Item item) {

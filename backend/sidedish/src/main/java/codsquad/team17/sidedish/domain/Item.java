@@ -9,6 +9,7 @@ public class Item {
 
     @Id
     private Long itemId;
+
     private String title;
 
     private String description;
@@ -16,10 +17,13 @@ public class Item {
     private String badge;
 
     private BigDecimal normalPrice;
+
     private BigDecimal salePrice;
+
     private int stock;
 
     private Long dishCategoryId;
+
     private Long bestCategoryId;
 
 

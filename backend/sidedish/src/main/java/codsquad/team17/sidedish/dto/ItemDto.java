@@ -12,11 +12,14 @@ import java.util.List;
 @JsonPropertyOrder({"item_id", "title", "description", "n_price", "s_price",
         "badge", "image", "delivery_type", "detail_url"})
 public class ItemDto {
+
     private static final String URL = "http://ec2-15-164-123-251.ap-northeast-2.compute.amazonaws.com:8080";
 
     @JsonProperty("item_id")
     private final Long itemId;
+
     private final String title;
+
     private final String description;
 
     @JsonProperty("n_price")
@@ -26,7 +29,7 @@ public class ItemDto {
     private final int salePrice;
 
     @JsonProperty("delivery_type")
-    private List<String> deliveryType = Arrays.asList(new String[] {"새벽배송", "전국택배"});
+    private List<String> deliveryType = Arrays.asList(new String[]{"새벽배송", "전국택배"});
 
     @JsonProperty("badge")
     private List<String> badges;

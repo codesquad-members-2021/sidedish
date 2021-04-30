@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class ItemService {
+
     private final ItemRepository itemRepository;
     private final ImageRepository imageRepository;
 

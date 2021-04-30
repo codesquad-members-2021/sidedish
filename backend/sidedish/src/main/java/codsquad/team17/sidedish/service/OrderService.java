@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
-    private ItemRepository itemRepository;
+
+    private final ItemRepository itemRepository;
 
     public OrderService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
