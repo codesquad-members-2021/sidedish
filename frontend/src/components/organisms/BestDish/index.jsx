@@ -51,7 +51,7 @@ const BestDish = ({ children, ...props }) => {
         {currentItem.dishes.map((card, i) => (
           <LargeCard
             key={card.detail_hash}
-            _image={tempImgUrl}
+            _image={card.image}
             _title={card.title}
             _description={card.description}
             _nPrice={getComma(card.normal_price)}

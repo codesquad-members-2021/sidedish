@@ -13,6 +13,7 @@ const LargeCard = ({ children, ...props }) => {
         <Image
           src={props._image}
           _width="384px"
+          _height="384px"
           onMouseEnter={() => setIsHover(true)}
         />
         <HoverCard
