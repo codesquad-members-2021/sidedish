@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Card from "../common/Card";
-// import carouselContext from "@jjunyjjuny/react-carousel";
-import carouselContext from "./Carousel";
-
+import carouselContext from "@jjunyjjuny/react-carousel";
 import { useEffect, useState } from "react";
+
 const { Carousel, Controller } = carouselContext;
 
-const Yummy = ({ sibling, setModalData }) => {
+const Yummy = ({ data, sibling, setModalData }) => {
   const [cardList, setCardList] = useState(sibling);
   useEffect(() => {
     setCardList(() => sibling);
@@ -16,12 +15,12 @@ const Yummy = ({ sibling, setModalData }) => {
       <YummyHeader>
         <Title>함께하면 더욱 맛있는 상품</Title>
         <ControllerWrapper>
-          <Controller prev carouselId={4} />
-          <Controller next carouselId={4} />
+          <Controller prev carouselId={data.hash} />
+          <Controller next carouselId={data.hash} />
         </ControllerWrapper>
       </YummyHeader>
       <YummyCarousel>
-        <Carousel itemsPerPeice={5} customMode carouselId={4}>
+        <Carousel itemsPerPeice={5} customMode carouselId={data.hash} autoFit>
           {cardList.map((el) => {
             return (
               <Card
@@ -62,9 +61,10 @@ const ControllerWrapper = styled.div`
 `;
 
 const YummyCarousel = styled.div`
+  width: 900px;
   display: flex;
   /* justify-content:center; */
-  margin-left: 10px;
+  margin: 0 30px;
 `;
 
 export default Yummy;
