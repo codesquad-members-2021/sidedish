@@ -30,6 +30,7 @@
 		BFC2F9952637B51F006C9DCA /* Int-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9942637B51F006C9DCA /* Int-extension.swift */; };
 		BFC2F9982637B55C006C9DCA /* String-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F9972637B55C006C9DCA /* String-extension.swift */; };
 		BFC2FA08263A975C006C9DCA /* UsecaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */; };
+		BFC2FA10263BA66F006C9DCA /* GitHubApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC2FA0F263BA66E006C9DCA /* GitHubApiKey.plist */; };
 		BFCE4953262D4891006C0882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4952262D4891006C0882 /* AppDelegate.swift */; };
 		BFCE4955262D4891006C0882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4954262D4891006C0882 /* SceneDelegate.swift */; };
 		BFCE4957262D4891006C0882 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE4956262D4891006C0882 /* SideDishViewController.swift */; };
@@ -70,6 +71,7 @@
 		BFC2F9942637B51F006C9DCA /* Int-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-extension.swift"; sourceTree = "<group>"; };
 		BFC2F9972637B55C006C9DCA /* String-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-extension.swift"; sourceTree = "<group>"; };
 		BFC2FA07263A975B006C9DCA /* UsecaseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseGenerator.swift; sourceTree = "<group>"; };
+		BFC2FA0F263BA66E006C9DCA /* GitHubApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GitHubApiKey.plist; sourceTree = "<group>"; };
 		BFCE494F262D4891006C0882 /* Side-dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Side-dish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCE4952262D4891006C0882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCE4954262D4891006C0882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				BFCE495B262D4895006C0882 /* Assets.xcassets */,
 				BFCE495D262D4895006C0882 /* LaunchScreen.storyboard */,
 				BFCE4960262D4895006C0882 /* Info.plist */,
+				BFC2FA0F263BA66E006C9DCA /* GitHubApiKey.plist */,
 			);
 			path = "Side-dish";
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				8844B7C4262D6ED500FA49E9 /* FoodCardCell.xib in Resources */,
 				BFAE1BC126301CF300C0625E /* FoodCardHeaderView.xib in Resources */,
 				BFCE495F262D4895006C0882 /* LaunchScreen.storyboard in Resources */,
+				BFC2FA10263BA66F006C9DCA /* GitHubApiKey.plist in Resources */,
 				BFCE495C262D4895006C0882 /* Assets.xcassets in Resources */,
 				BFCE496F262D883F006C0882 /* Main.storyboard in Resources */,
 			);
