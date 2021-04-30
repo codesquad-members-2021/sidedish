@@ -10,12 +10,11 @@ import RealmSwift
 
 class DishDB: Object {
     
-    @objc dynamic var id: Int = -1 //primary key
+    @objc dynamic var id: Int = -1
     @objc dynamic var name: String = ""
     @objc dynamic var contents: String = ""
     @objc dynamic var imageURL: String = ""
-    @objc dynamic var categoryName: String = "" //db에 저장하여서 만약 네트워크 통신이 안될 경우에 디비의 내용을 카테고리별로 넘겨야해서.
-    
+    @objc dynamic var categoryName: String = ""
     let prices = List<Int>()
     let badges = List<String>()
 

@@ -14,4 +14,3 @@ struct DishesItemViewModel {
         self.dish = dish
     }
 }
-

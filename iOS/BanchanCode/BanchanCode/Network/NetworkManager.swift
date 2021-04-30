@@ -10,10 +10,6 @@ import Alamofire
 
 class NetworkManager {
     
-    func isConnectedToInternet() -> Bool {        
-        return Alamofire.NetworkReachabilityManager()?.isReachable ?? false
-    }
-    
     func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
         AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
@@ -36,7 +32,6 @@ class NetworkManager {
                     completion(data)
                 case .failure(let error):
                     print(error.localizedDescription)
-                    break
                 }
             }
     }
