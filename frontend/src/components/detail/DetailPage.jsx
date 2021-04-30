@@ -4,13 +4,10 @@ import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Error from '../state/Error';
-import Carousel from '../category/Carousel';
-import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import useFetch from '../useFetch';
-import ItemCardSmall from '../ItemCardSmall';
-import Title from '../atomic/Title';
+import Recommend from './Recommend';
 
 function DetailPage({
 	loadingState,
@@ -19,43 +16,31 @@ function DetailPage({
 	setModalState,
 	item,
 	badges,
+	hash,
 }) {
 	const [topImg, setTopImg] = useState(detailData.topImage);
-	const [orderCount, setOrderCount] = useState(1);
+	const [order, setOrderCount] = useState(1);
+	const [dbstock, setDBstock] = useState(detailData.stock);
 	const orderPrice = detailData.sPrice ? detailData.sPrice : detailData.nPrice;
-	const [pageNumer, setPageNumer] = useState({ page: 1, total: 1 });
 
-	// const orderCount = useMemo(() => setOrderCount(orderCount로직), [orderCount ])
-	const button = useRef();
-
-	const handleLeft = () => {
-		button.current.slideToLeft();
-		setPageNumer({
-			page: button.current.pageNumber,
-			total: button.current.totalPage,
-		});
+	const [orderUrl, setOrderUrl] = useState(null);
+	const handleOrderClick = () => {
+		const orderFetch = () => {
+			fetch(process.env.REACT_APP_API_URL + 'order', {
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ hash, order }),
+			})
+				.then((res) => res.json())
+				.then((res) => setDBstock(res.stock));
+		};
+		orderFetch();
+		setOrderUrl(process.env.REACT_APP_API_URL + 'order/');
+		setModalState(!modalMode);
 	};
-	const handleRight = () => {
-		button.current.slideToRight();
-		setPageNumer({
-			page: button.current.pageNumber,
-			total: button.current.totalPage,
-		});
-	};
-	const [randomMenu, randomLoadingState] = useFetch(
-		process.env.REACT_APP_API_URL + 'recommend/10/',
-		'get',
-	);
+	const [stock, loadingStockState] = useFetch(orderUrl, 'patch', +order);
+	if (!loadingStockState) console.log(stock);
 
-	const ButtonBlock = styled.div`
-		display: flex;
-	`;
-
-	const PageBlock = styled.div`
-		padding: 0 0 17px 0;
-		display: flex;
-		align-items: center;
-	`;
 	return (
 		<Modal {...{ modalMode, setModalState }}>
 			{loadingState ? (
@@ -99,66 +84,31 @@ function DetailPage({
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<FlexBlock>
 								<ItemDescDetails>수량</ItemDescDetails>
+								{console.log(dbstock)}
 								<NumInput
 									type="number"
-									value={orderCount}
+									value={order}
 									placeholder="1"
 									min="1"
-									max={detailData.stock}
-									onChange={(e) => setOrderCount(e.target.value)}
+									max={dbstock}
+									onChange={(e) => setOrderCount(+e.target.value)}
 								></NumInput>
 							</FlexBlock>
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<FlexBlock>
 								<DetailText>총 주문금액</DetailText>
-								<ItemPrice nPrice={`${orderPrice * orderCount}`}></ItemPrice>
+								<ItemPrice nPrice={`${orderPrice * order}`}></ItemPrice>
 							</FlexBlock>
 
 							<OrderBtn
-								onClick={() => setModalState(!modalMode)}
+								onClick={handleOrderClick}
 								disabled={!Boolean(detailData.stock)}
 							>
 								{detailData.stock ? '주문하기' : '상품 준비중'}
 							</OrderBtn>
 						</ItemDetailInfo>
 					</RepresentativeBlock>
-
-					{!randomLoadingState && (
-						<FooterSection>
-							<Upper>
-								<Title>함께하면 더욱 맛있는 상품</Title>
-								<ButtonBlock>
-									<ButtonLeft onClick={handleLeft}>
-										<VscChevronLeft />
-									</ButtonLeft>
-
-									<PageBlock>{`${pageNumer.page} / ${pageNumer.total}`}</PageBlock>
-
-									<ButtonRight onClick={handleRight}>
-										<VscChevronRight />
-									</ButtonRight>
-								</ButtonBlock>
-							</Upper>
-
-							<Carousel
-								width={864}
-								count={5}
-								duration={'.5s'}
-								ref={button}
-								effect={'ease-in-out'}
-							>
-								{randomMenu.map((el, idx) => (
-									<ItemCardSmall
-										size={864 / 5}
-										height={242}
-										key={idx}
-										data={el}
-										xpadding={10}
-									></ItemCardSmall>
-								))}
-							</Carousel>
-						</FooterSection>
-					)}
+					<Recommend />
 				</>
 			)}
 		</Modal>
@@ -175,7 +125,6 @@ const FlexBlock = styled.div`
 	justify-content: space-between;
 	align-items: flex-end;
 `;
-
 const ImageBlock = styled.div`
 	margin-right: 32px;
 `;
@@ -241,21 +190,7 @@ const OrderBtn = styled(Button)`
 	border-radius: 5px;
 	cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
 `;
-
-const FooterSection = styled.div`
-	box-sizing: border-box;
-	padding: 48px;
-	width: 100%;
-	height: 450px;
-	background-color: ${theme.colors.grey_css};
-`;
-const Upper = styled.div`
-	display: flex;
-	justify-content: space-between;
-`;
 const NumInput = styled.input`
 	padding: 5px 0 5px 5px;
 	height: 14px;
 `;
-const ButtonLeft = styled(Button)``;
-const ButtonRight = styled(Button)``;

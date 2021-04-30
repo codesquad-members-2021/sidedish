@@ -45,8 +45,6 @@ function MainMenu() {
 					bestData.items.map((data, idx) => (
 						<ItemCard key={idx} data={data} size={'L'}></ItemCard>
 					))
-
-					//(bestData.items[0]['detailHash'] = null),
 				)}
 			</MainColumn>
 		</MainBlock>

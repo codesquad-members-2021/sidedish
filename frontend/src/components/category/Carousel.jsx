@@ -112,7 +112,6 @@ const CatgoryWrapper = styled.div`
 	height: ${(props) => `${props.height}px`};
 	padding: 0px;
 	overflow: hidden;
-	border: 1px solid blue;
 `;
 const CategoryColumn = styled.div`
 	display: flex;
