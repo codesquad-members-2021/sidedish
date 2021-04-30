@@ -6,7 +6,7 @@ const DetailTop = ({ result }) => {
   return result && result.data && (
     <StyledDetailTop>
       <DetailTopGallery {...result.data}  />
-      <DetailTopInfo data={result.data} />
+      <DetailTopInfo data={result.data} hash={result.hash} />
     </StyledDetailTop>
   );
 };

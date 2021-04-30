@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components'
 
-const Button = ({ type }) => {
+const Button = ({ type, onClick }) => {
     return (
-        <StyledBtn type={type}>
+        <StyledBtn type={type} onClick={onClick}>
             {type === 'order' 
                 ? <span>주문하기</span> 
                 : <span>일시품절</span> 

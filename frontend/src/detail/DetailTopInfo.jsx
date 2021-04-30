@@ -1,14 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled, { css } from "styled-components";
 import { cssTranslate } from "../style/CommonStyledCSS";
 import Tag from "../utilComponent/Tag";
 import Button from "../utilComponent/Button";
 import { changeAllToNumbers, threeDigitsComma } from "../util/util";
+import useFetch from "../hooks/useFetch";
+import { SideDishContext } from "../utilComponent/SideDishStore";
 
-const DetailTopInfo = ({ data }) => {
+const DetailTopInfo = ({ data, hash }) => {
+  const { setIsModalVisible } = useContext(SideDishContext)
+
   const [priceInfo, setPriceInfo] = useState({ prevPrice: null, price: null });
   const [quantity, setQuantity] = useState(1); // 수량
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isClickOrder, setIsClickOrder] = useState(false);
+
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ client_id: "eve", detail_hash: hash, quantity }),
+  };
+
+  const { response } = useFetch("/api/order", {
+    options,
+    addProps: [isClickOrder],
+    addFunc: () => setIsClickOrder(false),
+    isExecuteFunc: true
+  });
 
   useEffect(() => {
     if (!data || !data.prices || data.prices.length <= 0) return;
@@ -32,6 +50,12 @@ const DetailTopInfo = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [priceInfo]);
 
+  useEffect(() => {
+    if (!response || !response.status ) return;
+    if (response.ok) setIsModalVisible(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response]);
+
   const handleInputQuantityChange = ({ target }) => {
     if (target.value < 1) target.value = 1;
     else if (target.value > 20) target.value = 20;
@@ -39,6 +63,8 @@ const DetailTopInfo = ({ data }) => {
     if (priceInfo && priceInfo.price)
       setTotalPrice(target.value * priceInfo.price);
   };
+
+  const handleOrderClick = () => setIsClickOrder(true);
 
   return (
     data && (
@@ -114,7 +140,7 @@ const DetailTopInfo = ({ data }) => {
         </TotalPrice>
 
         <Order>
-          <Button type={"order"} />
+          <Button type={"order"} onClick={handleOrderClick} />
         </Order>
       </StyledDetailTopInfo>
     )
