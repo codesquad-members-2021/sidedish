@@ -123,8 +123,7 @@ class DetailPageViewController: UIViewController {
                 badgeStackView.addArrangedSubview(badgeView)
             }
         }
-        guard let point = basicInfo.point else { return }
-        pointLabel.text = String().format(price: point)
+        pointLabel.text = String().format(price: basicInfo.point)
         deliveryInfoLabel.text = basicInfo.deliveryInfo
         deliveryFeeLabel.attributedText = NSAttributedString().makeBold("(40,000원 이상 구매 시 무료)",
                                                                         within: "2,500원 (40,000원 이상 구매 시 무료)",
