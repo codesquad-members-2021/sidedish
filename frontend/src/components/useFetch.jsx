@@ -18,7 +18,6 @@ function useFetch(
 	async function fetchUrl() {
 		if (!url || url === undefined) return;
 		try {
-			// headers: 'Access-Control-Allow-Origin',
 			const res = await axios({
 				url,
 				method,

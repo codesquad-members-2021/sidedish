@@ -4,7 +4,7 @@ const HeaderLogo = styled.h1`
 	font-family: Noto Sans KR;
 	font-size: ${theme.fontSize.X_large};
 	font-style: normal;
-	font-weight: 900;
+	font-weight: ${theme.fontWeight.bold};
 	line-height: 58px;
 	letter-spacing: -0.04em;
 	text-align: left;

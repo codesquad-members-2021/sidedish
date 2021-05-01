@@ -7,7 +7,7 @@ const ItemTitle = styled.div.attrs((props) => ({
 			? `${theme.fontSize.medium}px`
 			: `${theme.fontSize.small}px`,
 }))`
-	font-weight: Bold;
+	font-weight: ${theme.fontWeight.bold};
 	margin-bottom: 16px;
 	&:hover {
 		text-decoration: underline;

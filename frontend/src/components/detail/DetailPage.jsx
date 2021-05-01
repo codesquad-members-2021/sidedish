@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { theme, Button } from '../style/Theme';
+import { theme } from '../style/Theme';
 import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import Loading from '../state/Loading';
 import Modal from '../Modal';
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Error from '../state/Error';
-import useFetch from '../useFetch';
 import Recommend from './Recommend';
-
+import OrderInfoSection from './OrderInfoSection';
 function DetailPage({
 	loadingState,
 	detailData,
@@ -76,14 +75,7 @@ function DetailPage({
 								></ItemPrice>
 							</FlexBox>
 							<img src="./longUnderLine.png" alt="underline"></img>
-							<PointDeliveryInfoBlock>
-								<ItemDesc>적립</ItemDesc>
-								<DetailText>{point}</DetailText>
-								<ItemDesc>배송정보</ItemDesc>
-								<DetailText>{deliveryInfo}</DetailText>
-								<ItemDesc>배송비</ItemDesc>
-								<DetailText>{deliveryFee}</DetailText>
-							</PointDeliveryInfoBlock>
+							<OrderInfoSection {...{ point, deliveryInfo, deliveryFee }} />
 							<img src="./longUnderLine.png" alt="underline"></img>
 							<FlexBlock>
 								<ItemDesc>수량</ItemDesc>
@@ -152,11 +144,6 @@ const FlexBox = styled.div`
 	display: flex;
 	align-items: flex-end;
 `;
-const PointDeliveryInfoBlock = styled.div`
-	display: grid;
-	grid-template-columns: 60px 364px;
-	grid-gap: 16px;
-`;
 const ItemTitle = styled.span`
 	font-size: ${theme.fontSize.large};
 	font-weight: Bold;
@@ -173,7 +160,7 @@ const ItemDesc = styled.div`
 	color: ${theme.colors.grey_text};
 	margin-bottom: 16px;
 `;
-const OrderBtn = styled(Button)`
+const OrderBtn = styled.button`
 	color: ${theme.colors.white};
 	font-size: ${theme.fontSize.large};
 	background-color: ${(props) =>

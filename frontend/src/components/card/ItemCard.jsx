@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { theme, AlignTextCenter } from '../style/Theme';
+import { theme } from '../style/Theme';
 import ItemTitle from '../atomic/ItemTitle';
 import ItemPrice from '../atomic/ItemPrice';
 import Badge from '../atomic/Badge';
 import DetailPage from '../detail/DetailPage';
 import useFetch from '../useFetch';
-
-function ItemCard({ data, size }) {
+import Card from '../atomic/Card';
+import Img from '../atomic/Img';
+function ItemCard({ itemData, size, padding }) {
+	const {
+		detailHash,
+		alt,
+		badges,
+		description,
+		image,
+		sPrice,
+		nPrice,
+	} = itemData;
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
 	const [modalMode, setModalState] = useState(false);
@@ -17,39 +27,34 @@ function ItemCard({ data, size }) {
 		setDetailFetchUrl(detailUrl + hash);
 	};
 
-	const [detailData, loadingState] = useFetch(detailFetchUrl, 'get');
+	const [{ data }, loadingState] = useFetch(detailFetchUrl, 'get');
 
 	return (
 		<>
 			{modalMode && !loadingState && (
 				<DetailPage
-					{...{ loadingState, modalMode, setModalState }}
-					detailData={detailData.data}
-					hash={data.detailHash}
-					item={data.alt}
-					badges={data.badges}
+					{...{ loadingState, modalMode, setModalState, badges }}
+					detailData={data}
+					hash={detailHash}
+					item={alt}
 				></DetailPage>
 			)}
-			<Card size={size}>
-				<ClickArea onClick={() => handleClick(data.detailHash, data.badges)}>
-					<IMG size={size} image={data.image} alt={data.alt}>
+			<Card size={size} padding={padding}>
+				<ClickArea onClick={() => handleClick(detailHash, badges)}>
+					<Img size={size} image={image} alt={alt}>
 						<DeliveryBlock>
 							<div>새벽배송</div>
 							<img style={imgPosition} src="./line.png" alt="line"></img>
 							<div>전국택배</div>
 						</DeliveryBlock>
-					</IMG>
+					</Img>
 
-					<ItemTitle type={'basic'}>{data.alt}</ItemTitle>
-					<ItemDesc>{data.description}</ItemDesc>
+					<ItemTitle type={'basic'}>{alt}</ItemTitle>
+					<ItemDesc>{description}</ItemDesc>
 				</ClickArea>
-				<ItemPrice
-					type={'basic'}
-					sPrice={data.sPrice}
-					nPrice={data.nPrice}
-				></ItemPrice>
+				<ItemPrice type={'basic'} sPrice={sPrice} nPrice={nPrice}></ItemPrice>
 
-				<Badge data={data.badges}></Badge>
+				<Badge data={badges}></Badge>
 			</Card>
 		</>
 	);
@@ -57,37 +62,12 @@ function ItemCard({ data, size }) {
 
 export default ItemCard;
 
-const Card = styled.div.attrs((props) => ({
-	width: props.size === 'L' ? '384px' : '308px',
-}))`
-	margin-top: 40px;
-	overflow: hidden;
-`;
-
 const ItemDesc = styled.div`
 	font-size: ${theme.fontSize.small}px;
 	color: ${theme.colors.grey_text};
 	margin-bottom: 16px;
 	&:hover {
 		text-decoration: underline;
-	}
-`;
-const IMG = styled(AlignTextCenter)`
-	width: ${(props) => {
-		return props.size === 'L' ? '384px' : '308px';
-	}};
-	height: ${(props) => {
-		return props.size === 'L' ? '384px' : '308px';
-	}};
-	margin-bottom: 32px;
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-	&:hover {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(${(props) => props.image});
-		div {
-			opacity: 1;
-		}
 	}
 `;
 

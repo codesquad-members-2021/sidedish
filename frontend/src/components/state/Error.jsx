@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { AlignTextCenter, theme } from '../style/Theme';
+import * as basicStyle from '../style/Theme';
 import Logo from '../atomic/Logo';
 
 function Error() {
@@ -17,7 +17,7 @@ function Error() {
 
 export default Error;
 
-const ErrorWapper = styled(AlignTextCenter)`
+const ErrorWapper = styled(basicStyle.AlignTextCenter)`
 	flex-direction: column;
 	position: fixed;
 	left: 0;
@@ -26,11 +26,11 @@ const ErrorWapper = styled(AlignTextCenter)`
 	height: 100%;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 9999;
-	color: ${theme.colors.white};
+	color: ${basicStyle.theme.colors.white};
 `;
 const Big = styled.div`
 	display: block;
-	font-size: ${theme.fontSize.X_large};
+	font-size: ${basicStyle.theme.fontSize.X_large};
 `;
 const Biggest = styled.div`
 	font-size: 180px;

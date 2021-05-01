@@ -4,15 +4,22 @@ import Carousel from '../category/Carousel';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import React, { useState, useRef } from 'react';
 import ItemCardSmall from '../card/ItemCardSmall';
-import { theme, Button } from '../style/Theme';
+import { theme } from '../style/Theme';
 import Title from '../atomic/Title';
 function Recommend() {
 	const [randomMenu, randomLoadingState] = useFetch(
 		process.env.REACT_APP_API_URL + 'recommend/10/',
 		'get',
 	);
-	const [pageNumer, setPageNumer] = useState({ page: 1, total: 1 });
 	const button = useRef();
+	let count = 5;
+	let totalPage = randomMenu.length / count;
+	console.log(totalPage);
+	const [pageNumer, setPageNumer] = useState({
+		page: 1,
+		total: totalPage,
+	});
+
 	const handleLeft = () => {
 		button.current.slideToLeft();
 		setPageNumer({
@@ -59,7 +66,7 @@ function Recommend() {
 							height={242}
 							key={idx}
 							data={el}
-							xpadding={10}
+							padding={2}
 						></ItemCardSmall>
 					))}
 				</Carousel>
@@ -89,5 +96,5 @@ const PageBlock = styled.div`
 	display: flex;
 	align-items: center;
 `;
-const ButtonLeft = styled(Button)``;
-const ButtonRight = styled(Button)``;
+const ButtonLeft = styled.button``;
+const ButtonRight = styled.button``;

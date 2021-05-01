@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { theme, AlignTextCenter } from '../style/Theme';
+import { theme } from '../style/Theme';
 import DetailPage from '../detail/DetailPage';
 import useFetch from '../useFetch';
 import ItemTitle from '../atomic/ItemTitle';
 import ItemPrice from '../atomic/ItemPrice';
+import Card from '../atomic/Card';
+import Img from '../atomic/Img';
 
-function ItemCardSmall({ data, size, height, xpadding }) {
+function ItemCardSmall({ data, size, height, padding }) {
 	const { alt, badges, title, nPrice, sPrice, detailHash, image } = data;
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
@@ -29,19 +31,17 @@ function ItemCardSmall({ data, size, height, xpadding }) {
 				></DetailPage>
 			)}
 			<Card
-				padding={xpadding}
-				className="Card"
+				padding={padding}
 				size={size}
-				height={height}
 				onClick={() => handleClick(detailHash, badges)}
 			>
-				<IMG size={size} image={image} alt={alt}>
+				<Img {...{ size, height, image, alt }}>
 					<DeliveryBlock>
 						<div>새벽배송</div>
 						<img style={imgPosition} src="./line.png" alt="line"></img>
 						<div>전국택배</div>
 					</DeliveryBlock>
-				</IMG>
+				</Img>
 				<ItemInfo>
 					<ItemTitle type={'small'}>{title}</ItemTitle>
 					<ItemPrice type={'small'} nPrice={nPrice} sPrice={sPrice}>
@@ -55,26 +55,6 @@ function ItemCardSmall({ data, size, height, xpadding }) {
 
 export default ItemCardSmall;
 
-const Card = styled.div`
-	padding: 0 ${(props) => `${props.padding}px`};
-`;
-
-const IMG = styled(AlignTextCenter)`
-	width: auto;
-	height: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
-
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-	&:hover {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(${(props) => props.image});
-		div {
-			opacity: 1;
-		}
-	}
-`;
 const DeliveryBlock = styled.div`
 	position: relative;
 	color: ${theme.colors.white};
