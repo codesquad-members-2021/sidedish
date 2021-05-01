@@ -11,15 +11,8 @@ function Recommend() {
 		process.env.REACT_APP_API_URL + 'recommend/10/',
 		'get',
 	);
+	const [pageNumer, setPageNumer] = useState({ page: 1, total: 1 });
 	const button = useRef();
-	let count = 5;
-	let totalPage = randomMenu.length / count;
-	console.log(totalPage);
-	const [pageNumer, setPageNumer] = useState({
-		page: 1,
-		total: totalPage,
-	});
-
 	const handleLeft = () => {
 		button.current.slideToLeft();
 		setPageNumer({

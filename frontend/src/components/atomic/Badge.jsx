@@ -1,6 +1,5 @@
 import * as basicStyle from '../style/Theme';
 import styled from 'styled-components';
-import BADGE from '../Constant';
 const BadgeBlock = styled.div`
 	display: flex;
 `;
@@ -10,7 +9,7 @@ const BadgeIcon = styled(basicStyle.AlignTextCenter)`
 	margin-top: 20px;
 	margin-right: 20px;
 	background-color: ${(props) => {
-		return BADGE[props.val] === 'EVENT'
+		return props.val === '이벤트특가'
 			? basicStyle.theme.colors.green
 			: basicStyle.theme.colors.skyblue_badge;
 	}};
