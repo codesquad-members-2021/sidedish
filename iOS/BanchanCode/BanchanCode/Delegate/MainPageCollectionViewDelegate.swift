@@ -16,7 +16,7 @@ class MainPageCollectionViewDelegate: NSObject, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width: CGFloat = collectionView.frame.width
-        let height: CGFloat = 32.0
+        let height: CGFloat = 50.0//32.0
         return CGSize(width: width, height: height)
     }
     
