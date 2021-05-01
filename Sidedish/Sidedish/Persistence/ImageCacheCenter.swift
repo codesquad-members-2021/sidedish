@@ -8,8 +8,6 @@
 import UIKit
 
 protocol ImageCacheable {
-    var fileManager: FileManager { get }
-    var cacheURL: URL { get }
     func cacheFileExists(fileName: String) -> Bool
     func loadImageCache(fileName: String, completion: @escaping (Data) -> ())
     func cachingImage(named: String, imageData: Data)
