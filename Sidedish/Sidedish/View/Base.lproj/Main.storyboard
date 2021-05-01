@@ -203,18 +203,17 @@
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-S7-dUF" userLabel="Thumbnail Scroll View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgM-VV-npk" userLabel="Thumbnail Content View">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="pyl-Kx-dHB">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="TgM-VV-npk" secondAttribute="bottom" id="9K6-ON-kjm"/>
-                                                    <constraint firstItem="TgM-VV-npk" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="top" id="OK9-f9-zuw"/>
-                                                    <constraint firstItem="TgM-VV-npk" firstAttribute="width" secondItem="hPQ-S7-dUF" secondAttribute="width" id="OSD-ZQ-vtG"/>
-                                                    <constraint firstItem="TgM-VV-npk" firstAttribute="height" secondItem="hPQ-S7-dUF" secondAttribute="width" id="l9S-kF-4lQ"/>
-                                                    <constraint firstAttribute="trailing" secondItem="TgM-VV-npk" secondAttribute="trailing" id="mxp-NN-txn"/>
-                                                    <constraint firstItem="TgM-VV-npk" firstAttribute="leading" secondItem="hPQ-S7-dUF" secondAttribute="leading" id="zQD-C8-ggg"/>
+                                                    <constraint firstItem="pyl-Kx-dHB" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="top" id="M6Z-u3-rjh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="pyl-Kx-dHB" secondAttribute="bottom" id="YbT-wQ-cVl"/>
+                                                    <constraint firstItem="pyl-Kx-dHB" firstAttribute="leading" secondItem="hPQ-S7-dUF" secondAttribute="leading" id="bAn-QA-WNm"/>
+                                                    <constraint firstItem="pyl-Kx-dHB" firstAttribute="height" secondItem="hPQ-S7-dUF" secondAttribute="height" id="cn7-q8-tBC"/>
+                                                    <constraint firstItem="pyl-Kx-dHB" firstAttribute="width" secondItem="hPQ-S7-dUF" secondAttribute="width" priority="750" id="dNt-KW-APB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pyl-Kx-dHB" secondAttribute="trailing" id="fw9-Td-vfH"/>
                                                 </constraints>
                                             </scrollView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pGM-XY-V8j" userLabel="Information Stack View">
@@ -225,9 +224,9 @@
                                         <constraints>
                                             <constraint firstItem="pGM-XY-V8j" firstAttribute="top" secondItem="hPQ-S7-dUF" secondAttribute="bottom" id="0vk-ig-Z58"/>
                                             <constraint firstItem="hPQ-S7-dUF" firstAttribute="trailing" secondItem="pGM-XY-V8j" secondAttribute="trailing" id="6tO-43-c1A"/>
-                                            <constraint firstItem="pGM-XY-V8j" firstAttribute="top" secondItem="TgM-VV-npk" secondAttribute="bottom" id="BjM-Je-e4E"/>
                                             <constraint firstAttribute="bottom" secondItem="pGM-XY-V8j" secondAttribute="bottom" id="Bxn-fe-uLd"/>
                                             <constraint firstItem="hPQ-S7-dUF" firstAttribute="leading" secondItem="pGM-XY-V8j" secondAttribute="leading" id="Yn7-xA-WoO"/>
+                                            <constraint firstItem="pGM-XY-V8j" firstAttribute="top" secondItem="J4g-Pq-i4F" secondAttribute="top" constant="414" id="jpt-Ft-zKY"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -259,9 +258,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="informationStackView" destination="pGM-XY-V8j" id="vn9-E7-ihu"/>
-                        <outlet property="thumbnailContentView" destination="TgM-VV-npk" id="OVK-W3-73v"/>
-                        <outlet property="thumbnailContentViewWidth" destination="OSD-ZQ-vtG" id="3fq-en-lqa"/>
                         <outlet property="thumbnailScrollView" destination="hPQ-S7-dUF" id="5ts-Qy-V9n"/>
+                        <outlet property="thumbnailStackView" destination="pyl-Kx-dHB" id="wUX-lD-bMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Aq-wf-vxj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

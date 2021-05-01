@@ -10,9 +10,8 @@ import Toaster
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var thumbnailScrollView: UIScrollView!
-    @IBOutlet weak var thumbnailContentView: UIView!
-    @IBOutlet weak var thumbnailContentViewWidth: NSLayoutConstraint!
     @IBOutlet weak var informationStackView: UIStackView!
+    @IBOutlet weak var thumbnailStackView: UIStackView!
     
     var customView: CustomView!
     var detailViewModel: DetailViewModel!
@@ -99,7 +98,8 @@ class DetailViewController: UIViewController {
         for subview in self.informationStackView.subviews {
             subview.removeFromSuperview()
         }
-        self.thumbnailContentView.subviews.forEach { (view) in
+        
+        self.thumbnailStackView.subviews.forEach { (view) in
             view.removeFromSuperview()
         }
     }
@@ -121,11 +121,9 @@ class DetailViewController: UIViewController {
     
     private func setThumdnailImage() {
         let currentDetailItem = self.detailViewModel.currentDetail
-        for index in 0..<(currentDetailItem.thumbImagesData?.count ?? 0) + 1{
-            let imageView = UIImageView(frame: CGRect(x: thumbnailScrollView.frame.width * CGFloat(index),
-                                                      y: 0,
-                                                      width: self.thumbnailScrollView.frame.width,
-                                                      height: self.thumbnailScrollView.frame.width))
+        for index in 0..<(currentDetailItem.thumbImagesData?.count ?? 0) + 1 {
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             if index == 0 {
                 guard let imageData = currentDetailItem.topImageData else { continue }
@@ -134,9 +132,8 @@ class DetailViewController: UIViewController {
                 guard let imageData = currentDetailItem.thumbImagesData?[index - 1] else { continue }
                 imageView.image = UIImage(data: imageData)
             }
-            
-            self.thumbnailContentViewWidth.constant = self.view.frame.width * CGFloat(self.detailViewModel.currentDetail.thumbImagesData?.count ?? 0)
-            self.thumbnailContentView.addSubview(imageView)
+            self.thumbnailStackView.addArrangedSubview(imageView)
+            imageView.widthAnchor.constraint(equalTo: self.thumbnailStackView.heightAnchor, multiplier: 1).isActive = true
         }
     }
     
