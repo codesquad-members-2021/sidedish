@@ -48,8 +48,4 @@ class CustomView: UIView {
     @IBAction func downQuantity(_ sender: UIButton) {
         NotificationCenter.default.post(name: .decreaseQuntity, object: self)
     }
-    
-    @IBAction func sendOrder(_ sender: Any) {
-        
-    }
 }

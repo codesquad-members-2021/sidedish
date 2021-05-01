@@ -269,9 +269,6 @@
                                     <integer key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="sendOrder:" destination="NRc-F9-zJm" eventType="touchUpInside" id="A1c-ra-N1n"/>
-                            </connections>
                         </button>
                     </subviews>
                     <constraints>
