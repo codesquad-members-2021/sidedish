@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 import { BiX } from 'react-icons/bi';
-import { theme, Button } from './style/Theme';
+import * as basicStyle from './style/Theme';
 import ModalPortal from '../ModalPortal';
 
 function Modal({ children, modalMode, setModalState }) {
-	const handleClick = () => setModalState(!modalMode);
-
 	return (
 		<ModalPortal>
 			<DarkBackground className="DARK">
 				<StyledModal>{children}</StyledModal>
-				<Button onClick={handleClick}>
-					<BiX style={Xstyle} />
-				</Button>
+				<Xstyle onClick={() => setModalState(!modalMode)}>
+					<BiX />
+				</Xstyle>
 			</DarkBackground>
 		</ModalPortal>
 	);
@@ -20,15 +18,12 @@ function Modal({ children, modalMode, setModalState }) {
 
 export default Modal;
 
-const DarkBackground = styled.div`
+const DarkBackground = styled(basicStyle.AlignTextCenter)`
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 9999;
 `;
@@ -36,14 +31,14 @@ const DarkBackground = styled.div`
 const StyledModal = styled.div`
 	width: 960px;
 	height: auto;
-	background-color: ${theme.colors.white};
+	background-color: ${basicStyle.theme.colors.white};
 	display: relative;
 `;
 
-const Xstyle = {
-	color: theme.colors.white,
-	position: 'relative',
-	top: '-450px',
-	right: '-10px',
-	display: 'absolute',
-};
+const Xstyle = styled.button`
+	font-size: ${basicStyle.theme.fontSize.larger};
+	color: ${basicStyle.theme.colors.white};
+	position: relative;
+	top: -450px;
+	right: -10px;
+`;

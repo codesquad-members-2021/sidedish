@@ -1,26 +1,7 @@
 import styled from 'styled-components';
-import { AlignTextCenter, theme } from '../style/Theme';
+import * as basicStyle from '../style/Theme';
 import Logo from '../atomic/Logo';
 
-const ErrorWapper = styled(AlignTextCenter)`
-	flex-direction: column;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.8);
-	z-index: 9999;
-	color: ${theme.colors.white};
-`;
-const Big = styled.div`
-	display: block;
-	font-size: ${theme.fontSize.X_large};
-`;
-const Biggest = styled.div`
-	font-size: 180px;
-	margin-bottom: 60px;
-`;
 function Error() {
 	return (
 		<ErrorWapper>
@@ -35,3 +16,23 @@ function Error() {
 }
 
 export default Error;
+
+const ErrorWapper = styled(basicStyle.AlignTextCenter)`
+	flex-direction: column;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 9999;
+	color: ${basicStyle.theme.colors.white};
+`;
+const Big = styled.div`
+	display: block;
+	font-size: ${basicStyle.theme.fontSize.X_large};
+`;
+const Biggest = styled.div`
+	font-size: 180px;
+	margin-bottom: 60px;
+`;

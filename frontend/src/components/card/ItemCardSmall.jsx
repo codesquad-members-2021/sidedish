@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { theme, AlignTextCenter } from './style/Theme';
-import DetailPage from './detail/DetailPage';
-import useFetch from './useFetch';
+import { theme } from '../style/Theme';
+import DetailPage from '../detail/DetailPage';
+import useFetch from '../useFetch';
+import ItemTitle from '../atomic/ItemTitle';
+import ItemPrice from '../atomic/ItemPrice';
+import Card from '../atomic/Card';
+import Img from '../atomic/Img';
 
-function ItemCardSmall({ data, size, height, xpadding }) {
+function ItemCardSmall({ data, size, height, padding }) {
 	const { alt, badges, title, nPrice, sPrice, detailHash, image } = data;
 	const detailUrl = process.env.REACT_APP_API_URL + 'detail/';
 	const [detailFetchUrl, setDetailFetchUrl] = useState(null);
@@ -27,22 +31,22 @@ function ItemCardSmall({ data, size, height, xpadding }) {
 				></DetailPage>
 			)}
 			<Card
-				padding={xpadding}
-				className="Card"
+				padding={padding}
 				size={size}
-				height={height}
 				onClick={() => handleClick(detailHash, badges)}
 			>
-				<IMG size={size} image={image} alt={alt}>
+				<Img {...{ size, height, image, alt }}>
 					<DeliveryBlock>
 						<div>새벽배송</div>
 						<img style={imgPosition} src="./line.png" alt="line"></img>
 						<div>전국택배</div>
 					</DeliveryBlock>
-				</IMG>
+				</Img>
 				<ItemInfo>
-					<ItemTitle>{title}</ItemTitle>
-					<ItemPrice>{sPrice ? sPrice : nPrice}원</ItemPrice>
+					<ItemTitle type={'small'}>{title}</ItemTitle>
+					<ItemPrice type={'small'} nPrice={nPrice} sPrice={sPrice}>
+						{sPrice ? sPrice : nPrice}원
+					</ItemPrice>
 				</ItemInfo>
 			</Card>
 		</>
@@ -50,37 +54,6 @@ function ItemCardSmall({ data, size, height, xpadding }) {
 }
 
 export default ItemCardSmall;
-
-const Card = styled.div`
-	padding: 0 ${(props) => `${props.padding}px`};
-`;
-const ItemTitle = styled.div`
-	font-size: ${theme.fontSize.small}px;
-	&:hover {
-		text-decoration: underline;
-	}
-	margin-bottom: 10px;
-`;
-const ItemPrice = styled.div`
-	font-size: ${theme.fontSize.small};
-	font-weight: Bold;
-`;
-const IMG = styled(AlignTextCenter)`
-	width: auto;
-	height: ${(props) => {
-		return props.size === 'L' ? '384px' : props.size;
-	}}px;
-
-	background-image: url(${(props) => props.image});
-	background-size: cover;
-	&:hover {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url(${(props) => props.image});
-		div {
-			opacity: 1;
-		}
-	}
-`;
 
 const DeliveryBlock = styled.div`
 	position: relative;

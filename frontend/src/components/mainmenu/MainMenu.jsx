@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { theme, AlignTextCenter } from '../style/Theme';
-import ItemCard from '../ItemCard';
+import ItemCard from '../card/ItemCard';
 import useFetch from '../useFetch';
 import Title from '../atomic/Title';
 import { useState } from 'react';
@@ -8,15 +8,12 @@ import Loading from '../state/Loading';
 
 function MainMenu() {
 	const basicUrl = process.env.REACT_APP_API_URL + 'best/';
-	//5개: 탭 전체 데이터 요청
 	const [bestDishMenu, bestDishLoading] = useFetch(basicUrl, 'get');
 	const [clickedID, setClickedID] = useState(1);
-	//초기 베스트메뉴 url 설정
 	const [fetchData, setFetchData] = useState(basicUrl + 1);
-	//3개: 초기 베스트메뉴 데이터 요청
-	const [bestData, loadingState] = useFetch(fetchData, 'get');
-	//클릭한 후 해당 탭 데이터 요청
-	const handleClick = (target, id) => {
+	const [{ items }, loadingState] = useFetch(fetchData, 'get');
+
+	const handleClick = (id) => {
 		setClickedID(id);
 		setFetchData(basicUrl + id);
 	};
@@ -28,10 +25,10 @@ function MainMenu() {
 				{!bestDishLoading &&
 					bestDishMenu.map((data, idx) => (
 						<Tab
-							onClick={({ target }) => handleClick(target, data.bestCategoryId)}
+							onClick={() => handleClick(data.bestCategoryId)}
 							clickedID={clickedID}
 							id={data.bestCategoryId}
-							key={idx}
+							key={data.bestCategoryId}
 						>
 							{data.name}
 						</Tab>
@@ -42,8 +39,13 @@ function MainMenu() {
 				{loadingState ? (
 					<Loading width="1280px" height="620px" />
 				) : (
-					bestData.items.map((data, idx) => (
-						<ItemCard key={idx} data={data} size={'L'}></ItemCard>
+					items.map((data, idx) => (
+						<ItemCard
+							key={data.detailHash}
+							itemData={data}
+							size={'L'}
+							padding={10}
+						></ItemCard>
 					))
 				)}
 			</MainColumn>
@@ -62,7 +64,6 @@ const MainBlock = styled.div`
 const TabBlock = styled.div`
 	display: flex;
 `;
-
 const Tab = styled(AlignTextCenter)`
 	width: 201px;
 	height: 58px;
@@ -82,6 +83,5 @@ const MainColumn = styled.div`
 	background-color: ${theme.colors.skyblue};
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 30px;
 	padding: 40px;
 `;

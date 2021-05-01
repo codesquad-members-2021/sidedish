@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Title from '../atomic/Title';
 import Carousel from './Carousel';
 import useFetch from '../useFetch';
-import ItemCard from '../ItemCard';
+import ItemCard from '../card/ItemCard';
 import Loading from '../state/Loading';
 import Error from '../state/Error';
 import { useRef } from 'react';
@@ -40,14 +40,19 @@ function CategoryRender({ title, url }) {
 
 					<Carousel
 						width={1280}
-						// height={242}
+						height={242}
 						count={4}
 						duration={'.5s'}
 						ref={button}
 						effect={'ease-in-out'}
 					>
-						{categoryData.map((data, idx) => (
-							<ItemCard key={idx} data={data} size={'S'} xpadding={10} />
+						{categoryData.map((data) => (
+							<ItemCard
+								key={data.detailHash}
+								itemData={data}
+								size={308}
+								xPadding={10}
+							/>
 						))}
 					</Carousel>
 
@@ -65,17 +70,12 @@ export default CategoryRender;
 const TitleBlock = styled.div`
 	margin: 0 40px;
 `;
-const Button = styled.button`
+const ButtonLeft = styled.button`
 	font-size: 36px;
-	border: none;
-	background-color: transparent;
-	&:focus {
-		outline: none;
-	}
-	cursor: pointer;
 `;
-const ButtonLeft = styled(Button)``;
-const ButtonRight = styled(Button)``;
+const ButtonRight = styled.button`
+	font-size: 36px;
+`;
 const FlexBlock = styled.div`
 	display: flex;
 `;

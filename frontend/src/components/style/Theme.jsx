@@ -32,13 +32,3 @@ export const AlignTextCenter = styled.div`
 	align-items: center;
 	justify-content: center;
 `;
-
-export const Button = styled.button`
-	font-size: 36px;
-	border: none;
-	background-color: transparent;
-	&:focus {
-		outline: none;
-	}
-	cursor: pointer;
-`;

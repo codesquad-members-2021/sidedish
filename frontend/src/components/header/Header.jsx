@@ -3,6 +3,17 @@ import HeaderLeft from './HeaderLeft';
 import HeaderRight from './headerRight';
 import { theme } from '../style/Theme';
 
+function Header({ loginState, setLoginState, userName, userIMG }) {
+	return (
+		<HeaderBlock>
+			<HeaderLeft />
+			<HeaderRight {...{ loginState, setLoginState, userName, userIMG }} />
+		</HeaderBlock>
+	);
+}
+
+export default Header;
+
 const HeaderBlock = styled.div`
 	width: 100%;
 	height: 122px;
@@ -12,14 +23,3 @@ const HeaderBlock = styled.div`
 	padding: ${theme.padding.globalPadding};
 	box-sizing: border-box;
 `;
-
-function Header(isLogin) {
-	return (
-		<HeaderBlock>
-			<HeaderLeft />
-			<HeaderRight isLogin={isLogin} />
-		</HeaderBlock>
-	);
-}
-
-export default Header;

@@ -1,32 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function useFetch(
-	url,
-	method,
-	code = null,
-	hash = null,
-	order = null,
-	accessToken = null,
-) {
+function useFetch(url, method, code = null) {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const config = {
-		headers: { Authorization: `Bearer ${accessToken}` },
-	};
 
 	async function fetchUrl() {
-		if (!url || url === undefined) return;
+		if (url === null || url === undefined) return;
 		try {
-			// headers: 'Access-Control-Allow-Origin',
-			const res = await axios({
-				url,
-				method,
-				hash,
-				order,
-				code,
-				config,
-			});
+			const res = await axios({ url, method, code });
 			setData(res.data);
 		} catch (error) {
 			if (error.response.status === 400) {

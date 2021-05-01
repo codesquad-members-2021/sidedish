@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Carousel from '../category/Carousel';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import React, { useState, useRef } from 'react';
-import ItemCardSmall from '../ItemCardSmall';
-import { theme, Button } from '../style/Theme';
+import ItemCardSmall from '../card/ItemCardSmall';
+import { theme } from '../style/Theme';
 import Title from '../atomic/Title';
 function Recommend() {
 	const [randomMenu, randomLoadingState] = useFetch(
@@ -59,7 +59,7 @@ function Recommend() {
 							height={242}
 							key={idx}
 							data={el}
-							xpadding={10}
+							padding={2}
 						></ItemCardSmall>
 					))}
 				</Carousel>
@@ -89,5 +89,5 @@ const PageBlock = styled.div`
 	display: flex;
 	align-items: center;
 `;
-const ButtonLeft = styled(Button)``;
-const ButtonRight = styled(Button)``;
+const ButtonLeft = styled.button``;
+const ButtonRight = styled.button``;
