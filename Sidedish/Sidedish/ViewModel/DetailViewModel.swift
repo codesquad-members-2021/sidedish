@@ -12,6 +12,9 @@ class DetailViewModel: ObservableObject {
     var currentDetail: DetailItem
     var currentItemBadge: [Bool]
     var currentItemTitle: String
+    var setTitleHandler: ((String) -> ())?
+    var setThumbnailHandler: (() -> ())?
+    var setInformationHandler: (() -> ())?
     var imageFetchHandler: (() -> ())?
     var detailImageFetchHandler: (() -> ())?
     var errorHandler: ((String) -> ())?
@@ -30,8 +33,7 @@ class DetailViewModel: ObservableObject {
             switch result {
             case .success(let detailItem):
                 guard let strongSelf = self else { return }
-                strongSelf.currentDetail = detailItem
-                strongSelf.imageFetchHandler?()
+                strongSelf.resetDetailItem(detailItem)
             case .failure(let error):
                 #if DEBUG
                 NSLog(error.localizedDescription)
@@ -41,4 +43,22 @@ class DetailViewModel: ObservableObject {
         }
     }
     
+    private func resetDetailItem(_ detailItem: DetailItem) {
+        self.currentDetail = detailItem
+        self.triggerTitleHandler()
+        self.triggerImageHandler()
+        self.triggerInformationHandler()
+    }
+    
+    private func triggerTitleHandler() {
+        self.setTitleHandler?(self.currentItemTitle)
+    }
+    
+    private func triggerImageHandler() {
+        self.imageFetchHandler?()
+    }
+    
+    private func triggerInformationHandler() {
+        self.setInformationHandler?()
+    }
 }

@@ -19,14 +19,28 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setThumbnailScrollView()
+        self.bind()
+        NotificationCenter.default.addObserver(self, selector: #selector(increaseQuantity), name: .increaseQuntity, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(decreaseQuantity), name: .decreaseQuntity, object: nil)
+    }
+    
+    private func bind() {
+        detailViewModel.setTitleHandler = { title in
+            DispatchQueue.main.async {
+                self.setTitle(title)
+            }
+        }
+        
+        detailViewModel.setInformationHandler = {
+            DispatchQueue.main.async {
+                self.setInformationView()
+            }
+        }
         
         detailViewModel.imageFetchHandler = {
             DispatchQueue.main.async {
-                self.setTitle()
                 self.clearImage()
                 self.setThumdnailImage()
-                self.setInformationView()
                 self.setDetailScrollView()
             }
         }
@@ -34,9 +48,6 @@ class DetailViewController: UIViewController {
         self.detailViewModel.errorHandler = { error in
             Toast(text: error).show()
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(increaseQuantity), name: .increaseQuntity, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(decreaseQuantity), name: .decreaseQuntity, object: nil)
     }
     
     @objc func increaseQuantity() {
@@ -80,8 +91,8 @@ class DetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    private func setTitle() {
-        self.title = self.detailViewModel.currentItemTitle
+    private func setTitle(_ title: String) {
+        self.title = title
     }
     
     private func clearImage() {
