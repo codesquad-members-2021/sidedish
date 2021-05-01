@@ -8,23 +8,26 @@
 import Foundation
 
 class ItemViewModel {
-    @Published var items: [SidedishItem]
+    var items: Dictionary<String, [SidedishItem]>
     var imageReloadHandler: ((Int) -> ())?
     var errorHandler: ((String) -> ())?
+    var reloadHandler: ((Category) -> ())?
     var sidedishProcessing: SidedishProcessable
     
     init(sidedishProcessable: SidedishProcessable) {
-        self.items = [SidedishItem]()
+        self.items = Dictionary<String, [SidedishItem]>()
         self.sidedishProcessing = sidedishProcessable
     }
     
-    func fetchItems() {
-        let url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main"
+    func fetchItems(of category: Category) {
+        let url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/\(category)"
         self.sidedishProcessing.getItems(url: url) { [weak self] (result) in
             switch result {
             case .success(let sidedishItems):
                 guard let strongSelf = self else { return }
-                strongSelf.items = strongSelf.setOriginalPrice(items: sidedishItems)
+                let items = strongSelf.setOriginalPrice(items: sidedishItems)
+                strongSelf.items[category.description, default: [SidedishItem]()] = items
+                strongSelf.reloadHandler?(category)
             case .failure(let error):
                 #if DEBUG
                 NSLog(error.localizedDescription)

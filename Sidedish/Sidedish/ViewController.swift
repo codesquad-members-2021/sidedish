@@ -6,27 +6,43 @@
 //
 
 import UIKit
-import Combine
 import Toaster
-import Alamofire
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var itemViewModel: ItemViewModel!
     var headerViewModel: HeaderViewModel!
-    var fetchItemSubscription = Set<AnyCancellable>()
     var headerViewActionHander: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let networking = SidedishNetworkCenter()
+        let imageCacheCenter = ImageCacheCenter()
+        let networking = SidedishNetworkCenter(imageCacheable: imageCacheCenter)
         let sidedishProcessing = SidedishProcessing(networkable: networking)
-        
         self.itemViewModel = ItemViewModel(sidedishProcessable: sidedishProcessing)
         self.headerViewModel = HeaderViewModel()
         self.bind()
+        self.loadItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func loadItems() {
+        Category.allCases.forEach { (category) in
+            self.itemViewModel.fetchItems(of: category)
+        }
+    }
+    
+    private func bind() {
+        self.itemViewModel.reloadHandler = { category in
+            DispatchQueue.main.async {
+                self.collectionView.reloadSections(IndexSet(integer: category.index))
+            }
+        }
         
         self.itemViewModel.errorHandler = { error in
             Toast(text: error).show()
@@ -35,44 +51,27 @@ class ViewController: UIViewController {
         self.itemViewModel.imageReloadHandler = { index in
             self.collectionView.reloadItems(at: [IndexPath(index: index)])
         }
-        
-        self.headerViewActionHander = {
-            let title = self.headerViewModel.titles[0]
-            let countText = "\(self.itemViewModel.items.count)개 상품이 등록되어 있습니다."
-            let attributedQuote = "\(title)\n\(countText)".attributedStringOfFontSize(of: 16)
-            Toast(attributedText: attributedQuote).show()
-        }
-        
-        self.itemViewModel.fetchItems()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    private func bind() {
-        self.itemViewModel.$items
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.collectionView.reloadSections(IndexSet(integer: 0))
-            }.store(in: &fetchItemSubscription)
-    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.itemViewModel.items.count
+        guard let items = self.indexItemBySection(of: section) else { return 0 }
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as? ItemCollectionViewCell else {
             return ItemCollectionViewCell()
         }
-        let item = self.itemViewModel.items[indexPath.row]
+        
+        guard let items = self.indexItemBySection(of: indexPath.section) else { return cell }
+        let item = items[indexPath.row]
         let badge = handleBadge(badge: item.badge)
         cell.configure(model: item, nPrice: item.nPrice, badge: badge)
-        guard let data = self.itemViewModel.items[indexPath.row].imageData else { return cell }
+        guard let data = item.imageData else { return cell }
         cell.configure(data: data)
 
         return cell
@@ -86,16 +85,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
                                                                      for: indexPath) as! HeaderCollectionReusableView
-        
-        let tapRecognizer = UITapGestureRecognizer(target: self,
-                                                     action: #selector(makingHeaderToast(_:)))
-        
-        header.addGestureRecognizer(tapRecognizer)
+        header.delegate = self
+        guard let items = self.indexItemBySection(of: indexPath.section) else { return header }
+        header.title.text = self.headerViewModel.titles[indexPath.section]
+        header.countLabel.text = "\(items.count)개 상품이 등록되어 있습니다"
         return header
     }
     
-    @objc func makingHeaderToast(_ sender: UITapGestureRecognizer) {
-        self.headerViewActionHander?()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? ItemCollectionViewCell, let indexPath = self.collectionView.indexPath(for: cell) {
+            guard let items = self.indexItemBySection(of: indexPath.section) else { return }
+            let detailHash = items[indexPath.row].detailHash
+            
+            let vc = segue.destination as? DetailViewController
+            let imageCacheCenter = ImageCacheCenter()
+            let networking = SidedishNetworkCenter(imageCacheable: imageCacheCenter)
+            let sidedishProcessing = SidedishProcessing(networkable: networking)
+            
+            let badge = handleBadge(badge: items[indexPath.row].badge)
+            vc?.detailViewModel = DetailViewModel(sidedishProcessable: sidedishProcessing, title: items[indexPath.row].title, badges: badge)
+            vc?.detailViewModel.fetchDetail(hash: detailHash)
+        }
     }
 }
 
@@ -105,7 +115,19 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension ViewController: HeaderClickable {
+    func didClickedHeader(attributedQuote: NSAttributedString) {
+        Toast(attributedText: attributedQuote).show()
+    }
+}
+
 extension ViewController {
+    func indexItemBySection(of section: Int) -> [SidedishItem]? {
+        guard let category = Category(rawValue: section) else { return nil }
+        guard let items = self.itemViewModel.items[category.description] else { return nil }
+        return items
+    }
+    
     func handleBadge(badge: [String]?) -> [Bool] {
         var isHiddenBadges = [true, true]
         if badge != nil {
