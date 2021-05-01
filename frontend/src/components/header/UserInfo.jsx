@@ -1,14 +1,25 @@
 import { theme } from '../style/Theme';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 function UserInfo({ loginState, setLoginState, userName, userIMG }) {
 	const [hoverState, setHoverState] = useState(false);
+	const token = localStorage.getItem('token');
 	const handleClick = () => {
 		localStorage.setItem('isLogin', false);
 		localStorage.removeItem('userId');
 		localStorage.removeItem('token');
 		setLoginState(false);
 	};
+
+	useEffect(() => {
+		const logOut = async () => {
+			await axios.post('http://15.164.68.136:8080/logout', {
+				headers: { Authorization: `Bearer ${token}` },
+			});
+		};
+		logOut();
+	});
 
 	return (
 		<>
@@ -33,6 +44,13 @@ function UserInfo({ loginState, setLoginState, userName, userIMG }) {
 	);
 }
 export default UserInfo;
+
+//로그아웃 요청 백엔드 질문하기.
+// import { useState } from 'react';
+// import useFetch from '../useFetch';
+// const [logoutPath, setLogoutUrl] = useState(null);
+// const [logout, loadingLogOutState] = useFetch(logoutPath, token);
+// const logoutUrl = `'http://15.164.68.136:8080/logout'`;
 
 const UserInfoBlock = styled.div`
 	display: flex;

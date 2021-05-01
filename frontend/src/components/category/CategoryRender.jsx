@@ -46,7 +46,7 @@ function CategoryRender({ title, url }) {
 						ref={button}
 						effect={'ease-in-out'}
 					>
-						{categoryData.map((data, idx) => (
+						{categoryData.map((data) => (
 							<ItemCard
 								key={data.detailHash}
 								itemData={data}

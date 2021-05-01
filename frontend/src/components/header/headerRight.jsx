@@ -4,7 +4,6 @@ import UserInfo from './UserInfo';
 import { AlignTextCenter } from '../style/Theme';
 
 function HeaderRight({ loginState, setLoginState, userName, userIMG }) {
-	console.log(userName, userIMG);
 	const loginUrl = `https://github.com/login/oauth/authorize?client_id=e1541c566570ff3e0151&redirect_uri=http://localhost:3000/logIn&scope=user`;
 
 	return (
@@ -57,10 +56,3 @@ const HeaderSearchInput = styled.input`
 	position: relative;
 `;
 const SearchBarIcon = styled(AlignTextCenter)``;
-
-//로그아웃 요청 백엔드 질문하기.
-// import { useState } from 'react';
-// import useFetch from '../useFetch';
-// const [logoutPath, setLogoutUrl] = useState(null);
-// const [logout, loadingLogOutState] = useFetch(logoutPath, token);
-// const logoutUrl = `'http://15.164.68.136:8080/logout'`;
