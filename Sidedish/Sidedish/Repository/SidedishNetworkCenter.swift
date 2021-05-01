@@ -9,8 +9,7 @@ import Foundation
 import Alamofire
 
 protocol Networkable {
-    func fetchItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ())
-    func fetchDetail(url: String, completion: @escaping (Result<DetailItem, AFError>) -> ())
+    func fetchItem<T: Decodable>(url: String, completion: @escaping (Result<T, AFError>) -> ())
     func downloadImage(from url: URL, completion: @escaping ((Data) -> ()) )
 }
 
@@ -21,62 +20,60 @@ class SidedishNetworkCenter: Networkable {
         self.imageCacheCenter = imageCacheable
     }
     
-    func fetchItems(url: String, completion: @escaping (Result<[SidedishItem], AFError>) -> ()) {
-        AF.request(url).validate().responseDecodable(of: SidedishOfCategory.self) { (response) in
+    func fetchItem<T: Decodable>(url: String, completion: @escaping (Result<T, AFError>) -> ()) {
+        AF.request(url).validate().responseDecodable(of: T.self) { (response) in
             switch response.result {
-            case .success(let sidedishOfCategory):
-                self.fetchImage(sidedishOfCategory: sidedishOfCategory) { (sidedishOfCategory) in
-                    completion(.success(sidedishOfCategory.body) )
+            case .success(let value):
+                if ((value as? SidedishOfCategory) != nil) {
+                    self.fetchImage(sidedishOfCategory: value) { (sidedishOfCategory) in
+                        completion(.success(sidedishOfCategory))
+                    }
+                } else if ((value as? Detail) != nil) {
+                    self.fetchDetailImgae(detail: value) { (detail) in
+                        completion(.success(detail))
+                    }
                 }
+                
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
-    func fetchDetail(url: String, completion: @escaping (Result<DetailItem, AFError>) -> ()) {
-        AF.request(url).validate().responseDecodable(of: Detail.self) { (response) in
-            switch response.result {
-            case .success(let detail):
-                self.fetchDetailImgae(detail: detail) { (detail) in
-                    completion(.success(detail.data))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func fetchImage(sidedishOfCategory: SidedishOfCategory, completion: @escaping (SidedishOfCategory) -> ()) {
-        var originalSidedishs = sidedishOfCategory
-        for (index, item) in sidedishOfCategory.body.enumerated() {
+    private func fetchImage<T>(sidedishOfCategory: T, completion: @escaping (T) -> ()) {
+        guard var originalSidedishs = sidedishOfCategory as? SidedishOfCategory else { return }
+        for (index, item) in originalSidedishs.body.enumerated() {
             guard let url = URL(string: item.imageURL) else { return }
             
             if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
                 imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
                     originalSidedishs.body[index].imageData = data
+                    guard let originalSidedishs = originalSidedishs as? T else { return }
                     completion(originalSidedishs)
                 }
             } else {
                 self.downloadImage(from: url) { (data) in
                     originalSidedishs.body[index].imageData = data
+                    guard let originalSidedishs = originalSidedishs as? T else { return }
                     completion(originalSidedishs)
                 }
             }
         }
     }
     
-    private func fetchDetailImgae(detail: Detail, completion: @escaping (Detail) -> ()) {
-        let originalDetail = detail
+    private func fetchDetailImgae<T>(detail: T, completion: @escaping (T) -> ()) {
+        guard let originalDetail = detail as? Detail else { return }
         guard let url = URL(string: originalDetail.data.topImageURL) else { return }
         if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
             imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
                 originalDetail.data.topImageData = data
+                guard let originalDetail = originalDetail as? T else { return }
                 completion(originalDetail)
             }
         } else {
             self.downloadImage(from: url) { (data) in
                 originalDetail.data.topImageData = data
+                guard let originalDetail = originalDetail as? T else { return }
                 completion(originalDetail)
             }
         }
@@ -87,11 +84,13 @@ class SidedishNetworkCenter: Networkable {
             if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
                 imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
                     originalDetail.data.thumbImagesData?[index] = data
+                    guard let originalDetail = originalDetail as? T else { return }
                     completion(originalDetail)
                 }
             } else {
                 self.downloadImage(from: url) { (data) in
                     originalDetail.data.thumbImagesData?[index] = data
+                    guard let originalDetail = originalDetail as? T else { return }
                     completion(originalDetail)
                 }
             }
@@ -103,11 +102,13 @@ class SidedishNetworkCenter: Networkable {
             if imageCacheCenter.cacheFileExists(fileName: url.lastPathComponent) {
                 imageCacheCenter.loadImageCache(fileName: url.lastPathComponent) { (data) in
                     originalDetail.data.detailSectionData?[index] = data
+                    guard let originalDetail = originalDetail as? T else { return }
                     completion(originalDetail)
                 }
             } else {
                 self.downloadImage(from: url) { (data) in
                     originalDetail.data.detailSectionData?[index] = data
+                    guard let originalDetail = originalDetail as? T else { return }
                     completion(originalDetail)
                 }
             }
