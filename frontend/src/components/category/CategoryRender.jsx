@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Title from '../atomic/Title';
-import Carousel from './Carousel';
+import Carousel from '../Carousel';
 import useFetch from '../useFetch';
 import ItemCard from '../card/ItemCard';
 import Loading from '../state/Loading';

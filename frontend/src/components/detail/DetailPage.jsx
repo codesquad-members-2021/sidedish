@@ -6,7 +6,7 @@ import Loading from '../state/Loading';
 import Modal from '../Modal';
 import React, { useState } from 'react';
 import Error from '../state/Error';
-import Recommend from './Recommend';
+import RecommendSection from './RecommendSection';
 import OrderInfoSection from './OrderInfoSection';
 function DetailPage({
 	loadingState,
@@ -102,7 +102,7 @@ function DetailPage({
 							</OrderBtn>
 						</ItemDetailInfo>
 					</RepresentativeBlock>
-					<Recommend />
+					<RecommendSection />
 				</>
 			)}
 		</Modal>

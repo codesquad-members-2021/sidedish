@@ -1,12 +1,12 @@
 import useFetch from '../useFetch';
 import styled from 'styled-components';
-import Carousel from '../category/Carousel';
+import Carousel from '../Carousel';
 import { VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import React, { useState, useRef } from 'react';
 import ItemCardSmall from '../card/ItemCardSmall';
 import { theme } from '../style/Theme';
 import Title from '../atomic/Title';
-function Recommend() {
+function RecommendSection() {
 	const [randomMenu, randomLoadingState] = useFetch(
 		process.env.REACT_APP_API_URL + 'recommend/10/',
 		'get',
@@ -68,7 +68,7 @@ function Recommend() {
 	);
 }
 
-export default Recommend;
+export default RecommendSection;
 const FooterSection = styled.div`
 	box-sizing: border-box;
 	padding: 48px;

@@ -1,25 +1,10 @@
 import { theme } from '../style/Theme';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-function UserInfo({ loginState, setLoginState, userName, userIMG }) {
-	const [hoverState, setHoverState] = useState(false);
-	const token = localStorage.getItem('token');
-	const handleClick = () => {
-		localStorage.setItem('isLogin', false);
-		localStorage.removeItem('userId');
-		localStorage.removeItem('token');
-		setLoginState(false);
-	};
+import { useState } from 'react';
 
-	useEffect(() => {
-		const logOut = async () => {
-			await axios.post('http://15.164.68.136:8080/logout', {
-				headers: { Authorization: `Bearer ${token}` },
-			});
-		};
-		logOut();
-	});
+import Logout from './Logout';
+function UserInfo({ setLoginState, userName, userIMG }) {
+	const [hoverState, setHoverState] = useState(false);
 
 	return (
 		<>
@@ -35,7 +20,7 @@ function UserInfo({ loginState, setLoginState, userName, userIMG }) {
 								Hi <strong>{userName}😉</strong>
 							</li>
 							<li>회원정보수정</li>
-							<li onClick={handleClick}>로그아웃</li>
+							<Logout setLoginState={setLoginState} />
 						</UserModal>
 					)}
 				</Profile>
