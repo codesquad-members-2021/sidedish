@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 
 class MainPageViewController: UIViewController {
     
@@ -48,7 +48,7 @@ class MainPageViewController: UIViewController {
         }            
         
         //App에 저장된 RealmDB파일의 위치를 알 수 있는 함수.
-        //print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func makeFetchDishesUseCase() -> FetchDishesUseCase {
