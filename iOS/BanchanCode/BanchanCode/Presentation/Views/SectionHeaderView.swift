@@ -23,6 +23,6 @@ class SectionHeaderView: UICollectionReusableView {
     }
     
     func fill(with viewModel: DishesViewModel) {
-        sectionTitleLabel.text = viewModel.category.sectionTitle
+        sectionTitleLabel.text = viewModel.category.value.sectionTitle
     }
 }

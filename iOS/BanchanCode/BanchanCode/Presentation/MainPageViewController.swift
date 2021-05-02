@@ -13,6 +13,7 @@ class MainPageViewController: UIViewController {
     @IBOutlet weak var dishCollectionView: UICollectionView!
     private var mainPageDelegate: MainPageCollectionViewDelegate?
     private var mainPageDataSource: MainPageCollectionViewDataSource?
+    private var viewModels: [DishesViewModel]!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,8 +32,10 @@ class MainPageViewController: UIViewController {
         mainPageDelegate = MainPageCollectionViewDelegate()
         mainPageDataSource = MainPageCollectionViewDataSource()
         
-        let categories: [Categorizable] = [MainCategory(), SoupCategory(), SideCategory()]
-        let viewModels = categories.map { category in
+        let categories: [Categorizable] = [MainCategory(sectionIndex: 0),
+                                           SoupCategory(sectionIndex: 1),
+                                           SideCategory(sectionIndex: 2)]
+        viewModels = categories.map { category in
             makeDishesViewModel(category: category)
         }                
         
@@ -74,11 +77,15 @@ class MainPageViewController: UIViewController {
     }
     
     private func bind(to viewModel: DishesViewModel) {
-        viewModel.items.observe(on: self) { [weak self] items in self?.updateItems(items) }
+        viewModel.category.observe(on: self) { [weak self] category in
+            DispatchQueue.main.async {
+                self?.updateSection(at: category.sectionIndex)
+            }
+        }
     }
     
-    private func updateItems(_ items: [DishesItemViewModel]) {
-        dishCollectionView.reloadSections(IndexSet(integersIn: 0...2))
+    private func updateSection(at index: Int) {
+        self.dishCollectionView.reloadSections(IndexSet(integer: index))
     }
     
     private func goToDishDetail(categoryName: String, dish: Dish) {
