@@ -6,38 +6,45 @@ import RightSide from 'Components/Modal/RightSide/RightSide';
 import BottomSide from 'Components/Modal/BottomSide/BottomSide';
 import useToggle from 'util/hooks/useToggle';
 import preparingProduct from 'images/preparingProduct.png';
-
-const DetailProductModal = ({ modalState }) => {
+import loadingImage from 'images/loading.gif';
+// refetchModal
+const DetailProductModal = ({ modalState, refetchModal }) => {
   const [isHide, setHide] = useToggle(true);
+  const { loading, data, error } = modalState;
 
   useEffect(() => {
-    if (modalState) {
-      setHide.toggle();
-    }
+    if (loading) setHide.toggle();
+    return () => { setHide.set(false); }
   }, [modalState]);
 
   return (
     <Background isHide={isHide}>
-      <ModelWrapper>
-        {modalState?.status === 'success' &&
+      <ModalWrapper>
+        {loading &&
+          <LoadingWrapper>
+            <img src={loadingImage} alt="" width='100%' />
+          </LoadingWrapper>
+        }
+
+        {data &&
           <div>
             <TopSide>
-              {modalState && (
-                <><LeftSide {...modalState} />
-                  <RightSide {...modalState} /></>
+              {data && (
+                <><LeftSide {...data} />
+                  <RightSide {...data} /></>
               )}
             </TopSide>
-            {!isHide && <BottomSide />}
+            {!isHide && <BottomSide refetchModal={refetchModal}/>}
           </div>
         }
 
-        {modalState?.status === 'fail' &&
+        {error &&
           <ErrorImgWrapper>
             <img src={preparingProduct} alt="" width='100%' />
           </ErrorImgWrapper>
         }
         <CloseButton src={closeImage} onClick={setHide.toggle} alt="" />
-      </ModelWrapper>
+      </ModalWrapper>
     </Background >
   );
 };
@@ -53,7 +60,7 @@ const Background = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
 
-const ModelWrapper = styled.div`
+const ModalWrapper = styled.div`
   display:flex;
   width:  1000px ;
   height: 1076px;
@@ -79,10 +86,20 @@ const CloseButton = styled.img`
   }
 `;
 
-const ErrorImgWrapper = styled.div`
+const LoadingWrapper = styled.div`
   height: inherit;
   width: 960px;
   background: #fff;
   border-radius: 5px;
+  font-size: 50px;
 `;
+
+const ErrorImgWrapper = styled(LoadingWrapper)`
+  height: inherit;
+  width: 960px;
+  background: #fff;
+  border-radius: 5px;
+  font-size: 50px;
+`;
+
 export default DetailProductModal;

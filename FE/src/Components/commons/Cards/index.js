@@ -1,13 +1,12 @@
-import preparingImage from 'images/preparingImage.jpg';
 import ResponsiveCard from 'Components/commons/Cards/ResponsiveCard.js';
 import TabCard from 'Components/commons/Cards/TabCard';
 
-const Card = ({ type = "default", number, item, setModalState }) => {
+const Card = ({ type = "default", item, refetchModal, payload }) => {
   switch (type) {
     case "responsive":
-      return <ResponsiveCard number={number} loadingImage={preparingImage} SpecialLabelTag />
+      return <ResponsiveCard payload={payload} refetchModal={refetchModal} />
     case "tabs":
-      return <TabCard {...{ item, setModalState }}></TabCard>;
+      return <TabCard {...{ item, refetchModal }}></TabCard>;
     default:
       return null;
   }

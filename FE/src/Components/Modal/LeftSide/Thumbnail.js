@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import preparingImage from 'images/preparingImage.jpg';
 
 const Thumbnail = ({ thumbnailSource }) => {
   return (
     <ThumbnailWrapper>
-      <ThumbnailImage src={thumbnailSource} />
+      <ThumbnailImage src={thumbnailSource} onError={(e) => e.target.src = preparingImage} />
     </ThumbnailWrapper>
   );
 };

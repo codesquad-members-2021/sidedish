@@ -5,7 +5,7 @@ const Sum = ({ sumPrice }) => {
   return (
     <SumWrapper>
       <Description>총 주문금액</Description>
-      <Price>{sumPrice.toLocaleString()}</Price>
+      <Price>{sumPrice}</Price>
     </SumWrapper>
   );
 };

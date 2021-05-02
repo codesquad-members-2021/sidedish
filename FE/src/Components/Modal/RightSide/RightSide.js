@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
 import CountSelector from 'Components/Modal/RightSide/CountSelector';
 import Sum from 'Components/Modal/RightSide/Sum';
 import OrderButton from 'Components/Modal/RightSide/OrderButton';
+import Prices from 'Components/Modal/RightSide/Prices';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
-const RightSide = ({ prices, product_description, point, delivery_info, delivery_fee, title, badge }) => {
+const RightSide = ({ salePrice, normalPrice, description, point, deliveryFee, title, badges }) => {
   const [count, setCount] = useState(0);
   const handleChangeCount = (number) => () => {
     setCount(count + number);
@@ -14,43 +14,30 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
 
   useEffect(() => {
     setCount(0); // 모달 새로 띄우면 카운트 0으로 초기화
-  }, [prices])
+  }, [salePrice])
+
+  const additionalInfo = [
+    { title: '적립금', desc: `${formatPriceAsNumber(point)}원` },
+    { title: '배송정보', desc: '서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.' },
+    { title: '배송비', desc: deliveryFee }
+  ];
 
   return (
     <RightSideWrapper>
       <TitleDiv>{title}</TitleDiv>
-      <DescriptionDiv>{product_description}</DescriptionDiv>
-      <PriceWrapper>
-        {badge?.map((badge, idx) => {
-          return (<SpecialLabelTag key={idx} badge={badge} />);
-        })}
-        {prices?.length === 1 &&
-          <SalePriceSpan>{formatPriceAsNumber(prices[0])}</SalePriceSpan>
-        }
-        {prices?.length === 2 &&
-          <><SalePriceSpan>{formatPriceAsNumber(prices[1])}</SalePriceSpan>
-            <NetPriceSpan>{formatPriceAsNumber(prices[0])}</NetPriceSpan></>
-        }
-      </PriceWrapper>
+      <DescriptionDiv>{description}</DescriptionDiv>
+      <Prices {...{ badges, salePrice, normalPrice }} />
 
       <DivisionHr />
 
-      <AdditionalInfoWrapper>
-        <AdditionalInfoTitle >적립금</AdditionalInfoTitle>
-        <AdditionalInfoDesc >
-          {formatPriceAsNumber(point, count)}원
-        </AdditionalInfoDesc>
-      </AdditionalInfoWrapper>
-
-      <AdditionalInfoWrapper>
-        <AdditionalInfoTitle>배송정보</AdditionalInfoTitle>
-        <AdditionalInfoDesc >{delivery_info}</AdditionalInfoDesc>
-      </AdditionalInfoWrapper>
-
-      <AdditionalInfoWrapper>
-        <AdditionalInfoTitle>배송비</AdditionalInfoTitle>
-        <AdditionalInfoDesc >{delivery_fee}</AdditionalInfoDesc>
-      </AdditionalInfoWrapper>
+      {additionalInfo.map(({ title, desc }, idx) => {
+        return (
+          <AdditionalInfoWrapper key={`additionalInfo-${idx}`}>
+            <AdditionalInfoTitle>{title}</AdditionalInfoTitle>
+            <AdditionalInfoDesc>{desc}</AdditionalInfoDesc>
+          </AdditionalInfoWrapper>
+        );
+      })}
 
       <DivisionHr topMargin="8" />
 
@@ -60,9 +47,7 @@ const RightSide = ({ prices, product_description, point, delivery_info, delivery
       </AdditionalInfoWrapper>
 
       <DivisionHr topMargin="24" />
-      <Sum sumPrice={prices[1]
-        ? formatPriceAsNumber(prices[1], count)
-        : formatPriceAsNumber(prices[0], count)} />
+      <Sum sumPrice={formatPriceAsNumber(salePrice, count)} />
       <OrderButton />
 
     </RightSideWrapper>
@@ -86,30 +71,6 @@ const DescriptionDiv = styled.div`
   font-size: 18px;
   color: #828282;
   line-height: 26px;
-`;
-
-const SalePriceSpan = styled.span`
-  margin: 0 8px 0 0;
-  color: #333333;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 35px;
-  &::after{
-    content:"원";
-  }
-`;
-
-const NetPriceSpan = styled.span`
-  color: #828282;
-  text-decoration: line-through;
-  line-height: 23px;
-  &::after{
-    content:"원";
-  }
-`;
-
-const PriceWrapper = styled.div`
-  margin: 0 0 24px 0;
 `;
 
 const DivisionHr = styled.hr`

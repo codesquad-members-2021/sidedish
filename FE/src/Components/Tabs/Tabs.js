@@ -3,50 +3,55 @@ import styled from 'styled-components';
 import API from 'util/API.js';
 import { Container } from 'Components/commons/base.js';
 import Card from 'Components/commons/Cards';
+import loadingImage from 'images/loading.gif';
+import errorImage from 'images/preparingProduct.png';
+import useAsync from 'util/hooks/useAsync';
 
-const Tabs = ({ setModalState }) => {
-  const [tabItemList, setTabItemList] = useState([]);
+const Tabs = ({ refetchModal }) => {
+  const [tabItemState] = useAsync(API.get.best);
   const [currentTabItems, setCurrentTabItems] = useState([]);
+  const { loading, data, error } = tabItemState;
 
   const handleChangeTabs = ({ idx }) => () => {
-    setCurrentTabItems(tabItemList[idx].items);
+    setCurrentTabItems(data[idx].items);
   };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { body } = await API.get.best();
-        setTabItemList(body);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (tabItemList[0]) {
-      setCurrentTabItems(tabItemList[0].items);
-    }
-  }, [tabItemList]);
+    if (data) setCurrentTabItems(data[0].items);
+  }, [data]);
 
   return (
     <TabsWrapper>
-      <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
-      <FlexWrapper>
-        {tabItemList.map(({ name }, idx) => {
-          return (
-            <label key={idx}>
-              <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
-              <LabelBelongSpan>{name}</LabelBelongSpan>
-            </label>
-          );
-        })}
-      </FlexWrapper>
-      <CardListWrapper>
-        {currentTabItems.map((item, idx) => {
-          return (<Card key={idx} type={"tabs"}  {...{ item, setModalState }} />);
-        })}
-      </CardListWrapper>
+      {loading &&
+        <div>
+          <img src={loadingImage} alt="" width='100%' />
+        </div>
+      }
+
+      {data && <>
+        <TabsTitle>후기가 증명하는 베스트 반찬</TabsTitle>
+        <FlexWrapper>
+          {Object.entries(data)?.map(([_, { name }], idx) => {
+            return (
+              <label key={`label-${idx}`}>
+                <RadioButton type="radio" name="best_dish" defaultChecked={idx === 0} onClick={handleChangeTabs({ idx })} />
+                <LabelBelongSpan>{name}</LabelBelongSpan>
+              </label>
+            );
+          })}
+        </FlexWrapper>
+        <CardListWrapper>
+          {currentTabItems?.map((item, idx) => {
+            return (<Card key={`card-${idx}`} type={"tabs"}  {...{ item, refetchModal }} />);
+          })}
+        </CardListWrapper>
+      </>}
+
+      {error &&
+        <div>
+          <img src={errorImage} alt="" width="100%" />
+        </div>
+      }
     </TabsWrapper>
   );
 };
@@ -55,17 +60,26 @@ const TabsWrapper = styled(Container)``;
 
 const FlexWrapper = styled.div`
   display:flex;
+
+  label + label {
+    margin-left: 10px;
+  }
+
 `;
 
 const LabelBelongSpan = styled.span`
-  display: inline-flex;
+  height: 100%;
   padding: 16px 32px;
-  margin: 0 10px 0 0;
   background:#F5F5F7;
+  box-sizing: border-box;
+  
   font-size: 18px;
   line-height: 26px;
-  align-items: center;
+  
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  
   cursor: pointer;
 `;
 

@@ -1,25 +1,30 @@
 import styled from 'styled-components';
 
-const ResponsiveCard = ({number, loadingImage, SpecialLabelTag}) => {
-  
+import preparingImage from 'images/preparingImage.jpg';
+
+const ResponsiveCard = ({ payload, refetchModal }) => {
+
+  const { id, topImage, deliveryTypes, title, description, salePrice, normalPrice, badges } = payload;
+
   return (
-    <CardWrapper>
+    <CardWrapper onClick={refetchModal({ hash: id }, { title, badges })}>
       <ImageWrapper>
-        <Image src={loadingImage} alt="" />
+        <Image src={topImage} onError={e => e.target.src = preparingImage} alt="" />
         <Overlay>
           <OverlayText>
-            <div>새벽배송</div>
-            <hr />
-            <div>전국택배</div>
+            {deliveryTypes?.slice(1, deliveryTypes.length - 1).split(", ").map((type, i) => {
+              if (i === 0) return (<><div>{type}</div> <hr /></>);
+              return (<div>{type}</div>);
+            })}
+
           </OverlayText>
         </Overlay>
       </ImageWrapper>
-      {number}
-      <TitleDiv>[소중한 식사] 경상도 한상차림</TitleDiv>
-      <DescriptionDiv>경상도 명물 요리 세가지를 한상에!</DescriptionDiv>
+      <TitleDiv> {title} </TitleDiv>
+      <DescriptionDiv> {description} </DescriptionDiv>
       <PriceWrapper>
-        <SalePriceSpan>31200</SalePriceSpan>
-        <NetPriceSpan>39000</NetPriceSpan>
+        <SalePriceSpan> {salePrice} </SalePriceSpan>
+        <NetPriceSpan> {normalPrice} </NetPriceSpan>
       </PriceWrapper>
       {/* <SpecialLabelTag /> */}
     </CardWrapper>
@@ -28,12 +33,15 @@ const ResponsiveCard = ({number, loadingImage, SpecialLabelTag}) => {
 
 const CardWrapper = styled.div`
   width: 100%;
+  
+  &:hover{
+    cursor:pointer;
+  }
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  margin: 0 0 16px 0;
   &:hover{
     cursor:pointer;
   }
@@ -73,9 +81,10 @@ const TitleDiv = styled.div`
 `;
 
 const DescriptionDiv = styled.div`
+  min-height: 50px;
+
   font-size: 14px;
   color: #828282;
-  margin: 0 0 16px 0;
   line-height: 20px;
 `;
 

@@ -1,32 +1,22 @@
 import styled from 'styled-components';
 import preparingImage from 'images/preparingImage.jpg';
 import SpecialLabelTag from 'Components/commons/SpecialLabelTag';
-import API from 'util/API';
 import { formatPriceAsNumber } from 'util/serviceUtils';
 
-const TabCard = ({ item, setModalState }) => {
+const TabCard = ({ item, refetchModal }) => {
+  const { id, deliveryTypes, title, description,
+    normalPrice, salePrice, badges, topImage } = item;
 
-  const { detail_hash, delivery_type, title,
-    description, n_price, s_price, badge } = item;
-
-  const fetchModalState = ({ hash }) => async () => {
-    try {
-      const { data } = await API.get.detail({ hash });
-      setModalState({ status: 'success', title, badge, ...data });
-    } catch ({ status }) {
-      setModalState({ status });
-    }
-  };
-
+  const [DOMESTIC_POST, NEXT_DAY] = deliveryTypes.slice(1, -1).split(', ');
   return (
     <CardWrapper>
-      <ImageWrapper onClick={fetchModalState({ hash: detail_hash })}>
-        <Image src={preparingImage} alt="" />
+      <ImageWrapper onClick={refetchModal({ hash: id }, { title, badges })}>
+        <Image src={topImage} onError={e => e.target.src = preparingImage} alt="" />
         <Overlay>
           <OverlayText>
-            <div>{delivery_type[0]}</div>
+            <div>{DOMESTIC_POST}</div>
             <hr />
-            <div>{delivery_type[1]}</div>
+            <div>{NEXT_DAY}</div>
           </OverlayText>
         </Overlay>
       </ImageWrapper>
@@ -34,14 +24,14 @@ const TabCard = ({ item, setModalState }) => {
       <DescriptionDiv>{description}</DescriptionDiv>
 
       <PriceWrapper>
-        {n_price ?
-          <><SalePriceSpan>{formatPriceAsNumber(s_price)}</SalePriceSpan>
-            <NetPriceSpan>{formatPriceAsNumber(n_price)}</NetPriceSpan></> :
-          <SalePriceSpan>{formatPriceAsNumber(s_price)}</SalePriceSpan>}
+        {normalPrice !== salePrice ?
+          <><SalePriceSpan>{formatPriceAsNumber(salePrice)}</SalePriceSpan>
+            <NetPriceSpan>{formatPriceAsNumber(normalPrice)}</NetPriceSpan></> :
+          <SalePriceSpan>{formatPriceAsNumber(salePrice)}</SalePriceSpan>}
       </PriceWrapper>
 
-      {badge?.map((badge, idx) => {
-        return (<SpecialLabelTag key={idx} badge={badge} />);
+      {badges?.slice(1, -1).split(', ').map((badge, idx) => {
+        return (<SpecialLabelTag key={`TabSpecialLabel-${idx}`} badge={badge} />);
       })}
     </CardWrapper>
   )
