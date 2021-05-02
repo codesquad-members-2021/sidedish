@@ -31,17 +31,14 @@ class DishCell: UICollectionViewCell {
         nameLabel.text = dish.name
         descriptionLabel.text = dish.description
         
-        let prices = dish.prices
-        let originalPrice = prices[0]
-        if prices.count > 1 {
-            let lastPrice = prices[1]
-            lastPriceLabel.text = String().format(price: lastPrice)
-            originalPriceLabel.isHidden = false
+        lastPriceLabel.text = String().format(price: viewModel.lastPrice)
+        if let originalPrice = viewModel.originalPrice {
             originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
+            originalPriceLabel.isHidden = false
         } else {
-            lastPriceLabel.text = String().format(price: originalPrice)
             originalPriceLabel.isHidden = true
         }
+        
         let badges = dish.badges
         badgeStackView.arrangedSubviews.forEach { subview in
             subview.removeFromSuperview()
