@@ -32,7 +32,7 @@
 		E4FC9C8E262EA2E000BEAAE4 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9C8C262EA2E000BEAAE4 /* DishCell.swift */; };
 		E4FC9C8F262EA2E000BEAAE4 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FC9C8D262EA2E000BEAAE4 /* DishCell.xib */; };
 		E4FC9CBB26300D5800BEAAE4 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC9CBA26300D5800BEAAE4 /* Dish.swift */; };
-		FA74E4B6263880B100F1CC7B /* DishEntitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74E4B5263880B100F1CC7B /* DishEntitiy.swift */; };
+		FA74E4B6263880B100F1CC7B /* DishDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74E4B5263880B100F1CC7B /* DishDB.swift */; };
 		FA74E4BE2638880A00F1CC7B /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74E4BD2638880A00F1CC7B /* RealmManager.swift */; };
 		FA864A792630030600A3C429 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA864A772630030500A3C429 /* SectionHeaderView.swift */; };
 		FA864A7A2630030600A3C429 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA864A782630030600A3C429 /* SectionHeaderView.xib */; };
@@ -95,7 +95,7 @@
 		E4FC9C8C262EA2E000BEAAE4 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		E4FC9C8D262EA2E000BEAAE4 /* DishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCell.xib; sourceTree = "<group>"; };
 		E4FC9CBA26300D5800BEAAE4 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
-		FA74E4B5263880B100F1CC7B /* DishEntitiy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishEntitiy.swift; sourceTree = "<group>"; };
+		FA74E4B5263880B100F1CC7B /* DishDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDB.swift; sourceTree = "<group>"; };
 		FA74E4BD2638880A00F1CC7B /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		FA864A772630030500A3C429 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		FA864A782630030600A3C429 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		FA74E4B42638806600F1CC7B /* RealmStorage */ = {
 			isa = PBXGroup;
 			children = (
-				FA74E4B5263880B100F1CC7B /* DishEntitiy.swift */,
+				FA74E4B5263880B100F1CC7B /* DishDB.swift */,
 				FA74E4BD2638880A00F1CC7B /* RealmManager.swift */,
 			);
 			name = RealmStorage;
@@ -619,7 +619,7 @@
 				E463432D263178E10001D87A /* String+StrikeThrough.swift in Sources */,
 				E46342EA2631199B0001D87A /* DishesResponseDTO+Mapping.swift in Sources */,
 				FA88E9DF262E7F50001C3E53 /* AppDelegate.swift in Sources */,
-				FA74E4B6263880B100F1CC7B /* DishEntitiy.swift in Sources */,
+				FA74E4B6263880B100F1CC7B /* DishDB.swift in Sources */,
 				E4FC9CBB26300D5800BEAAE4 /* Dish.swift in Sources */,
 				E4FC9C8E262EA2E000BEAAE4 /* DishCell.swift in Sources */,
 				E49F173526390170006C2108 /* DishDetail.swift in Sources */,
