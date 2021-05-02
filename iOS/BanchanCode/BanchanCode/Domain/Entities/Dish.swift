@@ -17,5 +17,6 @@ struct Dish{
 }
 
 struct Dishes {
+    var category: Categorizable?
     var dishes: [Dish]
 }

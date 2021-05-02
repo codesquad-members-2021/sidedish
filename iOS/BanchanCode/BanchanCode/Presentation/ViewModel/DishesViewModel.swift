@@ -12,13 +12,13 @@ struct DishesListViewModelActions {
 }
 
 protocol DishesViewModelInput {
-    func load()    
+    func load()
     func getNumberOfItems() -> Int
     func didSelectItem(at index: Int)
 }
 
 protocol DishesViewModelOutput {
-    var category: Categorizable { get }
+    var category: Observable<Categorizable> { get }
     var items: Observable<[DishesItemViewModel]> { get }
 }
 
@@ -29,7 +29,7 @@ final class DefaultDishesViewModel: DishesViewModel {
     private let actions: DishesListViewModelActions?
     
     //MARK: - Output
-    var category: Categorizable
+    var category: Observable<Categorizable>
     var items: Observable<[DishesItemViewModel]> = Observable([])
     
     //MARK: - Init
@@ -37,7 +37,7 @@ final class DefaultDishesViewModel: DishesViewModel {
          category: Categorizable,
          actions: DishesListViewModelActions? = nil) {
         self.fetchDishesUseCase = fetchDishesUseCase
-        self.category = category
+        self.category = Observable(category)
         self.actions = actions
     }
 }
@@ -45,21 +45,22 @@ final class DefaultDishesViewModel: DishesViewModel {
 //MARK: - Input
 extension DefaultDishesViewModel {
     func load() {
-        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.name), completion: { result in
+        fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { result in
             switch result {
             case .success(let items):
-                self.items.value = items.dishes.map(DishesItemViewModel.init)                
-            case .failure(let error):                
+                self.category.value.items = items.dishes
+                self.items.value = items.dishes.map(DishesItemViewModel.init)
+            case .failure(let error):
                 print(error.localizedDescription)
             }
         })
     }
     
     func getNumberOfItems() -> Int {
-        items.value.count
+        return items.value.count
     }
     
     func didSelectItem(at index: Int) {
-        actions?.goToDishDetail(category.name, items.value[index].dish)
+        actions?.goToDishDetail(category.value.name, items.value[index].dish)
     }
 }

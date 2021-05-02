@@ -9,6 +9,7 @@ import UIKit
 
 class MainPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     var viewModels: [DishesViewModel]!
+    private let networkManager = NetworkManager()
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModels.count
@@ -20,7 +21,13 @@ class MainPageCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCell.reuseIdentifier, for: indexPath) as! DishCell
-        cell.fill(with: viewModels[indexPath.section].items.value[indexPath.row])
+        let dishesItemViewModel = viewModels[indexPath.section].items.value[indexPath.row]
+        cell.fill(with: dishesItemViewModel)
+        networkManager.performDataRequest(urlString: dishesItemViewModel.dish.imageURL) { imageData in
+            DispatchQueue.main.async {
+                cell.thumbnailImageView.image = UIImage(data: imageData)
+            }
+        }
         return cell
     }
     

@@ -18,7 +18,6 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var badgeStackView: UIStackView!
     
     static let reuseIdentifier = String(describing: DishCell.self)
-    let networkManager = NetworkManager()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,25 +28,17 @@ class DishCell: UICollectionViewCell {
     
     func fill(with viewModel: DishesItemViewModel) {
         let dish = viewModel.dish
-        networkManager.performDataRequest(urlString: dish.imageURL) { imageData in
-            DispatchQueue.main.async {
-                self.thumbnailImageView.image = UIImage(data: imageData)
-            }
-        }
         nameLabel.text = dish.name
         descriptionLabel.text = dish.description
         
-        let prices = dish.prices
-        let originalPrice = prices[0]
-        if prices.count > 1 {
-            let lastPrice = prices[1]
-            lastPriceLabel.text = String().format(price: lastPrice)
-            originalPriceLabel.isHidden = false
+        lastPriceLabel.text = String().format(price: viewModel.lastPrice)
+        if let originalPrice = viewModel.originalPrice {
             originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
+            originalPriceLabel.isHidden = false
         } else {
-            lastPriceLabel.text = String().format(price: originalPrice)
             originalPriceLabel.isHidden = true
         }
+        
         let badges = dish.badges
         badgeStackView.arrangedSubviews.forEach { subview in
             subview.removeFromSuperview()
