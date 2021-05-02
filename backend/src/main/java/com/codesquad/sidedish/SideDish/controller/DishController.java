@@ -7,10 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,24 +50,34 @@ public class DishController {
         return ResponseEntity.ok().body(quantityDto);
     }
 
+    @PatchMapping("/detail/{detailHash}/{count}")
+    @ApiOperation(value = "주문하기", notes = "주문하기")
+    public ResponseEntity<String> orderDish(@ApiParam("요리의 식별자") @PathVariable("detailHash") String detailHash, @PathVariable("count") int count) {
+        if (dishService.order(detailHash, count)) {
+            return ResponseEntity.ok().body("주문완료");
+        }
+        return ResponseEntity.ok().body("주문불가");
+    }
+
     @GetMapping("/main")
     @ApiOperation(value = "메인 요리", notes = "메인 요리의 목록을 반환합니다.")
     public ResponseEntity<List<DishDto>> getMainList() {
-        List<DishDto> dishes = dishService.getList(1);
-        return ResponseEntity.ok().body(dishes);
-    }
-
-    @GetMapping("/side")
-    @ApiOperation(value = "반찬 요리", notes = "반찬 요리의 목록을 반환합니다.")
-    public ResponseEntity<List<DishDto>> getSideList() {
-        List<DishDto> dishes = dishService.getList(3);
+        List<DishDto> dishes = dishService.getList(1L);
         return ResponseEntity.ok().body(dishes);
     }
 
     @GetMapping("/soup")
     @ApiOperation(value = "국물 요리", notes = "국물 요리의 목록을 반환합니다.")
     public ResponseEntity<List<DishDto>> getSoupList() {
-        List<DishDto> dishes = dishService.getList(2);
+        List<DishDto> dishes = dishService.getList(2L);
         return ResponseEntity.ok().body(dishes);
     }
+
+    @GetMapping("/side")
+    @ApiOperation(value = "반찬 요리", notes = "반찬 요리의 목록을 반환합니다.")
+    public ResponseEntity<List<DishDto>> getSideList() {
+        List<DishDto> dishes = dishService.getList(3L);
+        return ResponseEntity.ok().body(dishes);
+    }
+
 }

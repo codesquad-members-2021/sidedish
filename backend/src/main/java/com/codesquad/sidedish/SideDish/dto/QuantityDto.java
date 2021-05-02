@@ -1,15 +1,16 @@
 package com.codesquad.sidedish.SideDish.dto;
 
+
 import com.codesquad.sidedish.SideDish.domain.Dish;
 
 public class QuantityDto {
-    private final int quantity;
+    private final Integer quantity;
 
-    private QuantityDto(int quantity) {
+    private QuantityDto(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
