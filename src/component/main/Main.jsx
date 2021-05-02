@@ -36,7 +36,7 @@ export default function Main() {
         mainItems.map((mainItem, id) => (
           <CarouselContainer key={id}>
             <h2>{mainItem.title}</h2>
-            <DicoJsonCarousel options={{ loop: id === 0 }}>
+            <DicoJsonCarousel>
               {mainItem.childs.map((item, idx) => (
                 <ItemCard
                   src={item.main_image}
