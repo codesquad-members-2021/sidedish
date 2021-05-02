@@ -6,14 +6,11 @@ const Tab = ({ item: { title, subMenu } }) => {
 
   const handleMouseEnter = () => {
     setIsHover(true);
-    console.log('mouse enter');
   };
 
   const handleMouseLeave = () => {
     setIsHover(false);
-    console.log('mouse leave');
   };
-
   const subMenuList = subMenu.map((item, i) => (
     <div className="subMenuItem" key={i}>
       {item}
@@ -21,7 +18,7 @@ const Tab = ({ item: { title, subMenu } }) => {
   ));
   return (
     <TabStyle onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div>{title}</div>
+      <div className="title">{title}</div>
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -36,17 +33,19 @@ const Tab = ({ item: { title, subMenu } }) => {
 export default Tab;
 
 const TabStyle = styled.li`
+  position: relative;
+
+  .title {
+    margin: 1rem 0;
+  }
   .subMenu {
-    width: auto;
+    width: 7rem;
     padding: 1rem;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(4px);
-    /* top: 5rem; */
-    margin-top: 1rem;
   }
 
   .subMenuItem {

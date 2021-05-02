@@ -7,7 +7,6 @@ import { URL } from 'util/data';
 
 const BestSidedish = () => {
   const parseBestList = (json) => {
-    setFocusedCategory(json.body[0].category_id);
     const parsedBestList = json.body.map(({ category_id, name }) => ({
       id: category_id,
       title: name,
@@ -15,8 +14,16 @@ const BestSidedish = () => {
     return parsedBestList;
   };
 
-  const { data: bestList, loading, error } = useFetch({ url: URL.best(), parse: parseBestList });
+  const initFocusedCategory = (parsedBestList) => {
+    setFocusedCategory(parsedBestList[0].id);
+  };
+
   const [focusedCategory, setFocusedCategory] = useState(null);
+  const { data: bestList, loading, error } = useFetch({
+    url: URL.best(),
+    parse: parseBestList,
+    initEffect: [initFocusedCategory],
+  });
 
   const handleFocusedCategory = (categoryId) => {
     setFocusedCategory(categoryId);

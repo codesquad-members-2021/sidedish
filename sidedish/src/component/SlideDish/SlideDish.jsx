@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import DishItem from 'component/DishItem/DishItem';
 import { URL } from 'util/data';
 import useFetch from 'hooks/useFetch';
 import Carousel from 'component/Carousel/Carousel';
 
-const SlideDish = ({ category }) => {
-  const { data: slideData, loading, error } = useFetch({ url: URL[category]() });
+const SlideDish = ({ category: { path, title } }) => {
+  const carouselRef = useRef();
+  const { data: slideData, loading, error } = useFetch({ url: URL[path]() });
   const slideCategory =
     slideData &&
     slideData.body.map((item) => <DishItem key={item.detail_hash} item={item} size="M" />);
+
+  const settings = {
+    ref: carouselRef,
+    slideToScroll: 2,
+    speed: 500,
+    defaultArrow: true,
+  };
 
   if (error) throw Error(error);
   return loading ? (
     <div>Loading...</div>
   ) : (
     <SlideContainer>
-      <Header>모두가 좋아하는 든든한 메인요리</Header>
-      <Carousel
-        itemWidth={324}
-        maxItem={4}
-        skipItem={3}
-        animationTime={0.5}
-        lassName="carouselWrapper"
-      >
-        {slideCategory}
-      </Carousel>
+      <Header>{title}</Header>
+      <Carousel {...settings}>{slideCategory}</Carousel>
     </SlideContainer>
   );
 };
