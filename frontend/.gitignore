@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+.css
+.svg
+.json
+.lock
 # dependencies
 /node_modules
 /.pnp
@@ -21,7 +24,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/public
+
 
 
 logo.svg

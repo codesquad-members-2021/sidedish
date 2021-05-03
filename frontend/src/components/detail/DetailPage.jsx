@@ -1,42 +1,180 @@
-import styled from "styled-components";
-import { theme, Button } from "../Theme";
-import { BiX } from "react-icons/bi";
-const DarkBackground = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-`;
-const Modal = styled.div`
-  width: 960px;
-  height: 680px;
-  background-color: ${theme.colors.white};
-`;
-const Xstyle = {
-  color: theme.colors.white,
-  position: "relative",
-  top: "-320px",
-};
+import styled from 'styled-components';
+import { theme } from '../style/Theme';
+import ItemPrice from '../atomic/ItemPrice';
+import Badge from '../atomic/Badge';
+import Loading from '../state/Loading';
+import Modal from '../Modal';
+import React, { useState } from 'react';
+import Error from '../state/Error';
+import RecommendSection from './RecommendSection';
+import OrderInfoSection from './OrderInfoSection';
+function DetailPage({
+	loadingState,
+	detailData,
+	modalMode,
+	setModalState,
+	item,
+	badges,
+	hash,
+}) {
+	const {
+		topImage,
+		stock,
+		nPrice,
+		sPrice,
+		thumbImages,
+		productDescription,
+		point,
+		deliveryInfo,
+		deliveryFee,
+	} = detailData;
+	const [topImgUrl, setTopImg] = useState(topImage);
+	const [order, setOrderCount] = useState(1);
+	const [dbstock, setDBstock] = useState(stock);
+	const orderPrice = sPrice ? sPrice : nPrice;
+	const handleOrderClick = () => {
+		const orderFetch = () => {
+			fetch(process.env.REACT_APP_API_URL + 'order', {
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ hash, order }),
+			})
+				.then((res) => res.json())
+				.then((res) => setDBstock(res.stock));
+		};
+		orderFetch();
+		setModalState(!modalMode);
+	};
 
-function DetailPage({ detailData, ModalMode, setModalState }) {
-  console.log(detailData);
-  const handleClick = () => {
-    setModalState(!ModalMode);
-  };
-  return (
-    <DarkBackground>
-      <Modal>내용</Modal>
-      <Button onClick={handleClick}>
-        <BiX style={Xstyle} />
-      </Button>
-    </DarkBackground>
-  );
+	return (
+		<Modal {...{ modalMode, setModalState }}>
+			{loadingState ? (
+				<Loading width="960px" height="568px" />
+			) : detailData === 400 ? (
+				<Error></Error>
+			) : (
+				<>
+					<RepresentativeBlock className="MODAL">
+						<ImageBlock>
+							<IMG image={topImgUrl} size="L" />
+							<DetailBlock>
+								{thumbImages.map((el, idx) => (
+									<IMG key={idx} image={el} onClick={() => setTopImg(el)}></IMG>
+								))}
+							</DetailBlock>
+						</ImageBlock>
+						<ItemDetailInfo>
+							<ItemTitle>{item}</ItemTitle>
+							<ItemDesc>{productDescription}</ItemDesc>
+							<FlexBox>
+								<Badge data={badges}></Badge>
+								<ItemPrice
+									type={'basic'}
+									sPrice={sPrice}
+									nPrice={nPrice}
+								></ItemPrice>
+							</FlexBox>
+							<img src="./longUnderLine.png" alt="underline"></img>
+							<OrderInfoSection {...{ point, deliveryInfo, deliveryFee }} />
+							<img src="./longUnderLine.png" alt="underline"></img>
+							<FlexBlock>
+								<ItemDesc>수량</ItemDesc>
+								<NumInput
+									type="number"
+									value={order}
+									placeholder="1"
+									min="1"
+									max={dbstock}
+									onChange={(e) => setOrderCount(+e.target.value)}
+								></NumInput>
+							</FlexBlock>
+							<img src="./longUnderLine.png" alt="underline"></img>
+							<FlexBlock>
+								<DetailText>총 주문금액</DetailText>
+								<ItemPrice
+									type={'basic'}
+									nPrice={`${orderPrice * order}`}
+								></ItemPrice>
+							</FlexBlock>
+
+							<OrderBtn onClick={handleOrderClick} disabled={!Boolean(stock)}>
+								{stock ? '주문하기' : '상품 준비중'}
+							</OrderBtn>
+						</ItemDetailInfo>
+					</RepresentativeBlock>
+					<RecommendSection />
+				</>
+			)}
+		</Modal>
+	);
 }
 
-export default DetailPage;
+export default React.memo(DetailPage);
+const RepresentativeBlock = styled.div`
+	display: flex;
+	margin: 48px;
+`;
+const FlexBlock = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+`;
+const ImageBlock = styled.div`
+	margin-right: 32px;
+`;
+const IMG = styled.div`
+	width: ${(props) => {
+		return props.size === 'L' ? '392px' : '72px';
+	}};
+	height: ${(props) => {
+		return props.size === 'L' ? '392px' : '72px';
+	}};
+	background-image: url(${(props) => props.image});
+	background-size: cover;
+	margin-bottom: 8px;
+`;
+const DetailBlock = styled.div`
+	width: 392px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 8px;
+`;
+const ItemDetailInfo = styled.div``;
+const FlexBox = styled.div`
+	display: flex;
+	align-items: flex-end;
+`;
+const ItemTitle = styled.span`
+	font-size: ${theme.fontSize.large};
+	font-weight: Bold;
+	margin-bottom: 16px;
+	&:hover {
+		text-decoration: underline;
+	}
+`;
+const DetailText = styled.div`
+	color: ${theme.colors.deep_grey_text};
+`;
+const ItemDesc = styled.div`
+	font-size: ${theme.fontSize.medium};
+	color: ${theme.colors.grey_text};
+	margin-bottom: 16px;
+`;
+const OrderBtn = styled.button`
+	color: ${theme.colors.white};
+	font-size: ${theme.fontSize.large};
+	background-color: ${(props) =>
+		props.disabled ? theme.colors.grey_text : theme.colors.green};
+	width: 440px;
+	height: 58px;
+	margin-top: 20px;
+	box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
+		0px 2px 4px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(4px);
+	border-radius: 5px;
+	cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+`;
+const NumInput = styled.input`
+	padding: 5px 0 5px 5px;
+	height: 14px;
+`;
