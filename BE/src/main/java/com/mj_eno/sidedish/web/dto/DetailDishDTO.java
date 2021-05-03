@@ -17,9 +17,9 @@ public class DetailDishDTO {
     private final int stock;
     private final List<String> detailSection;
 
-    public DetailDishDTO(Dish dish, String topImage, List<String> thumbImages, List<String> detailSection) {
-        this.topImage = topImage;
-        this.thumbImages = thumbImages;
+    public DetailDishDTO(Dish dish) {
+        this.topImage = dish.getTopImageUrl();
+        this.thumbImages = dish.getImagesUrl();
         this.productDescription = dish.getDescription();
         this.point = dish.getPoint();
         this.deliveryInfo = dish.getDeliveryInfo();
@@ -27,7 +27,7 @@ public class DetailDishDTO {
         this.nPrice = dish.getnPrice();
         this.sPrice = dish.getsPrice();
         this.stock = dish.getStock();
-        this.detailSection = detailSection;
+        this.detailSection = dish.getDetailImagesUrl();
     }
 
     public String getTopImage() {

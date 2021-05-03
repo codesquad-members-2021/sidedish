@@ -15,6 +15,19 @@ CREATE SCHEMA IF NOT EXISTS `side_dish` DEFAULT CHARACTER SET utf8;
 USE `side_dish`;
 
 -- -----------------------------------------------------
+-- Table `side_dish`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `side_dish`.`user`;
+CREATE TABLE IF NOT EXISTS `side_dish`.`user` (
+    `id` INT AUTO_INCREMENT,
+    `name` VARCHAR(45),
+    `email` VARCHAR(45) NOT NULL,
+    `user_id` VARCHAR(45) NOT NULL,
+    `token` VARCHAR(255),
+    PRIMARY KEY (`id`))
+    ENGINE = InnoDB;
+
+-- -----------------------------------------------------
 -- Table `side_dish`.`best_menu_category`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `side_dish`.`best_menu_category`;
@@ -49,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`dish` (
     `n_price` INT NOT NULL,
     `s_price` INT NULL DEFAULT 0,
     `point` INT NULL DEFAULT 0,
-    `stock` INT NOT NULL DEFAULT 2,
+    `stock` INT NOT NULL DEFAULT 10,
     `delivery_type` VARCHAR(45) NOT NULL DEFAULT '새벽배송, 전국택배',
     `delivery_info` VARCHAR(255) NOT NULL DEFAULT '서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [월 · 화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다.',
     `delivery_fee` VARCHAR(45) NOT NULL DEFAULT '2,500원 (40,000원 이상 구매 시 무료)',
@@ -88,13 +101,14 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`badge` (
 DROP TABLE IF EXISTS `side_dish`.`dish_badge`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`dish_badge` (
     `id` INT AUTO_INCREMENT,
-    `dish_id` INT NOT NULL,
+    `dish` INT NOT NULL,
+    `dish_key` INT,
     `badge_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_dish_badge_dish_idx` (`dish_id` ASC) VISIBLE,
+    INDEX `fk_dish_badge_dish_idx` (`dish` ASC) VISIBLE,
     INDEX `fk_dish_badge_badge1_idx` (`badge_id` ASC) VISIBLE,
     CONSTRAINT `fk_dish_badge_dish`
-    FOREIGN KEY (`dish_id`)
+    FOREIGN KEY (`dish`)
     REFERENCES `side_dish`.`dish` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -114,11 +128,12 @@ CREATE TABLE IF NOT EXISTS `side_dish`.`image` (
     `id` INT AUTO_INCREMENT,
     `url` VARCHAR(255) NOT NULL,
     `top` TINYINT(1) NULL,
-    `dish_id` INT NOT NULL,
+    `dish` INT NOT NULL,
+    `dish_key` INT,
     PRIMARY KEY (`id`),
-    INDEX `fk_image_dish1_idx` (`dish_id` ASC) VISIBLE,
+    INDEX `fk_image_dish1_idx` (`dish` ASC) VISIBLE,
     CONSTRAINT `fk_image_dish1`
-    FOREIGN KEY (`dish_id`)
+    FOREIGN KEY (`dish`)
     REFERENCES `side_dish`.`dish` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -132,11 +147,12 @@ DROP TABLE IF EXISTS `side_dish`.`detail_image`;
 CREATE TABLE IF NOT EXISTS `side_dish`.`detail_image` (
     `id` INT AUTO_INCREMENT,
     `url` VARCHAR(255) NOT NULL,
-    `dish_id` INT NOT NULL,
+    `dish` INT NOT NULL,
+    `dish_key` INT,
     PRIMARY KEY (`id`),
-    INDEX `fk_detail_image_dish1_idx` (`dish_id` ASC) VISIBLE,
+    INDEX `fk_detail_image_dish1_idx` (`dish` ASC) VISIBLE,
     CONSTRAINT `fk_detail_image_dish1`
-    FOREIGN KEY (`dish_id`)
+    FOREIGN KEY (`dish`)
     REFERENCES `side_dish`.`dish` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

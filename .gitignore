@@ -162,3 +162,5 @@ gradle-app.setting
 .idea/workspace.xml
 .idea/modules.xml
 .idea/jarRepositories.xml
+
+BE/src/main/resources/oauth.properties

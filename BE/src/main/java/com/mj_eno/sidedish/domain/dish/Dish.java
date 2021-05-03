@@ -1,7 +1,14 @@
 package com.mj_eno.sidedish.domain.dish;
 
+import com.mj_eno.sidedish.domain.Image.Image;
+import com.mj_eno.sidedish.domain.detailImage.DetailImage;
+import com.mj_eno.sidedish.domain.dishBadge.DishBadge;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Dish {
 
@@ -18,10 +25,39 @@ public class Dish {
     private Delivery delivery;
     private int menuCategoryId;
     private Integer bestMenuCategoryId;
+    private List<Image> images = new ArrayList<>();
+    private List<DetailImage> detailImages = new ArrayList<>();
+    private List<DishBadge> dishBadges = new ArrayList<>();
 
     public Dish(String hash, int stock) {
         this.hash = hash;
         this.stock = stock;
+    }
+
+    public String getTopImageUrl() {
+        return images.stream()
+                .filter(Image::isTop)
+                .map(Image::getUrl)
+                .collect(Collectors.toList())
+                .get(0);
+    }
+
+    public List<String> getImagesUrl() {
+        return images.stream()
+                .map(Image::getUrl)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getDetailImagesUrl() {
+        return detailImages.stream()
+                .map(DetailImage::getUrl)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getBadgesId() {
+        return dishBadges.stream()
+                .map(DishBadge::getBadgeId)
+                .collect(Collectors.toList());
     }
 
     public void order(Dish dish) {
@@ -97,13 +133,15 @@ public class Dish {
         return bestMenuCategoryId;
     }
 
-    @Override
-    public String toString() {
-        return "Dish{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", menuCategoryId=" + menuCategoryId +
-                ", bestMenuCategoryId=" + bestMenuCategoryId +
-                '}';
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public List<DetailImage> getDetailImages() {
+        return detailImages;
+    }
+
+    public List<DishBadge> getDishBadges() {
+        return dishBadges;
     }
 }
