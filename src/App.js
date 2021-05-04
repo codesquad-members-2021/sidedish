@@ -1,20 +1,15 @@
-import BestTab from "./component/bestTab/BestTab.jsx";
 import Header from "./component/header/Header.jsx";
-import PopUpContainer from "./component/popUp/PopUpContainer.jsx";
-import ShowMoreBtn from "./component/ShowMoreBtn.jsx";
-import SlideContainer from "./component/slideContainer/SlideContainer.jsx";
-import GlobalStyle from "./style.js";
+import Main from "./component/main/Main.jsx";
+import GlobalStyle from "./common/style.js";
+import { ContextProvider } from "./component/Context.jsx";
 
 function App() {
   return (
-    <>
+    <ContextProvider>
       <GlobalStyle />
       <Header />
-      <BestTab />
-      <SlideContainer />
-      <ShowMoreBtn />
-      <PopUpContainer/>
-    </>
+      <Main />
+    </ContextProvider>
   );
 }
 
