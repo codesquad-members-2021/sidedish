@@ -18,15 +18,15 @@
 ---
 
 ## 브랜치 규칙
+
 ![브랜치 규칙](https://user-images.githubusercontent.com/62237639/115202663-94fcd880-a131-11eb-8708-23c7a09cc200.png)
 
 ---
 
 ## 프로젝트 관리
 
+
 ![프로젝트 관리](https://user-images.githubusercontent.com/62237639/115204101-16a13600-a133-11eb-994c-f4c8ba1d22db.png)
 
 ---
 ![프로젝트 진행 방식](https://user-images.githubusercontent.com/62237639/115204313-4fd9a600-a133-11eb-9e1a-13d6f06182c5.png)
-
-
