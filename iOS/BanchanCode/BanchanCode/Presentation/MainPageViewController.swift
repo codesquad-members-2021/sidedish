@@ -10,6 +10,8 @@ import RealmSwift
 
 class MainPageViewController: UIViewController {
     
+    //let queue = DispatchQueue(label: "section.queue")
+    
     @IBOutlet weak var dishCollectionView: UICollectionView!
     private var mainPageDelegate: MainPageCollectionViewDelegate?
     private var mainPageDataSource: MainPageCollectionViewDataSource?
@@ -51,7 +53,7 @@ class MainPageViewController: UIViewController {
         }            
         
         //App에 저장된 RealmDB파일의 위치를 알 수 있는 함수.
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        //print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func makeFetchDishesUseCase() -> FetchDishesUseCase {
@@ -78,14 +80,17 @@ class MainPageViewController: UIViewController {
     
     private func bind(to viewModel: DishesViewModel) {
         viewModel.category.observe(on: self) { [weak self] category in
-            DispatchQueue.main.async {
-                self?.updateSection(at: category.sectionIndex)
-            }
+            self?.updateSection(at: category.sectionIndex)
         }
     }
     
     private func updateSection(at index: Int) {
-        self.dishCollectionView.reloadSections(IndexSet(integer: index))
+        DispatchQueue.main.sync {
+            self.dishCollectionView.reloadSections(IndexSet(integer: index))
+        }
+        //queue.async {
+        //    self.dishCollectionView.reloadSections(IndexSet(integer: index))
+        //}
     }
     
     private func goToDishDetail(categoryName: String, dish: Dish) {

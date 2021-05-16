@@ -26,7 +26,7 @@ final class Observable<Value> {
     
     func observe(on observer: AnyObject, observerBlock: @escaping (Value) -> Void) {
         observers.append(Observer(observer: observer, block: observerBlock))
-        observerBlock(self.value)
+        //observerBlock(self.value)
     }
     
     func remove(observer: AnyObject) {
@@ -35,7 +35,7 @@ final class Observable<Value> {
     
     private func notifyObservers() {
         for observer in observers {
-            DispatchQueue.main.async { observer.block(self.value) }
+            observer.block(self.value)
         }
     }
 }

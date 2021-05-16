@@ -14,14 +14,14 @@ protocol FetchDishesUseCase {
 
 final class DefaultFetchDishesUseCase: FetchDishesUseCase {
     let networkManager = NetworkManager()
-    let realmManager = RealmManager()
+    //let realmManager = RealmManager()
     
     func execute(requestValue: FetchDishesUseCaseRequestValue,
                  completion: @escaping (Result<Dishes, Error>) -> Void) {
         return fetchDishes(categoryName: requestValue.categoryName, completion: { result in
             switch result {
             case .success(let response):
-                self.realmManager.addDishes(items: response.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
+                //self.realmManager.addDishes(items: response.dishes.map(DishesItemViewModel.init), categoryName: requestValue.categoryName)
                 completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
@@ -39,7 +39,8 @@ final class DefaultFetchDishesUseCase: FetchDishesUseCase {
             case .success(let responseDTO):
                 completion(.success(responseDTO.toDomain()))
             case .failure(_):
-                completion(.success(self.realmManager.getDishes(categryName: categoryName)))
+                break
+                //completion(.success(self.realmManager.getDishes(categryName: categoryName)))
             }
         }
     }
