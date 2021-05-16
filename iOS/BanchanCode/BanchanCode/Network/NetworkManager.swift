@@ -10,10 +10,12 @@ import Alamofire
 
 class NetworkManager {
     
+    let decodeQueue = DispatchQueue(label: "decode.queue", attributes: .concurrent)
+    
     func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
         AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
-            .responseDecodable(of: T.self) { response in
+            .responseDecodable(of: T.self, queue: decodeQueue) { response in
                 switch response.result {
                 case .success(let responseDTO):
                     completionHandler(.success(responseDTO))
