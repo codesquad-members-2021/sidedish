@@ -48,8 +48,8 @@ extension DefaultDishesViewModel {
         fetchDishesUseCase.execute(requestValue: .init(categoryName: category.value.name), completion: { result in
             switch result {
             case .success(let items):
-                self.category.value.items = items.dishes
                 self.items.value = items.dishes.map(DishesItemViewModel.init)
+                self.category.value.items = items.dishes
             case .failure(let error):
                 print(error.localizedDescription)
             }
