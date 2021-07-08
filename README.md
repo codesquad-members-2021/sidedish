@@ -17,7 +17,7 @@ Team 10
 
 ### Main View
 
-<p align = "center"><img src = "https://github.com/ghis22130/sidedish/blob/dev/iOS/Docs/MainView.gif?raw=true" width = "40%"></p>
+<img src = "https://github.com/ghis22130/sidedish/blob/dev/iOS/Docs/MainView.gif?raw=true" width = "40%">
 
 💁‍♂️ 메인 화면에서 **메인요리**, **국물요리**, **밑반찬** 으로 분류 된 음식들을 상, 하로 스크롤 하여 탐색 하실 수 있습니다.
 
