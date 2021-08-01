@@ -8,15 +8,16 @@
 import Foundation
 
 struct BanchanDetail {
-    private var topImage: URL
-    private var thumbImages: [URL]
-    private var detailImage: [URL]
-    private var description: String
-    private var title: String
-    private var deliveryInfo: String
-    private var deliveryFee: String
-    private var point: Int
-    private var netPrice: Int
-    private var salePrice: Int?
-    private var badges: [PriceType]
+    private (set) var topImage: String
+    private (set) var thumbImages: [String]
+    private (set) var detailSection: [String]
+    private (set) var productDescription: String
+    private (set) var title: String
+    private (set) var deliveryInfo: String
+    private (set) var deliveryFee: String
+    private (set) var point: String
+    private (set) var nPrice: String?
+    private (set) var sPrice: String
+    private (set) var badges: [String]
+    private (set) var inStock: Bool
 }
