@@ -9,29 +9,31 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    func performRequest(urlString: String, completionHandler: @escaping (DishesResponseDTO) -> ()) {
+    
+    let decodeQueue = DispatchQueue(label: "decode.queue", attributes: .concurrent)
+    
+    func performRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
         AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
-            .responseDecodable(of: DishesResponseDTO.self) { (response) in
+            .responseDecodable(of: T.self, queue: decodeQueue) { response in
                 switch response.result {
-                case .success(let dishes):
-                    completionHandler(dishes)
+                case .success(let responseDTO):
+                    completionHandler(.success(responseDTO))
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    completionHandler(.failure(error))
                 }
             }
     }
     
-    func updateThumbImage(imageURL: String, completion: @escaping (Data) -> Void) {
-        AF.request(imageURL, method: .get)
+    func performDataRequest(urlString: String, completion: @escaping (Data) -> Void) {
+        AF.request(urlString, method: .get)
             .validate(statusCode: 200..<300)
-            .responseData { (response) in
+            .responseData { response in
                 switch response.result {
                 case .success(let data):
                     completion(data)
                 case .failure(let error):
                     print(error.localizedDescription)
-                    break
                 }
             }
     }

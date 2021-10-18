@@ -9,9 +9,11 @@ import Foundation
 
 struct DishesResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
+        case category = "title"
         case dishes
     }
-    let dishes: [DishDTO]
+    let category: String
+    let dishes: [DishDTO]    
 }
 
 extension DishesResponseDTO {
@@ -35,7 +37,7 @@ extension DishesResponseDTO {
 
 extension DishesResponseDTO {
     func toDomain() -> Dishes {
-        return .init(dishes: dishes.map { $0.toDomain() })
+        return .init(category: nil, dishes: dishes.map { $0.toDomain() })
     }
 }
 

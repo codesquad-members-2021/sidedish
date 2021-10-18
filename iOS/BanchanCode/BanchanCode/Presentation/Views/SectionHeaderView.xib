@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,23 +14,44 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdj-U5-2Ym">
-                    <rect key="frame" x="16" y="11.5" width="56" height="27"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                    <color key="textColor" name="NameTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cQr-cC-IB3">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdj-U5-2Ym">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="26.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <color key="textColor" name="NameTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUv-Db-meX" userLabel="SectionContentLabel">
+                            <rect key="frame" x="0.0" y="26.5" width="320" height="23.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="pUv-Db-meX" firstAttribute="top" secondItem="Cdj-U5-2Ym" secondAttribute="bottom" id="53o-EW-00K"/>
+                        <constraint firstItem="Cdj-U5-2Ym" firstAttribute="top" secondItem="cQr-cC-IB3" secondAttribute="top" id="8lV-SM-T8p"/>
+                        <constraint firstAttribute="bottom" secondItem="pUv-Db-meX" secondAttribute="bottom" id="Jjs-eL-6C7"/>
+                        <constraint firstItem="Cdj-U5-2Ym" firstAttribute="leading" secondItem="cQr-cC-IB3" secondAttribute="leading" id="RkD-vW-6Rd"/>
+                        <constraint firstItem="pUv-Db-meX" firstAttribute="leading" secondItem="cQr-cC-IB3" secondAttribute="leading" id="aYm-Yy-tnI"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
-                <constraint firstItem="Cdj-U5-2Ym" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="0oV-HS-CGC"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Cdj-U5-2Ym" secondAttribute="trailing" id="Js3-Dk-dkY"/>
-                <constraint firstItem="Cdj-U5-2Ym" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="K1j-wE-9YH"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="cQr-cC-IB3" secondAttribute="bottom" id="DUk-6X-h0V"/>
+                <constraint firstItem="cQr-cC-IB3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="jLZ-K4-zJ7"/>
+                <constraint firstAttribute="trailing" secondItem="cQr-cC-IB3" secondAttribute="trailing" id="p7H-1O-sPa"/>
+                <constraint firstItem="cQr-cC-IB3" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="pEQ-DA-KsY"/>
             </constraints>
             <connections>
-                <outlet property="sectionTitleLabel" destination="Cdj-U5-2Ym" id="eUK-Dt-qy5"/>
+                <outlet property="sectionContentLabel" destination="pUv-Db-meX" id="dY4-wt-ip7"/>
+                <outlet property="sectionStackView" destination="cQr-cC-IB3" id="5lg-HJ-jpY"/>
+                <outlet property="sectionTitleLabel" destination="Cdj-U5-2Ym" id="VCd-fy-JfH"/>
             </connections>
-            <point key="canvasLocation" x="-146" y="95"/>
+            <point key="canvasLocation" x="-149.27536231884059" y="104.46428571428571"/>
         </collectionReusableView>
     </objects>
     <resources>

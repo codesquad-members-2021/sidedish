@@ -15,43 +15,48 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var lastPriceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
-    @IBOutlet weak var badgeBackgroundView: UIView!
-    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var badgeStackView: UIStackView!
     
     static let reuseIdentifier = String(describing: DishCell.self)
-    let networkManager = NetworkManager()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         thumbnailImageView.layer.masksToBounds = true
         thumbnailImageView.layer.cornerRadius = 5.0
-        
-        badgeBackgroundView.layer.masksToBounds = true
-        badgeBackgroundView.layer.cornerRadius = 5.0
     }
     
     func fill(with viewModel: DishesItemViewModel) {
-        networkManager.updateThumbImage(imageURL: viewModel.imageURL) { imageData in
-            DispatchQueue.main.async {
-                self.thumbnailImageView.image = UIImage(data: imageData)
+        let dish = viewModel.dish
+        nameLabel.text = dish.name
+        descriptionLabel.text = dish.description
+        
+        lastPriceLabel.text = String().format(price: viewModel.lastPrice)
+        if let originalPrice = viewModel.originalPrice {
+            originalPriceLabel.attributedText = String().format(price: originalPrice)?.strikethrough()
+            originalPriceLabel.isHidden = false
+        } else {
+            originalPriceLabel.isHidden = true
+        }
+        
+        let badges = dish.badges
+        badgeStackView.arrangedSubviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
+        if badges.count == 0 {
+            badgeStackView.isHidden = true
+        } else {
+            badgeStackView.isHidden = false
+            badges.forEach { badgeString in
+                let badgeView = BadgeView()
+                badgeView.badgeLabel.text = badgeString
+                badgeView.backgroundColor = badgeString == "이벤트특가" ? #colorLiteral(red: 0.5098039216, green: 0.8274509804, blue: 0.1764705882, alpha: 1) : #colorLiteral(red: 0.5254901961, green: 0.7764705882, blue: 1, alpha: 1)
+                badgeStackView.addArrangedSubview(badgeView)
             }
         }
-        nameLabel.text = viewModel.name
-        descriptionLabel.text = viewModel.description
-        let prices = viewModel.prices
-        let originalPrice = prices[0]
-        if prices.count > 1 {
-            let lastPrice = prices[1]
-            originalPriceLabel.attributedText = "\(originalPrice)원".strikethrough()
-            lastPriceLabel.text = "\(lastPrice)원"
-        } else {
-            lastPriceLabel.text = "\(originalPrice)원"
-            originalPriceLabel.text = ""
-        }
-        let badges = viewModel.badges
-        if badges.count > 0 {
-            badgeLabel.text = badges[0]
-        }
+    }
+    
+    override func prepareForReuse() {
+        thumbnailImageView.image = nil
     }
 }

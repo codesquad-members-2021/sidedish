@@ -8,19 +8,17 @@
 import Foundation
 
 struct DishesItemViewModel {
-    let name: String
-    let description: String
-    let imageURL: String
-    let prices: [Int]
-    let badges: [String]
-}
-
-extension DishesItemViewModel {
+    let dish: Dish
+    var lastPrice: Int = 0
+    var originalPrice: Int? = nil
+    
     init(dish: Dish) {
-        self.name = dish.name
-        self.description = dish.description
-        self.imageURL = dish.imageURL
-        self.prices = dish.prices
-        self.badges = dish.badges
+        self.dish = dish
+        self.lastPrice = dish.prices.last ?? 0
+        self.originalPrice = getOriginalPrice(from: dish.prices)
+    }
+    
+    private func getOriginalPrice(from prices: [Int]) -> Int? {
+        return prices.count > 1 ? prices.first : nil
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Dish {
+struct Dish{
     let id: Int
     let name: String
     let description: String
@@ -17,5 +17,6 @@ struct Dish {
 }
 
 struct Dishes {
+    var category: Categorizable?
     var dishes: [Dish]
 }
